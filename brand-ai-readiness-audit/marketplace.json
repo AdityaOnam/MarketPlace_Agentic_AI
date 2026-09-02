@@ -1,12 +1,13 @@
 {
   "name": "brand-ai-readiness-audit",
   "version": "1.0.0",
-  "description": "Audits a website for AI-discoverability and on-site-engagement problems and emits a single prioritized findings report. Read-only, recommend-only.",
+  "description": "Audits any website read-only for AI-discoverability and on-site-engagement defects, and emits a single evidence-backed report of findings, prioritized fixes, proactive recommendations, and declared limitations.",
   "skills": [
     { "id": "audit-orchestrator", "path": "skills/audit-orchestrator", "entrypoint": true },
+    { "id": "site-evidence-collector", "path": "skills/site-evidence-collector" },
     { "id": "crawl-access-audit", "path": "skills/crawl-access-audit" },
-    { "id": "structured-data-extraction", "path": "skills/structured-data-extraction" },
-    { "id": "entity-identity-corroboration", "path": "skills/entity-identity-corroboration" },
-    { "id": "engagement-onsite-audit", "path": "skills/engagement-onsite-audit" }
+    { "id": "render-extractability-audit", "path": "skills/render-extractability-audit" },
+    { "id": "entity-identity-audit", "path": "skills/entity-identity-audit" },
+    { "id": "engagement-defect-audit", "path": "skills/engagement-defect-audit" }
   ]
 }

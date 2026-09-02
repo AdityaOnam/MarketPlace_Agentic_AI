@@ -8,20 +8,27 @@ anything.** Update it before you finish your turn if you touched any files.
 
 ## How to use this file
 
-1. **Before starting work:** read `## Current status` and `## Claims` below.
-   If the area you're about to touch is claimed by the other session and not
-   marked done, either work elsewhere or leave a note asking before editing
-   their files.
+> **Git is now initialized** (repo root, initial commit `b0d06a7`). Git covers
+> **what changed** (`git log`, `git diff`) — this file covers **why / what's
+> next / who's claiming what**. Use both:
+
+1. **Before starting work:** run `git log --oneline` and `git status`, then
+   read `## Current status` and `## Claims` below. If the area you're about to
+   touch is claimed by the other session and not marked done, either work
+   elsewhere or leave a note asking before editing their files.
 2. **When you start a chunk of work:** add/update a row in `## Claims` so the
    other session doesn't collide with you.
-3. **When you finish a chunk of work:** 
+3. **When you finish a chunk of work:**
+   - `git add` + commit your changes with a small, descriptive message,
    - move your row from `## Claims` to done (or delete it),
-   - append one entry to `## Log` (newest entry at the **bottom**),
+   - append one entry to `## Log` (newest entry at the **bottom**) — mention
+     the commit hash,
    - update `## Current status` if the overall picture changed.
-4. Keep entries short — file paths + one line of what/why. This is a log, not
-   a report.
+4. Keep log entries short — file paths + one line of what/why; git already
+   has the diff. This is a log, not a report.
 5. Never edit another session's in-progress files without saying so in a new
-   log entry first.
+   log entry first, and never `git reset`/`git push --force`/rewrite history —
+   only ever add commits.
 
 ---
 
@@ -82,3 +89,13 @@ anything.** Update it before you finish your turn if you touched any files.
   `entity-identity-corroboration` (L3) skills in the same shape; build the
   fixture/precision-recall test harness (highest-leverage remaining item —
   see chat discussion in this session).
+
+### 2026-09-02 — other session — git init
+- Other session (`adobe-d5`) ran `git init` + made initial commit `b0d06a7`
+  covering everything in the repo at that point (both `brand-ai-readiness-audit/`
+  and `sample-marketplace/` plus this file). Added `.gitignore` to exclude
+  `.~lock.PS.odt#`.
+- Protocol going forward: **commit your own changes with small, descriptive
+  messages** as you make them — git carries "what changed" via `log`/`diff`;
+  this file stays for "why / what's next / claims". Do not force-push or
+  rewrite history — only add commits.
