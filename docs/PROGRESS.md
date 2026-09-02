@@ -4,6 +4,8 @@ Living state of the Round 3 build. Updated at the end of every meaningful chunk 
 (see the `project-flow` skill). Newest notes at the top of each list.
 
 **Current phase:** 3 — Authoring the skills. Phase 2 closed by D-013 / `ARCHITECTURE.md`.
+All six `SKILL.md` files now exist; `scripts/` and the root `README.md` are what remain
+of this phase.
 
 ## Done
 
@@ -102,10 +104,32 @@ this directory is what gets zipped.
 - **Done — `site-evidence-collector`**: `SKILL.md` (lean), plus `references/procedure.md`,
   `references/ai-crawler-agents.md` (the retrieval-vs-training classification that separates
   CHK-D-001 from CHK-D-002), and `references/bundle-schema.md`.
-- **Next — the five remaining skills.** Four analysers and the orchestrator. All are now
-  unblocked and mutually independent, since the bundle schema and the finding envelope
-  (ARCHITECTURE.md §4.2) are both fixed. They can be written in parallel.
-- **Then — `scripts/`** for the deterministic checks, and the marketplace root `README.md`.
+- **Done — the four analysers.** `render-extractability-audit` (7 checks, mechanisms B/C),
+  `entity-identity-audit` (7 checks, mechanism D — the only skill reading `anchors`, and
+  the one that classifies EVERGREEN vs. TIME-SENSITIVE per `BUNDLE-SCHEMA.md` Caveat 2),
+  and `engagement-defect-audit` (11 checks, mechanisms E/F — the biggest skill; CHK-E-024
+  is marked `recommendation_only` per the single-source rule, CHK-E-023 requires ≥2
+  independent ad-detectors to agree). Each has a lean `SKILL.md` plus a
+  `references/checks.md` carrying the full per-check detail straight from
+  `EVIDENCE-LEDGER.md`.
+- **Done — `audit-orchestrator`.** Invokes the collector once and all four analysers, then
+  owns root-cause dedup (a JS-only site's CHK-D-003/004/005/E-019 collapse to one reported
+  defect via `references/composition-rules.md`), report assembly per D-012
+  (`references/report-schema.md` — the full report shape, the 27-check title map, and the
+  deterministic `F-NNN` ID-assignment rule), and budget arbitration (`degraded_stages[]`).
+  Its own doc corrects an imprecision in `ARCHITECTURE.md` §4.3: two of its three named
+  "cross-skill suppression" examples (CHK-D-002/D-001, CHK-D-010/D-004) are actually
+  same-skill pairs already resolved inside `crawl-access-audit` and
+  `render-extractability-audit` respectively — the orchestrator's genuine cross-skill case
+  is CHK-E-019/CHK-D-003 alone.
+- **Next — `scripts/`** for the deterministic checks (everything shipped so far is
+  instructions/prose in `SKILL.md`/`references/`, not executable code), and the
+  marketplace root `README.md` describing what each skill does and how the entrypoint
+  composes them (required at submission per `round3-spec` §7).
+- **Still outstanding from Phase 2 (R-1, blocking before ship):** every row in
+  `EVIDENCE-LEDGER.md` still reads `Verified by hand: — pending`. Authoring the skills
+  didn't require this, but shipping does — a human needs to open at least one cited source
+  per check before this goes in the zip.
 
 **Packaging note (Phase 5):** `docs/BUNDLE-SCHEMA.md` is canonical during development and is
 copied to `skills/site-evidence-collector/references/bundle-schema.md`. Re-copy it at
