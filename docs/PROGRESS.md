@@ -9,24 +9,9 @@ of this phase.
 
 ## Done
 
-- 2026-09-02 — **Phase 3, 5 of 6 skills authored.**
-  - `entity-identity-audit/SKILL.md` + `references/checks.md` (mechanism D, 7 checks:
-    CHK-D-006, D-007, D-008, D-012, D-025, D-026, D-027). Only analyser that reads
-    `anchors`. Time-sensitivity classification for CHK-D-012 lives here per BUNDLE-SCHEMA.md
-    Caveat 2. LIM-01 and LIM-02 documented explicitly — cross-web corroboration and
-    name-collision detection are structurally out of scope.
-  - `engagement-defect-audit/SKILL.md` + `references/checks.md` (mechanisms E, F, 11
-    checks: CHK-E-014 … E-024). Framed per D-008 as defect detection, not outcome
-    prediction. CHK-E-019 independently recomputes the CHK-D-003 render gap (deliberate;
-    orchestrator deduplicates). CHK-E-023 enforces ≥2 independent detectors or
-    not_determinable. CHK-E-024 ships recommendation-only with `route: "recommendations"`
-    in its envelope.
-  - `audit-orchestrator/SKILL.md` + `references/report-schema.md`. Documents the six-step
-    pipeline (collect → run analysers → O-1 cross-skill suppression → O-2 JS-only dedup
-    → separate findings/recommendations → assemble). Honest that CHK-D-002/D-001 and
-    CHK-D-010/D-004 suppressions are already intra-skill; the one genuinely cross-skill
-    dependency is CHK-E-019/CHK-D-003. Budget arbitration surfaces abandoned stages in
-    `limitations[]` so not_determinable reads as "couldn't measure," not "bug."
+- 2026-09-02 — **Phase 3, all 6 skills authored.** See "Phase 3 — skill authoring
+  (6 of 6 — 2026-09-02)" below for the full per-skill breakdown and the note on how the
+  three duplicated skills were reconciled between two parallel sessions.
 
 - 2026-09-02 — **Phase 1b Synthesis Complete.**
 
