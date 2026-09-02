@@ -3,7 +3,7 @@
 Living state of the Round 3 build. Updated at the end of every meaningful chunk of work
 (see the `project-flow` skill). Newest notes at the top of each list.
 
-**Current phase:** 2 — Architecture and Skill Decomposition.
+**Current phase:** 3 — Authoring the skills. Phase 2 closed by D-013 / `ARCHITECTURE.md`.
 
 ## Done
 
@@ -52,6 +52,64 @@ for discoverability, 07 for engagement, 05 for evaluation, 08 for corpora. The t
 remaining domains affect how well we can *justify* design choices (how skills are authored,
 and how many there should be), not what the checks are. They are worth running before
 Phase 2 if budget allows, but they do not block it.
+
+## Phase 1b review — corrections outstanding
+
+Reviewed 2026-09-02; full detail in
+[`research/EVIDENCE-LEDGER.md`](research/EVIDENCE-LEDGER.md) under "Review — 2026-09-02".
+
+- **R-1 (done)** — all 24 rows had been self-certified as hand-verified by the authoring
+  tool; reset to `— pending`. A human must spot-check one cited source per check.
+- **R-2 (done)** — search-only sources removed from load-bearing roles: CHK-D-003's severity
+  rule is now definitional rather than threshold-based; CHK-E-024 demoted to a proactive
+  recommendation under the new single-source rule.
+- **R-3 (done)** — `NORMATIVE` recorded as **D-011** with a full strength vocabulary and
+  ceilings; CHK-E-020 re-grounded on WCAG 2.2 SC 1.4.2 and demoted to `medium`; CHK-E-021
+  given one coherent label and capped.
+- **R-7 (done)** — ID sequence documented as deliberate and stable; dev gold labels 20 → 24;
+  negative controls 24 → 27; report schema settled as **D-012** (`findings[]` for defects,
+  sibling `recommendations[]` and `limitations[]`).
+- **R-4 (done)** — headless rendering now budgeted: one shared render pass per sampled page
+  (max 3), seven declared consumers, 220 s subtotal against the 300 s cap with 80 s
+  reserve, and a degradation rule emitting `not_determinable` rather than inferring from
+  static HTML.
+- **R-5 (done)** — off-site coverage added: **CHK-D-025** (no declared identity anchors),
+  **CHK-D-026** (declared anchors that don't resolve — bounded off-site HEAD checks),
+  **CHK-D-027** (identity attributes self-inconsistent across own pages). What stays
+  unmeasurable is declared as **LIM-01…LIM-04** and reported, not omitted. Ledger is now
+  **27 checks + 4 declared limitations**.
+  - *Follow-on:* `CORPUS.md` sizes negative controls at 3 per each of 8 dimensions; the
+    off-site dimension makes 9, so that set should grow to 27 sites.
+- **R-6 (done)** — Phase 2 decomposition decided deliberately as **D-013**: six skills, split
+  by mechanism with network I/O extracted into `site-evidence-collector`. Full rationale,
+  composition contract, and check map in [`ARCHITECTURE.md`](ARCHITECTURE.md), now
+  authoritative for check ownership.
+
+**All seven review findings resolved.** Phase 2 complete.
+
+## Phase 3 — authoring (in progress)
+
+Marketplace root created at [`brand-ai-readiness-audit/`](../brand-ai-readiness-audit) —
+this directory is what gets zipped.
+
+- **Done — the interface.** [`BUNDLE-SCHEMA.md`](BUNDLE-SCHEMA.md) pins the evidence bundle
+  to exact field names, with a coverage walk confirming all 27 checks can be satisfied.
+  Three caveats recorded (ad detection is the weakest check; CHK-D-012's time-sensitivity
+  label belongs in the analyser; CHK-E-016's "standalone" is deliberately collector-side).
+  One conflict with ARCHITECTURE.md found and resolved: 3 navigations / 4 viewport
+  measurements, not 6.
+- **Done — `marketplace.json`** with exactly one entrypoint.
+- **Done — `site-evidence-collector`**: `SKILL.md` (lean), plus `references/procedure.md`,
+  `references/ai-crawler-agents.md` (the retrieval-vs-training classification that separates
+  CHK-D-001 from CHK-D-002), and `references/bundle-schema.md`.
+- **Next — the five remaining skills.** Four analysers and the orchestrator. All are now
+  unblocked and mutually independent, since the bundle schema and the finding envelope
+  (ARCHITECTURE.md §4.2) are both fixed. They can be written in parallel.
+- **Then — `scripts/`** for the deterministic checks, and the marketplace root `README.md`.
+
+**Packaging note (Phase 5):** `docs/BUNDLE-SCHEMA.md` is canonical during development and is
+copied to `skills/site-evidence-collector/references/bundle-schema.md`. Re-copy it at
+packaging time so the shipped bundle is self-contained and cannot drift.
 
 ## Blocked / open questions
 

@@ -8,9 +8,9 @@ and give us an untouched set to *measure* whether they generalized.
 
 | Set | Purpose | Hygiene rule |
 | --- | --- | --- |
-| **Dev** | Derive and tune checks; look at freely | 60 sites. Used for discovery. Gold labels needed on only 20. |
+| **Dev** | Derive and tune checks; look at freely | 60 sites. Used for discovery. Gold labels on **24** — D-010's floor for a usable precision interval (±7.4 pp at ρ=0.2); below ~12 we report counts, not rates. |
 | **Held-out test** | Measure generalization | 30 sites. Pre-declared budget of 3 runs. Peeking converts a site to dev. |
-| **Negative control** | Measure false positives | 24 sites (3 per check family). A check firing here is a defect. |
+| **Negative control** | Measure false positives | **27 sites** (3 per check family across 9 dimensions — the ninth is off-site identity anchoring, added with CHK-D-025/026/027). A check firing here is a defect. |
 | **Adversarial / edge** | Measure graceful degradation | 12 sites (1 per edge condition). Must not crash or hallucinate. |
 
 ## 0. Design commitments
@@ -53,7 +53,8 @@ and give us an untouched set to *measure* whether they generalized.
 
 ## 3. Negative-control set
 
-**Size: 24 sites** (3 sites for each of the 8 evaluation dimensions).
+**Size: 27 sites** (3 sites for each of the 9 evaluation dimensions — the ninth is off-site
+identity anchoring, covering CHK-D-025/026/027).
 
 Sites that are explicitly verified as clean on a given dimension (e.g., has perfect structured data, has no accessibility violations, is explicitly evergreen). Any firing of a check on its corresponding negative-control site is treated as a hard defect.
 

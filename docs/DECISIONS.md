@@ -174,6 +174,64 @@ effective samples, not 288; naive intervals are too narrow by roughly √3. Samp
 is ~24 dev sites (±7.4 pp on precision at ρ=0.2); below ~12 sites we report counts, not
 rates.
 
+## D-011 — `NORMATIVE` is a first-class evidence strength, capped at high
+
+Date: 2026-09-02
+Context: Phase 1b review (R-3). Several engagement checks rest on published standards —
+WCAG success criteria, the Better Ads Standards — rather than on measured effect sizes.
+D-004's vocabulary forced these into `CORRELATIONAL`, which misdescribes them.
+Decision: `NORMATIVE` is added as an evidence strength: the check detects violation of a
+published, citable standard. The standard is the authority; we do not claim a measured
+outcome. Ceiling is `high` — a normative violation is real but is not, on its own, evidence
+of an effect on any user.
+Reason: Lets accessibility and ad-density checks be stated accurately instead of dressed up
+as empirical findings, which would be a false positive at the framing level.
+Consequences: Suggested actions for `NORMATIVE` checks cite the criterion (e.g. "WCAG 2.2
+SC 1.4.2") rather than an outcome claim. Applied to CHK-E-020, re-grounded on SC 1.4.2.
+
+## D-012 — Proactive recommendations live outside `findings[]`
+
+Date: 2026-09-02
+Context: Phase 1b review (R-7). The brief requires suggested actions that "go beyond the
+detected problems", but the required schema's `findings` array implies a defect for every
+entry. Six checks emit `low`, and two now ship as recommendations rather than findings.
+Decision: The report keeps `findings[]` exactly as the schema requires — every entry a
+detected defect, severity in {critical, high, medium, low}, and `low` counted in the
+severity summary. Beyond-defect proactive improvements go in a sibling top-level
+`recommendations[]` array, each with `summary`, `priority`, `rationale`, and the mechanism
+it strengthens. Declared limitations (LIM-01…LIM-04) go in a third top-level `limitations[]`
+array.
+Reason: The schema is explicitly "a floor, not a ceiling — you may add fields". Putting a
+non-defect in `findings` would inflate `total_findings` and misrepresent the audit; putting
+it nowhere would forfeit the rubric's beyond-problem credit.
+Consequences: `summary.total_findings` counts defects only. Recommendations and limitations
+are counted separately. A check demoted under the single-source rule (D-011's companion
+rule) moves from `findings[]` to `recommendations[]` rather than disappearing.
+
+## D-013 — Six skills, split by mechanism, with network I/O extracted
+
+Date: 2026-09-02
+Context: Phase 1b review (R-6) found the ledger had assigned all checks to a single
+`marketplace_auditor` by default, making the composition decision by accident. The rubric
+grades decomposition as genuine separation of concerns and explicitly penalizes padding,
+while allowing a single well-built skill to score fully.
+Decision: `site-evidence-collector` (the only skill with network tools), four mechanism
+analysers (`crawl-access-audit`, `render-extractability-audit`, `entity-identity-audit`,
+`engagement-defect-audit`), and `audit-orchestrator` as the entrypoint. Full rationale,
+composition contract, and check map in `docs/ARCHITECTURE.md`, which is **authoritative for
+check ownership** over the ledger's `Owning skill` column.
+Reason: The mechanism axis is the brief's own ontology (appendix A–F), and each mechanism
+carries a different evidence type and severity ceiling. Extracting network I/O makes the
+<5-minute budget and the shared render pass (R-4) structurally enforceable rather than
+conventional, and makes the analysers pure functions from bundle to findings — which is what
+makes D-010's `pass^k` determinism achievable.
+Consequences: No skill except the collector declares a network tool. Analysers are blind to
+each other, so cross-skill suppression and root-cause dedup become the orchestrator's
+defined responsibility rather than emergent behaviour. Three falsification tests are
+recorded in ARCHITECTURE.md §7, including the admission that leave-one-skill-out ablation is
+weak on its own because any disjoint partition passes it — if the suppression-necessity test
+shows the orchestrator never fires, the decomposition is decorative and gets merged.
+
 ## D-005 — The literature review runs as eight parallel domain agents
 
 Date: 2026-09-01
