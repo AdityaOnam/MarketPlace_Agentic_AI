@@ -1,130 +1,146 @@
 ---
 name: engagement-defect-audit
-description: Detect statically and mechanically detectable defects known to obstruct access or comprehension for visitors who already arrived — WCAG accessibility failures, mobile layout breakage, non-descriptive link text, content-blocking overlays, blank first paint on JS-only pages, autoplaying media, layout-shift-causing markup, missing structural landmarks, and excessive ad density — by reading extracted page text and rendered geometry in an evidence bundle. Use as the on-site-engagement stage of a website audit, covering mechanisms E and F from the brief's appendix. Detects defects only; never predicts bounce, dwell, or conversion.
+description: Detect on-site defects known to obstruct user access or content comprehension — accessibility violations, mobile layout failures, content-blocking overlays, blank first paint, autoplaying media with sound, structural layout instability, heading/landmark integrity failures, excessive ad density, and missing trust signals. Covers mechanisms E (personalization and prior context — detecting the engagement barriers that vary a user's experience) and F (why machines drop content — detecting when substantive content is not available as readable text). Use as the engagement analysis stage of a brand AI-readiness audit, after the evidence bundle has been collected. This skill detects defects, never predicts engagement outcomes.
 license: Apache-2.0
 allowed-tools: []
 ---
 
 # Engagement Defect Audit
 
-Mechanisms E and F of the brief. This skill covers eleven checks, all statically or
-mechanically detectable, and all framed the same deliberate way per **D-008**: it detects
-*defects known to obstruct access and comprehension*, and it never claims to predict bounce,
-dwell time, scroll depth, or conversion. The reason is not caution for its own sake — it is
-that we cannot observe those outcomes read-only, and most of the literature that quantifies
-them is vendor-authored and uncitable (`docs/research/EVIDENCE-LEDGER.md` §"Declared
-limitations", `LIM-04`). Read `docs/DECISIONS.md` D-008 before changing this framing.
+Mechanisms E and F of the brief: *engagement barriers that obstruct how visitors experience
+the site, and how machines lose content.* Per **D-008**, this skill detects defects known
+to obstruct access and comprehension. It never predicts bounce rate, dwell time, scroll
+depth, or conversion — those are field engagement outcomes not observable read-only (LIM-04).
 
 **This skill declares no tools and makes no network requests.** It is a pure function from
-an evidence bundle to findings. All fetching and the shared render pass happened in
-`site-evidence-collector`.
+an evidence bundle to findings. All fetching and rendering happened in `site-evidence-collector`.
 
 ## When to use
 
-Invoked by `audit-orchestrator` with an evidence bundle. `CHK-E-019` deliberately
-recomputes the same raw-vs-rendered gap that `render-extractability-audit`'s `CHK-D-003`
-computes — analysers are blind to each other by design, so both run their own version, and
-`audit-orchestrator` collapses a shared JS-only root cause into one reported defect rather
-than two. See `docs/ARCHITECTURE.md` §4.3.
+Invoked by `audit-orchestrator` with an evidence bundle. This is the largest analyser:
+eleven checks across accessibility, mobile layout, overlay behaviour, JavaScript rendering
+gaps, media controls, structural layout stability, heading integrity, advertising density,
+and trust signals (CHK-E-014 through CHK-E-024).
 
 ## Inputs
 
-The `pages` and `rendered` sections of an evidence bundle
-(`site-evidence-collector/references/bundle-schema.md`). Reads nothing else.
+Two sections of the evidence bundle:
+
+| Section | Fields used |
+| --- | --- |
+| `pages[]` | `lang`, `images[]`, `form_controls[]`, `interactive_empty`, `links[]`, `media[]`, `headings`, `landmarks`, `noscript`, `main_text_words`, `meta.viewport`, `contact_signals`, `dates`, `page_type`, `url`, `status` |
+| `rendered[]` | `computed_styles.contrast_pairs`, `viewports.mobile_375.horizontal_overflow`, `viewports.mobile_375.tap_targets`, `viewports.mobile_375.overlays`, `viewports.mobile_375.body_scroll_locked`, `viewports.mobile_375.ad_regions`, `viewports.mobile_375.ad_area_pct_total`, `main_text_words` |
+
+Reads `pages` and `rendered`. Reads nothing else.
 
 ## Output
 
-Zero to eleven findings in the standard envelope, plus one special case: `CHK-E-024` never
-contributes to `findings[]` (see "The single-source exception" below). Emits `absent`
-explicitly wherever a check ran clean.
+Up to eleven finding envelopes in the standard format defined in
+`docs/ARCHITECTURE.md §4.2`. Every check emits an envelope even when clean (`state:
+"absent"`). **CHK-E-024 is the one exception:** per the single-source rule (D-004/ledger),
+it must never appear in `findings[]`; it ships as a `recommendation` envelope so the
+orchestrator routes it to `recommendations[]` rather than `findings[]`. Mark it
+`"route": "recommendations"` in the envelope.
 
 ## Procedure
 
-1. **Gate on evidence, per section.** Checks reading only `pages[]` (`CHK-E-017`,
-   `CHK-E-020`, `CHK-E-021`, `CHK-E-022`, `CHK-E-024`) emit `not_determinable` with
-   `pages.reason` if `pages.status != "ok"`. Checks reading `rendered[]`
-   (`CHK-E-015` overflow, `CHK-E-016`, `CHK-E-018`, `CHK-E-019`, `CHK-E-023`) do the same
-   with `rendered.reason` if `rendered.status != "ok"`. `CHK-E-014` reads both.
-2. **Evaluate `CHK-E-014`** (WCAG machine-detectable failures) — five subtypes read from
-   `pages[]` (missing `lang`, missing `alt`, empty links/buttons via
-   `interactive_empty`, unlabelled form controls) plus one from `rendered[]`
-   (low-contrast text pairs). Each subtype is graded independently.
-3. **Evaluate `CHK-E-015`** (viewport blocking) from `pages[].meta.viewport` (missing meta,
-   `user-scalable=no`, `maximum-scale<2`) and `rendered[].viewports.mobile_375.
-   horizontal_overflow`.
-4. **Evaluate `CHK-E-016`** (small tap targets) from
-   `rendered[].viewports.mobile_375.tap_targets[]`, using the collector-computed
-   `standalone` and `spacing_px` fields (`docs/BUNDLE-SCHEMA.md` Caveat 3 — the WCAG 2.2
-   inline-text-link exemption is already applied there).
-5. **Evaluate `CHK-E-017`** (non-descriptive anchor text) from `pages[].links[].text` /
-   `aria_label`.
-6. **Evaluate `CHK-E-018`** (content-blocking overlay) from
-   `rendered[].viewports.mobile_375.overlays[]` and `body_scroll_locked`.
-7. **Evaluate `CHK-E-019`** (blank first paint) by independently comparing
-   `pages[].main_text_words`/`noscript` against `rendered[].main_text_words` on the
-   homepage — the same comparison `CHK-D-003` makes, computed here without reference to
-   its result.
-8. **Evaluate `CHK-E-020`** (autoplaying media with sound) from `pages[].media[]`.
-9. **Evaluate `CHK-E-021`** (missing image/iframe dimensions) from `pages[].images[]`,
-   `pages[].iframes[]`.
-10. **Evaluate `CHK-E-022`** (landmark/heading integrity) from `pages[].landmarks`,
-    `pages[].headings`.
-11. **Evaluate `CHK-E-023`** (ad density) from
-    `rendered[].viewports.mobile_375.ad_regions[]` and `ad_area_pct_total`, **requiring
-    agreement from ≥2 independent detectors before emitting** — see "The weakest check"
-    below.
-12. **Evaluate `CHK-E-024`** (trust signals) from `pages[].contact_signals`,
-    `site.scheme`, `pages[].dates` — commercial/service/news archetypes only. Emit per the
-    single-source exception, never as a scored finding.
-13. **Emit** the envelope for all eleven checks.
+1. **Gate on evidence.** Before evaluating any check:
+   - Checks that need only static HTML (`pages`): gate on `pages.status`. If `pages.status
+     != "ok"` for a given page, exclude it from that check's page sample. If the whole
+     section is unavailable, emit all static checks as `not_determinable`.
+   - Checks that need rendered data (`rendered`): gate on both the section status and the
+     specific `rendered[url].status`. If the render pass was abandoned (`budget.stages`
+     shows `abandoned: true` for `render_pass`), emit all render-dependent checks as
+     `not_determinable` with reason "render stage abandoned (budget exhausted)".
+   - Never infer from absent evidence.
 
-Full per-check detail lives in [`references/checks.md`](references/checks.md).
+2. **Evaluate the eleven checks** (full detail in `references/checks.md`):
+   - CHK-E-014 — Machine-detectable WCAG failures (lang, alt, labels, empty controls, contrast)
+   - CHK-E-015 — Viewport meta missing or zoom-blocking
+   - CHK-E-016 — Standalone tap targets below WCAG 2.2 minimum (24×24 CSS px)
+   - CHK-E-017 — Non-descriptive anchor text
+   - CHK-E-018 — Content-blocking overlay at load
+   - CHK-E-019 — Blank first paint without JS (JS-render gap + no fallback)
+   - CHK-E-020 — Autoplaying media with sound and no pause/stop control
+   - CHK-E-021 — Images/iframes without explicit dimensions (structural reflow)
+   - CHK-E-022 — Missing landmark or heading integrity violation
+   - CHK-E-023 — Ad/promo density exceeds 30% of mobile viewport
+   - CHK-E-024 — Missing trust signals *(recommendation-only — see note below)*
+
+3. **Apply false-positive guards** before emitting any finding. See check-level guards in
+   `references/checks.md`. Do not emit a finding you cannot suppress correctly.
+
+4. **Emit** all eleven envelopes. `absent` and `not_applicable` are emitted, not dropped.
+   CHK-E-024 carries `"route": "recommendations"` in its envelope; the orchestrator is
+   responsible for placing it in `recommendations[]` rather than `findings[]`.
+
+## Note on CHK-E-019 and the render comparison
+
+CHK-E-019 (blank first paint) independently recomputes the raw-vs-rendered word-count gap
+that `render-extractability-audit`'s CHK-D-003 also computes. **This duplication is
+deliberate:** analysers are blind to each other by design. Both checks independently arrive
+at the same raw comparison; the orchestrator deduplicates the reported root cause when
+both fire on a JS-only site. See ARCHITECTURE.md §4.3 and the orchestrator skill for the
+dedup logic. Do not try to avoid this duplication inside this skill — the architectural
+boundary is the point.
+
+## Note on CHK-E-023 and the two-detector rule
+
+CHK-E-023 (ad density) is explicitly flagged in `docs/BUNDLE-SCHEMA.md` (Caveat 1) as
+the weakest check in the entire ledger. The `ad_regions[]` entries each carry a `detector`
+field recording which heuristic fired (`iframe_thirdparty`, `slot_attr`, or `filterlist`).
+
+**Require ≥2 independent detectors to agree before emitting a finding.** If only one
+detector type fires across all ad regions, emit `not_determinable` with reason "only one
+detection method agrees — insufficient confidence." A single detector's verdict is not
+enough to avoid a false positive.
+
+## Note on CHK-E-024 and the single-source rule
+
+CHK-E-024 (trust signals) is demoted from `findings[]` under the single-source rule
+(D-004/ledger): its support reduces to one unreplicated study. It must never appear in a
+`findings[]` array at any severity. It ships exclusively as a recommendation, clearly
+marked in its envelope so the orchestrator routes it correctly. If the sources supporting
+CHK-E-024 are later hand-verified and a second independent source confirmed, the ledger
+must be updated first; only then may this check be promoted to a finding.
 
 ## Checks at a glance
 
-| Check | Subject | Strength | Ceiling |
-| --- | --- | --- | --- |
-| CHK-E-014 | WCAG machine-detectable failures (5 subtypes) | HARD-MECHANICAL/NORMATIVE | high (a–e), medium (contrast) |
-| CHK-E-015 | Viewport blocking / horizontal overflow | HARD-MECHANICAL/NORMATIVE | high (zoom block), medium (meta/overflow) |
-| CHK-E-016 | Small tap targets (&lt;24×24 CSS px) | NORMATIVE | medium |
-| CHK-E-017 | Non-descriptive anchor text | NORMATIVE/THEORETICAL | medium |
-| CHK-E-018 | Content-blocking overlay at load | HARD-MECHANICAL/NORMATIVE | high |
-| CHK-E-019 | Blank first paint, no fallback | HARD-MECHANICAL/CAUSAL | high |
-| CHK-E-020 | Autoplaying media with sound | NORMATIVE | medium |
-| CHK-E-021 | Missing image/iframe dimensions (CLS cause) | THEORETICAL | medium (≥10 elements/≥2 pages), else low — never higher |
-| CHK-E-022 | Landmark/heading integrity | NORMATIVE/PRACTITIONER | high (no h1), medium (skips/missing main) |
-| CHK-E-023 | Mobile ad density &gt;30% | CORRELATIONAL/NORMATIVE | medium |
-| CHK-E-024 | Missing trust signals | CORRELATIONAL, single-study | **recommendation only — never a finding** |
+| Check | Renders? | Evidence strength | Severity | FP guard |
+| --- | --- | --- | --- | --- |
+| CHK-E-014 | partial (contrast) | HARD-MECHANICAL / NORMATIVE | high (a–e), medium (contrast) | `alt=""` is correct for decorative images |
+| CHK-E-015 | yes (overflow) | HARD-MECHANICAL / NORMATIVE | high (zoom block), medium (missing meta/overflow) | Exclude desktop-only sites; exclude minimum-scale=1 |
+| CHK-E-016 | yes | NORMATIVE | medium | Exclude inline text links; exclude spaced targets |
+| CHK-E-017 | no | NORMATIVE / THEORETICAL | medium | Exclude aria-labeled links |
+| CHK-E-018 | yes | HARD-MECHANICAL / NORMATIVE | high | Suppress cookie-consent and age-gate overlays |
+| CHK-E-019 | yes | HARD-MECHANICAL / CAUSAL | high | Suppress if noscript >50 words or skeleton UI present |
+| CHK-E-020 | no | NORMATIVE (WCAG 2.2 SC 1.4.2) | medium | `video autoplay muted` is fine |
+| CHK-E-021 | no | THEORETICAL | medium (≥10 elements, ≥2 pages), low otherwise | Require N≥3; exclude responsive `<picture>` tags |
+| CHK-E-022 | no | NORMATIVE / PRACTITIONER | high (no h1), medium (skips/missing main) | Exclude heading skips on user-generated content pages |
+| CHK-E-023 | yes | CORRELATIONAL / NORMATIVE | medium | Suppress if no ads detected site-wide; require ≥2 detectors |
+| CHK-E-024 | no | CORRELATIONAL (single-study) | **recommendation-only** | Only apply to commercial/service/news sites |
 
-## The single-source exception — CHK-E-024
-
-`docs/research/EVIDENCE-LEDGER.md` supports this check with a single, unreplicated source.
-Under the single-source rule (D-004, formalised in D-012), a check in this position may not
-be emitted as a scored finding at any severity — it ships as a proactive recommendation
-until a second independent source is verified. Concretely: emit `CHK-E-024`'s envelope with
-`severity: null` and `recommendation_only: true` instead of a severity level.
-`audit-orchestrator` reads that flag and routes it to the report's `recommendations[]`
-array under D-012, never into `findings[]` or the severity summary. This is the only check
-in the marketplace that sets `recommendation_only`; every other check's severity is a normal
-scored value.
-
-## The weakest check — CHK-E-023
-
-`docs/BUNDLE-SCHEMA.md` Caveat 1 is explicit that "ad region" has no site-agnostic
-definition. The bundle's `ad_regions[].detector` field records which heuristic fired
-(third-party iframe, ad-slot attribute, filter-list match) precisely so this check can
-require **at least two independent detectors to agree** before counting a region as an ad;
-a region flagged by only one detector is excluded from `ad_area_pct_total` for this check's
-purposes, and if agreement can't be established at all, emit `not_determinable` rather than
-a low-confidence finding. This check is the most likely of the eleven to fail its
-negative-control target — treat that as a reason for restraint, not a reason to drop it.
+Full per-check evidence strings, severity rules, FP guards, not-determinable paths, and
+suggested actions: [`references/checks.md`](references/checks.md).
 
 ## False-positive discipline
 
-Every check here caps at the strength its evidence actually supports (D-004, D-011): the
-WCAG- and Better-Ads-grounded checks (`E-014`–`E-018`, `E-020`, `E-022`, `E-023`) cite a
-published standard as the authority and never claim a measured effect on any user; `E-019`
-and `E-021` are graded on what they mechanically cause, not on an unevidenced engagement
-outcome; `E-024` is demoted below a finding entirely rather than dressed up as one. None of
-the eleven checks in this skill ever produces the sentence "this will hurt engagement" —
-only "this obstructs access or comprehension, per {standard/mechanism}."
+The four highest false-positive risks in this skill:
+
+1. **CHK-E-014: flagging `alt=""` as missing alt text.** Empty alt on decorative images
+   is correct per WCAG. The check must distinguish `alt` attribute absent (a violation)
+   from `alt=""` (correct and intentional). Test `image.alt === null`, not `!image.alt`.
+
+2. **CHK-E-023: single detector triggering a finding.** Ad detection is heuristic-based.
+   Requiring ≥2 independent detector types to agree is not optional — the schema's
+   `detector` field exists precisely for this guard. A filter-list match alone, or a single
+   `iframe_thirdparty` detection, is not sufficient.
+
+3. **CHK-E-018: flagging cookie banners and age-verification gates.** These overlays are
+   a legal compliance requirement, not a defect. The `dismissible_hint` field in the
+   bundle encodes `"cookie"` and `"age"` for this purpose — suppress when this field
+   matches either value.
+
+4. **CHK-E-019: firing without checking noscript fallback.** A JS-only site that provides
+   a `<noscript>` fallback with >50 words is not blank — the fallback is the content.
+   Check `noscript.present` and `noscript.words` before emitting.

@@ -1,79 +1,141 @@
-# Report schema — audit-orchestrator
+# Audit report schema
 
-The final report this skill emits. Satisfies `round3-spec`'s required schema exactly
-(`site`, `audited_at`, `summary`, `findings[]` with `id`/`title`/`severity`/`evidence`/
-`suggested_action` on every entry) and adds the three top-level arrays **D-012** requires:
-`recommendations[]`, `limitations[]`, plus `degraded_stages[]` from
-`composition-rules.md` §3. Extra fields are explicitly permitted by the handout ("a floor,
-not a ceiling").
+The schema the orchestrator emits. `findings[]` is the required floor from
+`round3-spec/SKILL.md §2`; `recommendations[]` and `limitations[]` are the extensions
+defined in D-012.
+
+---
+
+## Top-level structure
 
 ```json
 {
+  "schema_version": "1.0.0",
   "site": "example.com",
   "audited_at": "2026-09-20T14:32:00Z",
-  "preamble": {
-    "access_blocked_for": [],
-    "notes": []
-  },
   "summary": {
     "total_findings": 6,
     "critical": 1,
     "high": 2,
     "medium": 3,
-    "low": 0
+    "low": 0,
+    "not_determinable_count": 2,
+    "recommendations_count": 3,
+    "limitations_count": 2
   },
-  "findings": [
-    {
-      "id": "F-001",
-      "check_id": "CHK-D-003",
-      "title": "Primary content and h1 missing from raw HTML (JS-render gap)",
-      "severity": "critical",
-      "evidence": "Homepage: raw HTTP fetch contains 12 words of main text and 0 h1; rendered DOM contains 812 words and 1 h1.",
-      "evidence_strength": "HARD-MECHANICAL",
-      "locus": { "url": "https://example.com/" },
-      "consequences": [
-        { "check_id": "CHK-D-004", "evidence": "..." }
-      ],
-      "suggested_action": {
-        "summary": "Implement server-side rendering or static generation so primary content and the h1 are present in the initial HTTP response.",
-        "priority": "critical"
-      }
-    }
-  ],
-  "recommendations": [
-    {
-      "check_id": "CHK-E-024",
-      "summary": "Add visible contact information, an organisation name in the footer, HTTPS, and byline dates.",
-      "priority": "low",
-      "rationale": "Commonly cited as a trust signal for commercial/news content, but resting on single-study support (docs/research/EVIDENCE-LEDGER.md) — shipped as a recommendation, not a scored finding, under the single-source rule.",
-      "mechanism": "E"
-    }
-  ],
-  "limitations": [
-    {
-      "id": "LIM-01",
-      "mechanism": "D",
-      "reason": "Actual agreement across the wider web about the brand's facts requires a search or web-scale index API; no free, deterministic, rate-safe source exists.",
-      "note": "CHK-D-025/026/027 audit only the anchoring the site itself provides for that corroboration, not corroboration itself."
-    },
-    { "id": "LIM-02", "mechanism": "D", "reason": "Detecting a same-name collision with an unrelated entity requires a corpus of other entities.", "note": "CHK-D-027 covers only self-consistency, the site-side half." },
-    { "id": "LIM-03", "mechanism": "B", "reason": "Live-querying a generative engine would break determinism, the 5-minute budget, and reproducibility (D-006).", "note": "Never claimed either way; this audit measures retrievability and correctness of what the site exposes, not observed citation outcomes." },
-    { "id": "LIM-04", "mechanism": "E", "reason": "Field engagement outcomes (bounce, dwell, scroll, conversion, task success) are not observable read-only.", "note": "Reported not_determinable where the gap is itself actionable (D-008)." }
-  ],
-  "degraded_stages": []
+  "findings": [ ... ],
+  "recommendations": [ ... ],
+  "limitations": [ ... ]
 }
 ```
 
-`limitations[]` is always exactly these four entries, verbatim, on every run — they are
-structural, not discovered per-site. `preamble.access_blocked_for` lists any agent named by
-a fired `CHK-D-001`; `preamble.notes` carries the framing sentence from
-`composition-rules.md` §2 when that applies.
+`summary.total_findings` counts only `findings[]` entries. Recommendations and
+limitations are not findings and are not counted there.
+
+---
+
+## `findings[]` entry
+
+Required per the spec (`round3-spec/SKILL.md §2`). Every entry is a detected defect.
+
+```json
+{
+  "id": "F-001",
+  "check_id": "CHK-D-001",
+  "title": "Retrieval-time AI crawler blocked at root",
+  "severity": "critical",
+  "evidence": "robots.txt line 12: Disallow: / applies to GPTBot (retrieval-time AI crawler).",
+  "locus": { "url": "https://www.example.com/robots.txt", "selector": null },
+  "evidence_strength": "HARD-MECHANICAL",
+  "suggested_action": {
+    "summary": "Narrow the Disallow rule to paths that actually need protection rather than the site root. Remove the blanket Disallow: / for GPTBot.",
+    "priority": "critical"
+  },
+  "consequences": []
+}
+```
+
+Optional field `consequences` (added by orchestrator dedup in Step 4): an array of
+`check_id` strings for checks that were collapsed into this finding as downstream
+consequences.
+
+Findings are ordered: severity descending (`critical → high → medium → low`), then
+`check_id` ascending within each tier.
+
+---
+
+## `recommendations[]` entry
+
+Beyond-defect proactive improvements, and checks demoted under the single-source rule
+(CHK-E-024). Not counted in `summary.total_findings`.
+
+```json
+{
+  "id": "R-001",
+  "check_id": "CHK-E-024",
+  "title": "Add trust signals to commercial pages",
+  "rationale": "Commercial and news sites with visible contact information, HTTPS, and byline dates are easier for users and AI systems to assess as credible.",
+  "mechanism": "E",
+  "suggested_action": {
+    "summary": "Add contact information, organisation name in footer, HTTPS, and byline dates on articles. (Proactive — not a confirmed defect.)",
+    "priority": "low"
+  },
+  "route_reason": "single-source rule (D-004): supporting evidence is one unreplicated study."
+}
+```
+
+---
+
+## `limitations[]` entry
+
+Declared limitations and budget-constrained not-determinable results.
+
+```json
+{
+  "id": "L-001",
+  "lim_id": "LIM-01",
+  "title": "Cross-web corroboration not measured",
+  "description": "Whether other sites agree with this brand's own facts requires a search or web-scale index API. No free, deterministic, rate-safe source exists. CHK-D-025/026/027 audit only the anchoring the site itself provides; actual cross-web corroboration was not and cannot be measured by this audit.",
+  "affected_checks": ["CHK-D-025", "CHK-D-026", "CHK-D-027"]
+}
+```
+
+For budget-constrained limitations (abandoned stages):
+
+```json
+{
+  "id": "L-005",
+  "lim_id": "BUDGET-render_pass",
+  "title": "Render stage abandoned — render-dependent checks not evaluated",
+  "description": "Stage 'render_pass' was abandoned after 74.9s (budget: 75s, 2/3 pages completed). The following checks could not be evaluated: CHK-D-003 (page 3), CHK-E-014 (contrast), CHK-E-015 (overflow), CHK-E-016, CHK-E-018, CHK-E-019, CHK-E-023. Results for these checks read as 'could not measure', not as 'no defect found'.",
+  "affected_checks": ["CHK-D-003", "CHK-E-014", "CHK-E-015", "CHK-E-016", "CHK-E-018", "CHK-E-019", "CHK-E-023"]
+}
+```
+
+---
+
+## The four declared limitations (always included)
+
+These are always emitted, even if no budget stages were abandoned, because they describe
+what the audit is structurally incapable of measuring:
+
+| ID | Title |
+| --- | --- |
+| LIM-01 | Cross-web corroboration not measured |
+| LIM-02 | Name-collision detection not performed |
+| LIM-03 | Current AI assistant citation status not queried |
+| LIM-04 | Field engagement outcomes not observable |
+
+Full descriptions are in `docs/research/EVIDENCE-LEDGER.md` under "Declared limitations."
+
+---
 
 ## Check-ID → title map
 
-The 27 checks' human-readable titles, used to fill `findings[].title` and
-`recommendations[]` entries. Kept here, not re-derived at run time, so wording is stable
-across runs (needed for D-010's `pass^k` comparability).
+`findings[].title` and `recommendations[].title` are filled from this fixed table, not
+phrased ad hoc per run — a title generated fresh each time would break the byte-identical
+comparability D-010's `pass^k` stability check needs across repeated runs on the same
+bundle.
 
 | Check | Title |
 | --- | --- |
@@ -105,25 +167,7 @@ across runs (needed for D-010's `pass^k` comparability).
 | CHK-E-023 | Mobile ad density exceeds Better Ads threshold |
 | CHK-E-024 | Missing trust signals |
 
-## ID assignment
-
-`findings[].id` is `F-{NNN}`, zero-padded to 3 digits, assigned **after** sorting: severity
-`critical` → `high` → `medium` → `low`, then `check_id` ascending within a severity tier.
-Assign IDs in that final order, starting at `F-001`. This makes `id` a pure function of
-the sorted finding set, not an artifact of analyser invocation order — required for two
-independent runs against the same bundle to produce byte-identical reports (D-010's
-determinism requirement).
-
-## What never appears in `findings[]`
-
-- Any envelope with `state` other than `present`.
-- `CHK-E-024`, regardless of state (`recommendation_only: true` always routes it to
-  `recommendations[]`).
-- Any check merged into another as a `consequences[]` entry under
-  `composition-rules.md` §1 — it appears there, nested, not as a sibling top-level finding.
-
-## `summary` counting rule
-
-Count only `findings[]` entries by their own `severity` — a merged finding's
-`consequences[]` are not separately counted, and `recommendations[]`/`limitations[]` never
-contribute to `summary` at all. `total_findings` is the length of `findings[]`.
+For the special case of the JS-only dedup collapse (Step 4 of `SKILL.md`), the merged
+finding uses its own fixed title — "JavaScript-only site — primary content invisible to
+non-rendering AI retrievers" — rather than `CHK-D-003`'s table entry, since the merged
+finding describes the combined root cause, not the single check.
