@@ -1,113 +1,231 @@
 ---
 name: audit-orchestrator
-description: The marketplace entrypoint. Given a website, runs site-evidence-collector once to gather a read-only evidence bundle, runs all four mechanism analysers (crawl-access-audit, render-extractability-audit, entity-identity-audit, engagement-defect-audit) against it, resolves the cross-skill dependencies and shared-root-cause duplicates the analysers cannot see across each other, and assembles the single structured audit report — findings with evidence and severity, prioritized suggested actions, proactive recommendations, and declared limitations. Use this skill, and only this skill, to run a full audit; the other five are invoked by it, not directly.
+description: The entrypoint skill for the brand-ai-readiness-audit marketplace. Given a URL or domain, invokes site-evidence-collector once to gather the evidence bundle, then invokes all four analyser skills (crawl-access-audit, render-extractability-audit, entity-identity-audit, engagement-defect-audit) against the resulting bundle, and performs cross-skill suppression, root-cause deduplication, report assembly, and budget arbitration to produce a single structured audit report. This is the only skill in the marketplace the user invokes directly.
 license: Apache-2.0
 allowed-tools: []
 ---
 
 # Audit Orchestrator
 
-The marketplace's one entrypoint (`marketplace.json` marks it so). Given a URL or domain,
-it produces the single audit report the brief requires. It declares no tools of its own —
-every network request and every judgment happens inside the five skills it composes; this
-skill's entire job is invocation order and composition.
+The entrypoint for the `brand-ai-readiness-audit` marketplace. Receives a URL or domain,
+runs the full audit pipeline, and emits a single audit report.
+
+**This skill declares no tools and makes no network requests.** All network access
+happens inside `site-evidence-collector`. All four analysers are pure functions from the
+evidence bundle to findings; the orchestrator is a pure function from those findings to a
+report.
 
 ## When to use
 
-This is what a general agent invokes to audit a website. It is not meant to be invoked
-standalone by name for a partial result — if you want just one mechanism's findings, invoke
-that analyser directly against a bundle instead.
+This is the skill the user invokes. Any agent, given a website URL or domain to audit,
+should invoke this skill (as listed in `marketplace.json` with `"entrypoint": true`).
+Never invoke the four analyser skills or the collector directly for a live audit — this
+skill does that.
 
 ## Inputs
 
 | Input | Required | Default |
 | --- | --- | --- |
-| `target` | yes | — a URL or bare domain, passed straight through to `site-evidence-collector` |
-| `budget_s` | no | `300` |
-| `max_static_pages` | no | `20` |
-| `max_rendered_pages` | no | `3` |
+| `target` | yes | — a URL or bare domain (e.g. `example.com`) |
+| `budget_s` | no | `300` — passed to the collector; hard ceiling for collection |
 
 ## Output
 
-One JSON audit report satisfying `round3-spec`'s required schema
-(`site`, `audited_at`, `summary`, `findings[]`) plus three additions this marketplace's own
-design requires (D-012): `recommendations[]`, `limitations[]`, and `degraded_stages[]`.
-Full shape, the check-ID-to-title map, and the ID-assignment rule are in
-[`references/report-schema.md`](references/report-schema.md).
+One audit report JSON conforming to the schema in `references/report-schema.md`. Top-level
+structure (see schema for full field definitions):
+
+```json
+{
+  "site": "example.com",
+  "audited_at": "2026-09-20T14:32:00Z",
+  "summary": {
+    "total_findings": 6,
+    "critical": 1,
+    "high": 2,
+    "medium": 3,
+    "low": 0
+  },
+  "findings": [ ... ],
+  "recommendations": [ ... ],
+  "limitations": [ ... ]
+}
+```
+
+- `findings[]` — detected defects only, ordered by severity (critical first) then check
+  ID. Each entry satisfies the required schema from `round3-spec/SKILL.md §2`.
+- `recommendations[]` — proactive improvements and single-source-demoted checks
+  (e.g., CHK-E-024). Not counted in `summary.total_findings`.
+- `limitations[]` — the four declared limitations (LIM-01…LIM-04) plus any
+  `not_determinable` results caused by budget abandonment. Tells the reader what was
+  and was not measured — never omitted silently.
 
 ## Procedure
 
-1. **Collect once.** Invoke `site-evidence-collector` with `target` and the budget knobs.
-   Exactly one bundle results; every analyser below reads it read-only.
-2. **Run all four analysers against the bundle**, in any order — they are pure functions,
-   blind to each other and to this step's order, by construction
-   (`docs/ARCHITECTURE.md` §3). Collect every emitted envelope
-   (`check_id`, `state`, `locus`, `evidence`, `severity`, `evidence_strength`,
-   `suggested_action`, and `recommendation_only` where set).
-3. **Frame access findings first.** If `crawl-access-audit` reports `CHK-D-001` present,
-   note in the report preamble that downstream content findings describe content the
-   blocked agent(s) will never reach — this doesn't suppress those findings (a human
-   reader, or an unblocked assistant, still benefits from knowing about them), it
-   contextualises them.
-4. **Resolve cross-skill root causes.** Apply the dedup rule in
-   [`references/composition-rules.md`](references/composition-rules.md) §1 to collapse a
-   JS-only site's `CHK-D-003` + `CHK-D-004`/`CHK-D-005`/`CHK-E-019` co-occurrence on the
-   same locus into one reported defect with the others attached as consequences, never as
-   separate top-level findings.
-5. **Assemble `findings[]`** from every envelope with `state == "present"` and no
-   `recommendation_only` flag, using the title map and ID-assignment rule in
-   `references/report-schema.md`. Order by severity (critical → high → medium → low), then
-   `check_id` ascending, so repeated runs are comparable.
-6. **Assemble `recommendations[]`** from every envelope with `recommendation_only: true`
-   (currently only `CHK-E-024`), plus any check whose FP guard demoted it under the
-   single-source rule at review time rather than at runtime.
-7. **Assemble `limitations[]`** from the four declared, always-present limitations
-   (`LIM-01`…`LIM-04` in `docs/research/EVIDENCE-LEDGER.md`) — these are structural, not
-   site-specific, and are included in every report regardless of what was found.
-8. **Assemble `degraded_stages[]`** from the bundle's `budget.stages[]` where
-   `abandoned == true`, per `references/composition-rules.md` §3 — so a reader sees *why*
-   a check reported `not_determinable` rather than assuming a bug.
-9. **Compute `summary`** by counting `findings[]` only (never `recommendations[]` or
-   `limitations[]`) by severity.
-10. **Emit** the single report.
+Deterministic. Same input + same site state ⇒ same report, same ordering.
 
-## Skill map
+### Step 1 — Collect evidence
 
-| Skill | Role | Reads |
+Invoke `site-evidence-collector` with `target` and `budget_s`. Receive the evidence bundle.
+
+Inspect `bundle.budget.stages` immediately after collection. Record which stages were
+abandoned (`abandoned: true`). A stage abandonment means all analyser checks that depend
+on that stage's evidence will emit `not_determinable` — surface this in `limitations[]`
+as "budget-constrained: {stage_name} was not completed; {N} checks could not be
+evaluated."
+
+### Step 2 — Run the four analysers
+
+Invoke in parallel (they are independent; none reads another's output):
+
+1. `crawl-access-audit` — pass the full bundle; receive findings for CHK-D-001, D-002.
+2. `render-extractability-audit` — pass the full bundle; receive findings for CHK-D-003,
+   D-004, D-005, D-009, D-010, D-011, D-013.
+3. `entity-identity-audit` — pass the full bundle; receive findings for CHK-D-006,
+   D-007, D-008, D-012, D-025, D-026, D-027.
+4. `engagement-defect-audit` — pass the full bundle; receive findings for CHK-E-014
+   through CHK-E-024.
+
+All 27 check envelopes are received. No analyser has seen another's output.
+
+### Step 3 — Cross-skill suppression
+
+Resolve dependencies that cross analyser boundaries. Each rule below: if the condition
+is met, set the dependent finding's `state` to `"suppressed"` and add the suppressor's
+check ID to its `suppressed_by` field.
+
+**Rule O-1 — CHK-E-019 deferred to CHK-D-003 (the one genuinely cross-skill dependency):**
+If CHK-D-003 is `present` (JS-render gap confirmed by `render-extractability-audit`)
+**and** CHK-E-019 is also `present` (blank first paint confirmed by
+`engagement-defect-audit`), they share the same root cause: a JavaScript-only site with
+no static content. Suppress CHK-E-019 and carry it as a consequence in the deduplication
+step (Step 4). Do not drop CHK-E-019; it is collapsed, not lost.
+
+**Note on intra-skill suppressions already resolved:** Several suppression relationships
+that ARCHITECTURE.md §4.3 describes as "cross-skill" are in fact already resolved inside
+individual analysers by their own FP guards:
+- CHK-D-002 yields to CHK-D-001: handled inside `crawl-access-audit` (the skill only
+  evaluates CHK-D-002 if CHK-D-001 did not fire).
+- CHK-D-010 yields to CHK-D-004: handled inside `render-extractability-audit` (CHK-D-010
+  is suppressed when CHK-D-004 fires).
+
+The orchestrator does not need to re-apply these — doing so would be redundant. The one
+genuinely cross-skill suppression requiring orchestrator-level handling is O-1 above.
+
+### Step 4 — Root-cause deduplication
+
+A JS-only site with no static content will legitimately trip CHK-D-003, CHK-D-004,
+CHK-D-005, and CHK-E-019 — four separate findings for one root cause. Reporting four
+independent findings for one defect is a false-positive-shaped failure even though each
+check is individually correct.
+
+**JS-only dedup rule (O-2):** If all of the following fire as `present`:
+- CHK-D-003 (JS-render gap: raw HTML has <50 words and no h1, rendered has ≥200 words)
+- CHK-D-004 (thin main content: raw extraction <200 words)
+- CHK-D-005 (absent/generic headings in extracted text)
+- CHK-E-019 (blank first paint, suppressed in Step 3)
+
+Collapse them into one finding with:
+- `id`: the CHK-D-003 finding ID (it is the root cause)
+- `title`: "JavaScript-only site — primary content invisible to non-rendering AI retrievers"
+- `severity`: critical (HARD-MECHANICAL root; CHK-D-003's ceiling)
+- `evidence`: combine the evidence strings from all four envelopes
+- `consequences`: list CHK-D-004, D-005, E-019 as downstream consequences in the
+  finding body (not as separate findings)
+- `suggested_action`: implement SSR or SSG (the fix resolves all four simultaneously)
+
+**When to apply:** Only when all four are simultaneously `present`. If CHK-D-003 fires
+alone, or with only one of the others, report them independently — the co-occurrence
+pattern is what establishes JS-only as the single root cause.
+
+**General dedup principle:** For any other cluster of ≥3 findings that share an
+immediately obvious single root cause (e.g., every heading check failing because the
+entire site has no HTML structure), collapse similarly. Document the collapse in the
+finding body. Do not collapse findings that merely have the same severity or mechanism.
+
+### Step 5 — Separate findings from recommendations
+
+After suppression and dedup:
+
+- **Findings:** all envelopes with `state == "present"` that are not suppressed, not
+  routed to recommendations, and not collapsed as consequences in Step 4.
+- **Recommendations (proactive):**
+  - CHK-E-024 (trust signals): routes here because `envelope.route == "recommendations"`
+  - Any finding with `state == "absent"` that the analyser flagged as worth noting
+    proactively (e.g., a check that passed marginally).
+  - Any beyond-defect improvement the orchestrator identifies (e.g., if structured data
+    exists but lacks recommended fields, a proactive note on enhancement).
+- **Suppressed findings:** drop from `findings[]` (already handled); do not surface
+  in recommendations either.
+- **Limitations:** collect all `not_determinable` envelopes. Group by reason. One
+  `limitations[]` entry per distinct reason (e.g., one entry for "render stage
+  abandoned" covering all affected checks, not one per check).
+
+### Step 6 — Assemble and emit the report
+
+1. Sort `findings[]` by severity (`critical > high > medium > low`), then by check ID
+   (ascending lexicographic) within each severity tier. This makes runs comparable.
+2. Count `total_findings`, `critical`, `high`, `medium`, `low` from `findings[]` only.
+   Recommendations and limitations are not counted in `summary`.
+3. Emit the full report conforming to `references/report-schema.md`.
+
+Full report schema (field definitions, required vs. optional, and example):
+[`references/report-schema.md`](references/report-schema.md).
+
+## What the orchestrator is, and what it is not
+
+The orchestrator is not a concatenator. It owns four things no individual analyser can
+do — cross-skill suppression, root-cause deduplication, report assembly under D-012, and
+budget arbitration — because analysers are blind to each other by design.
+
+The decomposition's value is tested by whether the orchestrator's cross-skill logic
+actually fires. On a JS-only site, the O-1/O-2 dedup collapses four findings to one;
+without the orchestrator, a user would receive a report with four separate findings for
+one fix. That collapse is the orchestrator's tangible, non-decorative contribution.
+
+If the suppression-necessity test (ARCHITECTURE.md §7) shows these rules never fire
+across the dev corpus, the decomposition is decorative and the skills should be merged.
+This is recorded honestly here rather than concealed.
+
+## Budget arbitration
+
+After Step 1, before emitting the report:
+
+- Read `bundle.budget.stages` for any stage with `abandoned: true`.
+- For each abandoned stage, identify which checks depend on it (see the runtime budget
+  table in `docs/research/EVIDENCE-LEDGER.md` and the shared-render-pass consumer list).
+- Verify those checks emitted `not_determinable` (they should; if they did not, override
+  to `not_determinable` with reason "stage abandoned; analyser should have reported
+  not_determinable").
+- Add one `limitations[]` entry per abandoned stage: "Stage '{name}' was abandoned
+  after {actual_s}s (budget: {budget_s}s). The following checks could not be evaluated:
+  {check_list}. Results for these checks read as 'could not measure', not as 'no defect
+  found'."
+
+This makes `not_determinable` results readable as "couldn't measure," not as bugs or
+as passing verdicts.
+
+## Checks at a glance — all 27 checks and their owners
+
+| Analyser | Checks | Evidence |
 | --- | --- | --- |
-| `site-evidence-collector` | Gathers evidence; emits no findings | network |
-| `crawl-access-audit` | Mechanism A (2 checks) | `robots` |
-| `render-extractability-audit` | Mechanisms B, C (7 checks) | `pages`, `rendered`, `links` |
-| `entity-identity-audit` | Mechanism D (7 checks) | `pages`, `anchors` |
-| `engagement-defect-audit` | Mechanisms E, F (11 checks) | `pages`, `rendered` |
-| `audit-orchestrator` (this skill) | Composes the above; emits no findings of its own | analyser outputs |
+| `crawl-access-audit` | CHK-D-001, D-002 | `robots` |
+| `render-extractability-audit` | CHK-D-003, D-004, D-005, D-009, D-010, D-011, D-013 | `pages`, `rendered`, `links` |
+| `entity-identity-audit` | CHK-D-006, D-007, D-008, D-012, D-025, D-026, D-027 | `pages`, `anchors` |
+| `engagement-defect-audit` | CHK-E-014 – E-024 | `pages`, `rendered` |
 
-27 checks total, disjoint across the four analysers — see `docs/ARCHITECTURE.md` §5.
-
-## A correction to `ARCHITECTURE.md` §4.3, made explicit here rather than left implicit
-
-That section's "cross-skill suppression" list names three examples: `CHK-E-019` needs
-`CHK-D-003`, `CHK-D-002` must yield to `CHK-D-001`, and `CHK-D-010` must yield to
-`CHK-D-004`. Only the first is actually cross-skill. `CHK-D-001`/`CHK-D-002` are both owned
-by `crawl-access-audit`, which already resolves that pair internally (its own procedure
-step 4: "evaluate `CHK-D-002` only if `CHK-D-001` did not fire"). `CHK-D-004`/`CHK-D-010`
-are both owned by `render-extractability-audit`, which resolves that pair internally the
-same way. Neither reaches this skill as a cross-skill case at all — this skill will never
-see both fire independently needing reconciliation, because the owning analyser already
-picked one.
-
-This is worth stating plainly rather than quietly re-implementing suppression this skill
-doesn't need to do: `docs/ARCHITECTURE.md` §7's own falsification test 3 (suppression-
-necessity) asks how often this skill's cross-skill suppression actually fires. The honest
-answer, once the two false examples are set aside, is that it fires for exactly one pair —
-`CHK-E-019`/`CHK-D-003` — which is real (the two skills are genuinely blind to each other
-and genuinely compute the same underlying comparison), but narrower than §4.3 implies.
+27 checks, disjoint. No check appears in two skills.
 
 ## False-positive discipline
 
-This skill's only false-positive risk is composition-level, not detection-level: reporting
-a JS-only site's single root cause as four unrelated defects would read as either padding
-or an inflated severity count, which is exactly the false-positive-shaped failure
-`docs/ARCHITECTURE.md` §4.3 names. The dedup rule in `references/composition-rules.md`
-exists specifically to prevent that, and nothing else in this skill adjusts a severity or
-suppresses a finding that its owning analyser didn't already decide to suppress or demote.
+The orchestrator's primary false-positive risk is in Step 4: over-aggressive deduplication
+that collapses independent defects into one reported finding, causing real problems to
+disappear from the report.
+
+The guard: **only collapse when all listed co-occurrence conditions hold simultaneously.**
+Two findings for two different root causes that happen to appear together on the same site
+must be reported separately. When in doubt, report separately — the cost of one extra
+finding is lower than the cost of hiding a real defect.
+
+The secondary risk is in Step 3: failing to apply the O-1 suppression (leaving both
+CHK-D-003 and CHK-E-019 as separate findings on a JS-only site). Both checks must be
+`present` for the rule to apply. If only one fires, report it alone.

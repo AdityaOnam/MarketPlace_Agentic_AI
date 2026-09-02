@@ -1,0 +1,16 @@
+.~lock.*#
+__pycache__/
+*.pyc
+.DS_Store
+
+# local-only, not part of the GitHub submission repo
+PS.odt
+6a8ffdf33590a_round3-handout-updated.pdf
+sample-marketplace/
+WORKLOG.md
+
+# pre-GitHub-architecture skill scripts, superseded by site-evidence-collector
+brand-ai-readiness-audit/skills/crawl-access-audit/scripts/
+brand-ai-readiness-audit/skills/engagement-onsite-audit/
+brand-ai-readiness-audit/skills/entity-identity-corroboration/
+brand-ai-readiness-audit/skills/structured-data-extraction/
