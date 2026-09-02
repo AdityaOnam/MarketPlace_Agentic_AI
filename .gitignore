@@ -2,3 +2,9 @@
 __pycache__/
 *.pyc
 .DS_Store
+
+# local-only, not part of the GitHub submission repo
+PS.odt
+6a8ffdf33590a_round3-handout-updated.pdf
+sample-marketplace/
+WORKLOG.md
