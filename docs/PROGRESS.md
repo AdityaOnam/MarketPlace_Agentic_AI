@@ -3,9 +3,12 @@
 Living state of the Round 3 build. Updated at the end of every meaningful chunk of work
 (see the `project-flow` skill). Newest notes at the top of each list.
 
-**Current phase:** 3 — Authoring the skills. Phase 2 closed by D-013 / `ARCHITECTURE.md`.
-All six `SKILL.md` files now exist; `scripts/` and the root `README.md` are what remain
-of this phase.
+**Current phase:** 3 — Authoring the skills. **Complete** as of 2026-09-03: all six
+`SKILL.md` files, the root `README.md`, and `scripts/` for every skill now exist, and
+every check has been exercised against synthetic bundles (module tests plus one full
+end-to-end pipeline run: real HTML through extraction, all four analysers, orchestrator
+composition). Phase 2 closed by D-013 / `ARCHITECTURE.md`. R-1 hand-verification remains
+open and blocking before ship (see `EVIDENCE-LEDGER.md`'s gate).
 
 ## Done
 
@@ -138,10 +141,67 @@ run-to-run title stability. Both sessions independently reached the same correct
   `ARCHITECTURE.md` §4.3's three named "cross-skill suppression" examples
   (CHK-D-002/D-001, CHK-D-010/D-004) are actually same-skill pairs already resolved inside
   `crawl-access-audit` and `render-extractability-audit` respectively.
-- **Next — `scripts/`** for the deterministic checks (everything shipped so far is
-  instructions/prose in `SKILL.md`/`references/`, not executable code), and the
-  marketplace root `README.md` describing what each skill does and how the entrypoint
-  composes them (required at submission per `round3-spec` §7).
+- ✅ **`brand-ai-readiness-audit/README.md`** — the root README required at submission per
+  `round3-spec` §7: what the marketplace does, a table of all six skills and their checks,
+  how `audit-orchestrator` composes them (collect → analyse → reconcile → assemble), the
+  guardrails, and the declared limitations. Links verified against the actual `docs/`
+  paths.
+- ✅ **`scripts/` for all six skills** (2026-09-03), stdlib-only Python (no pip installs,
+  keeps the marketplace self-contained). `site-evidence-collector`'s scripts turn
+  already-fetched raw content into bundle sections — robots.txt parsing/classification, a
+  full HTML extraction pipeline built on a from-scratch DOM tree (`html.parser`, no
+  bundled dependency), deterministic seeded sampling, and the render-geometry
+  classification (WCAG contrast ratio via the real relative-luminance formula, the
+  ad-region two-detector rule, overlay/tap-target detection) — they never fetch or render
+  anything themselves; that stays the agent's `http_fetch`/`headless_browser` tool calls.
+  Every one of the 27 checks is implemented as a pure `evaluate(bundle)` function and
+  exercised against synthetic bundles; a full pipeline run (real HTML → extraction → all
+  four analysers → orchestrator composition) confirmed the pieces integrate, not just
+  each in isolation. Two real bugs found and fixed during testing: an `href=""` falsy-string
+  check that silently excluded empty anchors from the `interactive_empty` count, and a
+  leftover-redistribution step in page sampling that ignored the per-type cap it was
+  supposed to enforce. One naming bug found and fixed structurally: all four analysers had
+  independently named their check script `checks.py` — `import checks` after adding more
+  than one to `sys.path` would silently reuse whichever loaded first for all the others;
+  renamed each to a unique module name (`crawl_access_checks.py`,
+  `render_extractability_checks.py`, `entity_identity_checks.py`,
+  `engagement_defect_checks.py`) rather than relying on the invoking agent to use
+  `importlib` correctly. One doc inconsistency found in `BUNDLE-SCHEMA.md`: it claims
+  `trigram_hash` (a single SHA-256 digest) "supports CHK-D-013's Jaccard comparison," but a
+  single hash of a whole set can only prove two pages identical or different — it cannot
+  produce a similarity *percentage*. Routed around it rather than redesigning the schema:
+  CHK-D-013 computes Jaccard directly from `pages[].main_text`, which is already in the
+  bundle at no extra cost; `trigram_hash` is left as documented, unused by this check.
+- ✅ **Review-pass changes (2026-09-03)** — seven items from an external read of the
+  submission, all applied to the marketplace root (`docs/` internal research retains its
+  original wording; only `brand-ai-readiness-audit/` ships):
+  1. **"rendered page evidence", not "headless browser evidence"** throughout the prose and
+     the `not_determinable` reason strings. `headless_browser` stays as the literal
+     `allowed-tools` identifier — renaming that would break the tool contract the invoking
+     agent binds to; the change is about how the *evidence* is described.
+  2. **Determinism reframed as a reproducibility goal, not a requirement.** A live site is
+     not a fixed object; the report now says where run-to-run variation is possible
+     (`degraded_stages`, `not_determinable`) instead of implying stability it cannot promise.
+  3. **Meta-evaluation step added** as orchestrator Step 7 — seven coherence checks over the
+     finished report (counts reconcile, findings complete, no duplicate check per locus, known
+     check IDs, D-007 prohibited-recommendation scan, limitations present), emitted as a
+     `meta_evaluation` block. Warnings are reported, never auto-corrected. **This surfaced a
+     real bug in itself on first run:** CHK-E-014 and CHK-E-015 each legitimately grade one
+     page twice (static WCAG vs. contrast; viewport meta vs. overflow), which the duplicate
+     detector flagged falsely — fixed structurally by tagging those envelopes with a
+     `subcheck` discriminator rather than by loosening the check.
+  4. **Recommendations stated as vertical-specific**, with the assumed archetype now carried
+     in `preamble.archetype` / `recommendations_scoped_to` so a reader knows which vertical
+     the actions were written for; `unknown` suppresses archetype-conditioned checks rather
+     than guessing.
+  5. **Runtime scope clarified**: the budget bounds how long the audit *waits* on an external
+     origin, and is not a claim about site latency — a slow site yields a partial report on
+     time, never a complete one late.
+  6. **Persistent storage removed as an assumption** — the bundle is in-memory for one run
+     and discarded; nothing is written to disk or cached, and no run can influence another.
+  7. **Novelty stated explicitly** — evidence-capped urgency, root-cause collapse instead of
+     four tickets, vertical-conditioned wording, and mechanically-enforced refusal of the
+     advice a baseline checklist would emit.
 - **Still outstanding from Phase 2 (R-1, blocking before ship):** every row in
   `EVIDENCE-LEDGER.md` still reads `Verified by hand: — pending`. Authoring the skills
   didn't require this, but shipping does — a human needs to open at least one cited source

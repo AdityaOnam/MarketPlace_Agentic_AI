@@ -79,6 +79,17 @@ Full per-check detail — evidence strings, severity rules, FP guards, and sugge
 actions — lives in [`references/checks.md`](references/checks.md), sourced directly from
 `docs/research/EVIDENCE-LEDGER.md` so the two never drift silently out of sync.
 
+## Executable checks
+
+`scripts/render_extractability_checks.py` implements all seven checks — `evaluate(bundle)
+-> list[envelope]`, run in the dependency order the procedure above requires (CHK-D-004
+reads CHK-D-003's result; CHK-D-010 reads CHK-D-004's). CHK-D-013's near-duplicate
+comparison runs directly on `pages[].main_text` rather than on `trigram_hash`: a single
+hash of a whole trigram set can prove two pages identical or different, but cannot
+produce a similarity *percentage*, which Jaccard requires — `docs/BUNDLE-SCHEMA.md`'s
+claim that the hash alone "supports CHK-D-013's Jaccard comparison" doesn't hold up, and
+`main_text` is already in the bundle at no extra cost, so the check uses that directly.
+
 ## Checks at a glance
 
 | Check | Mechanism | Strength | Ceiling | Suppressed by (this skill) |

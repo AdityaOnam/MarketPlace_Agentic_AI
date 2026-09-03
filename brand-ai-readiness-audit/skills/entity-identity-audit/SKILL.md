@@ -79,6 +79,14 @@ Zero to seven finding envelopes in the standard format defined in
 
 5. **Emit** all seven envelopes. `absent` and `not_applicable` are emitted, not dropped.
 
+## Executable checks
+
+`scripts/entity_identity_checks.py` implements all seven checks plus the
+`classify_time_sensitivity()` function SKILL.md step 2 describes —
+`evaluate(bundle) -> list[envelope]`. Legal-entity-suffix normalization (Ltd/Limited/
+LLC/Inc/Corp/GmbH/etc.) is implemented for CHK-D-027's false-positive guard, not just
+described.
+
 ## Checks at a glance
 
 | Check | Reads | Evidence strength | Severity | FP guard |

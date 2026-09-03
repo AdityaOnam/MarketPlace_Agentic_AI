@@ -9,8 +9,10 @@ PS.odt
 sample-marketplace/
 WORKLOG.md
 
-# pre-GitHub-architecture skill scripts, superseded by site-evidence-collector
-brand-ai-readiness-audit/skills/crawl-access-audit/scripts/
+# pre-GitHub-architecture skills, superseded by the six under skills/ in marketplace.json.
+# NOT crawl-access-audit/scripts/ -- that rule used to belong here too, but as of
+# 2026-09-03 that path holds the current, needed crawl_access_checks.py and was silently
+# excluding it from every commit. Removed.
 brand-ai-readiness-audit/skills/engagement-onsite-audit/
 brand-ai-readiness-audit/skills/entity-identity-corroboration/
 brand-ai-readiness-audit/skills/structured-data-extraction/

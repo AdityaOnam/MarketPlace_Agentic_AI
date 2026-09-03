@@ -104,6 +104,15 @@ marked in its envelope so the orchestrator routes it correctly. If the sources s
 CHK-E-024 are later hand-verified and a second independent source confirmed, the ledger
 must be updated first; only then may this check be promoted to a finding.
 
+## Executable checks
+
+`scripts/engagement_defect_checks.py` implements all eleven checks — `evaluate(bundle) ->
+list[envelope]`, including CHK-E-014's six sub-checks graded independently and the WCAG
+contrast-ratio formula (relative luminance, not an approximation) used by both CHK-E-014's
+contrast sub-check and verified against known reference values. CHK-E-023's two-detector
+agreement rule and CHK-E-024's `recommendation_only` flag are both enforced in code, not
+just documented.
+
 ## Checks at a glance
 
 | Check | Renders? | Evidence strength | Severity | FP guard |
