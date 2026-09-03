@@ -127,3 +127,47 @@ what the audit is structurally incapable of measuring:
 | LIM-04 | Field engagement outcomes not observable |
 
 Full descriptions are in `docs/research/EVIDENCE-LEDGER.md` under "Declared limitations."
+
+---
+
+## Check-ID → title map
+
+`findings[].title` and `recommendations[].title` are filled from this fixed table, not
+phrased ad hoc per run — a title generated fresh each time would break the byte-identical
+comparability D-010's `pass^k` stability check needs across repeated runs on the same
+bundle.
+
+| Check | Title |
+| --- | --- |
+| CHK-D-001 | Retrieval-time AI crawler blocked at root |
+| CHK-D-002 | Training-corpus crawler blocked, retrieval intact |
+| CHK-D-003 | Primary content and h1 missing from raw HTML (JS-render gap) |
+| CHK-D-004 | Thin main content |
+| CHK-D-005 | Missing or generic subheadings |
+| CHK-D-006 | No explicit organisation-definition sentence |
+| CHK-D-007 | Missing or incomplete Organization JSON-LD |
+| CHK-D-008 | Missing or cross-domain canonical tag |
+| CHK-D-009 | Broken internal links |
+| CHK-D-010 | Low extractable-evidence density |
+| CHK-D-011 | Pronoun-saturated key claims |
+| CHK-D-012 | Missing date on time-sensitive content |
+| CHK-D-013 | Near-duplicate templated content |
+| CHK-D-025 | No declared identity anchors |
+| CHK-D-026 | Declared identity anchors do not resolve |
+| CHK-D-027 | Inconsistent organisation identity attributes |
+| CHK-E-014 | Machine-detectable accessibility violations |
+| CHK-E-015 | Mobile viewport blocks zoom or overflows horizontally |
+| CHK-E-016 | Tap targets below WCAG 2.2 minimum size |
+| CHK-E-017 | Non-descriptive link text |
+| CHK-E-018 | Content-blocking overlay present at load |
+| CHK-E-019 | Blank first paint with no fallback |
+| CHK-E-020 | Autoplaying media with sound |
+| CHK-E-021 | Images/iframes missing dimensions (layout-shift cause) |
+| CHK-E-022 | Missing landmark or heading structure |
+| CHK-E-023 | Mobile ad density exceeds Better Ads threshold |
+| CHK-E-024 | Missing trust signals |
+
+For the special case of the JS-only dedup collapse (Step 4 of `SKILL.md`), the merged
+finding uses its own fixed title — "JavaScript-only site — primary content invisible to
+non-rendering AI retrievers" — rather than `CHK-D-003`'s table entry, since the merged
+finding describes the combined root cause, not the single check.

@@ -3,31 +3,15 @@
 Living state of the Round 3 build. Updated at the end of every meaningful chunk of work
 (see the `project-flow` skill). Newest notes at the top of each list.
 
-**Current phase:** 3 — Authoring the skills (5 of 6 done). `render-extractability-audit`
-(mechanisms B/C — CHK-D-003, D-004, D-005, D-009, D-010, D-011, D-013) is not yet written;
-`marketplace.json` already references its path, so the manifest currently points at a
-missing folder. This must land before Phase 3 can be called complete or before packaging.
+**Current phase:** 3 — Authoring the skills. Phase 2 closed by D-013 / `ARCHITECTURE.md`.
+All six `SKILL.md` files now exist; `scripts/` and the root `README.md` are what remain
+of this phase.
 
 ## Done
 
-- 2026-09-02 — **Phase 3, 5 of 6 skills authored.**
-  - `entity-identity-audit/SKILL.md` + `references/checks.md` (mechanism D, 7 checks:
-    CHK-D-006, D-007, D-008, D-012, D-025, D-026, D-027). Only analyser that reads
-    `anchors`. Time-sensitivity classification for CHK-D-012 lives here per BUNDLE-SCHEMA.md
-    Caveat 2. LIM-01 and LIM-02 documented explicitly — cross-web corroboration and
-    name-collision detection are structurally out of scope.
-  - `engagement-defect-audit/SKILL.md` + `references/checks.md` (mechanisms E, F, 11
-    checks: CHK-E-014 … E-024). Framed per D-008 as defect detection, not outcome
-    prediction. CHK-E-019 independently recomputes the CHK-D-003 render gap (deliberate;
-    orchestrator deduplicates). CHK-E-023 enforces ≥2 independent detectors or
-    not_determinable. CHK-E-024 ships recommendation-only with `route: "recommendations"`
-    in its envelope.
-  - `audit-orchestrator/SKILL.md` + `references/report-schema.md`. Documents the six-step
-    pipeline (collect → run analysers → O-1 cross-skill suppression → O-2 JS-only dedup
-    → separate findings/recommendations → assemble). Honest that CHK-D-002/D-001 and
-    CHK-D-010/D-004 suppressions are already intra-skill; the one genuinely cross-skill
-    dependency is CHK-E-019/CHK-D-003. Budget arbitration surfaces abandoned stages in
-    `limitations[]` so not_determinable reads as "couldn't measure," not "bug."
+- 2026-09-02 — **Phase 3, all 6 skills authored.** See "Phase 3 — skill authoring
+  (6 of 6 — 2026-09-02)" below for the full per-skill breakdown and the note on how the
+  three duplicated skills were reconciled between two parallel sessions.
 
 - 2026-09-02 — **Phase 1b Synthesis Complete.**
 
@@ -110,21 +94,58 @@ Reviewed 2026-09-02; full detail in
 
 **All seven review findings resolved.** Phase 2 complete.
 
-## Phase 3 — skill authoring (5 of 6 — 2026-09-02)
+## Phase 3 — skill authoring (6 of 6 — 2026-09-02)
 
 Marketplace root at [`brand-ai-readiness-audit/`](../brand-ai-readiness-audit).
 
-- ✅ `BUNDLE-SCHEMA.md` — interface contract with coverage walk (all 27 checks satisfied)
-- ✅ `marketplace.json` — exactly one entrypoint (references a 6th skill path not yet written — see below)
-- ✅ `site-evidence-collector` — SKILL.md + references/procedure.md + references/ai-crawler-agents.md + references/bundle-schema.md
-- ✅ `crawl-access-audit` — SKILL.md (lean, no references/ per D-002)
-- ❌ `render-extractability-audit` — **not yet written.** Mechanisms B/C, 7 checks
-  (CHK-D-003, D-004, D-005, D-009, D-010, D-011, D-013). `marketplace.json` already points
-  at `skills/render-extractability-audit`, so the manifest is currently inconsistent with
-  the working tree until this is authored.
-- ✅ `entity-identity-audit` — SKILL.md + references/checks.md (7 checks, reads anchors, documents LIM-01/02)
-- ✅ `engagement-defect-audit` — SKILL.md + references/checks.md (11 checks, D-008 framing)
-- ✅ `audit-orchestrator` — SKILL.md + references/report-schema.md (entrypoint, 6-step pipeline)
+Authored across two parallel Claude sessions on two devices working from the same handoff
+brief. `render-extractability-audit` was written once (session A only). The other three —
+`entity-identity-audit`, `engagement-defect-audit`, and `audit-orchestrator` — were written
+independently by *both* sessions, producing two full versions of each. Reconciled
+2026-09-02: for each of the three, the more rigorous version was kept (concrete numeric
+thresholds and normalization rules rather than looser prose — e.g. named legal-entity-suffix
+equivalence for CHK-D-027, explicit WCAG contrast ratios for CHK-E-014f), and
+`audit-orchestrator/references/report-schema.md` was enriched with the other session's
+27-check title-map table, which the kept version didn't have but needs for D-010's
+run-to-run title stability. Both sessions independently reached the same correction to
+`ARCHITECTURE.md` §4.3 (see below) — a useful cross-check that it's actually right.
+
+- ✅ `BUNDLE-SCHEMA.md` — interface contract with coverage walk (all 27 checks satisfied).
+  Three caveats recorded (ad detection is the weakest check; CHK-D-012's time-sensitivity
+  label belongs in the analyser; CHK-E-016's "standalone" is deliberately collector-side).
+  One conflict with ARCHITECTURE.md found and resolved: 3 navigations / 4 viewport
+  measurements, not 6.
+- ✅ `marketplace.json` — exactly one entrypoint, all six skill paths now exist on disk.
+- ✅ `site-evidence-collector` — `SKILL.md` (lean), plus `references/procedure.md`,
+  `references/ai-crawler-agents.md` (the retrieval-vs-training classification that separates
+  CHK-D-001 from CHK-D-002), and `references/bundle-schema.md`.
+- ✅ `crawl-access-audit` — `SKILL.md` (lean, no `references/` — two checks reading one
+  bundle section don't need progressive disclosure).
+- ✅ `render-extractability-audit` — `SKILL.md` + `references/checks.md` (7 checks,
+  mechanisms B/C: CHK-D-003, D-004, D-005, D-009, D-010, D-011, D-013).
+- ✅ `entity-identity-audit` — `SKILL.md` + `references/checks.md` (7 checks, mechanism D —
+  the only skill reading `anchors`; classifies EVERGREEN vs. TIME-SENSITIVE for CHK-D-012
+  per `BUNDLE-SCHEMA.md` Caveat 2; documents LIM-01/LIM-02 as structurally out of scope).
+- ✅ `engagement-defect-audit` — `SKILL.md` + `references/checks.md` (11 checks, mechanisms
+  E/F — the biggest skill; framed per D-008 as defect detection, never outcome prediction;
+  CHK-E-024 routes to `recommendations[]` via `"route": "recommendations"` under the
+  single-source rule; CHK-E-023 requires ≥2 independent ad-detectors to agree).
+- ✅ `audit-orchestrator` — `SKILL.md` + `references/report-schema.md` (entrypoint; collect
+  → run four analysers → cross-skill suppression (rule O-1: CHK-E-019 yields to CHK-D-003,
+  the one genuinely cross-skill dependency) → JS-only root-cause dedup (rule O-2, requires
+  all of CHK-D-003/004/005/E-019 present simultaneously before collapsing) → separate
+  findings/recommendations/limitations → assemble). Documents that two of
+  `ARCHITECTURE.md` §4.3's three named "cross-skill suppression" examples
+  (CHK-D-002/D-001, CHK-D-010/D-004) are actually same-skill pairs already resolved inside
+  `crawl-access-audit` and `render-extractability-audit` respectively.
+- **Next — `scripts/`** for the deterministic checks (everything shipped so far is
+  instructions/prose in `SKILL.md`/`references/`, not executable code), and the
+  marketplace root `README.md` describing what each skill does and how the entrypoint
+  composes them (required at submission per `round3-spec` §7).
+- **Still outstanding from Phase 2 (R-1, blocking before ship):** every row in
+  `EVIDENCE-LEDGER.md` still reads `Verified by hand: — pending`. Authoring the skills
+  didn't require this, but shipping does — a human needs to open at least one cited source
+  per check before this goes in the zip.
 
 **Packaging note:** `docs/BUNDLE-SCHEMA.md` is canonical during development. Re-copy it
 to `skills/site-evidence-collector/references/bundle-schema.md` at packaging time (Phase 5).
