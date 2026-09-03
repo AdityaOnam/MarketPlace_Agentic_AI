@@ -23,7 +23,7 @@ is stale.
   h1; rendered DOM contains {rend} words and {h1_rend} h1.`
 - **FP guard**: suppress if the gap is &lt;20%, or if `noscript.words > 50` (a working
   fallback already exists).
-- **Not-determinable**: `rendered.status != "ok"` → `Headless rendering did not complete.`
+- **Not-determinable**: `rendered.status != "ok"` → `Rendered page evidence unavailable.`
 - **Action**: implement server-side rendering or static generation for the homepage; at
   minimum ensure primary content and the h1 are present in the initial HTTP response.
 - **Runtime**: high (reads the shared render pass; adds no cost of its own).

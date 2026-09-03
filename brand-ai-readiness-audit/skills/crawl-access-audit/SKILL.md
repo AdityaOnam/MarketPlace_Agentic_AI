@@ -30,6 +30,12 @@ The `robots` section of an evidence bundle (`references/bundle-schema.md` in
 Zero to two findings in the standard envelope. Emits `absent` (checked, clean) explicitly —
 the negative-control evaluation needs to distinguish "checked and clean" from "never ran".
 
+## Executable checks
+
+`scripts/crawl_access_checks.py` implements both checks deterministically —
+`evaluate(bundle) -> list[envelope]`. Tested against synthetic robots.txt bodies covering
+retrieval-block, training-block, hybrid-at-root, and robots-unavailable cases.
+
 ## Procedure
 
 1. **Gate on evidence.** If `robots.status != "ok"`, emit both checks as

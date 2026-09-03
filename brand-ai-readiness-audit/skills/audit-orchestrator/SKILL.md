@@ -61,7 +61,14 @@ structure (see schema for full field definitions):
 
 ## Procedure
 
-Deterministic. Same input + same site state ⇒ same report, same ordering.
+Given the same input and the same site state, this pipeline is built to produce the same
+report with the same ordering. **That is a design goal in service of reproducibility — so
+two runs can be compared, and so the evaluation harness can hold results still long enough
+to measure them — not a requirement imposed on the audit.** A live website is not a fixed
+object; content changes, origins vary their responses, and a stage can be abandoned on one
+run and complete on the next. Where run-to-run variation is possible the report says so
+(`degraded_stages`, `not_determinable`) rather than presenting a partial run as a stable
+one.
 
 ### Step 1 — Collect evidence
 
@@ -160,16 +167,69 @@ After suppression and dedup:
   `limitations[]` entry per distinct reason (e.g., one entry for "render stage
   abandoned" covering all affected checks, not one per check).
 
-### Step 6 — Assemble and emit the report
+### Step 6 — Assemble the report
 
 1. Sort `findings[]` by severity (`critical > high > medium > low`), then by check ID
    (ascending lexicographic) within each severity tier. This makes runs comparable.
 2. Count `total_findings`, `critical`, `high`, `medium`, `low` from `findings[]` only.
    Recommendations and limitations are not counted in `summary`.
-3. Emit the full report conforming to `references/report-schema.md`.
+3. Record the site's vertical in `preamble.archetype` / `preamble.recommendations_scoped_to`
+   — see "Recommendations are vertical-specific" below.
+4. Assemble the full report conforming to `references/report-schema.md`.
+
+### Step 7 — Meta-evaluate the report before emitting it
+
+A light self-check over the assembled report. It does **not** re-judge any finding — the
+analysers own that, and this step has no authority to overturn them. It checks that the
+report is internally coherent and that nothing prohibited reached the wording:
+
+| Check | What it catches |
+| --- | --- |
+| `summary_reconciles` | `summary.total_findings` disagreeing with `len(findings)` |
+| `severity_counts_reconcile` | severity buckets not summing to the finding count |
+| `finding_complete` | a finding missing `id`, `title`, `severity`, `evidence` or `suggested_action` |
+| `no_duplicate_findings` | the same check reported twice for one locus — meaning suppression or dedup failed to fire |
+| `known_check_id` | a `check_id` outside the 27 reaching the report |
+| `prohibited_recommendation` | any D-007 banned recommendation or statistic in an action string (llms.txt as a fix, citation-outcome promises, above-the-fold rules, reading-grade targets, Lighthouse-100, the 3-second bounce myth, the 9.2mm tap-target figure, …) |
+| `limitations_present` | LIM-01…04 not all present |
+
+Results go in a `meta_evaluation` block on the report (`checks_run`, `passed`, `warnings`).
+
+**Warnings are reported, never silently corrected.** Quietly rewriting a report so its own
+self-check passes is precisely the grading-in-our-own-favour failure D-010 exists to
+prevent; a warning that survives into the output is doing its job.
 
 Full report schema (field definitions, required vs. optional, and example):
 [`references/report-schema.md`](references/report-schema.md).
+
+## Recommendations are vertical-specific
+
+**Every suggested action this report emits is scoped to the site's vertical, and the
+report says which one it assumed** (`preamble.archetype`). This is not cosmetic: the
+archetype decides which checks run at all — a personal or portfolio site is exempt from
+the identity-anchor and Organization-markup checks, a non-commercial site from trust
+signals, a documentation site from the product/offer expectations an ecommerce site is
+held to — and it decides how each surviving action is worded. "Add a canonical tag" means
+something different on a 10,000-SKU catalogue with faceted URLs than on a six-page
+brochure site, and the action text reflects that.
+
+When the archetype cannot be established, it is recorded as `unknown` and every
+archetype-conditioned check is suppressed rather than evaluated against a guess. Guessing
+a vertical activates suppression rules written for a different kind of site, which is a
+worse failure than declining to judge.
+
+## What makes these recommendations more than issue → fix lookup
+
+A baseline checklist maps a detected issue to its textbook remedy. This marketplace does
+four things that lookup cannot: it **caps each action's urgency at the strength of the
+evidence behind it** (a WCAG violation is stated as a standards violation, never as a
+conversion claim); it **collapses co-occurring symptoms into the single root-cause fix
+that resolves all of them**, so a JS-only site is told to render server-side once rather
+than handed four separate tickets; it **conditions wording on the site's vertical and page
+type** rather than emitting one-size-fits-all advice; and it **refuses the fashionable
+advice a checklist would confidently emit** — llms.txt as a substantive fix, citation
+guarantees, above-the-fold rules — with that refusal enforced mechanically in Step 7, not
+merely promised.
 
 ## What the orchestrator is, and what it is not
 
@@ -203,6 +263,16 @@ After Step 1, before emitting the report:
 
 This makes `not_determinable` results readable as "couldn't measure," not as bugs or
 as passing verdicts.
+
+## Executable checks
+
+`scripts/compose_report.py` implements steps 3–6 — `compose_report(site, audited_at,
+all_envelopes, bundle) -> report`. Rule O-2's dedup requires the full four-check
+co-occurrence pattern in code, not just in prose: a partial match (e.g. CHK-D-003 present
+without CHK-D-005) is left as independent findings, matching the "when in doubt, report
+separately" guard below. The check-ID-to-title map and `F-NNN`/`R-NNN` ID assignment are
+both deterministic functions of the sorted finding set, verified by running the same
+input twice and diffing the output.
 
 ## Checks at a glance — all 27 checks and their owners
 

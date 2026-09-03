@@ -13,6 +13,12 @@ defined in D-012.
   "schema_version": "1.0.0",
   "site": "example.com",
   "audited_at": "2026-09-20T14:32:00Z",
+  "preamble": {
+    "access_blocked_for": [],
+    "notes": [],
+    "archetype": "ecommerce",
+    "recommendations_scoped_to": "ecommerce"
+  },
   "summary": {
     "total_findings": 6,
     "critical": 1,
@@ -25,12 +31,31 @@ defined in D-012.
   },
   "findings": [ ... ],
   "recommendations": [ ... ],
-  "limitations": [ ... ]
+  "limitations": [ ... ],
+  "degraded_stages": [ ... ],
+  "meta_evaluation": {
+    "checks_run": ["summary_reconciles", "severity_counts_reconcile", "finding_complete",
+                    "no_duplicate_findings", "known_check_id", "prohibited_recommendation",
+                    "limitations_present"],
+    "passed": true,
+    "warnings": []
+  }
 }
 ```
 
 `summary.total_findings` counts only `findings[]` entries. Recommendations and
 limitations are not findings and are not counted there.
+
+`preamble.archetype` records the vertical the audit assumed, and
+`recommendations_scoped_to` states plainly that every suggested action below was written
+for that vertical — the archetype gates which checks ran at all and how each action is
+worded, so a reader needs to know which one was assumed. `unknown` means no archetype
+rule matched and every archetype-conditioned check was suppressed rather than guessed at.
+
+`meta_evaluation` is the orchestrator's own self-check over the assembled report
+(SKILL.md Step 7). `warnings` are advisory and are **never** silently corrected — a
+report that quietly edits itself until its own audit passes is the exact failure mode
+D-010 was written against, so a surviving warning is the system working.
 
 ---
 
