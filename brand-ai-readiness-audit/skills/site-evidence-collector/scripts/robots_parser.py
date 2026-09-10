@@ -106,17 +106,41 @@ def _parse_blocks(text: str) -> list[_Block]:
     return blocks
 
 
+def _rule_matches_root(rule: str) -> bool:
+    """Does this robots.txt path rule match the root URL path `/`?
+
+    RFC 9309 §2.2.2 gives path patterns two metacharacters: `*` matches any run of
+    characters, and `$` at the end anchors the match to the end of the path. Everything
+    else is a literal prefix match.
+
+    Added by D-031 (2026-09-10). The previous test was `"/".startswith(rule)`, pure prefix
+    matching with no metacharacter handling, which got `Allow: /$` exactly backwards:
+    `"/".startswith("/$")` is False, so the rule that *explicitly permits the root URL and
+    nothing else* was not even collected as a candidate. bookshop.org uses precisely that
+    construct to open its root to seven named AI-retrieval agents before falling back to
+    `Disallow: /` for everything deeper -- and CHK-D-001, a `critical`-severity check,
+    reported the site as blocking retrieval crawlers at root.
+    """
+    if rule == "":
+        return True
+    anchored = rule.endswith("$")
+    pattern = rule[:-1] if anchored else rule
+    if "*" in pattern:
+        regex = "".join(".*" if ch == "*" else re.escape(ch) for ch in pattern)
+        regex = f"^{regex}$" if anchored else f"^{regex}"
+        return re.match(regex, "/") is not None
+    return pattern == "/" if anchored else "/".startswith(pattern)
+
+
 def _root_allowed(block: _Block) -> tuple[bool, list[str], int | None]:
     """Is `/` allowed for this block? Longest-matching-rule wins per the de-facto standard;
     ties prefer Allow. Returns (allowed, disallow_rules_matching_root, matched_line)."""
-    # A rule matches root if it is a prefix of "/" — i.e. the rule is "" or "/" itself,
-    # or any rule that "/" starts with (rules deeper than root do not block the root).
     candidates: list[tuple[int, bool, str, int]] = []  # (rule_len, is_allow, rule, line_no)
     for rule, line_no in block.disallow:
-        if rule == "" or "/".startswith(rule):
+        if _rule_matches_root(rule):
             candidates.append((len(rule), False, rule, line_no))
     for rule, line_no in block.allow:
-        if rule == "" or "/".startswith(rule):
+        if _rule_matches_root(rule):
             candidates.append((len(rule), True, rule, line_no))
 
     if not candidates:

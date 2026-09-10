@@ -17,6 +17,38 @@ _TEMPORAL_WORD_RE = re.compile(
 )
 _YEAR_IN_URL_RE = re.compile(r"/(19|20)\d{2}([/-]|\b)")
 
+# CHK-D-006's "does this page state what the organisation is" test.
+#
+# Widened by D-029 (2026-09-10). The previous pattern was
+#     \b(is|are)\s+(a|an|the)\s+\w+.{0,80}(that|which|providing|offering)
+# which additionally required the definition to continue with a relative clause or a
+# participle from a four-word list. Measured against the dev corpus, that rejected every
+# genuine self-definition in it:
+#
+#     "Hugo is one of the most popular open-source static site generators."   (also fails
+#         at `is a|an|the` -- "is one of" was never accepted)
+#     "Vite is a blazing fast frontend build tool powering the next generation..."
+#     "LWN.net is a reader-supported news site dedicated to producing..."
+#     "This is the official documentation for Python 3.13."
+#
+# It was not detecting "the page defines itself", it was detecting "the page defines itself
+# in the shape `X is a Y that ...`". CHK-D-006 fired on 67% of sites labelled clean for it.
+#
+# The replacement keeps the copular construction (the thing that makes a sentence a
+# definition) and drops the required continuation, accepting `one of` and `among` as
+# determiners. `[^.!?]{12,}` keeps the predicate substantive enough to be a category claim
+# rather than a bare "It is a start."
+#
+# Known trade-off, stated because it runs against this check's own purpose: a looser
+# pattern accepts non-self-describing copulas ("Pricing is the same for all plans"), which
+# can only *lower* recall by marking a page ABSENT that a labeller called PRESENT. That is
+# the direction with the cheaper failure -- a missed finding rather than a false accusation
+# against a site that did describe itself -- and D-004's severity cap already treats this
+# check as CORRELATIONAL. Recall is re-measured after this change, not assumed.
+_DEFINITION_SENTENCE_RE = re.compile(
+    r"\b(?:is|are)\s+(?:a|an|the|one\s+of|among)\b[^.!?]{12,}", re.I
+)
+
 
 def _envelope(check_id, state, evidence, severity, evidence_strength, suggested_action,
               locus=None, suppressed_by=None):
@@ -27,10 +59,30 @@ def _envelope(check_id, state, evidence, severity, evidence_strength, suggested_
     }
 
 
+ORG_TYPES = ("organization", "localbusiness", "corporation", "ngo",
+             "educationalorganization", "governmentorganization", "nonprofit")
+
+
+def _org_type_names(entity: dict) -> list[str]:
+    """schema.org `@type` is legitimately either a string or an array.
+
+    Assuming a string crashed the whole entity-identity analyser on a real site during the
+    Stage B screen -- `("@type": ["Organization", "LocalBusiness"])` is valid markup and
+    common on business sites, which are exactly the sites this check most needs to read.
+    An AttributeError here took down four checks, not one.
+    """
+    raw = entity.get("type")
+    if isinstance(raw, str):
+        return [raw.lower()]
+    if isinstance(raw, (list, tuple)):
+        return [t.lower() for t in raw if isinstance(t, str)]
+    return []
+
+
 def _organization_blocks(page: dict) -> list[dict]:
     return [
         e for e in page.get("structured_data", {}).get("json_ld", [])
-        if (e.get("type") or "").lower() in ("organization", "localbusiness", "corporation")
+        if any(t in ORG_TYPES for t in _org_type_names(e))
     ]
 
 
@@ -75,17 +127,26 @@ def check_d006(bundle: dict) -> dict:
         return _envelope("CHK-D-006", "not_determinable", "No home/about page in the sample.",
                           None, "CORRELATIONAL", None)
 
-    definition_pattern = re.compile(r"\b(is|are)\s+(a|an|the)\s+\w+.{0,80}(that|which|providing|offering)", re.I)
+    # Organization JSON-LD anywhere on the site suppresses this check, not just on a page
+    # the classifier happened to file as home/about. Widened by D-029 (2026-09-10): on
+    # qonto.com the About page is classified `page_type="product"`, so 13 pages carrying a
+    # complete Organization block (name, legalName, sameAs, foundingDate) suppressed
+    # nothing and the check fired anyway. The markup was right; the page-type label was
+    # wrong, and a misfiled page is not evidence that identity is unstated.
+    org_page = next((p for p in bundle.get("pages", [])
+                     if p.get("extraction_ok", True) and _organization_blocks(p)), None)
+    if org_page is not None:
+        return _envelope("CHK-D-006", "not_applicable",
+                          "Structured Organization data already states identity "
+                          "machine-readably.", None, "CORRELATIONAL", None,
+                          locus={"url": org_page.get("url")}, suppressed_by=["CHK-D-007"])
+
+    definition_pattern = _DEFINITION_SENTENCE_RE
 
     for page in candidates:
         if not page.get("extraction_ok", True):
             return _envelope("CHK-D-006", "not_determinable", "Content could not be extracted.",
                               None, "CORRELATIONAL", None, locus={"url": page.get("url")})
-        if _organization_blocks(page):
-            return _envelope("CHK-D-006", "not_applicable",
-                              "Structured Organization data already states identity "
-                              "machine-readably.", None, "CORRELATIONAL", None,
-                              locus={"url": page.get("url")}, suppressed_by=["CHK-D-007"])
         first_300 = (page.get("main_text", "") or "")[:1800]  # ~300 words
         if definition_pattern.search(first_300):
             return _envelope("CHK-D-006", "absent", f"Explicit definition found on "
@@ -108,6 +169,14 @@ def check_d006(bundle: dict) -> dict:
 # ---------------------------------------------------------------------------
 
 def check_d007(bundle: dict) -> dict:
+    """Severity capped at `low` (was `medium`) since Stage C (2026-09-04): fired on 26 of 34
+    real dev/negative-control sites. Web Data Commons Oct 2024 measured only 44.1% of 37.4M
+    domains carrying *any* structured data at all (PLAN.md §5), so absence is the majority
+    condition on the open web, not a differentiated signal -- D-009's "findings conditioned
+    on base rates" rule, applied in code rather than left as a design statement. Still a
+    real, directly actionable defect, so it stays in `findings[]` rather than being demoted
+    to `recommendations[]`.
+    """
     archetype = bundle.get("site", {}).get("archetype")
     if archetype in PERSONAL_ARCHETYPES:
         return _envelope("CHK-D-007", "not_applicable", "Personal/hobby archetype: exempt.",
@@ -125,19 +194,19 @@ def check_d007(bundle: dict) -> dict:
     locus = {"url": home.get("url")}
     if not blocks:
         return _envelope(
-            "CHK-D-007", "present", "No Organization JSON-LD block found.", "medium",
+            "CHK-D-007", "present", "No Organization JSON-LD block found.", "low",
             "THEORETICAL/PRACTITIONER",
             {"summary": "Add or complete an Organization JSON-LD block with at minimum "
-                         "'name' and 'url'.", "priority": "medium"}, locus=locus)
+                         "'name' and 'url'.", "priority": "low"}, locus=locus)
 
     required = {"name", "url"}
     missing = required - set(blocks[0].get("fields_present", []))
     if missing:
         return _envelope(
-            "CHK-D-007", "present", f"Found but missing: {sorted(missing)}.", "medium",
+            "CHK-D-007", "present", f"Found but missing: {sorted(missing)}.", "low",
             "THEORETICAL/PRACTITIONER",
             {"summary": "Add or complete an Organization JSON-LD block with at minimum "
-                         "'name' and 'url'.", "priority": "medium"}, locus=locus)
+                         "'name' and 'url'.", "priority": "low"}, locus=locus)
 
     return _envelope("CHK-D-007", "absent", "Organization JSON-LD present with required "
                       "fields.", None, "THEORETICAL/PRACTITIONER", None, locus=locus)
@@ -151,6 +220,14 @@ def check_d008(bundle: dict) -> list[dict]:
     findings = []
     for page in bundle.get("pages", []):
         locus = {"url": page.get("url")}
+        if not page.get("extraction_ok", True):
+            # A page whose fetch failed outright has canonical={} by construction, which
+            # read as "no rel=canonical found" -- a confirmed defect on a page we never
+            # actually got. Found live on www.gnu.org in the adversarial set (2026-09-04).
+            findings.append(_envelope("CHK-D-008", "not_determinable",
+                                       "Page could not be fetched.", None, "CAUSAL", None,
+                                       locus=locus))
+            continue
         canonical = page.get("canonical", {})
         if canonical.get("self_referential"):
             findings.append(_envelope("CHK-D-008", "absent", f"Page {page.get('url')}: "
@@ -185,6 +262,11 @@ def check_d012(bundle: dict) -> list[dict]:
     findings = []
     for page in bundle.get("pages", []):
         locus = {"url": page.get("url")}
+        if not page.get("extraction_ok", True):
+            findings.append(_envelope("CHK-D-012", "not_determinable",
+                                       "Page could not be fetched.", None, "THEORETICAL", None,
+                                       locus=locus))
+            continue
         classification = classify_time_sensitivity(page)
         if classification == "evergreen":
             continue
@@ -215,7 +297,18 @@ def check_d025_d026(bundle: dict) -> tuple[dict, dict]:
                           None, "HARD-MECHANICAL", None)
         return d025, d026
 
-    home_about = [p for p in bundle.get("pages", []) if p.get("page_type") in ("home", "about")]
+    # Pages whose fetch failed outright (extraction_ok=False) carry empty
+    # structured_data/outbound_profile_links by construction -- including them would read
+    # as "no anchors declared" on a page we never actually got. Found live on www.gnu.org
+    # in the adversarial set (2026-09-04): a fetch failure produced a false CHK-D-025.
+    home_about_raw = [p for p in bundle.get("pages", []) if p.get("page_type") in ("home", "about")]
+    home_about = [p for p in home_about_raw if p.get("extraction_ok", True)]
+    if home_about_raw and not home_about:
+        d025 = _envelope("CHK-D-025", "not_determinable",
+                          "Home/about page(s) could not be fetched.", None, "CORRELATIONAL", None)
+        d026 = _envelope("CHK-D-026", "not_determinable", "No CHK-D-025 verdict to act on.",
+                          None, "HARD-MECHANICAL", None)
+        return d025, d026
     same_as_present = any(
         "sameAs" in e.get("fields_present", [])
         for p in home_about for e in p.get("structured_data", {}).get("json_ld", [])
@@ -293,9 +386,21 @@ def _normalize_name(name: str) -> str:
 
 
 def check_d027(bundle: dict) -> dict:
+    """Names must come from Organization entities, not from every entity with a `name`.
+
+    Repaired 2026-09-04 after the Stage B negative-control screen. This read `name` off
+    *every* JSON-LD entity on every sampled page. A real site's graph carries WebPage,
+    BreadcrumbList, ListItem and ImageObject entities, all of which have a `name` that is
+    a page title or a breadcrumb label -- so on any site with per-page JSON-LD the check
+    collected twenty page titles, found them "inconsistent", and reported the site's own
+    headlines as competing organisation names. It fired on 6 of 8 clean sites that way.
+
+    `_organization_blocks` -- the same filter CHK-D-007 already used -- was sitting in
+    this file unused by this check.
+    """
     names = []
     for page in bundle.get("pages", []):
-        for e in page.get("structured_data", {}).get("json_ld", []):
+        for e in _organization_blocks(page):
             raw = e.get("raw", {})
             if isinstance(raw, dict) and raw.get("name"):
                 names.append(raw["name"])

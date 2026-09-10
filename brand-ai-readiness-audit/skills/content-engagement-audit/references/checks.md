@@ -1,8 +1,201 @@
-# Engagement Defect Audit — per-check reference
+# Check reference — content-engagement-audit
 
-Full detail for each of the eleven checks owned by `engagement-defect-audit`. For the
-procedure summary, inputs, the CHK-E-019 duplication note, the CHK-E-023 two-detector
-rule, and the CHK-E-024 single-source routing rule, see the parent [`SKILL.md`](../SKILL.md).
+Full per-check detail for the seventeen checks this skill owns. Sourced directly from
+`docs/research/EVIDENCE-LEDGER.md`; if the two ever disagree, the ledger wins and this file
+is stale.
+
+Merged 2026-09-04 (D-025) from the formerly-separate `render-extractability-audit` (the
+seven `CHK-D-*` checks below) and `engagement-defect-audit` (the ten `CHK-E-*` checks)
+reference files, content unchanged by the merge itself.
+
+---
+
+Full per-check detail for the seven checks this skill owns. Sourced directly from
+`docs/research/EVIDENCE-LEDGER.md`; if the two ever disagree, the ledger wins and this file
+is stale.
+
+---
+
+## CHK-D-003 — Raw-fetch content gap vs. rendered DOM
+
+- **Mechanism**: C — a JS-rendering gap hides content from a non-rendering AI fetch.
+- **Strength**: `HARD-MECHANICAL`. Ceiling: `critical`.
+- **Reads**: `pages[].main_text_words`, `pages[].headings` (for the raw h1 count) vs.
+  `rendered[].main_text_words`, `rendered[].h1_count`, homepage only.
+- **Severity rule** (definitional, not threshold-fitted — see R-2):
+  - `critical` — raw HTML has no h1 **and** &lt;50 words of main text, while the rendered
+    DOM has ≥200 words. The content is categorically absent from what a non-rendering
+    fetch receives.
+  - `medium` — h1 present in raw, but ≥60% of main text is render-only.
+  - `low` — 20–60% of main text is render-only.
+  - Below 20%: not a finding.
+- **Evidence**: `Homepage: raw HTTP fetch contains {raw} words of main text and {h1_raw}
+  h1; rendered DOM contains {rend} words and {h1_rend} h1.`
+- **FP guard**: suppress if the gap is &lt;20%, or if `noscript.words > 50` (a working
+  fallback already exists).
+- **Not-determinable**: `rendered.status != "ok"` → `Rendered page evidence unavailable.`
+- **One-sided re-derivation (D-015)**: if `rendered[]` is empty for the whole run (no
+  `headless_browser` tool — the grading sandbox's actual condition, not a per-page
+  timeout), skip the two-sided comparison and evaluate the raw HTML alone: `high` if
+  `raw_h1 == 0` and `raw_words < 50`, suppressed if `noscript.words > 50`. This is
+  definitional the same way the two-sided rule is — a static fetch with no h1 and near-no
+  text is a finding on its own — but it is capped one tier below the two-sided `critical`
+  because it cannot confirm a render actually exists to fill the gap. If raw content is
+  *not* sparse, this stays `not_determinable`: absence of a render gap can't be inferred
+  one-sidedly, only its presence can.
+- **Action**: implement server-side rendering or static generation for the homepage; at
+  minimum ensure primary content and the h1 are present in the initial HTTP response.
+- **Runtime**: high (reads the shared render pass; adds no cost of its own).
+- **Downstream**: consumed by `audit-orchestrator` for `CHK-E-019`'s O-1 suppression (D-003
+  present ⇒ E-019 deferred) — see `SKILL.md`'s "When to use". A four-way dedup with
+  `CHK-D-004`/`CHK-D-005` was designed and removed as unreachable (D-016): `CHK-D-004`
+  self-suppresses on the homepage whenever this check fires, so it can never be `present`
+  there at the same time, and `CHK-D-005` requires &gt;500 words on a page this check's
+  critical/common trigger requires &lt;50 words on.
+
+## CHK-D-004 — Thin main content
+
+- **Mechanism**: C — thin main content gives an assistant nothing to extract or quote.
+- **Strength**: `CORRELATIONAL`. Ceiling: `medium`.
+- **Reads**: `pages[].main_text_words`, `page_type`, per sampled page (3–5).
+- **Severity rule**: `medium` if `main_text_words < 200` after boilerplate removal.
+- **Evidence**: `Page {URL}: main-content extraction yielded {count} words after
+  boilerplate removal.`
+- **FP guard**: exclude `page_type` in `{contact, login, home}`. **`home` added in Stage C
+  (2026-09-04, D-022):** a homepage's job is navigation and framing, not comprehensive
+  information; the check was flagging hero-plus-links homepages by design (found on
+  gohugo.io's 197-word homepage). This exclusion is a strict superset of the old
+  `CHK-D-003`-fired homepage suppression, so that suppression was removed as dead code —
+  `home` is now skipped unconditionally, not only when `CHK-D-003` fired.
+- **Not-determinable**: `extraction_ok == false` → `Content could not be extracted.`
+- **Action**: add substantive, explicitly-stated content — not padding, not a redesign;
+  a paragraph of real prose naming the specific facts the page exists to convey.
+- **Runtime**: low.
+
+## CHK-D-005 — Absent or generic headings
+
+- **Mechanism**: B/C — missing structural headings hurt chunking, both for a crawler
+  splitting a page into passages and for a human scanning it.
+- **Strength**: `THEORETICAL`. Ceiling: `low`.
+- **Reads**: `pages[].headings`, `main_text_words`, on pages &gt;500 words (3–5 pages).
+- **Severity rule**: `low` if no h2/h3 present, or headings are generic
+  (e.g. "More", "Details") rather than descriptive.
+- **Evidence**: `Page {URL}: {words} words of body text with {h_count} descriptive
+  subheadings.`
+- **FP guard**: exclude legal, FAQ, and other minimal-content archetypes where flat
+  structure is the genre norm.
+- **Not-determinable**: extraction failure → `not_determinable`.
+- **Action**: add descriptive subheadings that state the fact or topic of each section,
+  not a table of contents label.
+- **Runtime**: low.
+
+## CHK-D-009 — Broken internal links
+
+- **Mechanism**: B — a broken internal link is a dead end for both a crawler following
+  links to build its index and a user following a citation back to the source.
+- **Strength**: `THEORETICAL/CORRELATIONAL`. Ceiling: `low`.
+- **Reads**: `links.results[].http_status`, `links.skipped[]` (up to 20 HEAD checks,
+  already executed by the collector).
+- **Severity rule**: `low` if `count(results[].http_status in {4xx, 5xx}) > 0`.
+- **Evidence**: `Found {N} broken internal link(s).`
+- **FP guard**: entries already in `links.skipped[]` (robots-disallowed, fragment,
+  `mailto:`, budget-cut) are excluded — they were never checked, not found broken.
+- **Not-determinable**: a link's own status is `403` from a bot-challenge origin →
+  `not_determinable` for that link specifically, not counted as broken.
+- **Action**: repair the link's target or replace it; if the target is genuinely gone,
+  add a 301 redirect rather than leaving a dead end.
+- **Runtime**: medium (reads collector output only; no cost here).
+
+## CHK-D-010 — Low extractable-evidence density *(recommendation-only since Stage C)*
+
+> **Demoted to `recommendations[]` on 2026-09-04 (D-022).** The three-pattern regex proxy
+> for "evidence density" fired on 17 of 34 real dev/negative-control sites, including
+> `developer.mozilla.org` and `docs.djangoproject.com` — elite technical documentation that
+> legitimately lacks the three literal sentence shapes without being defective. The
+> underlying mechanism (evidence density correlates with GEO absorption) is real and cited;
+> this narrow proxy is too imprecise to assert as a confirmed defect. Same demotion class
+> D-012 already applied to `CHK-E-024`. Envelope now always carries
+> `recommendation_only: true`.
+
+- **Mechanism**: B/C — an assistant favors pages it can quote a clear fact from. A page
+  with no definitions, numbers, or comparisons has nothing quotable.
+- **Strength**: `CORRELATIONAL`. Ceiling: `low` (was `medium`; capped with the demotion).
+- **Reads**: `pages[].main_text`, scanned for a definitional sentence pattern, a number
+  with a unit, or an explicit comparison, on pages excluding `{contact, login, home}` (the
+  `home` exclusion is shared with `CHK-D-004`, added in the same pass).
+- **Severity rule**: `low`, proactive-only, if none of the three evidence shapes appear
+  anywhere on the page.
+- **Evidence**: `None of the checked pages contain a definition, numerical fact, or
+  comparison.`
+- **FP guard**: exclude non-informational page types (contact, login, home). **Suppress if
+  `CHK-D-004` fired** — a page already flagged as too thin doesn't need a second, more
+  specific content complaint layered on top.
+- **Not-determinable**: extraction failure → `not_determinable`.
+- **Action**: add explicit definitions, numerical facts, or comparisons — the shapes an
+  assistant can lift verbatim into an answer.
+- **Runtime**: low.
+
+## CHK-D-011 — Pronoun-saturated key claims *(recommendation-only since D-027)*
+
+> **Demoted to `recommendations[]` on 2026-09-09 (D-027).** R-1 hand-verification opened
+> all three cited sources (P-01.05, P-01.02, P-06.04) and found none discuss pronouns,
+> ambiguous subjects, or unclear referents — a genuine evidence gap, not a citation
+> mismatch, unlike `CHK-D-010`'s case (real mechanism, imprecise proxy). Kept as a
+> proactive recommendation rather than cut because the underlying advice — name a claim's
+> subject before a pronoun stands in for it — is defensible writing guidance on its own
+> terms, even without the academic support originally claimed for it. Envelope now always
+> carries `recommendation_only: true`.
+
+- **Mechanism**: C — a claim whose subject is a pronoun with no preceding explicit
+  mention is ambiguous outside its original context, exactly the form a machine reader
+  extracting isolated passages loses.
+- **Strength**: `THEORETICAL/HEURISTIC`. Ceiling: `low`, proactive-only per the demotion.
+- **Reads**: `pages[].main_text`, home/about pages only.
+- **Severity rule**: `low`, proactive-only, if &gt;60% of sentences open with a pronoun
+  lacking a preceding explicit antecedent in the same passage.
+- **Evidence**: `{pct}% of sentences use a pronoun as subject without a preceding
+  explicit mention.`
+- **FP guard**: exclude narrative/blog page types, where referential prose is the
+  expected register.
+- **Not-determinable**: extraction failure → `not_determinable`.
+- **Action**: ensure the first occurrence of each key claim explicitly names its subject
+  before any pronoun stands in for it.
+- **Runtime**: low.
+
+## CHK-D-013 — Near-duplicate templated thin content *(recommendation-only since D-027)*
+
+> **Demoted to `recommendations[]` on 2026-09-09 (D-027).** R-1 hand-verification opened
+> both cited sources (P-01.09, P-06.03) and found neither discusses duplicate/templated
+> content or cross-page text similarity — a genuine evidence gap, not a citation mismatch.
+> Kept as a proactive recommendation rather than cut because giving each variant page
+> unique substantive text is defensible advice on its own terms. Envelope now always
+> carries `recommendation_only: true`.
+
+- **Mechanism**: C — pages that are near-identical templated shells carrying little
+  unique text give an assistant nothing to distinguish between them, and read as thin
+  content repeated rather than substantive content once.
+- **Strength**: `CORRELATIONAL`. Ceiling: `low`, proactive-only per the demotion (was
+  `medium`, scored `low` in practice per the ledger's severity column below the
+  element-count floor).
+- **Reads**: `pages[].trigram_hash`, Jaccard similarity across ≥3 sampled inner pages
+  (4–6 pages read to compute it).
+- **Severity rule**: `low`, proactive-only, if Jaccard similarity &gt;0.8 across three or
+  more pages.
+- **Evidence**: `Pages share {pct}% of word trigrams in their main content.`
+- **FP guard**: exclude legitimate variant pages (e.g. size/color product variants) and
+  legal/ToS pages, where near-identical text is expected and correct.
+- **Not-determinable**: extraction failure on any compared page → `not_determinable`.
+- **Action**: add unique content to each variant page that answers the specific
+  question a reader would have about that variant, rather than relying on a shared
+  template alone.
+- **Runtime**: medium (hash comparison only; no extra fetch).
+
+---
+
+Full detail for each of the ten checks owned by `engagement-defect-audit`. For the
+procedure summary, inputs, the CHK-E-019 duplication note, the CHK-E-024 single-source
+routing rule, and why CHK-E-023 is no longer among them (D-018), see the parent
+[`SKILL.md`](../SKILL.md).
 Evidence strings, severity rules, FP guards, and suggested actions below are copied
 directly from `docs/research/EVIDENCE-LEDGER.md` — they are not re-derived here.
 
@@ -57,7 +250,9 @@ Page {url}: {N} accessibility violation(s) of type {type} (e.g. "missing alt on
   `not_determinable`.
 
 **Not-determinable:** Sub-check f is `not_determinable` if `rendered.status != "ok"` for
-the relevant page (JS-SPA where the render pass did not complete).
+the relevant page (JS-SPA where the render pass did not complete, or no `headless_browser`
+tool at all, D-015 — the grading sandbox's actual condition). Sub-checks a–e are unaffected;
+they read only `pages[]` and run regardless of whether rendering happened.
 
 **Suggested action:** Standard WCAG fixes by type:
 - (a) Add `lang="en"` (or appropriate BCP 47 code) to `<html>`.
@@ -115,7 +310,8 @@ Page {url}: horizontal scroll at 375 px viewport width (content wider than scree
   if absent, overflow is the defect).
 
 **Not-determinable:** For horizontal-overflow sub-check: `not_determinable` if
-`rendered.status != "ok"` for the page.
+`rendered.status != "ok"` for the page (including no `headless_browser` tool at all,
+D-015). The viewport-meta sub-check is unaffected; it reads only `pages[].meta.viewport`.
 
 **Suggested action:**
 - Add `<meta name="viewport" content="width=device-width, initial-scale=1">`.
@@ -161,7 +357,9 @@ of 24×24 CSS px (smallest: {w}×{h} px, selector: {selector}).
   the target qualifies under the spacing exception in WCAG 2.2 SC 2.5.8 — suppress.
 
 **Not-determinable:** If `rendered.status != "ok"` for the sampled pages, or if the
-render pass was abandoned.
+render pass was abandoned. No static proxy exists for element geometry, so in the grading
+sandbox (no `headless_browser` tool, D-015) this check never fires — it is instead named
+in `degraded_stages[].affected_checks` so the gap is declared, not silent.
 
 **Suggested action:** Increase target size or padding to at least 24×24 CSS px. For small
 icons or compact navigation items, add transparent padding rather than resizing visible
@@ -244,7 +442,11 @@ without scroll lock (content may be accessible via scroll).
 
 **Not-determinable:** If `rendered.status != "ok"` for the relevant pages, or if the
 render pass was abandoned. Scroll-triggered modals that do not appear at load are
-`not_determinable` (the collector only captures load state).
+`not_determinable` (the collector only captures load state). No static proxy is used for
+overlay geometry (a fixed/sticky-positioned element in raw HTML is too weak a signal
+without computed coverage %), so in the grading sandbox (no `headless_browser` tool,
+D-015) this check never fires — it is instead named in `degraded_stages[].affected_checks`
+so the gap is declared, not silent.
 
 **Suggested action:** Trigger modals via user interaction (scroll, click, timer after
 interaction), not at page load. Remove scroll-lock from any overlay that is not a
@@ -271,8 +473,8 @@ and `pages[].noscript.words`.
 
 This check independently recomputes the same raw-vs-rendered gap that
 `render-extractability-audit`'s CHK-D-003 also computes. The duplication is deliberate —
-analysers are blind to each other by design. The orchestrator handles deduplication when
-both fire on a JS-only site.
+analysers are blind to each other by design. The orchestrator defers this finding to
+CHK-D-003 (rule O-1) when both fire on a JS-only site, rather than reporting both.
 
 **Evidence emitted:**
 ```
@@ -291,11 +493,20 @@ fallback (words ≥ 50).
   shell with loading indicators rather than fully blank). The collector's
   `rendered[].h1_count` and `rendered[].main_text_words` together indicate this: if
   rendered has ≥1 h1 but minimal text, it may be a skeleton rather than a gap.
-- Do not fire this check if the render pass was abandoned — static HTML alone cannot
-  establish the gap direction.
+- Do not fire this check if the render pass was abandoned mid-run — static HTML alone
+  cannot establish the gap direction from a partial render.
 
-**Not-determinable:** If `rendered.status != "ok"` for the homepage, or if the render
-pass was abandoned.
+**One-sided re-derivation (D-015):** if `rendered[]` is empty for the whole run (no
+`headless_browser` tool at all, the grading sandbox's actual condition), evaluate the
+noscript/static-volume half of the mechanism alone: `high` if `raw_words < 50` and
+`noscript.words < 50`, without the rendered-DOM confirmation. This is the "re-derive from
+`<noscript>` + static text volume" path — it does not need the rendered comparison because
+a near-empty raw fetch with no noscript fallback is already blank to a non-rendering
+client, regardless of what JavaScript would have produced. If raw content is not sparse,
+this stays `not_determinable`.
+
+**Not-determinable:** If `rendered.status != "ok"` for the homepage mid-run, or if raw
+content is not sparse and no rendered evidence exists at all.
 
 **Suggested action:** Implement server-side rendering (SSR) or static-site generation
 (SSG) so the primary content is present in the raw HTTP response. As a fallback, add a
@@ -350,7 +561,15 @@ visible play/pause control. Reference WCAG 2.2 SC 1.4.2. Priority: medium.
 
 ---
 
-## CHK-E-021 — Images and iframes without explicit dimensions
+## CHK-E-021 — Images and iframes without explicit dimensions *(recommendation-only since Stage C)*
+
+> **Demoted to `recommendations[]` on 2026-09-04 (D-022).** Fired on 26 of 34 real
+> dev/negative-control sites — near-universal, exactly as the unevidenced-CLS point below
+> already predicted. `THEORETICAL` strength and a severity ceiling below `high` were
+> already in place, but a signal this common cannot function as a differentiated defect
+> claim. The underlying advice (add explicit dimensions) remains good and actionable, so it
+> moves to `recommendations[]` rather than being cut outright. Envelope now always carries
+> `recommendation_only: true`.
 
 **Mechanism:** E — Images and iframes without `width` and `height` attributes (or CSS
 `aspect-ratio`) cause content reflow as they load: later elements shift position, producing
@@ -362,8 +581,10 @@ Per D-008: this is reported as a structural defect detectable from the markup, n
 engagement outcome prediction.
 
 **Evidence strength:** THEORETICAL  
-**Severity ceiling:** medium (≥10 affected elements across ≥2 pages), low otherwise.
-**Never higher** — the engagement harm is unevidenced.
+**Severity ceiling:** low, always (was medium for ≥10 elements across ≥2 pages; flattened
+to `low` when demoted to recommendation-only, since severity no longer needs to
+differentiate a `findings[]` priority order). **Never higher** — the engagement harm is
+unevidenced.
 
 **Observation (2–3 pages):** Count `pages[].images[]` where `width_attr === null` **and**
 `height_attr === null` **and** `css_aspect_ratio === null`. Similarly count `iframes[]`
@@ -445,57 +666,6 @@ not fetched).
 Priority: high (no h1), medium (other violations).
 
 **Runtime:** low (static heading and landmark scan).
-
----
-
-## CHK-E-023 — Ad/promo density exceeds 30% of mobile viewport
-
-**Mechanism:** E — When advertising or promotional elements occupy >30% of the visible
-mobile viewport, they interfere with content access. The Better Ads Standards (Coalition
-for Better Ads, 2022) define 30% mobile / 50% desktop as the empirically-derived
-thresholds above which intrusion complaints spike. These are the only published numeric
-thresholds applicable mechanically.
-
-**Evidence strength:** CORRELATIONAL / NORMATIVE (Better Ads Standards)  
-**Severity ceiling:** medium
-
-**Observation (1–2 pages, mobile_375 viewport):** Read
-`rendered[].viewports.mobile_375.ad_area_pct_total`. Also inspect
-`rendered[].viewports.mobile_375.ad_regions[].detector` to determine how many
-independent detector types fired.
-
-**⚠ Two-detector rule (mandatory FP guard, see SKILL.md):** Collect the set of distinct
-`detector` values across all `ad_regions[]` entries. If only one detector type appears
-(e.g., only `iframe_thirdparty`), emit `not_determinable` with reason "only one
-detection method agrees — insufficient confidence." A finding requires ≥2 distinct
-detector types to agree.
-
-**Evidence emitted (when ≥2 detectors agree):**
-```
-First viewport at 375 px: ~{pct}% of visible area occupied by advertisements
-(detected by: {detectors}). Exceeds the Better Ads Standard threshold of 30%.
-```
-
-**Severity rule:** medium if `ad_area_pct_total > 30` and ≥2 detector types agree.
-
-**FP guard:**
-- Suppress if no ads are detected site-wide (all ad region lists empty across all
-  sampled pages) — a clean site should not trigger this check.
-- Require ≥2 independent detector types to agree; otherwise `not_determinable`.
-- This check is explicitly noted in BUNDLE-SCHEMA.md (Caveat 1) as the most
-  false-positive-prone check in the entire marketplace. Apply the two-detector rule
-  without exception.
-
-**Not-determinable:**
-- Render pass abandoned.
-- Only one detector type fires.
-- `rendered.status != "ok"` for the sampled pages.
-
-**Suggested action:** Reduce advertising density so no more than 30% of the visible
-mobile viewport is occupied by ads (Better Ads Standard threshold). Move dense ad
-placements below the fold. Consolidate multiple small ad units. Priority: medium.
-
-**Runtime:** high (uses shared render pass, but no additional rendering cost).
 
 ---
 

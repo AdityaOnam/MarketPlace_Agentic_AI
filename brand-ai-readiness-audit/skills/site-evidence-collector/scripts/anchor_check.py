@@ -8,6 +8,11 @@ from __future__ import annotations
 
 MAX_ANCHORS = 8
 BOT_BLOCKED_STATUSES = {401, 403, 429}
+# Statuses a server commonly returns because it mishandles HEAD, not because the resource
+# is absent. Verified during the Stage B screen (2026-09-04): a major social platform
+# answered HEAD with 404 and GET with 200 for the same profile URL, which made CHK-D-026
+# report two well-run sites' own social profiles as dead links.
+HEAD_UNRELIABLE_STATUSES = {404, 405, 410, 501}
 
 
 def build_anchors_section(declared: list[dict], raw_results: list[dict]) -> dict:
@@ -24,6 +29,15 @@ def build_anchors_section(declared: list[dict], raw_results: list[dict]) -> dict
     results = []
     for r in raw_results[:MAX_ANCHORS]:
         status = r.get("http_status")
+        # A negative seen only through HEAD is not confirmed. `confirmed_by` records the
+        # method that produced the failing status; the caller re-requests with GET (per
+        # SKILL.md step 7) before a failure may be asserted. Encoded here rather than left
+        # to the analyser for the same reason the 401/403/429 rule is: it is load-bearing
+        # and easy to forget.
+        if status in HEAD_UNRELIABLE_STATUSES and r.get("confirmed_by") != "GET":
+            results.append({"url": r["url"], "http_status": status, "resolved": None,
+                             "note": "head_unsupported_unconfirmed"})
+            continue
         if status in BOT_BLOCKED_STATUSES:
             results.append({"url": r["url"], "http_status": status, "resolved": None,
                              "note": "bot_blocked_not_broken"})

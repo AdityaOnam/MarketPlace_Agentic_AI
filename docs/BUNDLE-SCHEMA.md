@@ -137,7 +137,7 @@ One entry per statically fetched page (≤20).
   "links": [ { "href": "...", "text": "read more", "rel": null, "internal": true, "aria_label": null } ],
   "outbound_profile_links": [ "https://<profile-host>/<handle>" ],
 
-  "images": [ { "src": "...", "alt": null, "width_attr": null, "height_attr": null, "css_aspect_ratio": null, "in_picture": false } ],
+  "images": [ { "src": "...", "alt": null, "decorative_hint": false, "width_attr": null, "height_attr": null, "css_aspect_ratio": null, "in_picture": false } ],
   "iframes": [ { "src": "...", "width_attr": null, "height_attr": null, "title": null } ],
   "media": [ { "tag": "video", "autoplay": true, "muted": false, "controls": false, "loop": true } ],
 
@@ -156,6 +156,20 @@ One entry per statically fetched page (≤20).
 comparisons into the analyser.
 
 ## `rendered[]`
+
+**In the grading sandbox this is always `[]` — there is no `headless_browser` tool
+available (D-015).** That is a structural fact known before collection starts, not a
+per-run failure, and it is handled differently from a mid-run timeout: the collector still
+records a `render_pass` entry in `budget.stages` marked `abandoned: true` at zero elapsed
+time, specifically so `degraded_stages[]` in the assembled report names the six affected
+checks rather than them silently disappearing (`not_determinable` findings never reach the
+final report otherwise). Two of the six — `CHK-D-003` and `CHK-E-019` — re-derive a
+one-sided signal from static HTML alone when this happens; the other four
+(`CHK-E-014`'s contrast sub-check, `CHK-E-015`'s overflow sub-check, `CHK-E-016`,
+`CHK-E-018`) have no defensible static proxy and stay `not_determinable`, visible only
+through `degraded_stages[]`. A seventh, `CHK-E-023`, was in this list until D-018 cut it
+outright — unlike the other four it had no reason to exist beyond the renderer, and it was
+already the weakest check in the ledger.
 
 One entry per rendered page (≤3). **One navigation per page.** Both viewports are measured
 by resizing the same loaded page rather than re-navigating — a second navigation would
@@ -234,7 +248,7 @@ makes the false-positive guard structural rather than a rule the analyser must r
   "stages": [
     { "name": "robots_discovery",  "budget_s": 15, "actual_s": 3.2,  "abandoned": false },
     { "name": "static_fetch",      "budget_s": 45, "actual_s": 28.9, "abandoned": false },
-    { "name": "render_pass",       "budget_s": 75, "actual_s": 74.9, "abandoned": true, "completed_items": 2, "planned_items": 3 },
+    { "name": "render_pass",       "budget_s": 75, "actual_s": 74.9, "abandoned": true, "completed_items": 2, "planned_items": 3, "reason": "25s per-page timeout hit on the third page." },
     { "name": "internal_links",    "budget_s": 25, "actual_s": 11.0, "abandoned": false },
     { "name": "offsite_anchors",   "budget_s": 20, "actual_s": 8.4,  "abandoned": false },
     { "name": "analysis_reserve",  "budget_s": 40, "actual_s": null, "abandoned": false }
@@ -277,20 +291,20 @@ Every check's `Observation` column in the ledger, mapped to the fields that sati
 | E-020 | `pages[].media[]` (`autoplay`, `muted`, `controls`) |
 | E-021 | `pages[].images[]`, `iframes[]` (dimension attrs, `in_picture`) |
 | E-022 | `pages[].headings`, `landmarks` |
-| E-023 | `rendered[].viewports.mobile_375.ad_area_pct_total` |
 | E-024 | `pages[].contact_signals`, `site.scheme`, `pages[].dates` |
 
-**All 27 are covered.** Three carry caveats worth stating rather than burying.
+**All 26 are covered.** Two carry caveats worth stating rather than burying.
 
-### Caveat 1 — CHK-E-023 ad detection is the weakest link
+### Caveat 1 (resolved by removal) — CHK-E-023 ad detection was the weakest link
 
-"Ad region" has no site-agnostic definition. The `detector` field records which heuristic
-fired (third-party iframe, ad-slot attribute, filter-list match) precisely so the analyser
-can require agreement before emitting, and so a false positive is traceable to its
-detector. Shipping a filter list is possible within 50 MB but adds a maintenance dependency
-the brief warns against. **Recommendation: require ≥2 independent detectors to agree, or
-emit `not_determinable`.** This check is the most likely of the 27 to fail its
-negative-control target.
+"Ad region" has no site-agnostic definition, which is why this check carried a
+two-detector agreement rule no other check needed and why this caveat named it the most
+likely of the 27 to fail its negative-control target. **D-018 cut the check on
+2026-09-04** rather than shipping it behind a bespoke guard: it could only read
+`rendered[]`, which is empty in every graded run, so it emitted nothing there at all. The
+`ad_regions[]` fields and the `detector` classifier remain in `render_geometry.py`, inert,
+because removing them would touch the collector for no gain. This caveat is kept rather
+than deleted so the reasoning survives the check.
 
 ### Caveat 2 — CHK-D-012 needs a time-sensitivity label the bundle doesn't carry
 

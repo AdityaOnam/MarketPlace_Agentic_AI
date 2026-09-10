@@ -13,20 +13,22 @@ the site it audits — every check is observational.
 
 ## Skills
 
-Six skills, split by mechanism (the brief's own ontology), with network access isolated
-into exactly one of them:
+Five skills, split by mechanism (the brief's own ontology), with network access isolated
+into exactly one of them. Started as six; two merged into `content-engagement-audit` on
+2026-09-04 (**D-025**) after a leave-one-skill-out ablation against 36 real sites found the
+one genuinely cross-skill rule between them never actually fired in practice — see
+`docs/DECISIONS.md`.
 
 | Skill | Role | Checks |
 | --- | --- | --- |
-| **`audit-orchestrator`** *(entrypoint)* | Invokes the collector once, runs the four analysers against the resulting bundle, resolves cross-skill dependencies and shared-root-cause duplicates, assembles the final report | none of its own |
+| **`audit-orchestrator`** *(entrypoint)* | Invokes the collector once, runs the three analysers against the resulting bundle, assembles the final report | none of its own |
 | `site-evidence-collector` | The only skill that touches the network. Fetches robots.txt, a sampled page inventory, a shared rendered-page pass, and bounded internal/off-site link checks — emits one in-memory evidence bundle, no findings | none — observes only |
 | `crawl-access-audit` | Is the site's AI-crawler policy actually letting retrieval-time assistants in? | CHK-D-001, D-002 |
-| `render-extractability-audit` | Is the content complete, substantial, well-structured, and non-duplicated in what a non-rendering fetch actually receives? | CHK-D-003, D-004, D-005, D-009, D-010, D-011, D-013 |
+| `content-engagement-audit` | Is the content complete, substantial, well-structured, and non-duplicated in what a non-rendering fetch actually receives, **and** are there statically/mechanically detectable defects — accessibility, mobile layout, blocking overlays, autoplay — that obstruct a visitor who already arrived? | CHK-D-003, D-004, D-005, D-009, D-010, D-011, D-013, CHK-E-014 – E-022, E-024 |
 | `entity-identity-audit` | Does the site state who it is unambiguously, mark it up machine-readably, stay internally consistent, and anchor itself to external profiles? | CHK-D-006, D-007, D-008, D-012, D-025, D-026, D-027 |
-| `engagement-defect-audit` | Are there statically/mechanically detectable defects — accessibility, mobile layout, blocking overlays, autoplay, ad density — that obstruct a visitor who already arrived? | CHK-E-014 – E-024 |
 
-27 checks total, disjoint — no check is owned by more than one skill. Full rationale for
-this decomposition (why six skills and not one, why not more, and the three tests that
+26 checks total, disjoint — no check is owned by more than one skill. Full rationale for
+this decomposition (why five skills and not one, why not more, and the three tests that
 would falsify it) is in [`../docs/ARCHITECTURE.md`](../docs/ARCHITECTURE.md).
 
 ## How the entrypoint composes them
@@ -35,13 +37,19 @@ would falsify it) is in [`../docs/ARCHITECTURE.md`](../docs/ARCHITECTURE.md).
 
 1. **Collect** — run `site-evidence-collector` once against the target; every other skill
    reads that bundle read-only and never fetches anything itself.
-2. **Analyse** — run the four analysers against the bundle. They are blind to each other
-   by construction, so the same underlying evidence (e.g. the raw-vs-rendered content gap)
-   is sometimes computed independently by two of them.
-3. **Reconcile** — resolve the one genuinely cross-skill dependency (a blank first paint
-   finding deferring to the render-gap finding that explains it), and collapse a JS-only
-   site's several downstream symptoms into one root-cause finding rather than reporting
-   the same defect four times.
+2. **Analyse** — run the three analysers against the bundle. They are blind to each other
+   by construction. One relationship used to cross a skill boundary (a blank-first-paint
+   finding and the render-gap finding that explains it were computed by two different,
+   mutually-blind analysers); a leave-one-skill-out ablation against 36 real sites found
+   that boundary never actually mattered, so the two analysers merged into
+   `content-engagement-audit` and now reconcile it themselves, in-skill, before their
+   findings ever reach the orchestrator (`docs/DECISIONS.md` D-025).
+3. **Reconcile** — nothing left to do at this step: with the merge, there is no remaining
+   cross-skill dependency for the orchestrator to resolve. (An earlier version of this step
+   also collapsed a four-check JS-only cluster into one finding; the suppression-necessity
+   test proved that pattern can never occur — two of the four checks require contradictory
+   word counts on the same page — and it was removed rather than kept as an untested claim.
+   See `docs/DECISIONS.md` D-016.)
 4. **Assemble** — separate confirmed defects (`findings[]`) from proactive,
    beyond-the-defects suggestions (`recommendations[]`) and from what the audit is
    structurally unable to measure (`limitations[]` — e.g. actual cross-web agreement about
@@ -54,8 +62,8 @@ would falsify it) is in [`../docs/ARCHITECTURE.md`](../docs/ARCHITECTURE.md).
    silently corrected — a report that quietly edits itself until its own audit passes is
    the failure mode this project is most careful about.
 
-Full composition logic — the suppression rule, the dedup rule, the meta-evaluation checks,
-and budget arbitration when the collector's time budget runs out mid-audit — is in
+Full composition logic — the suppression rule, the meta-evaluation checks, and budget
+arbitration when the collector's time budget runs out mid-audit — is in
 `audit-orchestrator/SKILL.md` and its `references/report-schema.md`.
 
 ## Recommendations are vertical-specific
@@ -71,12 +79,12 @@ vertical activates suppression logic written for a different kind of site.
 
 **What makes these recommendations more than an issue → fix lookup:** each action's urgency
 is capped at the strength of the evidence behind it (a WCAG violation is reported as a
-standards violation, never as a conversion claim), co-occurring symptoms are collapsed into
-the one root-cause fix that resolves them all rather than issued as four separate tickets,
-wording is conditioned on the site's vertical and page type, and the fashionable advice a
-checklist would confidently emit — llms.txt as a substantive fix, citation guarantees,
-above-the-fold rules — is refused, with that refusal enforced mechanically in the
-meta-evaluation step rather than merely promised.
+standards violation, never as a conversion claim), wording is conditioned on the site's
+vertical and page type, and the fashionable advice a checklist would confidently emit —
+llms.txt as a substantive fix, citation guarantees, above-the-fold rules — is refused, with
+that refusal enforced mechanically in the meta-evaluation step rather than merely promised,
+and stated visibly in `limitations[]` rather than left unaddressed (`docs/DECISIONS.md`
+D-014).
 
 ## Guardrails
 
@@ -133,7 +141,7 @@ settled result.
 - [`docs/ARCHITECTURE.md`](../docs/ARCHITECTURE.md) — the skill decomposition and why it's
   split this way
 - [`docs/BUNDLE-SCHEMA.md`](../docs/BUNDLE-SCHEMA.md) — the exact evidence-bundle contract
-  between the collector and the four analysers
+  between the collector and the three analysers
 - [`docs/research/EVIDENCE-LEDGER.md`](../docs/research/EVIDENCE-LEDGER.md) — one row per
   check: mechanism, cited sources, evidence strength, severity rule, false-positive guard
 - [`docs/DECISIONS.md`](../docs/DECISIONS.md) — the append-only log of every design

@@ -6,8 +6,7 @@
     { "id": "audit-orchestrator", "path": "skills/audit-orchestrator", "entrypoint": true },
     { "id": "site-evidence-collector", "path": "skills/site-evidence-collector" },
     { "id": "crawl-access-audit", "path": "skills/crawl-access-audit" },
-    { "id": "render-extractability-audit", "path": "skills/render-extractability-audit" },
-    { "id": "entity-identity-audit", "path": "skills/entity-identity-audit" },
-    { "id": "engagement-defect-audit", "path": "skills/engagement-defect-audit" }
+    { "id": "content-engagement-audit", "path": "skills/content-engagement-audit" },
+    { "id": "entity-identity-audit", "path": "skills/entity-identity-audit" }
   ]
 }
