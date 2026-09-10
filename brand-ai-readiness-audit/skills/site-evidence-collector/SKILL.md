@@ -75,16 +75,27 @@ complete on the next. Where that happens the bundle records it (`status`, `reaso
    `page_type` so per-page-type scoring is possible downstream. For each page extract main
    text with boilerplate removed, headings, landmarks, structured data, links, images,
    iframes, media elements, form controls, dates, contact signals, and a trigram hash.
-5. **Run the shared rendered-page pass** (≤ `max_rendered_pages`, ≤ 3). **One navigation per page.**
-   Measure the mobile 375 px viewport on every rendered page and the desktop 1280 px
-   viewport on the homepage only, by resizing the already-loaded page — never by
-   re-navigating. Capture rendered DOM, main text, tap-target and overlay geometry,
-   ad-region candidates with the detector that fired, and contrast pairs.
+5. **Run the shared rendered-page pass** (≤ `max_rendered_pages`, ≤ 3), **only if
+   `headless_browser` is available this run.** If it is not — this marketplace's grading
+   sandbox has none — skip the pass, emit `rendered: []`, and still record a `render_pass`
+   entry in `budget.stages` marked `abandoned: true` with the reason. Recording the stage
+   even at zero elapsed time is what lets `degraded_stages[]` in the final report name
+   which checks lost evidence, instead of those checks silently vanishing. When the tool is
+   available: **one navigation per page.** Measure the mobile 375 px viewport on every
+   rendered page and the desktop 1280 px viewport on the homepage only, by resizing the
+   already-loaded page — never by re-navigating. Capture rendered DOM, main text,
+   tap-target and overlay geometry, ad-region candidates with the detector that fired, and
+   contrast pairs.
 6. **Check internal links** — HEAD, ≤ 20, skipping fragments, `mailto:`, and anything
    `robots.txt` disallows. Record skips with their reason.
 7. **Check off-site identity anchors** — HEAD, ≤ 8, one request per host, on URLs the site
    itself declares via `sameAs` or footer profile links. **401, 403 and 429 mean
-   bot-blocked, not broken:** record `resolved: null`, never `false`.
+   bot-blocked, not broken:** record `resolved: null`, never `false`. **A 404, 405, 410 or
+   501 from HEAD alone is not a failure either** — many servers mishandle HEAD, and one
+   major social platform answers HEAD with 404 and GET with 200 for the same profile URL.
+   Confirm with a single GET before recording `resolved: false`; without that confirmation
+   the result is `resolved: null`. This is not retrying around a block: a 401/403/429 is
+   never re-requested.
 8. **Emit the bundle** with per-stage timings in `budget`.
 
 Full step detail, extraction rules, and classification tables:
@@ -115,7 +126,10 @@ where the time actually went so a slow run is attributable rather than mysteriou
 is marked `partial` or `unavailable` with a reason, and collection continues. Never extend a
 stage by borrowing from another. A bundle that says what it could not collect is worth more
 than one that guessed — analysers are required to emit `not_determinable` for any evidence
-that is not `ok`.
+that is not `ok`. The render pass can also be abandoned *before it starts* — no
+`headless_browser` tool this run, not a mid-run timeout — and that case is recorded in
+`budget.stages` exactly the same way (see step 5), because a check that quietly returns
+`not_determinable` is invisible in the final report unless its stage is declared abandoned.
 
 ## Safety rules
 

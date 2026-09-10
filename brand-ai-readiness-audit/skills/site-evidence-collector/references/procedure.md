@@ -33,11 +33,17 @@ Fetch `{origin}/robots.txt` first, always, before any other request.
 Preference order:
 
 1. Sitemaps declared in `robots.txt`, then `/sitemap.xml`. Follow sitemap indexes one level.
+   **A `Sitemap:` line is untrusted input** — discard any value that is not an absolute
+   `http(s)` URL before requesting it. One real site serves `{{ site.url }}/sitemap.xml`,
+   an unrendered template left in the published file; treating that as a URL raises rather
+   than degrading.
 2. If no sitemap: breadth-first same-origin crawl from the homepage, depth ≤ 2, collecting
    URLs only — no fetching beyond what discovery requires.
 
 Cap the inventory at 200 URLs. Discovery is not the audit; it exists to make sampling
-representative.
+representative. **Discard `asset` URLs (see the `page_type` table below) before they count
+against the cap** — a sitemap that mixes in media/image URLs would otherwise let them crowd
+out real pages ahead of the 200-URL limit.
 
 ### `page_type` labelling
 
@@ -45,6 +51,7 @@ Assigned from URL path, `<title>`, and structured-data `@type`, in that order of
 
 | Label | Signals |
 | --- | --- |
+| `asset` | Path ends in a non-HTML extension (image, stylesheet, script, font, document, archive, media). Checked before every other rule, since a sitemap commonly lists media URLs alongside real pages and a path like `/api/media/file/x.png` would otherwise match the `documentation` rule on `/api/`. Never sampled for fetch; excluded from every `archetype` proportion below |
 | `home` | Path is `/` |
 | `about` | Path or title contains about, company, who-we-are, team, mission |
 | `contact` | Path or title contains contact, support, get-in-touch |
@@ -64,7 +71,9 @@ finding depends on a single page's label being correct.
 
 ### `archetype` labelling
 
-Site-level, from the inventory's `page_type` distribution:
+Site-level, from the inventory's `page_type` distribution, with `asset` entries excluded
+from both the numerator and the denominator of every proportion below — they are not pages
+and diluting the count with them would misjudge sites whose sitemap mixes in media URLs:
 
 | Archetype | Rule |
 | --- | --- |
@@ -108,8 +117,20 @@ per type; remaining slots to the largest type. `login` pages are never fetched.
 
 ## 5. Shared render pass
 
-At most 3 pages: homepage, plus the two highest-quota page types. **One navigation per
-page.**
+**If `headless_browser` is not among this run's available tools, skip this step entirely —
+do not attempt a workaround, and do not infer rendered values from static HTML.** This is
+structurally different from a per-page timeout: it is known before collection starts, not
+discovered mid-run. Emit `rendered: []` and record it in `budget.stages` as its own entry:
+`{"name": "render_pass", "budget_s": 75, "actual_s": 0, "abandoned": true,
+"completed_items": 0, "planned_items": <= 3, "reason": "No headless browser tool available
+in this environment."}`. **This stage entry must be recorded even though no time was
+spent** — its purpose is to make the gap visible in `degraded_stages[]` downstream, not to
+account for elapsed time. Without it, the seven checks that read `rendered[]` disappear
+from the report silently (they resolve to `not_determinable`, which is dropped before the
+report is assembled) rather than being declared as an unmeasured gap.
+
+Otherwise, at most 3 pages: homepage, plus the two highest-quota page types. **One
+navigation per page.**
 
 1. Navigate. Wait for network idle or 8 s, whichever comes first.
 2. Measure at 375 × 812. Capture overlays, tap targets, ad regions, contrast pairs,

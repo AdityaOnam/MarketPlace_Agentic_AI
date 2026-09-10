@@ -16,3 +16,10 @@ WORKLOG.md
 brand-ai-readiness-audit/skills/engagement-onsite-audit/
 brand-ai-readiness-audit/skills/entity-identity-corroboration/
 brand-ai-readiness-audit/skills/structured-data-extraction/
+
+# local evaluation harness (Phase 4) -- never part of the submission zip
+harness/
+
+# generated working artifacts handed to the user directly (e.g. the gold-labelling kit
+# zip) -- reproducible from harness/ output, not part of the submission zip
+dist/

@@ -1,0 +1,972 @@
+"""The seventeen checks owned by content-engagement-audit: CHK-D-003, D-004, D-005,
+D-009, D-010, D-011, D-013 (content extractability, mechanisms B/C) and CHK-E-014 through
+CHK-E-024 except E-023 (on-site engagement defects, mechanisms E/F). Pure functions over an
+evidence bundle; no network access.
+
+Merged from the formerly-separate render-extractability-audit and engagement-defect-audit
+skills on 2026-09-04 (D-025), after the leave-one-skill-out ablation
+(harness/ablation.py) found the one genuine cross-skill rule between them -- O-1,
+CHK-E-019 deferring to CHK-D-003 -- never actually changed CHK-E-019's outcome on any of
+36 real sites, matching D-016's earlier synthetic-scenario finding. O-1 is now applied
+in-skill, inline in evaluate() below, the same way CHK-D-004 already self-suppresses
+against CHK-D-003 and CHK-D-010 against CHK-D-004 -- there is no longer a reason for these
+two mechanisms to be blind to each other, since they are computed by the same evaluate()
+call. compose_report.py's cross-skill apply_suppression() is retired accordingly.
+
+CHK-E-023 (mobile ad density) was cut 2026-09-04 as D-018: see the check-level note below.
+
+Reference: content-engagement-audit/SKILL.md and references/checks.md.
+"""
+from __future__ import annotations
+
+import re
+
+# `home` added in Stage C (2026-09-04): a homepage's job is navigation and framing, not
+# comprehensive information, so applying the same word-count/evidence-density bar as a
+# content page misjudges it by design. Found firing CHK-D-004 (thin content) on gohugo.io's
+# 197-word hero-plus-feature-list homepage -- exactly the kind of terse-by-design page this
+# exclusion is for, without touching the checks' behaviour on actual content pages.
+NON_INFORMATIONAL_PAGE_TYPES = {"contact", "login", "home"}
+
+# URL fallback for the exclusion above, added by D-030 (2026-09-10). The exclusion is by
+# page_type, so it silently stops working when the classifier misfiles a page -- qonto.com's
+# `/en/contact-form` is classified `page_type="product"`, so CHK-D-004 called a contact form
+# "thin content" at 183 words. Same failure D-029 fixed for CHK-D-006's Organization-JSON-LD
+# suppression: the page was what it was, the label was wrong, and a misfiled page is not a
+# defect. Deliberately narrow -- three pages corpus-wide match, all on one site.
+_NON_INFORMATIONAL_URL_RE = re.compile(
+    r"/(contact|contact-us|contact-form|get-in-touch|login|signin|sign-in|log-in)(/|$|\?)", re.I
+)
+
+
+def _is_non_english(page: dict) -> bool:
+    """True only when the page *declares* a non-English language. D-031.
+
+    Deliberately one-sided: a missing or malformed `lang` is treated as English, because
+    most of this corpus is English and guessing language from text would be a second
+    detector to get wrong. This only suppresses a claim where the page itself says the
+    English-only detectors do not apply.
+    """
+    lang = (page.get("lang") or "").strip().lower()
+    return bool(lang) and not lang.startswith("en")
+
+
+def _is_non_informational(page: dict) -> bool:
+    """A page whose job is a form or a front door, not conveying information -- so the
+    word-count checks (CHK-D-004, CHK-D-010) must not grade it as content."""
+    if page.get("page_type") in NON_INFORMATIONAL_PAGE_TYPES:
+        return True
+    return bool(_NON_INFORMATIONAL_URL_RE.search(page.get("url", "") or ""))
+
+
+LOW_STRUCTURE_ARCHETYPES = {"legal"}  # page_type, not site archetype, per checks.md guard
+NARRATIVE_PAGE_TYPES = {"article"}
+VARIANT_OR_LEGAL_PAGE_TYPES = {"legal"}
+
+_WORD_RE = re.compile(r"[A-Za-z0-9']+")
+_PRONOUN_START_RE = re.compile(
+    r"^(He|She|It|They|We|This|These|Him|Her|Them|Its|Their|His|Hers)\b", re.I
+)
+_DEFINITION_RE = re.compile(r"\b\w+\s+is\s+(a|an|the)\s+\w+", re.I)
+_NUMBER_UNIT_RE = re.compile(
+    r"\b\d[\d,.]*\s*(%|percent|million|billion|thousand|km|kg|mb|gb|tb|ms|seconds?|minutes?|"
+    r"hours?|days?|years?|users?|customers?|countries?|dollars?|\$)", re.I
+)
+_COMPARISON_RE = re.compile(r"\b(than|compared to|vs\.?|versus|faster|slower|more than|less than|"
+                             r"cheaper|better than|worse than)\b", re.I)
+
+
+def _envelope(check_id, state, evidence, severity, evidence_strength, suggested_action,
+              locus=None, suppressed_by=None, recommendation_only=False, subcheck=None):
+    """`subcheck` distinguishes envelopes that share a check_id and a locus but are graded
+    separately -- CHK-E-014's static WCAG failures (ceiling `high`) and its contrast
+    sub-check (ceiling `medium`, NORMATIVE) are two different judgments about one page,
+    not a duplicate. The orchestrator's meta-evaluation keys its duplicate detection on
+    (check_id, url, subcheck) for exactly this reason."""
+    return {
+        "check_id": check_id, "state": state, "locus": locus or {"url": None, "selector": None},
+        "evidence": evidence, "severity": severity, "evidence_strength": evidence_strength,
+        "suggested_action": suggested_action, "suppressed_by": suppressed_by or [],
+        "recommendation_only": recommendation_only, "subcheck": subcheck,
+    }
+
+
+def _find_page(pages: list[dict], page_type: str) -> dict | None:
+    for p in pages:
+        if p.get("page_type") == page_type:
+            return p
+    return None
+
+
+def _homepage(pages: list[dict]) -> dict | None:
+    return _find_page(pages, "home")
+
+
+# ---------------------------------------------------------------------------
+# CHK-D-003 — raw-fetch content gap vs. rendered DOM (homepage only)
+# ---------------------------------------------------------------------------
+
+def check_d003(bundle: dict) -> dict:
+    rendered_list = bundle.get("rendered", [])
+    pages = bundle.get("pages", [])
+    home = _homepage(pages)
+
+    if home is None:
+        return _envelope("CHK-D-003", "not_determinable", "No homepage in the sampled pages.",
+                          None, "HARD-MECHANICAL", None)
+    if not home.get("extraction_ok", True):
+        # A page whose HTTP fetch failed outright (`status != "ok"`) carries
+        # main_text_words=0/headings=[] by construction, which this check's own
+        # "raw_h1==0 and raw_words<50" rule would otherwise read as a confirmed render-gap
+        # finding -- "we never got the page" is not "the page is empty". Found live on
+        # www.gnu.org in the adversarial set (2026-09-04): a fetch failure produced a
+        # false 'high' CHK-D-003 finding. `_unavailable_page` sets extraction_ok=False for
+        # exactly this reason.
+        return _envelope("CHK-D-003", "not_determinable", "Homepage could not be fetched.",
+                          None, "HARD-MECHANICAL", None, locus={"url": home.get("url"), "selector": None})
+
+    raw_words = home.get("main_text_words", 0)
+    raw_h1 = sum(1 for h in home.get("headings", []) if h.get("level") == 1)
+    noscript_words = home.get("noscript", {}).get("words", 0)
+    locus = {"url": home.get("url"), "selector": None}
+
+    home_rendered = next((r for r in rendered_list if r.get("url") == home.get("url")), None)
+    if home_rendered is None or home_rendered.get("status") != "ok":
+        # No rendered evidence available (no headless-browser tool in this environment, or
+        # that page's render was abandoned). Per the officials' Q&A, this is re-derived
+        # one-sidedly: a static fetch with no h1 and near-no text is a finding on its own —
+        # we just cannot confirm whether client-side rendering would have fixed it.
+        if noscript_words > 50:
+            return _envelope("CHK-D-003", "absent", "Homepage: noscript fallback carries "
+                              "substantive content; rendered-DOM comparison unavailable.",
+                              None, "HARD-MECHANICAL", None, locus=locus)
+        if raw_h1 == 0 and raw_words < 50:
+            evidence = (
+                f"Homepage: raw HTTP fetch contains {raw_words} words of main text and "
+                f"{raw_h1} h1. Rendered page evidence is unavailable in this environment, "
+                "so this is a one-sided finding: static HTML alone has no meaningful "
+                "content for a non-rendering fetch. It does not confirm the client-rendered "
+                "version is broken, only that a fetch without JavaScript execution gets "
+                "nothing usable."
+            )
+            return _envelope("CHK-D-003", "present", evidence, "high", "HARD-MECHANICAL",
+                              {"summary": "Implement server-side rendering or static "
+                                          "generation for the homepage; at minimum ensure "
+                                          "primary content and the h1 are present in the "
+                                          "initial HTTP response.", "priority": "high"},
+                              locus=locus)
+        return _envelope("CHK-D-003", "not_determinable",
+                          "Rendered page evidence unavailable, and static HTML has enough "
+                          "content that a render gap cannot be inferred one-sidedly.",
+                          None, "HARD-MECHANICAL", None, locus=locus)
+
+    rendered_words = home_rendered.get("main_text_words", 0)
+    rendered_h1 = home_rendered.get("h1_count", 0)
+
+    gap = (rendered_words - raw_words) / rendered_words if rendered_words > 0 else 0.0
+
+    evidence = (
+        f"Homepage: raw HTTP fetch contains {raw_words} words of main text and {raw_h1} h1; "
+        f"rendered DOM contains {rendered_words} words and {rendered_h1} h1."
+    )
+    action = {"summary": "Implement server-side rendering or static generation for the "
+                          "homepage; at minimum ensure primary content and the h1 are "
+                          "present in the initial HTTP response.", "priority": None}
+
+    if noscript_words > 50 or gap < 0.20:
+        return _envelope("CHK-D-003", "absent", evidence, None, "HARD-MECHANICAL", None, locus=locus)
+
+    if raw_h1 == 0 and raw_words < 50 and rendered_words >= 200:
+        action["priority"] = "critical"
+        return _envelope("CHK-D-003", "present", evidence, "critical", "HARD-MECHANICAL",
+                          action, locus=locus)
+    if raw_h1 >= 1 and gap >= 0.60:
+        action["priority"] = "medium"
+        return _envelope("CHK-D-003", "present", evidence, "medium", "HARD-MECHANICAL",
+                          action, locus=locus)
+    if gap >= 0.20:
+        action["priority"] = "low"
+        return _envelope("CHK-D-003", "present", evidence, "low", "HARD-MECHANICAL",
+                          action, locus=locus)
+
+    return _envelope("CHK-D-003", "absent", evidence, None, "HARD-MECHANICAL", None, locus=locus)
+
+
+# ---------------------------------------------------------------------------
+# CHK-D-004 — thin main content (per page)
+# ---------------------------------------------------------------------------
+
+def check_d004(bundle: dict, d003_result: dict | None = None) -> list[dict]:
+    """`d003_result` is accepted but no longer consulted: since Stage C (2026-09-04) `home`
+    is in `NON_INFORMATIONAL_PAGE_TYPES` and is skipped below regardless of whether
+    CHK-D-003 fired, which is a strict superset of the old `d003_fired`-gated suppression
+    -- D-004 now never evaluates the homepage at all, so the "four findings for one defect"
+    case D-016 already proved unreachable stays unreachable. Kept as a parameter rather than
+    removed so the orchestrator's call site (which still passes it for CHK-D-010's own
+    `d004_results` chaining) does not need a matching signature change.
+    """
+    pages = bundle.get("pages", [])
+    findings = []
+
+    for page in pages:
+        if _is_non_informational(page):
+            continue
+        locus = {"url": page.get("url"), "selector": None}
+        if not page.get("extraction_ok", True):
+            findings.append(_envelope("CHK-D-004", "not_determinable",
+                                       "Content could not be extracted.", None,
+                                       "CORRELATIONAL", None, locus=locus))
+            continue
+        words = page.get("main_text_words", 0)
+        if words < 200:
+            findings.append(_envelope(
+                "CHK-D-004", "present",
+                f"Page {page.get('url')}: main-content extraction yielded {words} words "
+                f"after boilerplate removal.",
+                "medium", "CORRELATIONAL",
+                {"summary": "Add substantive, explicitly-stated content naming the specific "
+                             "facts the page exists to convey.", "priority": "medium"},
+                locus=locus,
+            ))
+        else:
+            findings.append(_envelope("CHK-D-004", "absent",
+                                       f"Page {page.get('url')}: {words} words, above the "
+                                       f"thin-content threshold.", None, "CORRELATIONAL",
+                                       None, locus=locus))
+    return findings
+
+
+# ---------------------------------------------------------------------------
+# CHK-D-005 — absent or generic headings (per page, >500 words)
+# ---------------------------------------------------------------------------
+
+_GENERIC_HEADING_RE = re.compile(r"^(more|details|info|learn more|read more)$", re.I)
+
+
+def check_d005(bundle: dict) -> list[dict]:
+    findings = []
+    for page in bundle.get("pages", []):
+        if page.get("page_type") in LOW_STRUCTURE_ARCHETYPES or page.get("page_type") in ("faq",):
+            continue
+        words = page.get("main_text_words", 0)
+        if words <= 500:
+            continue
+        locus = {"url": page.get("url"), "selector": None}
+        if not page.get("extraction_ok", True):
+            findings.append(_envelope("CHK-D-005", "not_determinable",
+                                       "Content could not be extracted.", None, "THEORETICAL",
+                                       None, locus=locus))
+            continue
+        subheadings = [h for h in page.get("headings", []) if h.get("level") in (2, 3)]
+        descriptive = [h for h in subheadings if not _GENERIC_HEADING_RE.match((h.get("text") or "").strip())]
+        if not descriptive:
+            findings.append(_envelope(
+                "CHK-D-005", "present",
+                f"Page {page.get('url')}: {words} words of body text with "
+                f"{len(descriptive)} descriptive subheadings.",
+                "low", "THEORETICAL",
+                {"summary": "Add descriptive subheadings that state the fact or topic of "
+                             "each section.", "priority": "low"},
+                locus=locus,
+            ))
+        else:
+            findings.append(_envelope("CHK-D-005", "absent",
+                                       f"Page {page.get('url')}: {len(descriptive)} "
+                                       f"descriptive subheadings present.", None,
+                                       "THEORETICAL", None, locus=locus))
+    return findings
+
+
+# ---------------------------------------------------------------------------
+# CHK-D-009 — broken internal links
+# ---------------------------------------------------------------------------
+
+def check_d009(bundle: dict) -> dict:
+    links = bundle.get("links", {})
+    if links.get("status") != "ok":
+        return _envelope("CHK-D-009", "not_determinable", links.get("reason") or
+                          "Internal link check unavailable.", None, "THEORETICAL/CORRELATIONAL", None)
+
+    broken = [r for r in links.get("results", []) if isinstance(r.get("http_status"), int)
+              and r["http_status"] >= 400]
+    if broken:
+        return _envelope(
+            "CHK-D-009", "present", f"Found {len(broken)} broken internal link(s).",
+            "low", "THEORETICAL/CORRELATIONAL",
+            {"summary": "Repair the link's target or replace it; add a 301 redirect if the "
+                         "target is genuinely gone.", "priority": "low"},
+        )
+    return _envelope("CHK-D-009", "absent", "No broken internal links found among "
+                      f"{links.get('checked_count', 0)} checked.", None,
+                      "THEORETICAL/CORRELATIONAL", None)
+
+
+# ---------------------------------------------------------------------------
+# CHK-D-010 — low extractable-evidence density
+# ---------------------------------------------------------------------------
+
+def check_d010(bundle: dict, d004_results: list[dict] | None = None) -> list[dict]:
+    """Demoted to recommendation-only in Stage C (2026-09-04): the three-pattern regex
+    proxy for 'evidence density' (`_DEFINITION_RE`/`_NUMBER_UNIT_RE`/`_COMPARISON_RE`) fired
+    on 17 of 34 real dev/negative-control sites, including developer.mozilla.org and
+    docs.djangoproject.com -- narrative-but-well-written pages that legitimately lack the
+    three literal sentence shapes without being defective. The underlying mechanism
+    (evidence density correlates with GEO absorption) is real and cited; this narrow
+    proxy is too imprecise to assert as a confirmed defect, the same class of demotion
+    D-012 already applied to CHK-E-024.
+    """
+    d004_by_url = {f["locus"]["url"]: f for f in (d004_results or [])}
+    findings = []
+    for page in bundle.get("pages", []):
+        if _is_non_informational(page):
+            continue
+        locus = {"url": page.get("url"), "selector": None}
+        d004 = d004_by_url.get(page.get("url"))
+        if d004 and d004.get("state") == "present":
+            findings.append(_envelope("CHK-D-010", "not_applicable",
+                                       "Suppressed: CHK-D-004 (thin content) fired for this page.",
+                                       None, "CORRELATIONAL", None, locus=locus,
+                                       suppressed_by=["CHK-D-004"]))
+            continue
+        if not page.get("extraction_ok", True):
+            findings.append(_envelope("CHK-D-010", "not_determinable",
+                                       "Content could not be extracted.", None, "CORRELATIONAL",
+                                       None, locus=locus))
+            continue
+        if _is_non_english(page):
+            # D-031 (2026-09-10): all three evidence-shape detectors are English-only --
+            # `_DEFINITION_RE` wants "is a/an/the", `_NUMBER_UNIT_RE`'s unit list is English
+            # words, `_COMPARISON_RE` wants "than"/"vs"/"faster". On a German or Japanese
+            # page they cannot match no matter how evidence-dense the writing is, so
+            # "no definition, numerical fact, or comparison" is a claim about the detector,
+            # not about the page. Found on qonto.com's `/de-at` pages, whose text carries
+            # "Ab 9 EUR/Monat" and "2.000+ Integrationen" and was reported as evidence-free.
+            # Not measurable is not the same as absent.
+            findings.append(_envelope(
+                "CHK-D-010", "not_determinable",
+                f"Page language is {page.get('lang')!r}; this check's definition, "
+                "number-unit and comparison detectors are English-only.",
+                None, "CORRELATIONAL", None, locus=locus, recommendation_only=True))
+            continue
+        text = page.get("main_text", "")
+        has_evidence = bool(_DEFINITION_RE.search(text) or _NUMBER_UNIT_RE.search(text)
+                             or _COMPARISON_RE.search(text))
+        if not has_evidence:
+            findings.append(_envelope(
+                "CHK-D-010", "present",
+                "None of the checked pages contain a definition, numerical fact, or "
+                "comparison.", None, "CORRELATIONAL",
+                {"summary": "Add explicit definitions, numerical facts, or comparisons — the "
+                             "shapes an assistant can lift verbatim into an answer. "
+                             "(Proactive — not a confirmed defect.)", "priority": "low"},
+                locus=locus, recommendation_only=True,
+            ))
+        else:
+            findings.append(_envelope("CHK-D-010", "absent",
+                                       "Page contains at least one definition, numerical "
+                                       "fact, or comparison.", None, "CORRELATIONAL",
+                                       None, locus=locus, recommendation_only=True))
+    return findings
+
+
+# ---------------------------------------------------------------------------
+# CHK-D-011 — pronoun-saturated key claims (home/about only)
+# ---------------------------------------------------------------------------
+
+def _split_sentences(text: str) -> list[str]:
+    return [s.strip() for s in re.split(r"(?<=[.!?])\s+", text) if s.strip()]
+
+
+def check_d011(bundle: dict) -> list[dict]:
+    """Demoted to recommendation-only by D-027 (2026-09-09): R-1 hand-verification opened
+    all three cited sources (P-01.05, P-01.02, P-06.04) and found none discuss pronouns,
+    ambiguous subjects, or unclear referents -- a genuine evidence gap, not a citation
+    mismatch. Kept as a proactive recommendation rather than cut, since the underlying
+    advice is defensible on its own terms even without academic support (same demotion
+    class as CHK-D-010 and CHK-E-024, for a different reason: those had weak/single-source
+    support, this has none at all)."""
+    findings = []
+    for page in bundle.get("pages", []):
+        if page.get("page_type") not in ("home", "about"):
+            continue
+        if page.get("page_type") in NARRATIVE_PAGE_TYPES:
+            continue
+        locus = {"url": page.get("url"), "selector": None}
+        if not page.get("extraction_ok", True):
+            findings.append(_envelope("CHK-D-011", "not_determinable",
+                                       "Content could not be extracted.", None,
+                                       "THEORETICAL/HEURISTIC", None, locus=locus))
+            continue
+        sentences = _split_sentences(page.get("main_text", ""))
+        if not sentences:
+            findings.append(_envelope("CHK-D-011", "absent", "No sentences to evaluate.",
+                                       None, "THEORETICAL/HEURISTIC", None, locus=locus,
+                                       recommendation_only=True))
+            continue
+        pronoun_starts = sum(1 for s in sentences if _PRONOUN_START_RE.match(s))
+        pct = round(pronoun_starts / len(sentences) * 100)
+        if pct > 60:
+            findings.append(_envelope(
+                "CHK-D-011", "present",
+                f"{pct}% of sentences use a pronoun as subject without a preceding "
+                f"explicit mention.", "low", "THEORETICAL/HEURISTIC",
+                {"summary": "Ensure the first occurrence of each key claim explicitly "
+                             "names its subject before any pronoun stands in for it. "
+                             "(Proactive — not a confirmed defect.)",
+                 "priority": "low"},
+                locus=locus, recommendation_only=True,
+            ))
+        else:
+            findings.append(_envelope("CHK-D-011", "absent",
+                                       f"{pct}% pronoun-initial sentences, below threshold.",
+                                       None, "THEORETICAL/HEURISTIC", None, locus=locus,
+                                       recommendation_only=True))
+    return findings
+
+
+# ---------------------------------------------------------------------------
+# CHK-D-013 — near-duplicate templated content (Jaccard over main_text trigrams)
+# ---------------------------------------------------------------------------
+
+def _trigram_set(text: str) -> set[str]:
+    words = _WORD_RE.findall(text.lower())
+    return {" ".join(words[i:i + 3]) for i in range(len(words) - 2)} if len(words) >= 3 else set()
+
+
+def _jaccard(a: set[str], b: set[str]) -> float:
+    if not a and not b:
+        return 1.0
+    union = a | b
+    if not union:
+        return 0.0
+    return len(a & b) / len(union)
+
+
+def check_d013(bundle: dict) -> dict:
+    """Demoted to recommendation-only by D-027 (2026-09-09): R-1 hand-verification opened
+    both cited sources (P-01.09, P-06.03) and found neither discusses duplicate/templated
+    content or cross-page text similarity -- a genuine evidence gap, not a citation
+    mismatch. Kept as a proactive recommendation rather than cut; see check_d011's
+    docstring for the same reasoning."""
+    eligible = [p for p in bundle.get("pages", [])
+                if p.get("page_type") not in VARIANT_OR_LEGAL_PAGE_TYPES
+                and p.get("extraction_ok", True)]
+    if len(eligible) < 3:
+        return _envelope("CHK-D-013", "not_determinable",
+                          "Fewer than 3 eligible pages to compare.", None, "CORRELATIONAL", None)
+
+    trigram_sets = [(p["url"], _trigram_set(p.get("main_text", ""))) for p in eligible]
+    high_similarity_pairs = []
+    for i in range(len(trigram_sets)):
+        for j in range(i + 1, len(trigram_sets)):
+            sim = _jaccard(trigram_sets[i][1], trigram_sets[j][1])
+            if sim > 0.8:
+                high_similarity_pairs.append((trigram_sets[i][0], trigram_sets[j][0], sim))
+
+    if len(high_similarity_pairs) >= 2:  # >=3 pages mutually similar implies >=2 pairs among them
+        avg_pct = round(sum(p[2] for p in high_similarity_pairs) / len(high_similarity_pairs) * 100)
+        return _envelope(
+            "CHK-D-013", "present",
+            f"Pages share {avg_pct}% of word trigrams in their main content.", "low",
+            "CORRELATIONAL",
+            {"summary": "Add unique content to each variant page that answers the specific "
+                         "question a reader would have about that variant. "
+                         "(Proactive — not a confirmed defect.)", "priority": "low"},
+            recommendation_only=True,
+        )
+    return _envelope("CHK-D-013", "absent", "No cluster of near-duplicate pages found.",
+                      None, "CORRELATIONAL", None, recommendation_only=True)
+
+
+NON_DESCRIPTIVE_LINK_TEXT = {
+    "click here", "here", "read more", "more", "learn more", "this link", "details",
+    "info", "click", "tap", "view", "see",
+}
+COMMERCIAL_ARCHETYPES = {"ecommerce", "saas_marketing", "news_editorial", "local_business"}
+PERSONAL_ARCHETYPES = {"personal", "hobby", "portfolio"}
+
+
+def _rendered_for(bundle: dict, url: str) -> dict | None:
+    return next((r for r in bundle.get("rendered", []) if r.get("url") == url), None)
+
+
+# ---------------------------------------------------------------------------
+# CHK-E-014 — machine-detectable WCAG failures (6 sub-checks)
+# ---------------------------------------------------------------------------
+
+def check_e014(bundle: dict) -> list[dict]:
+    findings = []
+    for page in bundle.get("pages", []):
+        locus = {"url": page.get("url")}
+        if not page.get("extraction_ok", True):
+            # A page whose fetch failed outright has lang=None, images=[], form_controls=[]
+            # by construction, which this loop would otherwise read as confirmed WCAG
+            # violations on a page we never actually got. Found live on www.gnu.org in the
+            # adversarial set (2026-09-04).
+            findings.append(_envelope("CHK-E-014", "not_determinable",
+                                       "Page could not be fetched.", None, "HARD-MECHANICAL",
+                                       None, locus=locus, subcheck="wcag_static"))
+            continue
+        violations: list[str] = []
+
+        if page.get("lang") is None:
+            violations.append("missing lang attribute")
+        for img in page.get("images", []):
+            # `decorative_hint` is aria-hidden/role=presentation: an explicit, correct
+            # marking that the image carries no information. Treating it as a violation
+            # penalises exactly the sites that got accessibility right.
+            if img.get("alt") is None and not img.get("decorative_hint"):
+                violations.append("missing alt on a non-decorative image")
+        empty = page.get("interactive_empty", {})
+        if empty.get("links_no_text", 0) > 0:
+            violations.append(f"{empty['links_no_text']} link(s) with no accessible name")
+        if empty.get("buttons_no_text", 0) > 0:
+            violations.append(f"{empty['buttons_no_text']} button(s) with no accessible name")
+        for fc in page.get("form_controls", []):
+            if not fc.get("has_label") and not fc.get("aria_label"):
+                violations.append("unlabelled form control")
+
+        if violations:
+            findings.append(_envelope(
+                "CHK-E-014", "present",
+                f"Page {page.get('url')}: {len(violations)} accessibility violation(s): "
+                f"{'; '.join(violations)}.", "high", "HARD-MECHANICAL",
+                {"summary": "Add lang, descriptive alt text, accessible names for controls, "
+                             "and labels for all form inputs.", "priority": "high"}, locus=locus,
+                subcheck="wcag_static"))
+        else:
+            findings.append(_envelope("CHK-E-014", "absent", f"Page {page.get('url')}: no "
+                                       "hard-mechanical WCAG violations found.", None,
+                                       "HARD-MECHANICAL", None, locus=locus,
+                                       subcheck="wcag_static"))
+
+        rendered = _rendered_for(bundle, page.get("url"))
+        if rendered is None or rendered.get("status") != "ok":
+            findings.append(_envelope("CHK-E-014", "not_determinable",
+                                       "Rendered page evidence unavailable for contrast "
+                                       "sub-check.",
+                                       None, "NORMATIVE", None, locus=locus,
+                                       subcheck="contrast"))
+            continue
+        low_contrast = [
+            p for p in rendered.get("computed_styles", {}).get("contrast_pairs", [])
+            if (p.get("ratio", 99) < 3.0 if (p.get("font_px", 0) >= 18 or p.get("bold"))
+                else p.get("ratio", 99) < 4.5)
+        ]
+        if low_contrast:
+            findings.append(_envelope(
+                "CHK-E-014", "present",
+                f"Page {page.get('url')}: {len(low_contrast)} low-contrast text pair(s).",
+                "medium", "NORMATIVE",
+                {"summary": "Increase foreground/background contrast to >=4.5:1 (normal "
+                             "text) or >=3:1 (large text).", "priority": "medium"}, locus=locus,
+                subcheck="contrast"))
+        else:
+            findings.append(_envelope("CHK-E-014", "absent", f"Page {page.get('url')}: "
+                                       "contrast within WCAG AA.", None, "NORMATIVE", None,
+                                       locus=locus, subcheck="contrast"))
+    return findings
+
+
+# ---------------------------------------------------------------------------
+# CHK-E-015 — viewport meta missing or zoom-blocking
+# ---------------------------------------------------------------------------
+
+_MAX_SCALE_RE = re.compile(r"maximum-scale\s*=\s*([\d.]+)")
+
+
+def check_e015(bundle: dict) -> list[dict]:
+    findings = []
+    for page in bundle.get("pages", []):
+        locus = {"url": page.get("url")}
+        if not page.get("extraction_ok", True):
+            findings.append(_envelope("CHK-E-015", "not_determinable",
+                                       "Page could not be fetched.", None, "NORMATIVE", None,
+                                       locus=locus, subcheck="viewport_meta"))
+            continue
+        viewport = page.get("meta", {}).get("viewport")
+        if viewport is None:
+            findings.append(_envelope(
+                "CHK-E-015", "present", f"Page {page.get('url')}: missing viewport meta "
+                "tag.", "medium", "NORMATIVE",
+                {"summary": "Add <meta name=\"viewport\" content=\"width=device-width, "
+                             "initial-scale=1\">.", "priority": "medium"}, locus=locus,
+                subcheck="viewport_meta"))
+        else:
+            scale_match = _MAX_SCALE_RE.search(viewport)
+            zoom_blocked = "user-scalable=no" in viewport.replace(" ", "").lower() or \
+                (scale_match and float(scale_match.group(1)) < 2)
+            if zoom_blocked:
+                findings.append(_envelope(
+                    "CHK-E-015", "present", f"Page {page.get('url')}: viewport meta "
+                    "disables user zoom. Violates WCAG 2.2 SC 1.4.4.", "high", "NORMATIVE",
+                    {"summary": "Remove user-scalable=no and maximum-scale constraints.",
+                     "priority": "high"}, locus=locus, subcheck="viewport_meta"))
+            else:
+                findings.append(_envelope("CHK-E-015", "absent", f"Page {page.get('url')}: "
+                                           "viewport meta present, zoom not blocked.", None,
+                                           "NORMATIVE", None, locus=locus,
+                                           subcheck="viewport_meta"))
+
+        rendered = _rendered_for(bundle, page.get("url"))
+        if rendered is None or rendered.get("status") != "ok":
+            continue
+        overflow = rendered.get("viewports", {}).get("mobile_375", {}).get("horizontal_overflow")
+        if overflow:
+            findings.append(_envelope(
+                "CHK-E-015", "present", f"Page {page.get('url')}: horizontal scroll at "
+                "375px viewport width.", "medium", "NORMATIVE",
+                {"summary": "Fix responsive CSS so no element overflows the viewport at "
+                             "375px.", "priority": "medium"}, locus=locus,
+                subcheck="overflow"))
+    return findings
+
+
+# ---------------------------------------------------------------------------
+# CHK-E-016 — standalone tap targets below WCAG 2.2 minimum
+# ---------------------------------------------------------------------------
+
+def check_e016(bundle: dict) -> list[dict]:
+    findings = []
+    for rendered in bundle.get("rendered", []):
+        locus = {"url": rendered.get("url")}
+        if rendered.get("status") != "ok":
+            findings.append(_envelope("CHK-E-016", "not_determinable",
+                                       "Rendered page evidence unavailable.", None, "NORMATIVE", None,
+                                       locus=locus))
+            continue
+        targets = rendered.get("viewports", {}).get("mobile_375", {}).get("tap_targets", [])
+        small = [t for t in targets if t.get("standalone") and (t.get("w", 24) < 24 or t.get("h", 24) < 24)]
+        if small:
+            smallest = min(small, key=lambda t: t.get("w", 0) * t.get("h", 0))
+            findings.append(_envelope(
+                "CHK-E-016", "present",
+                f"{len(small)} standalone interactive element(s) are below the WCAG 2.2 "
+                f"SC 2.5.8 minimum of 24x24 CSS px (smallest: {smallest.get('w')}x"
+                f"{smallest.get('h')} px).", "medium", "NORMATIVE",
+                {"summary": "Increase target size or padding to at least 24x24 CSS px.",
+                 "priority": "medium"}, locus=locus))
+        else:
+            findings.append(_envelope("CHK-E-016", "absent", "All standalone tap targets "
+                                       "meet the WCAG 2.2 minimum.", None, "NORMATIVE", None,
+                                       locus=locus))
+    return findings
+
+
+# ---------------------------------------------------------------------------
+# CHK-E-017 — non-descriptive anchor text
+# ---------------------------------------------------------------------------
+
+def check_e017(bundle: dict) -> list[dict]:
+    findings = []
+    for page in bundle.get("pages", []):
+        locus = {"url": page.get("url")}
+        if not page.get("extraction_ok", True):
+            findings.append(_envelope("CHK-E-017", "not_determinable",
+                                       "Page could not be fetched.", None,
+                                       "NORMATIVE/THEORETICAL", None, locus=locus))
+            continue
+        links = page.get("links", [])
+        if not links:
+            findings.append(_envelope("CHK-E-017", "absent", "No links on page.", None,
+                                       "NORMATIVE/THEORETICAL", None, locus=locus))
+            continue
+        non_descriptive = [
+            l for l in links
+            if not l.get("aria_label") and (l.get("text") or "").strip().lower() in NON_DESCRIPTIVE_LINK_TEXT
+        ]
+        pct = round(len(non_descriptive) / len(links) * 100)
+        if pct > 10:
+            findings.append(_envelope(
+                "CHK-E-017", "present", f"Page {page.get('url')}: {len(non_descriptive)} "
+                f"link(s) ({pct}%) have non-descriptive anchor text.", "medium",
+                "NORMATIVE/THEORETICAL",
+                {"summary": "Replace non-descriptive anchor text with text that describes "
+                             "the destination or action.", "priority": "medium"}, locus=locus))
+        else:
+            findings.append(_envelope("CHK-E-017", "absent", f"Page {page.get('url')}: "
+                                       f"{pct}% non-descriptive links, below threshold.",
+                                       None, "NORMATIVE/THEORETICAL", None, locus=locus))
+    return findings
+
+
+# ---------------------------------------------------------------------------
+# CHK-E-018 — content-blocking overlay at load
+# ---------------------------------------------------------------------------
+
+def check_e018(bundle: dict) -> list[dict]:
+    findings = []
+    for rendered in bundle.get("rendered", []):
+        locus = {"url": rendered.get("url")}
+        if rendered.get("status") != "ok":
+            findings.append(_envelope("CHK-E-018", "not_determinable",
+                                       "Rendered page evidence unavailable.", None, "NORMATIVE", None,
+                                       locus=locus))
+            continue
+        viewport = rendered.get("viewports", {}).get("mobile_375", {})
+        overlays = [o for o in viewport.get("overlays", []) if o.get("dismissible_hint") == "none"]
+        if overlays and viewport.get("body_scroll_locked"):
+            findings.append(_envelope(
+                "CHK-E-018", "present",
+                f"An overlay covering ~{overlays[0].get('viewport_coverage_pct')}% of "
+                f"viewport with scroll-lock is present at load.", "high", "NORMATIVE",
+                {"summary": "Trigger overlays via user interaction; remove scroll-lock.",
+                 "priority": "high"}, locus=locus))
+        else:
+            findings.append(_envelope("CHK-E-018", "absent", "No content-blocking overlay "
+                                       "at load.", None, "NORMATIVE", None, locus=locus))
+    return findings
+
+
+# ---------------------------------------------------------------------------
+# CHK-E-019 — blank first paint, no fallback
+# ---------------------------------------------------------------------------
+
+def check_e019(bundle: dict) -> dict:
+    home = next((p for p in bundle.get("pages", []) if p.get("page_type") == "home"), None)
+    if home is None:
+        return _envelope("CHK-E-019", "not_determinable", "No homepage in sample.", None,
+                          "HARD-MECHANICAL/CAUSAL", None)
+
+    locus = {"url": home.get("url")}
+    if not home.get("extraction_ok", True):
+        # Mirrors CHK-D-003's same fix: a homepage whose fetch failed outright has
+        # main_text_words=0 by construction, which this check's own "raw_words<50" rule
+        # would otherwise read as a confirmed blank-first-paint finding. Found live on
+        # www.gnu.org in the adversarial set (2026-09-04) -- masked there only by O-1
+        # deferring to CHK-D-003, which does not protect a site where D-003 doesn't
+        # independently fire.
+        return _envelope("CHK-E-019", "not_determinable", "Homepage could not be fetched.",
+                          None, "HARD-MECHANICAL/CAUSAL", None, locus=locus)
+    raw_words = home.get("main_text_words", 0)
+    noscript_words = home.get("noscript", {}).get("words", 0)
+
+    if noscript_words >= 50:
+        return _envelope("CHK-E-019", "absent", "Noscript fallback carries substantive "
+                          "content.", None, "HARD-MECHANICAL/CAUSAL", None, locus=locus)
+
+    rendered = _rendered_for(bundle, home.get("url"))
+    if rendered is None or rendered.get("status") != "ok":
+        # No rendered evidence available. Re-derived one-sidedly from static HTML + noscript
+        # per the officials' Q&A: a near-empty raw fetch with no noscript fallback is itself
+        # the finding — we just cannot confirm the rendered DOM would have filled it in.
+        if raw_words < 50:
+            return _envelope(
+                "CHK-E-019", "present",
+                f"Homepage: plain HTTP fetch yielded {raw_words} words and no noscript "
+                f"fallback ({noscript_words} words). Rendered page evidence is unavailable "
+                "in this environment, so this is a one-sided finding: static HTML alone is "
+                "effectively blank to a non-rendering client.", "high",
+                "HARD-MECHANICAL/CAUSAL",
+                {"summary": "Implement SSR/SSG or a meaningful loading state and noscript "
+                             "fallback.", "priority": "high"}, locus=locus)
+        return _envelope("CHK-E-019", "not_determinable",
+                          "Rendered page evidence unavailable, and static HTML has enough "
+                          "content that a blank-first-paint gap cannot be inferred "
+                          "one-sidedly.", None, "HARD-MECHANICAL/CAUSAL", None, locus=locus)
+
+    rendered_words = rendered.get("main_text_words", 0)
+    if raw_words < 50 and rendered_words >= 200:
+        return _envelope(
+            "CHK-E-019", "present",
+            f"Homepage: plain HTTP fetch yielded {raw_words} words; no loading indicator "
+            f"or noscript present.", "high", "HARD-MECHANICAL/CAUSAL",
+            {"summary": "Implement SSR/SSG or a meaningful loading state and noscript "
+                         "fallback.", "priority": "high"}, locus=locus)
+
+    return _envelope("CHK-E-019", "absent", "No blank-first-paint pattern detected.", None,
+                      "HARD-MECHANICAL/CAUSAL", None, locus=locus)
+
+
+# ---------------------------------------------------------------------------
+# CHK-E-020 — autoplaying media with sound
+# ---------------------------------------------------------------------------
+
+def check_e020(bundle: dict) -> list[dict]:
+    findings = []
+    for page in bundle.get("pages", []):
+        locus = {"url": page.get("url")}
+        if not page.get("extraction_ok", True):
+            findings.append(_envelope("CHK-E-020", "not_determinable",
+                                       "Page could not be fetched.", None, "NORMATIVE", None,
+                                       locus=locus))
+            continue
+        offenders = [m for m in page.get("media", [])
+                     if m.get("autoplay") and not m.get("muted") and not m.get("controls")]
+        if offenders:
+            findings.append(_envelope(
+                "CHK-E-020", "present", f"{len(offenders)} video/audio element(s) autoplay "
+                "with sound and no pause/stop mechanism (WCAG 2.2 SC 1.4.2).", "medium",
+                "NORMATIVE",
+                {"summary": "Add muted to autoplaying video; remove autoplay from audio.",
+                 "priority": "medium"}, locus=locus))
+        else:
+            findings.append(_envelope("CHK-E-020", "absent", "No unmuted autoplaying "
+                                       "media without controls.", None, "NORMATIVE", None,
+                                       locus=locus))
+    return findings
+
+
+# ---------------------------------------------------------------------------
+# CHK-E-021 — images/iframes missing dimensions
+# ---------------------------------------------------------------------------
+
+def check_e021(bundle: dict) -> dict:
+    """Demoted to recommendation-only in Stage C (2026-09-04): fired on 26 of 34 real
+    dev/negative-control sites -- near-universal, exactly as PLAN.md §5 already predicted
+    ("CLS has no perception research behind it -- Google's own threshold documentation says
+    so"). `THEORETICAL` evidence strength was already the lowest tier and severity was
+    already capped below high, but a signal this common cannot function as a differentiated
+    defect claim; explicit dimensions remain good, actionable advice, so it moves to
+    `recommendations[]` rather than being cut outright.
+    """
+    affected_pages = set()
+    total = 0
+    for page in bundle.get("pages", []):
+        for img in page.get("images", []):
+            if img.get("in_picture"):
+                continue
+            if img.get("width_attr") is None and img.get("height_attr") is None and \
+                    not img.get("css_aspect_ratio"):
+                total += 1
+                affected_pages.add(page.get("url"))
+        for f in page.get("iframes", []):
+            if f.get("width_attr") is None and f.get("height_attr") is None:
+                total += 1
+                affected_pages.add(page.get("url"))
+
+    if total < 3:
+        return _envelope("CHK-E-021", "absent", f"{total} affected element(s), below the "
+                          "noise floor.", None, "THEORETICAL", None, recommendation_only=True)
+
+    severity = "low"
+    return _envelope(
+        "CHK-E-021", "present", f"{total} image(s)/iframe(s) lack explicit width/height "
+        f"or aspect-ratio, so content reflows during load.", severity, "THEORETICAL",
+        {"summary": "Add width/height attributes or CSS aspect-ratio to reserve layout "
+                     "space before the resource loads. (Proactive — not a confirmed defect.)",
+         "priority": severity}, recommendation_only=True)
+
+
+# ---------------------------------------------------------------------------
+# CHK-E-022 — missing landmark/heading integrity
+# ---------------------------------------------------------------------------
+
+def check_e022(bundle: dict) -> list[dict]:
+    findings = []
+    for page in bundle.get("pages", []):
+        locus = {"url": page.get("url")}
+        if not page.get("extraction_ok", True):
+            # A page whose fetch failed outright has headings=[]/landmarks={} by
+            # construction, which read as "no h1 element found" -- a confirmed 'high'
+            # finding on a page we never actually got. Found live on www.gnu.org in the
+            # adversarial set (2026-09-04).
+            findings.append(_envelope("CHK-E-022", "not_determinable",
+                                       "Page could not be fetched.", None,
+                                       "NORMATIVE/PRACTITIONER", None, locus=locus))
+            continue
+        h1_count = sum(1 for h in page.get("headings", []) if h.get("level") == 1)
+        no_main = page.get("landmarks", {}).get("main", 0) == 0
+        levels = [h["level"] for h in sorted(page.get("headings", []), key=lambda h: h.get("order", 0))]
+        skips = any(b - a > 1 for a, b in zip(levels, levels[1:]) if b > a)
+
+        # Only *zero* h1 is a defect. The multiple-h1 branch was removed on 2026-09-04
+        # after the Stage B screen: it cited WCAG 2.2 SC 2.4.6, which requires headings to
+        # *describe topic or purpose* and says nothing about how many h1 elements a page
+        # may have. HTML5 sectioning permits more than one. The check was enforcing a style
+        # preference under a normative citation that does not support it -- a false
+        # positive at the framing level, which D-011 exists to prevent.
+        if h1_count == 0:
+            findings.append(_envelope(
+                "CHK-E-022", "present", f"Page {page.get('url')}: no <h1> element found, so "
+                "the page states no primary topic. Violates WCAG 2.2 SC 1.3.1 "
+                "(Info and Relationships).", "high",
+                "NORMATIVE/PRACTITIONER",
+                {"summary": "Add exactly one <h1> naming the page's primary topic.",
+                 "priority": "high"}, locus=locus))
+        elif no_main or skips:
+            reason = "missing <main> landmark" if no_main else "heading level skip detected"
+            findings.append(_envelope(
+                "CHK-E-022", "present", f"Page {page.get('url')}: {reason}. Violates "
+                "structural conventions (WCAG 2.2 SC 1.3.1).", "medium",
+                "NORMATIVE/PRACTITIONER",
+                {"summary": "Add <main> to wrap primary content; fix heading level skips.",
+                 "priority": "medium"}, locus=locus))
+        else:
+            findings.append(_envelope("CHK-E-022", "absent", f"Page {page.get('url')}: "
+                                       "landmark and heading structure intact.", None,
+                                       "NORMATIVE/PRACTITIONER", None, locus=locus))
+    return findings
+
+
+# ---------------------------------------------------------------------------
+# CHK-E-024 — missing trust signals (recommendation-only, single-source rule)
+# ---------------------------------------------------------------------------
+
+def check_e024(bundle: dict) -> dict:
+    archetype = bundle.get("site", {}).get("archetype")
+    if archetype not in COMMERCIAL_ARCHETYPES:
+        return _envelope("CHK-E-024", "not_applicable", "Non-commercial archetype: exempt.",
+                          None, "CORRELATIONAL", None, recommendation_only=True)
+
+    pages = [p for p in bundle.get("pages", []) if p.get("page_type") in ("home", "about", "contact")]
+    missing = []
+    if not any(p.get("contact_signals", {}).get("email") or p.get("contact_signals", {}).get("phone")
+               for p in pages):
+        missing.append("contact information")
+    if bundle.get("site", {}).get("scheme") != "https":
+        missing.append("HTTPS")
+
+    if missing:
+        return _envelope(
+            "CHK-E-024", "present", f"Commercial site: no detectable {', '.join(missing)}.",
+            None, "CORRELATIONAL",
+            {"summary": "Add contact information, organisation name in footer, HTTPS, and "
+                         "byline dates on articles. (Proactive — not a confirmed defect.)",
+             "priority": "low"}, recommendation_only=True)
+    return _envelope("CHK-E-024", "absent", "Commercial trust signals present.", None,
+                      "CORRELATIONAL", None, recommendation_only=True)
+
+
+
+def evaluate(bundle: dict) -> list[dict]:
+    """Run all seventeen checks. D-004 needs D-003's result; D-010 needs D-004's -- same
+    dependency order the two skills' procedures required before the merge. O-1 (CHK-E-019
+    defers to CHK-D-003) is applied last, in-skill: see the module docstring for why this
+    moved out of the orchestrator's compose_report.apply_suppression().
+    """
+    findings: list[dict] = []
+
+    d003 = check_d003(bundle)
+    findings.append(d003)
+
+    d004_list = check_d004(bundle, d003_result=d003)
+    findings.extend(d004_list)
+
+    findings.extend(check_d005(bundle))
+    findings.append(check_d009(bundle))
+    findings.extend(check_d010(bundle, d004_results=d004_list))
+    findings.extend(check_d011(bundle))
+    findings.append(check_d013(bundle))
+
+    findings.extend(check_e014(bundle))
+    findings.extend(check_e015(bundle))
+    findings.extend(check_e016(bundle))
+    findings.extend(check_e017(bundle))
+    findings.extend(check_e018(bundle))
+    e019 = check_e019(bundle)
+    findings.append(e019)
+    findings.extend(check_e020(bundle))
+    findings.append(check_e021(bundle))
+    findings.extend(check_e022(bundle))
+    findings.append(check_e024(bundle))
+
+    # Rule O-1: CHK-E-019 yields to CHK-D-003 when both are present for the homepage --
+    # both independently measure the same raw-vs-rendered gap by design (the two checks
+    # were authored blind to each other before the merge, and stay that way logically;
+    # this suppression is the one place their outputs are reconciled).
+    if d003.get("state") == "present" and e019.get("state") == "present":
+        e019["state"] = "suppressed"
+        e019["suppressed_by"] = list(set(e019.get("suppressed_by") or []) + ["CHK-D-003"])
+
+    return findings

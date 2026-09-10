@@ -22,9 +22,9 @@ def select_static_sample(inventory: list[dict], max_pages: int = MAX_STATIC_PAGE
     Returns the selected subset, deterministically, per the quota in procedure.md §4:
     homepage always; about/contact if present; up to `max_pages` - fixed, distributed
     across remaining types proportional to inventory, capped at MAX_PER_TYPE each,
-    remaining slots to the largest type. `login` is never selected.
+    remaining slots to the largest type. `login` and `asset` are never selected.
     """
-    eligible = [p for p in inventory if p.get("page_type") != "login"]
+    eligible = [p for p in inventory if p.get("page_type") not in ("login", "asset")]
     # Deterministic tie-break: sort by (page_type, url) so selection never depends on
     # discovery order.
     eligible.sort(key=lambda p: (p["page_type"], p["url"]))

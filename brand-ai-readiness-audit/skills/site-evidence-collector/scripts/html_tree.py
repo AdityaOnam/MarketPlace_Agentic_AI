@@ -31,28 +31,47 @@ class Node:
     def get(self, name: str, default=None):
         return self.attrs.get(name, default)
 
+    # Traversal is iterative, not recursive. A recursive walk blew Python's stack on a
+    # real site during the Stage B screen (2026-09-04): its markup produced a tree ~1000
+    # levels deep, `find_all` recursed once per level, and the RecursionError propagated
+    # out of the collector -- crashing the whole audit, which this skill's SKILL.md
+    # promises can never happen ("never an exception, and never an inferred value").
+    # Depth is a property of the page being audited, so it is not ours to bound; the
+    # traversal has to be indifferent to it.
+
     def find_all(self, tag: str) -> list["Node"]:
         out: list[Node] = []
-        for child in self.children:
-            if isinstance(child, Node):
-                if child.tag == tag:
-                    out.append(child)
-                out.extend(child.find_all(tag))
+        stack: list[Node] = [c for c in reversed(self.children) if isinstance(c, Node)]
+        while stack:
+            node = stack.pop()
+            if node.tag == tag:
+                out.append(node)
+            stack.extend(c for c in reversed(node.children) if isinstance(c, Node))
         return out
 
     def find_first(self, tag: str) -> "Node | None":
-        matches = self.find_all(tag)
-        return matches[0] if matches else None
+        """Document order, and it stops at the first match rather than building the
+        whole list -- `find_first` is called far more often than `find_all`."""
+        stack: list[Node] = [c for c in reversed(self.children) if isinstance(c, Node)]
+        while stack:
+            node = stack.pop()
+            if node.tag == tag:
+                return node
+            stack.extend(c for c in reversed(node.children) if isinstance(c, Node))
+        return None
 
     def text(self) -> str:
         """All descendant text, concatenated with single spaces, script/style excluded."""
         parts: list[str] = []
-        for child in self.children:
+        stack: list = list(reversed(self.children))
+        while stack:
+            child = stack.pop()
             if isinstance(child, str):
-                parts.append(child)
+                if child.strip():
+                    parts.append(child.strip())
             elif child.tag not in RAW_TEXT_ELEMENTS:
-                parts.append(child.text())
-        return " ".join(p.strip() for p in parts if p.strip())
+                stack.extend(reversed(child.children))
+        return " ".join(parts)
 
     def has_ancestor(self, tag: str) -> bool:
         node = self.parent

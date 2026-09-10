@@ -1,12 +1,29 @@
-"""Compose the final audit report from the four analysers' raw finding envelopes.
+"""Compose the final audit report from the three analysers' raw finding envelopes.
 
-Implements audit-orchestrator/SKILL.md steps 3-6: cross-skill suppression (rule O-1),
-JS-only root-cause dedup (rule O-2), findings/recommendations/limitations separation,
-and report assembly. Pure function — this module never invokes a skill or the network;
-the agent following SKILL.md calls the collector and the four analysers and passes their
-combined envelope list here.
+Implements audit-orchestrator/SKILL.md steps 4-6: findings/recommendations/limitations
+separation and report assembly. Pure function — this module never invokes a skill or the
+network; the agent following SKILL.md calls the collector and the three analysers and
+passes their combined envelope list here.
+
+Two suppression rules that used to live in this file are gone, both removed on real
+evidence rather than by design taste alone:
+
+- JS-only four-way root-cause dedup was designed and implemented but never shipped
+  (D-016): CHK-E-019 and CHK-D-003 both require raw main_text_words < 50 to fire, while
+  CHK-D-005 requires main_text_words > 500 on the same page before it evaluates at all —
+  mathematically unreachable, provable from the check definitions alone.
+- Rule O-1 (CHK-E-019 deferred to CHK-D-003) used to be applied here as this module's one
+  genuine cross-skill suppression, back when the two checks lived in different,
+  mutually-blind analysers. `harness/ablation.py`'s leave-one-skill-out ablation found it
+  never actually changed CHK-E-019's outcome on any of 36 real sites, which was the
+  evidence behind merging those two analysers into `content-engagement-audit` (D-025).
+  O-1 is now applied in-skill, inside that merged module's own `evaluate()` — see its
+  module docstring — so there is nothing left for this file to apply. See D-016 and D-025
+  in docs/DECISIONS.md for both findings.
 """
 from __future__ import annotations
+
+import re
 
 SEVERITY_ORDER = {"critical": 0, "high": 1, "medium": 2, "low": 3}
 
@@ -36,12 +53,8 @@ CHECK_TITLES = {
     "CHK-E-020": "Autoplaying media with sound",
     "CHK-E-021": "Images/iframes missing dimensions (layout-shift cause)",
     "CHK-E-022": "Missing landmark or heading structure",
-    "CHK-E-023": "Mobile ad density exceeds Better Ads threshold",
     "CHK-E-024": "Missing trust signals",
 }
-
-JS_ONLY_DEDUP_TITLE = ("JavaScript-only site — primary content invisible to non-rendering "
-                        "AI retrievers")
 
 DECLARED_LIMITATIONS = [
     {
@@ -71,6 +84,15 @@ DECLARED_LIMITATIONS = [
                    "success) are not observable read-only.",
         "note": "Reported not_determinable where the gap is itself actionable.",
     },
+    {
+        "id": "LIM-05", "mechanism": "D",
+        "reason": "llms.txt is not recommended as a substantive fix: a 137k-domain "
+                   "measurement found 97% of existing llms.txt files were never requested. "
+                   "This audit declines to recommend adding one on that evidence (D-007).",
+        "note": "Stated here rather than omitted (D-014) — the officials' Q&A confirms "
+                "recommending it is an acceptable position, so silence about it would look "
+                "indistinguishable from having missed it.",
+    },
 ]
 
 # procedure.md's "Runtime budget and the shared render pass" table, reproduced here so
@@ -80,72 +102,10 @@ STAGE_CONSUMERS = {
     "static_fetch": [c for c in CHECK_TITLES if c not in
                      ("CHK-D-001", "CHK-D-002", "CHK-D-026")],
     "render_pass": ["CHK-D-003", "CHK-E-014", "CHK-E-015", "CHK-E-016", "CHK-E-018",
-                     "CHK-E-019", "CHK-E-023"],
+                     "CHK-E-019"],
     "internal_links": ["CHK-D-009"],
     "offsite_anchors": ["CHK-D-026"],
 }
-
-JS_ONLY_CLUSTER = ["CHK-D-003", "CHK-D-004", "CHK-D-005", "CHK-E-019"]
-
-
-def _by_check_and_locus(findings: list[dict]) -> dict[tuple[str, str | None], dict]:
-    return {(f["check_id"], (f.get("locus") or {}).get("url")): f for f in findings}
-
-
-def apply_suppression(findings: list[dict]) -> list[dict]:
-    """Rule O-1: CHK-E-019 yields to CHK-D-003 when both are present for the homepage.
-
-    This is the one genuinely cross-skill suppression this function needs to apply.
-    CHK-D-002/CHK-D-001 and CHK-D-010/CHK-D-004 are already resolved inside their owning
-    analysers (crawl-access-audit, render-extractability-audit respectively) before their
-    envelopes ever reach here — re-applying that logic at this layer would be redundant
-    and is deliberately not done.
-    """
-    d003 = next((f for f in findings if f["check_id"] == "CHK-D-003" and f["state"] == "present"), None)
-    e019 = next((f for f in findings if f["check_id"] == "CHK-E-019" and f["state"] == "present"), None)
-
-    if d003 is not None and e019 is not None:
-        e019["state"] = "suppressed"
-        e019["suppressed_by"] = list(set(e019.get("suppressed_by", []) + ["CHK-D-003"]))
-
-    return findings
-
-
-def dedup_js_only_cluster(findings: list[dict]) -> tuple[list[dict], list[dict]]:
-    """Rule O-2: collapse CHK-D-003/004/005/E-019 into one finding when ALL FOUR fire on
-    the homepage. Requires the full pattern — collapsing on a partial match risks hiding
-    a genuinely independent defect, which SKILL.md's false-positive discipline explicitly
-    warns against ("when in doubt, report separately").
-
-    Returns (remaining_findings, consequences_of_root) — remaining_findings has the
-    cluster members removed (root finding kept, marked with `consequences`); the caller
-    assembles the merged evidence/title from the root plus the returned consequences.
-    """
-    home_url = None
-    d003 = next((f for f in findings if f["check_id"] == "CHK-D-003" and f["state"] == "present"), None)
-    if d003 is None:
-        return findings, []
-    home_url = (d003.get("locus") or {}).get("url")
-
-    cluster_members = []
-    for check_id in ("CHK-D-004", "CHK-D-005", "CHK-E-019"):
-        match = next((f for f in findings
-                      if f["check_id"] == check_id
-                      and (f.get("locus") or {}).get("url") == home_url
-                      and f["state"] in ("present", "suppressed")), None)
-        cluster_members.append(match)
-
-    if any(m is None for m in cluster_members):
-        return findings, []  # partial pattern: report independently, per SKILL.md rule
-
-    consequences = [{"check_id": m["check_id"], "evidence": m["evidence"]} for m in cluster_members]
-    d003["title"] = JS_ONLY_DEDUP_TITLE
-    d003["consequences"] = consequences
-
-    consumed_ids = {id(m) for m in cluster_members}
-    remaining = [f for f in findings if id(f) not in consumed_ids]
-    return remaining, consequences
-
 
 def split_findings_recommendations(findings: list[dict]) -> tuple[list[dict], list[dict]]:
     """SKILL.md step 5: findings[] gets present, non-suppressed, non-recommendation
@@ -160,6 +120,76 @@ def split_findings_recommendations(findings: list[dict]) -> tuple[list[dict], li
         if f["state"] == "present" and f.get("recommendation_only")
     ]
     return scored_findings, recommendations
+
+
+_URL_IN_EVIDENCE = re.compile(r"https?://\S+")
+_NUMBER_IN_EVIDENCE = re.compile(r"\d+")
+ROLLUP_MIN_PAGES = 3
+
+
+def _defect_signature(f: dict) -> tuple:
+    """What makes two per-page findings the *same* defect.
+
+    URLs and counts are stripped: "Page {a}: missing <main> landmark" and
+    "Page {b}: missing <main> landmark" describe one template defect, and
+    "6 violation(s): missing alt..." vs "7 violation(s): missing alt..." differ only in
+    how many times the same template repeated it on that page.
+    """
+    ev = f.get("evidence") or ""
+    ev = _URL_IN_EVIDENCE.sub("<url>", ev)
+    ev = _NUMBER_IN_EVIDENCE.sub("<n>", ev)
+    return (f["check_id"], f.get("subcheck"), ev)
+
+
+def roll_up_site_wide(findings: list[dict]) -> list[dict]:
+    """Collapse one defect repeated across pages into one finding with a page count.
+
+    Added 2026-09-04 from the Stage B negative-control screen, which is the first time
+    this marketplace met real multi-page sites. A single site-template defect -- one
+    unnamed link in a shared header, one missing `<main>` in a shared layout -- was
+    emitting one finding per sampled page: 17 findings for one fix, on a site with 20
+    pages sampled. Every one of them was true, and the report was still wrong, because a
+    reader cannot tell 17 problems from one problem seen 17 times.
+
+    This is the rubric line the officials were most explicit about: "Not just a laundry
+    list of items. The real ingenuity lies in how you order them" (OFFICIALS-QA.md §3.1).
+    Ordering cannot help when one defect occupies 17 of the slots being ordered.
+
+    A defect seen on fewer than `ROLLUP_MIN_PAGES` pages is left alone -- at one or two
+    pages it is plausibly specific to those pages, and collapsing it would hide the locus
+    a reader needs.
+    """
+    groups: dict[tuple, list[dict]] = {}
+    order: list[tuple] = []
+    for f in findings:
+        sig = _defect_signature(f)
+        if sig not in groups:
+            groups[sig] = []
+            order.append(sig)
+        groups[sig].append(f)
+
+    out: list[dict] = []
+    for sig in order:
+        group = groups[sig]
+        if len(group) < ROLLUP_MIN_PAGES:
+            out.extend(group)
+            continue
+        # Severity of the rolled-up finding is the worst in the group, never an average:
+        # a defect is as serious as its worst instance.
+        worst = min(group, key=lambda f: SEVERITY_ORDER.get(f.get("severity"), 99))
+        merged = dict(worst)
+        examples = [(f.get("locus") or {}).get("url") for f in group]
+        examples = [u for u in examples if u]
+        body = _URL_IN_EVIDENCE.sub("", (worst.get("evidence") or "")).lstrip(" :")
+        if body.lower().startswith("page :"):
+            body = body[6:].lstrip()
+        merged["evidence"] = (
+            f"Site-wide: {len(group)} sampled pages share this defect. {body}"
+        )
+        merged["locus"] = {"url": None, "scope": "site"}
+        merged["occurrences"] = {"pages": len(group), "examples": examples[:3]}
+        out.append(merged)
+    return out
 
 
 def assign_ids_and_titles(findings: list[dict]) -> list[dict]:
@@ -187,6 +217,12 @@ def build_recommendations(recommendations: list[dict]) -> list[dict]:
             "rationale": r.get("evidence"),
             "mechanism": r["check_id"].split("-")[1],
             "suggested_action": r.get("suggested_action"),
+            # locus/severity kept (D-012's schema is "a floor, not a ceiling"): without
+            # them, Stage E's matching rule (EVALS.md §2 -- same check, same locus) cannot
+            # be applied to the five recommendation-only checks at all. Added 2026-09-09
+            # while building harness/score_dev.py.
+            "locus": r.get("locus"),
+            "severity": r.get("severity"),
         })
     return out
 
@@ -252,14 +288,20 @@ def meta_evaluate(report: dict) -> dict:
                                  "detail": f"{f.get('check_id')} missing '{field}'"})
 
     # 3. No check may appear twice as a top-level finding for the same locus — a real
-    #    duplicate means suppression or dedup failed to fire. Keyed on `subcheck` as well,
+    #    duplicate means suppression (O-1) failed to fire. Keyed on `subcheck` as well,
     #    because a few checks legitimately grade one page more than once: CHK-E-014 rates
     #    static WCAG failures (`high`) separately from contrast (`medium`, NORMATIVE), and
     #    CHK-E-015 rates the viewport meta separately from horizontal overflow. Those are
     #    distinct judgments sharing an ID, not duplicates.
+    #    Site-wide rolled-up findings (D-019) all carry locus.url = None, so two genuinely
+    #    different defects found by one check would collide on that key and be reported as
+    #    a duplicate. The defect signature disambiguates them -- it is what defined the
+    #    groups in the first place.
     seen: set[tuple] = set()
     for f in findings:
-        key = (f.get("check_id"), (f.get("locus") or {}).get("url"), f.get("subcheck"))
+        scope_key = (_defect_signature(f) if f.get("occurrences")
+                     else (f.get("locus") or {}).get("url"))
+        key = (f.get("check_id"), scope_key, f.get("subcheck"))
         if key in seen:
             label = f"{f.get('check_id')}"
             if f.get("subcheck"):
@@ -289,15 +331,55 @@ def meta_evaluate(report: dict) -> dict:
                 warnings.append({"check": "prohibited_recommendation",
                                  "detail": f"{check_id}: {why}"})
 
-    # 6. The four declared limitations are structural and must always be present.
+    # 6. The declared limitations are structural and must always be present.
     if len(report.get("limitations", [])) != len(DECLARED_LIMITATIONS):
+        expected_ids = ", ".join(lim["id"] for lim in DECLARED_LIMITATIONS)
         warnings.append({"check": "limitations_present",
-                         "detail": "declared limitations LIM-01..04 are not all present"})
+                         "detail": f"declared limitations ({expected_ids}) are not all present"})
+
+    # 7. Action-locus coherence (EVALS.md §4, implemented as D-033).
+    #
+    # "Every finding's suggested action must name the locus of its own finding. The
+    # officials called out disconnected fixes explicitly (OFFICIALS-QA.md §3.4); this makes
+    # it a check rather than an aspiration." It had stayed an aspiration -- specified in
+    # EVALS.md §4 since the protocol was written, never implemented, so nothing stopped a
+    # finding about page A shipping a fix that talks about page B.
+    #
+    # A finding whose locus is site-scoped (`url: null` -- robots.txt checks, D-019
+    # rollups) has no page for its action to name, so only page-scoped findings are held to
+    # this. The test is deliberately weak: the action must mention *something* identifying
+    # from the locus URL -- its path or its host -- rather than being generic boilerplate
+    # that would read identically on any page. A weak mechanical test that fires on real
+    # disconnection beats a strong one that cannot be evaluated.
+    for f in findings:
+        locus_url = (f.get("locus") or {}).get("url")
+        if not locus_url:
+            continue
+        action = (f.get("suggested_action") or {}).get("summary") or ""
+        if not action:
+            continue
+        from urllib.parse import urlparse as _urlparse
+        parsed = _urlparse(locus_url)
+        path_bits = [seg for seg in parsed.path.split("/") if len(seg) > 2]
+        identifying = path_bits[-1:] or ([parsed.netloc] if parsed.netloc else [])
+        if identifying and not any(bit.lower() in action.lower() for bit in identifying):
+            # Not a warning on its own -- most actions are legitimately phrased about the
+            # defect class rather than the URL. Only flagged when the action names a
+            # *different* page, which is the failure mode the officials described.
+            other_loci = {(g.get("locus") or {}).get("url") for g in findings} - {locus_url}
+            for other in filter(None, other_loci):
+                other_bits = [s for s in _urlparse(other).path.split("/") if len(s) > 2]
+                if other_bits and other_bits[-1].lower() in action.lower():
+                    warnings.append({
+                        "check": "action_locus_coherence",
+                        "detail": f"{f.get('check_id')}: finding locus is {locus_url} but its "
+                                  f"suggested action names {other}"})
+                    break
 
     return {
         "checks_run": ["summary_reconciles", "severity_counts_reconcile", "finding_complete",
                         "no_duplicate_findings", "known_check_id", "prohibited_recommendation",
-                        "limitations_present"],
+                        "limitations_present", "action_locus_coherence"],
         "passed": not warnings,
         "warnings": warnings,
     }
@@ -317,13 +399,14 @@ def compute_degraded_stages(budget: dict) -> list[dict]:
 
 
 def compose_report(site: str, audited_at: str, all_envelopes: list[dict], bundle: dict) -> dict:
-    """all_envelopes: the concatenated output of all four analysers, unmodified.
+    """all_envelopes: the concatenated output of all three analysers, unmodified. Any
+    cross-check suppression (e.g. rule O-1) has already been applied by the owning
+    analyser before its envelopes reach here — see content_engagement_checks.evaluate().
     bundle: the evidence bundle (for `bundle['budget']` and access-block framing)."""
     findings = list(all_envelopes)
-    findings = apply_suppression(findings)
-    findings, _consequences = dedup_js_only_cluster(findings)
 
     scored, recommendation_envelopes = split_findings_recommendations(findings)
+    scored = roll_up_site_wide(scored)
     findings_out = assign_ids_and_titles(scored)
     recommendations_out = build_recommendations(recommendation_envelopes)
 

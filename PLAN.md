@@ -2,7 +2,7 @@
 
 **Self-contained briefing.** Written so someone with no access to this repo can read it
 cold, understand the task, see what has been done, and argue usefully about what's left.
-Last updated 2026-09-03.
+Last updated 2026-09-04.
 
 ---
 
@@ -102,43 +102,65 @@ are provided at any point; generalization is "tested by construction" on unseen 
 
 ## 4. Where we are now
 
-**Phases 1, 1b, 2 and 3 are complete. The marketplace is built.** What exists on disk is a
-working six-skill marketplace with 27 checks implemented as tested code, a manifest, and a
-root README. What has *not* happened is any evaluation of it against real sites — no
-corpus, no gold labels, no measured false-positive rate. Every accuracy claim in this
-document is therefore a design argument, not a measurement.
+**Phases 1, 1b, 2 and 3 are complete; Phase 4 is in progress.** What exists on disk is a
+working five-skill marketplace with 26 checks implemented as tested code, a manifest, and a
+root README (started as six skills under D-013; two merged 2026-09-04 as **D-025**, after
+Phase 4's ablation found the real evidence to justify it — see §7 below). Phase 4 has run
+against real sites (Stages A–C, plus the adversarial set and both composition tests); Stage
+D (gold labels) has not, so no precision/recall number exists yet. Every accuracy claim
+that isn't explicitly sourced to a Stage B/C/adversarial result in `docs/DECISIONS.md` is
+still a design argument, not a measurement.
 
 ### The marketplace as built (`brand-ai-readiness-audit/`)
 
 | Skill | Role | Checks |
 | --- | --- | --- |
-| `audit-orchestrator` *(entrypoint)* | Composes the rest; suppression, root-cause dedup, report assembly, budget arbitration, report meta-evaluation | none of its own |
+| `audit-orchestrator` *(entrypoint)* | Composes the rest; report assembly, budget arbitration, report meta-evaluation | none of its own |
 | `site-evidence-collector` | The only skill with network tools. Emits one in-memory evidence bundle | none — observes only |
 | `crawl-access-audit` | Mechanism A | D-001, D-002 |
-| `render-extractability-audit` | Mechanisms B, C | D-003, D-004, D-005, D-009, D-010, D-011, D-013 |
+| `content-engagement-audit` | Mechanisms B, C, E, F | D-003, D-004, D-005, D-009, D-010, D-011, D-013, E-014 … E-022, E-024 |
 | `entity-identity-audit` | Mechanism D | D-006, D-007, D-008, D-012, D-025, D-026, D-027 |
-| `engagement-defect-audit` | Mechanisms E, F | E-014 … E-024 |
 
-27 checks, disjoint, each traced to a row in `docs/research/EVIDENCE-LEDGER.md`. Every
+26 checks, disjoint, each traced to a row in `docs/research/EVIDENCE-LEDGER.md`. Every
 check is implemented as a pure `evaluate(bundle)` function in that skill's `scripts/`,
 stdlib-only Python so the zip needs no dependency install. The collector's scripts do the
 parsing and extraction; the network calls themselves stay with the invoking agent's
 declared tools, which is what keeps the read-only and budget guarantees structural rather
 than promised.
 
-**Tested, not just written:** each module has been exercised against synthetic bundles, and
-a full pipeline run (HTML → extraction → four analysers → composed report) confirms the
-pieces integrate. That testing found four real bugs, all fixed: a falsy-string check that
-silently dropped empty anchors from the accessibility count; a sampling step that ignored
-its own per-type cap; a module-name collision (`checks.py` × 4) that would have made
-analysers silently load each other's code; and a false positive in the new
-meta-evaluation itself, where two checks that legitimately grade one page twice were
-flagged as duplicates.
+**Tested well beyond synthetic bundles now.** Phase 3 exercised every module against
+synthetic bundles and one full pipeline run, which found four bugs (a falsy-string check
+that silently dropped empty anchors; a sampling step that ignored its own per-type cap; a
+module-name collision that would have made analysers silently load each other's code; a
+false positive in the meta-evaluation itself). Phase 4 then ran the harness against **42
+real websites** (24 dev + 12 negative-control + 6 adversarial) and found substantially more
+— five harness crashes, four false-positive mechanisms, a bug that had silently killed
+every JSON-LD-driven signal for two full evaluation stages, a false-positive-generating
+treatment of failed page fetches affecting ten checks, and a robots.txt precedence bug —
+all found and fixed, all logged as **D-019 through D-024** in `docs/DECISIONS.md`. The
+leave-one-skill-out ablation and the merge test (`EVALS.md` §7's two composition tests)
+have both run against the real corpus and resolved the six-vs-five-skill question the
+architecture doc had left open (**D-025**): the marketplace is five skills now, not six.
 
-**What testing has *not* done:** none of this has been run against a real website. Synthetic
-bundles prove the logic does what it was written to do; they cannot tell us whether the
-checks fire correctly on the open web. That is Phase 4 and it is the only thing that can
-turn "designed for few false positives" into a number.
+**Phase 4 now has a measured precision/recall number** (2026-09-10). Stage D gold labelling
+completed at **624/624 rows, 24 sites × 26 checks**, and Stage E scored it:
+`docs/evals/stage-e-report.md`. Two things must travel with those numbers:
+
+1. **The matching rule had to be loosened to produce them at all.** Its first run returned
+   precision 0.00 / recall 0.00 for all 26 checks — both of its evidence-text conditions
+   were unsatisfiable by construction (the checks describe evidence, the labeller quotes
+   it), and two locus bugs sat underneath. Matching is now `check_id` + locus. The retired
+   conditions are computed and printed as diagnostics, and **they read near-zero across the
+   corpus**: the detections hit the right check on the right page, and essentially none of
+   them corroborate against the labeller's wording. See **D-028**.
+2. **Nothing is cut yet.** Twelve checks trip a cut rule, but the 8-site test–retest
+   (`EVALS.md` §1) has not run — earliest valid date **2026-09-12**, because the second pass
+   must be blind and ≥48 h after the first. A check is cut on a reproducible number, not a
+   single pass.
+
+So "designed for few false positives" is now a number rather than an argument — and the
+number says clean-site false-positive rate is the weak axis, with seven checks above the
+0.15 cut line.
 
 ### Research corpus on disk (`docs/research/papers/`)
 
@@ -163,32 +185,58 @@ can *justify* design choices, not what the checks are.
 
 - `docs/round3-handout.pdf` — the source of truth, plus a full transcription in
   `.claude/skills/round3-spec/references/handout-full.md`
-- `docs/DECISIONS.md` — append-only decision log (D-001 … D-013, summarized in §6)
+- `docs/DECISIONS.md` — append-only decision log (D-001 … D-025 as of this writing,
+  summarized in §6)
 - `docs/PROGRESS.md` — current state and phase plan, updated per work session
-- `docs/ARCHITECTURE.md` — the six-skill decomposition, why this axis, and the three tests
-  that would falsify it
+- `docs/ARCHITECTURE.md` — the five-skill decomposition, why this axis, and the three tests
+  that falsify it — one of which already has, per D-025
 - `docs/BUNDLE-SCHEMA.md` — the pinned collector↔analyser contract, with a coverage walk
-  proving all 27 checks are satisfiable from it
+  proving all checks are satisfiable from it (written against 27; 26 ship since D-018)
 - `docs/RESEARCH.md` — mechanism-anchored signals — **done**
-- `docs/research/EVIDENCE-LEDGER.md` — per-check audit trail, 27 rows + 4 declared
-  limitations — **done, except the hand-verification column (see R-1 below)**
+- `docs/research/EVIDENCE-LEDGER.md` — per-check audit trail, 26 shipped checks + 5 declared
+  limitations — **done, including hand-verification (R-1 closed 2026-09-09, see D-027)**
 - `docs/EVALS.md`, `docs/CORPUS.md` — filled from domains 05 and 08
 - `docs/FETCH-STRATEGY.md` — fetch fallbacks, block taxonomy, testing against blocked sites
 - `.claude/skills/round3-spec/` and `.claude/skills/project-flow/` — the task and the
   working method, encoded so context survives across sessions
+- `docs/evals/stage-b-report.md`, `docs/evals/stage-c-report.md` — Phase 4's first-contact
+  and bug-fixing results against real sites, with numbers (findings before/after, hard
+  defects, archetype accuracy, set stability, a 5-site runtime sample)
+- `docs/evals/corpus-selection.md`, `docs/evals/holdout-log.md` — the sealed selection rule
+  and the (still-empty) held-out look log
+- `docs/evals/gold-labels-template.csv` + `dist/gold-labelling-kit.zip` — the Stage D
+  worksheet (624 rows, 24 sites × 26 checks, criteria pre-filled) and a packaged,
+  self-contained kit (worksheet + all 24 sites' pages as browsable HTML + a README) handed
+  off for gold labelling
+- `docs/evals/r1-verification-worksheet.csv` + README — the R-1 equivalent: 38 cited
+  sources ranked by leverage, with a computed 14-source minimum that covers all 26 checks
+  at least once. **Filled in as of 2026-09-09** — all 14 opened and judged by hand; see
+  D-027
+- `harness/` — the evaluation driver (git-ignored, never ships): `run_audit.py`,
+  `collect.py`, `fetcher.py`, `ablation.py`, `stability.py`, `gold_worksheet.py`,
+  `r1_worksheet.py`, `export_snapshots_html.py`, plus `corpus/*.csv` and `out/*/` results
 
-**The immediate gap is no longer synthesis — it is evidence about whether any of this
-works.** Two things stand between here and a defensible submission:
+**The immediate gap is no longer synthesis, and it is narrower than it was.** Phase 4 has
+already turned most of the "design argument, not a measurement" problem into tested code —
+what's left is specifically the one thing that cannot be done by anything other than a
+human:
 
-1. **R-1 (blocking).** Every row in the evidence ledger still reads
-   `Verified by hand: — pending`. The rows were originally self-certified by the tool that
-   wrote them, which defeats the control entirely, so they were reset. **A human must open
-   at least one cited source per check before it ships.** This cannot be delegated to a
-   model — a model certifying its own sourcing is the exact failure the column exists to
-   catch.
-2. **No measured accuracy.** No corpus, no gold labels, no negative-control run. Until
-   Phase 4 runs, the three metrics that can sink the submission (clean-site false-positive
-   rate, `pass^k` stability, per-skill ablation delta) are all unmeasured.
+1. **R-1 — closed 2026-09-09 (D-027).** A human opened all 14 `in_minimum_set` sources
+   (`docs/evals/r1-verification-worksheet.csv`) and judged each against the ledger's actual
+   claim; every non-cut check in `docs/research/EVIDENCE-LEDGER.md` now carries a real
+   `Verified by hand` entry. Two outcomes needed a decision rather than a paperwork fix:
+   **CHK-D-011** and **CHK-D-013** had zero surviving support after all cited sources were
+   checked — demoted to `recommendations[]`, not cut (D-027). **CHK-D-001/002**'s
+   critical/low severity split rests on a retrieval-vs-training crawler taxonomy no cited
+   source actually establishes — flagged as an open gap, not silently accepted (see §9).
+2. **Accuracy — measured 2026-09-10, not yet reproducible.** Stage D labelling is complete
+   (624/624) and Stage E has scored it (`docs/evals/stage-e-report.md`, D-028). What remains
+   is the one part still gated on a human *and* on the calendar: the **8-site test–retest**
+   (`EVALS.md` §1). The subset is drawn and logged, and `harness/retest.py --emit` has
+   written a blinded worksheet — but the second pass has to be re-labelled by hand, blind to
+   the first, **≥ 48 h later**. A model filling it in would measure only that two runs of the
+   same system agree, which §1 explicitly rules out. Earliest valid date: **2026-09-12**.
+   Until then the twelve cut-rule trips in the Stage E report stand as *unconfirmed*.
 
 ---
 
@@ -287,7 +335,7 @@ corpus. Gold labels must be hand-authored.
 | D-010 | Evaluation harness backbone (below) |
 | D-011 | **`NORMATIVE` is a first-class evidence strength, capped at `high`** — a WCAG or Better Ads violation is a violation of a published standard, not a measured outcome, and saying so plainly beats dressing it up as empirical |
 | D-012 | **Proactive recommendations live outside `findings[]`** — `findings[]` stays defects-only as the schema implies, with sibling `recommendations[]` and `limitations[]` arrays. A check demoted under the single-source rule moves to `recommendations[]` rather than disappearing |
-| D-013 | **Six skills, split by mechanism, with network I/O extracted** into `site-evidence-collector`. Full rationale and falsification tests in `docs/ARCHITECTURE.md`, which is authoritative for check ownership |
+| D-013 | **Skills split by mechanism, with network I/O extracted** into `site-evidence-collector`. Full rationale and falsification tests in `docs/ARCHITECTURE.md`, which is authoritative for check ownership. Six skills originally; revised to five by **D-025** (2026-09-04) once Phase 4's merge test had real evidence — see §7 |
 
 ### D-007 in full — things we must never recommend
 
@@ -328,7 +376,24 @@ popularity band — fine ranks are noise). Held-out **30 sites**, drawn in the *
 continuing the same shuffled walk, so a dev→test drop is interpretable rather than a
 sampling artifact. Plus **24 negative controls** (3 each across 8 dimensions, including a
 "minimal-by-design one-pager" row) and a **12-site adversarial set** scored only on graceful
-degradation.
+degradation. **D-017 later cut dev to 24 sites and held-out to 12**, and separately
+redesigned negative-control down to **12 sites, 2 per dimension across 6 dimensions**
+(`CORPUS.md`'s current, authoritative text — superseding the 24-site/8-dimension figure
+this paragraph originally quoted from domain 08's pre-cut plan). What survived that
+redesign as a real, unresolved gap: an R-5 follow-on note (`docs/PROGRESS.md`, Phase 1b
+review) had already flagged that adding the off-site identity-anchor dimension
+(`CHK-D-025`/`026`/`027`) should add a 7th negative-control dimension — that never
+happened, before or after D-017's redesign. Under the current 2-per-dimension scheme, the
+gap was **12 → 14 sites**, not the larger 24→27 figure the note's original arithmetic
+implied under the pre-cut plan. **Closed 2026-09-04 (D-026):** `offsite_identity` added
+with `stripe.com`, `about.gitlab.com` and `www.docker.com`, each selected by fetching and
+reading its JSON-LD `sameAs` before the row was written and each run live end to end; none
+fires `CHK-D-025`/`026`/`027`. Three rows rather than the uniform two, because qualifying
+candidates turned out scarce (8 of 11 reachable well-known sites declare no `sameAs` at all)
+and a spare is worth more than the symmetry. The negative control is **15 sites across 7
+dimensions** and the corpus is **57**. `CHK-D-026`'s bot-blocked guard (403 →
+`resolved: null`, never a finding) was exercised against a real 403 for the first time, on
+Stripe's Crunchbase anchor.
 
 Sample size: precision ≈ 0.90 at ±0.05 needs n = 139 findings, but clustering
 (`DEFF = 1 + (m−1)ρ`, m≈10, ρ≈0.2 → 2.8) means ~30 sites gives roughly **±6pp** — enough to
@@ -346,25 +411,51 @@ of composite mementos are both temporally coherent and complete.
 
 ### Phases 1b, 2, 3 — **complete**
 
-Phase 1b turned 102 sources into `docs/RESEARCH.md` and the 27-row evidence ledger, then
+Phase 1b turned 102 sources into `docs/RESEARCH.md` and the 27-row evidence ledger (26 checks ship; CHK-E-023 was cut as D-018), then
 survived its own review (findings R-1…R-7, all resolved, producing D-011/012/013).
-Phase 2 fixed the decomposition deliberately as D-013. Phase 3 authored all six skills,
-the root README, and the `scripts/` implementing every check.
+Phase 2 fixed the decomposition deliberately as D-013. Phase 3 authored all six skills (as
+they stood then — see §7 for the later merge to five, D-025), the root README, and the
+`scripts/` implementing every check.
 
 The Phase 3 design principle held: **everything mechanically decidable went into code** —
 robots.txt parsing and agent classification, JSON-LD extraction, viewport meta, tap-target
-geometry against WCAG's 24×24 floor, the raw-vs-rendered text diff, ad density behind a
-two-detector agreement rule, the WCAG contrast formula, Jaccard near-duplicate comparison.
+geometry against WCAG's 24×24 floor, the raw-vs-rendered text diff, the WCAG contrast
+formula, and Jaccard near-duplicate comparison.
 What is left to model judgment is narrow and named: evergreen-vs-time-sensitive page
 classification, archetype labelling, and the wording of suggested actions. Each of those is
-a declared threat to `pass^k` stability and is where Phase 4 should look first if stability
+a declared threat to set stability and is where Phase 4 should look first if stability
 comes back low.
 
-### Phase 4 — Corpus and harness  ← **critical path, next**
+### Phase 4 — Corpus and harness  ← **one item left, gated until 2026-09-12**
 
-Build the four site sets, snapshot them, hand-author gold labels, run the eval, ablate.
-This is the phase that converts design arguments into numbers, and it is gated on human
-labour (two independent labellers) in a way the previous phases were not. See §10.
+Build the driver that walks a real site, snapshot the four sets, screen for false positives,
+hand-author gold labels, score, ablate. This is the phase that converts design arguments
+into numbers. Its protocol was reduced on 2026-09-04 (**D-017**) from the two-labeller
+D-010 harness to a single-labeller one, and the corpus from 129 sites to 54.
+
+**Stages A, A′, B, B′, C are done. The adversarial set has run. Both composition tests
+have run (D-025 merged two skills on the result). R-1 (source verification) closed
+2026-09-09 (D-027).** Everything that could run without a human labeller has now run —
+see §10 for the stage-by-stage record. What remains is gated on human labour in a way
+nothing before it was: **Stage D (gold labels)**, not delegable to a model.
+
+**Stage D closed 2026-09-10** at 624/624 rows. **Stage E scored it the same day**
+(`docs/evals/stage-e-report.md`), after D-028 repaired a matching rule that had been
+returning 0.00 for every check. A four-decision diagnosis pass (**D-029 → D-032**) then went
+through every cut-rule trip: three checks had genuine defects and were fixed (`CHK-D-006`,
+`CHK-E-014`, `CHK-D-001` — the last a robots.txt parser with no RFC 9309 metacharacter
+support, which made a `critical` check report a site as blocking crawlers it explicitly
+allows). Trips fell 12 → 8, and **six of the eight now point at gold data or the worksheet
+schema rather than at code**, each written up in `docs/evals/adjudication-queue.md` with no
+label edited. None have been cut.
+
+**The entire remaining critical path is one task:** the 8-site intra-rater test–retest
+(`EVALS.md` §1). `harness/retest.py --emit` has drawn the subset (seeded, logged in
+`docs/evals/retest-log.md`) and written a blinded worksheet with every label cell empty. It
+needs a human to re-label those 208 cells from the frozen snapshots, **without opening
+`gold-labels-dev.csv`**, **≥ 48 h after the first pass** — earliest **2026-09-12**. Then
+`harness/retest.py --score` computes Krippendorff's alpha per check and the cut rules become
+actionable. Phase 4 closes there.
 
 ### Phase 5 — Harden and package
 
@@ -378,13 +469,16 @@ last chance to catch anything Phase 4 surfaces.
 
 ### Settled since the last revision
 
-1. **Decomposition axis and skill count** — settled as D-013: six skills, split by
-   mechanism, network I/O extracted. `docs/ARCHITECTURE.md` §7 records three falsification
-   tests, and is honest that leave-one-skill-out ablation is weak on its own because any
-   disjoint partition passes it. The sharper test is **suppression-necessity**: count how
-   often the orchestrator's cross-skill logic actually fires across the dev corpus. If it
-   never fires, the orchestrator is a concatenator and the decomposition is decorative.
-   That test is unrun and is a Phase 4 deliverable.
+1. **Decomposition axis and skill count** — settled as D-013 (six skills, split by
+   mechanism, network I/O extracted), then **revised by D-025** to five once the deferred
+   test below actually ran. `docs/ARCHITECTURE.md` §7 records three falsification tests,
+   and is honest that leave-one-skill-out ablation is weak on its own because any disjoint
+   partition passes it. The sharper test, **suppression-necessity**, ran against the real
+   36-site dev+negative corpus on 2026-09-04: the orchestrator's one cross-skill rule (O-1)
+   never fired on any real site, so the merge test that depended on that result also ran —
+   `render-extractability-audit` and `engagement-defect-audit` merged into
+   `content-engagement-audit`, re-run against all 42 available sites with byte-identical
+   output. No longer an open question; full writeup in `docs/DECISIONS.md` D-025.
 2. **Off-site corroboration** — settled by adding CHK-D-025/026/027, which audit *the
    anchoring the site itself provides* rather than corroboration itself, and by declaring
    what remains unmeasurable as LIM-01/LIM-02 in every report rather than omitting it.
@@ -412,11 +506,16 @@ last chance to catch anything Phase 4 surfaces.
 7. **Worth running domains 02 and 03?** They'd give evidence for *how* to author skills for
    reliability and *how many* skills to have. They don't block anything, and Phase 3 has
    already shipped without them. Lower value now than when this question was first written.
-8. **New: what happens when the checks meet a real site.** Every accuracy property claimed
-   here is a design argument tested against synthetic bundles. The archetype classifier,
-   the boilerplate-stripping extractor, and the ad-region detectors are the three most
-   likely to behave differently on the open web than in fixtures, and CHK-E-023 is flagged
-   in `BUNDLE-SCHEMA.md` as the most false-positive-prone check of the 27.
+8. **Answered, 2026-09-04: what happens when the checks meet a real site.** This was
+   exactly right to flag — the archetype classifier did behave very differently on the open
+   web (17% first measurement, root-caused to a harness bug in D-021, 1 confident-wrong
+   label of 34 after the fix). CHK-E-023 was cut before this even ran (D-018), for
+   unrelated reasons (never executes without a headless browser). What wasn't anticipated:
+   the boilerplate-stripping extractor and ad-region detectors turned out *not* to be where
+   the real bugs were — the actual surprises were a harness-only JSON-LD parsing bug
+   (D-021), ten checks mishandling failed page fetches (D-023), and a robots.txt precedence
+   gap (D-024). Full results: `docs/evals/stage-b-report.md`, `stage-c-report.md`,
+   D-019–D-024 in `DECISIONS.md`.
 
 ---
 
@@ -424,99 +523,140 @@ last chance to catch anything Phase 4 surfaces.
 
 | Risk | Status |
 | --- | --- |
-| **R-1: no check has had its sources hand-verified.** The ledger's verification column was self-certified by the authoring tool and has been reset to pending. Per D-003 no check may ship without one hand-verified source. | **Open and blocking.** Cannot be delegated to a model — see §10 |
+| **R-1: no check has had its sources hand-verified.** The ledger's verification column was self-certified by the authoring tool and has been reset to pending. Per D-003 no check may ship without one hand-verified source. | **Closed 2026-09-09 (D-027).** All 14 `in_minimum_set` sources opened and judged by hand; see §10 |
+| **CHK-D-001/002's critical/low severity split rests on a taxonomy no cited source establishes.** R-1 verification confirmed crawler-restriction sources (P-01.03, P-01.12) but neither distinguishes retrieval-time from training-only crawlers — the exact distinction the split depends on. | Open — flagged by R-1 (D-027), not fixed. Needs a citation to vendor crawler docs (OpenAI/Anthropic/Google) or a re-derivation of the split |
 | Nothing in the literature measures our actual target quantity — the effect of a specific site-side fix on a specific brand's representation in a specific assistant. That experiment doesn't appear to exist publicly. | Accepted; we build on mechanism-level evidence and the report's language says so |
 | The 04 and 06 domain files were produced by a different tool and have had no hand-verification | Open; folded into R-1 |
 | SEARCH-ONLY sources include the JS-rendering-gap study — exactly what a crawl strategy wants to lean on | **Mitigated by removing the dependency:** CHK-D-003's severity rule is now definitional (no h1 + <50 raw words vs ≥200 rendered), which needs no effect size, so the search-only source is demoted to a lead |
 | The ρ≈0.20 intra-cluster correlation in the sample-size math is assumed, not measured. ρ > 0.4 falsifies the split plan | Open — measurable as a by-product of Phase 4 |
 | Budget: an earlier run of 8 concurrent research agents was killed by an account rate limit with zero output | Mitigated — concurrency ≤ 4, incremental writes, briefs stored for replay |
-| Human labelling cost for gold data | Open — see §10; this is the main Phase 4 constraint |
-| **Nothing has been run against a real website.** All testing to date is against synthetic bundles. | Open — the entire point of Phase 4 |
-| The orchestrator's cross-skill logic may never fire in practice, which would make the six-skill decomposition decorative | Open — the suppression-necessity test in Phase 4 settles it, and the answer might be "merge skills" |
+| Human labelling cost for gold data | Open — reduced, not removed, by D-017: one labeller with an 8-site test–retest replaces two independent labellers, and dev drops 60→24 sites. Still the main Phase 4 constraint |
+| **One labeller means systematic misreading of the rubric is undetectable.** Test–retest measures consistency, not correctness | Accepted and declared (D-017). Recall is the exposed number; precision is protected by verbatim evidence matching |
+| A hand-picked held-out set can be unconsciously easy | Mitigated by sealing it in Stage A′, before any result exists — still sealed, 0 looks taken |
+| **Nothing had been run against a real website** — all testing was against synthetic bundles | **Closed.** 42 real sites run (Stages A–C, adversarial); found and fixed D-019 through D-024 |
+| The orchestrator's cross-skill logic may never fire in practice, which would make the six-skill decomposition decorative | **Settled (D-016, D-025):** rule O-2 was proven unreachable and removed. O-1 fired in synthetic scenarios but never on the real 36-site corpus, so it did not justify the four-analyser split — `render-extractability-audit` and `engagement-defect-audit` merged into `content-engagement-audit`; five skills now, not six |
+| **The negative-control corpus had no off-site-identity dimension.** R-5's follow-on note called for a 7th dimension (`CHK-D-025`/`026`/`027`, declared identity anchors) when that check family was added; it was never created, before or after D-017's later redesign to 2-per-dimension | **Closed 2026-09-04 (D-026).** `offsite_identity` added, 12 → 15 sites: `stripe.com`, `about.gitlab.com` and `www.docker.com`, each pre-screened by fetching its JSON-LD and each run live before the row was written. None fires `CHK-D-025`/`026`/`027`. Three rows, not two — every qualifying candidate was kept as a spare, because the pre-screen is itself the finding: 8 of 11 reachable well-known candidates declare no `sameAs` at all |
+| **New (2026-09-04): the evaluation harness itself had bugs that shaped early results.** A harness-only JSON-LD key mismatch (D-021), a harness-only robots.txt Allow-precedence gap (D-024), and a shipped-code bug in how ten checks treated failed page fetches (D-023) were all found only once real sites were run against | Closed per-instance (all fixed, all re-verified against the full corpus), but stands as a general lesson: synthetic-bundle testing and even early real-site testing can both under-detect this class of bug — worth remembering if Stage D's numbers look surprising in either direction |
 
 ---
-
 ## 10. How checking and evaluation carries on from here
 
-The build is done; **nothing about its accuracy is known yet.** This section is the plan for
-finding out, in the order that fails cheapest first.
+**Its accuracy against real websites is now partly known.** Stages A through C, the
+adversarial set, and both composition tests have run; Stage D (the one that would produce
+an actual precision/recall number) has not. This section is the plan for finishing that,
+in the order that fails cheapest first — written 2026-09-04 as D-017, updated the same day
+as each stage below actually ran. `docs/EVALS.md` holds the protocol; `docs/CORPUS.md`
+holds the sets; this section holds the order of work and its current status.
 
 ### The three numbers that decide the submission
 
-Everything below exists to produce these, and they are worth stating before the method:
-
-| Metric | Why it can sink us | Target |
+| Metric | Where it comes from | Status |
 | --- | --- | --- |
-| **Clean-site false-positive rate** | The rubric penalizes false positives as hard as misses, and a report that cries wolf on a healthy site discredits every other finding in it | ≤ 0.05 per check on the negative-control set |
-| **`pass^k` set stability at k=5** | Instability means the audit's answer depends on luck, which is fatal to "deterministic" and to a reader's trust | all 5 runs agree, never a mean of 5 |
-| **Per-skill ablation delta** | If removing a skill doesn't degrade the composite, the decomposition is padding and D-013 was wrong | every skill's removal measurably hurts |
+| **Clean-site false-positive rate** | The `ABSENT` labels on the 24-site dev corpus. **Not** the negative-control set, which is a screen and can only report counts | **Not measured — blocked on Stage D.** Target ≤ 0.05 per check |
+| **Schema conformance** | Every report emitted, every run, validated against `report-schema.md` | **100%, all 42 sites run to date** (24 dev + 12 negative-control + 6 adversarial). Gating, holding so far |
+| **The merge test** | `render-extractability-audit` + `engagement-defect-audit` merged and re-run | **Done, 2026-09-04 (D-025).** Nothing changed — they merged for real, into `content-engagement-audit` |
 
-### Stage 0 — Hand-verification (R-1), blocking, human-only
+The previous version of this table named `pass^k` at k=5 and the per-skill ablation delta.
+Both are now **reported without a threshold** — `pass^k` because the officials said output
+determinism is not graded (`OFFICIALS-QA.md` §2.1), and leave-one-out ablation because
+`ARCHITECTURE.md` §7 is explicit that any disjoint partition passes it. The merge test
+replaced the ablation as the deciding composition test, and D-016/D-025 narrowed it to,
+then resolved, a single candidate pair. Set stability (a k=3 analogue) was also measured on
+a 5-site live sample, unthresholded per `EVALS.md` §5: 5/5 stable — see `stage-c-report.md`
+§6b.
 
-Before any measurement is worth taking: **a person opens at least one cited source per
-check** and marks the ledger row. 27 checks, and many share sources, so the real count is
-closer to 20 distinct sources. This is not a formality — the column was previously
-self-certified by the tool that wrote the rows, and a model verifying its own citations is
-exactly the failure the control exists to catch. **No amount of Phase 4 rigour compensates
-for skipping this**, because a check resting on a misread source can be perfectly stable,
-perfectly precise, and still wrong.
+### Stage A — the harness — **done**
 
-### Stage 1 — Negative controls first, not last
+`harness/` (git-ignored, never ships) is a driver that fetches politely, builds the bundle,
+runs the analysers, and composes the report — imports the shipped scripts unmodified rather
+than reimplementing them, so a bug found here is a bug in the shipped code, not a harness
+artifact. `run_audit.py`, `collect.py`, `fetcher.py` and the corpus/output plumbing all
+exist and have processed all 42 sites run to date.
 
-Run the marketplace against the 27 clean/negative-control sites **before** building the
-full dev corpus. Rationale: the cheapest possible refutation. If checks fire on sites that
-are fine, we learn it in an afternoon and fix guards before investing in gold labels.
-Ordering this first is deliberate — it front-loads the number most likely to sink us.
+### Stage A′ — seal the held-out set — **done, still sealed**
 
-Specific suspects to watch, already flagged in the design:
-- **CHK-E-023 (ad density)** — named in `BUNDLE-SCHEMA.md` as the most FP-prone of the 27,
-  which is why it needs two independent detectors to agree
-- **CHK-D-006/D-010/D-011** — heuristic text patterns; likeliest to misfire on prose styles
-  the regexes weren't written for
-- **The archetype classifier** — a wrong vertical activates suppression rules written for a
-  different kind of site, so its errors propagate rather than staying local
+12 sites chosen by the stratification rule and written to `harness/corpus/heldout.csv`
+**before any result existed** (`corpus-selection.md`). `holdout-log.md` records zero looks
+taken — correctly untouched, since Stage F (the only stage that should spend a look) hasn't
+run.
 
-### Stage 2 — Gold labels on the dev corpus, written blind
+### Stage B — negative-control screen (12 sites) — **done, D-019/D-020/D-023/D-024**
 
-24+ dev sites, **two labellers working independently**, labels written *before* seeing any
-tool output, using the closed `PRESENT`/`ABSENT`/`UNMEASURABLE`/`N/A` taxonomy. Krippendorff's
-alpha ≥ 0.80 per check; a check that cannot reach 0.67 is cut rather than shipped on a
-label nobody can reproduce.
+Found and fixed real false-positive mechanisms rather than just screening: total findings
+across the 12 sites fell from 356 (first contact) to 88 (after Stage C's fixes). Reported
+as **counts, not rates** per `EVALS.md` §3. Full trace: `stage-b-report.md`,
+`stage-c-report.md`, and D-019 through D-024 in `DECISIONS.md`.
 
-**The integrity constraint that makes this worth doing at all:** if the labels are produced
-by the same class of system that produces the findings, the agreement number measures
-nothing. The two labellers must not coordinate, and neither should look at the audit's
-output first. This is why it is human work and why it is the schedule's real constraint.
+### Stage B′ — archetype classifier accuracy — **done, D-021**
 
-### Stage 3 — Scoring, honestly
+17% on first measurement (36 sites), with 5 confidently-wrong labels — the dangerous
+failure mode, since a wrong label activates suppression rules written for a different kind
+of site. Root cause (D-021): a **harness-only** bug reading JSON-LD keys that were never
+actually produced, silently killing every structured-data signal for the entire run. Fixed;
+confident-wrong labels fell to 1 of 34. Raw accuracy stayed ~21% by design — `unknown` is
+the safe answer and most flips landed there rather than on the correct one. No further
+`classify_page_type` pattern-tuning was done deliberately, to avoid corpus-fitting.
 
-Strict three-condition matching: same taxonomy node, same canonicalized locus, **evidence
-string appears verbatim in the snapshot**. Severity mismatches go in a confusion matrix
-rather than silently breaking or granting a match. The **site** is the unit of analysis with
-cluster bootstrap intervals — 24 sites × 12 findings is ~90 effective samples, not 288, and
-naive intervals are too narrow by roughly √3.
+### Stage C — cut and guard — **done, D-022**
 
-**The asymmetric-justification rule applies from here on:** any change to matcher, rubric,
-or composite that *raises* scores needs written justification plus a negative-control re-run
-in the same commit. Score-lowering changes don't. This is the guardrail against the
-SWE-Bench+ failure — 31% of "successful" patches passing on weak tests, collapsing a 12.47%
-headline to 3.97%.
+Five checks `stage-b-report.md` flagged were resolved: `CHK-E-014`/`CHK-E-022` accepted
+as-is (hand-verified against real HTML, matches cited base rates); `CHK-D-007` severity
+capped; `CHK-D-004` excludes `home` page type; `CHK-E-021`/`CHK-D-010` demoted to
+`recommendations[]`. All score-lowering, so none needed defence under the
+asymmetric-justification rule.
 
-### Stage 4 — Ablation and the suppression-necessity test
+### Stage D — dev corpus gold labels (24 sites) — **not started; tooling ready**
 
-Leave-one-skill-out at matched token budget. But per `ARCHITECTURE.md` §7, that test is
-weak on its own — any disjoint partition passes it, because removing a skill mechanically
-removes its checks. **The sharper question is how often the orchestrator's cross-skill
-logic actually fires** across the dev corpus. If suppression (O-1) and root-cause dedup
-(O-2) never trigger on real sites, the orchestrator is a concatenator and the honest
-response is to merge skills before submitting, not to defend the count.
+Written blind, before any tool output is seen, using the closed
+`PRESENT`/`ABSENT`/`UNMEASURABLE`/`N/A` taxonomy. One labeller with sole authority; a model
+may run as a disagreement-finder feeding an adjudication queue, never as a second rater.
+Reproducibility comes from an **8-site test–retest** at ≥ 48 h, blind to the first pass.
 
-### Stage 5 — Held-out, once, with the looks logged
+**This is the schedule's real constraint and the only reason the project isn't further
+along.** A packaged, self-contained kit exists to make it tractable —
+`dist/gold-labelling-kit.zip`: the 624-row worksheet (24 sites × 26 checks, each row's
+exact criteria pre-filled) plus all 24 sites' pages exported as browsable HTML plus a
+README with the workflow and the pre-selected 8-site test–retest subset. Cannot be done by
+a model; nothing further blocks starting it.
 
-30 held-out sites, **hard 3-look budget, every look logged.** Peeking converts a held-out
-site into a dev site permanently. This is the number that estimates generalization to the
-unseen sites the graders will actually use, and it is only meaningful if we do not tune
-against it.
+### Stage E — scoring, ablation, merge test, bundle-sufficiency — **partly done**
+
+Strict three-condition matching, cluster-bootstrap intervals, and the severity confusion
+matrix all need Stage D and have not run. The three composition tests from `EVALS.md` §7
+**have** run, ahead of schedule since they didn't need gold labels: leave-one-skill-out
+ablation (`harness/ablation.py`), the merge test (executed for real — D-025), and
+bundle-sufficiency (grep-verified, zero networking imports in any analyser).
+
+### Stage F — held-out, at most 3 looks, every look logged — **not started, correctly**
+
+The only number estimating generalization to sites the graders will actually use, and only
+meaningful if we never tune against it. Should not run before Stage E's scoring exists —
+spending a look before there's a protocol to validate wastes the budget for nothing.
+
+### R-1 — **closed 2026-09-09 (D-027)**
+
+Hand-verification of one cited source per check **gates ship, not measurement**. Opening a
+citation does not change what the code does on a real site, so serialising Stages A and B
+behind ~20 sources of human reading would have bought nothing — and in fact all of Stages
+A through C, the adversarial set, and both composition tests ran without it, confirming
+that instinct. A human worked the 14-source `in_minimum_set` in
+`docs/evals/r1-verification-worksheet.csv` (greedy set-cover over the 38 cited sources) and
+judged each against the ledger's actual claim, not just its existence. Result: 20 of 22
+non-cut checks confirmed with adequate support (two citation swaps applied where a
+stronger source was found — see D-027); **CHK-D-011** and **CHK-D-013** had zero surviving
+support and were demoted to `recommendations[]` rather than cut; **CHK-D-001/002**'s
+critical/low crawler-taxonomy split remains an undischarged citation gap, recorded rather
+than papered over. Full detail: D-027 in `docs/DECISIONS.md`.
+
+### What to pick up next
+
+In order of what actually unblocks the most: **(1) Stage D gold labelling** — the only
+thing standing between here and a real precision/recall number, kit is ready, the only
+remaining item on the critical path; **(2)** ~~R-1 source verification~~ — **done
+2026-09-09, D-027**; find a citation for CHK-D-001/002's crawler taxonomy as a smaller
+follow-up, not blocking; **(3)** ~~close the negative-control corpus gap~~ — **done
+2026-09-04, D-026**; **(4)** everything else in §8's "Still open" list is lower-value now
+than when first written.
 
 ### Standing rules for the rest of the project
 
@@ -525,5 +665,7 @@ against it.
   failure mode this project is most careful about.
 - **A finding we cannot reproduce is a bug, not a finding.**
 - **Prefer cutting a check to shipping one we cannot defend.** 26 defensible checks beat 27
-  with one that fires on healthy sites.
-
+  with one that fires on healthy sites — which is precisely what D-018 did to CHK-E-023.
+- **Every number carries how it was obtained.** The corpus is chosen, not sampled from a
+  frame; the labels come from one person; recall is the weakest number we report. These
+  travel with the results rather than living in a footnote.

@@ -11,7 +11,7 @@ import json
 import re
 from urllib.parse import urljoin, urlparse
 
-from html_tree import Node, parse_html
+from html_tree import RAW_TEXT_ELEMENTS, Node, parse_html
 
 BOILERPLATE_TAGS = {"nav", "header", "footer", "aside", "script", "style", "noscript", "form"}
 MEANINGFUL_TEXT_MIN_LEN = 2  # ignore single-character stray text nodes when counting words
@@ -59,34 +59,37 @@ def _main_content_root(root: Node) -> Node:
 
 def _strip_boilerplate_text(node: Node) -> str:
     """Same as Node.text() but additionally excludes nav/header/footer/aside/form —
-    the boilerplate-removed extraction procedure.md §4 calls for."""
+    the boilerplate-removed extraction procedure.md §4 calls for.
+
+    Iterative for the same reason `html_tree.Node.text` is (2026-09-04): a real site's
+    markup produced a ~1000-level-deep tree and the recursive version raised
+    RecursionError out of the collector, aborting the audit instead of degrading it.
+    Document order is preserved by pushing children in reverse onto the stack.
+    """
     parts: list[str] = []
-    for child in node.children:
+    stack: list = list(reversed(node.children))
+    while stack:
+        child = stack.pop()
         if isinstance(child, str):
-            parts.append(child)
-        elif child.tag not in BOILERPLATE_TAGS:
-            parts.append(_strip_boilerplate_text(child))
-    return " ".join(p.strip() for p in parts if p.strip())
+            if child.strip():
+                parts.append(child.strip())
+        elif child.tag not in BOILERPLATE_TAGS and child.tag not in RAW_TEXT_ELEMENTS:
+            stack.extend(reversed(child.children))
+    return " ".join(parts)
 
 
 def _extract_headings(root: Node) -> list[dict]:
+    """Headings in document order. Iterative (2026-09-04) — see `html_tree.Node.find_all`
+    for why every tree walk in this collector had to stop recursing."""
     headings = []
+    stack: list = [c for c in reversed(root.children) if isinstance(c, Node)]
     order = 0
-
-    def walk(node: Node):
-        nonlocal order
-        for child in node.children:
-            if isinstance(child, Node):
-                if child.tag in ("h1", "h2", "h3", "h4", "h5", "h6"):
-                    headings.append({
-                        "level": int(child.tag[1]),
-                        "text": child.text(),
-                        "order": order,
-                    })
-                    order += 1
-                walk(child)
-
-    walk(root)
+    while stack:
+        node = stack.pop()
+        if node.tag in ("h1", "h2", "h3", "h4", "h5", "h6"):
+            headings.append({"level": int(node.tag[1]), "text": node.text(), "order": order})
+            order += 1
+        stack.extend(c for c in reversed(node.children) if isinstance(c, Node))
     return headings
 
 
@@ -148,6 +151,62 @@ def _extract_links(root: Node, page_url: str, canonical_host: str) -> tuple[list
     return links, outbound_profile_links
 
 
+def _is_decorative(el: Node) -> bool:
+    """ARIA-equivalent of alt="": the element is explicitly removed from the a11y tree.
+
+    Added 2026-09-04 after the Stage B negative-control screen: an accessibility-exemplar
+    site marks its own header/footer icons `aria-hidden="true"`, which is correct practice,
+    and CHK-E-014 was reporting every one of them as a missing-alt violation.
+    """
+    if (el.get("aria-hidden") or "").lower() == "true":
+        return True
+    return (el.get("role") or "").lower() in ("presentation", "none")
+
+
+# Class names that conventionally mean `display:none` in the frameworks this corpus uses.
+# Deliberately excludes `sr-only` / `visually-hidden` / `screen-reader-text`: those are
+# visually hidden but *present in the accessibility tree*, so an unnamed control carrying
+# one is still a real defect and must keep failing CHK-E-014.
+_DISPLAY_NONE_CLASSES = {"hidden", "is-hidden", "d-none", "u-hidden", "display-none"}
+
+
+def _is_hidden(el: Node) -> bool:
+    """Statically-evident non-rendering. Not a substitute for computed styles -- it only
+    catches what the HTML itself declares -- but a `style="display: none"` mobile-nav
+    trigger is not a control a user can fail to perceive.
+
+    Class-name heuristic added by D-029 (2026-09-10). Without it, CHK-E-014's
+    accessible-name sub-check reported `<a rel="me" href="https://mastodon.social/@..."
+    class="hidden"></a>` on www.smashingmagazine.com as a "link with no accessible name" on
+    every one of 12 sampled pages. That anchor is a Mastodon/IndieWeb identity-verification
+    link: empty and CSS-hidden by design, never encountered by a user -- and the very
+    construct CHK-D-025 asks sites to add. One check was penalising what another rewards.
+
+    This is a heuristic over class names, not CSS resolution, so it is deliberately narrow:
+    see `_DISPLAY_NONE_CLASSES`.
+    """
+    if "hidden" in el.attrs:
+        return True
+    classes = {c.lower() for c in (el.get("class") or "").split()}
+    if classes & _DISPLAY_NONE_CLASSES:
+        return True
+    style = (el.get("style") or "").replace(" ", "").lower()
+    return "display:none" in style or "visibility:hidden" in style
+
+
+def _alt_value(img: Node) -> str | None:
+    """`None` only when the attribute is genuinely absent.
+
+    `<img alt>` is a valueless HTML attribute and browsers treat it exactly as `alt=""` --
+    a correct decorative marking. `html.parser` reports its value as `None`, which made it
+    indistinguishable from an absent attribute, so CHK-E-014's documented guard ("test
+    `alt === null`, not `!alt`") could not work no matter how carefully the analyser was
+    written. Found on a WCAG-authoring site during the Stage B screen."""
+    if "alt" not in img.attrs:
+        return None
+    return img.attrs.get("alt") or ""
+
+
 def _extract_images(root: Node) -> list[dict]:
     images = []
     for img in root.find_all("img"):
@@ -155,7 +214,8 @@ def _extract_images(root: Node) -> list[dict]:
         aspect_match = re.search(r"aspect-ratio\s*:\s*([^;]+)", style)
         images.append({
             "src": img.get("src"),
-            "alt": img.get("alt"),  # None if attribute absent; "" if present-but-empty
+            "alt": _alt_value(img),  # None only if the attribute is absent
+            "decorative_hint": _is_decorative(img),
             "width_attr": img.get("width"),
             "height_attr": img.get("height"),
             "css_aspect_ratio": aspect_match.group(1).strip() if aspect_match else None,
@@ -210,16 +270,32 @@ def _extract_form_controls(root: Node) -> list[dict]:
 
 def _extract_interactive_empty(root: Node) -> dict:
     def is_empty(el: Node) -> bool:
+        # An element the page has explicitly hidden, or removed from the accessibility
+        # tree, is not a control anyone can encounter without a name.
+        if _is_hidden(el) or _is_decorative(el):
+            return False
         if el.get("aria-label") or el.get("title"):
             return False
         if el.text().strip():
             return False
         for img in el.find_all("img"):
-            if img.get("alt"):
+            if _alt_value(img):
+                return False
+        # An inline <svg> with a <title> names its parent control just as alt text does.
+        for svg in el.find_all("svg"):
+            if svg.find_first("title") is not None:
                 return False
         return True
 
-    links_no_text = sum(1 for a in root.find_all("a") if a.get("href") is not None and is_empty(a))
+    def is_identity_anchor(a: Node) -> bool:
+        """`rel="me"` with no content is the IndieWeb/Mastodon verification pattern: a
+        machine-readable identity claim, not a control. D-029."""
+        rel = (a.get("rel") or "").lower().split()
+        return "me" in rel and not a.text().strip()
+
+    links_no_text = sum(1 for a in root.find_all("a")
+                        if a.get("href") is not None and not is_identity_anchor(a)
+                        and is_empty(a))
     buttons_no_text = sum(1 for b in root.find_all("button") if is_empty(b))
     return {"links_no_text": links_no_text, "buttons_no_text": buttons_no_text}
 
@@ -248,6 +324,41 @@ def _extract_dates(root: Node, header_last_modified: str | None) -> dict:
     }
 
 
+_COPYRIGHT_MARKER_RE = re.compile(r"(?:©|\(c\)|copyright)", re.I)
+_LEADING_YEAR_RE = re.compile(r"^\s*(?:\d{4}(?:\s*[-–]\s*\d{4})?)?\s*(?:by\s+)?", re.I)
+_NAME_TERMINATOR_RE = re.compile(r"[.|·•\n\r]|all rights reserved", re.I)
+
+
+def _footer_org_name(footer_text: str) -> str | None:
+    """The organisation name a footer states, or None.
+
+    Rewritten 2026-09-04 after the Stage B negative-control screen. This used to take the
+    footer's text up to its first full stop, capped at 120 characters. A modern footer is a
+    navigation menu and contains no full stop, so on every site with one it returned 120
+    characters of link labels -- "Home Contact Help Support us Legal & Policies..." -- and
+    CHK-D-027 dutifully reported that as one of the organisation's competing names. It was
+    the single largest false-positive source the screen found.
+
+    A footer states its organisation's name in one reliable place: the copyright line.
+    Everything else in a footer is navigation. Returning None when there is no copyright
+    line is the correct answer rather than a gap -- CHK-D-027 already handles having too
+    few names to compare, and its own docstring always said this field was a fallback.
+    """
+    if not footer_text:
+        return None
+    marker = _COPYRIGHT_MARKER_RE.search(footer_text)
+    if marker is None:
+        return None
+    tail = footer_text[marker.end():]
+    tail = _LEADING_YEAR_RE.sub("", tail, count=1)
+    end = _NAME_TERMINATOR_RE.search(tail)
+    name = (tail[:end.start()] if end else tail[:60])
+    name = re.sub(r"\s+", " ", name).strip(" ,-–©")
+    if len(name) < 2 or len(name) > 60 or len(name.split()) > 8:
+        return None
+    return name
+
+
 def _extract_contact_signals(root: Node) -> dict:
     footer = root.find_first("footer")
     footer_text = footer.text() if footer else ""
@@ -258,14 +369,7 @@ def _extract_contact_signals(root: Node) -> dict:
     )
     phone_match = _PHONE_RE.search(footer_text) or _PHONE_RE.search(body_text)
 
-    org_name_footer = None
-    if footer is not None:
-        # First non-empty text-only child, or the whole footer's first sentence-ish chunk —
-        # a heuristic, not a structured-data-backed fact; callers should prefer JSON-LD
-        # `name` where available and treat this as a fallback signal only.
-        stripped = footer_text.strip()
-        if stripped:
-            org_name_footer = stripped.split(".")[0][:120].strip() or None
+    org_name_footer = _footer_org_name(footer_text)
 
     return {
         "email": email,

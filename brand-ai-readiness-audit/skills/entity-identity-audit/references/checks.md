@@ -59,28 +59,32 @@ identified from prose, which is harder to extract correctly and more easily conf
 same-named entities.
 
 **Evidence strength:** THEORETICAL / PRACTITIONER  
-**Severity ceiling:** medium
+**Severity ceiling:** low (was medium; capped since Stage C, 2026-09-04 — see D-022)
 
-**Observation:** Inspect `structured_data.json_ld[]` on pages where `page_type ∈
-{"home", "about"}`. Look for an entry with `@type == "Organization"` (or a subtype such
-as `LocalBusiness`, `Corporation`). If found, check `fields_present` against the required
-set: `["name", "url", "description"]`; and the recommended set:
-`["logo", "sameAs", "contactPoint"]`.
+**Observation:** Inspect `structured_data.json_ld[]` on the homepage only (the shipped
+`check_d007` reads `page_type == "home"` specifically, not `{"home", "about"}`). Look for
+an entry with `@type == "Organization"` (or a subtype). If found, check `fields_present`
+against the required set the code actually checks: `["name", "url"]`. **The `description`
+field and the recommended-field tier (`logo`, `sameAs`, `contactPoint`) described in an
+earlier version of this doc were never implemented in `check_d007` — this file previously
+drifted from the code; corrected here, not a change in behaviour.**
 
 **Evidence emitted:**
 ```
-No Organization JSON-LD block found on {url}.
+No Organization JSON-LD block found.
 ```
 or
 ```
-Organization JSON-LD found on {url} but missing required fields: {missing_required}.
-Recommended fields absent: {missing_recommended}.
+Found but missing: {sorted(missing_required)}.
 ```
 
-**Severity rule:**
-- `absent` (no block at all): medium
-- Block present but missing required fields (`name`, `url`, or `description`): medium
-- Block present, required fields complete, recommended fields absent: low
+**Severity rule (Stage C, D-022):** `low` in both firing cases — no block at all, or a
+block missing `name`/`url`. **Why capped, not left at medium:** fired on 26 of 34 real
+dev/negative-control sites; Web Data Commons Oct 2024 measured only 44.1% of 37.4M domains
+carrying *any* structured data at all, so absence is the open web's majority condition, not
+a differentiated signal (D-009's base-rate-conditioning rule, enforced in code). Still a
+real, directly actionable defect, so it stays in `findings[]` rather than being demoted to
+`recommendations[]` the way `CHK-E-021`/`CHK-D-010` were in the same pass.
 
 **FP guard:**
 - Suppress on `archetype ∈ {"personal", "hobby", "portfolio"}`.
