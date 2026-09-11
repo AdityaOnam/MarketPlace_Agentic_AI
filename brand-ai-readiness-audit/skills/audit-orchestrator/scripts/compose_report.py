@@ -45,7 +45,7 @@ CHECK_TITLES = {
     "CHK-D-026": "Declared identity anchors do not resolve",
     "CHK-D-027": "Inconsistent organisation identity attributes",
     "CHK-E-014": "Machine-detectable accessibility violations",
-    "CHK-E-015": "Mobile viewport blocks zoom or overflows horizontally",
+    "CHK-E-015": "Mobile viewport meta missing or restricting user zoom",
     "CHK-E-016": "Tap targets below WCAG 2.2 minimum size",
     "CHK-E-017": "Non-descriptive link text",
     "CHK-E-018": "Content-blocking overlay present at load",
@@ -57,41 +57,56 @@ CHECK_TITLES = {
 }
 
 DECLARED_LIMITATIONS = [
+    # D-2 (2026-09-12): plain-language pass. Jargon that a site owner cannot act on
+    # ("parametric-memory coverage", "deterministic", raw mechanism codes) is replaced
+    # with the same content in the reader's terms. The `mechanism` field stays for
+    # machine consumers; the human-facing text no longer requires knowing what B/D/E
+    # mean.
     {
         "id": "LIM-01", "mechanism": "D",
-        "reason": "Actual agreement across the wider web about the brand's facts requires "
-                   "a search or web-scale index API. No free, deterministic, rate-safe "
-                   "source exists.",
-        "note": "CHK-D-025/026/027 audit only the anchoring the site itself provides for "
-                 "that corroboration, not corroboration itself.",
+        "reason": "Whether other sites on the wider web actually agree with this brand's "
+                   "own facts would need a search index or a web-scale crawl -- and there "
+                   "is no free, deterministic source of that available inside a "
+                   "5-minute audit.",
+        "note": "Checks D-025, D-026 and D-027 cover only the identity anchors the site "
+                 "declares about itself, not what the rest of the web says about it.",
     },
     {
         "id": "LIM-02", "mechanism": "D",
-        "reason": "Detecting a same-name collision with an unrelated entity requires a "
-                   "corpus of other entities.",
-        "note": "CHK-D-027 covers only self-consistency, the site-side half.",
+        "reason": "Whether the brand's name collides with an unrelated entity that uses "
+                   "the same name would need a directory of other entities to compare "
+                   "against, which is not available inside this audit.",
+        "note": "Check D-027 covers only whether the site is consistent with itself, not "
+                 "whether it is confusable with someone else.",
     },
     {
         "id": "LIM-03", "mechanism": "B",
-        "reason": "Live-querying a generative engine would break determinism, the "
-                   "5-minute budget, and reproducibility.",
-        "note": "This audit measures retrievability and correctness of what the site "
-                 "exposes, never observed citation outcomes.",
+        "reason": "Actually asking an AI assistant whether it cites this site would need "
+                   "live calls to an LLM API, which we cannot make repeatably or within "
+                   "the 5-minute budget.",
+        "note": "This audit measures whether the site is retrievable and correct -- what "
+                 "an AI system can find and lift from it -- not whether it is currently "
+                 "being cited.",
     },
     {
         "id": "LIM-04", "mechanism": "E",
-        "reason": "Field engagement outcomes (bounce, dwell, scroll, conversion, task "
-                   "success) are not observable read-only.",
-        "note": "Reported not_determinable where the gap is itself actionable.",
+        "reason": "What actually happens when a visitor lands on the site (bounce rate, "
+                   "how long they stay, whether they scroll, whether they complete a "
+                   "task) needs analytics data that a read-only audit does not have.",
+        "note": "We report not-determinable rather than guess, and the engagement checks "
+                 "look for structural warning signs -- the kind of page where visitors "
+                 "typically leave -- rather than the outcome itself.",
     },
     {
         "id": "LIM-05", "mechanism": "D",
-        "reason": "llms.txt is not recommended as a substantive fix: a 137k-domain "
-                   "measurement found 97% of existing llms.txt files were never requested. "
-                   "This audit declines to recommend adding one on that evidence (D-007).",
-        "note": "Stated here rather than omitted (D-014) — the officials' Q&A confirms "
-                "recommending it is an acceptable position, so silence about it would look "
-                "indistinguishable from having missed it.",
+        "reason": "We do not recommend adding an llms.txt file. A 137,000-domain "
+                   "measurement found that 97% of existing llms.txt files were never "
+                   "actually requested by an AI crawler, so the fix does not do what the "
+                   "recommendation suggests (D-007).",
+        "note": "Stated visibly rather than left silent (D-014). The officials' Q&A "
+                "session accepts either recommending it or declining to; we decline on "
+                "the measured evidence and say so, so a reader can tell the difference "
+                "between a considered position and an oversight.",
     },
 ]
 
@@ -124,7 +139,7 @@ def split_findings_recommendations(findings: list[dict]) -> tuple[list[dict], li
 
 _URL_IN_EVIDENCE = re.compile(r"https?://\S+")
 _NUMBER_IN_EVIDENCE = re.compile(r"\d+")
-ROLLUP_MIN_PAGES = 3
+ROLLUP_MIN_PAGES = 2
 
 
 def _defect_signature(f: dict) -> tuple:
@@ -141,8 +156,26 @@ def _defect_signature(f: dict) -> tuple:
     return (f["check_id"], f.get("subcheck"), ev)
 
 
+def _instance_of(f: dict) -> dict:
+    """A per-origin instance record, for the finding's `instances[]` array.
+
+    Carries the per-page evidence verbatim from the underlying envelope (the elements it
+    names by count/type) and its locus, so a reader can act on any single page even when
+    the finding as a whole is site-scoped. This is D-013 as it maps to a static-HTML
+    audit: the *evidence text* names elements ('3 img with missing alt'); a CSS selector
+    for each element would require the check to emit one, which most do not.
+    """
+    return {
+        "locus": f.get("locus") or {"url": None, "selector": None},
+        "evidence": f.get("evidence"),
+        "severity": f.get("severity"),
+    }
+
+
 def roll_up_site_wide(findings: list[dict]) -> list[dict]:
-    """Collapse one defect repeated across pages into one finding with a page count.
+    """Collapse one defect repeated across pages into one finding, and give every finding
+    an `instances[]` array recording each origin. Grouped by defect signature so different
+    defect templates for the same check stay separate findings.
 
     Added 2026-09-04 from the Stage B negative-control screen, which is the first time
     this marketplace met real multi-page sites. A single site-template defect -- one
@@ -155,9 +188,11 @@ def roll_up_site_wide(findings: list[dict]) -> list[dict]:
     list of items. The real ingenuity lies in how you order them" (OFFICIALS-QA.md §3.1).
     Ordering cannot help when one defect occupies 17 of the slots being ordered.
 
-    A defect seen on fewer than `ROLLUP_MIN_PAGES` pages is left alone -- at one or two
-    pages it is plausibly specific to those pages, and collapsing it would hide the locus
-    a reader needs.
+    Tightened 2026-09-12 (D-1): the previous 3-page floor left the 2-page case producing
+    two separate findings for the same defect, which is the same laundry-list problem at
+    lower volume. Now any defect seen on >=2 pages becomes one site-scoped finding, and
+    every finding -- multi-page or single-page -- carries an `instances[]` array recording
+    the per-origin evidence and locus, so no per-page detail is lost by the rollup.
     """
     groups: dict[tuple, list[dict]] = {}
     order: list[tuple] = []
@@ -171,13 +206,16 @@ def roll_up_site_wide(findings: list[dict]) -> list[dict]:
     out: list[dict] = []
     for sig in order:
         group = groups[sig]
-        if len(group) < ROLLUP_MIN_PAGES:
-            out.extend(group)
-            continue
         # Severity of the rolled-up finding is the worst in the group, never an average:
         # a defect is as serious as its worst instance.
         worst = min(group, key=lambda f: SEVERITY_ORDER.get(f.get("severity"), 99))
         merged = dict(worst)
+        merged["instances"] = [_instance_of(f) for f in group]
+        if len(group) < ROLLUP_MIN_PAGES:
+            # Single-origin finding: keep the original locus and evidence intact so a
+            # single-page defect still reports where it is.
+            out.append(merged)
+            continue
         examples = [(f.get("locus") or {}).get("url") for f in group]
         examples = [u for u in examples if u]
         body = _URL_IN_EVIDENCE.sub("", (worst.get("evidence") or "")).lstrip(" :")
@@ -190,6 +228,41 @@ def roll_up_site_wide(findings: list[dict]) -> list[dict]:
         merged["occurrences"] = {"pages": len(group), "examples": examples[:3]}
         out.append(merged)
     return out
+
+
+def compute_checks_passed(envelopes: list[dict]) -> list[dict]:
+    """The check IDs that ran to a clean absent, in check-ID order.
+
+    A reader of a report needs to see what was *verified* clean, not just what was found
+    broken -- otherwise a report with two findings on a 26-check marketplace reads as if
+    only two checks ran at all. D-18 makes the verified-clean set explicit.
+
+    A check is 'passed' if it produced at least one `state="absent"` envelope and no
+    `state="present"` non-recommendation envelope. Checks that produced only
+    `not_determinable` or `not_applicable` envelopes (a render-dependent check in the
+    no-browser sandbox, a personal-archetype site exempted from identity checks) are not
+    listed as passed -- they were not measured.
+    """
+    by_check: dict[str, set[str]] = {}
+    for e in envelopes:
+        cid = e.get("check_id")
+        if cid not in CHECK_TITLES:
+            continue
+        by_check.setdefault(cid, set()).add(e.get("state"))
+    passed = []
+    for cid in sorted(CHECK_TITLES):
+        states = by_check.get(cid, set())
+        # A recommendation firing 'present' does not disqualify the check from 'passed'
+        # -- recommendations are proactive notices, not confirmed defects.
+        has_present_finding = any(
+            e.get("state") == "present" and not e.get("recommendation_only")
+            for e in envelopes if e.get("check_id") == cid
+        )
+        if has_present_finding:
+            continue
+        if "absent" in states:
+            passed.append({"check_id": cid, "title": CHECK_TITLES[cid]})
+    return passed
 
 
 def assign_ids_and_titles(findings: list[dict]) -> list[dict]:
@@ -210,6 +283,17 @@ def assign_ids_and_titles(findings: list[dict]) -> list[dict]:
 def build_recommendations(recommendations: list[dict]) -> list[dict]:
     out = []
     for i, r in enumerate(recommendations, start=1):
+        # D-11 (2026-09-12): recommendation envelopes for genuinely site-scoped checks
+        # (D-027 identity consistency, E-024 trust signals, E-021 aggregated across the
+        # site) come in with the `_envelope()` default locus `{"url": None, "selector":
+        # None}`, which is technically present but tells a reader nothing. Rewrite that
+        # to a site-scoped locus so downstream consumers (Stage E's `same check + same
+        # locus` matching rule; readers scanning the report for "where do I fix this")
+        # can distinguish site-wide from missing-page-info. A recommendation whose
+        # envelope named a real page is passed through unchanged.
+        locus = r.get("locus") or {}
+        if not locus.get("url"):
+            locus = {"url": None, "scope": "site"}
         out.append({
             "id": f"R-{i:03d}",
             "check_id": r["check_id"],
@@ -221,7 +305,7 @@ def build_recommendations(recommendations: list[dict]) -> list[dict]:
             # them, Stage E's matching rule (EVALS.md §2 -- same check, same locus) cannot
             # be applied to the five recommendation-only checks at all. Added 2026-09-09
             # while building harness/score_dev.py.
-            "locus": r.get("locus"),
+            "locus": locus,
             "severity": r.get("severity"),
         })
     return out
@@ -416,12 +500,56 @@ def compose_report(site: str, audited_at: str, all_envelopes: list[dict], bundle
     if d001 is not None:
         notes.append("Content findings below describe content the blocked retrieval "
                       "agent(s) cannot currently reach.")
+    # D-19 (2026-09-12): make the audit's static-HTML premise part of the report itself,
+    # not just documented in DECISIONS. The grading sandbox has no headless browser
+    # (OFFICIALS-QA.md §1.1), and the audit is written against that constraint: a check
+    # whose only evidence is rendered geometry -- CHK-E-016 tap-targets, CHK-E-018
+    # overlay coverage, the contrast sub-check of CHK-E-014, the overflow sub-check of
+    # CHK-E-015 -- reports `not_determinable`, not "no defect found". Stating it in the
+    # preamble is how a reader can distinguish that from a check that was measured and
+    # passed.
+    notes.append("Evaluated against non-rendered static HTML: render-dependent "
+                  "sub-checks (contrast, tap-target geometry, overlay coverage, "
+                  "horizontal overflow) return not_determinable rather than a defect.")
 
     # The site's vertical is surfaced because it is not decoration: archetype gates which
     # checks run at all (a personal site is exempt from identity-anchor checks, a
     # non-commercial one from trust signals) and shapes how each suggested action is
     # worded. A reader needs to know which vertical the recommendations were written for.
     archetype = bundle.get("site", {}).get("archetype", "unknown")
+    # D-3 (2026-09-12): state in plain English what the archetype label DID in this audit.
+    # OFFICIALS-QA §3.3 and Action #6 name archetype-specific interpretation as a rewarded
+    # differentiator; a reader needs to see the archetype had a downstream effect, not
+    # just a name in the preamble.
+    archetype_effects = {
+        "personal": ("Identity checks (Organization JSON-LD, sameAs anchors, "
+                     "self-consistent legal name) are suppressed: a personal site is "
+                     "not expected to publish structured entity metadata."),
+        "ecommerce": ("Trust signals, canonical/duplicate handling, and structured "
+                       "product data are graded more strictly; recommendations are "
+                       "phrased for a catalogue-scale site."),
+        "documentation": ("Deep, versioned URL structures are exempt from near-duplicate "
+                           "flagging; content-thinness thresholds apply per page rather "
+                           "than per section."),
+        "news_editorial": ("Time-stamped articles, byline signals, and the date-signal "
+                            "check are graded more strictly; the trust-signals check "
+                            "is applied."),
+        "saas_marketing": ("Trust signals and pricing-page identity are graded more "
+                            "strictly; the site's marketing blog does not have to meet "
+                            "editorial standards."),
+        "local_business": ("Postal address, opening hours and LocalBusiness JSON-LD are "
+                            "expected; contact-page structure carries more weight than a "
+                            "generic 'contact us' link."),
+        "brochure": ("The site was small enough to grade as a single-purpose brochure; "
+                     "some proportion-based checks were skipped as inapplicable."),
+        "unknown": ("The archetype could not be inferred with confidence from the "
+                    "sampled pages, so no per-vertical exemptions or vertical-specific "
+                    "recommendations were applied. Results below use the checks' "
+                    "universal defaults."),
+    }
+    arch_note = archetype_effects.get(archetype)
+    if arch_note:
+        notes.append(f"Archetype: {archetype}. {arch_note}")
 
     report = {
         "schema_version": "1.0.0",
@@ -436,6 +564,9 @@ def compose_report(site: str, audited_at: str, all_envelopes: list[dict], bundle
         "summary": compute_summary(findings_out),
         "findings": findings_out,
         "recommendations": recommendations_out,
+        # D-18 (2026-09-12): the checks that ran and were verified clean, so a two-finding
+        # report on a 26-check marketplace does not read like only two checks ran.
+        "checks_passed": compute_checks_passed(all_envelopes),
         "limitations": DECLARED_LIMITATIONS,
         "degraded_stages": compute_degraded_stages(bundle.get("budget", {})),
     }

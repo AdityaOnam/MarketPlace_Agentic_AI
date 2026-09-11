@@ -56,12 +56,22 @@ def evaluate(bundle: dict) -> list[dict]:
             f"applies to {name} (retrieval-time AI crawler)."
             for name, info in blocked_retrieval
         ]
+        # D-16 (2026-09-12): action now names the intent question first. A newsroom that
+        # blocks AI crawlers as a licensing position is not misconfigured, and telling
+        # them to "narrow the Disallow" reads as "unblock the scrapers" -- a fix worse
+        # than the finding. The finding itself is still critical: this IS the direct
+        # cause of retrieval-time invisibility. The action asks whether the block was
+        # deliberate; if it wasn't, the mechanical fix comes next.
+        agent_names = ", ".join(name for name, _ in blocked_retrieval)
         findings.append(_envelope(
             "CHK-D-001", "present", " ".join(parts), "critical", "HARD-MECHANICAL",
             {
-                "summary": "Narrow the Disallow rule to the paths that actually need "
-                           "protection rather than the site root for: "
-                           + ", ".join(name for name, _ in blocked_retrieval) + ".",
+                "summary": f"This block is the direct reason retrieval-time AI "
+                           f"assistants cannot cite pages on this site. If it is a "
+                           f"deliberate licensing decision for {agent_names}, no change "
+                           f"is required -- but note the visibility trade-off. "
+                           f"Otherwise, narrow the Disallow rule to the specific paths "
+                           f"that need protection rather than the site root.",
                 "priority": "critical",
             },
         ))
@@ -78,9 +88,14 @@ def evaluate(bundle: dict) -> list[dict]:
             f"retrieval-time AI crawlers.",
             "low", "CORRELATIONAL",
             {
-                "summary": "This is frequently intentional and not necessarily a defect. "
-                           "It forgoes future parametric-memory coverage only; leave the "
-                           "decision with the site owner.",
+                # D-2 (2026-09-12): "parametric-memory coverage" is jargon a site owner
+                # cannot act on. Rephrased as what the block actually costs and doesn't
+                # cost, in the reader's terms.
+                "summary": "Blocking a training-corpus crawler while leaving retrieval "
+                           "crawlers open is usually deliberate: the site can still be "
+                           "cited by AI assistants at answer time, and only future "
+                           "training runs are opted out. If that trade-off matches the "
+                           "site's position, no change is needed.",
                 "priority": "low",
             },
             suppressed_by=[],

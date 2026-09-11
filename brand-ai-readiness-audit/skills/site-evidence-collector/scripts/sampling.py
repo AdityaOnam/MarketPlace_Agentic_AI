@@ -6,9 +6,27 @@ on identical page selection across repeated runs against the same site state.
 from __future__ import annotations
 
 import hashlib
+import re
+from urllib.parse import urlparse
 
 MAX_STATIC_PAGES = 20
 MAX_PER_TYPE = 4
+
+# Belt-and-braces over the inventory builder's own `asset` labelling: a sitemap index's
+# child sitemaps (`/sitemaps/en-us/sitemap.xml.gz`) are URL *sources*, never pages, and
+# nothing downstream can grade gzipped XML for an <h1>. Found on developer.mozilla.org
+# (2026-09-12) when an inventory reached this function with three child sitemaps labelled
+# as pages and every page-level check fired on them.
+_NEVER_A_PAGE_RE = re.compile(
+    r"(\.(xml|xml\.gz|gz|txt|json|pdf|css|js|mjs|zip|tar|rar|"
+    r"png|jpe?g|gif|webp|svg|ico|avif|woff2?|ttf|mp3|mp4|webm|mov)$)|(/sitemap[^/]*$)",
+    re.I,
+)
+
+
+def is_page_url(url: str) -> bool:
+    path = urlparse(url).path or "/"
+    return not _NEVER_A_PAGE_RE.search(path)
 
 
 def sampling_seed(inventory_urls: list[str]) -> str:
@@ -24,7 +42,8 @@ def select_static_sample(inventory: list[dict], max_pages: int = MAX_STATIC_PAGE
     across remaining types proportional to inventory, capped at MAX_PER_TYPE each,
     remaining slots to the largest type. `login` and `asset` are never selected.
     """
-    eligible = [p for p in inventory if p.get("page_type") not in ("login", "asset")]
+    eligible = [p for p in inventory
+                if p.get("page_type") not in ("login", "asset") and is_page_url(p["url"])]
     # Deterministic tie-break: sort by (page_type, url) so selection never depends on
     # discovery order.
     eligible.sort(key=lambda p: (p["page_type"], p["url"]))

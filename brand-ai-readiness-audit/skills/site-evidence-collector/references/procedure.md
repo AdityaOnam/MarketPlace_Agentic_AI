@@ -37,6 +37,11 @@ Preference order:
    `http(s)` URL before requesting it. One real site serves `{{ site.url }}/sitemap.xml`,
    an unrendered template left in the published file; treating that as a URL raises rather
    than degrading.
+   **A `<sitemapindex>` lists other sitemaps, not pages.** Each `<loc>` inside it (commonly
+   `…/sitemap.xml.gz`) is fetched, decompressed if needed, and its own `<urlset>` `<loc>`
+   entries are what enter the inventory. The child sitemap URL itself never does — it is
+   XML, and no page-level check can be run against it. `sampling.is_page_url()` enforces
+   this as a last line of defence.
 2. If no sitemap: breadth-first same-origin crawl from the homepage, depth ≤ 2, collecting
    URLs only — no fetching beyond what discovery requires.
 
@@ -97,6 +102,22 @@ randomness — `pass^k` stability at k=5 depends on identical page selection acr
 Quota, up to 20 pages: homepage always; then `about` and `contact` if present; then up to 12
 distributed across the remaining types present, proportional to inventory but capped at 4
 per type; remaining slots to the largest type. `login` pages are never fetched.
+
+### What counts as a page
+
+A sampled URL becomes an auditable `pages[]` entry **only** when the response is `2xx`,
+the `Content-Type` is HTML (`text/html` or `application/xhtml+xml`), and the body is
+non-empty. Anything else — a `404` left in a stale sitemap, a `3xx` whose body is a
+redirect stub, an XML or PDF resource, an empty response — is recorded with
+`status: "unavailable"`, the `http_status`, a `reason`, and `extraction_ok: false`, and
+**no check is evaluated against it**. `extract_page()` applies this itself; do not bypass
+it by handing it a body from a failed request. Found on weebly.com (a 404 and an empty
+302 in the sitemap each produced four findings) and developer.mozilla.org (three child
+sitemaps graded for `<h1>` and viewport meta).
+
+Always follow redirects (max 3, per §1) and record the post-redirect URL as `final_url`.
+Findings are located at `final_url`, so `/about` → `/in/about` is reported where the
+content actually is.
 
 ### Per-page extraction
 
