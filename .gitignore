@@ -27,3 +27,16 @@ dist/
 gold-labelling-kit/
 retest-kit/
 r1-verification-kit/
+
+# aggregated judge-run artifacts and mock fixtures used during the 2026-09-11 external
+# review -- not part of the submission, reproducible from harness/out/ if needed
+all_84_reports_combined.json
+mock_reports.json
+
+# byte-for-byte duplicate of the top-level docs/ tree, kept locally as a working mirror
+# inside the shipping directory. docs/ is the authoritative copy that ships.
+brand-ai-readiness-audit/docs/
+
+# backups written next to their files during CSV/label recovery (e.g.
+# gold-labels-template.csv.corrupted.bak, *.pre-*.bak). Local safety copies only.
+*.bak

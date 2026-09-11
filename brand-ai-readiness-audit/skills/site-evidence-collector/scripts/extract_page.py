@@ -19,11 +19,17 @@ MEANINGFUL_TEXT_MIN_LEN = 2  # ignore single-character stray text nodes when cou
 _WORD_RE = re.compile(r"[A-Za-z0-9']+")
 _EMAIL_RE = re.compile(r"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}")
 _PHONE_RE = re.compile(r"(\+?\d{1,3}[\s.-]?)?\(?\d{2,4}\)?[\s.-]?\d{3,4}[\s.-]?\d{3,4}")
+_MONTHS = r"(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*"
 _DATE_RE = re.compile(
     r"\b(\d{4}-\d{2}-\d{2})\b|"
-    r"\b(\d{1,2}\s+(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\s+\d{4})\b",
+    r"\b(\d{1,2}\s+" + _MONTHS + r"\s+\d{4})\b|"
+    # Month-first ("October 31, 2024") -- the dominant format on US-English sites and the
+    # one this regex lacked until a squarespace.com press page with a visible date, JSON-LD
+    # datePublished and /2024/10/31/ in its URL was reported as undated (2026-09-12).
+    r"\b(" + _MONTHS + r"\s+\d{1,2},?\s+\d{4})\b",
     re.IGNORECASE,
 )
+_URL_DATE_RE = re.compile(r"/((?:19|20)\d{2})/(\d{2})(?:/(\d{2}))?(?:/|$)")
 
 
 def _word_count(text: str) -> int:
@@ -257,12 +263,18 @@ def _extract_form_controls(root: Node) -> list[dict]:
         for el in root.find_all(tag):
             if tag == "input" and (el.get("type") or "text").lower() in ("hidden", "submit", "button"):
                 continue
+            # A CSS-hidden control is not one a user can fail to perceive. Spam honeypots
+            # (`<input name="9P8yG" style="display:none !important">`) are the common case;
+            # one was reported as an unlabelled form control on adrianroselli.com/contact.
+            if _is_hidden(el):
+                continue
             el_id = el.get("id")
             wrapped_in_label = el.has_ancestor("label")
             controls.append({
                 "type": el.get("type") if tag == "input" else tag,
                 "id": el_id,
-                "has_label": bool(el_id and el_id in labels_for) or wrapped_in_label,
+                "has_label": (bool(el_id and el_id in labels_for) or wrapped_in_label
+                              or bool(el.get("aria-labelledby"))),
                 "aria_label": el.get("aria-label"),
             })
     return controls
@@ -274,7 +286,10 @@ def _extract_interactive_empty(root: Node) -> dict:
         # tree, is not a control anyone can encounter without a name.
         if _is_hidden(el) or _is_decorative(el):
             return False
-        if el.get("aria-label") or el.get("title"):
+        # aria-labelledby names the control from another element's text -- a valid
+        # accessible name per the accname spec. Missed on adrianroselli.com (2026-09-12):
+        # `<button aria-labelledby="mnu2095">` on every page was counted as unnamed.
+        if el.get("aria-label") or el.get("aria-labelledby") or el.get("title"):
             return False
         if el.text().strip():
             return False
@@ -300,7 +315,35 @@ def _extract_interactive_empty(root: Node) -> dict:
     return {"links_no_text": links_no_text, "buttons_no_text": buttons_no_text}
 
 
-def _extract_dates(root: Node, header_last_modified: str | None) -> dict:
+def _jsonld_dates(root: Node) -> tuple[str | None, str | None]:
+    """First `datePublished` / `dateModified` found in any ld+json block, walking nested
+    objects and `@graph` arrays. Tolerant of invalid JSON (returns nothing)."""
+    published = modified = None
+
+    def walk(obj):
+        nonlocal published, modified
+        if isinstance(obj, dict):
+            if published is None and isinstance(obj.get("datePublished"), str):
+                published = obj["datePublished"]
+            if modified is None and isinstance(obj.get("dateModified"), str):
+                modified = obj["dateModified"]
+            for v in obj.values():
+                walk(v)
+        elif isinstance(obj, list):
+            for v in obj:
+                walk(v)
+
+    for script in root.find_all("script"):
+        if (script.get("type") or "").lower() != "application/ld+json":
+            continue
+        try:
+            walk(json.loads(script.text()))
+        except (ValueError, TypeError):
+            continue
+    return published, modified
+
+
+def _extract_dates(root: Node, header_last_modified: str | None, page_url: str = "") -> dict:
     meta_published = None
     meta_modified = None
     for meta in root.find_all("meta"):
@@ -310,16 +353,26 @@ def _extract_dates(root: Node, header_last_modified: str | None) -> dict:
         elif prop in ("article:modified_time", "og:article:modified_time", "datemodified"):
             meta_modified = meta.get("content")
 
+    jsonld_published, jsonld_modified = _jsonld_dates(root)
+
     visible_dates = [t.get("datetime") for t in root.find_all("time") if t.get("datetime")]
     if not visible_dates:
         body = root.find_first("body")
         text = body.text() if body else root.text()
         visible_dates = [m.group(0) for m in _DATE_RE.finditer(text)][:10]
 
+    url_date = None
+    m = _URL_DATE_RE.search(urlparse(page_url).path if page_url else "")
+    if m:
+        url_date = "-".join(x for x in m.groups() if x)
+
     return {
         "meta_published": meta_published,
         "meta_modified": meta_modified,
+        "jsonld_published": jsonld_published,
+        "jsonld_modified": jsonld_modified,
         "visible_dates": visible_dates,
+        "url_date": url_date,
         "header_last_modified": header_last_modified,
     }
 
@@ -327,6 +380,16 @@ def _extract_dates(root: Node, header_last_modified: str | None) -> dict:
 _COPYRIGHT_MARKER_RE = re.compile(r"(?:©|\(c\)|copyright)", re.I)
 _LEADING_YEAR_RE = re.compile(r"^\s*(?:\d{4}(?:\s*[-–]\s*\d{4})?)?\s*(?:by\s+)?", re.I)
 _NAME_TERMINATOR_RE = re.compile(r"[.|·•\n\r]|all rights reserved", re.I)
+# A legal suffix ends the name even with no punctuation after it: "Square, Inc English
+# Español Dansk" is "Square, Inc" followed by a language selector (weebly.com, 2026-09-12).
+_LEGAL_SUFFIX_END_RE = re.compile(
+    r"\b(Inc|Incorporated|Ltd|Limited|LLC|L\.L\.C|PLC|GmbH|AG|S\.A|S\.p\.A|B\.V|N\.V|Pty|"
+    r"Corp|Corporation|Co|Company|Foundation|Association|Trust|LLP|LP)\.?(?=\s|$)", re.I)
+# Footer nav labels that are never part of an organisation name. A candidate made mostly
+# of these is a menu, not a name ("Terms Privacy Status Pricing", github.com, 2026-09-12).
+_NAV_WORDS = {"terms", "privacy", "status", "pricing", "contact", "about", "home", "help",
+              "support", "legal", "cookies", "cookie", "careers", "blog", "docs", "security",
+              "sitemap", "policy", "settings", "login", "sign", "press", "faq", "accessibility"}
 
 
 def _footer_org_name(footer_text: str) -> str | None:
@@ -353,8 +416,14 @@ def _footer_org_name(footer_text: str) -> str | None:
     tail = _LEADING_YEAR_RE.sub("", tail, count=1)
     end = _NAME_TERMINATOR_RE.search(tail)
     name = (tail[:end.start()] if end else tail[:60])
+    suffix = _LEGAL_SUFFIX_END_RE.search(name)
+    if suffix:
+        name = name[:suffix.end()]
     name = re.sub(r"\s+", " ", name).strip(" ,-–©")
-    if len(name) < 2 or len(name) > 60 or len(name.split()) > 8:
+    words = name.split()
+    if len(name) < 2 or len(name) > 60 or len(words) > 8:
+        return None
+    if len(words) >= 2 and sum(w.lower().strip(".,") in _NAV_WORDS for w in words) * 2 >= len(words):
         return None
     return name
 
@@ -435,6 +504,29 @@ def _trigram_hash(text: str) -> str:
     return f"sha256:{digest}"
 
 
+_HTML_CONTENT_TYPES = ("text/html", "application/xhtml+xml")
+
+
+def unavailable_page(page_url: str, reason: str, http_status: int | None = None,
+                     page_type: str = "other", final_url: str | None = None) -> dict:
+    """A `pages[]` entry for a URL that yielded no auditable HTML document.
+
+    Every analyser guards on `extraction_ok` (D-023), so a page shaped like this produces
+    `not_determinable` envelopes and never a finding. Used for non-2xx responses, non-HTML
+    content types, and empty bodies -- a 404 in a stale sitemap, a redirect stub, a gzipped
+    child sitemap are not pages and must not be graded as if they were.
+    """
+    return {"url": page_url, "final_url": final_url or page_url, "status": "unavailable",
+            "reason": reason, "http_status": http_status, "page_type": page_type,
+            "headers": {}, "raw_html": None, "raw_html_bytes": 0, "main_text": "",
+            "main_text_words": 0, "extraction_ok": False, "title": None, "meta": {},
+            "lang": None, "canonical": {}, "headings": [], "landmarks": {},
+            "structured_data": {}, "links": [], "outbound_profile_links": [], "images": [],
+            "iframes": [], "media": [], "form_controls": [], "interactive_empty": {},
+            "noscript": {"present": False, "words": 0}, "dates": {},
+            "contact_signals": {}, "trigram_hash": None}
+
+
 def extract_page(
     html_text: str,
     page_url: str,
@@ -442,9 +534,25 @@ def extract_page(
     http_status: int,
     headers: dict | None = None,
     page_type: str = "other",
+    final_url: str | None = None,
 ) -> dict:
-    """Build one `pages[]` entry per docs/BUNDLE-SCHEMA.md, from raw HTML + response info."""
+    """Build one `pages[]` entry per docs/BUNDLE-SCHEMA.md, from raw HTML + response info.
+
+    `final_url` is the URL after redirects; it becomes the finding locus so a `/about` that
+    302s to `/in/about` is reported where it actually lives.
+    """
     headers = headers or {}
+    final_url = final_url or page_url
+
+    if http_status is None or not (200 <= http_status < 300):
+        return unavailable_page(page_url, f"http_{http_status}", http_status, page_type, final_url)
+    content_type = (headers.get("content-type") or headers.get("Content-Type") or "").lower()
+    if content_type and not any(content_type.startswith(t) for t in _HTML_CONTENT_TYPES):
+        return unavailable_page(page_url, f"non_html:{content_type.split(';')[0]}",
+                                http_status, page_type, final_url)
+    if not (html_text or "").strip():
+        return unavailable_page(page_url, "empty_body", http_status, page_type, final_url)
+
     root = parse_html(html_text)
 
     main_root = _main_content_root(root)
@@ -463,7 +571,7 @@ def extract_page(
 
     return {
         "url": page_url,
-        "final_url": page_url,
+        "final_url": final_url,
         "status": "ok",
         "reason": None,
         "http_status": http_status,
@@ -501,7 +609,7 @@ def extract_page(
             "present": noscript_node is not None,
             "words": _word_count(noscript_node.text()) if noscript_node else 0,
         },
-        "dates": _extract_dates(root, headers.get("last-modified")),
+        "dates": _extract_dates(root, headers.get("last-modified"), final_url),
 
         "contact_signals": _extract_contact_signals(root),
         "trigram_hash": _trigram_hash(main_text),

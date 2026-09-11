@@ -31,6 +31,10 @@ defined in D-012.
   },
   "findings": [ ... ],
   "recommendations": [ ... ],
+  "checks_passed": [
+    { "check_id": "CHK-D-001", "title": "Retrieval-time AI crawler blocked at root" },
+    { "check_id": "CHK-D-008", "title": "Missing or cross-domain canonical tag" }
+  ],
   "limitations": [ ... ],
   "degraded_stages": [ ... ],
   "meta_evaluation": {
@@ -42,6 +46,29 @@ defined in D-012.
   }
 }
 ```
+
+`preamble.notes` always contains two lines that state what the report is:
+
+1. The static-HTML premise (D-19): the grading sandbox has no headless browser, so a
+   check whose only evidence is rendered geometry reports `not_determinable`, not "no
+   defect found". A reader needs that distinction stated in the report itself, not
+   inferred from what is absent.
+2. The archetype effect (D-3): the `archetype` label is not decoration -- it changes
+   which checks run and how their actions are worded. This line names the archetype and
+   states, in one sentence, what that label meant for THIS audit (personal sites are
+   exempted from identity checks; documentation sites have version variants exempted from
+   near-duplicate flagging; `unknown` means no vertical-specific handling was applied).
+   OFFICIALS-QA §3.3 and Action #6 name archetype-specific interpretation as a rewarded
+   differentiator; the note makes that visible.
+
+A robots-blocked-crawler finding (D-001 present) prepends a third line stating that the
+content findings describe content the blocked agents cannot currently reach.
+
+`checks_passed[]` (D-18) lists the check IDs that ran to a clean `absent` and produced no
+present finding -- what the audit *verified*, not just what it found broken. A check that
+produced only `not_determinable` or `not_applicable` envelopes is not listed there: it was
+not measured. A check that fires a recommendation but no scored finding *is* listed --
+recommendations are proactive notices, not confirmed defects.
 
 `summary.total_findings` counts only `findings[]` entries. Recommendations and
 limitations are not findings and are not counted there.
@@ -79,12 +106,24 @@ Required per the spec (`round3-spec/SKILL.md §2`). Every entry is a detected de
 }
 ```
 
-### `occurrences` — present only on rolled-up findings
+### `instances[]` — always present, one entry per origin envelope
+
+Every finding carries an `instances[]` array recording each origin: the per-page locus
+and the per-page evidence text (which names elements by count/type -- '3 img with missing
+alt', '1 button with no accessible name'). Even a single-page finding gets a one-entry
+`instances[]` array so the shape is consistent for downstream consumers.
+
+This is the additive half of D-1 and how D-13 (name the elements) is met inside a
+static-HTML audit: the *evidence text* on each instance names the elements at page
+granularity. A CSS selector for each element would require the check itself to emit one,
+which most checks do not.
+
+### `occurrences` — present when the defect spans ≥2 pages
 
 One site-template defect repeats on every page built from that template. Emitting it once
 per page turns a report into a laundry list in which the single worst problem occupies
 seventeen slots, which is fatal to the prioritisation the brief actually asks for. When a
-defect is found on **3 or more** sampled pages, the orchestrator emits it once:
+defect is found on **2 or more** sampled pages, the orchestrator emits it once:
 
 ```json
 {
@@ -93,14 +132,17 @@ defect is found on **3 or more** sampled pages, the orchestrator emits it once:
   "severity": "medium",
   "evidence": "Site-wide: 17 sampled pages share this defect. missing <main> landmark. Violates structural conventions (WCAG 2.2 SC 1.3.1).",
   "locus": { "url": null, "scope": "site" },
-  "occurrences": { "pages": 17, "examples": ["https://…/a", "https://…/b", "https://…/c"] }
+  "occurrences": { "pages": 17, "examples": ["https://…/a", "https://…/b", "https://…/c"] },
+  "instances": [
+    { "locus": {"url": "https://…/a"}, "evidence": "Page https://…/a: missing <main> landmark…", "severity": "medium" }
+  ]
 }
 ```
 
-Severity is the **worst** in the collapsed group, never an average — a defect is as serious
-as its worst instance. Below 3 pages, findings stay itemised with their own `locus`, because
-at one or two pages the defect is plausibly specific to those pages and the URL is
-information the reader needs. See **D-019**.
+Severity is the **worst** in the collapsed group, never an average — a defect is as
+serious as its worst instance. At a single page, the finding keeps its original `locus`
+and `evidence` unchanged; the `instances[]` array still records the origin envelope, but
+no `occurrences` block is added. See **D-019** and the D-1 tightening on 2026-09-12.
 
 No `consequences` field. An earlier design collapsed multi-check clusters into one root
 finding carrying a `consequences` array; the one cluster this was built for (CHK-D-003 +
@@ -224,7 +266,7 @@ bundle.
 | CHK-D-026 | Declared identity anchors do not resolve |
 | CHK-D-027 | Inconsistent organisation identity attributes |
 | CHK-E-014 | Machine-detectable accessibility violations |
-| CHK-E-015 | Mobile viewport blocks zoom or overflows horizontally |
+| CHK-E-015 | Mobile viewport meta missing or restricting user zoom |
 | CHK-E-016 | Tap targets below WCAG 2.2 minimum size |
 | CHK-E-017 | Non-descriptive link text |
 | CHK-E-018 | Content-blocking overlay present at load |

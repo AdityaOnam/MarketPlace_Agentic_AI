@@ -149,11 +149,19 @@ def check_d003(bundle: dict) -> dict:
                 "version is broken, only that a fetch without JavaScript execution gets "
                 "nothing usable."
             )
+            # D-6 (2026-09-12): softened from "Implement SSR/SSG" -- a whole-architecture
+            # prescription -- to describing what the audit actually observed and letting
+            # the site owner pick the mechanism. Static HTML with no h1 and no text is the
+            # observation; how to give a non-rendering crawler something to read
+            # (SSR, SSG, pre-render, or a substantive <noscript>) is a choice.
             return _envelope("CHK-D-003", "present", evidence, "high", "HARD-MECHANICAL",
-                              {"summary": "Implement server-side rendering or static "
-                                          "generation for the homepage; at minimum ensure "
-                                          "primary content and the h1 are present in the "
-                                          "initial HTTP response.", "priority": "high"},
+                              {"summary": "Make the homepage's primary content and its "
+                                          "<h1> present in the raw HTML the server "
+                                          "returns, not only after JavaScript executes. "
+                                          "Options include server-side rendering, static "
+                                          "generation, a partial pre-render of the hero "
+                                          "block, or a substantive <noscript> fallback.",
+                                "priority": "high"},
                               locus=locus)
         return _envelope("CHK-D-003", "not_determinable",
                           "Rendered page evidence unavailable, and static HTML has enough "
@@ -169,9 +177,13 @@ def check_d003(bundle: dict) -> dict:
         f"Homepage: raw HTTP fetch contains {raw_words} words of main text and {raw_h1} h1; "
         f"rendered DOM contains {rendered_words} words and {rendered_h1} h1."
     )
-    action = {"summary": "Implement server-side rendering or static generation for the "
-                          "homepage; at minimum ensure primary content and the h1 are "
-                          "present in the initial HTTP response.", "priority": None}
+    # D-6 (2026-09-12): softened prescription -- see the note above.
+    action = {"summary": "Make the homepage's primary content and its <h1> present in "
+                          "the raw HTML the server returns, not only after JavaScript "
+                          "executes. Options include server-side rendering, static "
+                          "generation, a partial pre-render of the hero block, or a "
+                          "substantive <noscript> fallback.",
+              "priority": None}
 
     if noscript_words > 50 or gap < 0.20:
         return _envelope("CHK-D-003", "absent", evidence, None, "HARD-MECHANICAL", None, locus=locus)
@@ -442,6 +454,47 @@ def _jaccard(a: set[str], b: set[str]) -> float:
     return len(a & b) / len(union)
 
 
+# D-10 (2026-09-12): two page URLs whose paths differ only in a version-like segment
+# (`/en/5.0/x` vs `/en/5.1/x`, `/en/stable/x` vs `/en/dev/x`) or a locale-like segment
+# (`/x` vs `/in/x`, `/en/x` vs `/de/x`) are describing the same document for a different
+# release or a different language, not a duplicate content problem. D-013 fired on
+# versioned Django docs and locale-variant weebly pages; the fix is `rel=canonical`, not
+# "add unique content to each variant". These pairs are exempt from the near-duplicate
+# count; when the resulting cluster is versioned, the recommendation says so.
+_VERSION_SEG_RE = re.compile(
+    r"^(v?\d+(?:\.\d+)*|stable|latest|current|dev|main|master|next|beta|alpha|rc\d*)$",
+    re.I,
+)
+_LOCALE_SEG_RE = re.compile(
+    r"^([a-z]{2}([_-][a-z]{2})?|in|us|uk|eu|au|ca|nz|asia|emea|apac)$",
+    re.I,
+)
+
+
+def _path_segments(url: str) -> list[str]:
+    from urllib.parse import urlparse
+    return [s for s in (urlparse(url).path or "").split("/") if s]
+
+
+def _variant_kind(url_a: str, url_b: str) -> str | None:
+    """Return 'versioned', 'localised', or None. Two URLs are a version/locale variant
+    pair iff their path segments are equal length and differ at exactly one position,
+    where both differing segments match the same version or locale pattern."""
+    a = _path_segments(url_a)
+    b = _path_segments(url_b)
+    if len(a) != len(b) or len(a) < 1:
+        return None
+    diffs = [(i, a[i], b[i]) for i in range(len(a)) if a[i] != b[i]]
+    if len(diffs) != 1:
+        return None
+    _, sa, sb = diffs[0]
+    if _VERSION_SEG_RE.match(sa) and _VERSION_SEG_RE.match(sb):
+        return "versioned"
+    if _LOCALE_SEG_RE.match(sa) and _LOCALE_SEG_RE.match(sb):
+        return "localised"
+    return None
+
+
 def check_d013(bundle: dict) -> dict:
     """Demoted to recommendation-only by D-027 (2026-09-09): R-1 hand-verification opened
     both cited sources (P-01.09, P-06.03) and found neither discusses duplicate/templated
@@ -457,10 +510,16 @@ def check_d013(bundle: dict) -> dict:
 
     trigram_sets = [(p["url"], _trigram_set(p.get("main_text", ""))) for p in eligible]
     high_similarity_pairs = []
+    variant_pairs = []  # (url_a, url_b, sim, kind) -- excluded from the count, reported
     for i in range(len(trigram_sets)):
         for j in range(i + 1, len(trigram_sets)):
             sim = _jaccard(trigram_sets[i][1], trigram_sets[j][1])
-            if sim > 0.8:
+            if sim <= 0.8:
+                continue
+            kind = _variant_kind(trigram_sets[i][0], trigram_sets[j][0])
+            if kind:
+                variant_pairs.append((trigram_sets[i][0], trigram_sets[j][0], sim, kind))
+            else:
                 high_similarity_pairs.append((trigram_sets[i][0], trigram_sets[j][0], sim))
 
     if len(high_similarity_pairs) >= 2:  # >=3 pages mutually similar implies >=2 pairs among them
@@ -471,6 +530,26 @@ def check_d013(bundle: dict) -> dict:
             "CORRELATIONAL",
             {"summary": "Add unique content to each variant page that answers the specific "
                          "question a reader would have about that variant. "
+                         "(Proactive — not a confirmed defect.)", "priority": "low"},
+            recommendation_only=True,
+        )
+    # D-10 (2026-09-12): a cluster made entirely of version or locale variants is not a
+    # duplicate-content defect and telling the owner to "add unique content" is actively
+    # wrong -- version and locale variants are supposed to be near-identical. When only
+    # variant pairs cross the threshold, report the pattern and steer to a canonical fix.
+    if variant_pairs:
+        kinds = sorted({k for _, _, _, k in variant_pairs})
+        kind_label = " and ".join(kinds)
+        return _envelope(
+            "CHK-D-013", "present",
+            f"Near-duplicate pairs on this site are {kind_label} variants of the same "
+            f"underlying document ({len(variant_pairs)} pair(s) found). This is expected "
+            f"structure, not duplicated content.",
+            "low", "CORRELATIONAL",
+            {"summary": "Point every variant at one canonical URL via <link rel=\"canonical\"> "
+                         "(for versions: the current/stable release; for locales: a language "
+                         "selector plus per-locale self-canonicals). Do not rewrite the "
+                         "variant content to be different -- it is meant to be near-identical. "
                          "(Proactive — not a confirmed defect.)", "priority": "low"},
             recommendation_only=True,
         )
@@ -493,6 +572,41 @@ def _rendered_for(bundle: dict, url: str) -> dict | None:
 # ---------------------------------------------------------------------------
 # CHK-E-014 — machine-detectable WCAG failures (6 sub-checks)
 # ---------------------------------------------------------------------------
+
+_E014_FIX_MAP = {
+    "missing lang attribute":
+        "add a lang attribute to the <html> tag",
+    "missing alt on a non-decorative image":
+        "add descriptive alt text to non-decorative images (alt=\"\" for decorative ones)",
+    "link with no accessible name":
+        "give every <a> tag readable text or an aria-label",
+    "button with no accessible name":
+        "give every <button> readable text or an aria-label",
+    "unlabelled form control":
+        "add a <label for=...> or aria-label to every form input",
+}
+
+
+def _e014_action_for(violations: list[str]) -> str:
+    """Build the E-014 fix summary from only the violations that fired. D-7 (2026-09-12):
+    the previous bundled action ("Add lang, alt text, accessible names, labels") named
+    fixes for defects that didn't fire on that page -- flagged as "broader than the
+    demonstrated defect" by outside review."""
+    fixes = []
+    for v in violations:
+        # Strip an "N link(s)"/"N button(s)" count prefix so plural variants share one
+        # fix template.
+        key = re.sub(r"^\d+\s+", "", v).replace("(s)", "")
+        key = re.sub(r"^(link|button)s? with", r"\1 with", key)
+        fix = _E014_FIX_MAP.get(key)
+        if fix and fix not in fixes:
+            fixes.append(fix)
+    if not fixes:
+        return "Address the accessibility violations named in the evidence above."
+    if len(fixes) == 1:
+        return f"On this page: {fixes[0]}."
+    return "On this page: " + "; ".join(fixes) + "."
+
 
 def check_e014(bundle: dict) -> list[dict]:
     findings = []
@@ -531,8 +645,7 @@ def check_e014(bundle: dict) -> list[dict]:
                 "CHK-E-014", "present",
                 f"Page {page.get('url')}: {len(violations)} accessibility violation(s): "
                 f"{'; '.join(violations)}.", "high", "HARD-MECHANICAL",
-                {"summary": "Add lang, descriptive alt text, accessible names for controls, "
-                             "and labels for all form inputs.", "priority": "high"}, locus=locus,
+                {"summary": _e014_action_for(violations), "priority": "high"}, locus=locus,
                 subcheck="wcag_static"))
         else:
             findings.append(_envelope("CHK-E-014", "absent", f"Page {page.get('url')}: no "
@@ -876,21 +989,41 @@ def check_e022(bundle: dict) -> list[dict]:
         # may have. HTML5 sectioning permits more than one. The check was enforcing a style
         # preference under a normative citation that does not support it -- a false
         # positive at the framing level, which D-011 exists to prevent.
+        # D-17 (2026-09-12): four judges across four sites said "exactly one h1" and
+        # "Violates WCAG 2.2 SC 1.3.1" over-state the normative basis. WCAG 2.4.6 asks
+        # for descriptive headings, not a count. Missing <h1>, <main> absence, and
+        # heading skips are structural conventions of HTML5 sectioning aligned with
+        # WCAG 1.3.1/2.4.6, not direct failures of them. Severity/strength are already
+        # NORMATIVE/PRACTITIONER; the prose is now matched to that label.
         if h1_count == 0:
             findings.append(_envelope(
-                "CHK-E-022", "present", f"Page {page.get('url')}: no <h1> element found, so "
-                "the page states no primary topic. Violates WCAG 2.2 SC 1.3.1 "
-                "(Info and Relationships).", "high",
+                "CHK-E-022", "present",
+                f"Page {page.get('url')}: no <h1> element found, so the page states no "
+                "primary topic. Structural convention aligned with WCAG 2.2 SC 1.3.1 "
+                "(Info and Relationships) and 2.4.6 (Headings and Labels).", "high",
                 "NORMATIVE/PRACTITIONER",
-                {"summary": "Add exactly one <h1> naming the page's primary topic.",
+                {"summary": "Add an <h1> naming the page's primary topic.",
                  "priority": "high"}, locus=locus))
         elif no_main or skips:
-            reason = "missing <main> landmark" if no_main else "heading level skip detected"
+            # B-3 (2026-09-12): action is built from only the condition that fired, not
+            # a bundled string naming both fixes. A page with <main> present and only a
+            # heading skip was being told to "Add <main>" -- a fix for a defect the
+            # page didn't have, the disconnected-action pattern the officials called
+            # out (OFFICIALS-QA.md §3.4).
+            reasons = []
+            fixes = []
+            if no_main:
+                reasons.append("no <main> landmark wraps the primary content")
+                fixes.append("wrap the primary content in a <main> element")
+            if skips:
+                reasons.append("heading levels skip (e.g. h2 -> h4 with no h3 between)")
+                fixes.append("fix the heading order so no level is skipped")
             findings.append(_envelope(
-                "CHK-E-022", "present", f"Page {page.get('url')}: {reason}. Violates "
-                "structural conventions (WCAG 2.2 SC 1.3.1).", "medium",
-                "NORMATIVE/PRACTITIONER",
-                {"summary": "Add <main> to wrap primary content; fix heading level skips.",
+                "CHK-E-022", "present",
+                f"Page {page.get('url')}: {'; '.join(reasons)}. Structural convention "
+                "aligned with WCAG 2.2 SC 1.3.1 (Info and Relationships).",
+                "medium", "NORMATIVE/PRACTITIONER",
+                {"summary": "On this page: " + " and ".join(fixes) + ".",
                  "priority": "medium"}, locus=locus))
         else:
             findings.append(_envelope("CHK-E-022", "absent", f"Page {page.get('url')}: "

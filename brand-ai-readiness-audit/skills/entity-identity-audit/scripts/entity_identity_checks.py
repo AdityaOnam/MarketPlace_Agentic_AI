@@ -51,12 +51,15 @@ _DEFINITION_SENTENCE_RE = re.compile(
 
 
 def _envelope(check_id, state, evidence, severity, evidence_strength, suggested_action,
-              locus=None, suppressed_by=None):
-    return {
+              locus=None, suppressed_by=None, recommendation_only=False):
+    env = {
         "check_id": check_id, "state": state, "locus": locus or {"url": None, "selector": None},
         "evidence": evidence, "severity": severity, "evidence_strength": evidence_strength,
         "suggested_action": suggested_action, "suppressed_by": suppressed_by or [],
     }
+    if recommendation_only:
+        env["recommendation_only"] = True
+    return env
 
 
 ORG_TYPES = ("organization", "localbusiness", "corporation", "ngo",
@@ -271,7 +274,12 @@ def check_d012(bundle: dict) -> list[dict]:
         if classification == "evergreen":
             continue
         dates = page.get("dates", {})
-        if dates.get("header_last_modified") or dates.get("meta_published") or dates.get("visible_dates"):
+        # Any one of: Last-Modified header, meta published/modified, JSON-LD
+        # datePublished/dateModified, a <time> or visible date string, or a /YYYY/MM/DD/
+        # path segment. A page with a date in its own URL is not undated.
+        if (dates.get("header_last_modified") or dates.get("meta_published")
+                or dates.get("jsonld_published") or dates.get("jsonld_modified")
+                or dates.get("visible_dates") or dates.get("url_date")):
             findings.append(_envelope("CHK-D-012", "absent", f"Page {page.get('url')}: date "
                                        "signal present.", None, "THEORETICAL", None, locus=locus))
         else:
@@ -410,19 +418,32 @@ def check_d027(bundle: dict) -> dict:
 
     if len(names) < 2:
         return _envelope("CHK-D-027", "not_determinable",
-                          "Fewer than 2 name instances found to compare.", None, "THEORETICAL", None)
+                          "Fewer than 2 name instances found to compare.", None, "THEORETICAL",
+                          None, recommendation_only=True)
 
-    normalized = {_normalize_name(n) for n in names}
-    if len(normalized) <= 1:
+    normalized = sorted({_normalize_name(n).lower() for n in names if _normalize_name(n)})
+    # Brand-family variants are not inconsistency: "USA TODAY" / "USA TODAY Network" /
+    # "USA TODAY Witness" share one stem. If every name contains the shortest one, the
+    # site is naming its parent brand and its divisions, not contradicting itself.
+    if len(normalized) <= 1 or all(normalized[0] in n for n in normalized):
         return _envelope("CHK-D-027", "absent", "Organisation name is consistent across "
-                          "all observed locations.", None, "THEORETICAL", None)
+                          "all observed locations.", None, "THEORETICAL", None,
+                          recommendation_only=True)
 
+    # Recommendation-only (2026-09-12). Fired three times on outside test sites and was
+    # wrong three times -- twice on footer extraction, once on brand-family names -- and
+    # Stage E could not grade it (below the 10-site floor). A name-variation *notice* the
+    # owner can confirm or dismiss cannot be a false positive; a `medium` finding can.
     return _envelope(
         "CHK-D-027", "present",
-        f"Organisation name appears as {sorted(set(names))} across {len(names)} locations.",
-        "medium", "THEORETICAL",
-        {"summary": "State one canonical form of the organisation name, legal name, phone "
-                     "and address, and use it identically everywhere.", "priority": "medium"},
+        f"The organisation is named {len(normalized)} different ways across "
+        f"{len(names)} places on the site: {sorted(set(names))}.",
+        None, "THEORETICAL",
+        {"summary": "If these are meant to be the same organisation, pick one form of the "
+                     "name and use it in the footer, the About page and the Organization "
+                     "JSON-LD. If they are distinct brands or divisions, no change is needed. "
+                     "(Proactive — not a confirmed defect.)", "priority": "low"},
+        recommendation_only=True,
     )
 
 
