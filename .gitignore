@@ -40,3 +40,9 @@ brand-ai-readiness-audit/docs/
 # backups written next to their files during CSV/label recovery (e.g.
 # gold-labels-template.csv.corrupted.bak, *.pre-*.bak). Local safety copies only.
 *.bak
+
+# teammate's classifier v2 handoff bundle -- the six relevant files were merged into
+# the tree in Phase 7; the bundle folder plus its handoff note stay local for reference
+# and get deleted by hand later.
+classifier_v2_handoff/
+HANDOFF-CLASSIFIER.md

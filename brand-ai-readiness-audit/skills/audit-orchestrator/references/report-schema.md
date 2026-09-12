@@ -76,8 +76,11 @@ limitations are not findings and are not counted there.
 `preamble.archetype` records the vertical the audit assumed, and
 `recommendations_scoped_to` states plainly that every suggested action below was written
 for that vertical — the archetype gates which checks ran at all and how each action is
-worded, so a reader needs to know which one was assumed. `unknown` means no archetype
-rule matched and every archetype-conditioned check was suppressed rather than guessed at.
+worded, so a reader needs to know which one was assumed. Values: `ecommerce`,
+`saas_marketing`, `news_editorial`, `documentation`, `local_business`, `brochure`,
+`reference`, `institutional`, `marketplace`, `personal`, `unknown`. `unknown` means the
+evidence was insufficient or a near-tie between two archetypes (the collector records
+which), and every archetype-conditioned check was suppressed rather than guessed at.
 
 `meta_evaluation` is the orchestrator's own self-check over the assembled report
 (SKILL.md Step 7). `warnings` are advisory and are **never** silently corrected — a

@@ -43,12 +43,12 @@ reason: string | null      # required whenever status != "ok"
   "scheme": "https",
   "redirect_chain": ["http://example.com", "https://example.com", "https://www.example.com"],
   "tls_valid": true,
-  "archetype": "ecommerce | documentation | saas_marketing | news_editorial | local_business | brochure | unknown",
+  "archetype": "ecommerce | documentation | saas_marketing | news_editorial | local_business | brochure | reference | institutional | marketplace | personal | unknown",
   "archetype_confidence": 0.0
 }
 ```
 
-`archetype` drives the per-archetype suppression rules in the ledger (D-009). It is a
+`archetype` drives the per-archetype suppression rules in the ledger (D-009). `reference`, `institutional`, `marketplace` and `personal` were added by D-035; `archetype_confidence` (0.55–0.90, or 0.0 with `unknown`) is derived from evidence strength and margin, see procedure.md §3. It is a
 collector-side label because it depends on the whole page inventory, not on one page.
 
 ## `robots`

@@ -32,7 +32,13 @@ Fetch `{origin}/robots.txt` first, always, before any other request.
 
 Preference order:
 
-1. Sitemaps declared in `robots.txt`, then `/sitemap.xml`. Follow sitemap indexes one level.
+1. Sitemaps declared in `robots.txt`, then `/sitemap.xml`. Follow sitemap indexes one level,
+   choosing child sitemaps by **name diversity** (group child file names with digits and
+   locale prefixes stripped, then round-robin across groups) rather than by position: a
+   757-file index that is mostly per-locale blog files never reaches `sitemap_products`
+   under a positional sample, and the classifier then sees only the blog. Sample large
+   sitemaps evenly (every Nth entry), not the first N. Keep every child sitemap *name* even
+   when it is not fetched — file names such as `sitemap_products_1.xml` are evidence.
    **A `Sitemap:` line is untrusted input** — discard any value that is not an absolute
    `http(s)` URL before requesting it. One real site serves `{{ site.url }}/sitemap.xml`,
    an unrendered template left in the published file; treating that as a URL raises rather
@@ -60,14 +66,14 @@ Assigned from URL path, `<title>`, and structured-data `@type`, in that order of
 | `home` | Path is `/` |
 | `about` | Path or title contains about, company, who-we-are, team, mission |
 | `contact` | Path or title contains contact, support, get-in-touch |
-| `product` | `@type` Product/Offer, or path segment product/item/p/shop |
-| `category` | Listing page linking ≥ 8 sibling `product` URLs |
-| `article` | `@type` Article/BlogPosting/NewsArticle, or a date in the path |
-| `documentation` | Path contains docs, api, reference, guide, manual |
-| `pricing` | Path or title contains pricing, plans |
-| `faq` | `@type` FAQPage, or title contains FAQ |
-| `legal` | Path or title contains privacy, terms, cookie, legal, imprint |
-| `login` | Path contains login, signin, account, register — **never fetched** |
+| `product` | `@type` Product/Offer/AggregateOffer/ProductGroup, or path segment `products?`, `items?`, `shop`, `dp`, `itm`, `ip`, `listing`, `sku`, `pd`, or `/p/<id-with-digits>` |
+| `category` | `@type` CollectionPage/ItemList, or path segment `collections?`, `categor(y\|ies)`, `store`, `browse`, `catalog(ue)?`, `departments?`, `brands?`, `shop-by`, `all-products`, `new-arrivals`, or `/cp/<slug>/<digits>` |
+| `article` | `@type` Article/BlogPosting/NewsArticle (and the NewsArticle subtypes, Report, ScholarlyArticle), a `/YYYY/MM/` date in the path, or path segment `blog`, `news`, `articles?`, `posts?`, `stories`, `press`, `newsroom`, `magazine`, `opinion`, `insights?`, or a section word (politics, business, sports, world, tech, health, lifestyle, science, culture, travel, entertainment) |
+| `documentation` | `@type` TechArticle/APIReference/HowTo; path segment `docs?`, `documentation`, `api(s)?`, `reference`, `manual`, `handbook`, `guides?`, `tutorials?`, `how-?to`, `kb`, `knowledge-?base`, `help-?center`, `developers?`, `dev`, `sdk`, `cli`, `getting-started`, `quickstart`, `specs?`, `functions?`, `commands?`, `methods?`, `configuration`, `installation`, `troubleshooting`, `changelog`, `release-notes`, `en/latest`, `en/stable`; or a `docs.`, `documentation.`, `developer(s).`, `kb.`, `wiki.`, `manual.` host (`api.` and `help.` are **not** docs hosts — they serve whole storefronts and support portals); or a `/wiki/` path (reference content, kept under this label for suppression purposes) |
+| `pricing` | Path segment `pricing`, `plans`, `fees`, `compare-plans` (or a `-pricing`/`-fees` suffix); title only when it *is* a pricing page ("Pricing", "Plans & Pricing"). Never an unanchored substring — `/news/gpu-pricing-…` is an article |
+| `faq` | `@type` FAQPage, or path/title contains FAQ / frequently-asked |
+| `legal` | Path or title contains privacy, terms, cookie, legal, imprint, impressum, tos, accessibility-statement |
+| `login` | Path contains login, signin, signup, account, register, auth, password — **never fetched** |
 | `other` | No signal matched |
 
 Ambiguity resolves to the **more specific** label; ties resolve to `other`. A label is a
@@ -76,22 +82,58 @@ finding depends on a single page's label being correct.
 
 ### `archetype` labelling
 
-Site-level, from the inventory's `page_type` distribution, with `asset` entries excluded
-from both the numerator and the denominator of every proportion below — they are not pages
-and diluting the count with them would misjudge sites whose sitemap mixes in media URLs:
+Site-level. Decided by **additive evidence scoring**, not by a first-match rule table
+(D-035, 2026-09-12): every archetype accumulates weighted evidence from five independent
+families, explicit counter-evidence subtracts, and the top score wins only with a margin.
+`page_classifier.classify_archetype_detailed` returns the label, a confidence and the
+evidence that decided it.
 
-| Archetype | Rule |
+| Family | Weight | What counts |
+| --- | --- | --- |
+| identity | 4–6 | who runs the site: organisation `@type`s on home/about (NewsMediaOrganization, Store/OnlineStore, SoftwareApplication, LocalBusiness family, EducationalOrganization/GovernmentOrganization/NGO), `.edu`/`.gov` TLD, commerce or docs platform `generator`, `docs.`/wiki hosts, `Person`/`ProfilePage` with **no** Organization entity anywhere |
+| affordances | 2–4 | what the site invites: cart/basket link, pricing page + trial/demo/signup CTAs, order/menu/locations, post-a-job / become-a-seller, donate/volunteer |
+| structure | ≤ 4 | what the inventory is made of — proportions over the **inventory** (discovered URLs plus same-origin links on fetched pages), never over the fetched sample; article share is capped at 3 so a blog section is evidence, not a verdict; sitemap file names (`sitemap_products`, `post-sitemap`) |
+| sampled content | ≤ 2 | what fetched pages are (priced Offers, article-typed pages with dates, MedicalWebPage, JobPosting/Event/SearchResultsPage, single-Person authorship) — **discounted when the inventory does not back it**, because the static sample is stratified by page type and over-represents small sections such as `/docs/` |
+| vocabulary | ≤ 3 | weighted keyword sets scored over titles, meta/og descriptions, visible text, raw HTML (hydration data survives a JS shell), robots.txt Disallow paths and sitemap names; a label only scores when a *core activity term* is present (a recipe site full of "pizza" and "menu" never says "order online"); English-centric |
+
+Counter-evidence is explicit: commerce identity subtracts from news/saas/personal; pricing
+or software identity from news/personal/docs; institutional identity from news/saas;
+"author is a Person with no Organization" from news; third-party listings from saas; any
+Organization entity from personal.
+
+Decision: top score ≥ 3.0 and top − second ≥ 1.0. Confidence = 0.5 + 0.25·min(top, 12)/12 +
+0.15·min(margin, 6)/6, clamped to 0.55–0.90 — derived from evidence strength and
+separation, never assigned per rule. `unknown` is returned for insufficient evidence
+**and** for a near-tie, with the reason naming both sides (`ambiguous: news_editorial 6.5
+vs reference 6.0 […]`), so a report reader sees what the site is torn between.
+
+| Archetype | Meaning |
 | --- | --- |
-| `ecommerce` | ≥ 5 `product` pages, or any `@type` Offer with a price |
-| `documentation` | ≥ 40% of inventory is `documentation` |
-| `news_editorial` | ≥ 40% is `article` with distinct dates |
-| `saas_marketing` | Has `pricing` and < 5 `product` pages |
-| `local_business` | `@type` LocalBusiness, or a postal address plus ≤ 15 total pages |
-| `brochure` | ≤ 5 pages total |
-| `unknown` | No rule matched — **suppresses every archetype-conditioned check** |
+| `ecommerce` | sells its own catalogue: product/category paths, cart, priced Offers, commerce platform |
+| `saas_marketing` | markets software or a service: pricing page, trial/demo/signup CTAs, SoftwareApplication, no cart |
+| `news_editorial` | a publisher: NewsMediaOrganization, dated article inventory |
+| `documentation` | docs/tutorials/reference: docs host or generator, documentation-path share, self-declared tutorials |
+| `local_business` | a place you visit: LocalBusiness-family `@type` on home/about, menu/locations/order affordances |
+| `brochure` | ≤ 8 pages, homepage links to them, no structural evidence of anything else |
+| `reference` | encyclopaedic lookup: `/wiki/` paths, wiki host, MedicalWebPage/DefinedTerm content, reference-shaped paths |
+| `institutional` | university, government, foundation, NGO, open-source project: institutional `@type`s, `.edu`/`.gov`, donate/mission/admissions paths |
+| `marketplace` | third-party inventory: JobPosting/Event/SearchResultsPage/Flight listings, LocalBusiness entities only on listing pages of a large site, user-profile paths, many distinct Person entities, seller/employer/host CTAs |
+| `personal` | one individual's site: Person/ProfilePage identity with no Organization entity, single author across articles, first-person self-description on home/about, `rel=me`/profile links |
+| `unknown` | insufficient evidence, a near-tie, a bot wall, a JS shell with no links, or nothing fetched — **suppresses every archetype-conditioned check** |
+
+Before any evidence is read, a fetched page whose text is an access-denied / captcha /
+"enable JavaScript to run this app" wall is dropped: a 200 response can still be a bot
+wall, and a bot wall carries no evidence about the site.
+
+Downstream only two groupings change behaviour: the commercial set (`ecommerce`,
+`saas_marketing`, `news_editorial`, `local_business`) enables CHK-E-024 and the personal
+set suppresses CHK-D-006/007/025. `reference`, `institutional` and `marketplace` are in
+neither and behave like `documentation`.
 
 `unknown` is a real answer, not a fallback to be avoided. Guessing an archetype activates
-suppression rules that were written for a different kind of site.
+suppression rules that were written for a different kind of site. Where the audit could
+not see the site, the reason says so (`bot_blocked_page`, `homepage_no_links`,
+`discovery_starved`, `no_pages_fetched`).
 
 ## 4. Static sampling and fetch
 

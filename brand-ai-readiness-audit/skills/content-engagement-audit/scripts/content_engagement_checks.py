@@ -1100,6 +1100,6 @@ def evaluate(bundle: dict) -> list[dict]:
     # this suppression is the one place their outputs are reconciled).
     if d003.get("state") == "present" and e019.get("state") == "present":
         e019["state"] = "suppressed"
-        e019["suppressed_by"] = list(set(e019.get("suppressed_by") or []) + ["CHK-D-003"])
+        e019["suppressed_by"] = list(set(e019.get("suppressed_by") or []) | {"CHK-D-003"})
 
     return findings
