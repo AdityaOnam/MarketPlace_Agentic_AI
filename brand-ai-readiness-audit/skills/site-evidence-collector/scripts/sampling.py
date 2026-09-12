@@ -7,7 +7,7 @@ from __future__ import annotations
 
 import hashlib
 import re
-from urllib.parse import urlparse
+from urllib.parse import parse_qsl, urlparse
 
 MAX_STATIC_PAGES = 20
 MAX_PER_TYPE = 4
@@ -23,10 +23,65 @@ _NEVER_A_PAGE_RE = re.compile(
     re.I,
 )
 
+_EXCLUDED_PATH_FAMILIES = (
+    # Authentication and session plumbing.
+    "/auth/", "/authentications/", "/oauth/", "/login", "/signin", "/signup",
+    "/logout", "/session", "/sso/", "/callback",
+    # Legal/policy pages do not represent the site's substantive content.
+    "/legal", "/legal-notice", "/privacy", "/terms", "/cookies", "/imprint",
+    "/impressum", "/gdpr", "/dmca", "/eula", "/mentions-legales", "/conduct",
+    "/code-of-conduct", "/coc",
+    # Download and brand-asset utilities.
+    "/assets", "/brand", "/media-kit", "/press", "/download", "/downloads", "/dl",
+)
+_AUTH_QUERY_KEYS = {"return_to", "redirect_uri", "next"}
+
+# ISO 639-1 alpha-2 language codes. Keeping the allow-list avoids treating ordinary
+# two-letter route names such as /us/ as locale prefixes.
+_ISO_639_1 = frozenset(
+    "aa ab ae af ak am an ar as av ay az ba be bg bh bi bm bn bo br bs ca ce ch co cr "
+    "cs cu cv cy da de dv dz ee el en eo es et eu fa ff fi fj fo fr fy ga gd gl gn gu "
+    "gv ha he hi ho hr ht hu hy hz ia id ie ig ii ik in io is it iu ja jv ka kg ki kj "
+    "kk kl km kn ko kr ks ku kv kw ky la lb lg li ln lo lt lu lv mg mh mi mk ml mn mr "
+    "ms mt my na nb nd ne ng nl nn no nr nv ny oc oj om or os pa pi pl ps pt qu rm rn "
+    "ro ru rw sa sc sd se sg si sk sl sm sn so sq sr ss st su sv sw ta te tg th ti tk "
+    "tl tn to tr ts tt tw ty ug uk ur uz ve vi vo wa wo xh yi yo za zh zu".split()
+)
+_LOCALE_SEGMENT_RE = re.compile(r"^([a-z]{2})(?:[-_]([a-z]{2}))?$", re.I)
+
+
+def _path_in_family(path: str, family: str) -> bool:
+    """Match a named path segment/family without catching words such as /pressure."""
+    segment = family.strip("/").lower()
+    return bool(re.search(rf"(?:^|/){re.escape(segment)}(?:/|$)", path.lower()))
+
+
+def _url_locale(url: str) -> str | None:
+    first_segment = next((part for part in urlparse(url).path.split("/") if part), "")
+    match = _LOCALE_SEGMENT_RE.fullmatch(first_segment)
+    if not match or match.group(1).lower() not in _ISO_639_1:
+        return None
+    return match.group(1).lower()
+
+
+def _lang_locale(lang: str | None) -> str | None:
+    if not lang:
+        return None
+    match = _LOCALE_SEGMENT_RE.fullmatch(lang.strip())
+    if not match or match.group(1).lower() not in _ISO_639_1:
+        return None
+    return match.group(1).lower()
+
 
 def is_page_url(url: str) -> bool:
-    path = urlparse(url).path or "/"
-    return not _NEVER_A_PAGE_RE.search(path)
+    parsed = urlparse(url)
+    path = parsed.path or "/"
+    if _NEVER_A_PAGE_RE.search(path):
+        return False
+    if any(_path_in_family(path, family) for family in _EXCLUDED_PATH_FAMILIES):
+        return False
+    query_keys = {key.lower() for key, _ in parse_qsl(parsed.query, keep_blank_values=True)}
+    return not query_keys.intersection(_AUTH_QUERY_KEYS)
 
 
 def sampling_seed(inventory_urls: list[str]) -> str:
@@ -35,7 +90,8 @@ def sampling_seed(inventory_urls: list[str]) -> str:
     return f"sha256:{digest}"
 
 
-def select_static_sample(inventory: list[dict], max_pages: int = MAX_STATIC_PAGES) -> list[dict]:
+def select_static_sample(inventory: list[dict], max_pages: int = MAX_STATIC_PAGES,
+                         seed_url: str | None = None, seed_lang: str | None = None) -> list[dict]:
     """inventory: list of {'url': str, 'page_type': str, 'source': str}.
     Returns the selected subset, deterministically, per the quota in procedure.md §4:
     homepage always; about/contact if present; up to `max_pages` - fixed, distributed
@@ -44,6 +100,23 @@ def select_static_sample(inventory: list[dict], max_pages: int = MAX_STATIC_PAGE
     """
     eligible = [p for p in inventory
                 if p.get("page_type") not in ("login", "asset") and is_page_url(p["url"])]
+
+    # Prefer the seed page's language while retaining unprefixed URLs, which commonly
+    # inherit that same default locale. If the preferred pool is empty, keep all locales
+    # so a locale-only site still produces a sample. Callers may pass the seed page's
+    # extracted <html lang>; enriched inventory records with `lang`/`html_lang` work too.
+    seed_entry = next((p for p in inventory if seed_url and p.get("url") == seed_url), None)
+    if seed_entry is None:
+        seed_entry = next((p for p in inventory if p.get("page_type") == "home"), None)
+    locale = _lang_locale(seed_lang)
+    if locale is None and seed_entry:
+        locale = _lang_locale(seed_entry.get("lang") or seed_entry.get("html_lang"))
+    if locale is None:
+        locale = _url_locale(seed_url or (seed_entry or {}).get("url", ""))
+    if locale:
+        preferred = [p for p in eligible if _url_locale(p["url"]) in (None, locale)]
+        if preferred:
+            eligible = preferred
     # Deterministic tie-break: sort by (page_type, url) so selection never depends on
     # discovery order.
     eligible.sort(key=lambda p: (p["page_type"], p["url"]))

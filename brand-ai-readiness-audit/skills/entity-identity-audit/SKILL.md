@@ -19,11 +19,12 @@ on declared anchor URLs — happened in `site-evidence-collector`.
 
 ## When to use
 
-Invoked by `audit-orchestrator` with an evidence bundle. Handles all seven checks in the
+Invoked by `audit-orchestrator` with an evidence bundle. Handles thirteen checks in the
 entity-identity concern: explicit entity definition (CHK-D-006), Organization JSON-LD
 completeness (CHK-D-007), canonical URL hygiene (CHK-D-008), date freshness on
 time-sensitive pages (CHK-D-012), declared identity anchors (CHK-D-025), anchor
-reachability (CHK-D-026), and identity-attribute self-consistency (CHK-D-027).
+reachability (CHK-D-026), identity-attribute self-consistency (CHK-D-027), and six
+archetype-specific structured-data/feed checks (CHK-D-029–D-034).
 
 ## Inputs
 
@@ -31,17 +32,18 @@ Two sections of the evidence bundle:
 
 | Section | Fields used |
 | --- | --- |
-| `pages[]` | `main_text`, `page_type`, `structured_data`, `canonical`, `dates`, `outbound_profile_links`, `contact_signals`, `headings`, `url`, `status` |
+| `pages[]` | `raw_html`, `main_text`, `page_type`, `structured_data`, `canonical`, `dates`, `outbound_profile_links`, `contact_signals`, `headings`, `url`, `status` |
 | `anchors` | `status`, `declared[]`, `results[]` (the only off-site evidence in the bundle) |
 
 Reads `pages` and `anchors`. Reads nothing else.
 
 ## Output
 
-Zero to seven finding envelopes in the standard format defined in
-`docs/ARCHITECTURE.md §4.2`. Every check emits an envelope even when clean (`state:
+Finding envelopes for thirteen checks in the standard format defined in
+`docs/ARCHITECTURE.md §4.2`. Checks emit an envelope even when clean (`state:
 "absent"`) so the negative-control evaluation can distinguish "checked and clean" from
-"never ran".
+"never ran". CHK-D-029–D-034 are mutually archetype-gated: only the check matching the
+site vertical evaluates, and schema absence is always recommendation-only.
 
 ## Procedure
 
@@ -65,7 +67,7 @@ Zero to seven finding envelopes in the standard format defined in
      ("announced", "released", "last week", "yesterday", "in Q1")
    A page is **evergreen** otherwise. CHK-D-012 must never fire on evergreen pages.
 
-3. **Evaluate the seven checks** (full detail in `references/checks.md`):
+3. **Evaluate the thirteen checks** (D-006–D-027 detail is in `references/checks.md`):
    - CHK-D-006 — Explicit entity definition in opening text
    - CHK-D-007 — Organization/Person JSON-LD completeness
    - CHK-D-008 — Canonical URL hygiene
@@ -73,15 +75,22 @@ Zero to seven finding envelopes in the standard format defined in
    - CHK-D-025 — Declared identity anchors exist
    - CHK-D-026 — Declared anchors resolve (reads `anchors` section)
    - CHK-D-027 — Identity attributes self-consistent across pages
+   - CHK-D-029 — Product/Offer data on ecommerce product pages
+   - CHK-D-030 — SoftwareApplication/Offer data on SaaS home or pricing pages
+   - CHK-D-031 — Event/ItemList/JobPosting data on marketplace listing pages
+   - CHK-D-032 — Complete NewsArticle data and RSS/Atom discovery for news sites
+   - CHK-D-033 — Person data, RSS/Atom discovery, and byline consistency for personal sites
+   - CHK-D-034 — SoftwareSourceCode/DataCatalog data for reference/institutional archives
 
 4. **Apply false-positive guards** before emitting any finding. See the check-level
    guards in `references/checks.md`. Do not emit a finding you cannot suppress correctly.
 
-5. **Emit** all seven envelopes. `absent` and `not_applicable` are emitted, not dropped.
+5. **Emit** envelopes for all applicable checks. `absent` and `not_applicable` are emitted,
+   not dropped.
 
 ## Executable checks
 
-`scripts/entity_identity_checks.py` implements all seven checks plus the
+`scripts/entity_identity_checks.py` implements all thirteen checks plus the
 `classify_time_sensitivity()` function SKILL.md step 2 describes —
 `evaluate(bundle) -> list[envelope]`. Legal-entity-suffix normalization (Ltd/Limited/
 LLC/Inc/Corp/GmbH/etc.) is implemented for CHK-D-027's false-positive guard, not just
@@ -98,6 +107,12 @@ described.
 | CHK-D-025 | `pages` sameAs + outbound_profile_links | CORRELATIONAL | medium | Suppress on personal/hobby/portfolio archetype |
 | CHK-D-026 | `anchors` results | HARD-MECHANICAL | high/medium | 401/403/429 = bot-blocked = not_determinable, never a finding |
 | CHK-D-027 | `pages` contact_signals + structured_data | THEORETICAL | medium/low | Suppress pure formatting differences (punctuation, "Ltd" vs "Limited") |
+| CHK-D-029 | ecommerce product pages + JSON-LD | NORMATIVE/PRACTITIONER | recommendation-only | Applies only to ecommerce; requires complete Product/Offer data |
+| CHK-D-030 | SaaS home/pricing pages + JSON-LD | NORMATIVE/PRACTITIONER | recommendation-only | Applies only to saas_marketing |
+| CHK-D-031 | marketplace listing pages + JSON-LD | NORMATIVE/PRACTITIONER | recommendation-only | Applies only to marketplace |
+| CHK-D-032 | news article JSON-LD + head feed links | NORMATIVE/PRACTITIONER | recommendation-only | Applies only to news_editorial; requires provenance fields and feed discovery |
+| CHK-D-033 | Person/article JSON-LD + head feed links | NORMATIVE/PRACTITIONER | recommendation-only | Applies only to personal-family sites; compares sampled article authors |
+| CHK-D-034 | reference/institutional archive pages + JSON-LD | NORMATIVE/PRACTITIONER | recommendation-only | Runs only when code/data archive evidence is present |
 
 Full per-check evidence strings, severity rules, FP guards, not-determinable paths, and
 suggested actions: [`references/checks.md`](references/checks.md).
