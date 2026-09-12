@@ -1528,3 +1528,302 @@ The discipline being held here is the one `PLAN.md` §5 names: we author both th
 the gold labels, so the cheap move at every one of these forks is to adjust the check until
 the disagreement disappears, and it would show up as a better score every time. Six of the
 remaining trips point at labels rather than code. Saying so is the finding.
+
+---
+
+## D-033 — Phase 6: judge-driven fixes across collector, checks, and report shape; Stage E rescore flags two archetype-caused regressions
+
+**Date:** 2026-09-12
+**Status:** Applied — commit `a95207d`; open regressions handed to archetype workstream
+
+### Context
+
+The 2026-09-11 external judge review returned 8 confirmed code bugs (B-1 through B-8) and
+20 design problems (D-1 through D-20) in `dist/eval-reports/JUDGE-FINDINGS.md`. The team
+agreed a five-tier fix plan and dropped **B-4 (WAF / blocked-site detection)** per
+`OFFICIALS-QA.md` §2.2 and Action #10 — blocked sites are out of scope; the tool's job is
+to state that they are unreachable, not to fingerprint the challenge page.
+
+### Decision
+
+Phase 6 (commit `a95207d`) landed the plan across the collector, the three analyser
+skills, the orchestrator, and the report schema. By tier:
+
+- **Tier 1 — collector correctness.** `extract_page.py` gained the `unavailable_page()`
+  helper, `final_url` plumbing (redirect targets are recorded, so a check that judges a
+  URL judges the URL that was actually reached), aria-labelledby recognition (E-014 no
+  longer flags labelled inputs), a `hidden inputs are skipped` rule (E-014 no longer flags
+  CSRF tokens), and a date-extraction pass that covers month-first formats, JSON-LD
+  `datePublished`, and URL segments. `sampling.py` gained `is_page_url()`, which stops
+  the sampler emitting sitemap indexes and binary assets as pages — the root cause of the
+  weebly `/guides` 404 and the mdn gzipped-child-sitemap findings that were reaching the
+  reports as false positives.
+- **Tier 2 — analyser false positives.** `entity_identity_checks.py` demoted `CHK-D-027`
+  to recommendation-only and stopped it flagging brand-family variants as identity
+  drift. `content_engagement_checks.py` exempts media / app / press pages from D-004,
+  D-005, D-010; exempts versioned and localised URL variants from D-013; splits the
+  E-014 action per violation and the E-022 action into `<main>` and skip-link cases;
+  softens D-003's SSR wording so the recommendation stops reading as a fix.
+  `crawl_access_checks.py` rewrites D-001 and D-002 openings so the action states intent
+  before mechanism.
+- **Tier 3 — report shape.** `compose_report.py` now emits **one finding per
+  `(check_id, subcheck, sanitized_evidence)`** with an `instances[]` array recording each
+  origin envelope. The rollup floor drops from 3 pages to 2 (a defect on two pages is a
+  site-template defect, and calling it two findings is exactly the laundry-list failure
+  D-1 named). Recommendations gain a real `locus` and `severity` carried from their
+  originating envelope. A `checks_passed[]` array is added so the report states **what
+  the audit verified**, not only what it found broken. The preamble now always states the
+  static-HTML premise (D-19) and the archetype effect (D-3) in two sentences.
+- **Tier 4 — wording.** `CHK-E-015`'s title tightened from a paragraph to a phrase.
+  `DECLARED_LIMITATIONS` rewritten so LIM-01 through LIM-05 read as prose sentences
+  rather than tokenised jargon. D-017 dropped the "exactly one h1" / "violates" phrasing
+  in favour of what the rule actually measures.
+- **Tier 5 — archetype classifier.** `page_classifier.py` gained URL-pattern signals
+  (`_DOCS_HOST_RE`, `_NEWS_HOST_RE`, `_SHOP_HOST_RE`, path patterns for `/blog`,
+  `/articles`, `/docs`, `/shop`), lowered the doc/news thresholds from 0.40 to 0.30, and
+  added a `personal` archetype gated on ≥70% single-path-segment URLs (the typical
+  personal-blog `/slug/` shape). Corpus-wide effect: `archetype: "unknown"` count fell
+  from **30/39 → 16/39** across the dev + negative sets.
+
+Report schema is documented in
+`brand-ai-readiness-audit/skills/audit-orchestrator/references/report-schema.md`.
+
+### Reason — how each tier answers the rubric
+
+- **Tier 3 (D-1 rollup)** answers `OFFICIALS-QA.md` §3.1 — "the report is not a laundry
+  list." One site-template defect is one finding; per-page detail lives in `instances[]`
+  where a reader who needs the origins can find them without the summary being drowned.
+- **Tier 4 (D-16 wording)** answers §3.5 — "recommendations, not fixes." An action that
+  says *do X* is a fix; an action that says *narrow X to what actually needs it* is a
+  recommendation, and Tier 4 rewrote the openings that had drifted into the former.
+- **Tier 5 (D-3 archetype)** is the §3.3 differentiator the officials named explicitly.
+  The archetype label was in the report already but was not visibly changing what the
+  report said, which is what the officials flagged: a preamble line now names it and
+  states what it meant for this audit, and the `recommendations_scoped_to` field on the
+  preamble states plainly which vertical every action below is written for.
+
+### Consequences — Stage E rescore
+
+Rescored the dev set against the current `harness/out/dev/*.report.json` after Phase 6.
+Only the checks whose numbers moved are shown; every other rate-eligible check stayed flat.
+
+| Check | Precision | Recall | FP rate | FP count |
+| --- | --- | --- | --- | --- |
+| CHK-D-006 | 1.00 → 1.00 | 0.55 → 0.36 | 0.00 → 0.00 | 0 → 0 |
+| CHK-D-007 | 0.94 → 0.92 | 0.94 → 0.75 | 0.50 → 0.50 | 1 → 1 |
+| CHK-E-014 | 1.00 → 1.00 | 1.00 → 0.93 | 0.00 → 0.00 | 0 → 0 |
+| CHK-E-024 | 1.00 → 0.60 | 0.50 → 0.75 | 0.00 → 0.25 | 0 → 2 |
+
+Negative-control set: 15/15 reports schema-conformant, zero harness errors, zero
+zero-page collections. Nine in-dimension check/site firings across six sites; the
+D-026 baseline recorded seven known firings, so the aggregate worsened by two. The
+baseline does not enumerate the seven, so attribution from the documentation alone is
+unsafe. Current firing counts on the control set: D-007 ×2, E-014 ×2, E-022 ×2, D-009
+×1, D-004 ×1, D-008 ×1. The three off-site-identity control checks — D-025, D-026,
+D-027 — remain clean.
+
+**Two regressions, both archetype-caused, both handed to the archetype workstream:**
+
+1. **CHK-E-024, precision 1.00 → 0.60, +2 false positives.** The Tier 5 classifier now
+   labels `plausible.io` and `lwn.net` as `news_editorial`, and E-024's downstream policy
+   treats `news_editorial` as commercial-enough to demand trust signals. The right seam
+   for the fix is not obvious from the numbers alone — narrowing E-024's archetype gate
+   is one option; tightening the `news_editorial` rule to require a stronger
+   commerce-negative signal is another. Which one lands depends on what the archetype
+   workstream decides is the correct classification for those two sites.
+2. **Personal-archetype exemption suppressed correct firings.** CHK-D-006 lost two true
+   positives to the exemption; CHK-D-007 lost three (which drops its precision to 0.92
+   despite no new FP, because the surviving denominator shrank); CHK-E-014 lost one to
+   the media / app / press exemption. The `≥70% single-path-segment` gate that fires the
+   `personal` label is too permissive on some of these sites — the site list behind each
+   regression needs to be walked through against the human labels before the exemption is
+   narrowed, and that is the workstream currently in flight.
+
+Neither regression is a Phase 6 code defect on the check side: E-024 and the identity
+checks are doing what they were told to do given the archetype they were handed. The
+archetype label is the input that changed. Fix belongs there.
+
+Downstream assumptions that Phase 6 leaves in place:
+
+- The `personal` archetype exempts D-006, D-007, and D-025. When the archetype
+  workstream tightens the `personal` rule, the exemption list does not need to change
+  — sites that stop being labelled `personal` will resume firing those checks on their
+  own.
+- `unknown` means no archetype rule matched. Every archetype-conditioned check is
+  suppressed rather than guessed at; the preamble now names this in plain English.
+- `checks_passed[]` lists only checks that ran to a clean `absent`. A check that
+  produced only `not_determinable` or `not_applicable` envelopes is not listed there:
+  it was not measured, and stating otherwise would be the same failure mode LIM-05 is
+  written against.
+
+### Deliberately not addressed
+
+- **WAF / challenge-page detection (judge finding B-4).** `OFFICIALS-QA.md` §2.2 puts
+  blocked sites out of scope, and Action #10 says to stop investment in blocked-site
+  handling. What looks like blocked-site handling in Phase 6 — the content-type and
+  status gate on the sampler — is not: it fixes stale sitemap URLs on unblocked sites
+  (weebly's `/guides` 404, mdn's gzipped child sitemaps) that were manufacturing false
+  findings, and it never reads a page's body to decide whether that page is a challenge.
+- **The two Stage E regressions above** are not addressed in this decision because the
+  fix belongs upstream in the archetype workstream. When that lands, a new decision
+  entry (D-034 or later) should record the archetype change, the fresh Stage E numbers
+  for E-024 / D-006 / D-007 / E-014, and whether the exemption list on the check side
+  needs any narrowing on top of the classifier change.
+
+---
+
+---
+
+## D-034 — Archetype classification rebuilt as additive evidence scoring; four archetypes added; `brochure` fallback and bot walls no longer produce labels
+
+**Date:** 2026-09-12
+**Status:** Applied — `page_classifier.py` replaced, `procedure.md` §3, both
+`BUNDLE-SCHEMA` copies, `report-schema.md` updated. **Not yet validated on a blind list.**
+Supersedes the Tier 5 classifier changes recorded in D-033.
+
+### What was found
+
+An 84-site run of the shipped audit returned `unknown` for 51 sites (61%) and `brochure`
+for 28. Almost every `brochure` was wrong — ebay.com, etsy.com, booking.com, linkedin.com
+— because the rule `total <= 5 -> brochure` fires whenever *discovery* found five URLs,
+which is what a JS-rendered homepage or an unexpanded sitemap index looks like. The
+classifier could not tell "small site" from "we barely looked", and `unknown` on the
+other 51 was mostly the same starvation: every archetype rule read only the inventory's
+page_type proportions, which a starved inventory does not have.
+
+A second defect surfaced later and matters more. The rules were a first-match cascade, so
+they decided by *order*: a blind hold-out of 40 team-labelled sites scored the first
+rewrite at 20 correct / 12 wrong / 0 unknown — every unknown removed, but eight of the
+twenty became wrong labels, and precision-when-labelling was no better than v1's (62% vs
+67%). Every miss had the same shape: a blog section made shops, an institution and two
+personal blogs "news" because the news rule sat first; `personal` was unreachable because
+its rule sat last; weak rules (two signup links, four institutional-looking paths) had no
+counter-evidence guard; one rule read the stratified fetch sample as if it were the site.
+
+### What was done
+
+`page_classifier.py` now scores evidence additively. Each archetype accumulates weighted
+evidence from five families — identity (4–6), affordances (2–4), inventory structure (≤ 4,
+article share capped at 3), sampled content (≤ 2, discounted when the inventory does not
+back it), vocabulary (≤ 3, core-term gated) — explicit counter-evidence subtracts, the top
+score wins only with ≥ 1.0 margin, confidence is derived from strength and margin
+(0.55–0.90), and `unknown` is returned both for insufficient evidence and for a near-tie
+with both sides named. Fetched pages that are bot walls (a 200 "Access Denied"/captcha)
+are dropped before any evidence is read. Same-origin links on fetched pages are merged
+into the inventory before proportions are computed. Four archetypes were added —
+`reference`, `institutional`, `marketplace`, `personal` — the last of which the analysers
+already handled (`PERSONAL_ARCHETYPES`) but no rule ever produced. The other three are in
+neither the commercial nor the personal set, so no existing suppression rule changes
+behaviour. page_type gained plural/platform product paths, `category` (specified but
+never implemented), section-word article paths, tutorial/kb/sdk docs paths, docs hosts,
+and a segment-anchored `pricing` (the unanchored one matched `/news/gpu-pricing-…`, the
+same defect fixed for `plans` in Stage C, 2026-09-04). Discovery in the harness samples
+sitemap-index children by name diversity so `sitemap_products` is not skipped in favour
+of six locale blog files. `classify_archetype` accepts an optional `hints` dict
+(robots.txt text, sitemap URLs) and is otherwise signature-compatible.
+
+No rule names a host. Every general signal was written after a *pattern* of failures,
+not a site, and the test file (`harness/test_page_classifier_v2.py`, 42 cases) encodes
+the patterns with synthetic sites.
+
+### What it cost and what it measured
+
+Reachable sites only (403/429/captcha hosts excluded, they yield nothing for any
+classifier): original 84 — `unknown` 39 → 10 of 58 (4 explicit ties); fresh 90 —
+38 → 10 of 54 (4 ties); the team-labelled 40 — v1 8 correct / 4 wrong / 22 unknown,
+new 25 / 6 / 3 (74% accuracy, **81% precision when labelling**, confidence buckets
+67% / 85% / 83% for < 0.7 / 0.7s / ≥ 0.8). Findings and severities are unchanged by
+construction — the 26 checks are the same code; what moves is the archetype-gated layer
+(CHK-E-024 evaluated on 17 sites instead of 2 in the earlier run) and the
+`recommendations_scoped_to` wording.
+
+The 40 were labelled blind before the scoring rewrite, but the rewrite was designed after
+reading its failures, so it is now a calibration set. The unresolved item is therefore
+the one `EVALS.md` §1 would demand anyway: **a new blind list, labelled before running,
+scored with `harness/holdout_eval.py`**, targets ≥ 0.8 accuracy and ≥ 0.8 per-label
+precision. If the < 0.7-confidence bucket is wrong more than ~30% of the time, raise
+`_decide(min_score=…)` and accept more unknowns; do not add rules for sites. Also still
+open: re-score the 24-site dev corpus (gold `archetype_expected` and the 8 pre-marked
+`N/A` rows depend on archetype), and the known soft boundaries — creator platforms with
+their own pricing page (marketplace vs saas), reference content on an `.edu` host, and
+English-only vocabulary.
+
+
+### Stage E rescore against D-034 (2026-09-12, dev corpus offline)
+
+Ran `harness/run_audit.py --set dev --offline` on the 24-site dev corpus after promoting
+the D-034 classifier, then `harness/score_dev.py`. Compared to D-033's post-Phase 6
+numbers on the same four checks:
+
+| Check | Before D-034 | After D-034 | Verdict |
+| --- | --- | --- | --- |
+| CHK-D-006 | 1.00 / 0.36 / 0.00 | 1.00 / 0.36 / 0.00 | unchanged |
+| CHK-D-007 | 0.92 / 0.75 / 0.50 | 0.93 / 0.81 / 0.50 | recall +0.06 |
+| CHK-E-014 | 1.00 / 0.93 / 0.00 | 1.00 / 0.93 / 0.00 | unchanged |
+| CHK-E-024 | 0.60 / 0.75 / 0.25 | 0.60 / 0.75 / 0.25 | unchanged |
+
+D-033's two named regressions (CHK-E-024 precision 0.60, D-006/D-007 recall drops from the
+`personal`-archetype exemption) **did not close.** The classifier rebuild is a net win in
+the aggregate — `unknown` fell from 22/24 to 9/24 on this corpus — but the seam that
+drives those four checks' regressions is not the classifier's *design*; it is where its
+specific labels disagree with the gold's `archetype_expected` column.
+
+### Archetype vs `archetype_expected` on the dev corpus
+
+Exact-match 8/24, `brochure`~`personal` close 2/24, safe `unknown` abstain 9/24,
+confidently wrong 5/24. Precision-when-labelling 10/15 = **0.67**, below D-034's
+own ≥ 0.80 target. The five wrong labels drive the four checks' surviving regressions:
+
+| Site | Gold expected | Got | Downstream effect |
+| --- | --- | --- | --- |
+| plausible.io | saas_marketing | news_editorial | CHK-E-024 fires (gate is COMMERCIAL_ARCHETYPES, which includes news_editorial) — FP against gold ABSENT |
+| qonto.com | saas_marketing | news_editorial | same shape — CHK-E-024 fires against gold ABSENT |
+| www.fastmail.com | saas_marketing | news_editorial | gold PRESENT — the finding is a true positive labelled under the wrong archetype |
+| www.tartinebakery.com | local_business | brochure | CHK-E-024 gate rejects `brochure`, so a gold-PRESENT case is silently missed |
+| jvns.ca | brochure | news_editorial | opposite direction: a personal-shape site is treated as commercial, dragging D-006/D-007 into scope |
+
+Pattern behind the wrong labels: a SaaS site's pricing/features/blog structure is being
+scored the same shape as a magazine's — `pricing` alone is anchored, but the article
+share still wins on some sites. The tartinebakery / jvns misses are the mirror of that
+(one type of site is looking too editorial to the classifier, the other too personal).
+None of the five involves a hostname the classifier is allowed to look at (§D-034 rule:
+"no rule names a host"), so the fix belongs in general signal weights, not in a lookup.
+
+### Discriminator that was tested and rejected
+
+Narrowing CHK-E-024's own gate to `{ecommerce, saas_marketing, local_business}` — with a
+new constant `E024_ARCHETYPES` — was tried:
+
+| Check | With E024_ARCHETYPES narrowed | Delta |
+| --- | --- | --- |
+| CHK-E-024 | 0.50 / 0.50 / 0.25 | precision −0.10, recall −0.25 |
+
+Reverted immediately. The reason it hurt is exactly what the D-033 diagnosis missed:
+sites like `www.asahi.com` and `www.heise.de` are correctly `news_editorial` in the gold
+**and** genuinely need CHK-E-024 to fire (gold PRESENT), so silencing E-024 on
+news_editorial killed true positives while only three of the four FPs it removed were
+actual FPs. The seam is in the classifier, not in E-024's downstream policy.
+
+### Consequence — what changes next
+
+The archetype workstream should treat the five wrong labels in the table above as the
+smallest concrete driver set: any general signal change that flips those five without
+touching the sixteen sites already correct or safe-`unknown` is a win. Once that lands,
+rerun this same score and expect CHK-E-024 to recover (both new-FP sites disappear from
+the commercial gate and one currently-missed TP starts firing) without any downstream
+policy change.
+
+The two `personal`-archetype exemption regressions (CHK-D-006 recall 0.36, CHK-D-007
+recall 0.81) are the same shape from the opposite end: whether the exemption is right
+depends on whether the human labellers agree with the classifier's `personal` calls on
+`danluu.com` and `sive.rs`. Their gold `archetype_expected` is `brochure`, and the
+labeller marked those D-006/D-007 rows `PRESENT` — so the labeller does NOT think a
+personal-blog shape exempts the identity checks. Either the classifier should not label
+those sites `personal`, or the analyser's `PERSONAL_ARCHETYPES` exemption should not
+cover D-006/D-007. Recording as the second driver set.
+
+Nothing about the report shape (D-033 Tier 3) or the wording changes (D-033 Tier 4) is
+implicated by these numbers.
+
+---
+
