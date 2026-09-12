@@ -59,7 +59,8 @@ identified from prose, which is harder to extract correctly and more easily conf
 same-named entities.
 
 **Evidence strength:** THEORETICAL / PRACTITIONER  
-**Severity ceiling:** low (was medium; capped since Stage C, 2026-09-04 — see D-022)
+**Severity:** medium on classified non-personal archetypes; suppressed on personal,
+unknown, and brochure archetypes. The result remains recommendation-only.
 
 **Observation:** Inspect `structured_data.json_ld[]` on the homepage only (the shipped
 `check_d007` reads `page_type == "home"` specifically, not `{"home", "about"}`). Look for
@@ -78,13 +79,10 @@ or
 Found but missing: {sorted(missing_required)}.
 ```
 
-**Severity rule (Stage C, D-022):** `low` in both firing cases — no block at all, or a
-block missing `name`/`url`. **Why capped, not left at medium:** fired on 26 of 34 real
-dev/negative-control sites; Web Data Commons Oct 2024 measured only 44.1% of 37.4M domains
-carrying *any* structured data at all, so absence is the open web's majority condition, not
-a differentiated signal (D-009's base-rate-conditioning rule, enforced in code). Still a
-real, directly actionable defect, so it stays in `findings[]` rather than being demoted to
-`recommendations[]` the way `CHK-E-021`/`CHK-D-010` were in the same pass.
+**Severity rule (Phase 8):** `medium` in both firing cases — no block at all, or a block
+missing `name`/`url` — on a classified non-personal site. The earlier base-rate guard is
+preserved by routing the result to `recommendations[]`, not `findings[]`, and by
+suppressing it on personal, unknown, and brochure archetypes.
 
 **FP guard:**
 - Suppress on `archetype ∈ {"personal", "hobby", "portfolio"}`.
@@ -112,7 +110,9 @@ Ensure it is present in the raw HTML, not injected after JS load. Priority: medi
 attributes content to the wrong origin, allowing scrapers and AI systems to attribute
 the page's facts to another site, diluting or misdirecting citations.
 
-**Evidence strength:** CAUSAL  
+**Evidence strength:** NORMATIVE by default; CAUSAL only when the collected sample also
+contains distinct URL variants for the same path or multiple sampled URLs consolidating
+to the same canonical URL.
 **Severity ceiling:** medium (causal, but the harm is attribution dilution, not a hard
 block)
 
@@ -209,7 +209,8 @@ nothing for an AI to match against external sources.
 **Evidence strength:** CORRELATIONAL  
 **Severity ceiling:** medium
 
-**Observation:** On pages where `page_type ∈ {"home", "about"}`, inspect:
+**Observation:** Inspect the homepage (including its shared header/footer) and any sampled
+about/contact page whose URL is linked from that homepage:
 - `structured_data.json_ld[].fields_present` for `"sameAs"` on any Organization/Person block
 - `outbound_profile_links[]` (footer or header links pointing to external profile hosts:
   LinkedIn, GitHub, Wikipedia, Wikidata, Crunchbase, industry registries, official social
@@ -219,12 +220,12 @@ Any one resolvable anchor (either type) is sufficient to pass.
 
 **Evidence emitted:**
 ```
-No sameAs declarations or outbound identity-profile links found on the homepage or
-about page. The site provides no declared anchors for cross-web identity corroboration.
+No sameAs declarations or outbound identity-profile links found on the homepage, its
+shared header/footer, or a linked about/contact page.
 ```
 
-**Severity rule:** medium if zero anchors of either type are found on both home and
-about pages.
+**Severity rule:** medium if zero anchors of either type are found across those identity
+surfaces.
 
 **FP guard:**
 - Suppress on `archetype ∈ {"personal", "hobby", "portfolio"}` — for individuals,
@@ -304,8 +305,10 @@ signal, making it easier to confuse this brand with another.
 **Evidence strength:** THEORETICAL  
 **Severity ceiling:** medium (name or legal-name conflict) / low (other attribute variance)
 
-**Observation:** Compare across all fetched pages the following fields from
-`contact_signals` and `structured_data.json_ld[]`:
+**Observation:** Compare only the homepage/shared footer and homepage-linked about/contact
+pages. This prevents article titles, sitemap-only pages, and unrelated body links from
+becoming organisation identity evidence. Read the following fields from `contact_signals`
+and Organization `structured_data.json_ld[]`:
 - `org_name` / JSON-LD `name`
 - JSON-LD `legalName` (if present)
 - `phone`

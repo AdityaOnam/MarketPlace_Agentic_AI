@@ -1044,6 +1044,7 @@ def check_e021(bundle: dict) -> dict:
 
 def check_e022(bundle: dict) -> list[dict]:
     findings = []
+    archetype = bundle.get("site", {}).get("archetype")
     for page in bundle.get("pages", []):
         locus = {"url": page.get("url")}
         if not page.get("extraction_ok", True):
@@ -1073,14 +1074,24 @@ def check_e022(bundle: dict) -> list[dict]:
         # WCAG 1.3.1/2.4.6, not direct failures of them. Severity/strength are already
         # NORMATIVE/PRACTITIONER; the prose is now matched to that label.
         if h1_count == 0:
+            # Phase 8 judge review called this D-005, but the missing-h1 detector is
+            # actually E-022; D-005 is the already-low long-page subheading check.
+            # Preserve the stronger ceiling only where page hierarchy is central to the
+            # vertical, cap it at medium elsewhere, and keep personal sites low.
+            if archetype in PERSONAL_ARCHETYPES:
+                severity = "low"
+            elif archetype in {"ecommerce", "news_editorial", "documentation"}:
+                severity = "high"
+            else:
+                severity = "medium"
             findings.append(_envelope(
                 "CHK-E-022", "present",
                 f"Page {page.get('url')}: no <h1> element found, so the page states no "
                 "primary topic. Structural convention aligned with WCAG 2.2 SC 1.3.1 "
-                "(Info and Relationships) and 2.4.6 (Headings and Labels).", "high",
+                f"(Info and Relationships) and 2.4.6 (Headings and Labels).", severity,
                 "NORMATIVE/PRACTITIONER",
                 {"summary": "Add an <h1> naming the page's primary topic.",
-                 "priority": "high"}, locus=locus))
+                 "priority": severity}, locus=locus))
         elif no_main or skips:
             # B-3 (2026-09-12): action is built from only the condition that fired, not
             # a bundled string naming both fixes. A page with <main> present and only a

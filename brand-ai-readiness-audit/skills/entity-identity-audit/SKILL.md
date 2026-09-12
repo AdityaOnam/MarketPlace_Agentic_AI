@@ -102,11 +102,11 @@ described.
 | --- | --- | --- | --- | --- |
 | CHK-D-006 | `pages` (home, about) | CORRELATIONAL | medium | Suppress if title has clear category, or CHK-D-007 present |
 | CHK-D-007 | `pages` structured_data | THEORETICAL/PRACTITIONER | medium | Suppress on personal/hobby archetypes |
-| CHK-D-008 | `pages` canonical | CAUSAL | medium | Pass if self-referential or valid pagination canonical |
+| CHK-D-008 | `pages` canonical | NORMATIVE; CAUSAL with sampled duplicate URL variants | medium | Pass if self-referential or valid pagination canonical |
 | CHK-D-012 | `pages` dates + page_type + text | THEORETICAL | low | NEVER raise on evergreen; suppress if Last-Modified header present |
-| CHK-D-025 | `pages` sameAs + outbound_profile_links | CORRELATIONAL | medium | Suppress on personal/hobby/portfolio archetype |
+| CHK-D-025 | homepage/shared chrome + linked about/contact sameAs and profile links | CORRELATIONAL | medium | Suppress on personal/hobby/portfolio archetype |
 | CHK-D-026 | `anchors` results | HARD-MECHANICAL | high/medium | 401/403/429 = bot-blocked = not_determinable, never a finding |
-| CHK-D-027 | `pages` contact_signals + structured_data | THEORETICAL | medium/low | Suppress pure formatting differences (punctuation, "Ltd" vs "Limited") |
+| CHK-D-027 | homepage/shared footer + linked about/contact identity fields | THEORETICAL | medium/low | Suppress pure formatting differences (punctuation, "Ltd" vs "Limited") |
 | CHK-D-029 | ecommerce product pages + JSON-LD | NORMATIVE/PRACTITIONER | recommendation-only | Applies only to ecommerce; requires complete Product/Offer data |
 | CHK-D-030 | SaaS home/pricing pages + JSON-LD | NORMATIVE/PRACTITIONER | recommendation-only | Applies only to saas_marketing |
 | CHK-D-031 | marketplace listing pages + JSON-LD | NORMATIVE/PRACTITIONER | recommendation-only | Applies only to marketplace |

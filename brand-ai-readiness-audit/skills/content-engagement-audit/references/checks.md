@@ -629,7 +629,9 @@ screen-reader navigation and signal to AI systems that the page's content hierar
 cannot be trusted.
 
 **Evidence strength:** NORMATIVE / PRACTITIONER  
-**Severity ceiling:** high (no `<h1>`), medium (skips or missing `<main>`)
+**Severity ceiling:** for no `<h1>`, high on ecommerce/news/documentation, medium on
+other non-personal archetypes, and low on personal/hobby/portfolio; medium for skips or
+missing `<main>`.
 
 **Observation (3–5 pages):** Inspect `pages[].landmarks` and `pages[].headings[]`:
 - `landmarks.main == 0`: no `<main>` element.
@@ -643,8 +645,10 @@ Page {url}: {violation description}. Violates structural accessibility conventio
 ```
 
 **Severity rule:**
-- Zero `<h1>` on ≥1 page: high (a page with no heading is navigationally broken for
-  screen-reader users).
+- Zero `<h1>` on ≥1 page: high on ecommerce/news/documentation, medium on other
+  non-personal archetypes, and low on personal/hobby/portfolio. The Phase 8 judge log
+  called this D-005, but the implemented missing-h1 branch is CHK-E-022; CHK-D-005 is the
+  already-low long-page subheading check.
 - Multiple `<h1>` (>1) or missing `<main>` on ≥1 page: medium.
 - Heading level skips on ≥1 page: medium.
 
