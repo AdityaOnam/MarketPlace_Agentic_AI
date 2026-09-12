@@ -7,6 +7,7 @@ from __future__ import annotations
 
 import re
 from html.parser import HTMLParser
+from urllib.parse import urlparse
 
 PERSONAL_ARCHETYPES = {"personal", "hobby", "portfolio"}
 LEGAL_SUFFIXES = ["ltd", "limited", "llc", "l.l.c", "inc", "incorporated", "corp",
@@ -142,6 +143,69 @@ def _person_blocks(page: dict) -> list[dict]:
         e for e in page.get("structured_data", {}).get("json_ld", [])
         if "person" in _org_type_names(e)
     ]
+
+
+def _page_url_key(value: str | None) -> tuple[str, str] | None:
+    if not value:
+        return None
+    parsed = urlparse(value)
+    return parsed.netloc.lower(), parsed.path.rstrip("/") or "/"
+
+
+def _identity_pages(bundle: dict, require_extractable: bool = True) -> list[dict]:
+    """Homepage plus about/contact pages that the homepage actually links to.
+
+    Header/footer signals are already part of each page's extracted links and contact
+    signals. Restricting secondary pages to homepage-linked destinations prevents an
+    unrelated sitemap page from becoming identity evidence merely because it was sampled.
+    """
+    pages = bundle.get("pages", [])
+    homes = [page for page in pages if page.get("page_type") == "home"]
+    linked_keys = {
+        key for home in homes for link in home.get("links", [])
+        if link.get("internal") is True and (key := _page_url_key(link.get("href")))
+    }
+    selected = list(homes)
+    for page in pages:
+        if page.get("page_type") not in {"about", "contact"}:
+            continue
+        key = _page_url_key(page.get("final_url") or page.get("url"))
+        if key in linked_keys:
+            selected.append(page)
+    if require_extractable:
+        selected = [page for page in selected if page.get("extraction_ok", True)]
+    return selected
+
+
+def _identity_anchor_urls(pages: list[dict]) -> set[str]:
+    urls = {
+        url for page in pages for url in page.get("outbound_profile_links", [])
+        if isinstance(url, str) and url.startswith("http")
+    }
+    for page in pages:
+        for entity in _organization_blocks(page):
+            raw = entity.get("raw")
+            same_as = raw.get("sameAs") if isinstance(raw, dict) else None
+            values = same_as if isinstance(same_as, list) else [same_as]
+            urls.update(url for url in values if isinstance(url, str) and url.startswith("http"))
+    return urls
+
+
+def _has_duplicate_url_variants(bundle: dict) -> bool:
+    """Whether the existing sample contains distinct URLs for the same content locus."""
+    pages = [page for page in bundle.get("pages", []) if page.get("extraction_ok", True)]
+    by_path: dict[tuple[str, str], set[str]] = {}
+    by_canonical: dict[str, set[str]] = {}
+    for page in pages:
+        raw_url = page.get("final_url") or page.get("url")
+        key = _page_url_key(raw_url)
+        if key and raw_url:
+            by_path.setdefault(key, set()).add(raw_url)
+        canonical = page.get("canonical", {}).get("href")
+        if canonical and raw_url:
+            by_canonical.setdefault(canonical, set()).add(raw_url)
+    return (any(len(urls) > 1 for urls in by_path.values())
+            or any(len(urls) > 1 for urls in by_canonical.values()))
 
 
 def _identity_names(bundle: dict, home: dict) -> set[str]:
@@ -316,14 +380,11 @@ def check_d006(bundle: dict) -> dict:
 # ---------------------------------------------------------------------------
 
 def check_d007(bundle: dict) -> dict:
-    """Severity capped at `low` (was `medium`) since Stage C (2026-09-04): fired on 26 of 34
-    real dev/negative-control sites. Web Data Commons Oct 2024 measured only 44.1% of 37.4M
-    domains carrying *any* structured data at all (PLAN.md §5), so absence is the majority
-    condition on the open web, not a differentiated signal -- D-009's "findings conditioned
-    on base rates" rule, applied in code rather than left as a design statement. The Phase 8
-    judge study additionally found that presenting this common absence as a scored defect
-    made the action read like a prescribed implementation. A present result therefore routes
-    to `recommendations[]`; a complete block still contributes to `checks_passed[]`.
+    """Missing/incomplete Organization markup is a medium proactive recommendation.
+
+    Phase 8 judge review raised the former low severity floor on classified non-personal
+    sites. It remains recommendation-only and stays suppressed for personal, unknown, and
+    brochure archetypes, preserving the earlier base-rate and false-positive guards.
     """
     archetype = bundle.get("site", {}).get("archetype")
     if archetype in {"unknown", "brochure"}:
@@ -348,22 +409,22 @@ def check_d007(bundle: dict) -> dict:
     locus = {"url": home.get("url")}
     if not blocks:
         return _envelope(
-            "CHK-D-007", "present", "No Organization JSON-LD block found.", "low",
+            "CHK-D-007", "present", "No Organization JSON-LD block found.", "medium",
             "THEORETICAL/PRACTITIONER",
             {"summary": "Consider whether machine readers would benefit from an "
                          "Organization JSON-LD block that declares at least the name and "
-                         "authoritative URL.", "priority": "low"}, locus=locus,
+                         "authoritative URL.", "priority": "medium"}, locus=locus,
             recommendation_only=True)
 
     required = {"name", "url"}
     missing = required - set(blocks[0].get("fields_present", []))
     if missing:
         return _envelope(
-            "CHK-D-007", "present", f"Found but missing: {sorted(missing)}.", "low",
+            "CHK-D-007", "present", f"Found but missing: {sorted(missing)}.", "medium",
             "THEORETICAL/PRACTITIONER",
             {"summary": "Consider whether completing the existing Organization JSON-LD "
                          "with the missing name or authoritative URL would help machine "
-                         "readers identify the organisation.", "priority": "low"},
+                         "readers identify the organisation.", "priority": "medium"},
             locus=locus, recommendation_only=True)
 
     return _envelope("CHK-D-007", "absent", "Organization JSON-LD present with required "
@@ -376,6 +437,7 @@ def check_d007(bundle: dict) -> dict:
 
 def check_d008(bundle: dict) -> list[dict]:
     findings = []
+    evidence_strength = "CAUSAL" if _has_duplicate_url_variants(bundle) else "NORMATIVE"
     for page in bundle.get("pages", []):
         locus = {"url": page.get("url")}
         if not page.get("extraction_ok", True):
@@ -383,18 +445,19 @@ def check_d008(bundle: dict) -> list[dict]:
             # read as "no rel=canonical found" -- a confirmed defect on a page we never
             # actually got. Found live on www.gnu.org in the adversarial set (2026-09-04).
             findings.append(_envelope("CHK-D-008", "not_determinable",
-                                       "Page could not be fetched.", None, "CAUSAL", None,
+                                       "Page could not be fetched.", None, evidence_strength, None,
                                        locus=locus))
             continue
         canonical = page.get("canonical", {})
         if canonical.get("self_referential"):
             findings.append(_envelope("CHK-D-008", "absent", f"Page {page.get('url')}: "
-                                       "self-referential canonical present.", None, "CAUSAL",
+                                       "self-referential canonical present.", None,
+                                       evidence_strength,
                                        None, locus=locus))
         elif not canonical.get("href"):
             findings.append(_envelope(
                 "CHK-D-008", "present", f"Page {page.get('url')}: no rel=canonical found.",
-                "medium", "CAUSAL",
+                "medium", evidence_strength,
                 {"summary": "Consider whether a consistent self-referential canonical URL "
                              "would make the preferred version of this indexable page "
                              "unambiguous.", "priority": "medium"}, locus=locus,
@@ -403,14 +466,15 @@ def check_d008(bundle: dict) -> list[dict]:
             findings.append(_envelope(
                 "CHK-D-008", "present",
                 f"Page {page.get('url')}: canonical points to a different domain.",
-                "medium", "CAUSAL",
+                "medium", evidence_strength,
                 {"summary": "Consider whether the cross-domain canonical URL intentionally "
                              "identifies the brand's authoritative domain; otherwise, a "
                              "self-referential canonical may better express ownership.",
                  "priority": "medium"}, locus=locus, recommendation_only=True))
         else:
             findings.append(_envelope("CHK-D-008", "absent", f"Page {page.get('url')}: "
-                                       "canonical present, same domain.", None, "CAUSAL",
+                                       "canonical present, same domain.", None,
+                                       evidence_strength,
                                        None, locus=locus))
     return findings
 
@@ -467,28 +531,39 @@ def check_d025_d026(bundle: dict) -> tuple[dict, dict]:
     # structured_data/outbound_profile_links by construction -- including them would read
     # as "no anchors declared" on a page we never actually got. Found live on www.gnu.org
     # in the adversarial set (2026-09-04): a fetch failure produced a false CHK-D-025.
-    home_about_raw = [p for p in bundle.get("pages", []) if p.get("page_type") in ("home", "about")]
-    home_about = [p for p in home_about_raw if p.get("extraction_ok", True)]
-    if home_about_raw and not home_about:
+    identity_raw = _identity_pages(bundle, require_extractable=False)
+    identity_pages = _identity_pages(bundle)
+    if not identity_raw:
         d025 = _envelope("CHK-D-025", "not_determinable",
-                          "Home/about page(s) could not be fetched.", None, "CORRELATIONAL", None)
+                          "No homepage was available to establish identity surfaces.",
+                          None, "CORRELATIONAL", None)
+        d026 = _envelope("CHK-D-026", "not_determinable", "No CHK-D-025 verdict to act on.",
+                          None, "HARD-MECHANICAL", None)
+        return d025, d026
+    if identity_raw and not identity_pages:
+        d025 = _envelope("CHK-D-025", "not_determinable",
+                          "Homepage and linked identity page(s) could not be fetched.",
+                          None, "CORRELATIONAL", None)
         d026 = _envelope("CHK-D-026", "not_determinable", "No CHK-D-025 verdict to act on.",
                           None, "HARD-MECHANICAL", None)
         return d025, d026
     same_as_present = any(
         "sameAs" in e.get("fields_present", [])
-        for p in home_about for e in p.get("structured_data", {}).get("json_ld", [])
+        for p in identity_pages for e in _organization_blocks(p)
     )
-    outbound_links = [l for p in home_about for l in p.get("outbound_profile_links", [])]
+    outbound_links = [
+        link for page in identity_pages for link in page.get("outbound_profile_links", [])
+    ]
+    identity_anchor_urls = _identity_anchor_urls(identity_pages)
 
     anchors = bundle.get("anchors", {})
-    any_resolved = any(r.get("resolved") is True for r in anchors.get("results", []))
 
-    if not same_as_present and not outbound_links and not any_resolved:
+    if not same_as_present and not outbound_links:
         d025 = _envelope(
             "CHK-D-025", "present",
             "No sameAs declarations or outbound identity-profile links found on the "
-            "homepage or about page.", "medium", "CORRELATIONAL",
+            "homepage, its shared header/footer, or a linked about/contact page.",
+            "medium", "CORRELATIONAL",
             {"summary": "Declare identity anchors: add sameAs to the Organization JSON-LD "
                          "pointing at the organisation's authoritative external profiles.",
              "priority": "medium"})
@@ -505,7 +580,13 @@ def check_d025_d026(bundle: dict) -> tuple[dict, dict]:
                           "Off-site anchor check unavailable.", None, "HARD-MECHANICAL", None)
         return d025, d026
 
-    results = anchors.get("results", [])
+    # The collector may have checked profile links found in article body copy. D-026 is
+    # an identity check, so judge only results for URLs declared on the identity surfaces
+    # used by D-025.
+    results = [
+        result for result in anchors.get("results", [])
+        if result.get("url") in identity_anchor_urls
+    ]
     if not results:
         d026 = _envelope("CHK-D-026", "not_determinable", "No anchors were checked.", None,
                           "HARD-MECHANICAL", None)
@@ -552,7 +633,7 @@ def _normalize_name(name: str) -> str:
 
 
 def check_d027(bundle: dict) -> dict:
-    """Names must come from Organization entities, not from every entity with a `name`.
+    """Names must come from the site's explicit identity surfaces.
 
     Repaired 2026-09-04 after the Stage B negative-control screen. This read `name` off
     *every* JSON-LD entity on every sampled page. A real site's graph carries WebPage,
@@ -561,11 +642,12 @@ def check_d027(bundle: dict) -> dict:
     collected twenty page titles, found them "inconsistent", and reported the site's own
     headlines as competing organisation names. It fired on 6 of 8 clean sites that way.
 
-    `_organization_blocks` -- the same filter CHK-D-007 already used -- was sitting in
-    this file unused by this check.
+    Phase 8 narrows the comparison again to the homepage/shared footer and homepage-linked
+    about/contact pages. This prevents unrelated article and sitemap-only page names from
+    becoming identity evidence.
     """
     names = []
-    for page in bundle.get("pages", []):
+    for page in _identity_pages(bundle):
         for e in _organization_blocks(page):
             raw = e.get("raw", {})
             if isinstance(raw, dict) and raw.get("name"):

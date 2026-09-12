@@ -157,7 +157,7 @@ is enforced in code, not just documented.
 | CHK-E-019 | C/E — blank first paint | HARD-MECHANICAL / CAUSAL | high | Suppressed by CHK-D-003 (rule O-1) |
 | CHK-E-020 | E — autoplaying media with sound | NORMATIVE | medium | `autoplay muted` is fine |
 | CHK-E-021 | E — images/iframes missing dimensions | THEORETICAL | low | **Recommendation-only** |
-| CHK-E-022 | E — missing landmark/heading integrity | NORMATIVE / PRACTITIONER | high (no h1), medium (other) | — |
+| CHK-E-022 | E — missing landmark/heading integrity | NORMATIVE / PRACTITIONER | no h1: high on ecommerce/news/docs, medium otherwise, low on personal; medium (other) | — |
 | CHK-E-024 | E — missing trust signals | CORRELATIONAL (single-study) | **recommendation-only** | Commercial archetypes only |
 
 ## False-positive discipline
