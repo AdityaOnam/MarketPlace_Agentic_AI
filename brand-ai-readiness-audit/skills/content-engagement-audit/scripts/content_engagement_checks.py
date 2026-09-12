@@ -51,12 +51,49 @@ def _is_non_english(page: dict) -> bool:
     return bool(lang) and not lang.startswith("en")
 
 
+# Mirrors the collector's JS_PAYLOAD_BYTES_PER_WORD (extract_page.py); quoted in evidence
+# text only, the decision itself is the collector's `js_payload_heavy` flag.
+JS_PAYLOAD_BYTES_PER_WORD = 250
+
+JS_RENDER_REASON = ("Page content is not present in the static HTML (a large document with "
+                    "almost no extractable text); it appears to be rendered by JavaScript. "
+                    "Content density cannot be judged from markup alone -- see CHK-D-003.")
+
+
+def _content_unmeasurable(page: dict) -> str | None:
+    """Why a content-density check cannot judge this page, or None if it can.
+
+    Two conditions, in order: the collector could not extract anything usable
+    (`extraction_ok` false), or it extracted a hydration shell (`js_render_suspected`).
+    The second is the case CHK-D-003 exists to report; D-004 / D-005 / D-010 / D-013
+    calling the same page "thin" or "duplicated" on top of it is the same defect counted
+    four times, and on kernel.org-shaped sites it was simply wrong (2026-09-13).
+    """
+    if not page.get("extraction_ok", True):
+        return "Content could not be extracted."
+    if page.get("js_render_suspected"):
+        return JS_RENDER_REASON
+    return None
+
+
 def _is_non_informational(page: dict) -> bool:
     """A page whose job is a form or a front door, not conveying information -- so the
     word-count checks (CHK-D-004, CHK-D-010) must not grade it as content."""
     if page.get("page_type") in NON_INFORMATIONAL_PAGE_TYPES:
         return True
-    return bool(_NON_INFORMATIONAL_URL_RE.search(page.get("url", "") or ""))
+    if _NON_INFORMATIONAL_URL_RE.search(page.get("url", "") or ""):
+        return True
+    return _is_variant_of_home(page.get("url", "") or "")
+
+
+def _is_variant_of_home(url: str) -> bool:
+    """`/3.12/`, `/en/`, `/v2/` -- a single version or locale segment and nothing else is
+    the homepage of that version or locale, a hub, and is excluded for the same reason
+    `home` is. docs.python.org's per-version index pages were being called thin at ~165
+    words once the extractor started reading their real `role="main"` region (2026-09-13).
+    """
+    segs = _path_segments(url)
+    return len(segs) == 1 and bool(_VERSION_SEG_RE.match(segs[0]) or _LOCALE_SEG_RE.match(segs[0]))
 
 
 LOW_STRUCTURE_ARCHETYPES = {"legal"}  # page_type, not site archetype, per checks.md guard
@@ -224,9 +261,9 @@ def check_d004(bundle: dict, d003_result: dict | None = None) -> list[dict]:
         if _is_non_informational(page):
             continue
         locus = {"url": page.get("url"), "selector": None}
-        if not page.get("extraction_ok", True):
-            findings.append(_envelope("CHK-D-004", "not_determinable",
-                                       "Content could not be extracted.", None,
+        unmeasurable = _content_unmeasurable(page)
+        if unmeasurable:
+            findings.append(_envelope("CHK-D-004", "not_determinable", unmeasurable, None,
                                        "CORRELATIONAL", None, locus=locus))
             continue
         words = page.get("main_text_words", 0)
@@ -264,10 +301,10 @@ def check_d005(bundle: dict) -> list[dict]:
         if words <= 500:
             continue
         locus = {"url": page.get("url"), "selector": None}
-        if not page.get("extraction_ok", True):
-            findings.append(_envelope("CHK-D-005", "not_determinable",
-                                       "Content could not be extracted.", None, "THEORETICAL",
-                                       None, locus=locus))
+        unmeasurable = _content_unmeasurable(page)
+        if unmeasurable:
+            findings.append(_envelope("CHK-D-005", "not_determinable", unmeasurable, None,
+                                       "THEORETICAL", None, locus=locus))
             continue
         subheadings = [h for h in page.get("headings", []) if h.get("level") in (2, 3)]
         descriptive = [h for h in subheadings if not _GENERIC_HEADING_RE.match((h.get("text") or "").strip())]
@@ -277,9 +314,10 @@ def check_d005(bundle: dict) -> list[dict]:
                 f"Page {page.get('url')}: {words} words of body text with "
                 f"{len(descriptive)} descriptive subheadings.",
                 "low", "THEORETICAL",
-                {"summary": "Add descriptive subheadings that state the fact or topic of "
-                             "each section.", "priority": "low"},
-                locus=locus,
+                {"summary": "Consider whether clearer descriptive subheadings would help "
+                             "readers identify the fact or topic of each section.",
+                 "priority": "low"},
+                locus=locus, recommendation_only=True,
             ))
         else:
             findings.append(_envelope("CHK-D-005", "absent",
@@ -305,8 +343,11 @@ def check_d009(bundle: dict) -> dict:
         return _envelope(
             "CHK-D-009", "present", f"Found {len(broken)} broken internal link(s).",
             "low", "THEORETICAL/CORRELATIONAL",
-            {"summary": "Repair the link's target or replace it; add a 301 redirect if the "
-                         "target is genuinely gone.", "priority": "low"},
+            {"summary": "The site would benefit from reviewing the affected internal "
+                         "links: possible responses include updating each destination, "
+                         "replacing the link, or using a permanent redirect when a "
+                         "resource has moved.", "priority": "low"},
+            recommendation_only=True,
         )
     return _envelope("CHK-D-009", "absent", "No broken internal links found among "
                       f"{links.get('checked_count', 0)} checked.", None,
@@ -327,6 +368,14 @@ def check_d010(bundle: dict, d004_results: list[dict] | None = None) -> list[dic
     proxy is too imprecise to assert as a confirmed defect, the same class of demotion
     D-012 already applied to CHK-E-024.
     """
+    archetype = bundle.get("site", {}).get("archetype")
+    if archetype in {"unknown", "brochure"}:
+        return [_envelope(
+            "CHK-D-010", "not_applicable",
+            f"Archetype {archetype!r} carries insufficient signal for this check.",
+            None, "NORMATIVE", None, recommendation_only=True,
+        )]
+
     d004_by_url = {f["locus"]["url"]: f for f in (d004_results or [])}
     findings = []
     for page in bundle.get("pages", []):
@@ -340,10 +389,10 @@ def check_d010(bundle: dict, d004_results: list[dict] | None = None) -> list[dic
                                        None, "CORRELATIONAL", None, locus=locus,
                                        suppressed_by=["CHK-D-004"]))
             continue
-        if not page.get("extraction_ok", True):
-            findings.append(_envelope("CHK-D-010", "not_determinable",
-                                       "Content could not be extracted.", None, "CORRELATIONAL",
-                                       None, locus=locus))
+        unmeasurable = _content_unmeasurable(page)
+        if unmeasurable:
+            findings.append(_envelope("CHK-D-010", "not_determinable", unmeasurable, None,
+                                       "CORRELATIONAL", None, locus=locus))
             continue
         if _is_non_english(page):
             # D-031 (2026-09-10): all three evidence-shape detectors are English-only --
@@ -503,24 +552,46 @@ def check_d013(bundle: dict) -> dict:
     docstring for the same reasoning."""
     eligible = [p for p in bundle.get("pages", [])
                 if p.get("page_type") not in VARIANT_OR_LEGAL_PAGE_TYPES
-                and p.get("extraction_ok", True)]
+                and p.get("extraction_ok", True)
+                and not p.get("js_render_suspected")]
     if len(eligible) < 3:
         return _envelope("CHK-D-013", "not_determinable",
                           "Fewer than 3 eligible pages to compare.", None, "CORRELATIONAL", None)
 
+    heavy = {p["url"] for p in eligible if p.get("js_payload_heavy")}
     trigram_sets = [(p["url"], _trigram_set(p.get("main_text", ""))) for p in eligible]
     high_similarity_pairs = []
     variant_pairs = []  # (url_a, url_b, sim, kind) -- excluded from the count, reported
+    js_pairs = []       # identical static text where at least one side is a script shell
     for i in range(len(trigram_sets)):
         for j in range(i + 1, len(trigram_sets)):
             sim = _jaccard(trigram_sets[i][1], trigram_sets[j][1])
             if sim <= 0.8:
                 continue
-            kind = _variant_kind(trigram_sets[i][0], trigram_sets[j][0])
+            ua, ub = trigram_sets[i][0], trigram_sets[j][0]
+            kind = _variant_kind(ua, ub)
             if kind:
-                variant_pairs.append((trigram_sets[i][0], trigram_sets[j][0], sim, kind))
+                variant_pairs.append((ua, ub, sim, kind))
+            elif ua in heavy or ub in heavy:
+                js_pairs.append((ua, ub, sim))
             else:
-                high_similarity_pairs.append((trigram_sets[i][0], trigram_sets[j][0], sim))
+                high_similarity_pairs.append((ua, ub, sim))
+
+    # Identical static text between an index and its detail pages, where the detail pages
+    # are hundreds of bytes of script per extracted word, is not duplicated content -- it
+    # is content the markup does not carry. brianlovin.com's /ama and /ama/<id> pages
+    # share the same 236-word question list in HTML while each answer lives in a JSON
+    # payload (judge review, 2026-09-13). Judging duplication from that would be a
+    # measurement of the crawler's blindness, not of the site.
+    if js_pairs and not high_similarity_pairs:
+        urls = sorted({u for pair in js_pairs for u in pair[:2]})
+        return _envelope(
+            "CHK-D-013", "not_determinable",
+            f"{len(urls)} pages share the same static text, but their HTML is dominated by "
+            f"script payload (over {JS_PAYLOAD_BYTES_PER_WORD} bytes per extracted word). "
+            f"Their content appears to be delivered by JavaScript, so duplication cannot be "
+            f"judged from the markup a non-rendering crawler receives.",
+            None, "CORRELATIONAL", None, recommendation_only=True)
 
     if len(high_similarity_pairs) >= 2:  # >=3 pages mutually similar implies >=2 pairs among them
         avg_pct = round(sum(p[2] for p in high_similarity_pairs) / len(high_similarity_pairs) * 100)
@@ -528,8 +599,8 @@ def check_d013(bundle: dict) -> dict:
             "CHK-D-013", "present",
             f"Pages share {avg_pct}% of word trigrams in their main content.", "low",
             "CORRELATIONAL",
-            {"summary": "Add unique content to each variant page that answers the specific "
-                         "question a reader would have about that variant. "
+            {"summary": "Consider whether each page would benefit from content that "
+                         "answers the distinct question a reader brings to it. "
                          "(Proactive — not a confirmed defect.)", "priority": "low"},
             recommendation_only=True,
         )
@@ -546,10 +617,10 @@ def check_d013(bundle: dict) -> dict:
             f"underlying document ({len(variant_pairs)} pair(s) found). This is expected "
             f"structure, not duplicated content.",
             "low", "CORRELATIONAL",
-            {"summary": "Point every variant at one canonical URL via <link rel=\"canonical\"> "
-                         "(for versions: the current/stable release; for locales: a language "
-                         "selector plus per-locale self-canonicals). Do not rewrite the "
-                         "variant content to be different -- it is meant to be near-identical. "
+            {"summary": "Consider whether the variants would benefit from a documented "
+                         "canonical-URL strategy: one current or stable release for versions, "
+                         "and a language selector with per-locale self-canonicals for locales. "
+                         "The content itself is expected to remain near-identical. "
                          "(Proactive — not a confirmed defect.)", "priority": "low"},
             recommendation_only=True,
         )
@@ -575,15 +646,15 @@ def _rendered_for(bundle: dict, url: str) -> dict | None:
 
 _E014_FIX_MAP = {
     "missing lang attribute":
-        "add a lang attribute to the <html> tag",
+        "a declared page language",
     "missing alt on a non-decorative image":
-        "add descriptive alt text to non-decorative images (alt=\"\" for decorative ones)",
+        "descriptive alternative text for informative images",
     "link with no accessible name":
-        "give every <a> tag readable text or an aria-label",
+        "accessible names for links",
     "button with no accessible name":
-        "give every <button> readable text or an aria-label",
+        "accessible names for buttons",
     "unlabelled form control":
-        "add a <label for=...> or aria-label to every form input",
+        "programmatic labels for form controls",
 }
 
 
@@ -602,10 +673,10 @@ def _e014_action_for(violations: list[str]) -> str:
         if fix and fix not in fixes:
             fixes.append(fix)
     if not fixes:
-        return "Address the accessibility violations named in the evidence above."
+        return "Consider how the accessibility violations named in the evidence affect this page."
     if len(fixes) == 1:
-        return f"On this page: {fixes[0]}."
-    return "On this page: " + "; ".join(fixes) + "."
+        return f"Consider whether this page would benefit from {fixes[0]}."
+    return "Consider whether this page would benefit from " + "; ".join(fixes) + "."
 
 
 def check_e014(bundle: dict) -> list[dict]:
@@ -671,8 +742,10 @@ def check_e014(bundle: dict) -> list[dict]:
                 "CHK-E-014", "present",
                 f"Page {page.get('url')}: {len(low_contrast)} low-contrast text pair(s).",
                 "medium", "NORMATIVE",
-                {"summary": "Increase foreground/background contrast to >=4.5:1 (normal "
-                             "text) or >=3:1 (large text).", "priority": "medium"}, locus=locus,
+                {"summary": "Consider whether stronger foreground/background contrast "
+                             "would improve readability; WCAG AA uses 4.5:1 for normal "
+                             "text and 3:1 for large text.", "priority": "medium"}, locus=locus,
+                recommendation_only=True,
                 subcheck="contrast"))
         else:
             findings.append(_envelope("CHK-E-014", "absent", f"Page {page.get('url')}: "
@@ -702,8 +775,9 @@ def check_e015(bundle: dict) -> list[dict]:
             findings.append(_envelope(
                 "CHK-E-015", "present", f"Page {page.get('url')}: missing viewport meta "
                 "tag.", "medium", "NORMATIVE",
-                {"summary": "Add <meta name=\"viewport\" content=\"width=device-width, "
-                             "initial-scale=1\">.", "priority": "medium"}, locus=locus,
+                {"summary": "Consider whether declaring a mobile viewport would help the "
+                             "page match the device width at its initial scale.",
+                 "priority": "medium"}, locus=locus, recommendation_only=True,
                 subcheck="viewport_meta"))
         else:
             scale_match = _MAX_SCALE_RE.search(viewport)
@@ -713,8 +787,10 @@ def check_e015(bundle: dict) -> list[dict]:
                 findings.append(_envelope(
                     "CHK-E-015", "present", f"Page {page.get('url')}: viewport meta "
                     "disables user zoom. Violates WCAG 2.2 SC 1.4.4.", "high", "NORMATIVE",
-                    {"summary": "Remove user-scalable=no and maximum-scale constraints.",
-                     "priority": "high"}, locus=locus, subcheck="viewport_meta"))
+                    {"summary": "Consider whether allowing user zoom by avoiding restrictive "
+                                 "scaling constraints would better support WCAG 2.2 SC 1.4.4.",
+                     "priority": "high"}, locus=locus, recommendation_only=True,
+                    subcheck="viewport_meta"))
             else:
                 findings.append(_envelope("CHK-E-015", "absent", f"Page {page.get('url')}: "
                                            "viewport meta present, zoom not blocked.", None,
@@ -729,8 +805,9 @@ def check_e015(bundle: dict) -> list[dict]:
             findings.append(_envelope(
                 "CHK-E-015", "present", f"Page {page.get('url')}: horizontal scroll at "
                 "375px viewport width.", "medium", "NORMATIVE",
-                {"summary": "Fix responsive CSS so no element overflows the viewport at "
-                             "375px.", "priority": "medium"}, locus=locus,
+                {"summary": "Consider whether responsive-layout adjustments would prevent "
+                             "content from overflowing a 375px viewport.",
+                 "priority": "medium"}, locus=locus, recommendation_only=True,
                 subcheck="overflow"))
     return findings
 

@@ -118,7 +118,10 @@ One entry per statically fetched page (≤20).
 
   "main_text": "<boilerplate-stripped extraction>",
   "main_text_words": 812,
+  "main_content_source": "main",
   "extraction_ok": true,
+  "js_render_suspected": false,
+  "js_payload_heavy": false,
 
   "title": "...",
   "meta": { "viewport": "width=device-width, initial-scale=1", "description": "...", "robots": null },

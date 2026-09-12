@@ -35,6 +35,9 @@ defined in D-012.
     { "check_id": "CHK-D-001", "title": "Retrieval-time AI crawler blocked at root" },
     { "check_id": "CHK-D-008", "title": "Missing or cross-domain canonical tag" }
   ],
+  "strengths": [
+    { "id": "S-1", "detector": "sitemap_fresh", "evidence": "Sitemap inventory covers 6 page templates; its latest declared lastmod is 2026-09-01 (19 days old)." }
+  ],
   "limitations": [ ... ],
   "degraded_stages": [ ... ],
   "meta_evaluation": {
@@ -67,8 +70,21 @@ content findings describe content the blocked agents cannot currently reach.
 `checks_passed[]` (D-18) lists the check IDs that ran to a clean `absent` and produced no
 present finding -- what the audit *verified*, not just what it found broken. A check that
 produced only `not_determinable` or `not_applicable` envelopes is not listed there: it was
-not measured. A check that fires a recommendation but no scored finding *is* listed --
-recommendations are proactive notices, not confirmed defects.
+not measured. A recommendation-only check is listed only when its envelope is `absent`;
+when it emits a proactive recommendation (`present`), it appears only in
+`recommendations[]` and never inflates the scored summary.
+
+`strengths[]` records concise, mechanically verified positive signals and is distinct
+from `checks_passed[]`: it does not invert defect checks or affect the score. Each entry
+has a sequential `S-N` ID, a stable detector name, and one evidence line. The detectors
+are: a sitemap with a declared last-modified date under 90 days old and more than five
+represented page templates; an RSS/Atom `<link rel="alternate">` in the collected document
+head; complete Person or Organization JSON-LD with `name` and `url`; self-referential,
+same-domain canonicals on every successfully fetched sampled page (with at least two
+pages); a well-formed robots.txt that permits at least one retrieval or hybrid crawler at
+the root; and a Markdown representation already present in `pages[]`. Sitemap freshness
+is not inferred when the bundle has no sitemap date, and the Markdown detector never
+makes an additional request.
 
 `summary.total_findings` counts only `findings[]` entries. Recommendations and
 limitations are not findings and are not counted there.
@@ -193,6 +209,27 @@ these five checks.
 
 ---
 
+### Archetype-specific schema recommendations (CHK-D-029–D-034)
+
+Only the check matching `preamble.archetype` evaluates; the other five emit
+`not_applicable` and appear in neither the report nor `checks_passed[]`. These checks
+never create scored findings. When expected data is absent or incomplete, they create one
+ordinary `recommendations[]` entry with the sampled-page locus. When the required data is
+present and well formed, they emit `absent` and therefore appear in `checks_passed[]`.
+
+| Check | Archetype | Passing evidence |
+| --- | --- | --- |
+| CHK-D-029 | `ecommerce` | Complete Product/Offer JSON-LD on sampled product pages |
+| CHK-D-030 | `saas_marketing` | SoftwareApplication or priced Offer data on the homepage/pricing page |
+| CHK-D-031 | `marketplace` | Complete Event, ItemList, or JobPosting data on a listing page |
+| CHK-D-032 | `news_editorial` | NewsArticle `headline`, `datePublished`, `author.name` on sampled articles plus an RSS/Atom head link |
+| CHK-D-033 | `personal` family | Named Person data, RSS/Atom head link, and consistent sampled article authorship |
+| CHK-D-034 | `reference` / `institutional` | SoftwareSourceCode or DataCatalog data when a code/data archive is detected |
+
+The RSS/Atom detector reads already-collected `raw_html`; it makes no additional request.
+
+---
+
 ## `limitations[]` entry
 
 Declared limitations and budget-constrained not-determinable results.
@@ -268,6 +305,12 @@ bundle.
 | CHK-D-025 | No declared identity anchors |
 | CHK-D-026 | Declared identity anchors do not resolve |
 | CHK-D-027 | Inconsistent organisation identity attributes |
+| CHK-D-029 | Product and offer data for ecommerce pages |
+| CHK-D-030 | Software and pricing data for SaaS pages |
+| CHK-D-031 | Listing data for marketplace pages |
+| CHK-D-032 | Article provenance and feed discovery for news sites |
+| CHK-D-033 | Author identity and feed discovery for personal sites |
+| CHK-D-034 | Repository or dataset data for code and data archives |
 | CHK-E-014 | Machine-detectable accessibility violations |
 | CHK-E-015 | Mobile viewport meta missing or restricting user zoom |
 | CHK-E-016 | Tap targets below WCAG 2.2 minimum size |

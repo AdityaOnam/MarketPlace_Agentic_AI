@@ -24,6 +24,9 @@ evidence rather than by design taste alone:
 from __future__ import annotations
 
 import re
+from datetime import datetime, timedelta, timezone
+from html.parser import HTMLParser
+from urllib.parse import urlparse
 
 SEVERITY_ORDER = {"critical": 0, "high": 1, "medium": 2, "low": 3}
 
@@ -44,6 +47,12 @@ CHECK_TITLES = {
     "CHK-D-025": "No declared identity anchors",
     "CHK-D-026": "Declared identity anchors do not resolve",
     "CHK-D-027": "Inconsistent organisation identity attributes",
+    "CHK-D-029": "Product and offer data for ecommerce pages",
+    "CHK-D-030": "Software and pricing data for SaaS pages",
+    "CHK-D-031": "Listing data for marketplace pages",
+    "CHK-D-032": "Article provenance and feed discovery for news sites",
+    "CHK-D-033": "Author identity and feed discovery for personal sites",
+    "CHK-D-034": "Repository or dataset data for code and data archives",
     "CHK-E-014": "Machine-detectable accessibility violations",
     "CHK-E-015": "Mobile viewport meta missing or restricting user zoom",
     "CHK-E-016": "Tap targets below WCAG 2.2 minimum size",
@@ -139,6 +148,8 @@ def split_findings_recommendations(findings: list[dict]) -> tuple[list[dict], li
 
 _URL_IN_EVIDENCE = re.compile(r"https?://\S+")
 _NUMBER_IN_EVIDENCE = re.compile(r"\d+")
+_E014_VIOLATION_COUNT = re.compile(r"(\d+)\s+accessibility violation\(s\)", re.I)
+_E014_PROTECTED_LOCUS = re.compile(r"primary[_ -]?nav|navigation|skip[_ -]?link", re.I)
 ROLLUP_MIN_PAGES = 2
 
 
@@ -150,10 +161,36 @@ def _defect_signature(f: dict) -> tuple:
     "6 violation(s): missing alt..." vs "7 violation(s): missing alt..." differ only in
     how many times the same template repeated it on that page.
     """
+    # E-014's evidence enumerates every violating element. Those counts and mixtures vary
+    # by page, but `subcheck` already identifies the defect class; retaining the evidence
+    # text split Ghost's one site-wide accessibility problem into four top-level findings.
+    if f.get("check_id") == "CHK-E-014":
+        return (f["check_id"], f.get("subcheck"))
+
     ev = f.get("evidence") or ""
     ev = _URL_IN_EVIDENCE.sub("<url>", ev)
     ev = _NUMBER_IN_EVIDENCE.sub("<n>", ev)
     return (f["check_id"], f.get("subcheck"), ev)
+
+
+def _e014_violation_count(f: dict) -> int:
+    match = _E014_VIOLATION_COUNT.search(f.get("evidence") or "")
+    return int(match.group(1)) if match else 1
+
+
+def _e014_rollup_severity(group: list[dict]) -> tuple[str, int]:
+    """Apply E-014's evidence-volume floor to one subcheck group."""
+    total = sum(_e014_violation_count(f) for f in group)
+    severity = "low" if total <= 2 else "medium" if total <= 10 else "high"
+
+    # Primary navigation and skip-link failures obstruct access to the whole page. When
+    # a specialised subcheck identifies that locus, never demote it below medium and
+    # retain a producer-assigned high rating.
+    subcheck = str(group[0].get("subcheck") or "")
+    if severity == "low" and _E014_PROTECTED_LOCUS.search(subcheck):
+        severity = ("high" if any(f.get("severity") == "high" for f in group)
+                    else "medium")
+    return severity, total
 
 
 def _instance_of(f: dict) -> dict:
@@ -211,6 +248,14 @@ def roll_up_site_wide(findings: list[dict]) -> list[dict]:
         worst = min(group, key=lambda f: SEVERITY_ORDER.get(f.get("severity"), 99))
         merged = dict(worst)
         merged["instances"] = [_instance_of(f) for f in group]
+        e014_total = None
+        if merged.get("check_id") == "CHK-E-014":
+            merged["severity"], e014_total = _e014_rollup_severity(group)
+            for instance, source in zip(merged["instances"], group):
+                instance["severity"] = _e014_rollup_severity([source])[0]
+            action = merged.get("suggested_action")
+            if isinstance(action, dict):
+                merged["suggested_action"] = {**action, "priority": merged["severity"]}
         if len(group) < ROLLUP_MIN_PAGES:
             # Single-origin finding: keep the original locus and evidence intact so a
             # single-page defect still reports where it is.
@@ -221,9 +266,16 @@ def roll_up_site_wide(findings: list[dict]) -> list[dict]:
         body = _URL_IN_EVIDENCE.sub("", (worst.get("evidence") or "")).lstrip(" :")
         if body.lower().startswith("page :"):
             body = body[6:].lstrip()
-        merged["evidence"] = (
-            f"Site-wide: {len(group)} sampled pages share this defect. {body}"
-        )
+        if merged.get("check_id") == "CHK-E-014":
+            merged["evidence"] = (
+                f"Site-wide: {len(group)} sampled pages contain {e014_total} "
+                "machine-detectable accessibility violation(s). See instances[] for "
+                "per-page evidence."
+            )
+        else:
+            merged["evidence"] = (
+                f"Site-wide: {len(group)} sampled pages share this defect. {body}"
+            )
         merged["locus"] = {"url": None, "scope": "site"}
         merged["occurrences"] = {"pages": len(group), "examples": examples[:3]}
         out.append(merged)
@@ -263,6 +315,169 @@ def compute_checks_passed(envelopes: list[dict]) -> list[dict]:
         if "absent" in states:
             passed.append({"check_id": cid, "title": CHECK_TITLES[cid]})
     return passed
+
+
+class _FeedLinkParser(HTMLParser):
+    """The same head-only RSS/Atom detector used by entity-identity-audit."""
+
+    FEED_TYPES = {"application/rss+xml", "application/atom+xml"}
+
+    def __init__(self):
+        super().__init__(convert_charrefs=True)
+        self.in_head = False
+        self.hrefs: list[str] = []
+
+    def handle_starttag(self, tag: str, attrs) -> None:
+        tag = tag.lower()
+        if tag == "head":
+            self.in_head = True
+            return
+        if tag != "link" or not self.in_head:
+            return
+        attributes = {str(k).lower(): v for k, v in attrs}
+        rel = {part.lower() for part in (attributes.get("rel") or "").split()}
+        media_type = (attributes.get("type") or "").lower().split(";", 1)[0].strip()
+        href = attributes.get("href")
+        if href and "alternate" in rel and media_type in self.FEED_TYPES:
+            self.hrefs.append(href)
+
+    def handle_endtag(self, tag: str) -> None:
+        if tag.lower() == "head":
+            self.in_head = False
+
+
+def _feed_hrefs(page: dict) -> list[str]:
+    raw_html = page.get("raw_html")
+    if not isinstance(raw_html, str) or not raw_html:
+        return []
+    parser = _FeedLinkParser()
+    try:
+        parser.feed(raw_html)
+    except (ValueError, TypeError):
+        return []
+    return parser.hrefs
+
+
+def _parse_evidence_date(value) -> datetime | None:
+    if not isinstance(value, str) or not value.strip():
+        return None
+    candidate = value.strip()
+    if candidate.endswith("Z"):
+        candidate = candidate[:-1] + "+00:00"
+    try:
+        parsed = datetime.fromisoformat(candidate)
+    except ValueError:
+        return None
+    if parsed.tzinfo is None:
+        parsed = parsed.replace(tzinfo=timezone.utc)
+    return parsed.astimezone(timezone.utc)
+
+
+def _jsonld_types(block: dict) -> set[str]:
+    value = block.get("type")
+    values = value if isinstance(value, list) else [value]
+    return {str(item).lower() for item in values if item}
+
+
+def compute_strengths(bundle: dict, audited_at: str) -> list[dict]:
+    """Verified positive signals, derived only from evidence the collector already has."""
+    detected: list[tuple[str, str]] = []
+    discovery = bundle.get("discovery", {})
+    pages = [p for p in bundle.get("pages", []) if p.get("status") == "ok"]
+
+    # Freshness is never inferred from presence alone. Current standard bundles omit
+    # sitemap lastmod; enriched bundles may retain it per inventory entry.
+    inventory = discovery.get("inventory", [])
+    sitemap_items = [item for item in inventory if item.get("source") == "sitemap"]
+    template_types = {item.get("page_type") for item in sitemap_items if item.get("page_type")}
+    observed_dates = [
+        parsed for item in sitemap_items
+        if (parsed := _parse_evidence_date(item.get("lastmod") or item.get("last_modified")))
+    ]
+    audit_time = _parse_evidence_date(audited_at)
+    if (discovery.get("status") == "ok" and discovery.get("sitemap_found") is True
+            and len(template_types) > 5 and observed_dates and audit_time):
+        latest = max(observed_dates)
+        age = audit_time - latest
+        if timedelta(0) <= age < timedelta(days=90):
+            detected.append((
+                "sitemap_fresh",
+                f"Sitemap inventory covers {len(template_types)} page templates; its latest "
+                f"declared lastmod is {latest.date().isoformat()} ({age.days} days old).",
+            ))
+
+    feed_match = next(
+        ((page, href) for page in pages for href in _feed_hrefs(page)),
+        None,
+    )
+    if feed_match:
+        page, href = feed_match
+        detected.append((
+            "feed_discovery",
+            f"RSS/Atom discovery link is present in the document head at {page.get('url')}: {href}.",
+        ))
+
+    identity_match = None
+    for page in pages:
+        for block in page.get("structured_data", {}).get("json_ld", []):
+            if block.get("parse_error"):
+                continue
+            types = _jsonld_types(block)
+            fields = set(block.get("fields_present", []))
+            is_person = "person" in types and {"name", "url"} <= fields
+            is_org = any(t == "organization" or t.endswith("organization") or
+                         t in {"localbusiness", "corporation", "ngo", "nonprofit"}
+                         for t in types) and {"name", "url"} <= fields
+            if is_person or is_org:
+                identity_match = (page, "Person" if is_person else "Organization")
+                break
+        if identity_match:
+            break
+    if identity_match:
+        page, identity_type = identity_match
+        detected.append((
+            "identity_jsonld",
+            f"Well-formed {identity_type} JSON-LD with name and authoritative URL is present at {page.get('url')}.",
+        ))
+
+    if len(pages) >= 2 and all(
+        page.get("canonical", {}).get("href")
+        and page.get("canonical", {}).get("self_referential") is True
+        and page.get("canonical", {}).get("cross_domain") is False
+        for page in pages
+    ):
+        detected.append((
+            "canonical_consistency",
+            f"All {len(pages)} successfully fetched sampled pages declare consistent self-referential canonicals.",
+        ))
+
+    robots = bundle.get("robots", {})
+    permitted = sorted(
+        agent for agent, info in robots.get("agents", {}).items()
+        if info.get("class") in {"retrieval", "hybrid"} and info.get("allowed_root") is True
+    )
+    if robots.get("status") == "ok" and robots.get("parse_ok") is True and permitted:
+        detected.append((
+            "retrieval_crawler_access",
+            f"robots.txt parsed successfully and permits retrieval crawler {permitted[0]} at the site root.",
+        ))
+
+    markdown_page = next((
+        page for page in pages
+        if urlparse(page.get("final_url") or page.get("url") or "").path.lower().endswith(".md")
+        or "text/markdown" in str(page.get("headers", {}).get("content-type") or
+                                  page.get("headers", {}).get("Content-Type") or "").lower()
+    ), None)
+    if markdown_page:
+        detected.append((
+            "content_negotiation",
+            f"The collector already fetched a Markdown representation at {markdown_page.get('final_url') or markdown_page.get('url')}.",
+        ))
+
+    return [
+        {"id": f"S-{index}", "detector": detector, "evidence": evidence}
+        for index, (detector, evidence) in enumerate(detected, start=1)
+    ]
 
 
 def assign_ids_and_titles(findings: list[dict]) -> list[dict]:
@@ -339,6 +554,16 @@ PROHIBITED_RECOMMENDATION_PATTERNS = [
     (r"\b9\.2 ?mm\b", "cites the 9.2mm tap-target figure instead of WCAG's 24x24 CSS px (D-007)"),
 ]
 
+# Consultant-level recommendations explain the decision and its trade-off; they do not
+# issue implementation commands. These markers are deliberately literal substring checks
+# so the gate is easy to audit and cannot quietly reinterpret wording to make itself pass.
+PRESCRIPTIVE_ACTION_MARKERS = (
+    "Add ", "Repair ", "Replace ", "Give every ", "Implement ", "Wrap ", "Insert ",
+)
+PRESCRIPTIVE_CODE_PATTERNS = (
+    "<h1>", "<meta name=", 'rel="canonical"', "301 redirect", "aria-label",
+)
+
 
 def meta_evaluate(report: dict) -> dict:
     """A light self-check over the assembled report, run before it is emitted.
@@ -371,28 +596,26 @@ def meta_evaluate(report: dict) -> dict:
                 warnings.append({"check": "finding_complete",
                                  "detail": f"{f.get('check_id')} missing '{field}'"})
 
-    # 3. No check may appear twice as a top-level finding for the same locus — a real
-    #    duplicate means suppression (O-1) failed to fire. Keyed on `subcheck` as well,
-    #    because a few checks legitimately grade one page more than once: CHK-E-014 rates
-    #    static WCAG failures (`high`) separately from contrast (`medium`, NORMATIVE), and
-    #    CHK-E-015 rates the viewport meta separately from horizontal overflow. Those are
-    #    distinct judgments sharing an ID, not duplicates.
-    #    Site-wide rolled-up findings (D-019) all carry locus.url = None, so two genuinely
-    #    different defects found by one check would collide on that key and be reported as
-    #    a duplicate. The defect signature disambiguates them -- it is what defined the
-    #    groups in the first place.
-    seen: set[tuple] = set()
+    # 3. A check appearing more than once at top level is a prioritisation warning even
+    #    when the loci differ: the report should roll repeated instances into one finding.
+    #    Catch either same stable title or same subcheck, rather than relying on locus or
+    #    evidence signatures that allowed four E-014 findings through on Ghost.
+    seen_titles: set[tuple] = set()
+    seen_subchecks: set[tuple] = set()
     for f in findings:
-        scope_key = (_defect_signature(f) if f.get("occurrences")
-                     else (f.get("locus") or {}).get("url"))
-        key = (f.get("check_id"), scope_key, f.get("subcheck"))
-        if key in seen:
-            label = f"{f.get('check_id')}"
-            if f.get("subcheck"):
-                label += f" ({f['subcheck']})"
+        title_key = (f.get("check_id"), f.get("title"))
+        subcheck_key = (f.get("check_id"), f.get("subcheck"))
+        duplicate_by = []
+        if title_key in seen_titles:
+            duplicate_by.append("title")
+        if subcheck_key in seen_subchecks:
+            duplicate_by.append("subcheck")
+        if duplicate_by:
             warnings.append({"check": "no_duplicate_findings",
-                             "detail": f"{label} reported twice for {key[1]}"})
-        seen.add(key)
+                             "detail": f"{f.get('check_id')} appears more than once with "
+                                       f"the same {' and '.join(duplicate_by)}"})
+        seen_titles.add(title_key)
+        seen_subchecks.add(subcheck_key)
 
     # 4. Only known check IDs may reach the report.
     for f in findings + report.get("recommendations", []):
@@ -414,12 +637,30 @@ def meta_evaluate(report: dict) -> dict:
             if _re.search(pattern, text or "", _re.I):
                 warnings.append({"check": "prohibited_recommendation",
                                  "detail": f"{check_id}: {why}"})
+        lowered = (text or "").lower()
+        for marker in PRESCRIPTIVE_ACTION_MARKERS:
+            if marker.lower() in lowered:
+                warnings.append({
+                    "check": "prohibited_recommendation",
+                    "detail": f"{check_id}: prescriptive action marker {marker!r}",
+                })
+        for code_pattern in PRESCRIPTIVE_CODE_PATTERNS:
+            if code_pattern.lower() in lowered:
+                warnings.append({
+                    "check": "prohibited_recommendation",
+                    "detail": f"{check_id}: prescriptive code pattern {code_pattern!r}",
+                })
 
-    # 6. The declared limitations are structural and must always be present.
-    if len(report.get("limitations", [])) != len(DECLARED_LIMITATIONS):
+    # 6. The declared limitations are structural and must always be present. Runtime
+    # limitations may be appended when collection degraded, so this is a subset check.
+    actual_limitation_ids = {lim.get("id") for lim in report.get("limitations", [])}
+    missing_limitation_ids = [lim["id"] for lim in DECLARED_LIMITATIONS
+                              if lim["id"] not in actual_limitation_ids]
+    if missing_limitation_ids:
         expected_ids = ", ".join(lim["id"] for lim in DECLARED_LIMITATIONS)
         warnings.append({"check": "limitations_present",
-                         "detail": f"declared limitations ({expected_ids}) are not all present"})
+                         "detail": f"declared limitations ({expected_ids}) are not all present; "
+                                   f"missing {', '.join(missing_limitation_ids)}"})
 
     # 7. Action-locus coherence (EVALS.md §4, implemented as D-033).
     #
@@ -495,6 +736,32 @@ def compose_report(site: str, audited_at: str, all_envelopes: list[dict], bundle
     recommendations_out = build_recommendations(recommendation_envelopes)
 
     access_blocked_for = []
+    degraded_stages = compute_degraded_stages(bundle.get("budget", {}))
+    degraded_stage_names = {stage.get("stage") for stage in degraded_stages}
+    limitations = list(DECLARED_LIMITATIONS)
+    substantially_degraded = bool(
+        degraded_stage_names.intersection({"robots_discovery", "render_pass"})
+    ) and len(findings_out) <= 1
+    if substantially_degraded:
+        parsed_site = urlparse(site)
+        site_host = (bundle.get("site", {}).get("canonical_host") or parsed_site.netloc
+                     or parsed_site.path).strip("/")
+        access_blocked_for = [site_host]
+        affected_stage_names = [stage["stage"] for stage in degraded_stages
+                                if stage.get("stage") in {"robots_discovery", "render_pass"}]
+        limitations.append({
+            "id": f"L-{len(limitations) + 1}",
+            "lim_id": "BUDGET-degraded_stages",
+            "title": "Audit substantially degraded — signal insufficient for scored findings",
+            "description": (
+                "The collector's degraded_stages signal indicates that "
+                f"{', '.join(affected_stage_names)} could not complete. The single finding "
+                "present should be read as advisory only; the report cannot honestly claim "
+                "substantive coverage."
+            ),
+            "affected_checks": [finding["check_id"] for finding in findings_out],
+        })
+
     d001 = next((f for f in all_envelopes if f["check_id"] == "CHK-D-001" and f["state"] == "present"), None)
     notes = []
     if d001 is not None:
@@ -522,24 +789,30 @@ def compose_report(site: str, audited_at: str, all_envelopes: list[dict], bundle
     # differentiator; a reader needs to see the archetype had a downstream effect, not
     # just a name in the preamble.
     archetype_effects = {
-        "personal": ("Identity checks (Organization JSON-LD, sameAs anchors, "
-                     "self-consistent legal name) are suppressed: a personal site is "
-                     "not expected to publish structured entity metadata."),
+        "personal": ("Organization-specific checks are suppressed; Person JSON-LD, "
+                     "feed discovery, and sampled article byline consistency are checked "
+                     "instead."),
         "ecommerce": ("Trust signals, canonical/duplicate handling, and structured "
-                       "product data are graded more strictly; recommendations are "
-                       "phrased for a catalogue-scale site."),
+                       "Product/Offer data are checked; recommendations are phrased for "
+                       "a catalogue-scale site."),
         "documentation": ("Deep, versioned URL structures are exempt from near-duplicate "
                            "flagging; content-thinness thresholds apply per page rather "
                            "than per section."),
-        "news_editorial": ("Time-stamped articles, byline signals, and the date-signal "
-                            "check are graded more strictly; the trust-signals check "
-                            "is applied."),
-        "saas_marketing": ("Trust signals and pricing-page identity are graded more "
-                            "strictly; the site's marketing blog does not have to meet "
+        "news_editorial": ("Time-stamped articles, NewsArticle provenance fields, feed "
+                            "discovery, and trust signals are checked; editorial pages "
+                            "receive the vertical-specific recommendation."),
+        "saas_marketing": ("Trust signals and SoftwareApplication/pricing data are "
+                            "checked; the site's marketing blog does not have to meet "
                             "editorial standards."),
         "local_business": ("Postal address, opening hours and LocalBusiness JSON-LD are "
                             "expected; contact-page structure carries more weight than a "
                             "generic 'contact us' link."),
+        "marketplace": ("Listing pages are checked for Event, ItemList, or JobPosting "
+                        "data according to the inventory the marketplace exposes."),
+        "reference": ("If the sample identifies a code or data archive, repository or "
+                      "dataset-specific structured data is checked."),
+        "institutional": ("If the institution exposes a code or data archive, repository "
+                          "or dataset-specific structured data is checked."),
         "brochure": ("The site was small enough to grade as a single-purpose brochure; "
                      "some proportion-based checks were skipped as inapplicable."),
         "unknown": ("The archetype could not be inferred with confidence from the "
@@ -565,10 +838,11 @@ def compose_report(site: str, audited_at: str, all_envelopes: list[dict], bundle
         "findings": findings_out,
         "recommendations": recommendations_out,
         # D-18 (2026-09-12): the checks that ran and were verified clean, so a two-finding
-        # report on a 26-check marketplace does not read like only two checks ran.
+        # report on a 32-check marketplace does not read like only two checks ran.
         "checks_passed": compute_checks_passed(all_envelopes),
-        "limitations": DECLARED_LIMITATIONS,
-        "degraded_stages": compute_degraded_stages(bundle.get("budget", {})),
+        "strengths": compute_strengths(bundle, audited_at),
+        "limitations": limitations,
+        "degraded_stages": degraded_stages,
     }
     report["meta_evaluation"] = meta_evaluate(report)
     return report

@@ -6,6 +6,7 @@ Reference: entity-identity-audit/SKILL.md and references/checks.md.
 from __future__ import annotations
 
 import re
+from html.parser import HTMLParser
 
 PERSONAL_ARCHETYPES = {"personal", "hobby", "portfolio"}
 LEGAL_SUFFIXES = ["ltd", "limited", "llc", "l.l.c", "inc", "incorporated", "corp",
@@ -17,37 +18,84 @@ _TEMPORAL_WORD_RE = re.compile(
 )
 _YEAR_IN_URL_RE = re.compile(r"/(19|20)\d{2}([/-]|\b)")
 
-# CHK-D-006's "does this page state what the organisation is" test.
-#
-# Widened by D-029 (2026-09-10). The previous pattern was
-#     \b(is|are)\s+(a|an|the)\s+\w+.{0,80}(that|which|providing|offering)
-# which additionally required the definition to continue with a relative clause or a
-# participle from a four-word list. Measured against the dev corpus, that rejected every
-# genuine self-definition in it:
-#
-#     "Hugo is one of the most popular open-source static site generators."   (also fails
-#         at `is a|an|the` -- "is one of" was never accepted)
-#     "Vite is a blazing fast frontend build tool powering the next generation..."
-#     "LWN.net is a reader-supported news site dedicated to producing..."
-#     "This is the official documentation for Python 3.13."
-#
-# It was not detecting "the page defines itself", it was detecting "the page defines itself
-# in the shape `X is a Y that ...`". CHK-D-006 fired on 67% of sites labelled clean for it.
-#
-# The replacement keeps the copular construction (the thing that makes a sentence a
-# definition) and drops the required continuation, accepting `one of` and `among` as
-# determiners. `[^.!?]{12,}` keeps the predicate substantive enough to be a category claim
-# rather than a bare "It is a start."
-#
-# Known trade-off, stated because it runs against this check's own purpose: a looser
-# pattern accepts non-self-describing copulas ("Pricing is the same for all plans"), which
-# can only *lower* recall by marking a page ABSENT that a labeller called PRESENT. That is
-# the direction with the cheaper failure -- a missed finding rather than a false accusation
-# against a site that did describe itself -- and D-004's severity cap already treats this
-# check as CORRELATIONAL. Recall is re-measured after this change, not assumed.
-_DEFINITION_SENTENCE_RE = re.compile(
-    r"\b(?:is|are)\s+(?:a|an|the|one\s+of|among)\b[^.!?]{12,}", re.I
+# CHK-D-006 accepts identity spread across the homepage's explicit identity surfaces. The
+# earlier sentence-shape regex mistook "did not use X is a Y that..." for "did not identify
+# itself" on five judge-reviewed sites. A signal is sufficient when any two of a name, a
+# category word, and a function word occur together.
+_IDENTITY_CATEGORY_RE = re.compile(
+    r"\b(?:agency|application|app|author|blog|business|community|company|consultant|"
+    r"corporation|developer|designer|engineer|engine|foundation|framework|institute|"
+    r"institution|journalist|library|magazine|manufacturer|marketplace|network|newspaper|"
+    r"nonprofit|non-profit|organisation|organization|platform|project|provider|publication|"
+    r"publisher|researcher|restaurant|retailer|school|service|shop|site|software|store|"
+    r"studio|tool|university|website)\b", re.I
 )
+_IDENTITY_FUNCTION_RE = re.compile(
+    r"\b(?:allow(?:s|ed|ing)?|build(?:s|ing)?|connect(?:s|ed|ing)?|creat(?:e|es|ed|ing)|"
+    r"deliver(?:s|ed|ing)?|develop(?:s|ed|ing)?|enable(?:s|d|ing)?|focus(?:es|ed|ing)?|"
+    r"help(?:s|ed|ing)?|host(?:s|ed|ing)?|inform(?:s|ed|ing)?|maintain(?:s|ed|ing)?|"
+    r"make(?:s|made|making)?|offer(?:s|ed|ing)?|operat(?:e|es|ed|ing)|organis(?:e|es|ed|ing)|"
+    r"organiz(?:e|es|ed|ing)|power(?:s|ed|ing)?|provid(?:e|es|ed|ing)|publish(?:es|ed|ing)?|"
+    r"report(?:s|ed|ing)?|search(?:es|ed|ing)?|sell(?:s|ing)?|serv(?:e|es|ed|ing)|"
+    r"speciali[sz](?:e|es|ed|ing)|support(?:s|ed|ing)?|teach(?:es|ing)?|lets?)\b", re.I
+)
+_TITLE_NAME_SPLIT_RE = re.compile(r"\s*(?:\||—|–|:|\s+-\s+)\s*")
+
+
+class _HeroParagraphParser(HTMLParser):
+    """Extract the first paragraph occurring after the first h1 from collected HTML."""
+
+    def __init__(self):
+        super().__init__(convert_charrefs=True)
+        self.seen_h1 = False
+        self.in_paragraph = False
+        self.paragraph_parts: list[str] = []
+        self.paragraph: str | None = None
+
+    def handle_starttag(self, tag: str, attrs) -> None:
+        tag = tag.lower()
+        if tag == "h1":
+            self.seen_h1 = True
+        elif tag == "p" and self.seen_h1 and self.paragraph is None:
+            self.in_paragraph = True
+
+    def handle_endtag(self, tag: str) -> None:
+        if tag.lower() == "p" and self.in_paragraph:
+            self.paragraph = " ".join(" ".join(self.paragraph_parts).split())
+            self.in_paragraph = False
+
+    def handle_data(self, data: str) -> None:
+        if self.in_paragraph:
+            self.paragraph_parts.append(data)
+
+
+class _FeedLinkParser(HTMLParser):
+    """Collect RSS/Atom discovery links from the document head only."""
+
+    FEED_TYPES = {"application/rss+xml", "application/atom+xml"}
+
+    def __init__(self):
+        super().__init__(convert_charrefs=True)
+        self.in_head = False
+        self.hrefs: list[str] = []
+
+    def handle_starttag(self, tag: str, attrs) -> None:
+        tag = tag.lower()
+        if tag == "head":
+            self.in_head = True
+            return
+        if tag != "link" or not self.in_head:
+            return
+        attributes = {str(k).lower(): v for k, v in attrs}
+        rel = {part.lower() for part in (attributes.get("rel") or "").split()}
+        media_type = (attributes.get("type") or "").lower().split(";", 1)[0].strip()
+        href = attributes.get("href")
+        if href and "alternate" in rel and media_type in self.FEED_TYPES:
+            self.hrefs.append(href)
+
+    def handle_endtag(self, tag: str) -> None:
+        if tag.lower() == "head":
+            self.in_head = False
 
 
 def _envelope(check_id, state, evidence, severity, evidence_strength, suggested_action,
@@ -89,6 +137,105 @@ def _organization_blocks(page: dict) -> list[dict]:
     ]
 
 
+def _person_blocks(page: dict) -> list[dict]:
+    return [
+        e for e in page.get("structured_data", {}).get("json_ld", [])
+        if "person" in _org_type_names(e)
+    ]
+
+
+def _identity_names(bundle: dict, home: dict) -> set[str]:
+    names: set[str] = set()
+    for page in bundle.get("pages", []):
+        footer_name = page.get("contact_signals", {}).get("org_name_footer")
+        if isinstance(footer_name, str) and footer_name.strip():
+            names.add(footer_name.strip())
+        for entity in _organization_blocks(page):
+            raw = entity.get("raw")
+            name = raw.get("name") if isinstance(raw, dict) else None
+            if isinstance(name, str) and name.strip():
+                names.add(name.strip())
+
+    if bundle.get("site", {}).get("archetype") in PERSONAL_ARCHETYPES:
+        for entity in _person_blocks(home):
+            raw = entity.get("raw")
+            name = raw.get("name") if isinstance(raw, dict) else None
+            if isinstance(name, str) and name.strip():
+                names.add(name.strip())
+
+    host = (bundle.get("site", {}).get("canonical_host") or "").lower()
+    ignored_host_parts = {"www", "com", "org", "net", "co", "io", "dev", "app",
+                          "blog", "docs", "shop"}
+    names.update(part for part in host.split(".")
+                 if len(part) >= 3 and part not in ignored_host_parts)
+
+    title = (home.get("title") or "").strip()
+    title_prefix = _TITLE_NAME_SPLIT_RE.split(title, maxsplit=1)[0].strip()
+    if title_prefix and len(title_prefix.split()) <= 5 and len(title_prefix) <= 60:
+        names.add(title_prefix)
+    return names
+
+
+def _contains_identity_name(text: str, names: set[str]) -> bool:
+    normalized_text = " ".join(re.sub(r"[^a-z0-9]+", " ", text.lower()).split())
+    for name in names:
+        normalized_name = " ".join(re.sub(r"[^a-z0-9]+", " ", name.lower()).split())
+        if len(normalized_name) >= 3 and re.search(
+                rf"(?:^|\s){re.escape(normalized_name)}(?:\s|$)", normalized_text):
+            return True
+    return False
+
+
+def _identity_signal_score(text: str, names: set[str]) -> int:
+    if not text:
+        return 0
+    return sum((
+        _contains_identity_name(text, names),
+        bool(_IDENTITY_CATEGORY_RE.search(text)),
+        bool(_IDENTITY_FUNCTION_RE.search(text)),
+    ))
+
+
+def _first_paragraph_after_h1(raw_html: str | None) -> str:
+    if not raw_html:
+        return ""
+    parser = _HeroParagraphParser()
+    try:
+        parser.feed(raw_html)
+        parser.close()
+    except (ValueError, AssertionError):
+        return ""
+    return parser.paragraph or ""
+
+
+def _identity_sources(bundle: dict, home: dict) -> list[tuple[str, str]]:
+    h1 = next((h.get("text", "") for h in home.get("headings", [])
+               if h.get("level") == 1 and h.get("text")), "")
+    hero = _first_paragraph_after_h1(home.get("raw_html"))
+    title = home.get("title") or ""
+    sources = [
+        ("homepage h1", h1),
+        ("first paragraph after the homepage h1", hero),
+        ("homepage meta description", home.get("meta", {}).get("description") or ""),
+        ("homepage title and hero paragraph", " ".join(part for part in (title, hero) if part)),
+    ]
+
+    for entity in _organization_blocks(home):
+        raw = entity.get("raw")
+        if isinstance(raw, dict):
+            sources.append(("Organization JSON-LD name and description", " ".join(
+                str(raw.get(field) or "") for field in ("name", "description"))))
+
+    if bundle.get("site", {}).get("archetype") in PERSONAL_ARCHETYPES:
+        for entity in _person_blocks(home):
+            raw = entity.get("raw")
+            if isinstance(raw, dict):
+                sources.append(("Person JSON-LD name, description, and job title", " ".join(
+                    str(raw.get(field) or "")
+                    for field in ("name", "description", "jobTitle"))))
+    return sources
+
+
 # ---------------------------------------------------------------------------
 # Time-sensitivity classification (SKILL.md §2) — needed by CHK-D-012
 # ---------------------------------------------------------------------------
@@ -121,49 +268,46 @@ def classify_time_sensitivity(page: dict) -> str:
 
 def check_d006(bundle: dict) -> dict:
     archetype = bundle.get("site", {}).get("archetype")
+    if archetype in {"unknown", "brochure"}:
+        return _envelope(
+            "CHK-D-006", "not_applicable",
+            f"Archetype {archetype!r} carries insufficient signal for this check.",
+            None, "NORMATIVE", None, recommendation_only=True,
+        )
+
+    home = next((p for p in bundle.get("pages", []) if p.get("page_type") == "home"), None)
+    if home is None:
+        return _envelope("CHK-D-006", "not_determinable", "No homepage in the sample.",
+                          None, "CORRELATIONAL", None)
+    if not home.get("extraction_ok", True):
+        return _envelope("CHK-D-006", "not_determinable", "Content could not be extracted.",
+                          None, "CORRELATIONAL", None, locus={"url": home.get("url")})
+
+    names = _identity_names(bundle, home)
+    for source_name, source_text in _identity_sources(bundle, home):
+        if _identity_signal_score(source_text, names) >= 2:
+            return _envelope(
+                "CHK-D-006", "absent",
+                f"Identity text found in the {source_name}.", None, "CORRELATIONAL", None,
+                locus={"url": home.get("url")},
+            )
+
+    # Personal sites are not required to introduce themselves as organisations. Person
+    # JSON-LD can positively satisfy the check above, but its absence is not a defect.
     if archetype in PERSONAL_ARCHETYPES:
         return _envelope("CHK-D-006", "not_applicable", "Personal/hobby archetype: exempt.",
                           None, "CORRELATIONAL", None)
 
-    candidates = [p for p in bundle.get("pages", []) if p.get("page_type") in ("home", "about")]
-    if not candidates:
-        return _envelope("CHK-D-006", "not_determinable", "No home/about page in the sample.",
-                          None, "CORRELATIONAL", None)
-
-    # Organization JSON-LD anywhere on the site suppresses this check, not just on a page
-    # the classifier happened to file as home/about. Widened by D-029 (2026-09-10): on
-    # qonto.com the About page is classified `page_type="product"`, so 13 pages carrying a
-    # complete Organization block (name, legalName, sameAs, foundingDate) suppressed
-    # nothing and the check fired anyway. The markup was right; the page-type label was
-    # wrong, and a misfiled page is not evidence that identity is unstated.
-    org_page = next((p for p in bundle.get("pages", [])
-                     if p.get("extraction_ok", True) and _organization_blocks(p)), None)
-    if org_page is not None:
-        return _envelope("CHK-D-006", "not_applicable",
-                          "Structured Organization data already states identity "
-                          "machine-readably.", None, "CORRELATIONAL", None,
-                          locus={"url": org_page.get("url")}, suppressed_by=["CHK-D-007"])
-
-    definition_pattern = _DEFINITION_SENTENCE_RE
-
-    for page in candidates:
-        if not page.get("extraction_ok", True):
-            return _envelope("CHK-D-006", "not_determinable", "Content could not be extracted.",
-                              None, "CORRELATIONAL", None, locus={"url": page.get("url")})
-        first_300 = (page.get("main_text", "") or "")[:1800]  # ~300 words
-        if definition_pattern.search(first_300):
-            return _envelope("CHK-D-006", "absent", f"Explicit definition found on "
-                              f"{page.get('url')}.", None, "CORRELATIONAL", None,
-                              locus={"url": page.get("url")})
-
     return _envelope(
         "CHK-D-006", "present",
-        "No sentence in the first 300 words explicitly names the organisation, its "
-        "category, and its function.", "medium", "CORRELATIONAL",
-        {"summary": "Add one clear declarative sentence near the top of the homepage or "
-                     "about page naming the organisation, its category, and its function.",
+        "None of the homepage h1, first paragraph after it, meta description, title/hero "
+        "combination, or relevant JSON-LD contains at least two identity signals (name, "
+        "category, function).", "medium", "CORRELATIONAL",
+        {"summary": "Consider whether readers would benefit from clarifying the name, "
+                     "category, and function together in a prominent homepage identity "
+                     "surface.",
          "priority": "medium"},
-        locus={"url": candidates[0].get("url")},
+        locus={"url": home.get("url")}, recommendation_only=True,
     )
 
 
@@ -176,11 +320,18 @@ def check_d007(bundle: dict) -> dict:
     real dev/negative-control sites. Web Data Commons Oct 2024 measured only 44.1% of 37.4M
     domains carrying *any* structured data at all (PLAN.md §5), so absence is the majority
     condition on the open web, not a differentiated signal -- D-009's "findings conditioned
-    on base rates" rule, applied in code rather than left as a design statement. Still a
-    real, directly actionable defect, so it stays in `findings[]` rather than being demoted
-    to `recommendations[]`.
+    on base rates" rule, applied in code rather than left as a design statement. The Phase 8
+    judge study additionally found that presenting this common absence as a scored defect
+    made the action read like a prescribed implementation. A present result therefore routes
+    to `recommendations[]`; a complete block still contributes to `checks_passed[]`.
     """
     archetype = bundle.get("site", {}).get("archetype")
+    if archetype in {"unknown", "brochure"}:
+        return _envelope(
+            "CHK-D-007", "not_applicable",
+            f"Archetype {archetype!r} carries insufficient signal for this check.",
+            None, "NORMATIVE", None, recommendation_only=True,
+        )
     if archetype in PERSONAL_ARCHETYPES:
         return _envelope("CHK-D-007", "not_applicable", "Personal/hobby archetype: exempt.",
                           None, "THEORETICAL/PRACTITIONER", None)
@@ -199,8 +350,10 @@ def check_d007(bundle: dict) -> dict:
         return _envelope(
             "CHK-D-007", "present", "No Organization JSON-LD block found.", "low",
             "THEORETICAL/PRACTITIONER",
-            {"summary": "Add or complete an Organization JSON-LD block with at minimum "
-                         "'name' and 'url'.", "priority": "low"}, locus=locus)
+            {"summary": "Consider whether machine readers would benefit from an "
+                         "Organization JSON-LD block that declares at least the name and "
+                         "authoritative URL.", "priority": "low"}, locus=locus,
+            recommendation_only=True)
 
     required = {"name", "url"}
     missing = required - set(blocks[0].get("fields_present", []))
@@ -208,8 +361,10 @@ def check_d007(bundle: dict) -> dict:
         return _envelope(
             "CHK-D-007", "present", f"Found but missing: {sorted(missing)}.", "low",
             "THEORETICAL/PRACTITIONER",
-            {"summary": "Add or complete an Organization JSON-LD block with at minimum "
-                         "'name' and 'url'.", "priority": "low"}, locus=locus)
+            {"summary": "Consider whether completing the existing Organization JSON-LD "
+                         "with the missing name or authoritative URL would help machine "
+                         "readers identify the organisation.", "priority": "low"},
+            locus=locus, recommendation_only=True)
 
     return _envelope("CHK-D-007", "absent", "Organization JSON-LD present with required "
                       "fields.", None, "THEORETICAL/PRACTITIONER", None, locus=locus)
@@ -240,16 +395,19 @@ def check_d008(bundle: dict) -> list[dict]:
             findings.append(_envelope(
                 "CHK-D-008", "present", f"Page {page.get('url')}: no rel=canonical found.",
                 "medium", "CAUSAL",
-                {"summary": "Add a consistent, self-referential rel=canonical to every "
-                             "indexable page.", "priority": "medium"}, locus=locus))
+                {"summary": "Consider whether a consistent self-referential canonical URL "
+                             "would make the preferred version of this indexable page "
+                             "unambiguous.", "priority": "medium"}, locus=locus,
+                recommendation_only=True))
         elif canonical.get("cross_domain"):
             findings.append(_envelope(
                 "CHK-D-008", "present",
                 f"Page {page.get('url')}: canonical points to a different domain.",
                 "medium", "CAUSAL",
-                {"summary": "Verify the cross-domain canonical points to the brand's own "
-                             "authoritative domain, or correct it to be self-referential.",
-                 "priority": "medium"}, locus=locus))
+                {"summary": "Consider whether the cross-domain canonical URL intentionally "
+                             "identifies the brand's authoritative domain; otherwise, a "
+                             "self-referential canonical may better express ownership.",
+                 "priority": "medium"}, locus=locus, recommendation_only=True))
         else:
             findings.append(_envelope("CHK-D-008", "absent", f"Page {page.get('url')}: "
                                        "canonical present, same domain.", None, "CAUSAL",
@@ -447,6 +605,307 @@ def check_d027(bundle: dict) -> dict:
     )
 
 
+# ---------------------------------------------------------------------------
+# CHK-D-029..034 — archetype-specific structured-data and feed signals
+# ---------------------------------------------------------------------------
+
+_ARTICLE_TYPES = {"article", "blogposting", "newsarticle", "report", "analysisnewsarticle"}
+_LISTING_PATH_RE = re.compile(
+    r"/(?:jobs?|events?|listings?|hackathons?|competitions?|challenges?|marketplace|browse)(?:/|$)", re.I
+)
+_ARCHIVE_SIGNAL_RE = re.compile(
+    r"\b(?:code repository|source code|software archive|dataset|data catalogue|data catalog|"
+    r"open data|code archive)\b|/(?:datasets?|data-catalog|repositories|source)(?:/|$)", re.I
+)
+
+
+def _json_entities(page: dict, accepted_types: set[str]) -> list[dict]:
+    return [entity for entity in page.get("structured_data", {}).get("json_ld", [])
+            if accepted_types.intersection(_org_type_names(entity))]
+
+
+def _raw_dict(entity: dict) -> dict:
+    return entity.get("raw") if isinstance(entity.get("raw"), dict) else {}
+
+
+def _feed_hrefs(page: dict) -> list[str]:
+    raw_html = page.get("raw_html")
+    if not raw_html:
+        return []
+    parser = _FeedLinkParser()
+    try:
+        parser.feed(raw_html)
+        parser.close()
+    except (ValueError, AssertionError):
+        return []
+    return parser.hrefs
+
+
+def _first_available_page(bundle: dict) -> dict | None:
+    return next((p for p in bundle.get("pages", []) if p.get("extraction_ok", True)), None)
+
+
+def _offer_is_complete(offer: object) -> bool:
+    offers = offer if isinstance(offer, list) else [offer]
+    return any(
+        isinstance(item, dict)
+        and (item.get("price") not in (None, "")
+             or item.get("lowPrice") not in (None, ""))
+        and item.get("priceCurrency")
+        for item in offers
+    )
+
+
+def _vertical_na(check_id: str, archetype: str | None) -> dict:
+    return _envelope(check_id, "not_applicable",
+                     f"Archetype {archetype!r} is outside this schema check's scope.",
+                     None, "NORMATIVE/PRACTITIONER", None, recommendation_only=True)
+
+
+def _vertical_pass(check_id: str, evidence: str, locus: dict | None = None) -> dict:
+    return _envelope(check_id, "absent", evidence, None, "NORMATIVE/PRACTITIONER", None,
+                     locus=locus, recommendation_only=True)
+
+
+def _vertical_recommendation(check_id: str, evidence: str, action: str,
+                             locus: dict | None = None) -> dict:
+    return _envelope(
+        check_id, "present", evidence, "low", "NORMATIVE/PRACTITIONER",
+        {"summary": action, "priority": "low"}, locus=locus, recommendation_only=True,
+    )
+
+
+def check_d029_ecommerce_schema(bundle: dict) -> dict:
+    check_id = "CHK-D-029"
+    archetype = bundle.get("site", {}).get("archetype")
+    if archetype != "ecommerce":
+        return _vertical_na(check_id, archetype)
+    pages = [p for p in bundle.get("pages", [])
+             if p.get("extraction_ok", True) and p.get("page_type") == "product"]
+    valid_pages = []
+    malformed_pages = []
+    for page in pages:
+        products = _json_entities(page, {"product"})
+        standalone_offers = _json_entities(page, {"offer", "aggregateoffer"})
+        valid = any(_raw_dict(e).get("name")
+                    and _offer_is_complete(_raw_dict(e).get("offers"))
+                    for e in products)
+        valid = valid or any(_offer_is_complete(_raw_dict(e)) for e in standalone_offers)
+        if valid:
+            valid_pages.append(page)
+        elif products or standalone_offers:
+            malformed_pages.append(page)
+    if pages and len(valid_pages) == len(pages):
+        return _vertical_pass(
+            check_id, f"Valid Product/Offer JSON-LD found on all {len(pages)} sampled "
+            "product pages.", locus={"url": pages[0].get("url")})
+    affected = malformed_pages or [p for p in pages if p not in valid_pages]
+    locus_page = affected[0] if affected else _first_available_page(bundle)
+    locus = ({"url": locus_page.get("url")} if locus_page
+             else {"url": None, "scope": "site"})
+    detail = (f"{len(affected)} of {len(pages)} sampled product pages lack complete "
+              "Product/Offer JSON-LD." if pages else
+              "No sampled product page supplied Product/Offer JSON-LD evidence.")
+    return _vertical_recommendation(
+        check_id, detail,
+        "Consider whether complete Product and Offer data on product pages would make "
+        "names, prices, currency, and availability easier for machine readers to verify.", locus)
+
+
+def check_d030_saas_schema(bundle: dict) -> dict:
+    check_id = "CHK-D-030"
+    archetype = bundle.get("site", {}).get("archetype")
+    if archetype != "saas_marketing":
+        return _vertical_na(check_id, archetype)
+    pages = [p for p in bundle.get("pages", []) if p.get("extraction_ok", True)
+             and p.get("page_type") in {"home", "pricing"}]
+    for page in pages:
+        applications = _json_entities(page, {"softwareapplication", "webapplication"})
+        offers = _json_entities(page, {"offer", "aggregateoffer", "pricing"})
+        valid_app = any(_raw_dict(e).get("name") and any(
+            _raw_dict(e).get(field) for field in ("applicationCategory", "operatingSystem", "offers")
+        ) for e in applications)
+        valid_offer = any(_offer_is_complete(_raw_dict(e)) for e in offers)
+        if valid_app or valid_offer:
+            return _vertical_pass(
+                check_id, "SoftwareApplication or priced Offer JSON-LD is present on a "
+                "homepage/pricing page.", locus={"url": page.get("url")})
+    return _vertical_recommendation(
+        check_id, "No complete SoftwareApplication or priced Offer JSON-LD was found on "
+        "the sampled homepage/pricing pages.",
+        "Consider whether structured software identity and pricing data would help machine "
+        "readers distinguish the product and interpret its commercial terms.",
+        {"url": pages[0].get("url")} if pages else
+        ({"url": _first_available_page(bundle).get("url")} if _first_available_page(bundle)
+         else {"url": None, "scope": "site"}))
+
+
+def check_d031_marketplace_schema(bundle: dict) -> dict:
+    check_id = "CHK-D-031"
+    archetype = bundle.get("site", {}).get("archetype")
+    if archetype != "marketplace":
+        return _vertical_na(check_id, archetype)
+    pages = [p for p in bundle.get("pages", []) if p.get("extraction_ok", True)
+             and (p.get("page_type") == "category" or _LISTING_PATH_RE.search(p.get("url", "")))]
+    required = {
+        "event": ("name", "startDate", "location"),
+        "itemlist": ("itemListElement",),
+        "jobposting": ("title", "datePosted", "hiringOrganization"),
+    }
+    for page in pages:
+        for entity in page.get("structured_data", {}).get("json_ld", []):
+            raw = _raw_dict(entity)
+            for entity_type in _org_type_names(entity):
+                fields = required.get(entity_type)
+                if fields and all(raw.get(field) for field in fields):
+                    return _vertical_pass(
+                        check_id, f"Complete {entity_type} JSON-LD is present on a sampled "
+                        "listing page.", locus={"url": page.get("url")})
+    return _vertical_recommendation(
+        check_id, "No complete Event, ItemList, or JobPosting JSON-LD was found on sampled "
+        "listing pages.",
+        "Consider whether the schema type matching the marketplace's inventory would make "
+        "individual listings and their relationships easier to interpret.",
+        {"url": pages[0].get("url")} if pages else
+        ({"url": _first_available_page(bundle).get("url")} if _first_available_page(bundle)
+         else {"url": None, "scope": "site"}))
+
+
+def check_d032_news_schema(bundle: dict) -> dict:
+    check_id = "CHK-D-032"
+    archetype = bundle.get("site", {}).get("archetype")
+    if archetype != "news_editorial":
+        return _vertical_na(check_id, archetype)
+    pages = [p for p in bundle.get("pages", [])
+             if p.get("extraction_ok", True) and p.get("page_type") == "article"]
+    feed_page = next((p for p in bundle.get("pages", []) if _feed_hrefs(p)), None)
+    malformed = []
+    for page in pages:
+        articles = _json_entities(page, {"newsarticle"})
+        valid = False
+        for article in articles:
+            raw = _raw_dict(article)
+            authors = raw.get("author")
+            authors = authors if isinstance(authors, list) else [authors]
+            has_author_name = any(isinstance(author, dict) and author.get("name")
+                                  for author in authors)
+            if raw.get("datePublished") and raw.get("headline") and has_author_name:
+                valid = True
+                break
+        if not valid:
+            malformed.append(page)
+    if pages and not malformed and feed_page:
+        return _vertical_pass(
+            check_id, f"All {len(pages)} sampled articles have complete NewsArticle JSON-LD, "
+            "and an RSS/Atom discovery link is present.", locus={"url": pages[0].get("url")})
+    missing = []
+    if not pages:
+        missing.append("no sampled article pages")
+    elif malformed:
+        missing.append(f"{len(malformed)} article page(s) without complete NewsArticle data")
+    if not feed_page:
+        missing.append("no RSS/Atom discovery link")
+    locus_page = malformed[0] if malformed else (
+        pages[0] if pages else _first_available_page(bundle))
+    return _vertical_recommendation(
+        check_id, "; ".join(missing) + ".",
+        "Consider whether complete NewsArticle authorship and publication fields together "
+        "with feed discovery would improve machine-readable editorial provenance.",
+        {"url": locus_page.get("url")} if locus_page else {"url": None, "scope": "site"})
+
+
+def _author_names(raw: dict) -> set[str]:
+    authors = raw.get("author")
+    authors = authors if isinstance(authors, list) else [authors]
+    return {str(author.get("name")).strip().lower() for author in authors
+            if isinstance(author, dict) and author.get("name")}
+
+
+def check_d033_personal_schema(bundle: dict) -> dict:
+    check_id = "CHK-D-033"
+    archetype = bundle.get("site", {}).get("archetype")
+    if archetype not in PERSONAL_ARCHETYPES:
+        return _vertical_na(check_id, archetype)
+    pages = [p for p in bundle.get("pages", []) if p.get("extraction_ok", True)]
+    feed_page = next((p for p in pages if _feed_hrefs(p)), None)
+    people = []
+    for page in pages:
+        people.extend((page, entity) for entity in _person_blocks(page)
+                      if _raw_dict(entity).get("name"))
+    person_names = {_normalize_name(str(_raw_dict(entity).get("name")))
+                    for _, entity in people}
+    article_pages = [p for p in pages if p.get("page_type") == "article"]
+    inconsistent = []
+    for page in article_pages:
+        article_names = set()
+        for entity in _json_entities(page, _ARTICLE_TYPES):
+            article_names.update(_normalize_name(name) for name in _author_names(_raw_dict(entity)))
+        if not article_names or not article_names.intersection(person_names):
+            inconsistent.append(page)
+    if people and feed_page and not inconsistent:
+        return _vertical_pass(
+            check_id, "Person JSON-LD and RSS/Atom discovery are present; sampled article "
+            "bylines are consistent with the declared person.",
+            locus={"url": people[0][0].get("url")})
+    missing = []
+    if not people:
+        missing.append("no named Person JSON-LD")
+    if not feed_page:
+        missing.append("no RSS/Atom discovery link")
+    if inconsistent:
+        missing.append(f"{len(inconsistent)} article byline(s) absent or inconsistent")
+    return _vertical_recommendation(
+        check_id, "; ".join(missing) + ".",
+        "Consider whether a named Person declaration, feed discovery, and consistent "
+        "article authorship would make the site's author identity easier to verify.",
+        {"url": inconsistent[0].get("url")} if inconsistent else
+        ({"url": _first_available_page(bundle).get("url")} if _first_available_page(bundle)
+         else {"url": None, "scope": "site"}))
+
+
+def check_d034_archive_schema(bundle: dict) -> dict:
+    check_id = "CHK-D-034"
+    archetype = bundle.get("site", {}).get("archetype")
+    if archetype not in {"reference", "institutional"}:
+        return _vertical_na(check_id, archetype)
+    pages = [p for p in bundle.get("pages", []) if p.get("extraction_ok", True)]
+    archive_pages = [p for p in pages if _ARCHIVE_SIGNAL_RE.search(
+        " ".join((p.get("url", ""), p.get("title") or "", (p.get("main_text") or "")[:1500]))
+    )]
+    if not archive_pages:
+        return _envelope(check_id, "not_applicable",
+                         "No code or data archive was identified in the sampled pages.",
+                         None, "NORMATIVE/PRACTITIONER", None, recommendation_only=True)
+    for page in archive_pages:
+        for entity in _json_entities(page, {"softwaresourcecode", "datacatalog"}):
+            raw = _raw_dict(entity)
+            entity_types = set(_org_type_names(entity))
+            valid_code = "softwaresourcecode" in entity_types and raw.get("name") and (
+                raw.get("codeRepository") or raw.get("programmingLanguage"))
+            valid_catalog = "datacatalog" in entity_types and raw.get("name") and raw.get("dataset")
+            if valid_code or valid_catalog:
+                return _vertical_pass(
+                    check_id, "Complete SoftwareSourceCode or DataCatalog JSON-LD is present "
+                    "for a sampled archive.", locus={"url": page.get("url")})
+    return _vertical_recommendation(
+        check_id, "A code/data archive was identified, but no complete SoftwareSourceCode "
+        "or DataCatalog JSON-LD was found.",
+        "Consider whether archive-specific structured data would make repository or "
+        "dataset identity, contents, and provenance easier to interpret.",
+        locus={"url": archive_pages[0].get("url")})
+
+
+def check_vertical_schema_family(bundle: dict) -> list[dict]:
+    return [
+        check_d029_ecommerce_schema(bundle),
+        check_d030_saas_schema(bundle),
+        check_d031_marketplace_schema(bundle),
+        check_d032_news_schema(bundle),
+        check_d033_personal_schema(bundle),
+        check_d034_archive_schema(bundle),
+    ]
+
+
 def evaluate(bundle: dict) -> list[dict]:
     findings: list[dict] = [check_d006(bundle), check_d007(bundle)]
     findings.extend(check_d008(bundle))
@@ -454,4 +913,5 @@ def evaluate(bundle: dict) -> list[dict]:
     d025, d026 = check_d025_d026(bundle)
     findings.extend([d025, d026])
     findings.append(check_d027(bundle))
+    findings.extend(check_vertical_schema_family(bundle))
     return findings

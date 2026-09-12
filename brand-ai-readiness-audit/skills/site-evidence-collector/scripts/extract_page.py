@@ -53,14 +53,74 @@ def _registrable_domain(host: str) -> str:
     return last_two
 
 
-def _main_content_root(root: Node) -> Node:
-    """The extraction scope for 'main text': prefer <main>, else <body> minus boilerplate
-    tags removed by _strip_boilerplate_text below."""
+MAIN_CONTENT_MIN_WORDS = 50
+# Bytes of HTML per word of extracted text above which the page is almost certainly
+# delivering its content through JavaScript rather than markup. A 100 KB document with
+# under 50 words is a hydration shell, not a thin page.
+JS_RENDER_MIN_BYTES = 100_000
+JS_RENDER_MAX_WORDS = 50
+JS_PAYLOAD_BYTES_PER_WORD = 250
+JS_PAYLOAD_MIN_BYTES = 50_000
+
+_FALLBACK_CONTAINER_TAGS = ("article", "aside", "section", "td", "div")
+_FALLBACK_SCAN_CAP = 400
+
+
+def _main_content_root(root: Node) -> tuple[Node, str]:
+    """The extraction scope for 'main text', plus a label saying how it was chosen.
+
+    Order: <main>, then any element with role="main", then the largest <article>, then
+    <body> minus boilerplate. When that last scope is thin (< MAIN_CONTENT_MIN_WORDS) the
+    page's content may be sitting inside a tag this extractor treats as boilerplate --
+    kernel.org puts its release tables inside <aside id="featured"><article>, so the
+    body-minus-boilerplate scope returned 25 words of blogroll and CHK-D-003 reported a
+    famously plain static site as a JavaScript shell (judge review, 2026-09-13). In that
+    case the largest container found anywhere under <body> is used if it is at least
+    three times richer than the boilerplate-stripped body.
+    """
     main = root.find_first("main")
     if main is not None:
-        return main
+        return main, "main"
+    for tag in ("div", "section", "article"):
+        for node in root.find_all(tag):
+            if (node.get("role") or "").lower() == "main":
+                return node, "role_main"
     body = root.find_first("body")
-    return body if body is not None else root
+    if body is None:
+        return root, "root"
+
+    body_words = _word_count(_strip_boilerplate_text(body))
+
+    # An <article> is the page's content only when it carries most of the page's text. A
+    # homepage made of twenty <article> cards (developer.mozilla.org: largest card 66
+    # words against 630 in the body) is not an article page, and taking the biggest card
+    # would call the homepage thin.
+    articles = body.find_all("article")
+    if articles:
+        best = max(articles, key=lambda a: _word_count(_strip_boilerplate_text(a)))
+        best_words = _word_count(_strip_boilerplate_text(best))
+        if best_words >= MAIN_CONTENT_MIN_WORDS and best_words * 2 >= body_words:
+            return best, "article"
+
+    if body_words >= MAIN_CONTENT_MIN_WORDS:
+        return body, "body"
+
+    best_node, best_words = None, 0
+    scanned = 0
+    for tag in _FALLBACK_CONTAINER_TAGS:
+        for node in body.find_all(tag):
+            scanned += 1
+            if scanned > _FALLBACK_SCAN_CAP:
+                break
+            words = _word_count(_strip_boilerplate_text(node))
+            if words > best_words:
+                best_node, best_words = node, words
+        if scanned > _FALLBACK_SCAN_CAP:
+            break
+    if best_node is not None and best_words >= max(MAIN_CONTENT_MIN_WORDS, 3 * body_words):
+        ident = best_node.get("id") or (best_node.get("class") or "").split(" ")[0] or ""
+        return best_node, f"fallback:{best_node.tag}" + (f"#{ident}" if ident else "")
+    return body, "body"
 
 
 def _strip_boilerplate_text(node: Node) -> str:
@@ -519,7 +579,8 @@ def unavailable_page(page_url: str, reason: str, http_status: int | None = None,
     return {"url": page_url, "final_url": final_url or page_url, "status": "unavailable",
             "reason": reason, "http_status": http_status, "page_type": page_type,
             "headers": {}, "raw_html": None, "raw_html_bytes": 0, "main_text": "",
-            "main_text_words": 0, "extraction_ok": False, "title": None, "meta": {},
+            "main_text_words": 0, "main_content_source": None, "extraction_ok": False,
+            "js_render_suspected": False, "js_payload_heavy": False, "title": None, "meta": {},
             "lang": None, "canonical": {}, "headings": [], "landmarks": {},
             "structured_data": {}, "links": [], "outbound_profile_links": [], "images": [],
             "iframes": [], "media": [], "form_controls": [], "interactive_empty": {},
@@ -555,7 +616,7 @@ def extract_page(
 
     root = parse_html(html_text)
 
-    main_root = _main_content_root(root)
+    main_root, main_content_source = _main_content_root(root)
     main_text = _strip_boilerplate_text(main_root)
     main_text_words = _word_count(main_text)
 
@@ -564,6 +625,14 @@ def extract_page(
     # extraction, which is exactly what CHK-D-004's guard needs.
     raw_bytes = len((html_text or "").encode("utf-8"))
     extraction_ok = not (main_text_words < 20 and raw_bytes > 5000)
+
+    # Two flags for "the content is not in the markup", read by the content-density
+    # checks (D-004, D-005, D-010, D-013), which must answer not_determinable rather than
+    # call a hydration shell thin or two identical shells duplicates. CHK-D-003 is the one
+    # check whose job is to report this condition, so it reads the raw numbers instead.
+    js_render_suspected = main_text_words < JS_RENDER_MAX_WORDS and raw_bytes > JS_RENDER_MIN_BYTES
+    js_payload_heavy = (raw_bytes > JS_PAYLOAD_MIN_BYTES
+                        and raw_bytes / max(main_text_words, 1) > JS_PAYLOAD_BYTES_PER_WORD)
 
     title_node = root.find_first("title")
     html_node = root.find_first("html")
@@ -583,7 +652,10 @@ def extract_page(
 
         "main_text": main_text,
         "main_text_words": main_text_words,
+        "main_content_source": main_content_source,
         "extraction_ok": extraction_ok,
+        "js_render_suspected": js_render_suspected,
+        "js_payload_heavy": js_payload_heavy,
 
         "title": title_node.text() if title_node else None,
         "meta": _extract_meta(root),
