@@ -41,11 +41,65 @@ AGENT_CLASS = {
 }
 
 
+# Phase 10 P10-8: role description per named agent, sourced from vendor docs (see
+# references/ai-crawler-agents.md). The class taxonomy above stays: it drives the
+# existing CHK-D-001/D-002 routing. This map adds a human-readable role phrase for
+# the D-001 evidence string so a reader sees "search-indexing crawler", not just
+# "retrieval-time AI crawler" — the plan explicitly asks for retrieval/training/
+# hybrid distinctions and role semantics rather than a flat "retrieval-time" claim.
+# Agents not in this map fall back to a generic phrase derived from AGENT_CLASS.
+AGENT_ROLE = {
+    "gptbot":                "training-corpus crawler",
+    "oai-searchbot":         "search-indexing crawler",
+    "chatgpt-user":          "user-triggered fetch on behalf of ChatGPT",
+    "claudebot":             "training-corpus crawler",
+    "claude-web":            "retrieval-time crawler",
+    "claude-user":           "user-triggered fetch on behalf of Claude",
+    "claude-searchbot":      "search-indexing crawler",
+    "perplexitybot":         "retrieval-time crawler",
+    "perplexity-user":       "user-triggered fetch on behalf of Perplexity",
+    "google-extended":       "training-corpus crawler",
+    "googlebot":             "general search-indexing crawler (also used for AI Overviews)",
+    "bingbot":               "general search-indexing crawler (also used for Copilot)",
+    "applebot-extended":     "training-corpus crawler",
+    "applebot":              "general search-indexing crawler",
+    "ccbot":                 "training-corpus crawler (Common Crawl)",
+    "bytespider":            "training-corpus crawler (ByteDance)",
+    "amazonbot":             "training-corpus crawler (Amazon)",
+    "meta-externalagent":    "training-corpus crawler (Meta)",
+    "meta-externalfetcher":  "user-triggered fetch on behalf of Meta AI",
+    "cohere-ai":             "AI crawler (role not confirmed in public docs)",
+    "diffbot":               "structured-data extraction crawler",
+    "omgilibot":             "AI crawler (role not confirmed in public docs)",
+    "anthropic-ai":          "AI crawler (role not confirmed in public docs)",
+}
+
+
 def classify_agent(token: str) -> str:
     """Classify a User-agent token. Unknown tokens (including '*') are 'unknown'/'generic'."""
     if token.strip() == "*":
         return "generic"
     return AGENT_CLASS.get(token.strip().lower(), "unknown")
+
+
+def agent_role(token: str) -> str:
+    """Human-readable role for a named agent's D-001 evidence string. Phase 10 P10-8:
+    a reader sees the specific role (search indexing / training corpus / user-
+    triggered fetch / retrieval-time), not a flat 'retrieval-time' claim across
+    every class. Unknown-agent tokens fall back to a class-derived phrase."""
+    key = token.strip().lower()
+    if key == "*":
+        return "any user-agent not explicitly named elsewhere in the file"
+    if key in AGENT_ROLE:
+        return AGENT_ROLE[key]
+    cls = AGENT_CLASS.get(key, "unknown")
+    if cls == "training":
+        return "training-corpus crawler"
+    if cls == "retrieval":
+        return "retrieval-time crawler"
+    if cls == "hybrid":
+        return "general search-indexing crawler used both live and for training"
+    return "role not confirmed in public docs"
 
 
 @dataclass
@@ -183,6 +237,7 @@ def parse_robots_txt(text: str) -> dict:
                 allowed_root, disallow_rules, matched_line = _root_allowed(block)
                 agents[agent] = {
                     "class": classify_agent(agent),
+                    "role": agent_role(agent),
                     "allowed_root": allowed_root,
                     "disallow_rules": disallow_rules,
                     "matched_line": matched_line,
@@ -193,6 +248,7 @@ def parse_robots_txt(text: str) -> dict:
         allowed_root, disallow_rules, matched_line = _root_allowed(wildcard_block)
         agents["*"] = {
             "class": "generic",
+            "role": agent_role("*"),
             "allowed_root": allowed_root,
             "disallow_rules": disallow_rules,
             "matched_line": matched_line,

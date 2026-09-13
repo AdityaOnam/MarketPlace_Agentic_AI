@@ -68,9 +68,15 @@ def evaluate(bundle: dict) -> list[dict]:
         # Deterministic: report the alphabetically-first blocked retrieval agent as the
         # primary locus, but the evidence string enumerates all of them.
         blocked_retrieval.sort(key=lambda pair: pair[0].lower())
+        # Phase 10 P10-8: name each agent's specific role from `info["role"]` rather
+        # than flattening every hybrid/retrieval class into "retrieval-time AI
+        # crawler". Older bundles (before P10-8) may not carry a role field;
+        # fall back to the class name in that case so this analyser stays
+        # backward-compatible with saved fixtures.
         parts = [
-            f"robots.txt line {info['matched_line']}: Disallow: {info['disallow_rules'][0] if info['disallow_rules'] else '/'} "
-            f"applies to {name} (retrieval-time AI crawler)."
+            f"robots.txt line {info['matched_line']}: Disallow: "
+            f"{info['disallow_rules'][0] if info['disallow_rules'] else '/'} "
+            f"applies to {name} ({info.get('role') or info.get('class') or 'AI crawler'})."
             for name, info in blocked_retrieval
         ]
         # D-16 (2026-09-12): action now names the intent question first. A newsroom that
@@ -83,12 +89,20 @@ def evaluate(bundle: dict) -> list[dict]:
         findings.append(_envelope(
             "CHK-D-001", "present", " ".join(parts), "critical", "HARD-MECHANICAL",
             {
-                "summary": f"This block is the direct reason retrieval-time AI "
-                           f"assistants cannot cite pages on this site. If it is a "
-                           f"deliberate licensing decision for {agent_names}, no change "
-                           f"is required -- but note the visibility trade-off. "
-                           f"Otherwise, narrow the Disallow rule to the specific paths "
-                           f"that need protection rather than the site root.",
+                # Phase 10 P10-8: report the policy state; do not claim citation
+                # outcomes. Whether a specific assistant actually cites this site
+                # depends on the assistant's retrieval implementation, its fallback
+                # behaviour on 4xx/5xx, and its treatment of stale cached copies —
+                # none of which the audit measures. Describe what the file says.
+                "summary": f"The published robots policy disallows the named "
+                           f"agent(s) ({agent_names}) at the site root; actual "
+                           f"retrieval or citation outcomes for any specific AI "
+                           f"assistant were not measured. If the block is a "
+                           f"deliberate licensing position, no change is required "
+                           f"— though note the reduced discoverability trade-off. "
+                           f"Otherwise, consider narrowing the Disallow rule to the "
+                           f"specific paths that need protection rather than the site "
+                           f"root.",
                 "priority": "critical",
             },
             locus=_locus_from_line(blocked_retrieval[0][1].get("matched_line")),

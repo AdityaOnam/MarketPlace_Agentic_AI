@@ -290,6 +290,47 @@ def _has_duplicate_url_variants(bundle: dict) -> bool:
             or any(len(urls) > 1 for urls in by_canonical.values()))
 
 
+def _duplicate_url_map(bundle: dict) -> dict[str, set[str]]:
+    """Phase 10 P10-9: map each page URL to the set of *other* sampled URLs that
+    share its content locus, so the D-008 evidence strength can be judged
+    per-page instead of site-wide.
+
+    Two pages are considered aliases of each other when either
+    (a) their `_page_url_key` is equal (same host, same path modulo trailing
+    slash), or
+    (b) one page's canonical `href` appears as the raw URL of another sampled
+    page — a canonical pointing at another sampled URL is the observed alias
+    relationship, not a presumed one.
+
+    Returns a dict keyed by the raw page URL; each value is the set of *other*
+    sampled URLs that share content. Empty set means no observed alias, so
+    D-008 evidence for that page stays NORMATIVE.
+    """
+    pages = [page for page in bundle.get("pages", []) if page.get("extraction_ok", True)]
+    by_path: dict[tuple[str, str], set[str]] = {}
+    urls_by_raw: dict[str, dict] = {}
+    for page in pages:
+        raw_url = page.get("final_url") or page.get("url")
+        if not raw_url:
+            continue
+        urls_by_raw[raw_url] = page
+        key = _page_url_key(raw_url)
+        if key:
+            by_path.setdefault(key, set()).add(raw_url)
+    partners: dict[str, set[str]] = {u: set() for u in urls_by_raw}
+    for group in by_path.values():
+        if len(group) > 1:
+            for u in group:
+                partners[u].update(g for g in group if g != u)
+    # Canonical → other sampled URL alias:
+    for u, page in urls_by_raw.items():
+        canonical = page.get("canonical", {}).get("href")
+        if canonical and canonical in urls_by_raw and canonical != u:
+            partners[u].add(canonical)
+            partners[canonical].add(u)
+    return partners
+
+
 def _identity_names(bundle: dict, home: dict) -> set[str]:
     names: set[str] = set()
     for page in bundle.get("pages", []):
@@ -518,8 +559,16 @@ def check_d007(bundle: dict) -> dict:
 # ---------------------------------------------------------------------------
 
 def check_d008(bundle: dict) -> list[dict]:
+    """Phase 10 P10-9: evidence strength is judged per-page from observed alias
+    relationships, not site-wide. Two independent judges called the site-wide
+    CAUSAL label an overclaim when unrelated pages (with clean canonicals or
+    with none) inherited it because *some other* page in the sample happened to
+    have an alias. Now CAUSAL fires only for pages that themselves have an
+    observed alias partner, and the evidence names that partner URL. Pages
+    with no observed partner ship NORMATIVE evidence — the earlier baseline.
+    """
     findings = []
-    evidence_strength = "CAUSAL" if _has_duplicate_url_variants(bundle) else "NORMATIVE"
+    partners_by_url = _duplicate_url_map(bundle)
     for page in bundle.get("pages", []):
         locus = {"url": page.get("url")}
         if not page.get("extraction_ok", True):
@@ -527,10 +576,19 @@ def check_d008(bundle: dict) -> list[dict]:
             # read as "no rel=canonical found" -- a confirmed defect on a page we never
             # actually got. Found live on www.gnu.org in the adversarial set (2026-09-04).
             findings.append(_envelope("CHK-D-008", "not_determinable",
-                                       "Page could not be fetched.", None, evidence_strength, None,
+                                       "Page could not be fetched.", None, "NORMATIVE", None,
                                        locus=locus))
             continue
         canonical = page.get("canonical", {})
+        raw_url = page.get("final_url") or page.get("url")
+        page_partners = sorted(partners_by_url.get(raw_url, set()))
+        evidence_strength = "CAUSAL" if page_partners else "NORMATIVE"
+        partner_note = ""
+        if page_partners:
+            first_partner = page_partners[0]
+            more = f" (+{len(page_partners) - 1} further alias URL(s) in the sample)" if len(page_partners) > 1 else ""
+            partner_note = (f" This page shares its content locus with another "
+                            f"sampled URL: {first_partner}{more}.")
         if canonical.get("self_referential"):
             findings.append(_envelope("CHK-D-008", "absent", f"Page {page.get('url')}: "
                                        "self-referential canonical present.", None,
@@ -538,7 +596,8 @@ def check_d008(bundle: dict) -> list[dict]:
                                        None, locus=locus))
         elif not canonical.get("href"):
             findings.append(_envelope(
-                "CHK-D-008", "present", f"Page {page.get('url')}: no rel=canonical found.",
+                "CHK-D-008", "present",
+                f"Page {page.get('url')}: no rel=canonical found.{partner_note}",
                 "medium", evidence_strength,
                 {"summary": "Consider whether a consistent self-referential canonical URL "
                              "would make the preferred version of this indexable page "
@@ -547,7 +606,8 @@ def check_d008(bundle: dict) -> list[dict]:
         elif canonical.get("cross_domain"):
             findings.append(_envelope(
                 "CHK-D-008", "present",
-                f"Page {page.get('url')}: canonical points to a different domain.",
+                f"Page {page.get('url')}: canonical points to a different domain "
+                f"({canonical.get('href')}).{partner_note}",
                 "medium", evidence_strength,
                 {"summary": "Consider whether the cross-domain canonical URL intentionally "
                              "identifies the brand's authoritative domain; otherwise, a "
