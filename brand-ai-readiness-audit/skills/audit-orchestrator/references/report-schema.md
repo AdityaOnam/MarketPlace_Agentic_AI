@@ -219,10 +219,11 @@ these five checks.
   "id": "R-001",
   "check_id": "CHK-E-024",
   "title": "Add trust signals to commercial pages",
+  "summary": "Commercial and news sites gain credibility with visible contact information, organisation name in the footer, HTTPS, and byline dates on articles.",
   "rationale": "Commercial and news sites with visible contact information, HTTPS, and byline dates are easier for users and AI systems to assess as credible.",
   "mechanism": "E",
   "suggested_action": {
-    "summary": "Add contact information, organisation name in footer, HTTPS, and byline dates on articles. (Proactive — not a confirmed defect.)",
+    "summary": "Commercial and news sites gain credibility with visible contact information, organisation name in the footer, HTTPS, and byline dates on articles.",
     "priority": "low"
   },
   "locus": {"url": "https://example.com/pricing", "selector": null},
@@ -230,6 +231,13 @@ these five checks.
   "route_reason": "single-source rule (D-004): supporting evidence is one unreplicated study."
 }
 ```
+
+`summary` at the top level mirrors `suggested_action.summary`. Both fields carry the same
+string; the top-level field exists so consumers walking `recommendations[]` for a headline
+can read it without descending into the nested `suggested_action` object. A recommendation
+whose source envelope produced no `suggested_action` is dropped before the report ships
+and logged as an `empty_recommendation` meta-evaluation warning — the report never
+carries a recommendation with an empty `summary`.
 
 ---
 

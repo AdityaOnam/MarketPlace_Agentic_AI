@@ -711,13 +711,26 @@ def build_recommendations(recommendations: list[dict]) -> list[dict]:
         locus = r.get("locus") or {}
         if not locus.get("url"):
             locus = {"url": None, "scope": "site"}
+        suggested_action = r.get("suggested_action")
+        # Phase 9 item B close-out (2026-09-14): every recommendation carries a
+        # top-level `summary` string that mirrors suggested_action.summary. Prior
+        # shipped shape kept the summary nested; readers and verifiers that
+        # walked `recommendations[]` for a top-level summary found nothing on any
+        # rec and reported them all as empty. Duplicating the string at both
+        # levels is backward-compatible (existing consumers of
+        # suggested_action.summary keep working) and satisfies the top-level
+        # reader without a schema break.
+        top_summary = ""
+        if isinstance(suggested_action, dict):
+            top_summary = (suggested_action.get("summary") or "").strip()
         entry = {
             "id": f"R-{i:03d}",
             "check_id": r["check_id"],
             "title": CHECK_TITLES.get(r["check_id"], r["check_id"]),
+            "summary": top_summary,
             "rationale": r.get("evidence"),
             "mechanism": r["check_id"].split("-")[1],
-            "suggested_action": r.get("suggested_action"),
+            "suggested_action": suggested_action,
             # locus/severity kept (D-012's schema is "a floor, not a ceiling"): without
             # them, Stage E's matching rule (EVALS.md §2 -- same check, same locus) cannot
             # be applied to the five recommendation-only checks at all. Added 2026-09-09
@@ -729,6 +742,35 @@ def build_recommendations(recommendations: list[dict]) -> list[dict]:
             entry["instances"] = r["instances"]
         out.append(entry)
     return out
+
+
+def _drop_empty_summary_recs(report: dict) -> list[dict]:
+    """Phase 9 item B close-out (2026-09-14): defense-in-depth drop pass.
+
+    If a source check emits a recommendation envelope with no `suggested_action`
+    at all -- so `_consolidate_per_page_recs` cannot merge it, `build_recommendations`
+    cannot mirror a summary from it, and the top-level `summary` field ends up
+    empty -- drop that recommendation and record the drop as an
+    `empty_recommendation` warning. The report should never ship a recommendation
+    the reader cannot act on.
+    """
+    dropped: list[dict] = []
+    kept: list[dict] = []
+    for r in report.get("recommendations", []) or []:
+        nested = ""
+        sa = r.get("suggested_action")
+        if isinstance(sa, dict):
+            nested = (sa.get("summary") or "").strip()
+        top = (r.get("summary") or "").strip()
+        if not nested and not top:
+            dropped.append({
+                "check": "empty_recommendation",
+                "detail": f"{r.get('check_id')}: no summary produced by source check",
+            })
+            continue
+        kept.append(r)
+    report["recommendations"] = kept
+    return dropped
 
 
 def compute_summary(findings: list[dict]) -> dict:
@@ -875,12 +917,15 @@ def meta_evaluate(report: dict) -> dict:
     because quietly rewriting a report to make its own audit pass is the failure mode
     D-010 was written against.
     """
-    # Phase 9 items P + C: run the strengths/recs contradiction filter first so a
-    # rec that would otherwise be dropped by the prescriptive-marker gate is
-    # recorded as the more informative contradicted_by_strength warning, then run
-    # the prescriptive-marker drop gate. Both surface their drops for traceability.
+    # Phase 9 items P + C + B close-out: run the strengths/recs contradiction
+    # filter first so a rec that would otherwise be dropped by the
+    # prescriptive-marker gate is recorded as the more informative
+    # contradicted_by_strength warning, then run the prescriptive-marker drop
+    # gate, then the empty-summary defense-in-depth drop. Each surfaces its
+    # drops for traceability.
     warnings: list[dict] = _filter_strengths_recs_contradiction(report)
     warnings.extend(_enforce_prohibited_recommendation_gate(report))
+    warnings.extend(_drop_empty_summary_recs(report))
     findings = report.get("findings", [])
     summary = report.get("summary", {})
 
