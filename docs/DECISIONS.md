@@ -1827,3 +1827,131 @@ implicated by these numbers.
 
 ---
 
+
+## D-035 — Phase 10 tier 1: honest reporting fixes across checks_passed, loci, wording, doc contract, identity anchors, duplicate pairs, and unmeasurable content
+
+**Date:** 2026-09-13
+**Status:** Applied — commits `f93a530` (P10-1..P10-6) and `f8a33c7` (P10-7); the
+implementation plan lives at `docs/evals/phase10-improvement-plan.md`, and the
+25-site three-judge signal it was built from is in `phase9-judge-comparison.md`.
+Verified across the four scored sets plus the negative-control set (90 reports).
+
+### Context
+
+The Phase 9 tier 1+2 commit (`f3bbeab`) and the Fix B close-out (`099f538`) landed
+the mechanical presentation fixes the three-judge review had asked for. The next
+25-site pass surfaced eight residual defects that Adobe's own graders would still
+find on a static read of a report:
+
+- W — the same check_id appears in both `checks_passed[]` and
+  `recommendations[]`. 5 of 15 post-fix reports showed this (Wikipedia D-010,
+  Karpathy D-005, Mozilla D-010, USA.gov D-010, MercadoLibre D-008). The
+  earlier compute_checks_passed logic accepted `recommendation_only`
+  present envelopes as non-disqualifying — which is correct at the
+  envelope layer but wrong at the report layer, because the final
+  recommendations list still contains those envelopes.
+- Null loci on D-001, D-002, D-025 present findings, on D-009 broken-link
+  recommendations, and on E-021 static-markup recommendations. A finding
+  without a URL fails the schema-in-spirit even when the field is
+  syntactically present.
+- Tartine's report claimed archetype `brochure` while `pages_fetched == 0`.
+  A brochure claim needs page content; no page content should not silently
+  become a brochure.
+- D-003 one-sided action asserted content "materialises only after
+  JavaScript executes" when we had not actually measured the rendered DOM.
+  E-021 said images "cause layout shift" when we had measured only static
+  markup. D-010 said "None of the checked pages contain a definition"
+  when all we knew was that this page's static text did not match the
+  detector's three English regexes.
+- audit-orchestrator SKILL.md said "26 checks" (actual: 32), "3-page
+  rollup" (actual: 2-page since Phase 9 item A), listed no
+  vertical-schema owners for D-029..D-034, and treated hard-drop gates as
+  warnings — the executable contract had drifted from the shipped prose
+  the grader reads first.
+- Karpathy D-025 said "no sameAs or outbound identity-profile links"
+  while the homepage visibly linked to Twitter, GitHub, YouTube, Medium
+  and OpenAI. The detector accepted external links only when they were
+  inside a `<header>` or `<footer>` element or carried `rel="me"` — a
+  markup convention that is not universal.
+- Mozilla D-013 shipped a "Pages share 100% of word trigrams" claim on
+  its root sample. The 100% was real for four locale-root aliases (`/`,
+  `/ach/`, `/af/`, `/an/`, `/ar/`); the pairs were not distinct-content
+  duplicates but localised alternates that the previous `_variant_kind`
+  regex refused to recognise. The report also carried no pair evidence,
+  so a reader could not tell which URLs were being compared.
+- Asahi Japanese articles registered 32-81 "words" for full articles
+  because the ASCII word-count regex misses Japanese script. The
+  resulting D-004 "thin content" findings measured a limitation of the
+  measurement, not the site. Same shape on paywalled news pages that
+  declare `isAccessibleForFree: false`.
+
+### Decision
+
+Land the seven fixes in one tier, gated behind acceptance tests that
+run against every scored set plus the negative-control set:
+
+- **P10-1 (W)** — `compose_report._reconcile_checks_passed` strips any
+  check_id that appears in the final `findings[]` or `recommendations[]`
+  from `checks_passed[]`. The pass-list logic itself is unchanged; the
+  strip runs at report-assembly time, after both lists exist.
+- **P10-2 (loci)** — D-001/D-002 carry `origin + "/robots.txt"` with a
+  matched-line selector; D-025 carries the first inspected identity
+  surface URL; D-009 recommendations enumerate the first three broken
+  destinations with their `from_page` and response code, and locus
+  points at the source page; E-021 recommendations carry per-page
+  counts as `instances[]` and locus at the first affected page.
+- **P10-3 (honesty)** — compose_report overrides `preamble.archetype`
+  to `unknown` when `pages_fetched == 0`; D-003 one-sided action, E-021
+  and D-010 evidence and action strings are reworded to describe only
+  what the static pipeline actually observed.
+- **P10-4 (contract)** — audit-orchestrator SKILL.md is edited to
+  match the executable behaviour: 32 checks, 2-page rollup, vertical-
+  schema family owners, hard-drop gates listed as such.
+- **P10-5 (Y)** — `entity_identity_checks` accepts profile-shaped URLs
+  on the identity surfaces themselves. A small, general host list
+  (`_PROFILE_HOSTS`) with per-host shape rules and reserved-segment
+  guards. `sameAs` is credited only when its value is a non-empty URL.
+- **P10-6 (Z)** — D-013 emits pair evidence (URLs, intersection,
+  union, percentage); the locale-segment regex accepts 3-letter ISO
+  639 codes; `/` vs `/<locale>/` is classified as a localised
+  variant; empty trigram sets are skipped rather than treated as 100%.
+- **P10-7 (Q)** — D-004 returns `not_determinable` on pages whose
+  `lang` names an unsegmented-script language (CJK, Thai, Lao, Khmer,
+  Burmese, Tibetan) and on pages whose own JSON-LD declares
+  `isAccessibleForFree: false`.
+
+### What we did not do
+
+- **P10-8..P10-14** — the plan's later tiers (crawler taxonomy,
+  sampler diversity, canonical elevation, prioritisation, classifier
+  sign-off). Not started this session.
+- **`page_classifier.py`** — untouched. Item V (classifier miscalls)
+  requires the teammate's D-034 workstream. Tartine's `unknown`
+  label change is a compose-layer safety net that fires when
+  `pages_fetched == 0`; it does not shift any classifier output.
+- **Blocked-site handling** — item L stays out of scope per
+  OFFICIALS-QA §2.2 and Action #10. `access_state` continues to
+  do all the work.
+
+### Verification
+
+Across dev (24) + handoff (25) + handoff2 (11) + handoff3 (15) +
+negative (15), 90 reports total:
+
+- 0 reports where `checks_passed` and `findings ∪ recommendations`
+  share a check_id (was 18 across the four scored sets).
+- 0 null loci on D-001, D-002, D-025 present findings; 0 null loci
+  on D-009 broken-link recommendations.
+- Tartine `preamble.archetype = "unknown"` (was `brochure`);
+  `access_state` unchanged.
+- No "materialise only after JavaScript" or "causes layout shift" or
+  "None of the checked pages" strings anywhere in the 90 reports.
+- Karpathy no longer emits a D-025 present finding; Schwab and Yle
+  continue to (their homepage links carry no external profiles).
+- Mozilla D-013 reports "5 localised variants" (was "100% of word
+  trigrams"). overreacted.io and qonto.com D-013 recommendations
+  carry `A and B: I/U trigrams shared (X%)` pair evidence.
+- Asahi Japanese article pages produce 0 D-004 present findings
+  (was several thin-content misfires).
+- Phase 9 advisory-language gate, Fix M starve-list, access_state
+  taxonomy and the C/P/B hard-drop gates all preserved.
