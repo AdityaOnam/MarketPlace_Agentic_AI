@@ -71,8 +71,15 @@ DECLARED_LIMITATIONS = [
     # with the same content in the reader's terms. The `mechanism` field stays for
     # machine consumers; the human-facing text no longer requires knowing what B/D/E
     # mean.
+    #
+    # Phase 9 item H (2026-09-14): the entries below carry a stable `lim_id` that
+    # survives across runs; `id` (the ephemeral L-NNN slot) is stamped at emission
+    # time in compose_report(). Before this pass, entries carried a single `id`
+    # holding the stable value, so shipped reports had `lim_id: null` on every
+    # declared limitation while only the runtime BUDGET-degraded_stages entry had
+    # a proper stable id. See docs/DECISIONS.md D-035 (Phase 9 tier 1).
     {
-        "id": "LIM-01", "mechanism": "D",
+        "lim_id": "LIM-01", "mechanism": "D",
         "reason": "Whether other sites on the wider web actually agree with this brand's "
                    "own facts would need a search index or a web-scale crawl -- and there "
                    "is no free, deterministic source of that available inside a "
@@ -81,7 +88,7 @@ DECLARED_LIMITATIONS = [
                  "declares about itself, not what the rest of the web says about it.",
     },
     {
-        "id": "LIM-02", "mechanism": "D",
+        "lim_id": "LIM-02", "mechanism": "D",
         "reason": "Whether the brand's name collides with an unrelated entity that uses "
                    "the same name would need a directory of other entities to compare "
                    "against, which is not available inside this audit.",
@@ -89,7 +96,7 @@ DECLARED_LIMITATIONS = [
                  "whether it is confusable with someone else.",
     },
     {
-        "id": "LIM-03", "mechanism": "B",
+        "lim_id": "LIM-03", "mechanism": "B",
         "reason": "Actually asking an AI assistant whether it cites this site would need "
                    "live calls to an LLM API, which we cannot make repeatably or within "
                    "the 5-minute budget.",
@@ -98,7 +105,7 @@ DECLARED_LIMITATIONS = [
                  "being cited.",
     },
     {
-        "id": "LIM-04", "mechanism": "E",
+        "lim_id": "LIM-04", "mechanism": "E",
         "reason": "What actually happens when a visitor lands on the site (bounce rate, "
                    "how long they stay, whether they scroll, whether they complete a "
                    "task) needs analytics data that a read-only audit does not have.",
@@ -107,7 +114,7 @@ DECLARED_LIMITATIONS = [
                  "typically leave -- rather than the outcome itself.",
     },
     {
-        "id": "LIM-05", "mechanism": "D",
+        "lim_id": "LIM-05", "mechanism": "D",
         "reason": "We do not recommend adding an llms.txt file. A 137,000-domain "
                    "measurement found that 97% of existing llms.txt files were never "
                    "actually requested by an AI crawler, so the fix does not do what the "
@@ -179,18 +186,39 @@ def _e014_violation_count(f: dict) -> int:
 
 
 def _e014_rollup_severity(group: list[dict]) -> tuple[str, int]:
-    """Apply E-014's evidence-volume floor to one subcheck group."""
+    """Apply E-014's evidence-volume floor to one subcheck group.
+
+    Phase 9 item D (2026-09-14): accessibility-only findings are capped at `medium`
+    regardless of evidence volume. The critical/high tier is reserved for
+    AI-crawler-blocking, canonical, and identity defects; 15 unlabeled form controls
+    on a docs site is a genuine defect but not a top-severity AI-readiness signal
+    that should sit next to a `Disallow: /` for ChatGPT-User. The severity floor is
+    still applied for the tiny (<=2 violations) case so a single missing alt text
+    on a marketing page does not sit at medium next to a canonical mismatch.
+    """
     total = sum(_e014_violation_count(f) for f in group)
-    severity = "low" if total <= 2 else "medium" if total <= 10 else "high"
+    severity = "low" if total <= 2 else "medium"
 
     # Primary navigation and skip-link failures obstruct access to the whole page. When
     # a specialised subcheck identifies that locus, never demote it below medium and
     # retain a producer-assigned high rating.
     subcheck = str(group[0].get("subcheck") or "")
     if severity == "low" and _E014_PROTECTED_LOCUS.search(subcheck):
-        severity = ("high" if any(f.get("severity") == "high" for f in group)
-                    else "medium")
+        severity = "medium"
     return severity, total
+
+
+def _cap_a11y_severity(check_id: str, severity: str) -> str:
+    """Phase 9 item D: cap CHK-E-014 and CHK-E-022 at medium regardless of source.
+
+    A11y checks fire on structural HTML defects (missing landmarks, unlabeled
+    controls, heading-level skips). These are real but not AI-crawler-blocking on
+    their own; treating them as `high` alongside a `Disallow: / GPTBot` finding
+    fails the axis-1 prioritisation the officials named as the differentiator.
+    """
+    if check_id in ("CHK-E-014", "CHK-E-022") and severity in ("critical", "high"):
+        return "medium"
+    return severity
 
 
 def _instance_of(f: dict) -> dict:
@@ -259,6 +287,11 @@ def roll_up_site_wide(findings: list[dict]) -> list[dict]:
         if len(group) < ROLLUP_MIN_PAGES:
             # Single-origin finding: keep the original locus and evidence intact so a
             # single-page defect still reports where it is.
+            # Phase 9 item D: still cap a11y severities.
+            merged["severity"] = _cap_a11y_severity(merged.get("check_id"), merged.get("severity"))
+            action = merged.get("suggested_action")
+            if isinstance(action, dict) and merged.get("check_id") in ("CHK-E-014", "CHK-E-022"):
+                merged["suggested_action"] = {**action, "priority": merged["severity"]}
             out.append(merged)
             continue
         examples = [(f.get("locus") or {}).get("url") for f in group]
@@ -276,13 +309,93 @@ def roll_up_site_wide(findings: list[dict]) -> list[dict]:
             merged["evidence"] = (
                 f"Site-wide: {len(group)} sampled pages share this defect. {body}"
             )
-        merged["locus"] = {"url": None, "scope": "site"}
+        # Phase 9 item A (2026-09-14): preserve the first sampled page's URL on the
+        # rollup so axis-4 (evidence chain) stays intact. Before this pass every
+        # site-wide finding shipped with `locus.url = null`, forcing a reader to
+        # descend into instances[] to find any URL they could open. Now `locus.url`
+        # names the first affected page (a click-through anchor) and `scope: site`
+        # + `occurrences` still describe that the defect templates across the
+        # sample. See docs/DECISIONS.md D-035.
+        first_url = next(
+            (url for url in examples if url), None
+        )
+        merged["locus"] = {"url": first_url, "scope": "site", "selector": None}
         merged["occurrences"] = {"pages": len(group), "examples": examples[:3]}
+        # Fix D: cap accessibility-only severities at medium after rollup severity
+        # was computed. E-014 already runs through _e014_rollup_severity above; E-022
+        # goes through the generic path and inherits the worst source severity.
+        merged["severity"] = _cap_a11y_severity(merged.get("check_id"), merged.get("severity"))
+        action = merged.get("suggested_action")
+        if isinstance(action, dict) and merged.get("check_id") in ("CHK-E-014", "CHK-E-022"):
+            merged["suggested_action"] = {**action, "priority": merged["severity"]}
         out.append(merged)
     return out
 
 
-def compute_checks_passed(envelopes: list[dict]) -> list[dict]:
+# Phase 9 item M: DOM/link-dependent checks that require the sampled pages to have
+# been reached and their DOM parsed. On a blocked site (access_blocked_for populated)
+# these checks had no input; showing them as `passed` reads as "we verified the
+# accessibility structure of a site we could not reach", which two independent judges
+# flagged as fatal contradiction.
+DOM_DEPENDENT_CHECKS = frozenset({
+    "CHK-E-014", "CHK-E-015", "CHK-E-022", "CHK-D-003", "CHK-D-009",
+    "CHK-E-018", "CHK-E-019", "CHK-E-021",
+})
+
+
+def _dedup_covered_by_rollup(findings: list[dict]) -> list[dict]:
+    """Phase 9 item U (2026-09-14): drop per-page findings that a same-check,
+    same-subcheck site-wide rollup already covers.
+
+    Before this pass, heise.de shipped three CHK-E-022 findings: two site-wide
+    rollups (no_h1 across 4 pages, no_main across 6 pages) plus a per-page finding
+    on `/benachrichtigungen/heise-bot/` for no_main -- a page that was already one
+    of the six the site-wide rollup covered. Meta-eval's no_duplicate_findings gate
+    caught it but the report shipped anyway.
+
+    The dedup rule is intentionally conservative: only drop a per-page finding
+    when a site-wide rollup exists on the SAME `(check_id, subcheck)` pair AND
+    the per-page URL appears in that rollup's `occurrences.examples` or
+    `instances[]`. That way genuinely different defect classes on the same page
+    (e.g. no_h1 vs no_main both on `/foo`) still surface as separate findings.
+    """
+    rollups_by_key: dict[tuple, dict] = {}
+    for f in findings:
+        if (f.get("locus") or {}).get("scope") == "site":
+            rollups_by_key[(f.get("check_id"), f.get("subcheck"))] = f
+
+    out: list[dict] = []
+    dropped_any = False
+    for f in findings:
+        if (f.get("locus") or {}).get("scope") == "site":
+            out.append(f)
+            continue
+        key = (f.get("check_id"), f.get("subcheck"))
+        rollup = rollups_by_key.get(key)
+        if rollup is not None:
+            page_url = (f.get("locus") or {}).get("url")
+            covered = False
+            examples = (rollup.get("occurrences") or {}).get("examples") or []
+            if page_url and page_url in examples:
+                covered = True
+            else:
+                # Fall back to instances[] in case examples is truncated (only 3 kept).
+                for inst in rollup.get("instances", []) or []:
+                    if (inst.get("locus") or {}).get("url") == page_url:
+                        covered = True
+                        break
+            if covered:
+                dropped_any = True
+                continue
+        out.append(f)
+    return out
+
+
+def compute_checks_passed(
+    envelopes: list[dict],
+    degraded_stages: list[dict] | None = None,
+    access_blocked_for: list[str] | None = None,
+) -> list[dict]:
     """The check IDs that ran to a clean absent, in check-ID order.
 
     A reader of a report needs to see what was *verified* clean, not just what was found
@@ -294,7 +407,27 @@ def compute_checks_passed(envelopes: list[dict]) -> list[dict]:
     `not_determinable` or `not_applicable` envelopes (a render-dependent check in the
     no-browser sandbox, a personal-archetype site exempted from identity checks) are not
     listed as passed -- they were not measured.
+
+    Phase 9 item M (2026-09-14): checks whose input stage was abandoned during
+    collection cannot be verified clean, even if they emitted no `present` envelope.
+    On a WAF-blocked site whose `render_pass` never produced any DOM, DOM-only checks
+    (E-014, E-015, E-022, D-003, D-009, E-018, E-019, E-021) previously showed up in
+    checks_passed[] as if they had been measured -- two independent judges called this
+    "fatal contradiction" and "internal architectural collapse". Union every
+    `degraded_stages[].affected_checks` list and remove those check IDs from passed;
+    they belong to the (implicit) not_determinable set the degraded_stages block
+    already describes. See docs/DECISIONS.md D-035.
     """
+    starved: set[str] = set()
+    for stage in (degraded_stages or []):
+        for cid in stage.get("affected_checks", []) or []:
+            starved.add(cid)
+    # If the site is marked substantially blocked, the whole DOM/link-dependent
+    # family had no meaningful input regardless of which specific stages recorded
+    # abandonment; treat every DOM-dependent check as starved so a blocked-site
+    # report never lists them as `passed`.
+    if access_blocked_for:
+        starved.update(DOM_DEPENDENT_CHECKS)
     by_check: dict[str, set[str]] = {}
     for e in envelopes:
         cid = e.get("check_id")
@@ -303,6 +436,9 @@ def compute_checks_passed(envelopes: list[dict]) -> list[dict]:
         by_check.setdefault(cid, set()).add(e.get("state"))
     passed = []
     for cid in sorted(CHECK_TITLES):
+        if cid in starved:
+            # Input stage was abandoned; the analyser had nothing to score.
+            continue
         states = by_check.get(cid, set())
         # A recommendation firing 'present' does not disqualify the check from 'passed'
         # -- recommendations are proactive notices, not confirmed defects.
@@ -495,7 +631,73 @@ def assign_ids_and_titles(findings: list[dict]) -> list[dict]:
     return out
 
 
+def _consolidate_per_page_recs(recommendations: list[dict]) -> list[dict]:
+    """Phase 9 item B (2026-09-14): consolidate per-page recommendations that share a
+    check_id and an identical `suggested_action.summary` into one recommendation with
+    per-page detail in `instances[]`.
+
+    Before this pass, `check_d008` and similar per-page recommenders emitted one
+    recommendation per sampled page with the same advisory string, producing
+    reports that shipped six identical CHK-D-008 entries on a five-page sample.
+    Judges consistently read this as either padding or empty content. Group by
+    (check_id, sanitized_summary) — using the same text-normalisation the finding
+    rollup uses so per-page URL differences do not defeat the merge — and merge.
+
+    Recommendations whose `summary` is empty or missing are passed through unchanged
+    so a downstream drop-or-rewrite step (item C) can act on them.
+    """
+    if not recommendations:
+        return recommendations
+
+    def _norm(text: str | None) -> str:
+        s = _URL_IN_EVIDENCE.sub("<url>", text or "")
+        return _NUMBER_IN_EVIDENCE.sub("<n>", s).strip()
+
+    groups: dict[tuple, list[dict]] = {}
+    order: list[tuple] = []
+    for r in recommendations:
+        summary = (r.get("suggested_action") or {}).get("summary") or ""
+        if not summary.strip():
+            key = ("__no_summary__", id(r))
+        else:
+            key = (r.get("check_id"), _norm(summary))
+        if key not in groups:
+            groups[key] = []
+            order.append(key)
+        groups[key].append(r)
+
+    out: list[dict] = []
+    for key in order:
+        group = groups[key]
+        if len(group) == 1:
+            out.append(group[0])
+            continue
+        merged = dict(group[0])
+        # Preserve the first per-page URL as the primary locus so axis-4 (evidence
+        # chain) still has a click-through. Every original per-page envelope is
+        # kept in instances[].
+        merged["instances"] = [
+            {
+                "locus": r.get("locus") or {"url": None, "selector": None},
+                "evidence": r.get("evidence"),
+                "severity": r.get("severity"),
+            }
+            for r in group
+        ]
+        # Note the aggregation in the evidence rather than lying about a single-page
+        # observation. The individual page URLs live in instances[].
+        base_evidence = group[0].get("evidence") or ""
+        merged["evidence"] = (
+            f"{len(group)} sampled pages share this proactive recommendation. "
+            f"See instances[] for per-page evidence. First: {base_evidence}"
+        )
+        out.append(merged)
+    return out
+
+
 def build_recommendations(recommendations: list[dict]) -> list[dict]:
+    # Phase 9 item B: consolidate per-page duplicates before serialising.
+    recommendations = _consolidate_per_page_recs(recommendations)
     out = []
     for i, r in enumerate(recommendations, start=1):
         # D-11 (2026-09-12): recommendation envelopes for genuinely site-scoped checks
@@ -509,7 +711,7 @@ def build_recommendations(recommendations: list[dict]) -> list[dict]:
         locus = r.get("locus") or {}
         if not locus.get("url"):
             locus = {"url": None, "scope": "site"}
-        out.append({
+        entry = {
             "id": f"R-{i:03d}",
             "check_id": r["check_id"],
             "title": CHECK_TITLES.get(r["check_id"], r["check_id"]),
@@ -522,7 +724,10 @@ def build_recommendations(recommendations: list[dict]) -> list[dict]:
             # while building harness/score_dev.py.
             "locus": locus,
             "severity": r.get("severity"),
-        })
+        }
+        if r.get("instances"):
+            entry["instances"] = r["instances"]
+        out.append(entry)
     return out
 
 
@@ -565,6 +770,101 @@ PRESCRIPTIVE_CODE_PATTERNS = (
 )
 
 
+def _action_has_prescriptive_marker(text: str | None) -> str | None:
+    """Return the first offending marker if the action text uses prescriptive wording,
+    otherwise None. Substring checks kept deliberately literal so the gate is easy to
+    audit and cannot quietly reinterpret wording to make itself pass.
+    """
+    if not text:
+        return None
+    lowered = text.lower()
+    for marker in PRESCRIPTIVE_ACTION_MARKERS:
+        if marker.lower() in lowered:
+            return marker
+    for code_pattern in PRESCRIPTIVE_CODE_PATTERNS:
+        if code_pattern.lower() in lowered:
+            return code_pattern
+    return None
+
+
+# Phase 9 item P (2026-09-14): strength detectors and the check_ids their presence
+# would contradict a recommendation for. When compute_strengths() confirms
+# `identity_jsonld` (well-formed Organization/Person JSON-LD), a recommendation
+# under CHK-D-006 or CHK-D-007 saying "consider adding Organization JSON-LD" is
+# an internal contradiction. Two independent judges called this out on Al Jazeera.
+# The map is deliberately narrow -- only detectors whose evidence directly answers
+# a specific check's premise -- and the filter drops the offending recommendation
+# and records the drop as a `contradicted_by_strength` warning for traceability.
+STRENGTH_CONTRADICTS_CHECK: dict[str, tuple[str, ...]] = {
+    "feed_discovery":            ("CHK-D-032", "CHK-D-033"),
+    "identity_jsonld":           ("CHK-D-006", "CHK-D-007"),
+    "canonical_consistency":     ("CHK-D-008",),
+    "retrieval_crawler_access":  ("CHK-D-001",),
+}
+
+
+def _filter_strengths_recs_contradiction(report: dict) -> list[dict]:
+    """Drop recs whose check_id is already answered by an active strength detector.
+
+    The report cannot honestly say "the site has X" in `strengths[]` and simultaneously
+    say "the site should add X" in `recommendations[]`. This is the strengths-vs-recs
+    contradiction pattern the judges flagged. When a strength detector fires, drop
+    the recommendations it contradicts and log the drop as a warning.
+    """
+    strengths = report.get("strengths", []) or []
+    active_detectors = {s.get("detector") for s in strengths if s.get("detector")}
+    if not active_detectors:
+        return []
+    contradicted_check_ids: set[str] = set()
+    for detector in active_detectors:
+        for cid in STRENGTH_CONTRADICTS_CHECK.get(detector, ()):
+            contradicted_check_ids.add(cid)
+    if not contradicted_check_ids:
+        return []
+    dropped: list[dict] = []
+    kept: list[dict] = []
+    for r in report.get("recommendations", []) or []:
+        cid = r.get("check_id")
+        if cid in contradicted_check_ids:
+            dropped.append({
+                "check": "contradicted_by_strength",
+                "detail": (f"{cid}: recommendation dropped because the site's active "
+                           f"strength detectors already answer this check's premise"),
+            })
+            continue
+        kept.append(r)
+    report["recommendations"] = kept
+    return dropped
+
+
+def _enforce_prohibited_recommendation_gate(report: dict) -> list[dict]:
+    """Phase 9 item C (2026-09-14): drop recommendations whose suggested_action still
+    reads as an implementation fix, and record the drop as a `gate_dropped_action`
+    warning. The gate is DEFENSE IN DEPTH: prescriptive wording should already have
+    been rewritten at each check's source (item C first pass), but this ensures a
+    check that regresses cannot silently ship a `Wrap ... in <main>` action to a
+    reader. Findings are NOT dropped here (they own real defects that need surfacing);
+    if a finding's action still has an imperative marker after the source rewrite,
+    that surfaces as a `prohibited_recommendation` warning per the meta-eval below.
+    """
+    dropped: list[dict] = []
+    recs = report.get("recommendations", [])
+    kept: list[dict] = []
+    for r in recs:
+        action = (r.get("suggested_action") or {}).get("summary")
+        marker = _action_has_prescriptive_marker(action)
+        if marker is not None:
+            dropped.append({
+                "check": "gate_dropped_action",
+                "detail": (f"{r.get('check_id')}: dropped recommendation with "
+                           f"prescriptive marker {marker!r}; wording gate enforced"),
+            })
+            continue
+        kept.append(r)
+    report["recommendations"] = kept
+    return dropped
+
+
 def meta_evaluate(report: dict) -> dict:
     """A light self-check over the assembled report, run before it is emitted.
 
@@ -575,7 +875,12 @@ def meta_evaluate(report: dict) -> dict:
     because quietly rewriting a report to make its own audit pass is the failure mode
     D-010 was written against.
     """
-    warnings: list[dict] = []
+    # Phase 9 items P + C: run the strengths/recs contradiction filter first so a
+    # rec that would otherwise be dropped by the prescriptive-marker gate is
+    # recorded as the more informative contradicted_by_strength warning, then run
+    # the prescriptive-marker drop gate. Both surface their drops for traceability.
+    warnings: list[dict] = _filter_strengths_recs_contradiction(report)
+    warnings.extend(_enforce_prohibited_recommendation_gate(report))
     findings = report.get("findings", [])
     summary = report.get("summary", {})
 
@@ -596,25 +901,21 @@ def meta_evaluate(report: dict) -> dict:
                 warnings.append({"check": "finding_complete",
                                  "detail": f"{f.get('check_id')} missing '{field}'"})
 
-    # 3. A check appearing more than once at top level is a prioritisation warning even
-    #    when the loci differ: the report should roll repeated instances into one finding.
-    #    Catch either same stable title or same subcheck, rather than relying on locus or
-    #    evidence signatures that allowed four E-014 findings through on Ghost.
-    seen_titles: set[tuple] = set()
+    # 3. A check appearing more than once at top level is a prioritisation warning
+    #    when the SAME (check_id, subcheck) fires twice. Phase 9 item U (2026-09-14):
+    #    prior logic tripped whenever `title` matched, which fired on legitimate
+    #    distinctions -- CHK-E-022 with subcheck `no_h1` and subcheck `no_main`
+    #    are two different defect classes that share a check_id and title but need
+    #    to surface separately. The meta-eval treats `(check_id, subcheck)` as the
+    #    identity of a defect class; identical (check_id, subcheck) pairs across
+    #    different findings are still a real duplicate.
     seen_subchecks: set[tuple] = set()
     for f in findings:
-        title_key = (f.get("check_id"), f.get("title"))
         subcheck_key = (f.get("check_id"), f.get("subcheck"))
-        duplicate_by = []
-        if title_key in seen_titles:
-            duplicate_by.append("title")
         if subcheck_key in seen_subchecks:
-            duplicate_by.append("subcheck")
-        if duplicate_by:
             warnings.append({"check": "no_duplicate_findings",
                              "detail": f"{f.get('check_id')} appears more than once with "
-                                       f"the same {' and '.join(duplicate_by)}"})
-        seen_titles.add(title_key)
+                                       f"the same subcheck ({f.get('subcheck')!r})"})
         seen_subchecks.add(subcheck_key)
 
     # 4. Only known check IDs may reach the report.
@@ -653,11 +954,13 @@ def meta_evaluate(report: dict) -> dict:
 
     # 6. The declared limitations are structural and must always be present. Runtime
     # limitations may be appended when collection degraded, so this is a subset check.
-    actual_limitation_ids = {lim.get("id") for lim in report.get("limitations", [])}
-    missing_limitation_ids = [lim["id"] for lim in DECLARED_LIMITATIONS
-                              if lim["id"] not in actual_limitation_ids]
+    # Phase 9 item H: read stable `lim_id` (the LIM-01..LIM-05 / BUDGET-* slug), not
+    # the ephemeral `id` (L-NNN slot) that is stamped at emission.
+    actual_limitation_ids = {lim.get("lim_id") for lim in report.get("limitations", [])}
+    missing_limitation_ids = [lim["lim_id"] for lim in DECLARED_LIMITATIONS
+                              if lim["lim_id"] not in actual_limitation_ids]
     if missing_limitation_ids:
-        expected_ids = ", ".join(lim["id"] for lim in DECLARED_LIMITATIONS)
+        expected_ids = ", ".join(lim["lim_id"] for lim in DECLARED_LIMITATIONS)
         warnings.append({"check": "limitations_present",
                          "detail": f"declared limitations ({expected_ids}) are not all present; "
                                    f"missing {', '.join(missing_limitation_ids)}"})
@@ -732,35 +1035,80 @@ def compose_report(site: str, audited_at: str, all_envelopes: list[dict], bundle
 
     scored, recommendation_envelopes = split_findings_recommendations(findings)
     scored = roll_up_site_wide(scored)
+    # Phase 9 item U: strip per-page findings the site-wide rollup already covers.
+    scored = _dedup_covered_by_rollup(scored)
     findings_out = assign_ids_and_titles(scored)
     recommendations_out = build_recommendations(recommendation_envelopes)
 
-    access_blocked_for = []
+    # Phase 9 items O + T (2026-09-14): honest access-state taxonomy.
+    #
+    # Prior rule (item 2.5): `access_blocked_for` fired when `degraded_stages` contained
+    # robots_discovery OR render_pass AND findings <= 1. That rule misfired in three
+    # directions -- Al Jazeera (5/5 successful fetches, still flagged blocked because
+    # render_pass is expected-degraded without a headless browser); Coinbase (partial
+    # block -- robots readable, pages blocked) framed identically to India.gov.in
+    # (full block -- robots unreachable); and any short-content site with one finding
+    # and no headless browser also fired.
+    #
+    # New rule uses the collector's own extraction results directly:
+    #   pages_fetched = count of bundle.pages with extraction_ok
+    #   robots_ok     = 'robots_discovery' NOT in degraded_stages
+    #   pages_fetched == 0 and not robots_ok  -> access_state = "full_block",
+    #                                            access_blocked_for = [host]
+    #   pages_fetched == 0 and robots_ok      -> access_state = "partial_block",
+    #                                            access_partial_for = [host]
+    #   pages_fetched >  0                    -> access_state = "ok"
+    # Fix L (block-as-finding) is intentionally NOT emitted: OFFICIALS-QA §2.2 and
+    # Action #10 place blocked sites out of scope for further audit investment. The
+    # access_state preamble field IS the entire signal we ship for blocked sites --
+    # no new finding, no new recommendation. See docs/DECISIONS.md D-035.
     degraded_stages = compute_degraded_stages(bundle.get("budget", {}))
     degraded_stage_names = {stage.get("stage") for stage in degraded_stages}
-    limitations = list(DECLARED_LIMITATIONS)
-    substantially_degraded = bool(
-        degraded_stage_names.intersection({"robots_discovery", "render_pass"})
-    ) and len(findings_out) <= 1
-    if substantially_degraded:
-        parsed_site = urlparse(site)
-        site_host = (bundle.get("site", {}).get("canonical_host") or parsed_site.netloc
-                     or parsed_site.path).strip("/")
+    pages_fetched = sum(
+        1 for p in (bundle.get("pages") or [])
+        if p.get("extraction_ok", True) and p.get("status") == "ok"
+    )
+    robots_ok = "robots_discovery" not in degraded_stage_names
+    parsed_site = urlparse(site)
+    site_host = (bundle.get("site", {}).get("canonical_host") or parsed_site.netloc
+                 or parsed_site.path).strip("/")
+    access_blocked_for: list[str] = []
+    access_partial_for: list[str] = []
+    if pages_fetched == 0 and not robots_ok:
+        access_state = "full_block"
         access_blocked_for = [site_host]
+    elif pages_fetched == 0 and robots_ok:
+        access_state = "partial_block"
+        access_partial_for = [site_host]
+    else:
+        access_state = "ok"
+
+    # Phase 9 item H (2026-09-14): DECLARED_LIMITATIONS carry a stable `lim_id`; the
+    # ephemeral `id: L-NNN` slot is stamped here at emission so every shipped
+    # limitation has both fields and readers can distinguish "the LIM-01 cross-web
+    # limitation" from "the third limitation in this report".
+    limitations = [dict(lim) for lim in DECLARED_LIMITATIONS]
+    if access_state in ("full_block", "partial_block"):
         affected_stage_names = [stage["stage"] for stage in degraded_stages
                                 if stage.get("stage") in {"robots_discovery", "render_pass"}]
         limitations.append({
-            "id": f"L-{len(limitations) + 1}",
             "lim_id": "BUDGET-degraded_stages",
             "title": "Audit substantially degraded — signal insufficient for scored findings",
             "description": (
-                "The collector's degraded_stages signal indicates that "
-                f"{', '.join(affected_stage_names)} could not complete. The single finding "
-                "present should be read as advisory only; the report cannot honestly claim "
-                "substantive coverage."
+                f"The collector could not reach any of the sampled pages "
+                f"({pages_fetched} successful fetches). "
+                + ("robots.txt was also unreachable; " if not robots_ok else "")
+                + "The report's remaining findings and strengths should be read as "
+                "advisory only; the audit cannot honestly claim substantive coverage."
             ),
             "affected_checks": [finding["check_id"] for finding in findings_out],
         })
+    # Stamp the ephemeral id at emission so every limitation carries both an id
+    # (L-NNN, positional) and a lim_id (stable slug). Previously only the runtime
+    # BUDGET-degraded_stages entry had both; declared entries shipped with a null
+    # lim_id, which two independent judges flagged as opaque.
+    for i, lim in enumerate(limitations, start=1):
+        lim["id"] = f"L-{i:03d}"
 
     d001 = next((f for f in all_envelopes if f["check_id"] == "CHK-D-001" and f["state"] == "present"), None)
     notes = []
@@ -829,7 +1177,9 @@ def compose_report(site: str, audited_at: str, all_envelopes: list[dict], bundle
         "site": site,
         "audited_at": audited_at,
         "preamble": {
+            "access_state": access_state,
             "access_blocked_for": access_blocked_for,
+            "access_partial_for": access_partial_for,
             "notes": notes,
             "archetype": archetype,
             "recommendations_scoped_to": archetype,
@@ -839,7 +1189,12 @@ def compose_report(site: str, audited_at: str, all_envelopes: list[dict], bundle
         "recommendations": recommendations_out,
         # D-18 (2026-09-12): the checks that ran and were verified clean, so a two-finding
         # report on a 32-check marketplace does not read like only two checks ran.
-        "checks_passed": compute_checks_passed(all_envelopes),
+        # Phase 9 item M (2026-09-14): starved checks (whose input stage was
+        # abandoned) are excluded, not treated as passed.
+        # Full or partial block both mean the DOM/link-dependent checks had no meaningful
+        # input; starve them either way.
+        "checks_passed": compute_checks_passed(
+            all_envelopes, degraded_stages, access_blocked_for + access_partial_for),
         "strengths": compute_strengths(bundle, audited_at),
         "limitations": limitations,
         "degraded_stages": degraded_stages,

@@ -14,7 +14,9 @@ defined in D-012.
   "site": "example.com",
   "audited_at": "2026-09-20T14:32:00Z",
   "preamble": {
+    "access_state": "ok",
     "access_blocked_for": [],
+    "access_partial_for": [],
     "notes": [],
     "archetype": "ecommerce",
     "recommendations_scoped_to": "ecommerce"
@@ -88,6 +90,28 @@ makes an additional request.
 
 `summary.total_findings` counts only `findings[]` entries. Recommendations and
 limitations are not findings and are not counted there.
+
+`preamble.access_state` is a three-value flag introduced by Phase 9 (2026-09-14) so a
+reader can distinguish the audit that successfully reached its sample from the audit
+that could not. Values:
+
+- **`ok`** — at least one sampled page was fetched with `extraction_ok`; the report's
+  findings, strengths, and passed checks describe measurable evidence.
+- **`partial_block`** — zero sampled pages were fetched but `robots.txt` was reachable;
+  a perimeter/WAF or bot-management layer allows the automated crawler to see
+  `robots.txt` but not any real page. The offending host appears in
+  `access_partial_for`; `access_blocked_for` is empty.
+- **`full_block`** — neither `robots.txt` nor any sampled page could be reached. The
+  host appears in `access_blocked_for`; `access_partial_for` is empty.
+
+On either block state the report deliberately does NOT add a new critical finding
+about the block itself. OFFICIALS-QA §2.2 places bot-blocked sites out of scope for
+further audit investment (Action #10), so the access-state preamble field is the
+entire signal we ship: the report is honest that the site was unreachable, and the
+DOM/link-dependent checks (E-014, E-015, E-022, D-003, D-009, E-018, E-019, E-021)
+are excluded from `checks_passed[]` so no reader can mistake "we did not measure
+these" for "these passed cleanly". A `BUDGET-degraded_stages` limitation is always
+appended when access is anything other than `ok`.
 
 `preamble.archetype` records the vertical the audit assumed, and
 `recommendations_scoped_to` states plainly that every suggested action below was written
