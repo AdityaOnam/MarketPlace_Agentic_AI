@@ -14,6 +14,7 @@ REQUIRED_SECTIONS = ("site", "robots", "discovery", "pages", "rendered", "links"
 def build_site_section(input_target: str, canonical_host: str, origin: str, scheme: str,
                         redirect_chain: list[str], tls_valid: bool,
                         archetype: str, archetype_confidence: float,
+                        archetype_reason: str | None = None,
                         status: str = "ok", reason: str | None = None) -> dict:
     return {
         "status": status,
@@ -26,6 +27,7 @@ def build_site_section(input_target: str, canonical_host: str, origin: str, sche
         "tls_valid": tls_valid,
         "archetype": archetype,
         "archetype_confidence": archetype_confidence,
+        "archetype_reason": archetype_reason,
     }
 
 

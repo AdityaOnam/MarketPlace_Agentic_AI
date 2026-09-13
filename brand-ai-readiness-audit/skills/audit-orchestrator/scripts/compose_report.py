@@ -1359,6 +1359,7 @@ def compose_report(site: str, audited_at: str, all_envelopes: list[dict], bundle
     # non-commercial one from trust signals) and shapes how each suggested action is
     # worded. A reader needs to know which vertical the recommendations were written for.
     archetype = bundle.get("site", {}).get("archetype", "unknown")
+    archetype_reason = bundle.get("site", {}).get("archetype_reason")
     # Phase 10 P10-3 (AA): if the collector could not extract any pages, we have no
     # evidence that supports any archetype label; the classifier's fallback (often
     # `brochure`) was reached without inputs. Override to `unknown` at compose time
@@ -1368,6 +1369,7 @@ def compose_report(site: str, audited_at: str, all_envelopes: list[dict], bundle
     # not_determinable.
     if pages_fetched == 0 and archetype not in (None, "", "unknown"):
         archetype = "unknown"
+        archetype_reason = "No successfully fetched pages were available to support an archetype label."
     # D-3 (2026-09-12): state in plain English what the archetype label DID in this audit.
     # OFFICIALS-QA §3.3 and Action #6 name archetype-specific interpretation as a rewarded
     # differentiator; a reader needs to see the archetype had a downstream effect, not
@@ -1407,6 +1409,8 @@ def compose_report(site: str, audited_at: str, all_envelopes: list[dict], bundle
     arch_note = archetype_effects.get(archetype)
     if arch_note:
         notes.append(f"Archetype: {archetype}. {arch_note}")
+    if isinstance(archetype_reason, str) and archetype_reason:
+        notes.append(f"Archetype evidence: {archetype_reason}")
 
     report = {
         "schema_version": "1.0.0",
