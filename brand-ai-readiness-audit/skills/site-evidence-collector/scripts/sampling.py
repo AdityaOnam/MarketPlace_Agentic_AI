@@ -40,7 +40,10 @@ _EXCLUDED_PATH_FAMILIES = (
     # Download and brand-asset utilities.
     "/assets", "/brand", "/media-kit", "/press", "/download", "/downloads", "/dl",
 )
-_AUTH_QUERY_KEYS = {"return_to", "redirect_uri", "next"}
+# Redirect/navigation utility parameters are eligible only when their value is an
+# ordinary scalar (for example, `?next=5`).  A URL-shaped value routes collection
+# through a redirect or navigation helper rather than to substantive page content.
+_AUTH_QUERY_KEYS = {"return_to", "redirect_uri", "next", "go"}
 
 # Phase 10 P10-10: narrow session-auth exclusion to explicit verb tails, so
 # conference or session-detail content is not swept up. The old blanket
@@ -116,7 +119,7 @@ def is_page_url(url: str) -> bool:
     # Phase 10 P10-10: MediaWiki administrative namespaces.
     if _MEDIAWIKI_ADMIN_RE.search(path):
         return False
-    # Phase 10 P10-10: only reject a `return_to` / `redirect_uri` / `next` query
+    # Phase 10 P10-10: only reject a `return_to` / `redirect_uri` / `next` / `go` query
     # value when the value is URL-shaped — a plain `?next=2` on a paginator is
     # not an auth redirect, whereas `?redirect_uri=https%3A%2F%2F...` is. This
     # keeps legitimate paginated content in the sampler while still filtering

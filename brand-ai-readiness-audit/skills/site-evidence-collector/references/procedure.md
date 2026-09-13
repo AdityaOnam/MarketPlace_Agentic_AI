@@ -85,8 +85,13 @@ finding depends on a single page's label being correct.
 Site-level. Decided by **additive evidence scoring**, not by a first-match rule table
 (D-035, 2026-09-12): every archetype accumulates weighted evidence from five independent
 families, explicit counter-evidence subtracts, and the top score wins only with a margin.
-`page_classifier.classify_archetype_detailed` returns the label, a confidence and the
-evidence that decided it.
+`page_classifier.classify_archetype_detailed` receives the complete in-memory `pages[]`
+records plus the existing inventory, robots text and sitemap declarations. It returns the
+label, a confidence and the evidence that decided it. Do not reduce pages to a hand-made
+summary: nested JSON-LD, extracted links, title/meta and static text are all deliberate
+classifier inputs. The collector stores the bounded explanation as
+`site.archetype_reason`; persisted evaluation bundles may omit `raw_html` only after
+classification completes.
 
 | Family | Weight | What counts |
 | --- | --- | --- |

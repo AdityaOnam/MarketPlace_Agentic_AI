@@ -44,12 +44,16 @@ reason: string | null      # required whenever status != "ok"
   "redirect_chain": ["http://example.com", "https://example.com", "https://www.example.com"],
   "tls_valid": true,
   "archetype": "ecommerce | documentation | saas_marketing | news_editorial | local_business | brochure | reference | institutional | marketplace | personal | unknown",
-  "archetype_confidence": 0.0
+  "archetype_confidence": 0.0,
+  "archetype_reason": "ecommerce 9.0 vs marketplace 2.0: +5 Store/OnlineStore JSON-LD on home/about; +4 cart link (1)"
 }
 ```
 
 `archetype` drives the per-archetype suppression rules in the ledger (D-009). `reference`, `institutional`, `marketplace` and `personal` were added by D-035; `archetype_confidence` (0.55–0.90, or 0.0 with `unknown`) is derived from evidence strength and margin, see procedure.md §3. It is a
 collector-side label because it depends on the whole page inventory, not on one page.
+`archetype_reason` is the bounded, evidence-derived decision explanation returned by the
+classifier (or the abstention reason for `unknown`). It is diagnostic evidence, not an
+additional finding and must not be written as a site-quality claim.
 
 ## `robots`
 

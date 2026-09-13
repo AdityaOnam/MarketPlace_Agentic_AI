@@ -854,11 +854,17 @@ def classify_archetype_detailed(pages: list[dict], inventory: list[dict] | None 
 
     # ===== vocabulary (weak, core-term gated) ============================================
     if VOCAB_FALLBACK_ENABLED:
+        # Vocabulary describes what text mentions, not necessarily who operates the site.
+        # It therefore cannot, by itself, establish institutional or SaaS identity: those
+        # labels affect downstream scope rules. Vocabulary remains a tie-breaker once an
+        # independent identity, structure, or affordance signal exists.
+        pre_vocab_scores = dict(ev.score)
         vscores, vterms = _vocab_scores(sigs, basis_paths, hints.get("robots_txt"), hints.get("sitemap_urls"))
         vr = sorted(vscores.items(), key=lambda kv: -kv[1])
         (vtop, vtop_s), (_, vsecond_s) = vr[0], vr[1]
         if vtop_s >= 12 and vtop_s >= 1.5 * max(vsecond_s, 1.0):
-            ev.add(vtop, min(3.0, 1.0 + (vtop_s - 8) / 10), f"vocabulary {vtop_s:.0f} ({', '.join(vterms[vtop][:2])})")
+            if vtop not in {"institutional", "saas_marketing"} or pre_vocab_scores[vtop] > 0:
+                ev.add(vtop, min(3.0, 1.0 + (vtop_s - 8) / 10), f"vocabulary {vtop_s:.0f} ({', '.join(vterms[vtop][:2])})")
 
     # ===== counter-evidence ===============================================================
     commerce_identity = ecom_platform or is_store_org or bool(cart_links)
