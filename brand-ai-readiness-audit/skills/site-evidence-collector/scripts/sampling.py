@@ -24,9 +24,15 @@ _NEVER_A_PAGE_RE = re.compile(
 )
 
 _EXCLUDED_PATH_FAMILIES = (
-    # Authentication and session plumbing.
+    # Authentication plumbing. Phase 10 P10-10: `/session` alone was excluding
+    # legitimate conference-session detail pages like Databricks's
+    # `/dataaisummit/session/{id}` because `_path_in_family` matches any URL with
+    # a `/session/` segment. The authentication family is already covered by
+    # `/login`, `/signin`, `/signup`, `/logout`, `/auth/`, `/oauth/`, `/sso/`,
+    # `/callback`; specific session-auth verbs (`/session/new`, `/session/end`)
+    # are handled by `_AUTH_SESSION_VERB_RE` below.
     "/auth/", "/authentications/", "/oauth/", "/login", "/signin", "/signup",
-    "/logout", "/session", "/sso/", "/callback",
+    "/logout", "/sso/", "/callback",
     # Legal/policy pages do not represent the site's substantive content.
     "/legal", "/legal-notice", "/privacy", "/terms", "/cookies", "/imprint",
     "/impressum", "/gdpr", "/dmca", "/eula", "/mentions-legales", "/conduct",
@@ -35,6 +41,29 @@ _EXCLUDED_PATH_FAMILIES = (
     "/assets", "/brand", "/media-kit", "/press", "/download", "/downloads", "/dl",
 )
 _AUTH_QUERY_KEYS = {"return_to", "redirect_uri", "next"}
+
+# Phase 10 P10-10: narrow session-auth exclusion to explicit verb tails, so
+# conference or session-detail content is not swept up. The old blanket
+# `/session` family excluded `/dataaisummit/session/{id}` alongside the real
+# `/session/new`.
+_AUTH_SESSION_VERB_RE = re.compile(
+    r"/session(?:s)?/(?:new|create|edit|update|destroy|end|logout|renew|refresh)(?:/|$|\?)",
+    re.I,
+)
+
+# Phase 10 P10-10: MediaWiki administrative namespaces. The URL segment after
+# `/wiki/` names a namespace when it contains a colon. Only exclude namespaces
+# that are administrative — content article titles can also contain colons
+# (e.g. "En:dash"), so a blanket colon exclusion would drop real content.
+_MEDIAWIKI_ADMIN_RE = re.compile(
+    r"/wiki/("
+    r"Template|Category|Help|Wikipedia|File|MediaWiki|"
+    r"Portal|Book|Draft|TimedText|Module|Special|User|User_talk|Talk|"
+    r"Wikipedia_talk|Template_talk|Category_talk|File_talk|MediaWiki_talk|"
+    r"Portal_talk|Book_talk|Draft_talk|Module_talk"
+    r")(?::|%3A)",
+    re.I,
+)
 
 # ISO 639-1 alpha-2 language codes. Keeping the allow-list avoids treating ordinary
 # two-letter route names such as /us/ as locale prefixes.
@@ -80,8 +109,37 @@ def is_page_url(url: str) -> bool:
         return False
     if any(_path_in_family(path, family) for family in _EXCLUDED_PATH_FAMILIES):
         return False
-    query_keys = {key.lower() for key, _ in parse_qsl(parsed.query, keep_blank_values=True)}
-    return not query_keys.intersection(_AUTH_QUERY_KEYS)
+    # Phase 10 P10-10: reject session-auth verb tails specifically, so conference
+    # session detail URLs (`.../session/{id}`) continue to be eligible.
+    if _AUTH_SESSION_VERB_RE.search(path):
+        return False
+    # Phase 10 P10-10: MediaWiki administrative namespaces.
+    if _MEDIAWIKI_ADMIN_RE.search(path):
+        return False
+    # Phase 10 P10-10: only reject a `return_to` / `redirect_uri` / `next` query
+    # value when the value is URL-shaped — a plain `?next=2` on a paginator is
+    # not an auth redirect, whereas `?redirect_uri=https%3A%2F%2F...` is. This
+    # keeps legitimate paginated content in the sampler while still filtering
+    # true auth-flow URLs.
+    for key, value in parse_qsl(parsed.query, keep_blank_values=True):
+        if key.lower() in _AUTH_QUERY_KEYS and _looks_url_shaped(value):
+            return False
+    return True
+
+
+def _looks_url_shaped(value: str) -> bool:
+    """Whether a query-string value looks like an encoded or absolute URL. Used
+    to distinguish `?next=5` from `?next=%2Faccount%2Fdashboard` — the former is
+    pagination, the latter is an auth-flow redirect."""
+    if not value:
+        return False
+    lowered = value.lower()
+    if lowered.startswith(("http://", "https://", "//")):
+        return True
+    if lowered.startswith("%2f") or lowered.startswith("/"):
+        # A leading path separator implies a target URL, not a numeric value.
+        return True
+    return False
 
 
 def sampling_seed(inventory_urls: list[str]) -> str:
@@ -139,6 +197,51 @@ def select_static_sample(inventory: list[dict], max_pages: int = MAX_STATIC_PAGE
     take(lambda p: p["page_type"] == "home", limit=1)
     take(lambda p: p["page_type"] == "about", limit=1)
     take(lambda p: p["page_type"] == "contact", limit=1)
+
+    remaining_budget = max_pages - len(selected)
+    if remaining_budget <= 0:
+        return selected[:max_pages]
+
+    # Phase 10 P10-10: family-diversity pass. Before proportional allocation
+    # by page_type, take one representative candidate from each unique
+    # top-level path family that is not already represented in `selected`.
+    # This is what stopped itch.io's sample being 5/6 `/blog/` and Mozilla's
+    # from being all `/en-US/about/...`: the classifier saw one family and had
+    # nothing else to weigh against it. Deterministic — families are visited
+    # in sorted order, and inside each family we take the first URL by the
+    # existing (page_type, url) sort — so the seed determines which URL wins.
+    def _top_family(url: str) -> str:
+        segments = [s for s in urlparse(url).path.split("/") if s]
+        return segments[0] if segments else ""
+
+    represented_families = {_top_family(p["url"]) for p in selected}
+    # Reserve slots for the proportional pass so a very-narrow inventory (e.g. a
+    # docs-only site) still gets multiple pages of its dominant family. When we
+    # do have unrepresented families, take one candidate from each.
+    candidates_by_family: dict[str, list[dict]] = {}
+    for p in eligible:
+        if p["url"] in seen_urls:
+            continue
+        fam = _top_family(p["url"])
+        if fam in represented_families:
+            continue
+        candidates_by_family.setdefault(fam, []).append(p)
+    unrep_family_count = len(candidates_by_family)
+    # Take at most (remaining_budget - 1) diversity picks, so at least one slot
+    # remains for the proportional / top-up pass; but do not take more than the
+    # number of unrepresented families available.
+    diversity_slots = max(0, min(remaining_budget - 1, unrep_family_count))
+    if diversity_slots > 0:
+        for fam in sorted(candidates_by_family.keys()):
+            if diversity_slots <= 0:
+                break
+            candidate = candidates_by_family[fam][0]
+            if candidate["url"] in seen_urls:
+                continue
+            selected.append(candidate)
+            seen_urls.add(candidate["url"])
+            represented_families.add(fam)
+            diversity_slots -= 1
 
     remaining_budget = max_pages - len(selected)
     if remaining_budget <= 0:
