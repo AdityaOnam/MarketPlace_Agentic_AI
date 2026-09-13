@@ -27,11 +27,19 @@ def _envelope(check_id: str, state: str, evidence: str, severity: str | None,
 def evaluate(bundle: dict) -> list[dict]:
     robots = bundle.get("robots", {})
 
+    # Phase 10 P10-2: locus points at the actual robots.txt URL when we have one, so
+    # readers can trace the finding back to the specific file whose contents supplied
+    # the evidence. Line numbers travel in the evidence string; the locus URL is the
+    # file, not `null`.
+    origin = (bundle.get("site", {}) or {}).get("origin") or ""
+    robots_url = f"{origin.rstrip('/')}/robots.txt" if origin else None
+
     if robots.get("status") != "ok":
         reason = robots.get("reason") or "robots.txt unavailable"
+        loc = {"url": robots_url, "selector": None} if robots_url else None
         return [
-            _envelope("CHK-D-001", "not_determinable", reason, None, "HARD-MECHANICAL", None),
-            _envelope("CHK-D-002", "not_determinable", reason, None, "CORRELATIONAL", None),
+            _envelope("CHK-D-001", "not_determinable", reason, None, "HARD-MECHANICAL", None, locus=loc),
+            _envelope("CHK-D-002", "not_determinable", reason, None, "CORRELATIONAL", None, locus=loc),
         ]
 
     agents: dict = robots.get("agents", {})
@@ -46,6 +54,15 @@ def evaluate(bundle: dict) -> list[dict]:
     ]
 
     findings: list[dict] = []
+
+    # Phase 10 P10-2: robots-based findings carry a real locus URL when we have the
+    # site origin. The alphabetically-first matched line supplies the selector so a
+    # reader can jump straight to the offending Disallow line without scanning.
+    def _locus_from_line(line: int | None) -> dict | None:
+        if not robots_url:
+            return None
+        sel = f"L{line}" if isinstance(line, int) else None
+        return {"url": robots_url, "selector": sel}
 
     if blocked_retrieval:
         # Deterministic: report the alphabetically-first blocked retrieval agent as the
@@ -74,10 +91,12 @@ def evaluate(bundle: dict) -> list[dict]:
                            f"that need protection rather than the site root.",
                 "priority": "critical",
             },
+            locus=_locus_from_line(blocked_retrieval[0][1].get("matched_line")),
         ))
     else:
         findings.append(_envelope("CHK-D-001", "absent", "No retrieval-time AI crawler is "
-                                   "blocked at root.", None, "HARD-MECHANICAL", None))
+                                   "blocked at root.", None, "HARD-MECHANICAL", None,
+                                   locus=_locus_from_line(None)))
 
     if not blocked_retrieval and blocked_training:
         blocked_training.sort(key=lambda pair: pair[0].lower())
@@ -99,14 +118,16 @@ def evaluate(bundle: dict) -> list[dict]:
                 "priority": "low",
             },
             suppressed_by=[],
+            locus=_locus_from_line(blocked_training[0][1].get("matched_line")),
         ))
     elif blocked_retrieval and blocked_training:
         findings.append(_envelope("CHK-D-002", "not_applicable",
                                    "Suppressed: CHK-D-001 already fired.", None,
-                                   "CORRELATIONAL", None, suppressed_by=["CHK-D-001"]))
+                                   "CORRELATIONAL", None, suppressed_by=["CHK-D-001"],
+                                   locus=_locus_from_line(None)))
     else:
         findings.append(_envelope("CHK-D-002", "absent", "No training-corpus crawler is "
                                    "blocked while retrieval access remains open.", None,
-                                   "CORRELATIONAL", None))
+                                   "CORRELATIONAL", None, locus=_locus_from_line(None)))
 
     return findings

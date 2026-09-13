@@ -88,9 +88,14 @@ Invoke in parallel (they are independent; none reads another's output):
 2. `content-engagement-audit` — pass the full bundle; receive findings for CHK-D-003,
    D-004, D-005, D-009, D-010, D-011, D-013, CHK-E-014 through E-022, E-024.
 3. `entity-identity-audit` — pass the full bundle; receive findings for CHK-D-006,
-   D-007, D-008, D-012, D-025, D-026, D-027.
+   D-007, D-008, D-012, D-025, D-026, D-027, and the vertical-schema family CHK-D-029
+   (ecommerce Product/Offer), CHK-D-030 (SaaS SoftwareApplication/pricing), CHK-D-031
+   (local business Postal/OpeningHours), CHK-D-032 (news NewsArticle provenance),
+   CHK-D-033 (reference dataset/code archive), CHK-D-034 (documentation TechArticle).
 
-All 26 check envelopes are received. No analyser has seen another's output.
+All 32 check envelopes are received. No analyser has seen another's output. The
+`compose_report.CHECK_TITLES` dictionary is the authoritative list; if the counts here
+and there disagree, the dictionary wins.
 
 ### Step 3 — Cross-skill suppression: none remains (D-025)
 
@@ -157,18 +162,17 @@ After suppression:
 
 Before ordering anything, collapse findings that describe **one defect repeated across
 pages**. Group by check ID, subcheck, and the evidence string with URLs and integers
-masked; where a group covers **3 or more** sampled pages, emit one finding with
+masked; where a group covers **2 or more** sampled pages, emit one finding with
 `occurrences: {pages, examples[]}`, `locus.scope = "site"`, and the group's **worst**
-severity.
+severity. The first affected page's URL is preserved on the rolled-up finding so the
+reader still has a click-through (Phase 9 item A). Per-page findings a rollup already
+covers are dropped from the itemised list (Phase 9 item U).
 
 This exists because a site template is shared: one unnamed link in a header, or one missing
 `<main>` in a layout, otherwise produces one finding per page — seventeen findings for one
 fix on a twenty-page sample. Every one of them is true, and the report is still wrong,
 because a reader cannot tell seventeen problems from one problem seen seventeen times.
 Ordering cannot fix a list in which one defect holds seventeen of the slots.
-
-Below the 3-page threshold, leave findings itemised: a defect on one or two pages is
-plausibly specific to them, and the URL is information the reader needs.
 
 ### Step 6 — Assemble the report
 
@@ -192,15 +196,21 @@ report is internally coherent and that nothing prohibited reached the wording:
 | `severity_counts_reconcile` | severity buckets not summing to the finding count |
 | `finding_complete` | a finding missing `id`, `title`, `severity`, `evidence` or `suggested_action` |
 | `no_duplicate_findings` | the same check reported twice for one locus — for CHK-E-019/CHK-D-003 specifically, meaning `content-engagement-audit`'s in-skill O-1 suppression failed to fire |
-| `known_check_id` | a `check_id` outside the 27 reaching the report |
-| `prohibited_recommendation` | any D-007 banned recommendation or statistic in an action string (llms.txt as a fix, citation-outcome promises, above-the-fold rules, reading-grade targets, Lighthouse-100, the 3-second bounce myth, the 9.2mm tap-target figure, …) |
+| `known_check_id` | a `check_id` outside the 32 reaching the report |
+| `prohibited_recommendation` | any D-007 banned recommendation or statistic in an action string (llms.txt as a fix, citation-outcome promises, above-the-fold rules, reading-grade targets, Lighthouse-100, the 3-second bounce myth, the 9.2mm tap-target figure, …). Phase 9 item C hardened this into a hard-drop gate: an offending recommendation is removed from `recommendations[]` and the meta_evaluation warning `gate_dropped_action` records what was cut, so the drop stays auditable. |
+| `contradicted_by_strength` | (hard-drop, Phase 9 item P) a recommendation whose check_id is already covered by an active strength detector — dropped from `recommendations[]`, recorded as a warning. |
+| `empty_recommendation` | (hard-drop, Phase 9 item B) a recommendation whose top-level and nested summary strings are both empty — dropped from `recommendations[]`, recorded as a warning. |
+| `checks_passed_reconcile` | (hard-drop, Phase 10 item W) a check that appears in both `checks_passed[]` and `findings[]`/`recommendations[]` — the pass entry is dropped so the same check_id never contradicts itself. |
 | `limitations_present` | LIM-01…05 not all present |
 
 Results go in a `meta_evaluation` block on the report (`checks_run`, `passed`, `warnings`).
 
-**Warnings are reported, never silently corrected.** Quietly rewriting a report so its own
-self-check passes is precisely the grading-in-our-own-favour failure D-010 exists to
-prevent; a warning that survives into the output is doing its job.
+**Hard-drop gates (Phase 9–10)** — a small, enumerated set of gates removes an offending
+recommendation or pass entry from the final report and records the removal as a warning.
+Everything else is reported as a warning, never silently corrected. Quietly rewriting a
+report so its own self-check passes is precisely the grading-in-our-own-favour failure
+D-010 exists to prevent; the hard-drop gates are the only exception, and each one keeps
+an audit trail in `meta_evaluation.warnings`.
 
 Full report schema (field definitions, required vs. optional, and example):
 [`references/report-schema.md`](references/report-schema.md).
@@ -284,17 +294,20 @@ all_envelopes, bundle) -> report`. The check-ID-to-title map and `F-NNN`/`R-NNN`
 assignment are both deterministic functions of the sorted finding set, verified by
 running the same input twice and diffing the output.
 
-## Checks at a glance — all 26 checks and their owners
+## Checks at a glance — all 32 checks and their owners
 
 | Analyser | Checks | Evidence |
 | --- | --- | --- |
 | `crawl-access-audit` | CHK-D-001, D-002 | `robots` |
-| `content-engagement-audit` | CHK-D-003, D-004, D-005, D-009, D-010, D-011, D-013, CHK-E-014 – E-022, E-024 | `pages`, `rendered`, `links` |
-| `entity-identity-audit` | CHK-D-006, D-007, D-008, D-012, D-025, D-026, D-027 | `pages`, `anchors` |
+| `content-engagement-audit` | CHK-D-003, D-004, D-005, D-009, D-010, D-011, D-013, CHK-E-014 – E-022, E-024 | `pages`, `links` |
+| `entity-identity-audit` | CHK-D-006, D-007, D-008, D-012, D-025, D-026, D-027, and the vertical-schema family D-029 – D-034 | `pages`, `anchors` |
 
-26 checks, disjoint. No check appears in two skills — three skills now, not four, since
-`content-engagement-audit` merged the two that used to split the 17 checks above it
-(**D-025**).
+32 checks, disjoint. No check appears in two skills — three analyser skills, one
+entrypoint, one collector: five skills total in the marketplace. `compose_report.py`'s
+`CHECK_TITLES` dictionary is authoritative for the set; this table restates it for
+readers. (The `rendered[]` evidence category from earlier drafts is not populated in
+the grading sandbox per OFFICIALS-QA §1.1; every check either derives its evidence
+from static HTML or emits `not_determinable`.)
 
 ## False-positive discipline
 
