@@ -192,12 +192,14 @@ def check_d003(bundle: dict) -> dict:
             # observation; how to give a non-rendering crawler something to read
             # (SSR, SSG, pre-render, or a substantive <noscript>) is a choice.
             return _envelope("CHK-D-003", "present", evidence, "high", "HARD-MECHANICAL",
-                              {"summary": "Make the homepage's primary content and its "
-                                          "<h1> present in the raw HTML the server "
-                                          "returns, not only after JavaScript executes. "
-                                          "Options include server-side rendering, static "
-                                          "generation, a partial pre-render of the hero "
-                                          "block, or a substantive <noscript> fallback.",
+                              {"summary": "The homepage's primary content and top-level "
+                                          "heading are not present in the raw HTML the "
+                                          "server returns; they materialise only after "
+                                          "JavaScript executes. Non-rendering clients see "
+                                          "nothing usable. Options for the site to consider "
+                                          "include server-side rendering, static generation, "
+                                          "a partial pre-render of the hero block, or a "
+                                          "substantive noscript fallback.",
                                 "priority": "high"},
                               locus=locus)
         return _envelope("CHK-D-003", "not_determinable",
@@ -215,11 +217,12 @@ def check_d003(bundle: dict) -> dict:
         f"rendered DOM contains {rendered_words} words and {rendered_h1} h1."
     )
     # D-6 (2026-09-12): softened prescription -- see the note above.
-    action = {"summary": "Make the homepage's primary content and its <h1> present in "
-                          "the raw HTML the server returns, not only after JavaScript "
-                          "executes. Options include server-side rendering, static "
-                          "generation, a partial pre-render of the hero block, or a "
-                          "substantive <noscript> fallback.",
+    action = {"summary": "The homepage's primary content and top-level heading are not "
+                          "present in the raw HTML the server returns; they materialise "
+                          "only after JavaScript executes. Non-rendering clients see "
+                          "nothing usable. Options for the site to consider include "
+                          "server-side rendering, static generation, a partial pre-render "
+                          "of the hero block, or a substantive noscript fallback.",
               "priority": None}
 
     if noscript_words > 50 or gap < 0.20:
@@ -273,8 +276,10 @@ def check_d004(bundle: dict, d003_result: dict | None = None) -> list[dict]:
                 f"Page {page.get('url')}: main-content extraction yielded {words} words "
                 f"after boilerplate removal.",
                 "medium", "CORRELATIONAL",
-                {"summary": "Add substantive, explicitly-stated content naming the specific "
-                             "facts the page exists to convey.", "priority": "medium"},
+                {"summary": "The page's main content is thin; a machine reader would "
+                             "benefit from additional substantive text that explicitly "
+                             "names the facts the page exists to convey.",
+                             "priority": "medium"},
                 locus=locus,
             ))
         else:
@@ -417,9 +422,11 @@ def check_d010(bundle: dict, d004_results: list[dict] | None = None) -> list[dic
                 "CHK-D-010", "present",
                 "None of the checked pages contain a definition, numerical fact, or "
                 "comparison.", None, "CORRELATIONAL",
-                {"summary": "Add explicit definitions, numerical facts, or comparisons — the "
-                             "shapes an assistant can lift verbatim into an answer. "
-                             "(Proactive — not a confirmed defect.)", "priority": "low"},
+                {"summary": "The sampled pages lack definitions, numerical facts, or "
+                             "comparisons — the content shapes an assistant can lift "
+                             "verbatim into an answer. Consider whether the page would "
+                             "benefit from more of that structure. (Proactive — not a "
+                             "confirmed defect.)", "priority": "low"},
                 locus=locus, recommendation_only=True,
             ))
         else:
@@ -871,8 +878,10 @@ def check_e017(bundle: dict) -> list[dict]:
                 "CHK-E-017", "present", f"Page {page.get('url')}: {len(non_descriptive)} "
                 f"link(s) ({pct}%) have non-descriptive anchor text.", "medium",
                 "NORMATIVE/THEORETICAL",
-                {"summary": "Replace non-descriptive anchor text with text that describes "
-                             "the destination or action.", "priority": "medium"}, locus=locus))
+                {"summary": "A material share of the page's link text is non-descriptive "
+                             "('click here', 'read more', 'here'), which reduces both "
+                             "screen-reader and crawler comprehension of what each link "
+                             "leads to.", "priority": "medium"}, locus=locus))
         else:
             findings.append(_envelope("CHK-E-017", "absent", f"Page {page.get('url')}: "
                                        f"{pct}% non-descriptive links, below threshold.",
@@ -948,8 +957,11 @@ def check_e019(bundle: dict) -> dict:
                 "in this environment, so this is a one-sided finding: static HTML alone is "
                 "effectively blank to a non-rendering client.", "high",
                 "HARD-MECHANICAL/CAUSAL",
-                {"summary": "Implement SSR/SSG or a meaningful loading state and noscript "
-                             "fallback.", "priority": "high"}, locus=locus)
+                {"summary": "Non-rendering clients receive a near-empty page and no "
+                             "noscript fallback. Consider whether server-side rendering, "
+                             "static generation, or a noscript block would improve "
+                             "availability to those clients.", "priority": "high"},
+                locus=locus)
         return _envelope("CHK-E-019", "not_determinable",
                           "Rendered page evidence unavailable, and static HTML has enough "
                           "content that a blank-first-paint gap cannot be inferred "
@@ -961,8 +973,11 @@ def check_e019(bundle: dict) -> dict:
             "CHK-E-019", "present",
             f"Homepage: plain HTTP fetch yielded {raw_words} words; no loading indicator "
             f"or noscript present.", "high", "HARD-MECHANICAL/CAUSAL",
-            {"summary": "Implement SSR/SSG or a meaningful loading state and noscript "
-                         "fallback.", "priority": "high"}, locus=locus)
+            {"summary": "A non-rendering client sees a near-empty page while the "
+                         "rendered DOM has substantial content. Consider whether "
+                         "server-side rendering, static generation, a loading state, "
+                         "or a noscript fallback would improve availability to those "
+                         "clients.", "priority": "high"}, locus=locus)
 
     return _envelope("CHK-E-019", "absent", "No blank-first-paint pattern detected.", None,
                       "HARD-MECHANICAL/CAUSAL", None, locus=locus)
@@ -988,7 +1003,8 @@ def check_e020(bundle: dict) -> list[dict]:
                 "CHK-E-020", "present", f"{len(offenders)} video/audio element(s) autoplay "
                 "with sound and no pause/stop mechanism (WCAG 2.2 SC 1.4.2).", "medium",
                 "NORMATIVE",
-                {"summary": "Add muted to autoplaying video; remove autoplay from audio.",
+                {"summary": "Sound-on autoplay violates WCAG 2.2 SC 1.4.2 and typically "
+                             "drives away visitors without a pause/stop control.",
                  "priority": "medium"}, locus=locus))
         else:
             findings.append(_envelope("CHK-E-020", "absent", "No unmuted autoplaying "
@@ -1033,8 +1049,10 @@ def check_e021(bundle: dict) -> dict:
     return _envelope(
         "CHK-E-021", "present", f"{total} image(s)/iframe(s) lack explicit width/height "
         f"or aspect-ratio, so content reflows during load.", severity, "THEORETICAL",
-        {"summary": "Add width/height attributes or CSS aspect-ratio to reserve layout "
-                     "space before the resource loads. (Proactive — not a confirmed defect.)",
+        {"summary": "Some images and iframes lack explicit width/height or CSS "
+                     "aspect-ratio, so content reflows during load and causes layout "
+                     "shift for readers on slower connections. (Proactive — not a "
+                     "confirmed defect.)",
          "priority": severity}, recommendation_only=True)
 
 
@@ -1090,8 +1108,9 @@ def check_e022(bundle: dict) -> list[dict]:
                 "primary topic. Structural convention aligned with WCAG 2.2 SC 1.3.1 "
                 f"(Info and Relationships) and 2.4.6 (Headings and Labels).", severity,
                 "NORMATIVE/PRACTITIONER",
-                {"summary": "Add an <h1> naming the page's primary topic.",
-                 "priority": severity}, locus=locus))
+                {"summary": "The page has no top-level heading, so a crawler cannot "
+                             "identify its primary topic from the document structure.",
+                 "priority": severity}, locus=locus, subcheck="no_h1"))
         elif no_main or skips:
             # B-3 (2026-09-12): action is built from only the condition that fired, not
             # a bundled string naming both fixes. A page with <main> present and only a
@@ -1099,20 +1118,24 @@ def check_e022(bundle: dict) -> list[dict]:
             # page didn't have, the disconnected-action pattern the officials called
             # out (OFFICIALS-QA.md §3.4).
             reasons = []
-            fixes = []
+            advice = []
+            subcheck_parts = []
             if no_main:
                 reasons.append("no <main> landmark wraps the primary content")
-                fixes.append("wrap the primary content in a <main> element")
+                advice.append("the primary content is not wrapped in a <main> landmark")
+                subcheck_parts.append("no_main")
             if skips:
                 reasons.append("heading levels skip (e.g. h2 -> h4 with no h3 between)")
-                fixes.append("fix the heading order so no level is skipped")
+                advice.append("heading levels skip, breaking the outline a crawler builds")
+                subcheck_parts.append("heading_skip")
             findings.append(_envelope(
                 "CHK-E-022", "present",
                 f"Page {page.get('url')}: {'; '.join(reasons)}. Structural convention "
                 "aligned with WCAG 2.2 SC 1.3.1 (Info and Relationships).",
                 "medium", "NORMATIVE/PRACTITIONER",
-                {"summary": "On this page: " + " and ".join(fixes) + ".",
-                 "priority": "medium"}, locus=locus))
+                {"summary": "On this page: " + " and ".join(advice) + ".",
+                 "priority": "medium"}, locus=locus,
+                subcheck="+".join(subcheck_parts)))
         else:
             findings.append(_envelope("CHK-E-022", "absent", f"Page {page.get('url')}: "
                                        "landmark and heading structure intact.", None,
@@ -1142,8 +1165,10 @@ def check_e024(bundle: dict) -> dict:
         return _envelope(
             "CHK-E-024", "present", f"Commercial site: no detectable {', '.join(missing)}.",
             None, "CORRELATIONAL",
-            {"summary": "Add contact information, organisation name in footer, HTTPS, and "
-                         "byline dates on articles. (Proactive — not a confirmed defect.)",
+            {"summary": "Commercial and news sites gain credibility with visible contact "
+                         "information, organisation name in the footer, HTTPS, and byline "
+                         "dates on articles. Consider whether the missing signals above "
+                         "should be surfaced. (Proactive — not a confirmed defect.)",
              "priority": "low"}, recommendation_only=True)
     return _envelope("CHK-E-024", "absent", "Commercial trust signals present.", None,
                       "CORRELATIONAL", None, recommendation_only=True)

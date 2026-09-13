@@ -509,8 +509,11 @@ def check_d012(bundle: dict) -> list[dict]:
                 "CHK-D-012", "present",
                 f"Page {page.get('url')} (time-sensitive) has no detectable publication date.",
                 "low", "THEORETICAL",
-                {"summary": "Add a visible publication date or article:published_time meta "
-                             "tag.", "priority": "low"}, locus=locus))
+                {"summary": "The page is time-sensitive but exposes no publication date "
+                             "signal (visible byline, article:published_time meta tag, "
+                             "or JSON-LD datePublished), so a retrieval agent cannot "
+                             "reason about its freshness.", "priority": "low"},
+                locus=locus))
     return findings
 
 
@@ -564,8 +567,10 @@ def check_d025_d026(bundle: dict) -> tuple[dict, dict]:
             "No sameAs declarations or outbound identity-profile links found on the "
             "homepage, its shared header/footer, or a linked about/contact page.",
             "medium", "CORRELATIONAL",
-            {"summary": "Declare identity anchors: add sameAs to the Organization JSON-LD "
-                         "pointing at the organisation's authoritative external profiles.",
+            {"summary": "The site declares no identity anchors (sameAs entries in "
+                         "Organization JSON-LD, or outbound links to authoritative "
+                         "external profiles). Consider whether such anchors would help "
+                         "AI systems resolve the brand's entity graph.",
              "priority": "medium"})
         d026 = _envelope("CHK-D-026", "not_applicable", "No declared anchor to check "
                           "(CHK-D-025 fired).", None, "HARD-MECHANICAL", None,
@@ -604,15 +609,17 @@ def check_d025_d026(bundle: dict) -> tuple[dict, dict]:
             "CHK-D-026", "present",
             f"{len(failed)} of {len(results)} declared identity anchors did not resolve.",
             "high", "HARD-MECHANICAL",
-            {"summary": "Repair or remove dead anchor URLs so every declared profile "
-                         "resolves.", "priority": "high"})
+            {"summary": "Every declared identity anchor is currently unreachable; a "
+                         "retrieval agent following those links from this site would "
+                         "arrive at dead ends.", "priority": "high"})
     elif failed:
         d026 = _envelope(
             "CHK-D-026", "present",
             f"{len(failed)} of {len(results)} declared identity anchors did not resolve.",
             "medium", "HARD-MECHANICAL",
-            {"summary": "Repair or remove dead anchor URLs so every declared profile "
-                         "resolves.", "priority": "medium"})
+            {"summary": "Some declared identity anchors are unreachable; declared "
+                         "profiles that do not resolve reduce entity-graph confidence "
+                         "for AI systems.", "priority": "medium"})
     else:
         d026 = _envelope("CHK-D-026", "absent", "All declared anchors resolve.", None,
                           "HARD-MECHANICAL", None)
