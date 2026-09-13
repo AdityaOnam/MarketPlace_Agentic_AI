@@ -596,16 +596,41 @@ def compute_strengths(bundle: dict, audited_at: str) -> list[dict]:
             f"Well-formed {identity_type} JSON-LD with name and authoritative URL is present at {page.get('url')}.",
         ))
 
-    if len(pages) >= 2 and all(
-        page.get("canonical", {}).get("href")
-        and page.get("canonical", {}).get("self_referential") is True
-        and page.get("canonical", {}).get("cross_domain") is False
-        for page in pages
-    ):
-        detected.append((
-            "canonical_consistency",
-            f"All {len(pages)} successfully fetched sampled pages declare consistent self-referential canonicals.",
-        ))
+    # Phase 10 P10-11: canonical consistency is scoped, with a measured denominator.
+    # The earlier all-or-nothing gate missed sites where a large majority of the
+    # sample has clean self-canonicals but a minority differ or are absent (Mozilla:
+    # 15/19). Report the ratio explicitly rather than claiming "all pages" — a
+    # reader who sees "consistent self-referential canonicals" on a partial sample
+    # cannot verify the claim, and a false consistency claim is a worse failure
+    # than an omitted strength.
+    if len(pages) >= 3:
+        self_ref_pages = [
+            p for p in pages
+            if p.get("canonical", {}).get("href")
+            and p.get("canonical", {}).get("self_referential") is True
+            and p.get("canonical", {}).get("cross_domain") is False
+        ]
+        total = len(pages)
+        ok = len(self_ref_pages)
+        # Fire when the majority of the sample declares clean self-canonicals; two
+        # thirds is a conservative floor that keeps the FP surface tight — a site
+        # where only half the pages self-canonical is not "consistent" by any
+        # normal reading. The denominator travels in the evidence.
+        if ok == total:
+            detected.append((
+                "canonical_consistency",
+                f"All {total} successfully fetched sampled pages declare consistent self-referential canonicals.",
+            ))
+        elif ok >= 3 and ok * 3 >= total * 2:
+            # Detector name differs from the "all" case so the strength->rec
+            # contradiction map does not suppress CHK-D-008 recommendations on the
+            # (real) minority of pages that lack a self-referential canonical.
+            detected.append((
+                "canonical_majority",
+                f"{ok} of {total} successfully fetched sampled pages declare "
+                f"self-referential canonicals; a majority-consistent pattern, "
+                f"measured on this sample.",
+            ))
 
     robots = bundle.get("robots", {})
     permitted = sorted(
@@ -649,6 +674,136 @@ def assign_ids_and_titles(findings: list[dict]) -> list[dict]:
         entry.setdefault("title", CHECK_TITLES.get(f["check_id"], f["check_id"]))
         out.append(entry)
     return out
+
+
+# Phase 10 P10-12: three-way ranking of surviving findings and recommendations into a
+# short `top_priorities` list. Priority classes are ordered by how directly the item
+# is evidenced from static HTML the collector actually fetched, not by severity — a
+# high-severity accessibility count on a docs page ranks below a critical robots.txt
+# block, and both rank below a fabricated-severity heuristic. The class ordering is
+# built into the code so a reader can trace exactly why one item outranked another.
+PRIORITY_CLASS_BY_CHECK: dict[str, int] = {
+    # Class 1 — verified access / static-content availability failures. These are
+    # the AI-readiness defects the check writer was most certain about: robots
+    # policy is written by the site, and a JS-render gap is the raw HTML the
+    # collector actually received.
+    "CHK-D-001": 1,  # AI crawler blocked at robots root
+    "CHK-D-002": 1,  # training-corpus crawler blocked
+    "CHK-D-003": 1,  # raw-fetch vs rendered content gap
+    # Class 2 — directly evidenced identity, canonical, and detail-data defects.
+    # Every one of these rests on a specific field observed absent or malformed
+    # in real JSON-LD, canonical or head markup.
+    "CHK-D-006": 2, "CHK-D-007": 2, "CHK-D-008": 2, "CHK-D-012": 2,
+    "CHK-D-025": 2, "CHK-D-026": 2, "CHK-D-027": 2,
+    "CHK-D-029": 2, "CHK-D-030": 2, "CHK-D-031": 2, "CHK-D-032": 2,
+    "CHK-D-033": 2, "CHK-D-034": 2,
+    # Class 3 — page-local heuristics and generic structural warnings. Real but
+    # softer signals: thin content thresholds, heading/landmark conventions,
+    # accessibility counts, link-check echoes. Actionable, but not the story the
+    # report should lead with when a class-1 or class-2 finding exists.
+    "CHK-D-004": 3, "CHK-D-005": 3, "CHK-D-009": 3, "CHK-D-010": 3,
+    "CHK-D-011": 3, "CHK-D-013": 3,
+    "CHK-E-014": 3, "CHK-E-015": 3, "CHK-E-016": 3, "CHK-E-017": 3,
+    "CHK-E-018": 3, "CHK-E-019": 3, "CHK-E-020": 3, "CHK-E-021": 3,
+    "CHK-E-022": 3, "CHK-E-024": 3,
+}
+
+# Within a class we prefer items whose evidence tier is stronger. HARD-MECHANICAL
+# rests on structural signals the check can point at directly; NORMATIVE is a
+# standards violation; CORRELATIONAL/THEORETICAL/HEURISTIC are progressively
+# weaker. The tiers here are ordered from strongest (rank 1) to weakest.
+_STRENGTH_RANK = {
+    "HARD-MECHANICAL": 1,
+    "HARD-MECHANICAL/CAUSAL": 1,
+    "NORMATIVE": 2,
+    "NORMATIVE/PRACTITIONER": 2,
+    "CORRELATIONAL": 3,
+    "THEORETICAL/CORRELATIONAL": 3,
+    "THEORETICAL/HEURISTIC": 4,
+    "THEORETICAL": 4,
+}
+_SEVERITY_TIE = {"critical": 0, "high": 1, "medium": 2, "low": 3, None: 4}
+
+
+def compute_top_priorities(findings: list[dict], recommendations: list[dict]) -> list[dict]:
+    """Return up to three ranked references to items the reader should act on
+    first. Draws from findings[] and recommendations[] by ID; adds no new items
+    and rewrites no severities. The result names why each entry outranked the
+    rest so a reader can see the trade-off.
+
+    Rank key: (priority class, evidence strength, severity, sampled coverage
+    where available, check_id) — all deterministic, all rooted in fields the
+    check already emitted.
+
+    Never forces three entries: a minimal report with no class-1 or class-2
+    material returns a shorter (possibly empty) top-priorities list rather than
+    promoting a heuristic to lead the report.
+    """
+    candidates: list[dict] = []
+    for src in findings:
+        candidates.append({**src, "_source": "finding"})
+    for src in recommendations:
+        candidates.append({**src, "_source": "recommendation"})
+
+    def _rank(item: dict) -> tuple:
+        cid = item.get("check_id", "")
+        cls = PRIORITY_CLASS_BY_CHECK.get(cid, 4)
+        # A recommendation ranks one class lower than a finding of the same check_id
+        # so genuine defects out-order proactive advice within any class band.
+        if item.get("_source") == "recommendation":
+            cls = min(cls + 0.5, 4)
+        strength = _STRENGTH_RANK.get(item.get("evidence_strength") or "", 5)
+        severity = _SEVERITY_TIE.get(item.get("severity"), 4)
+        occurrences = ((item.get("occurrences") or {}).get("pages")) or 0
+        return (cls, strength, severity, -int(occurrences or 0), cid, item.get("id", ""))
+
+    ranked = sorted(candidates, key=_rank)
+
+    # Only lead with class-1 or class-2 items. If none of those exist we return an
+    # empty top-priorities list rather than inflating class-3 heuristics.
+    def _class_of(item: dict) -> float:
+        cid = item.get("check_id", "")
+        cls = PRIORITY_CLASS_BY_CHECK.get(cid, 4)
+        if item.get("_source") == "recommendation":
+            cls = min(cls + 0.5, 4)
+        return cls
+
+    leading = [x for x in ranked if _class_of(x) <= 2.5][:3]
+    if not leading:
+        # No high-confidence lead available; return empty so the report tells a
+        # reader "no AI-ingestion-specific defect was demonstrated" rather than
+        # nominating an accessibility count as the site's biggest problem.
+        return []
+
+    top: list[dict] = []
+    for item in leading:
+        cid = item.get("check_id", "")
+        cls = PRIORITY_CLASS_BY_CHECK.get(cid, 4)
+        reason_parts = []
+        if cls == 1:
+            reason_parts.append("verified retrieval-access defect")
+        elif cls == 2:
+            reason_parts.append("evidenced identity/canonical/detail-data defect")
+        strength = item.get("evidence_strength")
+        if strength:
+            reason_parts.append(strength.split("/")[0].lower().replace("_", " ")
+                                 + " evidence")
+        sev = item.get("severity")
+        if sev:
+            reason_parts.append(f"{sev} severity")
+        else:
+            reason_parts.append("proactive advice")
+        locus = item.get("locus") or {}
+        evidence_url = locus.get("url") if isinstance(locus, dict) else None
+        top.append({
+            "ref_id": item.get("id"),
+            "check_id": cid,
+            "source": item.get("_source"),
+            "title": item.get("title") or CHECK_TITLES.get(cid, cid),
+            "reason": "; ".join(reason_parts) + ".",
+            "evidence_url": evidence_url,
+        })
+    return top
 
 
 def _consolidate_per_page_recs(recommendations: list[dict]) -> list[dict]:
@@ -858,7 +1013,14 @@ def _action_has_prescriptive_marker(text: str | None) -> str | None:
 # a specific check's premise -- and the filter drops the offending recommendation
 # and records the drop as a `contradicted_by_strength` warning for traceability.
 STRENGTH_CONTRADICTS_CHECK: dict[str, tuple[str, ...]] = {
-    "feed_discovery":            ("CHK-D-032", "CHK-D-033"),
+    # Phase 10 P10-11: feed_discovery no longer contradicts CHK-D-032 or CHK-D-033.
+    # A feed answers the "does this site publish a machine-readable index" predicate;
+    # it does NOT answer NewsArticle authorship/datePublished/headline completeness
+    # (D-032) or Person JSON-LD + byline consistency (D-033). Suppressing those
+    # recommendations because a feed exists hides a distinct defect the check was
+    # written to catch (the case that surfaced this: an article site with an RSS
+    # feed but incomplete author metadata is a real AI-readiness defect; the
+    # earlier map silently dropped that advice).
     "identity_jsonld":           ("CHK-D-006", "CHK-D-007"),
     "canonical_consistency":     ("CHK-D-008",),
     "retrieval_crawler_access":  ("CHK-D-001",),
@@ -1285,4 +1447,14 @@ def compose_report(site: str, audited_at: str, all_envelopes: list[dict], bundle
         "degraded_stages": degraded_stages,
     }
     report["meta_evaluation"] = meta_evaluate(report)
+    # Phase 10 P10-12: compute top_priorities AFTER meta_evaluate. The hard-drop
+    # gates inside meta_evaluate (Phase 9 items C/P/B, Phase 10 item W) remove
+    # recommendations from `report["recommendations"]`; a top-priorities entry
+    # must never point at a dropped ID. The rank draws from the surviving lists
+    # only, and returns an empty list when no class-1/2 material remains — never
+    # promoting a class-3 heuristic to fill three slots.
+    report["top_priorities"] = compute_top_priorities(
+        report.get("findings", []) or [],
+        report.get("recommendations", []) or [],
+    )
     return report
