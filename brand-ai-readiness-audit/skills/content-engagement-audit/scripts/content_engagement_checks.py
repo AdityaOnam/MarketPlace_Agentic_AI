@@ -51,6 +51,63 @@ def _is_non_english(page: dict) -> bool:
     return bool(lang) and not lang.startswith("en")
 
 
+# Phase 10 P10-7: CJK, Thai, Lao, Khmer, Burmese, Tibetan and Japanese Kana scripts do
+# not put spaces between words, so `_word_count`'s ASCII-token regex undercounts them
+# by ~5x. A word-based `thin content` threshold cannot be applied honestly to those
+# scripts, so D-004 abstains (returns not_determinable). Kept language-based rather
+# than character-based to remain evidence-grounded: we abstain only when the page's
+# own `lang` attribute names an unsegmented-script language, and we do not guess.
+_UNSEGMENTED_SCRIPT_LANGS = (
+    "ja",   # Japanese
+    "zh",   # Chinese (all variants)
+    "ko",   # Korean (uses spaces less consistently; word tokenisation still fails)
+    "th",   # Thai
+    "lo",   # Lao
+    "km",   # Khmer
+    "my",   # Burmese
+    "bo",   # Tibetan
+)
+
+
+def _is_unsegmented_script(page: dict) -> bool:
+    """True when the page declares a language that does not separate words with spaces,
+    so an ASCII-word-count-based thin-content threshold cannot be applied honestly.
+
+    Phase 10 P10-7: Asahi article bundles registered 32-81 "words" for full Japanese
+    articles because the ASCII regex misses Japanese script entirely. Rather than
+    invent a character-to-word equivalence, D-004 abstains on these pages and lets
+    the reader see a not_determinable state.
+    """
+    lang = (page.get("lang") or "").strip().lower()
+    if not lang:
+        return False
+    for prefix in _UNSEGMENTED_SCRIPT_LANGS:
+        if lang == prefix or lang.startswith(prefix + "-") or lang.startswith(prefix + "_"):
+            return True
+    return False
+
+
+def _has_paywall_markup(page: dict) -> bool:
+    """True when the page carries explicit schema.org paywall markers.
+
+    Phase 10 P10-7: a page whose own JSON-LD declares `isAccessibleForFree: false`
+    (or its string equivalents) is explicitly telling us the visible text is a
+    teaser, not the article. Calling that "thin content" measures the paywall, not
+    the site. We only abstain when the page itself asserts the paywall — we do not
+    guess from CTAs, cookie banners, or subscription copy.
+    """
+    for entity in page.get("structured_data", {}).get("json_ld", []) or []:
+        raw = entity.get("raw") if isinstance(entity, dict) else None
+        if not isinstance(raw, dict):
+            continue
+        val = raw.get("isAccessibleForFree")
+        if val is False:
+            return True
+        if isinstance(val, str) and val.strip().lower() in ("false", "no", "0"):
+            return True
+    return False
+
+
 # Mirrors the collector's JS_PAYLOAD_BYTES_PER_WORD (extract_page.py); quoted in evidence
 # text only, the decision itself is the collector's `js_payload_heavy` flag.
 JS_PAYLOAD_BYTES_PER_WORD = 250
@@ -274,6 +331,26 @@ def check_d004(bundle: dict, d003_result: dict | None = None) -> list[dict]:
         if unmeasurable:
             findings.append(_envelope("CHK-D-004", "not_determinable", unmeasurable, None,
                                        "CORRELATIONAL", None, locus=locus))
+            continue
+        # Phase 10 P10-7: abstain on unsegmented-script pages and on pages whose
+        # own schema.org markup declares the content is paywalled. Both cases would
+        # otherwise produce a "thin content" claim about a measurement problem, not
+        # about the page.
+        if _is_unsegmented_script(page):
+            findings.append(_envelope(
+                "CHK-D-004", "not_determinable",
+                f"Page language is {page.get('lang')!r}; word-count thresholds "
+                "cannot be applied to unsegmented scripts (CJK, Thai, Lao, Khmer, "
+                "Burmese, Tibetan) because the ASCII word tokeniser undercounts them.",
+                None, "CORRELATIONAL", None, locus=locus))
+            continue
+        if _has_paywall_markup(page):
+            findings.append(_envelope(
+                "CHK-D-004", "not_determinable",
+                "Page schema.org markup declares isAccessibleForFree=false: the "
+                "extracted text is a teaser, not the article. Content density cannot "
+                "be judged from the visible markup.",
+                None, "CORRELATIONAL", None, locus=locus))
             continue
         words = page.get("main_text_words", 0)
         if words < 200:
