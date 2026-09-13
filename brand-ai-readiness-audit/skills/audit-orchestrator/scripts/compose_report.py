@@ -453,6 +453,26 @@ def compute_checks_passed(
     return passed
 
 
+def _reconcile_checks_passed(
+    passed: list[dict],
+    findings: list[dict],
+    recommendations: list[dict],
+) -> list[dict]:
+    """Phase 10 P10-1: a check that generated a finding or recommendation cannot
+    simultaneously be listed as 'passed'. The earlier logic treated
+    recommendation_only envelopes as non-disqualifying (correct at the envelope
+    level), but the final recommendation list includes those — so readers saw the
+    same check_id in both checks_passed[] and recommendations[]. Strip any
+    check_id that appears in the final findings or recommendations lists."""
+    advised_ids: set[str] = set()
+    for f in findings:
+        advised_ids.add(f.get("check_id", ""))
+    for r in recommendations:
+        advised_ids.add(r.get("check_id", ""))
+    advised_ids.discard("")
+    return [p for p in passed if p.get("check_id") not in advised_ids]
+
+
 class _FeedLinkParser(HTMLParser):
     """The same head-only RSS/Atom detector used by entity-identity-audit."""
 
@@ -1177,6 +1197,15 @@ def compose_report(site: str, audited_at: str, all_envelopes: list[dict], bundle
     # non-commercial one from trust signals) and shapes how each suggested action is
     # worded. A reader needs to know which vertical the recommendations were written for.
     archetype = bundle.get("site", {}).get("archetype", "unknown")
+    # Phase 10 P10-3 (AA): if the collector could not extract any pages, we have no
+    # evidence that supports any archetype label; the classifier's fallback (often
+    # `brochure`) was reached without inputs. Override to `unknown` at compose time
+    # so the preamble does not claim more than the pipeline measured. Only the
+    # compose-layer label is rewritten — the raw bundle value is unchanged, and no
+    # analyser results shift because analysers already treat these cases as
+    # not_determinable.
+    if pages_fetched == 0 and archetype not in (None, "", "unknown"):
+        archetype = "unknown"
     # D-3 (2026-09-12): state in plain English what the archetype label DID in this audit.
     # OFFICIALS-QA §3.3 and Action #6 name archetype-specific interpretation as a rewarded
     # differentiator; a reader needs to see the archetype had a downstream effect, not
@@ -1238,8 +1267,19 @@ def compose_report(site: str, audited_at: str, all_envelopes: list[dict], bundle
         # abandoned) are excluded, not treated as passed.
         # Full or partial block both mean the DOM/link-dependent checks had no meaningful
         # input; starve them either way.
-        "checks_passed": compute_checks_passed(
-            all_envelopes, degraded_stages, access_blocked_for + access_partial_for),
+        # Phase 10 item W (2026-09-13): a check cannot simultaneously appear in
+        # checks_passed AND in the findings or recommendations lists. The earlier
+        # pass-list logic treated recommendation_only envelopes as non-disqualifying,
+        # which meant a check could be "passed" and still carry advice — 5/15 post-fix
+        # sites showed this contradiction (Wikipedia D-010, Karpathy D-005, Mozilla
+        # D-010, USA.gov D-010, MercadoLibre D-008). Fix: after building the final
+        # lists, strip any check_id that appears in findings_out or recommendations_out
+        # from checks_passed.
+        "checks_passed": _reconcile_checks_passed(
+            compute_checks_passed(
+                all_envelopes, degraded_stages,
+                access_blocked_for + access_partial_for),
+            findings_out, recommendations_out),
         "strengths": compute_strengths(bundle, audited_at),
         "limitations": limitations,
         "degraded_stages": degraded_stages,

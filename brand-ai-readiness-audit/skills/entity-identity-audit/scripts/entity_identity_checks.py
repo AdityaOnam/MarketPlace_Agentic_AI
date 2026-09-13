@@ -188,7 +188,89 @@ def _identity_anchor_urls(pages: list[dict]) -> set[str]:
             same_as = raw.get("sameAs") if isinstance(raw, dict) else None
             values = same_as if isinstance(same_as, list) else [same_as]
             urls.update(url for url in values if isinstance(url, str) and url.startswith("http"))
+    # Phase 10 P10-5: profile-shaped anchors on the identity surfaces themselves
+    # count as identity anchors even when they are not in a <header>/<footer> element
+    # and carry no rel=me — that HTML placement convention is not universal and its
+    # absence was producing false-negative D-025 findings on sites (karpathy.ai) that
+    # visibly link to authoritative external profiles. Shape rules are conservative,
+    # host-general and defined in `_looks_like_profile_url` below.
+    for page in pages:
+        for link in page.get("links", []) or []:
+            href = link.get("href")
+            if isinstance(href, str) and href.startswith("http") and not link.get("internal"):
+                if _looks_like_profile_url(href):
+                    urls.add(href)
     return urls
+
+
+# Phase 10 P10-5: a curated list of authoritative profile hosts and the URL shapes
+# that identify a persistent per-account profile on each. Kept intentionally short —
+# every entry is a general host used across the web for identity, not tuned to any
+# judged site. Article, watch/playlist, share/login and search URLs on these hosts
+# are excluded by the reserved-segment set, so a citation to a Twitter thread or a
+# YouTube video is not accepted as an identity anchor.
+_PROFILE_HOSTS = {
+    "github.com": {"segments": 1, "reserved": {"about","pricing","features","topics","issues","pulls","marketplace","explore","notifications","login","join","search","settings","enterprise","sponsors","codespaces","security","organizations"}},
+    "www.github.com": {"segments": 1, "reserved": {"about","pricing","features","topics","issues","pulls","marketplace","explore","notifications","login","join","search","settings"}},
+    "twitter.com": {"segments": 1, "reserved": {"home","explore","notifications","messages","search","login","signup","i","intent","share","compose","tos","privacy","about"}},
+    "x.com": {"segments": 1, "reserved": {"home","explore","notifications","messages","search","login","signup","i","intent","share","compose","tos","privacy","about"}},
+    "linkedin.com": {"prefixes": ("/in/", "/company/", "/school/", "/pub/"), "reserved": set()},
+    "www.linkedin.com": {"prefixes": ("/in/", "/company/", "/school/", "/pub/"), "reserved": set()},
+    "youtube.com": {"handle_or_channel": True},
+    "www.youtube.com": {"handle_or_channel": True},
+    "instagram.com": {"segments": 1, "reserved": {"explore","reels","stories","tv","p","accounts","direct","about"}},
+    "www.instagram.com": {"segments": 1, "reserved": {"explore","reels","stories","tv","p","accounts","direct","about"}},
+    "mastodon.social": {"prefixes": ("/@",), "reserved": set()},
+    "wikipedia.org": {"contains": ("/wiki/",)},
+    "en.wikipedia.org": {"contains": ("/wiki/",)},
+    "facebook.com": {"segments": 1, "reserved": {"share","sharer","dialog","tr","help","login","watch","reel","story.php","events","marketplace","gaming","messages","notifications","settings","business"}},
+    "www.facebook.com": {"segments": 1, "reserved": {"share","sharer","dialog","tr","help","login","watch","reel","story.php","events","marketplace","gaming","messages","notifications","settings","business"}},
+}
+
+
+def _looks_like_profile_url(url: str) -> bool:
+    """Whether a URL matches a general profile-page shape on an authoritative
+    identity host. Deliberately conservative: article/watch/share/login URLs on the
+    same hosts do not match. The host list stays small and general; adding a host
+    means the audit accepts that host as an identity surface across all sites."""
+    try:
+        parsed = urlparse(url)
+    except Exception:
+        return False
+    host = (parsed.netloc or "").lower()
+    rule = _PROFILE_HOSTS.get(host)
+    if not rule:
+        return False
+    path = parsed.path or "/"
+    if rule.get("prefixes"):
+        for prefix in rule["prefixes"]:
+            if path.startswith(prefix) and len(path) > len(prefix):
+                return True
+        return False
+    if rule.get("contains"):
+        return any(marker in path for marker in rule["contains"])
+    if rule.get("handle_or_channel"):
+        if path.startswith("/@") and len(path) > 2:
+            # Reject watch, playlist, results, hashtag paths that start with @-less prefixes;
+            # /@ handle is the profile shape.
+            return "/" not in path[2:] or path.rstrip("/").count("/") == 1
+        if path.startswith("/channel/") or path.startswith("/c/") or path.startswith("/user/"):
+            tail = path.split("/", 3)
+            return len(tail) >= 3 and bool(tail[2])
+        return False
+    if rule.get("segments") == 1:
+        parts = [seg for seg in path.split("/") if seg]
+        if len(parts) != 1:
+            return False
+        seg = parts[0]
+        if seg in rule.get("reserved", set()):
+            return False
+        # Query strings on a single-segment path suggest a search or intent action,
+        # not a canonical profile URL.
+        if parsed.query:
+            return False
+        return True
+    return False
 
 
 def _has_duplicate_url_variants(bundle: dict) -> bool:
@@ -550,35 +632,62 @@ def check_d025_d026(bundle: dict) -> tuple[dict, dict]:
         d026 = _envelope("CHK-D-026", "not_determinable", "No CHK-D-025 verdict to act on.",
                           None, "HARD-MECHANICAL", None)
         return d025, d026
-    same_as_present = any(
-        "sameAs" in e.get("fields_present", [])
-        for p in identity_pages for e in _organization_blocks(p)
-    )
+    # Phase 10 P10-5: sameAs is only credited when its value is a non-empty URL — the
+    # earlier `fields_present` check accepted an empty sameAs (declared but with no
+    # value) as evidence of an identity anchor, which is a category error.
+    same_as_present = False
+    for p in identity_pages:
+        for e in _organization_blocks(p):
+            raw = e.get("raw") if isinstance(e.get("raw"), dict) else {}
+            same_as = raw.get("sameAs")
+            values = same_as if isinstance(same_as, list) else [same_as]
+            if any(isinstance(v, str) and v.strip().startswith("http") for v in values):
+                same_as_present = True
+                break
+        if same_as_present:
+            break
     outbound_links = [
         link for page in identity_pages for link in page.get("outbound_profile_links", [])
     ]
     identity_anchor_urls = _identity_anchor_urls(identity_pages)
+    # Phase 10 P10-5: recognise profile-shape links on the identity surfaces (they
+    # were previously missed unless placed inside <header>/<footer> or carrying
+    # rel="me"). This mirrors what a reader can see on the page itself.
+    shape_profile_links = [u for u in identity_anchor_urls
+                            if not any(u == existing for existing in outbound_links)]
 
     anchors = bundle.get("anchors", {})
 
-    if not same_as_present and not outbound_links:
+    # Phase 10 P10-2: the identity finding scope is a set of specific inspected pages
+    # (the homepage + linked about/contact). Attach the first inspected page URL as
+    # the finding locus so a reader knows which surfaces were actually examined.
+    identity_urls = [
+        (p.get("final_url") or p.get("url")) for p in identity_pages
+        if p.get("final_url") or p.get("url")
+    ]
+    identity_locus = {"url": identity_urls[0], "selector": None} if identity_urls else None
+
+    if not same_as_present and not outbound_links and not shape_profile_links:
+        surfaces = ", ".join(identity_urls) if identity_urls else "the homepage"
         d025 = _envelope(
             "CHK-D-025", "present",
-            "No sameAs declarations or outbound identity-profile links found on the "
-            "homepage, its shared header/footer, or a linked about/contact page.",
+            f"No sameAs declarations or outbound identity-profile links found on "
+            f"the inspected identity surfaces ({surfaces}).",
             "medium", "CORRELATIONAL",
-            {"summary": "The site declares no identity anchors (sameAs entries in "
-                         "Organization JSON-LD, or outbound links to authoritative "
-                         "external profiles). Consider whether such anchors would help "
-                         "AI systems resolve the brand's entity graph.",
-             "priority": "medium"})
+            {"summary": "The inspected identity surfaces declare no identity anchors "
+                         "(sameAs entries in Organization JSON-LD, or outbound links to "
+                         "authoritative external profiles). Consider whether such "
+                         "anchors on those pages would help AI systems resolve the "
+                         "brand's entity graph.",
+             "priority": "medium"},
+            locus=identity_locus)
         d026 = _envelope("CHK-D-026", "not_applicable", "No declared anchor to check "
                           "(CHK-D-025 fired).", None, "HARD-MECHANICAL", None,
-                          suppressed_by=["CHK-D-025"])
+                          suppressed_by=["CHK-D-025"], locus=identity_locus)
         return d025, d026
 
     d025 = _envelope("CHK-D-025", "absent", "At least one identity anchor declared.", None,
-                      "CORRELATIONAL", None)
+                      "CORRELATIONAL", None, locus=identity_locus)
 
     if anchors.get("status") != "ok":
         d026 = _envelope("CHK-D-026", "not_determinable", anchors.get("reason") or

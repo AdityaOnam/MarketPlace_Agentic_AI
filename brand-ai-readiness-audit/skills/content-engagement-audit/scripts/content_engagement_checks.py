@@ -191,14 +191,20 @@ def check_d003(bundle: dict) -> dict:
             # the site owner pick the mechanism. Static HTML with no h1 and no text is the
             # observation; how to give a non-rendering crawler something to read
             # (SSR, SSG, pre-render, or a substantive <noscript>) is a choice.
+            # Phase 10 P10-3: on the one-sided branch we did NOT measure the rendered
+            # DOM, so the action cannot claim the content "materialises only after JS
+            # executes". Reword to describe only what we observed: primary content and
+            # top-level heading are not present in the static response; the
+            # client-rendered state was not measured.
             return _envelope("CHK-D-003", "present", evidence, "high", "HARD-MECHANICAL",
-                              {"summary": "The homepage's primary content and top-level "
-                                          "heading are not present in the raw HTML the "
-                                          "server returns; they materialise only after "
-                                          "JavaScript executes. Non-rendering clients see "
-                                          "nothing usable. Options for the site to consider "
-                                          "include server-side rendering, static generation, "
-                                          "a partial pre-render of the hero block, or a "
+                              {"summary": "Primary content and a top-level heading were "
+                                          "not found in the static HTML response for the "
+                                          "homepage; the client-rendered state was not "
+                                          "measured in this environment. Non-rendering "
+                                          "clients see nothing usable from this response. "
+                                          "Options the site could consider include "
+                                          "server-side rendering, static generation, a "
+                                          "partial pre-render of the hero block, or a "
                                           "substantive noscript fallback.",
                                 "priority": "high"},
                               locus=locus)
@@ -345,14 +351,39 @@ def check_d009(bundle: dict) -> dict:
     broken = [r for r in links.get("results", []) if isinstance(r.get("http_status"), int)
               and r["http_status"] >= 400]
     if broken:
+        # Phase 10 P10-2: enumerate up to three affected destinations with their
+        # response codes and where they were linked from, so the evidence names the
+        # actual failing pairs rather than only a count. The recommendation locus
+        # points at the source page of the first affected link (or the destination
+        # if that is not recorded), never `null`.
+        broken_sorted = sorted(
+            broken,
+            key=lambda r: (r.get("from_page") or "", r.get("url") or ""),
+        )
+        sample = broken_sorted[:3]
+        parts = []
+        for r in sample:
+            parts.append(
+                f"{r.get('url')} responded {r.get('http_status')} "
+                f"when followed from {r.get('from_page') or 'the sample'}"
+            )
+        more = ""
+        if len(broken) > len(sample):
+            more = f"; {len(broken) - len(sample)} further broken link(s) not enumerated"
+        evidence = (f"Found {len(broken)} broken internal link(s): "
+                    + "; ".join(parts) + more + ".")
+        first_locus_url = sample[0].get("from_page") or sample[0].get("url")
         return _envelope(
-            "CHK-D-009", "present", f"Found {len(broken)} broken internal link(s).",
+            "CHK-D-009", "present", evidence,
             "low", "THEORETICAL/CORRELATIONAL",
             {"summary": "The site would benefit from reviewing the affected internal "
                          "links: possible responses include updating each destination, "
                          "replacing the link, or using a permanent redirect when a "
-                         "resource has moved.", "priority": "low"},
+                         "resource has moved. The observed response codes describe "
+                         "what the checker saw, not the reason a page is unavailable.",
+             "priority": "low"},
             recommendation_only=True,
+            locus={"url": first_locus_url, "selector": None} if first_locus_url else None,
         )
     return _envelope("CHK-D-009", "absent", "No broken internal links found among "
                       f"{links.get('checked_count', 0)} checked.", None,
@@ -418,15 +449,22 @@ def check_d010(bundle: dict, d004_results: list[dict] | None = None) -> list[dic
         has_evidence = bool(_DEFINITION_RE.search(text) or _NUMBER_UNIT_RE.search(text)
                              or _COMPARISON_RE.search(text))
         if not has_evidence:
+            # Phase 10 P10-3: what we actually observed is that this page's static
+            # text matched none of the English detector's three sentence patterns
+            # (definition, number+unit, comparison). Do not overstate that as "no
+            # facts" or "none of the pages" — the evidence is page- and
+            # detector-scoped.
             findings.append(_envelope(
                 "CHK-D-010", "present",
-                "None of the checked pages contain a definition, numerical fact, or "
-                "comparison.", None, "CORRELATIONAL",
-                {"summary": "The sampled pages lack definitions, numerical facts, or "
-                             "comparisons — the content shapes an assistant can lift "
-                             "verbatim into an answer. Consider whether the page would "
-                             "benefit from more of that structure. (Proactive — not a "
-                             "confirmed defect.)", "priority": "low"},
+                "This page's static text did not match any of the check's three "
+                "English sentence-shape detectors (is-a-definition, number+unit, "
+                "comparison).", None, "CORRELATIONAL",
+                {"summary": "The static text on this page did not surface the "
+                             "quotable sentence shapes — a definition, a number "
+                             "with a unit, or a comparison — that assistants can "
+                             "lift verbatim into an answer. Consider whether the "
+                             "page would benefit from more of that structure. "
+                             "(Proactive — not a confirmed defect.)", "priority": "low"},
                 locus=locus, recommendation_only=True,
             ))
         else:
@@ -522,7 +560,11 @@ _VERSION_SEG_RE = re.compile(
     re.I,
 )
 _LOCALE_SEG_RE = re.compile(
-    r"^([a-z]{2}([_-][a-z]{2})?|in|us|uk|eu|au|ca|nz|asia|emea|apac)$",
+    # Phase 10 P10-6: also match ISO 639 three-letter language codes and BCP-47
+    # tags with a script subtag ("zh-Hans", "sr-Latn"). Mozilla's root sample contains
+    # /ach/, /af/, /an/, /ar/ — the earlier two-letter-only regex missed /ach/ (three
+    # letters), which was one root cause of the false 100%-duplicate report.
+    r"^([a-z]{2,3}([_-][a-z]{2,4})?|in|us|uk|eu|au|ca|nz|asia|emea|apac)$",
     re.I,
 )
 
@@ -535,9 +577,18 @@ def _path_segments(url: str) -> list[str]:
 def _variant_kind(url_a: str, url_b: str) -> str | None:
     """Return 'versioned', 'localised', or None. Two URLs are a version/locale variant
     pair iff their path segments are equal length and differ at exactly one position,
-    where both differing segments match the same version or locale pattern."""
+    where both differing segments match the same version or locale pattern.
+
+    Phase 10 P10-6: additionally, `/` (site root) vs `/<locale>/` (locale-root) counts
+    as a `localised` variant — Mozilla's root sample paired `www.mozilla.org/` with
+    `www.mozilla.org/ach/` etc., which the earlier equal-length rule refused to
+    classify as a variant even though they are alternate roots of the same document."""
     a = _path_segments(url_a)
     b = _path_segments(url_b)
+    # Root vs single-locale-segment: /  and  /<locale>/  are localised roots.
+    if (len(a) == 0 and len(b) == 1 and _LOCALE_SEG_RE.match(b[0])) or \
+       (len(b) == 0 and len(a) == 1 and _LOCALE_SEG_RE.match(a[0])):
+        return "localised"
     if len(a) != len(b) or len(a) < 1:
         return None
     diffs = [(i, a[i], b[i]) for i in range(len(a)) if a[i] != b[i]]
@@ -567,12 +618,19 @@ def check_d013(bundle: dict) -> dict:
 
     heavy = {p["url"] for p in eligible if p.get("js_payload_heavy")}
     trigram_sets = [(p["url"], _trigram_set(p.get("main_text", ""))) for p in eligible]
-    high_similarity_pairs = []
+    high_similarity_pairs = []  # (ua, ub, sim, inter, union)
     variant_pairs = []  # (url_a, url_b, sim, kind) -- excluded from the count, reported
     js_pairs = []       # identical static text where at least one side is a script shell
     for i in range(len(trigram_sets)):
         for j in range(i + 1, len(trigram_sets)):
-            sim = _jaccard(trigram_sets[i][1], trigram_sets[j][1])
+            a_set = trigram_sets[i][1]
+            b_set = trigram_sets[j][1]
+            # Phase 10 P10-6: guard against empty trigram sets producing a bogus 100%
+            # via _jaccard's a==b==empty branch. Empty trigram sets are unmeasurable,
+            # not identical: skip the pair rather than assert similarity.
+            if not a_set or not b_set:
+                continue
+            sim = _jaccard(a_set, b_set)
             if sim <= 0.8:
                 continue
             ua, ub = trigram_sets[i][0], trigram_sets[j][0]
@@ -582,7 +640,9 @@ def check_d013(bundle: dict) -> dict:
             elif ua in heavy or ub in heavy:
                 js_pairs.append((ua, ub, sim))
             else:
-                high_similarity_pairs.append((ua, ub, sim))
+                inter = len(a_set & b_set)
+                union = len(a_set | b_set)
+                high_similarity_pairs.append((ua, ub, sim, inter, union))
 
     # Identical static text between an index and its detail pages, where the detail pages
     # are hundreds of bytes of script per extracted word, is not duplicated content -- it
@@ -602,14 +662,36 @@ def check_d013(bundle: dict) -> dict:
 
     if len(high_similarity_pairs) >= 2:  # >=3 pages mutually similar implies >=2 pairs among them
         avg_pct = round(sum(p[2] for p in high_similarity_pairs) / len(high_similarity_pairs) * 100)
+        # Phase 10 P10-6: name the actual matched pairs (up to three) with their
+        # intersection/union counts so the reader can recompute the similarity and see
+        # which URLs were compared. Locus points at the first matched pair's first URL.
+        sorted_pairs = sorted(high_similarity_pairs, key=lambda p: -p[2])
+        sample = sorted_pairs[:3]
+        pair_evidence = []
+        for ua, ub, sim, inter, union in sample:
+            pair_evidence.append(
+                f"{ua} and {ub}: {inter}/{union} trigrams shared ({round(sim*100)}%)"
+            )
+        more = ""
+        if len(sorted_pairs) > len(sample):
+            more = f"; {len(sorted_pairs) - len(sample)} further high-similarity pair(s) not enumerated"
+        evidence = (
+            f"{len(sorted_pairs)} page pair(s) share more than 80% of word trigrams "
+            f"in their main content (average {avg_pct}%): "
+            + "; ".join(pair_evidence) + more + "."
+        )
+        first_url = sample[0][0] if sample else None
         return _envelope(
-            "CHK-D-013", "present",
-            f"Pages share {avg_pct}% of word trigrams in their main content.", "low",
+            "CHK-D-013", "present", evidence, "low",
             "CORRELATIONAL",
             {"summary": "Consider whether each page would benefit from content that "
-                         "answers the distinct question a reader brings to it. "
-                         "(Proactive — not a confirmed defect.)", "priority": "low"},
+                         "answers the distinct question a reader brings to it. The "
+                         "similarity was measured over the static main-text trigrams "
+                         "recorded above; the counts are recomputable from the same "
+                         "text. (Proactive — not a confirmed defect.)",
+             "priority": "low"},
             recommendation_only=True,
+            locus={"url": first_url, "selector": None} if first_url else None,
         )
     # D-10 (2026-09-12): a cluster made entirely of version or locale variants is not a
     # duplicate-content defect and telling the owner to "add unique content" is actively
@@ -1026,34 +1108,47 @@ def check_e021(bundle: dict) -> dict:
     defect claim; explicit dimensions remain good, actionable advice, so it moves to
     `recommendations[]` rather than being cut outright.
     """
-    affected_pages = set()
+    # Phase 10 P10-2 + P10-3: count per page so the report can name the first
+    # affected page as the locus, list per-page counts as instances, and phrase the
+    # evidence in terms of the static markup we can measure — not in terms of layout
+    # shift, which requires rendered geometry we do not have.
+    per_page: list[tuple[str, int]] = []
     total = 0
     for page in bundle.get("pages", []):
+        page_count = 0
         for img in page.get("images", []):
             if img.get("in_picture"):
                 continue
             if img.get("width_attr") is None and img.get("height_attr") is None and \
                     not img.get("css_aspect_ratio"):
-                total += 1
-                affected_pages.add(page.get("url"))
+                page_count += 1
         for f in page.get("iframes", []):
             if f.get("width_attr") is None and f.get("height_attr") is None:
-                total += 1
-                affected_pages.add(page.get("url"))
+                page_count += 1
+        if page_count:
+            per_page.append((page.get("url") or "", page_count))
+            total += page_count
 
     if total < 3:
         return _envelope("CHK-E-021", "absent", f"{total} affected element(s), below the "
                           "noise floor.", None, "THEORETICAL", None, recommendation_only=True)
 
+    per_page.sort(key=lambda t: t[0])
+    first_url = per_page[0][0] if per_page else None
+    instances = [{"url": u, "count": c} for u, c in per_page]
     severity = "low"
     return _envelope(
-        "CHK-E-021", "present", f"{total} image(s)/iframe(s) lack explicit width/height "
-        f"or aspect-ratio, so content reflows during load.", severity, "THEORETICAL",
+        "CHK-E-021", "present",
+        f"{total} image(s)/iframe(s) across {len(per_page)} page(s) declare no explicit "
+        f"width/height attributes and no CSS aspect-ratio in their static markup.",
+        severity, "THEORETICAL",
         {"summary": "Some images and iframes lack explicit width/height or CSS "
-                     "aspect-ratio, so content reflows during load and causes layout "
-                     "shift for readers on slower connections. (Proactive — not a "
-                     "confirmed defect.)",
-         "priority": severity}, recommendation_only=True)
+                     "aspect-ratio in the static markup, which is a possible "
+                     "layout-stability risk during load. Actual rendered layout shift "
+                     "was not measured. (Proactive — not a confirmed defect.)",
+         "priority": severity}, recommendation_only=True,
+        locus={"url": first_url, "selector": None, "instances": instances}
+              if first_url else None)
 
 
 # ---------------------------------------------------------------------------
