@@ -42,6 +42,16 @@ defined in D-012.
   ],
   "limitations": [ ... ],
   "degraded_stages": [ ... ],
+  "top_priorities": [
+    {
+      "ref_id": "F-001",
+      "check_id": "CHK-D-001",
+      "source": "finding",
+      "title": "Retrieval-time AI crawler blocked at root",
+      "reason": "verified retrieval-access defect; hard-mechanical evidence; critical severity.",
+      "evidence_url": "https://example.com/robots.txt"
+    }
+  ],
   "meta_evaluation": {
     "checks_run": ["summary_reconciles", "severity_counts_reconcile", "finding_complete",
                     "no_duplicate_findings", "known_check_id", "prohibited_recommendation",
@@ -51,6 +61,19 @@ defined in D-012.
   }
 }
 ```
+
+`top_priorities[]` (Phase 10 P10-12) names up to three items — findings or
+recommendations, drawn by ID from the lists above — that a reader should act on
+first. It adds no new items and rewrites no severities. Rank uses three priority
+classes: (1) verified retrieval-access / static-content availability failures
+(D-001, D-002, D-003); (2) directly evidenced identity, canonical and detail-data
+defects (D-006–D-008, D-012, D-025–D-034); (3) page-local heuristics and
+generic structure. Only class-1 and class-2 items lead the report; a report with
+no material in those classes returns an empty `top_priorities[]` rather than
+promoting a class-3 heuristic to fill three slots. Within a class the tie-break
+is (evidence strength → severity → sampled coverage → check_id), all
+deterministic and rooted in fields the check already emitted. Each entry names
+the class and evidence tier as its `reason` so the ordering is auditable.
 
 `preamble.notes` always contains two lines that state what the report is:
 
@@ -81,12 +104,17 @@ from `checks_passed[]`: it does not invert defect checks or affect the score. Ea
 has a sequential `S-N` ID, a stable detector name, and one evidence line. The detectors
 are: a sitemap with a declared last-modified date under 90 days old and more than five
 represented page templates; an RSS/Atom `<link rel="alternate">` in the collected document
-head; complete Person or Organization JSON-LD with `name` and `url`; self-referential,
-same-domain canonicals on every successfully fetched sampled page (with at least two
-pages); a well-formed robots.txt that permits at least one retrieval or hybrid crawler at
-the root; and a Markdown representation already present in `pages[]`. Sitemap freshness
-is not inferred when the bundle has no sitemap date, and the Markdown detector never
-makes an additional request.
+head; complete Person or Organization JSON-LD with `name` and `url`;
+`canonical_consistency` — self-referential, same-domain canonicals on **all** at least
+three successfully fetched sampled pages — or `canonical_majority` — a majority
+(`≥ 2/3`) but not all pages, with the ratio and denominator carried in the evidence
+string; a well-formed robots.txt that permits at least one retrieval or hybrid crawler
+at the root; and a Markdown representation already present in `pages[]`. Sitemap
+freshness is not inferred when the bundle has no sitemap date, and the Markdown
+detector never makes an additional request. The `canonical_majority` detector is
+deliberately named differently from `canonical_consistency` so the strength/rec
+contradiction filter does not suppress legitimate CHK-D-008 recommendations on the
+minority of pages that still lack a self-referential canonical.
 
 `summary.total_findings` counts only `findings[]` entries. Recommendations and
 limitations are not findings and are not counted there.
