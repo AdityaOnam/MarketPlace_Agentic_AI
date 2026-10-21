@@ -10,6 +10,12 @@ arrive don't stay — with evidence, not opinions.**
 ![Runtime: <5 min](https://img.shields.io/badge/runtime-%3C5%20min-success)
 ![Status: submission-ready](https://img.shields.io/badge/status-submission--ready-brightgreen)
 
+<p align="center">
+  <img width="600" alt="Brand AI-Readiness Audit demo" src="https://github.com/user-attachments/assets/25a6f1e3-80c8-47cf-9a8f-1828ad17ecff" />
+  <br>
+  <sub><i>One URL in → one evidence-backed AI-readiness report out.</i></sub>
+</p>
+
 [Marketplace README](brand-ai-readiness-audit/README.md) · [Architecture](docs/ARCHITECTURE.md) · [Evaluation results](docs/evals/stage-e-report.md) · [Decision log](docs/DECISIONS.md)
 
 Built for **Adobe University Hackathon 2026 — Round 3, "Build the Agent Skill
