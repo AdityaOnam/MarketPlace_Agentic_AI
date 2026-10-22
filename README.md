@@ -1,3 +1,5 @@
+![Adobe University Hackathon 2026 — Speak to Agents: The New Language of Brand Visibility](docs/assets/banner.webp)
+
 # Brand AI-Readiness Audit — Agent Skill Marketplace
 
 **Give it a URL. It tells you why AI assistants can't find you, and why visitors who do
