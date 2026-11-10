@@ -1,0 +1,30 @@
+[
+  {
+    "domain": "shein.com",
+    "archetype_expected": "",
+    "archetype_predicted": "unknown",
+    "archetype_confidence": 0.0,
+    "pages_ok": 0,
+    "findings": 1,
+    "by_severity": {
+      "critical": 0,
+      "high": 0,
+      "medium": 1,
+      "low": 0
+    },
+    "finding_ids": [
+      "CHK-D-025"
+    ],
+    "recommendations": 0,
+    "envelope_states": {
+      "not_determinable": 9,
+      "absent": 1,
+      "not_applicable": 2,
+      "present": 1
+    },
+    "schema_ok": true,
+    "schema_errors": [],
+    "meta_warnings": [],
+    "wall_clock_s": 4.9
+  }
+]

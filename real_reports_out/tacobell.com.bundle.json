@@ -1,0 +1,4033 @@
+{
+  "schema_version": "1.0.0",
+  "site": {
+    "status": "ok",
+    "reason": null,
+    "input": "https://tacobell.com",
+    "canonical_host": "www.tacobell.com",
+    "origin": "https://www.tacobell.com",
+    "scheme": "https",
+    "redirect_chain": [
+      "https://tacobell.com"
+    ],
+    "tls_valid": true,
+    "archetype": "unknown",
+    "archetype_confidence": 0.0
+  },
+  "robots": {
+    "status": "ok",
+    "reason": null,
+    "fetch_status": 404,
+    "body": "",
+    "parse_ok": true,
+    "agents": {},
+    "sitemap_declarations": []
+  },
+  "discovery": {
+    "status": "ok",
+    "reason": null,
+    "sitemap_found": true,
+    "sitemap_urls_count": 50941,
+    "inventory": [
+      {
+        "url": "https://www.tacobell.com/",
+        "page_type": "home",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/stories",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/homepage",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/cart",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/search",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/storefinder",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/delivery",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/allergen-info",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/info",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/calculator",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/ingredients",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/searchEmpty",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/register",
+        "page_type": "login",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/migratedUserLoginPage",
+        "page_type": "login",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/legal-notices/terms-of-use",
+        "page_type": "legal",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/singleStepCheckoutPage",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/legal-notices/privacy-policy",
+        "page_type": "legal",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/food",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/legal-notices/about-our-ads",
+        "page_type": "legal",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/news",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/legal-notices/faq",
+        "page_type": "legal",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/legal-notices/code-of-conduct",
+        "page_type": "legal",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/nutrition",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/legal-notices",
+        "page_type": "legal",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/legal-notices/mobile-terms",
+        "page_type": "legal",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/legal-notices/rsc-text-notification",
+        "page_type": "legal",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/legal-notices/franchise-text-notification",
+        "page_type": "legal",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/legal-notices/text-notification",
+        "page_type": "legal",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/legal-notices/supplemental-statement",
+        "page_type": "legal",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/gift-cards",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/company",
+        "page_type": "about",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/careers",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/education",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/ps4promo/code-request",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/steal-a-taco-2016",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/all-tacos-eve",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/love-and-tacos2",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/love-and-tacos",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/tacobellgiftCardFormPage",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/gift-cards/gift-card-form",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/contactUsFormPage",
+        "page_type": "contact",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/contactUsPage",
+        "page_type": "contact",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/about-us",
+        "page_type": "about",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/page_000006Y1",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/history",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/mytestpage",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/marketingcampaignjanuary",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/stealabase",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/dollarallday",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/day",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/food-for-all-journey",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/feedListingPage",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/gift cards terms of use",
+        "page_type": "legal",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/legal-notices/gift-cards-terms-of-use",
+        "page_type": "legal",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/FAQS",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/belluminati",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/stealataco/terms",
+        "page_type": "legal",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/stealataco",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/taco-bell-delivery",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/nacho-fries",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/TacoBellShow",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/letsdoittb",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/xbox",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/xbox/rules",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/appGiftCardPage",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/edit-combo-party-product-from-cart-page",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/deliveryLanding",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/deliverysurveysweepstakes",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/partyPackPage",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/breakfast-burrito-recipe",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/offers-and-deals",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/online-gift-card-promotion-terms-and-conditions",
+        "page_type": "legal",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/faq/taco-bell-holiday-hours",
+        "page_type": "faq",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/happier-hour",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/legal-notices/california-privacy-notice",
+        "page_type": "legal",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/faq/our-purpose-food",
+        "page_type": "faq",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/faq/our-purpose-people",
+        "page_type": "faq",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/faq/our-purpose-planet",
+        "page_type": "faq",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/faq/our-purpose-community",
+        "page_type": "faq",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/faq/our-products-nutrition",
+        "page_type": "faq",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/faq/our-products-ingredients",
+        "page_type": "faq",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/faq/our-products-vegetarian",
+        "page_type": "faq",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/faq/our-products-allergies-and-sensitivities",
+        "page_type": "faq",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/faq/weddings",
+        "page_type": "faq",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/faq/taco-bell-history",
+        "page_type": "faq",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/faq/gift-cards",
+        "page_type": "faq",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/faq/ordering-notifications",
+        "page_type": "faq",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/faq/ordering-my-account",
+        "page_type": "login",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/faq/ordering-payment",
+        "page_type": "faq",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/faq/ordering-general-info",
+        "page_type": "faq",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/faq/how-to-order-taco-bell",
+        "page_type": "faq",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/faq/our-products-taco-bell-prices",
+        "page_type": "faq",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/faq/our-products-what-is-taco-bells-seasoned-beef-made-of",
+        "page_type": "faq",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/faq/pick-up",
+        "page_type": "faq",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/faq/coronavirus",
+        "page_type": "faq",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/freedoritoslocostacos",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/delivery/food-delivery-near-me",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/delivery/delivery-near-me",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/delivery/food-places-that-deliver-near-me",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/delivery/places-that-deliver-near-me",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/delivery/food-places-near-me",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/delivery/food-open-near-me",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/delivery/food-delivery-near-me-open-now",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/delivery/restaurants-open-near-me",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/delivery/restaurants-near-me-open-now",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/delivery/food-delivery",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/at-home-taco-bar",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/info/restaurant-delivery-near-me",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/info/drive-thru",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/info/takeout-near-me",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/info/takeout-food-near-me",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/info/takeout-restaurants-near-me",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/faq/rewards",
+        "page_type": "faq",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/popular-links",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/mobile-app",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/taco-bell-go-mobile",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/xbox-early-access",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/steal-a-taco/rewards-terms",
+        "page_type": "legal",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/nationwide-partnership-with-doordash",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/steal-a-base-steal-a-taco-with-rewards",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/blog/how-to-make-the-crunchy-taco-shepherds-pie-from-taco-bells-8th-annual-friendsgiving",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/live-mas-scholarships-2020",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/nacho-fries-are-home-for-the-holidays",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/potatoes-are-returning-taco-bell-vegetarian-plans",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/build-your-own-cravings-box",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/faq/potatoes",
+        "page_type": "faq",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/blog/treat-others-as-family-a-simple-but-powerful-reminder",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/taco-bell-brings-back-the-quesalupa",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/taco-bell-partnering-with-youthbuild-usa-on-helping-hand-fundraiser-to-support-youth-education",
+        "page_type": "contact",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/taco-bell-is-redefining-the-restaurant-of-the-future",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/april-24-hiring-parties",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/taco-bell-cantina-times-square",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/taco-bell-terracycle-team-up-to-recycle-hot-sauce-packets",
+        "page_type": "about",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/Taco Moon Press Release",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/blog/Celebrating Asian American & Pacific Islander Heritage Month",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/page_000046GO",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/blog/living-mas-through-film",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/The Taco Bell Foundation Awards $17 Million To Educate And Inspire The Next Generation Of Leaders",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/Naked Chicken Chalupa",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/blog/honoring-military-appreciation-month-intersectionality",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/blog/Celebrating Pride Month",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/blog/page_000048S1",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/blog/page_000049JS",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/blog/Honoring Juneteenth & Live Más T.A.A.C.O.S.",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/page_00004ABK",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/naked-chalupa-with-a-crispy-plant-based-shell",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/blog/when-the-student-becomes-the-teacher-reflections-on-fatherhood-with-my-daughter",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/nba-comebacks-2021",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/legal-notices/alpr",
+        "page_type": "legal",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/taco-bell-nacho-fries-are-back-fry-force-edition",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/latest-menu-round-up-summer-2021",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/year-of-digital-acceleration",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/blog/A Case for Creativity: Our Internal Incubator",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/blog/College Athlete to Corporate Athlete",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/Cashmere Named Taco Bell’s® First-Ever Culture Agency Of Record",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/news/taco-bell-defy",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/Taco Bell® Nacho Fries Just Got Hotter With New Limited Time Truff Partnership",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/blog/taco-bells-former-ceo-greg-creed-reflects-on-how-to-build-an-ownable-company-culture-that-inspires-innovation",
+        "page_type": "about",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/The Great Crispy Chicken Sandwich Taco Debate",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/Taco Bell® Teams Up With Lil Nas X And Appoints Him 'Chief Impact Officer'",
+        "page_type": "about",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/food/deals-and-combos",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/food/power-menu",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/food/party-packs",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/food/tacos",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/food/sides-sweets",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/food/cravings-value-menu",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/food/vegetarian",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/food/nachos",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/food/breakfast",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/food/burritos",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/food/online-exclusives",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/food/drinks",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/food/quesadillas",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/food/deals-and-combos?store=000002",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/food/power-menu?store=000002",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/food/party-packs?store=000002",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/food/tacos?store=000002",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/food/sides-sweets?store=000002",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/food/cravings-value-menu?store=000002",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/food/vegetarian?store=000002",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/food/nachos?store=000002",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/food/breakfast?store=000002",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/food/burritos?store=000002",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/food/online-exclusives?store=000002",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/food/drinks?store=000002",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/food/quesadillas?store=000002",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/food?store=000002",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/food/deals-and-combos?store=000015",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/food/power-menu?store=000015",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/food/party-packs?store=000015",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/food/tacos?store=000015",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/food/sides-sweets?store=000015",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/food/cravings-value-menu?store=000015",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/food/vegetarian?store=000015",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/food/nachos?store=000015",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/food/breakfast?store=000015",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/food/burritos?store=000015",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/food/online-exclusives?store=000015",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/food/drinks?store=000015",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.tacobell.com/food/quesadillas?store=000015",
+        "page_type": "other",
+        "source": "sitemap"
+      }
+    ],
+    "sampled_static": [
+      "https://www.tacobell.com/",
+      "https://www.tacobell.com/Taco Bell® Teams Up With Lil Nas X And Appoints Him 'Chief Impact Officer'",
+      "https://www.tacobell.com/contactUsFormPage",
+      "https://www.tacobell.com/about-us",
+      "https://www.tacobell.com/blog/taco-bells-former-ceo-greg-creed-reflects-on-how-to-build-an-ownable-company-culture-that-inspires-innovation",
+      "https://www.tacobell.com/company",
+      "https://www.tacobell.com/taco-bell-terracycle-team-up-to-recycle-hot-sauce-packets",
+      "https://www.tacobell.com/contactUsPage",
+      "https://www.tacobell.com/faq/coronavirus",
+      "https://www.tacobell.com/faq/gift-cards",
+      "https://www.tacobell.com/faq/how-to-order-taco-bell",
+      "https://www.tacobell.com/faq/ordering-general-info",
+      "https://www.tacobell.com/gift cards terms of use",
+      "https://www.tacobell.com/legal-notices",
+      "https://www.tacobell.com/legal-notices/about-our-ads",
+      "https://www.tacobell.com/legal-notices/alpr",
+      "https://www.tacobell.com/Cashmere Named Taco Bell’s® First-Ever Culture Agency Of Record",
+      "https://www.tacobell.com/FAQS",
+      "https://www.tacobell.com/Naked Chicken Chalupa",
+      "https://www.tacobell.com/Taco Bell® Nacho Fries Just Got Hotter With New Limited Time Truff Partnership"
+    ],
+    "sampled_rendered": [],
+    "sampling_seed": "sha256:8fb26c94d7a6b44fd33684fa275caa7414e3b5ebdb35ecfdd3c5361eccefda05"
+  },
+  "pages": [
+    {
+      "url": "https://www.tacobell.com/",
+      "final_url": "https://www.tacobell.com/",
+      "status": "ok",
+      "reason": null,
+      "http_status": 200,
+      "page_type": "home",
+      "headers": {
+        "content-type": "text/html; charset=utf-8",
+        "edge-cache-tag": "PAGE_rel-p_WEB2",
+        "x-powered-by": "Next.js",
+        "etag": "\"126dj0jsn6e288c\"",
+        "vary": "Accept-Encoding",
+        "x-akamai-transformed": "l - 0 -",
+        "content-encoding": "gzip",
+        "expires": "Thu, 10 Sep 2026 20:50:26 GMT",
+        "cache-control": "max-age=0, no-cache",
+        "pragma": "no-cache",
+        "date": "Thu, 10 Sep 2026 20:50:26 GMT",
+        "content-length": "17070",
+        "connection": "close",
+        "set-cookie": "bm_sz=C97E5E68F3CE312D5A973EAA98E8763B~YAAQV/EBF2HVbYqgAQAAWgYWjQEro1ggSlB/8lM60fcrf0TdiA27JsrsxtEH71qFRCQzim8IPcnLxnswvDY2dykzWEkuvOvGBM5FUIsICxAyIKwqJhW9RadSJC7WJLfGEpEre/KaWlW7+/LPisDsY12XEcKhDxxaI4WOy33Io3zvDSEFCZXkdeSXeBNFFlBCzJ5gkyaWeJCEkoe55ia91fiq/dEZc09diKijRGIP0OmxQ0pnh0BPjL+UoSQxLdcIxjq6W0NSHtkeK05/mknDEMhc5NnLP1Z8WwyUYkxgWXhecpumZpV8IIQFu23HHDrlwK+XnLqAARzBza6aWyU9rcBrio7lySoUVxs9lgtFnBCLKBae135KpAtQP7i9jtmZUBMTk4c=~3490609~4604472; Domain=.tacobell.com; Path=/; Expires=Fri, 11 Sep 2026 00:50:26 GMT; Max-Age=14400",
+        "ak-grn": "0.57f10117.1789073425.7cca04c"
+      },
+      "raw_html_bytes": 104500,
+      "main_text": "Relive It All Over Again 2016 was something else. And we’ve got four Decades #TBTB faves as your ultimate throwback. Explore Menu Learn More Satisfy Your Cravings Love At First Fry Chicken Enchilada Nacho Fries – prepare your cravings to be swept off their feet. Order Now Bold New Burritos Get $3 Steak Burritos on the Luxe Value Menu—choose Fresca or Melty Pepper Jack. Order Now Quesadilla’s on a Roll Rolled and packed with 2x the slow-roasted chicken. Meet the Cantina Chicken Rolled Quesadilla. You’re welcome. Order Now What's Happening On the App Collect All the Nostalgia Celebrate Decades #TBTB by playing our Decades #Discovery to unlock weekly offers. 1 $0 Delivery Fee* Get a $0 delivery fee* when you spend $25+ thru 9/16.* New Drops Arrive Every Tuesday Exclusive offers, experiences, and opportunities for Rewards Members.◊ Choose Your Free Reward Your free reward awaits on our app. All it takes is you joining Taco Bell Rewards. ° slide 0 slide 1 slide 2 slide 3 News to Know New Café. ​ Same Taco Bell. ​ Your new fave café is inside a Taco Bell. Treat yourself to one of 20+ deliciously surprising beverages.​ Let’s Be Honest They Want a Gift Card Check out our various Gift Card designs for any occasion on your list. ■ We're Hiring. Working for Taco Bell just hits different ® . Join our family today. ‡ slide 0 slide 1 slide 2",
+      "main_text_words": 237,
+      "extraction_ok": true,
+      "title": "Taco Bell® | Live Más",
+      "meta": {
+        "viewport": "width=device-width",
+        "description": "Get your Taco Bell cravings today by ordering ahead on the mobile app for pick up or delivery.",
+        "robots": null
+      },
+      "lang": "en",
+      "canonical": {
+        "href": "https://www.tacobell.com/",
+        "self_referential": true,
+        "cross_domain": false
+      },
+      "headings": [
+        {
+          "level": 5,
+          "text": "",
+          "order": 0
+        },
+        {
+          "level": 5,
+          "text": "",
+          "order": 1
+        },
+        {
+          "level": 1,
+          "text": "Relive It All Over Again",
+          "order": 2
+        },
+        {
+          "level": 2,
+          "text": "Satisfy Your Cravings",
+          "order": 3
+        },
+        {
+          "level": 3,
+          "text": "Love At First Fry",
+          "order": 4
+        },
+        {
+          "level": 3,
+          "text": "Bold New Burritos",
+          "order": 5
+        },
+        {
+          "level": 3,
+          "text": "Quesadilla’s on a Roll",
+          "order": 6
+        },
+        {
+          "level": 2,
+          "text": "What's Happening On the App",
+          "order": 7
+        },
+        {
+          "level": 3,
+          "text": "Collect All the Nostalgia",
+          "order": 8
+        },
+        {
+          "level": 3,
+          "text": "$0 Delivery Fee*",
+          "order": 9
+        },
+        {
+          "level": 3,
+          "text": "New Drops Arrive Every Tuesday",
+          "order": 10
+        },
+        {
+          "level": 3,
+          "text": "Choose Your Free Reward",
+          "order": 11
+        },
+        {
+          "level": 2,
+          "text": "News to Know",
+          "order": 12
+        },
+        {
+          "level": 3,
+          "text": "New Café. ​ Same Taco Bell. ​",
+          "order": 13
+        },
+        {
+          "level": 3,
+          "text": "Let’s Be Honest They Want a Gift Card",
+          "order": 14
+        },
+        {
+          "level": 3,
+          "text": "We're Hiring.",
+          "order": 15
+        },
+        {
+          "level": 2,
+          "text": "Redeem exclusive rewards only on the app.",
+          "order": 16
+        },
+        {
+          "level": 6,
+          "text": "About us",
+          "order": 17
+        },
+        {
+          "level": 6,
+          "text": "Explore",
+          "order": 18
+        },
+        {
+          "level": 6,
+          "text": "Contact Us",
+          "order": 19
+        }
+      ],
+      "landmarks": {
+        "main": 1,
+        "nav": 6,
+        "header": 4,
+        "footer": 9
+      },
+      "structured_data": {
+        "json_ld": [],
+        "microdata_types": [],
+        "rdfa_types": []
+      },
+      "links": [
+        {
+          "href": "https://www.tacobell.com/",
+          "text": "",
+          "rel": "",
+          "internal": true,
+          "aria_label": "Taco Bell Home"
+        },
+        {
+          "href": "https://www.tacobell.com/food",
+          "text": "Menu",
+          "rel": "",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/delivery",
+          "text": "Delivery",
+          "rel": "",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/rewards",
+          "text": "Rewards",
+          "rel": "",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/gift-cards",
+          "text": "Gift Cards",
+          "rel": "",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/purpose",
+          "text": "Purpose",
+          "rel": "",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/purpose/people",
+          "text": "People",
+          "rel": "",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/purpose/planet",
+          "text": "Planet",
+          "rel": "",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/purpose/food",
+          "text": "Food",
+          "rel": "",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/locations",
+          "text": "Find a Nearby Bell",
+          "rel": "",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://tblinks.tacobell.com/SzHP",
+          "text": "Download Our App",
+          "rel": "noreferrer noopener",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/register/yum",
+          "text": "Sign Up",
+          "rel": "",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/login/yum",
+          "text": "Log in",
+          "rel": "",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/",
+          "text": "Taco Bell",
+          "rel": "",
+          "internal": true,
+          "aria_label": "Taco Bell Home"
+        },
+        {
+          "href": "https://www.tacobell.com/login/yum",
+          "text": "Your account",
+          "rel": "",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/login/yum",
+          "text": "Your account",
+          "rel": "",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/",
+          "text": "Taco Bell Rewards",
+          "rel": "",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/order/cart",
+          "text": "Your Order $0.00",
+          "rel": "",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/order/cart",
+          "text": "View Bag & Checkout",
+          "rel": "",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/",
+          "text": "",
+          "rel": "",
+          "internal": true,
+          "aria_label": "Taco Bell Home"
+        },
+        {
+          "href": "https://www.tacobell.com/food",
+          "text": "Menu",
+          "rel": "",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/delivery",
+          "text": "Delivery",
+          "rel": "",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/rewards",
+          "text": "Rewards",
+          "rel": "",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/gift-cards",
+          "text": "Gift Cards",
+          "rel": "",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/purpose",
+          "text": "Purpose",
+          "rel": "",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/purpose/people",
+          "text": "People",
+          "rel": "",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/purpose/planet",
+          "text": "Planet",
+          "rel": "",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/purpose/food",
+          "text": "Food",
+          "rel": "",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/login/yum",
+          "text": "Your account",
+          "rel": "",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/login/yum",
+          "text": "Your account",
+          "rel": "",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/",
+          "text": "Your rewards",
+          "rel": "",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/order/cart",
+          "text": "Your Order $0.00",
+          "rel": "",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/order/cart",
+          "text": "View Bag & Checkout",
+          "rel": "",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/food/featured",
+          "text": "Explore Menu",
+          "rel": "",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/promotions/decades",
+          "text": "Learn More",
+          "rel": "",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/food/featured/chicken-enchilada-nacho-fries",
+          "text": "",
+          "rel": "",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/food/featured/chicken-enchilada-nacho-fries",
+          "text": "Love At First Fry",
+          "rel": "",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/food/featured/chicken-enchilada-nacho-fries",
+          "text": "Order Now",
+          "rel": "",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/food/luxe-value-menu",
+          "text": "",
+          "rel": "",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/food/luxe-value-menu",
+          "text": "Bold New Burritos",
+          "rel": "",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/food/luxe-value-menu",
+          "text": "Order Now",
+          "rel": "",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/food/deals-and-combos/cantina-chicken-rolled-quesadilla",
+          "text": "",
+          "rel": "",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/food/deals-and-combos/cantina-chicken-rolled-quesadilla",
+          "text": "Quesadilla’s on a Roll",
+          "rel": "",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/food/deals-and-combos/cantina-chicken-rolled-quesadilla",
+          "text": "Order Now",
+          "rel": "",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://tacobell.onelink.me/z7Q9/9f1dbtb3",
+          "text": "",
+          "rel": "noreferrer noopener",
+          "internal": false,
+          "aria_label": null
+        },
+        {
+          "href": "https://tacobell.onelink.me/z7Q9/9f1dbtb3",
+          "text": "Collect All the Nostalgia",
+          "rel": "noreferrer noopener",
+          "internal": false,
+          "aria_label": null
+        },
+        {
+          "href": "https://tacobell.onelink.me/z7Q9/9f1dbtb3",
+          "text": "",
+          "rel": "noreferrer noopener",
+          "internal": false,
+          "aria_label": null
+        },
+        {
+          "href": "https://tacobell.onelink.me/z7Q9/9f1dbtb3",
+          "text": "$0 Delivery Fee*",
+          "rel": "noreferrer noopener",
+          "internal": false,
+          "aria_label": null
+        },
+        {
+          "href": "https://tacobell.onelink.me/z7Q9/drops",
+          "text": "",
+          "rel": "noreferrer noopener",
+          "internal": false,
+          "aria_label": null
+        },
+        {
+          "href": "https://tacobell.onelink.me/z7Q9/drops",
+          "text": "New Drops Arrive Every Tuesday",
+          "rel": "noreferrer noopener",
+          "internal": false,
+          "aria_label": null
+        },
+        {
+          "href": "https://tacobell.onelink.me/z7Q9/9f1dbtb3",
+          "text": "",
+          "rel": "noreferrer noopener",
+          "internal": false,
+          "aria_label": null
+        },
+        {
+          "href": "https://tacobell.onelink.me/z7Q9/9f1dbtb3",
+          "text": "Choose Your Free Reward",
+          "rel": "noreferrer noopener",
+          "internal": false,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/legal-notices/terms-of-use",
+          "text": "Terms and conditions",
+          "rel": "noreferrer noopener",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/legal-notices/terms-of-use",
+          "text": "Terms and conditions",
+          "rel": "noreferrer noopener",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/legal-notices/terms-of-use",
+          "text": "Terms and conditions",
+          "rel": "noreferrer noopener",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/legal-notices/terms-of-use",
+          "text": "Terms and conditions apply",
+          "rel": "noreferrer noopener",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/promotions/live-mas-cafe",
+          "text": "",
+          "rel": "",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/promotions/live-mas-cafe",
+          "text": "New Café. ​ Same Taco Bell. ​",
+          "rel": "",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/gift-cards",
+          "text": "",
+          "rel": "",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/gift-cards",
+          "text": "Let’s Be Honest They Want a Gift Card",
+          "rel": "",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://jobs.tacobell.com/",
+          "text": "",
+          "rel": "noreferrer noopener",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://jobs.tacobell.com/",
+          "text": "We're Hiring.",
+          "rel": "noreferrer noopener",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/gift-cards/terms-of-use",
+          "text": "terms and conditions",
+          "rel": "noreferrer noopener",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com",
+          "text": "Download app",
+          "rel": "noreferrer noopener",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/about-us",
+          "text": "About Taco Bell",
+          "rel": "",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/purpose",
+          "text": "Purpose",
+          "rel": "",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/nutrition/info",
+          "text": "Nutrition",
+          "rel": "",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/locations",
+          "text": "Locations",
+          "rel": "",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/offers-and-deals",
+          "text": "Offers & Deals",
+          "rel": "",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/newsroom",
+          "text": "Newsroom",
+          "rel": "",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/stories",
+          "text": "Stories",
+          "rel": "",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/responsibledisclosure",
+          "text": "Responsible Disclosure",
+          "rel": "",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/mobile-app",
+          "text": "Mobile App",
+          "rel": "",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/gift-cards",
+          "text": "Gift Cards",
+          "rel": "",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/rewards",
+          "text": "Rewards",
+          "rel": "",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/delivery",
+          "text": "Delivery",
+          "rel": "",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobelltacoshop.com/",
+          "text": "Taco Shop",
+          "rel": "noreferrer noopener",
+          "internal": false,
+          "aria_label": null
+        },
+        {
+          "href": "https://help.tacobell.com/s/",
+          "text": "Help & FAQs",
+          "rel": "noreferrer noopener",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://jobs.tacobell.com/",
+          "text": "Careers",
+          "rel": "noreferrer noopener",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobellfoundation.org/",
+          "text": "Taco Bell Foundation",
+          "rel": "noreferrer noopener",
+          "internal": false,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/franchise",
+          "text": "Franchise Information",
+          "rel": "",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.facebook.com/tacobell",
+          "text": "",
+          "rel": "noreferrer noopener",
+          "internal": false,
+          "aria_label": "Check out Taco Bell on Facebook."
+        },
+        {
+          "href": "https://instagram.com/tacobell",
+          "text": "",
+          "rel": "noreferrer noopener",
+          "internal": false,
+          "aria_label": "Check out Taco Bell on Instagram."
+        },
+        {
+          "href": "https://twitter.com/tacobell",
+          "text": "",
+          "rel": "noreferrer noopener",
+          "internal": false,
+          "aria_label": "Check out Taco Bell on X."
+        },
+        {
+          "href": "https://www.tiktok.com/@tacobell",
+          "text": "",
+          "rel": "noreferrer noopener",
+          "internal": false,
+          "aria_label": "Check out Taco Bell's TikTok Channel."
+        },
+        {
+          "href": "https://www.youtube.com/user/tacobell",
+          "text": "",
+          "rel": "noreferrer noopener",
+          "internal": false,
+          "aria_label": "Check out Taco Bell's Youtube Channel."
+        },
+        {
+          "href": "https://www.linkedin.com/company/taco-bell/",
+          "text": "",
+          "rel": "noreferrer noopener",
+          "internal": false,
+          "aria_label": "Taco Bell on LinkedIn"
+        },
+        {
+          "href": "https://www.tacobell.com/legal-notices/privacy-policy",
+          "text": "Privacy Center",
+          "rel": "",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/legal-notices/terms-of-use",
+          "text": "Terms Of Use",
+          "rel": "",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/legal/accessibility-statement",
+          "text": "Accessibility Statement",
+          "rel": "",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://privacy.tacobell.com/sale-of-info",
+          "text": "Do Not Sell or Share My Personal Information",
+          "rel": "noreferrer noopener",
+          "internal": true,
+          "aria_label": null
+        }
+      ],
+      "outbound_profile_links": [
+        "https://www.tacobelltacoshop.com/",
+        "https://www.tacobellfoundation.org/",
+        "https://www.facebook.com/tacobell",
+        "https://instagram.com/tacobell",
+        "https://twitter.com/tacobell",
+        "https://www.tiktok.com/@tacobell",
+        "https://www.youtube.com/user/tacobell",
+        "https://www.linkedin.com/company/taco-bell/"
+      ],
+      "images": [
+        {
+          "src": "https://dam.tacobell.com/transform/a770d741-7194-4d10-91b2-96e3e3e68a77/E926_Ecomm_NAT_Decades_Launch_LandingPage_Web_Desktop_Hero-jpg",
+          "alt": "Relive It All Over Again (8/20)",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://dam.tacobell.com/transform/d249f45f-3302-42e7-89c2-bfbbfeb9cd7c/E926_NAT_ChickenEnchiladaNachoFries_Web_VerticalBucket-jpg",
+          "alt": "Chicken Enchilada Nacho Fries",
+          "decorative_hint": false,
+          "width_attr": "800",
+          "height_attr": "472",
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://dam.tacobell.com/transform/8968041a-fc11-4369-8a24-ed2ca1b6f69a/E726_NAT_Digital_PepperJackBurritos_VerticalBucket_Desktop_AllBoxes_800x472-jpg",
+          "alt": "Bold New Burritos",
+          "decorative_hint": false,
+          "width_attr": "800",
+          "height_attr": "472",
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://dam.tacobell.com/transform/1f9548b6-133f-43f1-a36b-08f663f80ca1/E4-E5-26-Cantina-Chicken-Rolled-Quesadilla-ALC-Web-Vertical-Bucket-Desktop-800x472-jpg",
+          "alt": "Quesadilla’s on a roll",
+          "decorative_hint": false,
+          "width_attr": "800",
+          "height_attr": "472",
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://dam.tacobell.com/transform/5d11ab48-5a22-48c2-9ac8-16253382c57e/E926_NAT_Digital_DecadesDiscoveryGame_Fresco_DynamicStrip_1500x1500-png",
+          "alt": "Collect All the Nostalgia",
+          "decorative_hint": false,
+          "width_attr": "720",
+          "height_attr": "720",
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://dam.tacobell.com/transform/8a45d449-f3a4-4a03-b070-e912cf6c7821/E8_26_1P_0DeliveryFeeWith25July2026_App_Carousel_0716-jpg",
+          "alt": "$0 Delivery Fee*",
+          "decorative_hint": false,
+          "width_attr": "720",
+          "height_attr": "720",
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "/_static/apps/images/23_DROPS_App_Carousel_0821-JonMod.gif",
+          "alt": "Taco Bell Rewards: Tuesday Drops",
+          "decorative_hint": false,
+          "width_attr": "720",
+          "height_attr": "720",
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "/_static/apps/images/carousel-2023-E05-TuesdayDropsGeneric-Mobile.jpg",
+          "alt": "Taco Bell Rewards",
+          "decorative_hint": false,
+          "width_attr": "720",
+          "height_attr": "720",
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://dam.tacobell.com/transform/21448f3d-c11c-4969-892d-d58aa25355f9/LMC-AppHomepage-CarouselOffers-jpg",
+          "alt": "Live Mas Cafe",
+          "decorative_hint": false,
+          "width_attr": "680",
+          "height_attr": "679",
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://dam.tacobell.com/transform/c5732dbc-bbc9-4d32-8175-07b02c6bd194/E426_Digital_NAT_GiftCards_WebCarousel_720x720-png",
+          "alt": "Taco Bell Gift Cards",
+          "decorative_hint": false,
+          "width_attr": "720",
+          "height_attr": "720",
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "/_static/apps/images/carousel-2024-E04-WereHiringPOP-Mobile.jpg",
+          "alt": "Now Hiring",
+          "decorative_hint": false,
+          "width_attr": "720",
+          "height_attr": "721",
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "/_static/images/icons/logo-legal.svg",
+          "alt": "Taco Bell logo",
+          "decorative_hint": false,
+          "width_attr": "14",
+          "height_attr": "12",
+          "css_aspect_ratio": null,
+          "in_picture": false
+        }
+      ],
+      "iframes": [],
+      "media": [],
+      "form_controls": [],
+      "interactive_empty": {
+        "links_no_text": 0,
+        "buttons_no_text": 0
+      },
+      "noscript": {
+        "present": true,
+        "words": 0
+      },
+      "dates": {
+        "meta_published": null,
+        "meta_modified": null,
+        "visible_dates": [],
+        "header_last_modified": null
+      },
+      "contact_signals": {
+        "email": false,
+        "phone": null,
+        "postal_address": null,
+        "org_name_footer": null
+      },
+      "trigram_hash": "sha256:24065de11d89147257f3855e97c94f2011f81927028b9035db281c2077d03522"
+    },
+    {
+      "url": "https://www.tacobell.com/Taco Bell® Teams Up With Lil Nas X And Appoints Him 'Chief Impact Officer'",
+      "final_url": "https://www.tacobell.com/Taco Bell® Teams Up With Lil Nas X And Appoints Him 'Chief Impact Officer'",
+      "status": "unavailable",
+      "reason": "InvalidURL: URL can't contain control characters. \"/Taco Bell® Teams Up With Lil Nas X And Appoints Him 'Chief Impact Officer'\" (found at least ' ')",
+      "http_status": null,
+      "page_type": "about",
+      "headers": {},
+      "raw_html_bytes": 0,
+      "main_text": "",
+      "main_text_words": 0,
+      "extraction_ok": false,
+      "title": null,
+      "meta": {},
+      "lang": null,
+      "canonical": {},
+      "headings": [],
+      "landmarks": {},
+      "structured_data": {},
+      "links": [],
+      "outbound_profile_links": [],
+      "images": [],
+      "iframes": [],
+      "media": [],
+      "form_controls": [],
+      "interactive_empty": {},
+      "noscript": {
+        "present": false,
+        "words": 0
+      },
+      "dates": {},
+      "contact_signals": {},
+      "trigram_hash": null
+    },
+    {
+      "url": "https://www.tacobell.com/contactUsFormPage",
+      "final_url": "https://www.tacobell.com/contactUsFormPage",
+      "status": "ok",
+      "reason": null,
+      "http_status": 200,
+      "page_type": "contact",
+      "headers": {
+        "content-type": "text/html; charset=utf-8",
+        "edge-cache-tag": "PAGE_rel-p_WEB2",
+        "x-powered-by": "Next.js",
+        "etag": "\"fwsnh8q5yd11e4\"",
+        "vary": "Accept-Encoding",
+        "x-akamai-transformed": "l - 0 -",
+        "content-encoding": "gzip",
+        "expires": "Thu, 10 Sep 2026 20:50:29 GMT",
+        "cache-control": "max-age=0, no-cache",
+        "pragma": "no-cache",
+        "date": "Thu, 10 Sep 2026 20:50:29 GMT",
+        "content-length": "11076",
+        "connection": "close",
+        "set-cookie": "bm_sz=3BEB720ECA536973F7B0302FCC5364CF~YAAQVfEBF4VVanygAQAAGRIWjQGP/vOuK8oyGTHhD6VmjWqP2jrEkC5ed8O2HYWT5UpmT7voMLI4SmoHfEqlXM03aSCw+Da+mrxa/Kn7EfI83tg87Tzw/Avt1PUSuiZbLVG0jQCTNoCJ1CiYJsVBqIjua/2KILCHzJ9sKoEZHCqaFRBKa13n14aieEx1J7B7GUUZH6tBfnLNx03tsq66oxsl5tJevmIBbi8ggdXOYJC8tfUtMM03rwTOB6bH0JNnILWP8W3bQDnPuvKPNptkywRtrfa2pYPvsDHm2O786itrFKND4+V+j/V9h0+pyHkP1nL4RFAMeFTUMQgqsY10xEsFCbx9dXac/kjfOmHVTbQuq+LIlBhVXf6Ws/SQvQ7030XWBRnmAkA=~3163716~4534593; Domain=.tacobell.com; Path=/; Expires=Fri, 11 Sep 2026 00:50:29 GMT; Max-Age=14400",
+        "ak-grn": "0.55f10117.1789073429.67e9361f"
+      },
+      "raw_html_bytes": 48852,
+      "main_text": "",
+      "main_text_words": 0,
+      "extraction_ok": false,
+      "title": null,
+      "meta": {
+        "viewport": "width=device-width",
+        "description": null,
+        "robots": null
+      },
+      "lang": "en",
+      "canonical": {
+        "href": null,
+        "self_referential": false,
+        "cross_domain": false
+      },
+      "headings": [],
+      "landmarks": {
+        "main": 0,
+        "nav": 0,
+        "header": 0,
+        "footer": 0
+      },
+      "structured_data": {
+        "json_ld": [],
+        "microdata_types": [],
+        "rdfa_types": []
+      },
+      "links": [],
+      "outbound_profile_links": [],
+      "images": [],
+      "iframes": [],
+      "media": [],
+      "form_controls": [],
+      "interactive_empty": {
+        "links_no_text": 0,
+        "buttons_no_text": 0
+      },
+      "noscript": {
+        "present": true,
+        "words": 0
+      },
+      "dates": {
+        "meta_published": null,
+        "meta_modified": null,
+        "visible_dates": [],
+        "header_last_modified": null
+      },
+      "contact_signals": {
+        "email": false,
+        "phone": null,
+        "postal_address": null,
+        "org_name_footer": null
+      },
+      "trigram_hash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "url": "https://www.tacobell.com/about-us",
+      "final_url": "https://www.tacobell.com/about-us",
+      "status": "ok",
+      "reason": null,
+      "http_status": 200,
+      "page_type": "about",
+      "headers": {
+        "content-type": "text/html; charset=utf-8",
+        "edge-cache-tag": "PAGE_rel-p_WEB2",
+        "x-powered-by": "Next.js",
+        "etag": "\"94byxnlmrw14w1\"",
+        "vary": "Accept-Encoding",
+        "x-akamai-transformed": "l - 0 -",
+        "content-encoding": "gzip",
+        "expires": "Thu, 10 Sep 2026 20:50:30 GMT",
+        "cache-control": "max-age=0, no-cache",
+        "pragma": "no-cache",
+        "date": "Thu, 10 Sep 2026 20:50:30 GMT",
+        "content-length": "8559",
+        "connection": "close",
+        "set-cookie": "bm_sz=9CE5313594097D7DDDC8217395E5BA5B~YAAQV/EBF43VbYqgAQAAAxYWjQHO0Gs9rsUdmoMkdonqN6RelaacLZ3zse/YjNL0USOFewWVzn4NLBLTTAn5LJksWZx3oIrOcm9dCUKn0UENNriKO6BzDv4rsEPZ0m5XEV7yjFRgy4Me2ez6s2mAnUADWC/uQoCtNgo4PWgyv7UQh+9y93w5UgvQG8Q4oRSf4jLZpsFQ78iRQF5D3g0If6g/4XhXpRI2Y4380Xwkoiv2946H3KT4VMvce9SYIvGdIj3dPL+r5Zz/J62CXOPbC3WyBobzSiLzIOjz00J4oETRzXsy4ayMfUdKynHCyYxIjPA7n0xMnfrhDdeLy4GIVF6qISFXBsst8OV4C8TyYPUZ1TOfPisl66oy0uH8Xm05fog4xAbI+Rk=~3163716~4534593; Domain=.tacobell.com; Path=/; Expires=Fri, 11 Sep 2026 00:50:29 GMT; Max-Age=14399",
+        "ak-grn": "0.57f10117.1789073429.7cca6d6"
+      },
+      "raw_html_bytes": 53379,
+      "main_text": "",
+      "main_text_words": 0,
+      "extraction_ok": false,
+      "title": null,
+      "meta": {
+        "viewport": "width=device-width",
+        "description": null,
+        "robots": null
+      },
+      "lang": "en",
+      "canonical": {
+        "href": null,
+        "self_referential": false,
+        "cross_domain": false
+      },
+      "headings": [],
+      "landmarks": {
+        "main": 0,
+        "nav": 0,
+        "header": 0,
+        "footer": 0
+      },
+      "structured_data": {
+        "json_ld": [],
+        "microdata_types": [],
+        "rdfa_types": []
+      },
+      "links": [],
+      "outbound_profile_links": [],
+      "images": [],
+      "iframes": [],
+      "media": [],
+      "form_controls": [],
+      "interactive_empty": {
+        "links_no_text": 0,
+        "buttons_no_text": 0
+      },
+      "noscript": {
+        "present": true,
+        "words": 0
+      },
+      "dates": {
+        "meta_published": null,
+        "meta_modified": null,
+        "visible_dates": [],
+        "header_last_modified": null
+      },
+      "contact_signals": {
+        "email": false,
+        "phone": null,
+        "postal_address": null,
+        "org_name_footer": null
+      },
+      "trigram_hash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "url": "https://www.tacobell.com/blog/taco-bells-former-ceo-greg-creed-reflects-on-how-to-build-an-ownable-company-culture-that-inspires-innovation",
+      "final_url": "https://www.tacobell.com/blog/taco-bells-former-ceo-greg-creed-reflects-on-how-to-build-an-ownable-company-culture-that-inspires-innovation",
+      "status": "ok",
+      "reason": null,
+      "http_status": 200,
+      "page_type": "about",
+      "headers": {
+        "content-type": "text/html; charset=utf-8",
+        "edge-cache-tag": "PAGE_rel-p_WEB2",
+        "x-powered-by": "Next.js",
+        "etag": "\"ngo2sdm4cr1grf\"",
+        "vary": "Accept-Encoding",
+        "x-akamai-transformed": "l - 0 -",
+        "content-encoding": "gzip",
+        "expires": "Thu, 10 Sep 2026 20:50:33 GMT",
+        "cache-control": "max-age=0, no-cache",
+        "pragma": "no-cache",
+        "date": "Thu, 10 Sep 2026 20:50:33 GMT",
+        "content-length": "12812",
+        "connection": "close",
+        "set-cookie": "bm_sz=1015651F237E435AD3346D12B6A7AB49~YAAQVfEBF89VanygAQAANCMWjQEK5+DxgaP0X7NkFpus1p2ujQQPNqDG4B5HGYsYnusc/uJH8D6XZVeyJ+YCRexyQk9/0G2YDpvLOngTzojKrG+RXrOlOwVj7jyNgWeKiUahG4IW363z4/KbjY8PBeAOpP1C0WOTNwL49shnX92SxzZkbdlbDXXCD8pTrjXieOwpv15Kav3AoRaNdpFzy1ZYSEc4TXfKvMCJpYZ1YILLQ6azGTPYSOFhI9rHSA0f9hO87SLoYyXv+zv8/awJ7P5JTPMKbnpAd3wUclXaSwoS57XWKeM5HPeHhygUAhLqNVS1J+tDXsIOaYqV54H4mOHM8W/nADdY8CUR8/MdQVAI0LZEvnmuVkm+Lps5Aogy/q/DT8bULDY=~3750199~4342854; Domain=.tacobell.com; Path=/; Expires=Fri, 11 Sep 2026 00:50:31 GMT; Max-Age=14398",
+        "ak-grn": "0.55f10117.1789073431.67e93a26"
+      },
+      "raw_html_bytes": 68786,
+      "main_text": "EP 5: Taco Bell’s Former CEO, Greg Creed, Reflects On How To Build An Ownable Company Culture That Inspires Innovation A Meeting of the Minds: Mark King sits down with Taco Bell legend Greg Creed to discuss the importance of living más. August 18, 2021 Restless Creativity Innovation People Business Share on Facebook Share on Twitter At Taco Bell, we believe that part of living más is restlessly continuing to push the boundaries in everything we do. Sometimes that means taking a moment to appreciate all the things we have already accomplished in our history as a brand in order to continue being bolder in the future. In today's episode, CEO Mark King chats with former CEO of Taco Bell and Yum! Brands Greg Creed to discuss Greg's new book, how Taco Bell has made a memorable impact in the QSR world throughout the years, the importance of continually building a unique and ownable company culture that inspires innovation and, most excitingly, the \"comeback\" of our breakfast menu which has a special place in both of these CEOs hearts (and stomachs).",
+      "main_text_words": 184,
+      "extraction_ok": true,
+      "title": "EP 5: Taco Bell’s Former CEO, Greg Creed, Reflects On How To Build An Ownable Company Culture That Inspires Innovation | Taco Bell®",
+      "meta": {
+        "viewport": "width=device-width",
+        "description": "A Meeting of the Minds: Mark King sits down with Taco Bell legend Greg Creed to discuss the importance of living más.\n",
+        "robots": null
+      },
+      "lang": "en",
+      "canonical": {
+        "href": "https://www.tacobell.com/stories/taco-bells-former-ceo-greg-creed-reflects-on-how-to-build-an-ownable-company-culture-that-inspires-innovation",
+        "self_referential": false,
+        "cross_domain": false
+      },
+      "headings": [
+        {
+          "level": 5,
+          "text": "",
+          "order": 0
+        },
+        {
+          "level": 5,
+          "text": "",
+          "order": 1
+        },
+        {
+          "level": 1,
+          "text": "EP 5: Taco Bell’s Former CEO, Greg Creed, Reflects On How To Build An Ownable Company Culture That Inspires Innovation",
+          "order": 2
+        },
+        {
+          "level": 2,
+          "text": "Redeem exclusive rewards only on the app.",
+          "order": 3
+        },
+        {
+          "level": 6,
+          "text": "About us",
+          "order": 4
+        },
+        {
+          "level": 6,
+          "text": "Explore",
+          "order": 5
+        },
+        {
+          "level": 6,
+          "text": "Contact Us",
+          "order": 6
+        }
+      ],
+      "landmarks": {
+        "main": 0,
+        "nav": 6,
+        "header": 3,
+        "footer": 3
+      },
+      "structured_data": {
+        "json_ld": [],
+        "microdata_types": [],
+        "rdfa_types": []
+      },
+      "links": [
+        {
+          "href": "https://www.tacobell.com/",
+          "text": "",
+          "rel": "",
+          "internal": true,
+          "aria_label": "Taco Bell Home"
+        },
+        {
+          "href": "https://www.tacobell.com/food",
+          "text": "Menu",
+          "rel": "",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/delivery",
+          "text": "Delivery",
+          "rel": "",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/rewards",
+          "text": "Rewards",
+          "rel": "",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/gift-cards",
+          "text": "Gift Cards",
+          "rel": "",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/purpose",
+          "text": "Purpose",
+          "rel": "",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/purpose/people",
+          "text": "People",
+          "rel": "",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/purpose/planet",
+          "text": "Planet",
+          "rel": "",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/purpose/food",
+          "text": "Food",
+          "rel": "",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/register/yum",
+          "text": "Sign Up",
+          "rel": "",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/login/yum",
+          "text": "Log in",
+          "rel": "",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/",
+          "text": "Taco Bell",
+          "rel": "",
+          "internal": true,
+          "aria_label": "Taco Bell Home"
+        },
+        {
+          "href": "https://www.tacobell.com/login/yum",
+          "text": "Your account",
+          "rel": "",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/login/yum",
+          "text": "Your account",
+          "rel": "",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/blog/taco-bells-former-ceo-greg-creed-reflects-on-how-to-build-an-ownable-company-culture-that-inspires-innovation",
+          "text": "Taco Bell Rewards",
+          "rel": "",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/order/cart",
+          "text": "Your Order $0.00",
+          "rel": "",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/order/cart",
+          "text": "View Bag & Checkout",
+          "rel": "",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/",
+          "text": "",
+          "rel": "",
+          "internal": true,
+          "aria_label": "Taco Bell Home"
+        },
+        {
+          "href": "https://www.tacobell.com/food",
+          "text": "Menu",
+          "rel": "",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/delivery",
+          "text": "Delivery",
+          "rel": "",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/rewards",
+          "text": "Rewards",
+          "rel": "",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/gift-cards",
+          "text": "Gift Cards",
+          "rel": "",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/purpose",
+          "text": "Purpose",
+          "rel": "",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/purpose/people",
+          "text": "People",
+          "rel": "",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/purpose/planet",
+          "text": "Planet",
+          "rel": "",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/purpose/food",
+          "text": "Food",
+          "rel": "",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/login/yum",
+          "text": "Your account",
+          "rel": "",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/login/yum",
+          "text": "Your account",
+          "rel": "",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/blog/taco-bells-former-ceo-greg-creed-reflects-on-how-to-build-an-ownable-company-culture-that-inspires-innovation",
+          "text": "Your rewards",
+          "rel": "",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/order/cart",
+          "text": "Your Order $0.00",
+          "rel": "",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/order/cart",
+          "text": "View Bag & Checkout",
+          "rel": "",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/stories?category=stories-restless-creativity",
+          "text": "Restless Creativity",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/stories?category=stories-innovation",
+          "text": "Innovation",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/stories?category=stories-people",
+          "text": "People",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/stories?category=stories-business",
+          "text": "Business",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.facebook.com/sharer.php",
+          "text": "Share on Facebook",
+          "rel": null,
+          "internal": false,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.twitter.com/intent/tweet",
+          "text": "Share on Twitter",
+          "rel": null,
+          "internal": false,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com",
+          "text": "Download app",
+          "rel": "noreferrer noopener",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/about-us",
+          "text": "About Taco Bell",
+          "rel": "",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/purpose",
+          "text": "Purpose",
+          "rel": "",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/nutrition/info",
+          "text": "Nutrition",
+          "rel": "",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/locations",
+          "text": "Locations",
+          "rel": "",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/offers-and-deals",
+          "text": "Offers & Deals",
+          "rel": "",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/newsroom",
+          "text": "Newsroom",
+          "rel": "",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/stories",
+          "text": "Stories",
+          "rel": "",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/responsibledisclosure",
+          "text": "Responsible Disclosure",
+          "rel": "",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/mobile-app",
+          "text": "Mobile App",
+          "rel": "",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/gift-cards",
+          "text": "Gift Cards",
+          "rel": "",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/rewards",
+          "text": "Rewards",
+          "rel": "",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/delivery",
+          "text": "Delivery",
+          "rel": "",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobelltacoshop.com/",
+          "text": "Taco Shop",
+          "rel": "noreferrer noopener",
+          "internal": false,
+          "aria_label": null
+        },
+        {
+          "href": "https://help.tacobell.com/s/",
+          "text": "Help & FAQs",
+          "rel": "noreferrer noopener",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://jobs.tacobell.com/",
+          "text": "Careers",
+          "rel": "noreferrer noopener",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobellfoundation.org/",
+          "text": "Taco Bell Foundation",
+          "rel": "noreferrer noopener",
+          "internal": false,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/franchise",
+          "text": "Franchise Information",
+          "rel": "",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.facebook.com/tacobell",
+          "text": "",
+          "rel": "noreferrer noopener",
+          "internal": false,
+          "aria_label": "Check out Taco Bell on Facebook."
+        },
+        {
+          "href": "https://instagram.com/tacobell",
+          "text": "",
+          "rel": "noreferrer noopener",
+          "internal": false,
+          "aria_label": "Check out Taco Bell on Instagram."
+        },
+        {
+          "href": "https://twitter.com/tacobell",
+          "text": "",
+          "rel": "noreferrer noopener",
+          "internal": false,
+          "aria_label": "Check out Taco Bell on X."
+        },
+        {
+          "href": "https://www.tiktok.com/@tacobell",
+          "text": "",
+          "rel": "noreferrer noopener",
+          "internal": false,
+          "aria_label": "Check out Taco Bell's TikTok Channel."
+        },
+        {
+          "href": "https://www.youtube.com/user/tacobell",
+          "text": "",
+          "rel": "noreferrer noopener",
+          "internal": false,
+          "aria_label": "Check out Taco Bell's Youtube Channel."
+        },
+        {
+          "href": "https://www.linkedin.com/company/taco-bell/",
+          "text": "",
+          "rel": "noreferrer noopener",
+          "internal": false,
+          "aria_label": "Taco Bell on LinkedIn"
+        },
+        {
+          "href": "https://www.tacobell.com/legal-notices/privacy-policy",
+          "text": "Privacy Center",
+          "rel": "",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/legal-notices/terms-of-use",
+          "text": "Terms Of Use",
+          "rel": "",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.tacobell.com/legal/accessibility-statement",
+          "text": "Accessibility Statement",
+          "rel": "",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://privacy.tacobell.com/sale-of-info",
+          "text": "Do Not Sell or Share My Personal Information",
+          "rel": "noreferrer noopener",
+          "internal": true,
+          "aria_label": null
+        }
+      ],
+      "outbound_profile_links": [
+        "https://www.tacobelltacoshop.com/",
+        "https://www.tacobellfoundation.org/",
+        "https://www.facebook.com/tacobell",
+        "https://instagram.com/tacobell",
+        "https://twitter.com/tacobell",
+        "https://www.tiktok.com/@tacobell",
+        "https://www.youtube.com/user/tacobell",
+        "https://www.linkedin.com/company/taco-bell/"
+      ],
+      "images": [
+        {
+          "src": "https://dam.tacobell.com/transform/090d9ace-8aa6-485b-87e1-bcd7d1fd1b66/stories-Restless-Creativity-Seated-jpeg",
+          "alt": null,
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "/_static/images/icons/logo-legal.svg",
+          "alt": "Taco Bell logo",
+          "decorative_hint": false,
+          "width_attr": "14",
+          "height_attr": "12",
+          "css_aspect_ratio": null,
+          "in_picture": false
+        }
+      ],
+      "iframes": [
+        {
+          "src": "https://open.spotify.com/embed/episode/2v9w8RB9jma1x1g67MQ1Nh",
+          "width_attr": "100%",
+          "height_attr": "175",
+          "title": null
+        }
+      ],
+      "media": [],
+      "form_controls": [],
+      "interactive_empty": {
+        "links_no_text": 0,
+        "buttons_no_text": 0
+      },
+      "noscript": {
+        "present": true,
+        "words": 0
+      },
+      "dates": {
+        "meta_published": null,
+        "meta_modified": null,
+        "visible_dates": [],
+        "header_last_modified": null
+      },
+      "contact_signals": {
+        "email": false,
+        "phone": null,
+        "postal_address": null,
+        "org_name_footer": null
+      },
+      "trigram_hash": "sha256:20bca0942e72f91434586ddd7d64096000c15b6d81dab1a277988160c0067645"
+    },
+    {
+      "url": "https://www.tacobell.com/company",
+      "final_url": "https://www.tacobell.com/company",
+      "status": "unavailable",
+      "reason": "http_404",
+      "http_status": 404,
+      "page_type": "about",
+      "headers": {},
+      "raw_html_bytes": 0,
+      "main_text": "",
+      "main_text_words": 0,
+      "extraction_ok": false,
+      "title": null,
+      "meta": {},
+      "lang": null,
+      "canonical": {},
+      "headings": [],
+      "landmarks": {},
+      "structured_data": {},
+      "links": [],
+      "outbound_profile_links": [],
+      "images": [],
+      "iframes": [],
+      "media": [],
+      "form_controls": [],
+      "interactive_empty": {},
+      "noscript": {
+        "present": false,
+        "words": 0
+      },
+      "dates": {},
+      "contact_signals": {},
+      "trigram_hash": null
+    },
+    {
+      "url": "https://www.tacobell.com/taco-bell-terracycle-team-up-to-recycle-hot-sauce-packets",
+      "final_url": "https://www.tacobell.com/taco-bell-terracycle-team-up-to-recycle-hot-sauce-packets",
+      "status": "unavailable",
+      "reason": "http_404",
+      "http_status": 404,
+      "page_type": "about",
+      "headers": {},
+      "raw_html_bytes": 0,
+      "main_text": "",
+      "main_text_words": 0,
+      "extraction_ok": false,
+      "title": null,
+      "meta": {},
+      "lang": null,
+      "canonical": {},
+      "headings": [],
+      "landmarks": {},
+      "structured_data": {},
+      "links": [],
+      "outbound_profile_links": [],
+      "images": [],
+      "iframes": [],
+      "media": [],
+      "form_controls": [],
+      "interactive_empty": {},
+      "noscript": {
+        "present": false,
+        "words": 0
+      },
+      "dates": {},
+      "contact_signals": {},
+      "trigram_hash": null
+    },
+    {
+      "url": "https://www.tacobell.com/contactUsPage",
+      "final_url": "https://www.tacobell.com/contactUsPage",
+      "status": "unavailable",
+      "reason": "http_404",
+      "http_status": 404,
+      "page_type": "contact",
+      "headers": {},
+      "raw_html_bytes": 0,
+      "main_text": "",
+      "main_text_words": 0,
+      "extraction_ok": false,
+      "title": null,
+      "meta": {},
+      "lang": null,
+      "canonical": {},
+      "headings": [],
+      "landmarks": {},
+      "structured_data": {},
+      "links": [],
+      "outbound_profile_links": [],
+      "images": [],
+      "iframes": [],
+      "media": [],
+      "form_controls": [],
+      "interactive_empty": {},
+      "noscript": {
+        "present": false,
+        "words": 0
+      },
+      "dates": {},
+      "contact_signals": {},
+      "trigram_hash": null
+    },
+    {
+      "url": "https://www.tacobell.com/faq/coronavirus",
+      "final_url": "https://www.tacobell.com/faq/coronavirus",
+      "status": "ok",
+      "reason": null,
+      "http_status": 200,
+      "page_type": "faq",
+      "headers": {
+        "date": "Thu, 10 Sep 2026 20:50:41 GMT",
+        "content-type": "text/html;charset=UTF-8",
+        "transfer-encoding": "chunked",
+        "connection": "close",
+        "link": "</s/sfsites/auraFW/javascript/WUdfaXlIZDNDQ0lZLWNFZDMtVGZ3d2tVMjdnTGFERUU2S3FfSVdrcU92bkExNC4xOTIuODM4ODYwOA/aura_prod.js>;rel=preload;as=script;nopush,</s/sfsites/l/%7B%22mode%22%3A%22PROD%22%2C%22dfs%22%3A%2221%22%2C%22app%22%3A%22siteforce%3AcommunityApp%22%2C%22fwuid%22%3A%22WUdfaXlIZDNDQ0lZLWNFZDMtVGZ3d2tVMjdnTGFERUU2S3FfSVdrcU92bkExNC4xOTIuODM4ODYwOA%22%2C%22loaded%22%3A%7B%22APPLICATION%40markup%3A%2F%2Fsiteforce%3AcommunityApp%22%3A%221712_xZHiuQoc1HHcvGz4vs6mGA%22%7D%2C%22apce%22%3A1%2C%22apck%22%3A%22JHt0aW1lc3RhbXB9MDAwMDAwMDAwMDBlbl9VUw%22%2C%22mlr%22%3A1%2C%22pathPrefix%22%3A%22%22%2C%22dns%22%3A%22c%22%2C%22ls%22%3A1%2C%22lrmc%22%3A%22551347034%22%7D/resources.js?pu=1&pv=1788405963000166908121&rv=1785960737000>;rel=preload;as=script;nopush,</s/sfsites/l/%7B%22mode%22%3A%22PROD%22%2C%22dfs%22%3A%2221%22%2C%22app%22%3A%22siteforce%3AcommunityApp%22%2C%22serializationVersion%22%3A%221-14.192.8388608-b%22%2C%22parts%22%3A%22f%22%2C%22loaded%22%3A%7B%22APPLICATION%40markup%3A%2F%2Fsiteforce%3AcommunityApp%22%3A%221712_xZHiuQoc1HHcvGz4vs6mGA%22%7D%2C%22dns%22%3A%22c%22%2C%22ls%22%3A1%2C%22lrmc%22%3A%22551347034%22%7D/app.js?3=>;rel=preload;as=script;nopush",
+        "cf-ray": "a3914e6c8ecafe23-SIN",
+        "cf-cache-status": "BYPASS",
+        "cache-control": "no-cache,must-revalidate,max-age=0,no-store,private",
+        "content-encoding": "gzip",
+        "expires": "Wed, 10 Sep 2025 20:50:40 GMT",
+        "last-modified": "Wed, 10 Sep 2025 20:50:40 GMT",
+        "server": "cloudflare",
+        "set-cookie": "renderCtx=%7B%22pageId%22%3A%22a76fd58e-e55b-4e5e-adcc-9f2b1343cedf%22%2C%22schema%22%3A%22Published%22%2C%22viewType%22%3A%22Published%22%2C%22brandingSetId%22%3A%22c1ed88fb-45ea-48e8-b2f2-df1cf8e8fa1e%22%2C%22audienceIds%22%3A%22%22%7D; path=/s; secure",
+        "strict-transport-security": "max-age=63072000; includeSubDomains",
+        "vary": "Accept-Encoding, Origin",
+        "content-security-policy": "frame-ancestors 'self'; report-uri /_/commcsp?disposition=enforce",
+        "content-security-policy-report-only": "script-src 'unsafe-inline' 'self' https://payments.salesforce.com/ https://stats.g.doubleclick.net https://checkoutshopper-test.adyen.com/ https://*.bing.com https://pal-test.adyen.com https://cdn.cookielaw.org https://googleads.g.doubleclick.net https://checkoutshopper-live.adyen.com/ https://cdn.content.aws-prod1-useast1.aws.sfdc.cl/ https://*.onetrust.com https://www.google.com https://ad.doubleclick.net https://connect.facebook.net https://t.co https://pay.google.com https://tagmanager.google.com https://www.gstatic.com/recaptcha/ https://uip.canary.lwc.dev https://cdn.content.aws-dev2-uswest2.aws.sfdc.cl/ https://websdk.appsflyer.com https://s.pinimg.com https://td.doubleclick.net https://*.pinterest.com/ blob: https://www.googletagmanager.com/gtag/js https://www.clarity.ms https://www.google.com/recaptcha/ https://js.stripe.com/ https://*.ads-twitter.com https://*.snapchat.com https://transcend-cdn.com/cm/e7401ac7-ba3d-4dda-8e3b-63475ab9990f/ui.js https://sc-static.net https://transcend-cdn.com/cm/e7401ac7-ba3d-4dda-8e3b-63475ab9990f/airgap.js https://www.googletagmanager.com import: https://edge.fullstory.com https://www.google-analytics.com *.salesforce.com https://www.paypal.com/sdk/js https://n.clarity.ms 'report-sample' https://service.force.com/embeddedservice/ 'unsafe-eval'; report-to sfdc-csp-ep; report-uri https://yum-tacobell.lightning.force.com/_/ContentDomainCSPNoAuth?tenantId=00Dj0000001nuQ3&networkId=0DMPq0000000G1a&type=communities",
+        "report-to": "{\"max_age\":31536000,\"endpoints\":[{\"url\":\"https://yum-tacobell.lightning.force.com/_/ContentDomainCSPNoAuth?tenantId=00Dj0000001nuQ3&networkId=0DMPq0000000G1a&type=communities\"}],\"group\":\"sfdc-csp-ep\"}",
+        "reporting-endpoints": "sfdc-csp-ep=\"https://yum-tacobell.lightning.force.com/_/ContentDomainCSPNoAuth?tenantId=00Dj0000001nuQ3&networkId=0DMPq0000000G1a&type=communities\"",
+        "server-timing": "Headers;dur=114",
+        "timing-allow-origin": "*",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "SAMEORIGIN",
+        "alt-svc": "h3=\":443\"; ma=86400"
+      },
+      "raw_html_bytes": 115753,
+      "main_text": "Loading × Sorry to interrupt CSS Error Refresh",
+      "main_text_words": 7,
+      "extraction_ok": false,
+      "title": "Taco Bell Help Center",
+      "meta": {
+        "viewport": "initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0, minimal-ui",
+        "description": null,
+        "robots": null
+      },
+      "lang": "en-US",
+      "canonical": {
+        "href": null,
+        "self_referential": false,
+        "cross_domain": false
+      },
+      "headings": [],
+      "landmarks": {
+        "main": 0,
+        "nav": 0,
+        "header": 0,
+        "footer": 0
+      },
+      "structured_data": {
+        "json_ld": [],
+        "microdata_types": [],
+        "rdfa_types": []
+      },
+      "links": [
+        {
+          "href": "https://www.tacobell.com/faq/coronavirus",
+          "text": "×",
+          "rel": null,
+          "internal": true,
+          "aria_label": "Cancel and close"
+        },
+        {
+          "href": "https://www.tacobell.com/faq/coronavirus",
+          "text": "Refresh",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        }
+      ],
+      "outbound_profile_links": [],
+      "images": [],
+      "iframes": [],
+      "media": [],
+      "form_controls": [],
+      "interactive_empty": {
+        "links_no_text": 0,
+        "buttons_no_text": 0
+      },
+      "noscript": {
+        "present": false,
+        "words": 0
+      },
+      "dates": {
+        "meta_published": null,
+        "meta_modified": null,
+        "visible_dates": [],
+        "header_last_modified": "Wed, 10 Sep 2025 20:50:40 GMT"
+      },
+      "contact_signals": {
+        "email": false,
+        "phone": null,
+        "postal_address": null,
+        "org_name_footer": null
+      },
+      "trigram_hash": "sha256:696af4894d96ee0f0453e0862d99700f2d7710cf73070fe19f45c79c2d9c2cc6"
+    },
+    {
+      "url": "https://www.tacobell.com/faq/gift-cards",
+      "final_url": "https://www.tacobell.com/faq/gift-cards",
+      "status": "ok",
+      "reason": null,
+      "http_status": 200,
+      "page_type": "faq",
+      "headers": {
+        "date": "Thu, 10 Sep 2026 20:50:43 GMT",
+        "content-type": "text/html;charset=UTF-8",
+        "transfer-encoding": "chunked",
+        "connection": "close",
+        "link": "</s/sfsites/auraFW/javascript/WUdfaXlIZDNDQ0lZLWNFZDMtVGZ3d2tVMjdnTGFERUU2S3FfSVdrcU92bkExNC4xOTIuODM4ODYwOA/aura_prod.js>;rel=preload;as=script;nopush,</s/sfsites/l/%7B%22mode%22%3A%22PROD%22%2C%22dfs%22%3A%2221%22%2C%22app%22%3A%22siteforce%3AcommunityApp%22%2C%22fwuid%22%3A%22WUdfaXlIZDNDQ0lZLWNFZDMtVGZ3d2tVMjdnTGFERUU2S3FfSVdrcU92bkExNC4xOTIuODM4ODYwOA%22%2C%22loaded%22%3A%7B%22APPLICATION%40markup%3A%2F%2Fsiteforce%3AcommunityApp%22%3A%221712_xZHiuQoc1HHcvGz4vs6mGA%22%7D%2C%22apce%22%3A1%2C%22apck%22%3A%22JHt0aW1lc3RhbXB9MDAwMDAwMDAwMDBlbl9VUw%22%2C%22mlr%22%3A1%2C%22pathPrefix%22%3A%22%22%2C%22dns%22%3A%22c%22%2C%22ls%22%3A1%2C%22lrmc%22%3A%22551347034%22%7D/resources.js?pu=1&pv=1788405963000166908121&rv=1785960737000>;rel=preload;as=script;nopush,</s/sfsites/l/%7B%22mode%22%3A%22PROD%22%2C%22dfs%22%3A%2221%22%2C%22app%22%3A%22siteforce%3AcommunityApp%22%2C%22serializationVersion%22%3A%221-14.192.8388608-b%22%2C%22parts%22%3A%22f%22%2C%22loaded%22%3A%7B%22APPLICATION%40markup%3A%2F%2Fsiteforce%3AcommunityApp%22%3A%221712_xZHiuQoc1HHcvGz4vs6mGA%22%7D%2C%22dns%22%3A%22c%22%2C%22ls%22%3A1%2C%22lrmc%22%3A%22551347034%22%7D/app.js?3=>;rel=preload;as=script;nopush",
+        "cf-ray": "a3914e794ac5b5a9-SIN",
+        "cf-cache-status": "BYPASS",
+        "cache-control": "no-cache,must-revalidate,max-age=0,no-store,private",
+        "content-encoding": "gzip",
+        "expires": "Wed, 10 Sep 2025 20:50:43 GMT",
+        "last-modified": "Wed, 10 Sep 2025 20:50:43 GMT",
+        "server": "cloudflare",
+        "set-cookie": "renderCtx=%7B%22pageId%22%3A%22a76fd58e-e55b-4e5e-adcc-9f2b1343cedf%22%2C%22schema%22%3A%22Published%22%2C%22viewType%22%3A%22Published%22%2C%22brandingSetId%22%3A%22c1ed88fb-45ea-48e8-b2f2-df1cf8e8fa1e%22%2C%22audienceIds%22%3A%22%22%7D; path=/s; secure",
+        "strict-transport-security": "max-age=63072000; includeSubDomains",
+        "vary": "Accept-Encoding, Origin",
+        "content-security-policy": "frame-ancestors 'self'; report-uri /_/commcsp?disposition=enforce",
+        "content-security-policy-report-only": "script-src 'unsafe-inline' 'self' https://payments.salesforce.com/ https://stats.g.doubleclick.net https://checkoutshopper-test.adyen.com/ https://*.bing.com https://pal-test.adyen.com https://cdn.cookielaw.org https://googleads.g.doubleclick.net https://checkoutshopper-live.adyen.com/ https://cdn.content.aws-prod1-useast1.aws.sfdc.cl/ https://*.onetrust.com https://www.google.com https://ad.doubleclick.net https://connect.facebook.net https://t.co https://pay.google.com https://tagmanager.google.com https://www.gstatic.com/recaptcha/ https://uip.canary.lwc.dev https://cdn.content.aws-dev2-uswest2.aws.sfdc.cl/ https://websdk.appsflyer.com https://s.pinimg.com https://td.doubleclick.net https://*.pinterest.com/ blob: https://www.googletagmanager.com/gtag/js https://www.clarity.ms https://www.google.com/recaptcha/ https://js.stripe.com/ https://*.ads-twitter.com https://*.snapchat.com https://transcend-cdn.com/cm/e7401ac7-ba3d-4dda-8e3b-63475ab9990f/ui.js https://sc-static.net https://transcend-cdn.com/cm/e7401ac7-ba3d-4dda-8e3b-63475ab9990f/airgap.js https://www.googletagmanager.com import: https://edge.fullstory.com https://www.google-analytics.com *.salesforce.com https://www.paypal.com/sdk/js https://n.clarity.ms 'report-sample' https://service.force.com/embeddedservice/ 'unsafe-eval'; report-to sfdc-csp-ep; report-uri https://yum-tacobell.lightning.force.com/_/ContentDomainCSPNoAuth?tenantId=00Dj0000001nuQ3&networkId=0DMPq0000000G1a&type=communities",
+        "report-to": "{\"endpoints\":[{\"url\":\"https://yum-tacobell.lightning.force.com/_/ContentDomainCSPNoAuth?tenantId=00Dj0000001nuQ3&networkId=0DMPq0000000G1a&type=communities\"}],\"group\":\"sfdc-csp-ep\",\"max_age\":31536000}",
+        "reporting-endpoints": "sfdc-csp-ep=\"https://yum-tacobell.lightning.force.com/_/ContentDomainCSPNoAuth?tenantId=00Dj0000001nuQ3&networkId=0DMPq0000000G1a&type=communities\"",
+        "server-timing": "Headers;dur=91",
+        "timing-allow-origin": "*",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "SAMEORIGIN",
+        "alt-svc": "h3=\":443\"; ma=86400"
+      },
+      "raw_html_bytes": 115753,
+      "main_text": "Loading × Sorry to interrupt CSS Error Refresh",
+      "main_text_words": 7,
+      "extraction_ok": false,
+      "title": "Taco Bell Help Center",
+      "meta": {
+        "viewport": "initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0, minimal-ui",
+        "description": null,
+        "robots": null
+      },
+      "lang": "en-US",
+      "canonical": {
+        "href": null,
+        "self_referential": false,
+        "cross_domain": false
+      },
+      "headings": [],
+      "landmarks": {
+        "main": 0,
+        "nav": 0,
+        "header": 0,
+        "footer": 0
+      },
+      "structured_data": {
+        "json_ld": [],
+        "microdata_types": [],
+        "rdfa_types": []
+      },
+      "links": [
+        {
+          "href": "https://www.tacobell.com/faq/gift-cards",
+          "text": "×",
+          "rel": null,
+          "internal": true,
+          "aria_label": "Cancel and close"
+        },
+        {
+          "href": "https://www.tacobell.com/faq/gift-cards",
+          "text": "Refresh",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        }
+      ],
+      "outbound_profile_links": [],
+      "images": [],
+      "iframes": [],
+      "media": [],
+      "form_controls": [],
+      "interactive_empty": {
+        "links_no_text": 0,
+        "buttons_no_text": 0
+      },
+      "noscript": {
+        "present": false,
+        "words": 0
+      },
+      "dates": {
+        "meta_published": null,
+        "meta_modified": null,
+        "visible_dates": [],
+        "header_last_modified": "Wed, 10 Sep 2025 20:50:43 GMT"
+      },
+      "contact_signals": {
+        "email": false,
+        "phone": null,
+        "postal_address": null,
+        "org_name_footer": null
+      },
+      "trigram_hash": "sha256:696af4894d96ee0f0453e0862d99700f2d7710cf73070fe19f45c79c2d9c2cc6"
+    },
+    {
+      "url": "https://www.tacobell.com/faq/how-to-order-taco-bell",
+      "final_url": "https://www.tacobell.com/faq/how-to-order-taco-bell",
+      "status": "ok",
+      "reason": null,
+      "http_status": 200,
+      "page_type": "faq",
+      "headers": {
+        "date": "Thu, 10 Sep 2026 20:50:46 GMT",
+        "content-type": "text/html;charset=UTF-8",
+        "transfer-encoding": "chunked",
+        "connection": "close",
+        "link": "</s/sfsites/auraFW/javascript/WUdfaXlIZDNDQ0lZLWNFZDMtVGZ3d2tVMjdnTGFERUU2S3FfSVdrcU92bkExNC4xOTIuODM4ODYwOA/aura_prod.js>;rel=preload;as=script;nopush,</s/sfsites/l/%7B%22mode%22%3A%22PROD%22%2C%22dfs%22%3A%2221%22%2C%22app%22%3A%22siteforce%3AcommunityApp%22%2C%22fwuid%22%3A%22WUdfaXlIZDNDQ0lZLWNFZDMtVGZ3d2tVMjdnTGFERUU2S3FfSVdrcU92bkExNC4xOTIuODM4ODYwOA%22%2C%22loaded%22%3A%7B%22APPLICATION%40markup%3A%2F%2Fsiteforce%3AcommunityApp%22%3A%221712_xZHiuQoc1HHcvGz4vs6mGA%22%7D%2C%22apce%22%3A1%2C%22apck%22%3A%22JHt0aW1lc3RhbXB9MDAwMDAwMDAwMDBlbl9VUw%22%2C%22mlr%22%3A1%2C%22pathPrefix%22%3A%22%22%2C%22dns%22%3A%22c%22%2C%22ls%22%3A1%2C%22lrmc%22%3A%22551347034%22%7D/resources.js?pu=1&pv=1788405963000166908121&rv=1785960737000>;rel=preload;as=script;nopush,</s/sfsites/l/%7B%22mode%22%3A%22PROD%22%2C%22dfs%22%3A%2221%22%2C%22app%22%3A%22siteforce%3AcommunityApp%22%2C%22serializationVersion%22%3A%221-14.192.8388608-b%22%2C%22parts%22%3A%22f%22%2C%22loaded%22%3A%7B%22APPLICATION%40markup%3A%2F%2Fsiteforce%3AcommunityApp%22%3A%221712_xZHiuQoc1HHcvGz4vs6mGA%22%7D%2C%22dns%22%3A%22c%22%2C%22ls%22%3A1%2C%22lrmc%22%3A%22551347034%22%7D/app.js?3=>;rel=preload;as=script;nopush",
+        "cf-ray": "a3914e8c2d495fd9-SIN",
+        "cf-cache-status": "BYPASS",
+        "cache-control": "no-cache,must-revalidate,max-age=0,no-store,private",
+        "content-encoding": "gzip",
+        "expires": "Wed, 10 Sep 2025 20:50:46 GMT",
+        "last-modified": "Wed, 10 Sep 2025 20:50:46 GMT",
+        "server": "cloudflare",
+        "set-cookie": "renderCtx=%7B%22pageId%22%3A%22a76fd58e-e55b-4e5e-adcc-9f2b1343cedf%22%2C%22schema%22%3A%22Published%22%2C%22viewType%22%3A%22Published%22%2C%22brandingSetId%22%3A%22c1ed88fb-45ea-48e8-b2f2-df1cf8e8fa1e%22%2C%22audienceIds%22%3A%22%22%7D; path=/s; secure",
+        "strict-transport-security": "max-age=63072000; includeSubDomains",
+        "vary": "Accept-Encoding, Origin",
+        "content-security-policy": "frame-ancestors 'self'; report-uri /_/commcsp?disposition=enforce",
+        "content-security-policy-report-only": "media-src https://*.console.aws.amazon.com https://*.my.connect.aws https://*.t.co 'self' https://yum-tacobell.lightning.force.com https://yum-tacobell.my.salesforce.com https://www.google-analytics.com *.salesforce.com blob: https://*.pinterest.com https://www.tacobell.com; report-to sfdc-csp-ep; report-uri https://yum-tacobell.lightning.force.com/_/ContentDomainCSPNoAuth?tenantId=00Dj0000001nuQ3&networkId=0DMPq0000000G1a&type=communities",
+        "report-to": "{\"endpoints\":[{\"url\":\"https://yum-tacobell.lightning.force.com/_/ContentDomainCSPNoAuth?tenantId=00Dj0000001nuQ3&networkId=0DMPq0000000G1a&type=communities\"}],\"group\":\"sfdc-csp-ep\",\"max_age\":31536000}",
+        "reporting-endpoints": "sfdc-csp-ep=\"https://yum-tacobell.lightning.force.com/_/ContentDomainCSPNoAuth?tenantId=00Dj0000001nuQ3&networkId=0DMPq0000000G1a&type=communities\"",
+        "server-timing": "Headers;dur=73",
+        "timing-allow-origin": "*",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "SAMEORIGIN",
+        "alt-svc": "h3=\":443\"; ma=86400"
+      },
+      "raw_html_bytes": 115753,
+      "main_text": "Loading × Sorry to interrupt CSS Error Refresh",
+      "main_text_words": 7,
+      "extraction_ok": false,
+      "title": "Taco Bell Help Center",
+      "meta": {
+        "viewport": "initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0, minimal-ui",
+        "description": null,
+        "robots": null
+      },
+      "lang": "en-US",
+      "canonical": {
+        "href": null,
+        "self_referential": false,
+        "cross_domain": false
+      },
+      "headings": [],
+      "landmarks": {
+        "main": 0,
+        "nav": 0,
+        "header": 0,
+        "footer": 0
+      },
+      "structured_data": {
+        "json_ld": [],
+        "microdata_types": [],
+        "rdfa_types": []
+      },
+      "links": [
+        {
+          "href": "https://www.tacobell.com/faq/how-to-order-taco-bell",
+          "text": "×",
+          "rel": null,
+          "internal": true,
+          "aria_label": "Cancel and close"
+        },
+        {
+          "href": "https://www.tacobell.com/faq/how-to-order-taco-bell",
+          "text": "Refresh",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        }
+      ],
+      "outbound_profile_links": [],
+      "images": [],
+      "iframes": [],
+      "media": [],
+      "form_controls": [],
+      "interactive_empty": {
+        "links_no_text": 0,
+        "buttons_no_text": 0
+      },
+      "noscript": {
+        "present": false,
+        "words": 0
+      },
+      "dates": {
+        "meta_published": null,
+        "meta_modified": null,
+        "visible_dates": [],
+        "header_last_modified": "Wed, 10 Sep 2025 20:50:46 GMT"
+      },
+      "contact_signals": {
+        "email": false,
+        "phone": null,
+        "postal_address": null,
+        "org_name_footer": null
+      },
+      "trigram_hash": "sha256:696af4894d96ee0f0453e0862d99700f2d7710cf73070fe19f45c79c2d9c2cc6"
+    },
+    {
+      "url": "https://www.tacobell.com/faq/ordering-general-info",
+      "final_url": "https://www.tacobell.com/faq/ordering-general-info",
+      "status": "ok",
+      "reason": null,
+      "http_status": 200,
+      "page_type": "faq",
+      "headers": {
+        "date": "Thu, 10 Sep 2026 20:50:48 GMT",
+        "content-type": "text/html;charset=UTF-8",
+        "transfer-encoding": "chunked",
+        "connection": "close",
+        "link": "</s/sfsites/auraFW/javascript/WUdfaXlIZDNDQ0lZLWNFZDMtVGZ3d2tVMjdnTGFERUU2S3FfSVdrcU92bkExNC4xOTIuODM4ODYwOA/aura_prod.js>;rel=preload;as=script;nopush,</s/sfsites/l/%7B%22mode%22%3A%22PROD%22%2C%22dfs%22%3A%2221%22%2C%22app%22%3A%22siteforce%3AcommunityApp%22%2C%22fwuid%22%3A%22WUdfaXlIZDNDQ0lZLWNFZDMtVGZ3d2tVMjdnTGFERUU2S3FfSVdrcU92bkExNC4xOTIuODM4ODYwOA%22%2C%22loaded%22%3A%7B%22APPLICATION%40markup%3A%2F%2Fsiteforce%3AcommunityApp%22%3A%221712_xZHiuQoc1HHcvGz4vs6mGA%22%7D%2C%22apce%22%3A1%2C%22apck%22%3A%22JHt0aW1lc3RhbXB9MDAwMDAwMDAwMDBlbl9VUw%22%2C%22mlr%22%3A1%2C%22pathPrefix%22%3A%22%22%2C%22dns%22%3A%22c%22%2C%22ls%22%3A1%2C%22lrmc%22%3A%22551347034%22%7D/resources.js?pu=1&pv=1788405963000166908121&rv=1785960737000>;rel=preload;as=script;nopush,</s/sfsites/l/%7B%22mode%22%3A%22PROD%22%2C%22dfs%22%3A%2221%22%2C%22app%22%3A%22siteforce%3AcommunityApp%22%2C%22serializationVersion%22%3A%221-14.192.8388608-b%22%2C%22parts%22%3A%22f%22%2C%22loaded%22%3A%7B%22APPLICATION%40markup%3A%2F%2Fsiteforce%3AcommunityApp%22%3A%221712_xZHiuQoc1HHcvGz4vs6mGA%22%7D%2C%22dns%22%3A%22c%22%2C%22ls%22%3A1%2C%22lrmc%22%3A%22551347034%22%7D/app.js?3=>;rel=preload;as=script;nopush",
+        "cf-ray": "a3914e988c30fd63-SIN",
+        "cf-cache-status": "BYPASS",
+        "cache-control": "no-cache,must-revalidate,max-age=0,no-store,private",
+        "content-encoding": "gzip",
+        "expires": "Wed, 10 Sep 2025 20:50:47 GMT",
+        "last-modified": "Wed, 10 Sep 2025 20:50:47 GMT",
+        "server": "cloudflare",
+        "set-cookie": "renderCtx=%7B%22pageId%22%3A%22a76fd58e-e55b-4e5e-adcc-9f2b1343cedf%22%2C%22schema%22%3A%22Published%22%2C%22viewType%22%3A%22Published%22%2C%22brandingSetId%22%3A%22c1ed88fb-45ea-48e8-b2f2-df1cf8e8fa1e%22%2C%22audienceIds%22%3A%22%22%7D; path=/s; secure",
+        "strict-transport-security": "max-age=63072000; includeSubDomains",
+        "vary": "Accept-Encoding, Origin",
+        "content-security-policy": "frame-ancestors 'self'; report-uri /_/commcsp?disposition=enforce",
+        "content-security-policy-report-only": "script-src 'unsafe-inline' 'self' https://payments.salesforce.com/ https://stats.g.doubleclick.net https://checkoutshopper-test.adyen.com/ https://*.bing.com https://pal-test.adyen.com https://cdn.cookielaw.org https://googleads.g.doubleclick.net https://checkoutshopper-live.adyen.com/ https://cdn.content.aws-prod1-useast1.aws.sfdc.cl/ https://*.onetrust.com https://www.google.com https://ad.doubleclick.net https://connect.facebook.net https://t.co https://pay.google.com https://tagmanager.google.com https://www.gstatic.com/recaptcha/ https://uip.canary.lwc.dev https://cdn.content.aws-dev2-uswest2.aws.sfdc.cl/ https://websdk.appsflyer.com https://s.pinimg.com https://td.doubleclick.net https://*.pinterest.com/ blob: https://www.googletagmanager.com/gtag/js https://www.clarity.ms https://www.google.com/recaptcha/ https://js.stripe.com/ https://*.ads-twitter.com https://*.snapchat.com https://transcend-cdn.com/cm/e7401ac7-ba3d-4dda-8e3b-63475ab9990f/ui.js https://sc-static.net https://transcend-cdn.com/cm/e7401ac7-ba3d-4dda-8e3b-63475ab9990f/airgap.js https://www.googletagmanager.com import: https://edge.fullstory.com https://www.google-analytics.com *.salesforce.com https://www.paypal.com/sdk/js https://n.clarity.ms 'report-sample' https://service.force.com/embeddedservice/ 'unsafe-eval'; report-to sfdc-csp-ep; report-uri https://yum-tacobell.lightning.force.com/_/ContentDomainCSPNoAuth?tenantId=00Dj0000001nuQ3&networkId=0DMPq0000000G1a&type=communities",
+        "report-to": "{\"endpoints\":[{\"url\":\"https://yum-tacobell.lightning.force.com/_/ContentDomainCSPNoAuth?tenantId=00Dj0000001nuQ3&networkId=0DMPq0000000G1a&type=communities\"}],\"group\":\"sfdc-csp-ep\",\"max_age\":31536000}",
+        "reporting-endpoints": "sfdc-csp-ep=\"https://yum-tacobell.lightning.force.com/_/ContentDomainCSPNoAuth?tenantId=00Dj0000001nuQ3&networkId=0DMPq0000000G1a&type=communities\"",
+        "server-timing": "Headers;dur=72",
+        "timing-allow-origin": "*",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "SAMEORIGIN",
+        "alt-svc": "h3=\":443\"; ma=86400"
+      },
+      "raw_html_bytes": 115753,
+      "main_text": "Loading × Sorry to interrupt CSS Error Refresh",
+      "main_text_words": 7,
+      "extraction_ok": false,
+      "title": "Taco Bell Help Center",
+      "meta": {
+        "viewport": "initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0, minimal-ui",
+        "description": null,
+        "robots": null
+      },
+      "lang": "en-US",
+      "canonical": {
+        "href": null,
+        "self_referential": false,
+        "cross_domain": false
+      },
+      "headings": [],
+      "landmarks": {
+        "main": 0,
+        "nav": 0,
+        "header": 0,
+        "footer": 0
+      },
+      "structured_data": {
+        "json_ld": [],
+        "microdata_types": [],
+        "rdfa_types": []
+      },
+      "links": [
+        {
+          "href": "https://www.tacobell.com/faq/ordering-general-info",
+          "text": "×",
+          "rel": null,
+          "internal": true,
+          "aria_label": "Cancel and close"
+        },
+        {
+          "href": "https://www.tacobell.com/faq/ordering-general-info",
+          "text": "Refresh",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        }
+      ],
+      "outbound_profile_links": [],
+      "images": [],
+      "iframes": [],
+      "media": [],
+      "form_controls": [],
+      "interactive_empty": {
+        "links_no_text": 0,
+        "buttons_no_text": 0
+      },
+      "noscript": {
+        "present": false,
+        "words": 0
+      },
+      "dates": {
+        "meta_published": null,
+        "meta_modified": null,
+        "visible_dates": [],
+        "header_last_modified": "Wed, 10 Sep 2025 20:50:47 GMT"
+      },
+      "contact_signals": {
+        "email": false,
+        "phone": null,
+        "postal_address": null,
+        "org_name_footer": null
+      },
+      "trigram_hash": "sha256:696af4894d96ee0f0453e0862d99700f2d7710cf73070fe19f45c79c2d9c2cc6"
+    },
+    {
+      "url": "https://www.tacobell.com/gift cards terms of use",
+      "final_url": "https://www.tacobell.com/gift cards terms of use",
+      "status": "unavailable",
+      "reason": "InvalidURL: URL can't contain control characters. '/gift cards terms of use' (found at least ' ')",
+      "http_status": null,
+      "page_type": "legal",
+      "headers": {},
+      "raw_html_bytes": 0,
+      "main_text": "",
+      "main_text_words": 0,
+      "extraction_ok": false,
+      "title": null,
+      "meta": {},
+      "lang": null,
+      "canonical": {},
+      "headings": [],
+      "landmarks": {},
+      "structured_data": {},
+      "links": [],
+      "outbound_profile_links": [],
+      "images": [],
+      "iframes": [],
+      "media": [],
+      "form_controls": [],
+      "interactive_empty": {},
+      "noscript": {
+        "present": false,
+        "words": 0
+      },
+      "dates": {},
+      "contact_signals": {},
+      "trigram_hash": null
+    },
+    {
+      "url": "https://www.tacobell.com/legal-notices",
+      "final_url": "https://www.tacobell.com/legal-notices",
+      "status": "ok",
+      "reason": null,
+      "http_status": 200,
+      "page_type": "legal",
+      "headers": {
+        "content-type": "text/html; charset=utf-8",
+        "edge-cache-tag": "PAGE_rel-p_WEB2",
+        "x-powered-by": "Next.js",
+        "etag": "\"b4t85tru1h3q18\"",
+        "x-akamai-transformed": "l - 0 -",
+        "content-encoding": "gzip",
+        "expires": "Thu, 10 Sep 2026 20:50:50 GMT",
+        "cache-control": "max-age=0, no-cache",
+        "pragma": "no-cache",
+        "date": "Thu, 10 Sep 2026 20:50:50 GMT",
+        "content-length": "38585",
+        "connection": "close",
+        "vary": "Accept-Encoding",
+        "set-cookie": "bm_sz=D254A02AF782096670B3117634861401~YAAQVdcLF5yksWSgAQAA9WUWjQFkqldfVEwnvObvgdJpEekcu3nno5YNM3c8U4ITHfSnW9ysljGBMLqMYX8Vj9SWp3iivtF7haZgpApfYDb3bEoNk9nggHaFIpXnXzGypXQ41Dk3F5GyOB74Ps/oQkuUoVc4PlT+3tOBmEE8EhjdULx9pRUuJ8BPXPIPjj7oJrI6jPg/x0tWHY39DkUMAzfV9Epthh0lrNsJrWJAGrzm2P9NryIJA0j3LtrQZkL60ayH8/HaKkJo/kKYbUaXo+ue1LSO67lSBxWkgIEehPv6dsMJbvgVylpJ3jxKR4VanexSTQapNtg4u5JCk0z5VPmcMvfj2BvyL1BrV8suwKr/MneO6jvI7E7oaEgZTyoiJAApkAisdk4=~3749425~4273217; Domain=.tacobell.com; Path=/; Expires=Fri, 11 Sep 2026 00:50:50 GMT; Max-Age=14400",
+        "ak-grn": "0.55d70b17.1789073450.118e8c71"
+      },
+      "raw_html_bytes": 174487,
+      "main_text": "",
+      "main_text_words": 0,
+      "extraction_ok": false,
+      "title": null,
+      "meta": {
+        "viewport": "width=device-width",
+        "description": null,
+        "robots": null
+      },
+      "lang": "en",
+      "canonical": {
+        "href": null,
+        "self_referential": false,
+        "cross_domain": false
+      },
+      "headings": [],
+      "landmarks": {
+        "main": 0,
+        "nav": 0,
+        "header": 0,
+        "footer": 0
+      },
+      "structured_data": {
+        "json_ld": [],
+        "microdata_types": [],
+        "rdfa_types": []
+      },
+      "links": [],
+      "outbound_profile_links": [],
+      "images": [],
+      "iframes": [],
+      "media": [],
+      "form_controls": [],
+      "interactive_empty": {
+        "links_no_text": 0,
+        "buttons_no_text": 0
+      },
+      "noscript": {
+        "present": true,
+        "words": 0
+      },
+      "dates": {
+        "meta_published": null,
+        "meta_modified": null,
+        "visible_dates": [],
+        "header_last_modified": null
+      },
+      "contact_signals": {
+        "email": false,
+        "phone": null,
+        "postal_address": null,
+        "org_name_footer": null
+      },
+      "trigram_hash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "url": "https://www.tacobell.com/legal-notices/about-our-ads",
+      "final_url": "https://www.tacobell.com/legal-notices/about-our-ads",
+      "status": "ok",
+      "reason": null,
+      "http_status": 200,
+      "page_type": "legal",
+      "headers": {
+        "content-type": "text/html; charset=utf-8",
+        "transfer-encoding": "chunked",
+        "connection": "close",
+        "cache-control": "no-store",
+        "last-modified": "Thu, 10 Sep 2026 18:38:02 GMT",
+        "x-amz-version-id": "TWw9I8iHX76U21r7G52tUZZbKCtnPxMs",
+        "etag": "W/\"06d06fd77dcf90a25cf648f57f674e4f\"",
+        "x-amz-error-code": "NoSuchKey",
+        "x-amz-error-message": "The specified key does not exist.",
+        "x-amz-error-detail-key": "policies",
+        "date": "Thu, 10 Sep 2026 20:50:52 GMT",
+        "server": "AmazonS3",
+        "content-encoding": "gzip",
+        "vary": "Accept-Encoding",
+        "x-cache": "Error from cloudfront",
+        "via": "1.1 e4773799763f9062c09320ea013975e4.cloudfront.net (CloudFront)",
+        "x-amz-cf-pop": "CCU50-P6",
+        "x-amz-cf-id": "ZSTYixTFT6d1zqNLcuvPHmH6O14EFz3cT5d5voQAlGD9HAkHU9gazQ==",
+        "x-xss-protection": "1; mode=block",
+        "x-frame-options": "SAMEORIGIN",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "x-content-type-options": "nosniff",
+        "strict-transport-security": "max-age=31536000"
+      },
+      "raw_html_bytes": 4906,
+      "main_text": "",
+      "main_text_words": 0,
+      "extraction_ok": true,
+      "title": null,
+      "meta": {
+        "viewport": "width=device-width,initial-scale=1",
+        "description": null,
+        "robots": null
+      },
+      "lang": "en",
+      "canonical": {
+        "href": null,
+        "self_referential": false,
+        "cross_domain": false
+      },
+      "headings": [],
+      "landmarks": {
+        "main": 0,
+        "nav": 0,
+        "header": 0,
+        "footer": 0
+      },
+      "structured_data": {
+        "json_ld": [],
+        "microdata_types": [],
+        "rdfa_types": []
+      },
+      "links": [],
+      "outbound_profile_links": [],
+      "images": [],
+      "iframes": [],
+      "media": [],
+      "form_controls": [],
+      "interactive_empty": {
+        "links_no_text": 0,
+        "buttons_no_text": 0
+      },
+      "noscript": {
+        "present": true,
+        "words": 22
+      },
+      "dates": {
+        "meta_published": null,
+        "meta_modified": null,
+        "visible_dates": [],
+        "header_last_modified": "Thu, 10 Sep 2026 18:38:02 GMT"
+      },
+      "contact_signals": {
+        "email": false,
+        "phone": null,
+        "postal_address": null,
+        "org_name_footer": null
+      },
+      "trigram_hash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "url": "https://www.tacobell.com/legal-notices/alpr",
+      "final_url": "https://www.tacobell.com/legal-notices/alpr",
+      "status": "unavailable",
+      "reason": "http_404",
+      "http_status": 404,
+      "page_type": "legal",
+      "headers": {},
+      "raw_html_bytes": 0,
+      "main_text": "",
+      "main_text_words": 0,
+      "extraction_ok": false,
+      "title": null,
+      "meta": {},
+      "lang": null,
+      "canonical": {},
+      "headings": [],
+      "landmarks": {},
+      "structured_data": {},
+      "links": [],
+      "outbound_profile_links": [],
+      "images": [],
+      "iframes": [],
+      "media": [],
+      "form_controls": [],
+      "interactive_empty": {},
+      "noscript": {
+        "present": false,
+        "words": 0
+      },
+      "dates": {},
+      "contact_signals": {},
+      "trigram_hash": null
+    },
+    {
+      "url": "https://www.tacobell.com/Cashmere Named Taco Bell’s® First-Ever Culture Agency Of Record",
+      "final_url": "https://www.tacobell.com/Cashmere Named Taco Bell’s® First-Ever Culture Agency Of Record",
+      "status": "unavailable",
+      "reason": "InvalidURL: URL can't contain control characters. '/Cashmere Named Taco Bell’s® First-Ever Culture Agency Of Record' (found at least ' ')",
+      "http_status": null,
+      "page_type": "other",
+      "headers": {},
+      "raw_html_bytes": 0,
+      "main_text": "",
+      "main_text_words": 0,
+      "extraction_ok": false,
+      "title": null,
+      "meta": {},
+      "lang": null,
+      "canonical": {},
+      "headings": [],
+      "landmarks": {},
+      "structured_data": {},
+      "links": [],
+      "outbound_profile_links": [],
+      "images": [],
+      "iframes": [],
+      "media": [],
+      "form_controls": [],
+      "interactive_empty": {},
+      "noscript": {
+        "present": false,
+        "words": 0
+      },
+      "dates": {},
+      "contact_signals": {},
+      "trigram_hash": null
+    },
+    {
+      "url": "https://www.tacobell.com/FAQS",
+      "final_url": "https://www.tacobell.com/FAQS",
+      "status": "ok",
+      "reason": null,
+      "http_status": 200,
+      "page_type": "other",
+      "headers": {
+        "date": "Thu, 10 Sep 2026 20:50:58 GMT",
+        "content-type": "text/html;charset=UTF-8",
+        "transfer-encoding": "chunked",
+        "connection": "close",
+        "link": "</s/sfsites/auraFW/javascript/WUdfaXlIZDNDQ0lZLWNFZDMtVGZ3d2tVMjdnTGFERUU2S3FfSVdrcU92bkExNC4xOTIuODM4ODYwOA/aura_prod.js>;rel=preload;as=script;nopush,</s/sfsites/l/%7B%22mode%22%3A%22PROD%22%2C%22dfs%22%3A%2221%22%2C%22app%22%3A%22siteforce%3AcommunityApp%22%2C%22fwuid%22%3A%22WUdfaXlIZDNDQ0lZLWNFZDMtVGZ3d2tVMjdnTGFERUU2S3FfSVdrcU92bkExNC4xOTIuODM4ODYwOA%22%2C%22loaded%22%3A%7B%22APPLICATION%40markup%3A%2F%2Fsiteforce%3AcommunityApp%22%3A%221712_xZHiuQoc1HHcvGz4vs6mGA%22%7D%2C%22apce%22%3A1%2C%22apck%22%3A%22JHt0aW1lc3RhbXB9MDAwMDAwMDAwMDBlbl9VUw%22%2C%22mlr%22%3A1%2C%22pathPrefix%22%3A%22%22%2C%22dns%22%3A%22c%22%2C%22ls%22%3A1%2C%22lrmc%22%3A%22551347034%22%7D/resources.js?pu=1&pv=1788405963000166908121&rv=1785960737000>;rel=preload;as=script;nopush,</s/sfsites/l/%7B%22mode%22%3A%22PROD%22%2C%22dfs%22%3A%2221%22%2C%22app%22%3A%22siteforce%3AcommunityApp%22%2C%22serializationVersion%22%3A%221-14.192.8388608-b%22%2C%22parts%22%3A%22f%22%2C%22loaded%22%3A%7B%22APPLICATION%40markup%3A%2F%2Fsiteforce%3AcommunityApp%22%3A%221712_xZHiuQoc1HHcvGz4vs6mGA%22%7D%2C%22dns%22%3A%22c%22%2C%22ls%22%3A1%2C%22lrmc%22%3A%22551347034%22%7D/app.js?3=>;rel=preload;as=script;nopush",
+        "cf-ray": "a3914ed7ce85a550-SIN",
+        "cf-cache-status": "BYPASS",
+        "cache-control": "no-cache,must-revalidate,max-age=0,no-store,private",
+        "content-encoding": "gzip",
+        "expires": "Wed, 10 Sep 2025 20:50:58 GMT",
+        "last-modified": "Wed, 10 Sep 2025 20:50:58 GMT",
+        "server": "cloudflare",
+        "set-cookie": "renderCtx=%7B%22pageId%22%3A%22a76fd58e-e55b-4e5e-adcc-9f2b1343cedf%22%2C%22schema%22%3A%22Published%22%2C%22viewType%22%3A%22Published%22%2C%22brandingSetId%22%3A%22c1ed88fb-45ea-48e8-b2f2-df1cf8e8fa1e%22%2C%22audienceIds%22%3A%22%22%7D; path=/s; secure",
+        "strict-transport-security": "max-age=63072000; includeSubDomains",
+        "vary": "Accept-Encoding, Origin",
+        "content-security-policy": "frame-ancestors 'self'; report-uri /_/commcsp?disposition=enforce",
+        "content-security-policy-report-only": "img-src *.force.com https://usa356.sfdc-yfeipo.salesforce.com/icons/ slack-imgs-mil-dev.com 'self' https://yum-tacobell.my.salesforce.com https://img.youtube.com https://*.doubleclick.net https://payments.salesforce.com/icons/ https://*.bing.com https://login.salesforce.com/icons/ https://*.facebook.net https://www.gstatic.com https://yum-tacobell.file.force.com *.slack-edge-gov.com *.my-salesforce.com https://*.onetrust.com https://www.tacobell.com *.cloudinary.com https://t.co static.lightning.force.com *.slack-gov.com blob: *.slack-gov-dev.com https://sc-static.net slack-imgs.com *.sfdcstatic.com https://*.appsflyer.com *.twimg.com a.static.lightning.force.com https://*.cookielaw.org *.slack.com https://www.paypal.com https://yum-tacobell.lightning.force.com *.slack-imgs.com slack-imgs-gov.com https://i.ytimg.com https://cdn.content.aws-dev2-uswest2.aws.sfdc.cl/icons/ *.salesforce-experience.com https://*.console.aws.amazon.com https://*.gstatic.com https://*.google.com https://*.clarity.ms slack-imgs-gov-dev.com https://transcend-cdn.com *.slack-edge.com https://cdn.content.aws-prod1-useast1.aws.sfdc.cl/icons/ slack-mil-dev.com https://www.gstatic.com/recaptcha/ https://*.fullstory.com https://www.google.co.in https://*.pinterest.com https://*.facebook.com https://www.google.com/recaptcha/ *.slack-edge.mil https://www.sandbox.paypal.com https://*.snapchat.com b.static.lightning.force.com https://i.vimeocdn.com https://*.my.connect.aws https://*.t.co static.sandbox.lightning.force.com https://*.pinimg.com https://www.googletagmanager.com https://www.google-analytics.com *.salesforce.com https://*.adyen.com slack-imgs.mil https://*.twitter.com data:; report-to sfdc-csp-ep; report-uri https://yum-tacobell.lightning.force.com/_/ContentDomainCSPNoAuth?tenantId=00Dj0000001nuQ3&networkId=0DMPq0000000G1a&type=communities",
+        "report-to": "{\"group\":\"sfdc-csp-ep\",\"endpoints\":[{\"url\":\"https://yum-tacobell.lightning.force.com/_/ContentDomainCSPNoAuth?tenantId=00Dj0000001nuQ3&networkId=0DMPq0000000G1a&type=communities\"}],\"max_age\":31536000}",
+        "reporting-endpoints": "sfdc-csp-ep=\"https://yum-tacobell.lightning.force.com/_/ContentDomainCSPNoAuth?tenantId=00Dj0000001nuQ3&networkId=0DMPq0000000G1a&type=communities\"",
+        "server-timing": "Headers;dur=56",
+        "timing-allow-origin": "*",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "SAMEORIGIN",
+        "alt-svc": "h3=\":443\"; ma=86400"
+      },
+      "raw_html_bytes": 115753,
+      "main_text": "Loading × Sorry to interrupt CSS Error Refresh",
+      "main_text_words": 7,
+      "extraction_ok": false,
+      "title": "Taco Bell Help Center",
+      "meta": {
+        "viewport": "initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0, minimal-ui",
+        "description": null,
+        "robots": null
+      },
+      "lang": "en-US",
+      "canonical": {
+        "href": null,
+        "self_referential": false,
+        "cross_domain": false
+      },
+      "headings": [],
+      "landmarks": {
+        "main": 0,
+        "nav": 0,
+        "header": 0,
+        "footer": 0
+      },
+      "structured_data": {
+        "json_ld": [],
+        "microdata_types": [],
+        "rdfa_types": []
+      },
+      "links": [
+        {
+          "href": "https://www.tacobell.com/FAQS",
+          "text": "×",
+          "rel": null,
+          "internal": true,
+          "aria_label": "Cancel and close"
+        },
+        {
+          "href": "https://www.tacobell.com/FAQS",
+          "text": "Refresh",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        }
+      ],
+      "outbound_profile_links": [],
+      "images": [],
+      "iframes": [],
+      "media": [],
+      "form_controls": [],
+      "interactive_empty": {
+        "links_no_text": 0,
+        "buttons_no_text": 0
+      },
+      "noscript": {
+        "present": false,
+        "words": 0
+      },
+      "dates": {
+        "meta_published": null,
+        "meta_modified": null,
+        "visible_dates": [],
+        "header_last_modified": "Wed, 10 Sep 2025 20:50:58 GMT"
+      },
+      "contact_signals": {
+        "email": false,
+        "phone": null,
+        "postal_address": null,
+        "org_name_footer": null
+      },
+      "trigram_hash": "sha256:696af4894d96ee0f0453e0862d99700f2d7710cf73070fe19f45c79c2d9c2cc6"
+    },
+    {
+      "url": "https://www.tacobell.com/Naked Chicken Chalupa",
+      "final_url": "https://www.tacobell.com/Naked Chicken Chalupa",
+      "status": "unavailable",
+      "reason": "InvalidURL: URL can't contain control characters. '/Naked Chicken Chalupa' (found at least ' ')",
+      "http_status": null,
+      "page_type": "other",
+      "headers": {},
+      "raw_html_bytes": 0,
+      "main_text": "",
+      "main_text_words": 0,
+      "extraction_ok": false,
+      "title": null,
+      "meta": {},
+      "lang": null,
+      "canonical": {},
+      "headings": [],
+      "landmarks": {},
+      "structured_data": {},
+      "links": [],
+      "outbound_profile_links": [],
+      "images": [],
+      "iframes": [],
+      "media": [],
+      "form_controls": [],
+      "interactive_empty": {},
+      "noscript": {
+        "present": false,
+        "words": 0
+      },
+      "dates": {},
+      "contact_signals": {},
+      "trigram_hash": null
+    },
+    {
+      "url": "https://www.tacobell.com/Taco Bell® Nacho Fries Just Got Hotter With New Limited Time Truff Partnership",
+      "final_url": "https://www.tacobell.com/Taco Bell® Nacho Fries Just Got Hotter With New Limited Time Truff Partnership",
+      "status": "unavailable",
+      "reason": "InvalidURL: URL can't contain control characters. '/Taco Bell® Nacho Fries Just Got Hotter With New Limited Time Truff Partnership' (found at least ' ')",
+      "http_status": null,
+      "page_type": "other",
+      "headers": {},
+      "raw_html_bytes": 0,
+      "main_text": "",
+      "main_text_words": 0,
+      "extraction_ok": false,
+      "title": null,
+      "meta": {},
+      "lang": null,
+      "canonical": {},
+      "headings": [],
+      "landmarks": {},
+      "structured_data": {},
+      "links": [],
+      "outbound_profile_links": [],
+      "images": [],
+      "iframes": [],
+      "media": [],
+      "form_controls": [],
+      "interactive_empty": {},
+      "noscript": {
+        "present": false,
+        "words": 0
+      },
+      "dates": {},
+      "contact_signals": {},
+      "trigram_hash": null
+    }
+  ],
+  "rendered": [],
+  "links": {
+    "status": "ok",
+    "reason": null,
+    "checked_count": 20,
+    "results": [
+      {
+        "url": "https://www.tacobell.com/",
+        "http_status": 200,
+        "from_page": "https://www.tacobell.com/",
+        "anchor_text": ""
+      },
+      {
+        "url": "https://www.tacobell.com/food",
+        "http_status": 200,
+        "from_page": "https://www.tacobell.com/",
+        "anchor_text": "Menu"
+      },
+      {
+        "url": "https://www.tacobell.com/delivery",
+        "http_status": 200,
+        "from_page": "https://www.tacobell.com/",
+        "anchor_text": "Delivery"
+      },
+      {
+        "url": "https://www.tacobell.com/rewards",
+        "http_status": 200,
+        "from_page": "https://www.tacobell.com/",
+        "anchor_text": "Rewards"
+      },
+      {
+        "url": "https://www.tacobell.com/gift-cards",
+        "http_status": 200,
+        "from_page": "https://www.tacobell.com/",
+        "anchor_text": "Gift Cards"
+      },
+      {
+        "url": "https://www.tacobell.com/purpose",
+        "http_status": 200,
+        "from_page": "https://www.tacobell.com/",
+        "anchor_text": "Purpose"
+      },
+      {
+        "url": "https://www.tacobell.com/purpose/people",
+        "http_status": 200,
+        "from_page": "https://www.tacobell.com/",
+        "anchor_text": "People"
+      },
+      {
+        "url": "https://www.tacobell.com/purpose/planet",
+        "http_status": 200,
+        "from_page": "https://www.tacobell.com/",
+        "anchor_text": "Planet"
+      },
+      {
+        "url": "https://www.tacobell.com/purpose/food",
+        "http_status": 200,
+        "from_page": "https://www.tacobell.com/",
+        "anchor_text": "Food"
+      },
+      {
+        "url": "https://www.tacobell.com/locations",
+        "http_status": 200,
+        "from_page": "https://www.tacobell.com/",
+        "anchor_text": "Find a Nearby Bell"
+      },
+      {
+        "url": "https://www.tacobell.com/register/yum",
+        "http_status": 200,
+        "from_page": "https://www.tacobell.com/",
+        "anchor_text": "Sign Up"
+      },
+      {
+        "url": "https://www.tacobell.com/login/yum",
+        "http_status": 200,
+        "from_page": "https://www.tacobell.com/",
+        "anchor_text": "Log in"
+      },
+      {
+        "url": "https://www.tacobell.com/order/cart",
+        "http_status": 200,
+        "from_page": "https://www.tacobell.com/",
+        "anchor_text": "Your Order $0.00"
+      },
+      {
+        "url": "https://www.tacobell.com/food/featured",
+        "http_status": 200,
+        "from_page": "https://www.tacobell.com/",
+        "anchor_text": "Explore Menu"
+      },
+      {
+        "url": "https://www.tacobell.com/promotions/decades",
+        "http_status": 200,
+        "from_page": "https://www.tacobell.com/",
+        "anchor_text": "Learn More"
+      },
+      {
+        "url": "https://www.tacobell.com/food/featured/chicken-enchilada-nacho-fries",
+        "http_status": 200,
+        "from_page": "https://www.tacobell.com/",
+        "anchor_text": ""
+      },
+      {
+        "url": "https://www.tacobell.com/food/luxe-value-menu",
+        "http_status": 200,
+        "from_page": "https://www.tacobell.com/",
+        "anchor_text": ""
+      },
+      {
+        "url": "https://www.tacobell.com/food/deals-and-combos/cantina-chicken-rolled-quesadilla",
+        "http_status": 200,
+        "from_page": "https://www.tacobell.com/",
+        "anchor_text": ""
+      },
+      {
+        "url": "https://www.tacobell.com/legal-notices/terms-of-use",
+        "http_status": 200,
+        "from_page": "https://www.tacobell.com/",
+        "anchor_text": "Terms and conditions"
+      },
+      {
+        "url": "https://www.tacobell.com/promotions/live-mas-cafe",
+        "http_status": 200,
+        "from_page": "https://www.tacobell.com/",
+        "anchor_text": ""
+      }
+    ],
+    "skipped": []
+  },
+  "anchors": {
+    "status": "ok",
+    "reason": null,
+    "declared": [
+      {
+        "url": "https://www.tacobelltacoshop.com/",
+        "source": "footer_profile_link",
+        "host": "www.tacobelltacoshop.com"
+      },
+      {
+        "url": "https://www.tacobellfoundation.org/",
+        "source": "footer_profile_link",
+        "host": "www.tacobellfoundation.org"
+      },
+      {
+        "url": "https://www.facebook.com/tacobell",
+        "source": "footer_profile_link",
+        "host": "www.facebook.com"
+      },
+      {
+        "url": "https://instagram.com/tacobell",
+        "source": "footer_profile_link",
+        "host": "instagram.com"
+      },
+      {
+        "url": "https://twitter.com/tacobell",
+        "source": "footer_profile_link",
+        "host": "twitter.com"
+      },
+      {
+        "url": "https://www.tiktok.com/@tacobell",
+        "source": "footer_profile_link",
+        "host": "www.tiktok.com"
+      },
+      {
+        "url": "https://www.youtube.com/user/tacobell",
+        "source": "footer_profile_link",
+        "host": "www.youtube.com"
+      },
+      {
+        "url": "https://www.linkedin.com/company/taco-bell/",
+        "source": "footer_profile_link",
+        "host": "www.linkedin.com"
+      }
+    ],
+    "checked_count": 8,
+    "results": [
+      {
+        "url": "https://www.tacobelltacoshop.com/",
+        "http_status": 200,
+        "resolved": true
+      },
+      {
+        "url": "https://www.tacobellfoundation.org/",
+        "http_status": 200,
+        "resolved": true
+      },
+      {
+        "url": "https://www.facebook.com/tacobell",
+        "http_status": 200,
+        "resolved": true
+      },
+      {
+        "url": "https://instagram.com/tacobell",
+        "http_status": 200,
+        "resolved": true
+      },
+      {
+        "url": "https://twitter.com/tacobell",
+        "http_status": 200,
+        "resolved": true
+      },
+      {
+        "url": "https://www.tiktok.com/@tacobell",
+        "http_status": 200,
+        "resolved": true
+      },
+      {
+        "url": "https://www.youtube.com/user/tacobell",
+        "http_status": 200,
+        "resolved": true
+      },
+      {
+        "url": "https://www.linkedin.com/company/taco-bell/",
+        "http_status": 200,
+        "resolved": true
+      }
+    ]
+  },
+  "budget": {
+    "status": "ok",
+    "reason": null,
+    "stages": [
+      {
+        "name": "resolve",
+        "budget_s": 10,
+        "actual_s": 1.3,
+        "abandoned": false,
+        "planned_items": null,
+        "completed_items": null
+      },
+      {
+        "name": "robots_discovery",
+        "budget_s": 15,
+        "actual_s": 8.9,
+        "abandoned": false,
+        "planned_items": 200,
+        "completed_items": 200
+      },
+      {
+        "name": "static_fetch",
+        "budget_s": 45,
+        "actual_s": 33.5,
+        "abandoned": false,
+        "planned_items": 20,
+        "completed_items": 11
+      },
+      {
+        "name": "render_pass",
+        "budget_s": 75,
+        "actual_s": 0.0,
+        "abandoned": true,
+        "planned_items": 0,
+        "completed_items": 0,
+        "reason": "no_headless_browser_tool"
+      },
+      {
+        "name": "internal_links",
+        "budget_s": 25,
+        "actual_s": 24.3,
+        "abandoned": false,
+        "planned_items": 20,
+        "completed_items": 20
+      },
+      {
+        "name": "offsite_anchors",
+        "budget_s": 20,
+        "actual_s": 13.5,
+        "abandoned": false,
+        "planned_items": 8,
+        "completed_items": 8
+      }
+    ],
+    "total_s": 81.5,
+    "cap_s": 300
+  }
+}

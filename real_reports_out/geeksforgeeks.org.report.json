@@ -1,0 +1,201 @@
+{
+  "schema_version": "1.0.0",
+  "site": "https://www.geeksforgeeks.org",
+  "audited_at": "2026-09-10T20:50:15Z",
+  "preamble": {
+    "access_blocked_for": [],
+    "notes": [],
+    "archetype": "unknown",
+    "recommendations_scoped_to": "unknown"
+  },
+  "summary": {
+    "total_findings": 4,
+    "critical": 0,
+    "high": 0,
+    "medium": 1,
+    "low": 3
+  },
+  "findings": [
+    {
+      "check_id": "CHK-E-022",
+      "state": "present",
+      "locus": {
+        "url": null,
+        "scope": "site"
+      },
+      "evidence": "Site-wide: 6 sampled pages share this defect. Page  missing <main> landmark. Violates structural conventions (WCAG 2.2 SC 1.3.1).",
+      "severity": "medium",
+      "evidence_strength": "NORMATIVE/PRACTITIONER",
+      "suggested_action": {
+        "summary": "Add <main> to wrap primary content; fix heading level skips.",
+        "priority": "medium"
+      },
+      "suppressed_by": [],
+      "recommendation_only": false,
+      "subcheck": null,
+      "occurrences": {
+        "pages": 6,
+        "examples": [
+          "https://www.geeksforgeeks.org/",
+          "https://www.geeksforgeeks.org/java/interesting-facts-about-null-in-java/",
+          "https://www.geeksforgeeks.org/android/android-running-your-first-android-app/"
+        ]
+      },
+      "id": "F-001",
+      "title": "Missing landmark or heading structure"
+    },
+    {
+      "check_id": "CHK-D-002",
+      "state": "present",
+      "locus": {
+        "url": null,
+        "selector": null
+      },
+      "evidence": "robots.txt blocks Bytespider, CCBot (a training-corpus crawler) but permits retrieval-time AI crawlers.",
+      "severity": "low",
+      "evidence_strength": "CORRELATIONAL",
+      "suggested_action": {
+        "summary": "This is frequently intentional and not necessarily a defect. It forgoes future parametric-memory coverage only; leave the decision with the site owner.",
+        "priority": "low"
+      },
+      "suppressed_by": [],
+      "id": "F-002",
+      "title": "Training-corpus crawler blocked, retrieval intact"
+    },
+    {
+      "check_id": "CHK-D-005",
+      "state": "present",
+      "locus": {
+        "url": "https://www.geeksforgeeks.org/java/interesting-facts-about-null-in-java/",
+        "selector": null
+      },
+      "evidence": "Page https://www.geeksforgeeks.org/java/interesting-facts-about-null-in-java/: 1333 words of body text with 0 descriptive subheadings.",
+      "severity": "low",
+      "evidence_strength": "THEORETICAL",
+      "suggested_action": {
+        "summary": "Add descriptive subheadings that state the fact or topic of each section.",
+        "priority": "low"
+      },
+      "suppressed_by": [],
+      "recommendation_only": false,
+      "subcheck": null,
+      "id": "F-003",
+      "title": "Missing or generic subheadings"
+    },
+    {
+      "check_id": "CHK-D-005",
+      "state": "present",
+      "locus": {
+        "url": "https://www.geeksforgeeks.org/android/android-running-your-first-android-app/",
+        "selector": null
+      },
+      "evidence": "Page https://www.geeksforgeeks.org/android/android-running-your-first-android-app/: 1705 words of body text with 0 descriptive subheadings.",
+      "severity": "low",
+      "evidence_strength": "THEORETICAL",
+      "suggested_action": {
+        "summary": "Add descriptive subheadings that state the fact or topic of each section.",
+        "priority": "low"
+      },
+      "suppressed_by": [],
+      "recommendation_only": false,
+      "subcheck": null,
+      "id": "F-004",
+      "title": "Missing or generic subheadings"
+    }
+  ],
+  "recommendations": [
+    {
+      "id": "R-001",
+      "check_id": "CHK-D-010",
+      "title": "Low extractable-evidence density",
+      "rationale": "None of the checked pages contain a definition, numerical fact, or comparison.",
+      "mechanism": "D",
+      "suggested_action": {
+        "summary": "Add explicit definitions, numerical facts, or comparisons — the shapes an assistant can lift verbatim into an answer. (Proactive — not a confirmed defect.)",
+        "priority": "low"
+      },
+      "locus": {
+        "url": "https://www.geeksforgeeks.org/blogs/cartooning-an-image-using-opencv-python/",
+        "selector": null
+      },
+      "severity": null
+    },
+    {
+      "id": "R-002",
+      "check_id": "CHK-E-021",
+      "title": "Images/iframes missing dimensions (layout-shift cause)",
+      "rationale": "47 image(s)/iframe(s) lack explicit width/height or aspect-ratio, so content reflows during load.",
+      "mechanism": "E",
+      "suggested_action": {
+        "summary": "Add width/height attributes or CSS aspect-ratio to reserve layout space before the resource loads. (Proactive — not a confirmed defect.)",
+        "priority": "low"
+      },
+      "locus": {
+        "url": null,
+        "selector": null
+      },
+      "severity": "low"
+    }
+  ],
+  "limitations": [
+    {
+      "id": "LIM-01",
+      "mechanism": "D",
+      "reason": "Actual agreement across the wider web about the brand's facts requires a search or web-scale index API. No free, deterministic, rate-safe source exists.",
+      "note": "CHK-D-025/026/027 audit only the anchoring the site itself provides for that corroboration, not corroboration itself."
+    },
+    {
+      "id": "LIM-02",
+      "mechanism": "D",
+      "reason": "Detecting a same-name collision with an unrelated entity requires a corpus of other entities.",
+      "note": "CHK-D-027 covers only self-consistency, the site-side half."
+    },
+    {
+      "id": "LIM-03",
+      "mechanism": "B",
+      "reason": "Live-querying a generative engine would break determinism, the 5-minute budget, and reproducibility.",
+      "note": "This audit measures retrievability and correctness of what the site exposes, never observed citation outcomes."
+    },
+    {
+      "id": "LIM-04",
+      "mechanism": "E",
+      "reason": "Field engagement outcomes (bounce, dwell, scroll, conversion, task success) are not observable read-only.",
+      "note": "Reported not_determinable where the gap is itself actionable."
+    },
+    {
+      "id": "LIM-05",
+      "mechanism": "D",
+      "reason": "llms.txt is not recommended as a substantive fix: a 137k-domain measurement found 97% of existing llms.txt files were never requested. This audit declines to recommend adding one on that evidence (D-007).",
+      "note": "Stated here rather than omitted (D-014) — the officials' Q&A confirms recommending it is an acceptable position, so silence about it would look indistinguishable from having missed it."
+    }
+  ],
+  "degraded_stages": [
+    {
+      "stage": "render_pass",
+      "planned_items": 0,
+      "completed_items": 0,
+      "affected_checks": [
+        "CHK-D-003",
+        "CHK-E-014",
+        "CHK-E-015",
+        "CHK-E-016",
+        "CHK-E-018",
+        "CHK-E-019"
+      ]
+    }
+  ],
+  "meta_evaluation": {
+    "checks_run": [
+      "summary_reconciles",
+      "severity_counts_reconcile",
+      "finding_complete",
+      "no_duplicate_findings",
+      "known_check_id",
+      "prohibited_recommendation",
+      "limitations_present",
+      "action_locus_coherence"
+    ],
+    "passed": true,
+    "warnings": []
+  }
+}

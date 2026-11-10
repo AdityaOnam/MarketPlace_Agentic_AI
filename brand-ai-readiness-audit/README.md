@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/banner.png" alt="Adobe University Hackathon 2026 — Speak to Agents: The New Language of Brand Visibility" width="100%">
+</p>
+
 # brand-ai-readiness-audit
 
 A read-only Agent Skill Marketplace that audits any website for two failure classes:
@@ -13,6 +17,42 @@ the site it audits — every check is observational.
 
 ---
 
+## Package layout
+
+```
+brand-ai-readiness-audit/
+├── marketplace.json              # manifest: 5 skills, exactly one entrypoint
+├── README.md                     # this file
+├── skills/
+│   ├── audit-orchestrator/       # ENTRYPOINT — composes the other four
+│   │   ├── SKILL.md
+│   │   ├── references/report-schema.md
+│   │   └── scripts/compose_report.py
+│   ├── site-evidence-collector/  # the only skill that touches the network
+│   │   ├── SKILL.md
+│   │   ├── references/{procedure,bundle-schema,ai-crawler-agents}.md
+│   │   └── scripts/{build_bundle,extract_page,page_classifier,sampling,
+│   │                robots_parser,anchor_check,link_check,html_tree,
+│   │                render_geometry}.py
+│   ├── crawl-access-audit/       # CHK-D-001, D-002
+│   │   ├── SKILL.md
+│   │   └── scripts/crawl_access_checks.py
+│   ├── content-engagement-audit/ # 17 checks
+│   │   ├── SKILL.md
+│   │   ├── references/checks.md
+│   │   └── scripts/content_engagement_checks.py
+│   └── entity-identity-audit/    # 13 checks
+│       ├── SKILL.md
+│       ├── references/checks.md
+│       └── scripts/entity_identity_checks.py
+└── docs/                         # evidence backing the claims below
+    ├── ARCHITECTURE.md
+    ├── EVALS.md
+    ├── DECISIONS.md
+    ├── evals/stage-e-report.md
+    └── research/EVIDENCE-LEDGER.md
+```
+
 ## Running the audit
 
 **Entrypoint:** `audit-orchestrator` (marked `"entrypoint": true` in `marketplace.json`).
@@ -20,7 +60,7 @@ Invoke it with a `target` (URL or bare domain) and an optional `budget_s` (defau
 Never invoke the other four skills directly for a live audit — the orchestrator does that.
 
 **Tools the agent needs:** only `http_fetch` (GET/HEAD), and only inside
-`site-evidence-collector`. The other four skills declare `allowed-tools: []`. A
+`site-evidence-collector`. The other four skills declare `allowed-tools: ""`. A
 `headless_browser` tool is declared as optional; when it is absent (the expected case), the
 collector marks the render pass `abandoned` at zero elapsed time and the report lists the
 affected sub-checks in `degraded_stages[]` rather than guessing.
@@ -60,9 +100,9 @@ Five skills, split by mechanism, with network access isolated in exactly one of 
 | `site-evidence-collector` | The only skill that touches the network. Fetches robots.txt, a deterministically sampled page inventory, and bounded internal-link and off-site identity-anchor reachability checks — emits one in-memory evidence bundle, no findings | none — observes only |
 | `crawl-access-audit` | Is the site's AI-crawler policy actually letting retrieval-time assistants in? Distinguishes retrieval-time agents (GPTBot, ChatGPT-User, PerplexityBot, Claude-*, OAI-SearchBot…) from training-corpus agents (Google-Extended, CCBot, ClaudeBot, Bytespider…); blocking the first is `critical`, blocking only the second is `low` | CHK-D-001, D-002 |
 | `content-engagement-audit` | Is the content complete, substantial, well-structured and non-duplicated in what a non-rendering fetch actually receives — **and** are there statically detectable defects (WCAG lang/alt/label failures, zoom-blocking viewport meta, non-descriptive anchor text, autoplay media, missing landmarks, undimensioned images) that obstruct a visitor who already arrived? | CHK-D-003, D-004, D-005, D-009, D-010, D-011, D-013, CHK-E-014 – E-022, E-024 |
-| `entity-identity-audit` | Does the site state who it is unambiguously, mark it up machine-readably, stay internally consistent, and anchor itself to external profiles? | CHK-D-006, D-007, D-008, D-012, D-025, D-026, D-027 |
+| `entity-identity-audit` | Does the site state who it is unambiguously, mark it up machine-readably, stay internally consistent, and anchor itself to external profiles? | CHK-D-006, D-007, D-008, D-012, D-025, D-026, D-027, D-029 – D-034 |
 
-26 checks, disjoint — no check is owned by more than one skill. Why five and not one, why
+32 checks, disjoint — no check is owned by more than one skill. Why five and not one, why
 not more, and the three tests that would falsify the split: [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md).
 
 **What runs without a browser.** Everything above except four sub-checks: contrast ratio
@@ -147,7 +187,7 @@ The marketplace was measured, not just designed. Full record in
 [`docs/EVALS.md`](docs/EVALS.md); every number below carries how it was obtained.
 
 - **Gold labels:** 624 cells — 24 dev sites (6 archetypes × 4, four of them non-English)
-  × 26 checks — hand-labelled by a human from frozen snapshots, *before* seeing tool
+  × the 26 checks that existed at labelling time — hand-labelled by a human from frozen snapshots, *before* seeing tool
   output, using a closed `PRESENT / ABSENT / UNMEASURABLE / N/A` taxonomy. A model never
   authors a label; it may only queue a disagreement for human adjudication.
 - **Negative controls:** 15 clean sites, 2–3 per dimension, chosen by fetching and reading

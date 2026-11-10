@@ -2,7 +2,7 @@
 name: crawl-access-audit
 description: Determine whether AI systems are permitted to fetch a site at all, by reading the parsed robots.txt rules in an evidence bundle and distinguishing blocks on retrieval-time crawlers (which remove the site from what an assistant can cite right now) from blocks on training-corpus crawlers (which are frequently deliberate policy and are not a defect). Use as the first analysis stage of a website audit, because a site an AI cannot fetch makes every other discoverability finding moot.
 license: Apache-2.0
-allowed-tools: []
+allowed-tools: ""
 ---
 
 # Crawl Access Audit

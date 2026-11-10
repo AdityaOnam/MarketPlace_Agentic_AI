@@ -1,0 +1,358 @@
+{
+  "schema_version": "1.0.0",
+  "site": {
+    "status": "ok",
+    "reason": null,
+    "input": "https://ziprecruiter.com",
+    "canonical_host": "www.ziprecruiter.com",
+    "origin": "https://www.ziprecruiter.com",
+    "scheme": "https",
+    "redirect_chain": [
+      "https://ziprecruiter.com"
+    ],
+    "tls_valid": true,
+    "archetype": "unknown",
+    "archetype_confidence": 0.0
+  },
+  "robots": {
+    "status": "ok",
+    "reason": null,
+    "fetch_status": 200,
+    "body": "# GOOGLEBOT\nUser-agent: googlebot\nAllow: /\nDisallow: /unsubscribe\nDisallow: /job/track-pageview\nDisallow: /facebook/\nDisallow: /amazon/\nDisallow: /job/track-apply-click\nDisallow: /job/monster-apply-request\nDisallow: /?search=\nDisallow: /geo/job_title\nDisallow: /blog/wp-admin/\nDisallow: /contact/zip-resume\nDisallow: /resume-database/preview-iframe\nDisallow: /resume/preview/\nDisallow: /admin\nDisallow: /login/\nDisallow: /trk\nDisallow: /get-auto-banners\nDisallow: /record-event\nDisallow: /events\nDisallow: /apply/\nDisallow: /eclk/\nDisallow: /ek/\nDisallow: /ekn/\nDisallow: /ekm/\nDisallow: /job-redirect\nDisallow: /pixel/\nDisallow: /observations/\nDisallow: /fingerprint/\nDisallow: /ptid\nDisallow: /chat/get-chat-auth-token\nDisallow: /ajax/\nDisallow: /tap/\nDisallow: /ojob/\nDisallow: /job-preview/\nDisallow: /svc/seo/\nDisallow: /candidate/onboard\n\n\n# ALLOWED BOTS\nUser-agent: Google-Extended\nUser-agent: Google-News\nUser-agent: Googlebot-Image/1.0\nUser-agent: Googlebot-Video/1.0\nUser-agent: bingbot\nUser-agent: Bravebot\nUser-agent: Applebot\nUser-agent: Pinterestbot\nUser-agent: Slackbot\nUser-agent: LinkedInBot\nUser-agent: Snapchat\nUser-agent: facebookexternalhit/1.1\nUser-agent: TelegramBot\nUser-agent: msnbot\nUser-agent: Slurp\nUser-agent: WhatsApp\nUser-agent: ChatGPT-User\nUser-agent: OAI-SearchBot\nUser-agent: PerplexityBot\nUser-agent: ClaudeBot\nUser-agent: Claude-SearchBot\nUser-agent: Claude-User\nUser-agent: OAI-AdsBot\nUser-agent: AdsBot-Google\nUser-agent: AdsBot-Google-Mobile\nUser-agent: Mediapartners-Google\nUser-agent: adidxbot\nUser-agent: meta-externalads\nAllow: /\nDisallow: /unsubscribe\nDisallow: /job/track-pageview\nDisallow: /facebook/\nDisallow: /amazon/\nDisallow: /job/track-apply-click\nDisallow: /job/monster-apply-request\nDisallow: /?search=\nDisallow: /geo/job_title\nDisallow: /blog/wp-admin/\nDisallow: /contact/zip-resume\nDisallow: /resume-database/preview-iframe\nDisallow: /resume/preview/\nDisallow: /admin\nDisallow: /login/\nDisallow: /trk\nDisallow: /get-auto-banners\nDisallow: /record-event\nDisallow: /events\nDisallow: /apply/\nDisallow: /eclk/\nDisallow: /ek/\nDisallow: /job-redirect\nDisallow: /pixel/\nDisallow: /observations/\nDisallow: /fingerprint/\nDisallow: /ptid\nDisallow: /chat/get-chat-auth-token\nDisallow: /ajax/\nDisallow: /tap/\nDisallow: /jobs/\nDisallow: /ojob/\nDisallow: /job-preview/\nDisallow: /svc/seo/\nDisallow: /jobs-search\nDisallow: /candidate/onboard\n\n# LLM manifest: /llms.txt\n\n# AI TRAINING BOTS\nUser-agent: GPTBot\nUser-agent: Applebot-Extended\nUser-agent: Meta-ExternalAgent\nUser-agent: CCBot\nAllow: /$\nAllow: /llms.txt\nAllow: /about\nAllow: /ats-partners\nAllow: /blog/\nAllow: /careers\nAllow: /contact/\nAllow: /corporate-responsibility\nAllow: /employer-reviews\nAllow: /enterprise\nAllow: /enterprise_faq\nAllow: /enterprise_how_it_works\nAllow: /enterprise-contact-us\nAllow: /enterprise-customer-stories\nAllow: /hiring/\nAllow: /how-it-works\nAllow: /job-seeker-reviews\nAllow: /job-sites\nAllow: /jobboard.io\nAllow: /mobile\nAllow: /notices\nAllow: /plans\nAllow: /post-a-job\nAllow: /press\nAllow: /resume-database\nAllow: /sales\nAllow: /trust/\nAllow: /who-is-phil\nDisallow: /\n\n\n# DEFAULT\n# Deny-by-default, except the LLM manifest.\nUser-agent: *\nAllow: /llms.txt\nDisallow: /\n",
+    "parse_ok": true,
+    "agents": {
+      "googlebot": {
+        "class": "hybrid",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "Google-Extended": {
+        "class": "training",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "Google-News": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "Googlebot-Image/1.0": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "Googlebot-Video/1.0": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "bingbot": {
+        "class": "hybrid",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "Bravebot": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "Applebot": {
+        "class": "hybrid",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "Pinterestbot": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "Slackbot": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "LinkedInBot": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "Snapchat": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "facebookexternalhit/1.1": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "TelegramBot": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "msnbot": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "Slurp": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "WhatsApp": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "ChatGPT-User": {
+        "class": "retrieval",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "OAI-SearchBot": {
+        "class": "retrieval",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "PerplexityBot": {
+        "class": "retrieval",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "ClaudeBot": {
+        "class": "training",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "Claude-SearchBot": {
+        "class": "retrieval",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "Claude-User": {
+        "class": "retrieval",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "OAI-AdsBot": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "AdsBot-Google": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "AdsBot-Google-Mobile": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "Mediapartners-Google": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "adidxbot": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "meta-externalads": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "GPTBot": {
+        "class": "training",
+        "allowed_root": true,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "Applebot-Extended": {
+        "class": "training",
+        "allowed_root": true,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "Meta-ExternalAgent": {
+        "class": "training",
+        "allowed_root": true,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "CCBot": {
+        "class": "training",
+        "allowed_root": true,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "*": {
+        "class": "generic",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 149,
+        "crawl_delay": null
+      }
+    },
+    "sitemap_declarations": []
+  },
+  "discovery": {
+    "status": "ok",
+    "reason": null,
+    "sitemap_found": false,
+    "sitemap_urls_count": 0,
+    "inventory": [],
+    "sampled_static": [],
+    "sampled_rendered": [],
+    "sampling_seed": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "pages": [],
+  "rendered": [],
+  "links": {
+    "status": "ok",
+    "reason": null,
+    "checked_count": 0,
+    "results": [],
+    "skipped": []
+  },
+  "anchors": {
+    "status": "ok",
+    "reason": null,
+    "declared": [],
+    "checked_count": 0,
+    "results": []
+  },
+  "budget": {
+    "status": "ok",
+    "reason": null,
+    "stages": [
+      {
+        "name": "resolve",
+        "budget_s": 10,
+        "actual_s": 1.4,
+        "abandoned": false,
+        "planned_items": null,
+        "completed_items": null
+      },
+      {
+        "name": "robots_discovery",
+        "budget_s": 15,
+        "actual_s": 1.5,
+        "abandoned": false,
+        "planned_items": 0,
+        "completed_items": 0
+      },
+      {
+        "name": "static_fetch",
+        "budget_s": 45,
+        "actual_s": 0.0,
+        "abandoned": false,
+        "planned_items": 0,
+        "completed_items": 0
+      },
+      {
+        "name": "render_pass",
+        "budget_s": 75,
+        "actual_s": 0.0,
+        "abandoned": true,
+        "planned_items": 0,
+        "completed_items": 0,
+        "reason": "no_headless_browser_tool"
+      },
+      {
+        "name": "internal_links",
+        "budget_s": 25,
+        "actual_s": 0.0,
+        "abandoned": false,
+        "planned_items": 0,
+        "completed_items": 0
+      },
+      {
+        "name": "offsite_anchors",
+        "budget_s": 20,
+        "actual_s": 0.0,
+        "abandoned": false,
+        "planned_items": 0,
+        "completed_items": 0
+      }
+    ],
+    "total_s": 2.9,
+    "cap_s": 300
+  }
+}

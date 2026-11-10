@@ -1,0 +1,369 @@
+{
+  "schema_version": "1.0.0",
+  "site": {
+    "status": "ok",
+    "reason": null,
+    "input": "https://tripadvisor.com",
+    "canonical_host": "www.tripadvisor.com",
+    "origin": "https://www.tripadvisor.com",
+    "scheme": "https",
+    "redirect_chain": [
+      "https://tripadvisor.com"
+    ],
+    "tls_valid": true,
+    "archetype": "unknown",
+    "archetype_confidence": 0.0
+  },
+  "robots": {
+    "status": "ok",
+    "reason": null,
+    "fetch_status": 200,
+    "body": "# Hi there,\n#\n# If you're sniffing around this file, and you're not a robot, we're looking to meet curious folks such as yourself.\n#\n# Think you have what it takes to join the best white-hat SEO growth hackers on the planet?\n#\n# Run - don't crawl - to apply to join Tripadvisor's elite SEO team\n#\n# Email seoRockstar@tripadvisor.com\n#\n# Or visit https://careers.tripadvisor.com/search-results?keywords=seo\n#\n#\nSitemap: https://www.tripadvisor.com/sitemap/2/en_US/sitemap_en_US_index.xml\nSitemap: https://www.tripadvisor.com/sitemap/2/en_US/sitemap_en_US_location_photo_direct_link_index.xml\nSitemap: https://www.tripadvisor.com/sitemap/2/en_US/sitemap_en_US_show_user_reviews_index.xml\nSitemap: https://www.tripadvisor.com/sitemap/att/en_US/sitemap_en_US_attractions_index.xml\nSitemap: https://www.tripadvisor.com/sitemap/att/en_US/sitemap_en_US_attraction_review_index.xml\nSitemap: https://www.tripadvisor.com/sitemap/att/en_US/sitemap_en_US_attraction_product_review_index.xml\nSitemap: https://www.tripadvisor.com/sitemap/att/en_US/sitemap_en_US_attractions_near_index.xml\nSitemap: https://www.tripadvisor.com/business/sitemap.xml\nUser-Agent: Amazonbot\nUser-Agent: Applebot-Extended\nUser-Agent: Bytespider\nUser-Agent: CCBot\nUser-Agent: ClaudeBot\nUser-Agent: Cohere-ai\nUser-Agent: GPTBot\nUser-Agent: Google-CloudVertexBot\nUser-Agent: Img2dataset\nUser-Agent: PanguBot\nUser-Agent: PetalBot\nUser-Agent: SentiBot\nUser-Agent: YouBot\nUser-Agent: magpie-crawler\nUser-Agent: meta-externalagent\nDisallow: /\n\nUser-Agent: *\nUser-Agent: ChatGPT-User\nUser-Agent: ChatGPT-User/2.0\nUser-Agent: Gemini-Deep-Research\nUser-Agent: OAI-SearchBot\nUser-Agent: Google-Extended\nUser-Agent: applebot\nUser-Agent: PerplexityBot\nUser-Agent: bingbot\nUser-Agent: Baiduspider\nDisallow: /5349\nDisallow: /AccommodationTips\nDisallow: /AccountMerge\nDisallow: /Achievements\nDisallow: /ActionRecord\nDisallow: /AddForumUser\nDisallow: /AddListing\nDisallow: /AdRequestEventLogApi\nDisallow: /AdsManager\nDisallow: /adsoverview\nDisallow: /AffiliateWidgets\nDisallow: /AirlineRegistration\nDisallow: /AirlineTips\nDisallow: /AirportFromGeoAjax\nDisallow: /AirportIP\nDisallow: /AITripBuilder\nDisallow: /AllReviews\nDisallow: /analytics\nDisallow: /AnalyticsSuite\nDisallow: /AnswersAjax\nDisallow: /api\nDisallow: /APIAccessSupport\nDisallow: /AppDetail\nDisallow: /AppleMapsAction\nDisallow: /apps\nDisallow: /AppSwipeRecommendations\nDisallow: /AppTravelModeExplore\nDisallow: /AppUploadAPhoto\nDisallow: /AppUserReview\nDisallow: /ArticlesV2\nDisallow: /Attraction_Products\nDisallow: /AttractionAmendTravelDate\nDisallow: /AttractionBookingApi\nDisallow: /AttractionBookingDetails\nDisallow: /AttractionCancelBooking\nDisallow: /AttractionCommerce\nDisallow: /AttractionPartnerRedirect\nDisallow: /AttractionProductDetail\nDisallow: /AttractionProductHighlight\nDisallow: /AuthCheck\nDisallow: /AuthorTool\nDisallow: /avis\nDisallow: /B2BClickTracking\nDisallow: /BAEmailConfirmation\nDisallow: /BALinkImpressionTracking\nDisallow: /BATools\nDisallow: /BeachSweeps\nDisallow: /bewerten\nDisallow: /billing\nDisallow: /BLImpRecord\nDisallow: /blog/wp-admin/\nDisallow: /BlPromoOptOut\nDisallow: /BookingConfirmationShare\nDisallow: /BookingConfirmationSMSResponse\nDisallow: /Bookings\nDisallow: /BrandSpotlight\nDisallow: /businessinfo\nDisallow: /BusinessListingsAjax\nDisallow: /bzzagent\nDisallow: /CampaignConfigAjax\nDisallow: /CampaignConfiguration\nDisallow: /CampaignManagement\nDisallow: /CancelBooking\nDisallow: /CarsComparePartners\nDisallow: /CauseTeaserPopup\nDisallow: /cds/media\nDisallow: /CDSimp\nDisallow: /CertificateOfExcellenceRequestSupport\nDisallow: /CheapFlightsController\nDisallow: /CheapFlightsPartnerHandoff\nDisallow: /CheapFlightsPartnerPostHandoff\nDisallow: /CheapFlightsRecord\nDisallow: /Civ\nDisallow: /Claim\nDisallow: /claimrewards\nDisallow: /ClientLink\nDisallow: /CMSImp\nDisallow: /cmsimp\nDisallow: /Collections\nDisallow: /Commerce\nDisallow: /CommLCT\nDisallow: /CommPT\nDisallow: /ConnectivityPartnerFAQ\nDisallow: /ConnectivityPartnerInfo\nDisallow: /Consent\nDisallow: /Content\nDisallow: /CookiePingback\nDisallow: /CoralEditor\nDisallow: /CostPerClick\nDisallow: /CountryAjax\nDisallow: /CruisesCommerce\nDisallow: /CruisesPartnerHandoff\nDisallow: /CurationTool\nDisallow: /data\nDisallow: /DeleteNotify\nDisallow: /DemandLoadAjax\nDisallow: /DestinationArticle\nDisallow: /DestinationGuideWidget\nDisallow: /DestinationReview\nDisallow: /Destinations\nDisallow: /DevMediaRedirector\nDisallow: /DhtmlPopup\nDisallow: /DisplayMap\nDisallow: /DynamicPlacementAjax\nDisallow: /EmailHotel\nDisallow: /EmailMap\nDisallow: /EmailMemberRegistration\nDisallow: /EmailSpellCheckJson\nDisallow: /ErrorPage\nDisallow: /EventDates\nDisallow: /ExpandedUserReviews\nDisallow: /ExperiencesCommerce\nDisallow: /ExperiencesInsights/?s\nDisallow: /ExternalLinkInterstitial\nDisallow: /FacebookConnect\nDisallow: /FareCalendar\nDisallow: /FilterState\nDisallow: /FindRestaurants\nDisallow: /FinishAppInstall\nDisallow: /Flights?\nDisallow: /FlightsComparePartners\nDisallow: /FlightsController\nDisallow: /FlightsPricelink\nDisallow: /FlightsRecord\nDisallow: /ForgotPassword\nDisallow: /ForumFAQ\nDisallow: /ForumPostPreview\nDisallow: /ForumRedirect\nDisallow: /ForumSetSortCookie\nDisallow: /ForumSignIn\nDisallow: /forumTeaser\nDisallow: /ForumVote\nDisallow: /FreeTools\nDisallow: /FullRedirect\nDisallow: /Games\nDisallow: /GARecord\nDisallow: /GeneralSupport\nDisallow: /GermanwingsPromo\nDisallow: /GermanwingsRegistration\nDisallow: /GetListedAjaxGeneral\nDisallow: /GetListedLightbox\nDisallow: /GetListedUpdateAttraction\nDisallow: /GetListedUpdateEatery\nDisallow: /GetMobileApp\nDisallow: /GMapsLocationController\nDisallow: /GOffer\nDisallow: /GOWidget\nDisallow: /Gpits\nDisallow: /GPointCampaign\nDisallow: /GroupHomeApi\nDisallow: /GroupManagementCenter\nDisallow: /GSSAjax\nDisallow: /GuestExperience\nDisallow: /GuideAjax\nDisallow: /GuideEditor\nDisallow: /GuideRatingAjax\nDisallow: /GuideRequested\nDisallow: /GuideRequestor\nDisallow: /HACAffiliate\nDisallow: /HandleHotelSuperPortal\nDisallow: /HelpProxy\nDisallow: /Home-\nDisallow: /Hotel_ReviewHAC\nDisallow: /HotelGMCApi\nDisallow: /HotelHighlight\nDisallow: /HotelInterruptersAjax\nDisallow: /HotelsManagementCenter\nDisallow: /HotelsProductCart\nDisallow: /HotelWatchAjax\nDisallow: /HowTheSiteWorks\nDisallow: /ImpressionRecord\nDisallow: /ImproveListing\nDisallow: /Inbox\nDisallow: /InformationCenter\nDisallow: /InitializeSession\nDisallow: /InlineReviewerCta\nDisallow: /InterstitialsWidget\nDisallow: /InvoicePayment\nDisallow: /IpadInterstitial\nDisallow: /JoinPlus\nDisallow: /js/\nDisallow: /js2/\nDisallow: /js3/\nDisallow: /JSErrorRecord\nDisallow: /JsonServiceController\nDisallow: /JustForYouGuide\nDisallow: /LanderLogger\nDisallow: /LandingPage\nDisallow: /Leaderboard\nDisallow: /LightSubscriptionCenter\nDisallow: /LikeButtonClicked\nDisallow: /LinkGenerator\nDisallow: /ListingQuestionsAjax\nDisallow: /LithiumEmptyPage\nDisallow: /LithiumPageNotFound\nDisallow: /LNAjax\nDisallow: /LocationPhotoAlbum\nDisallow: /LocationPhotosInline\nDisallow: /LocationPhotosLightbox\nDisallow: /LocationPhotosSearch\nDisallow: /LocationTab\nDisallow: /LocationWidget\nDisallow: /LogMediaClick\nDisallow: /MachineTranslation\nDisallow: /ManageListingApi\nDisallow: /ManagementCenter\nDisallow: /ManageOwnersTopReasonsApi\nDisallow: /ManagePhotos\nDisallow: /ManageShopListingApi\nDisallow: /ManageShopping\nDisallow: /ManageStoryboard\nDisallow: /MapEmbed\nDisallow: /media/0000\nDisallow: /media/advertorials\nDisallow: /media/attractions-splice-test-spp\nDisallow: /media/bl-video\nDisallow: /media/BookingThumbnails\nDisallow: /media/careers\nDisallow: /media/daodao/photo-f\nDisallow: /media/daodao/photo-l\nDisallow: /media/daodao/photo-t\nDisallow: /media/daodao/video-t\nDisallow: /media/daodao/video-v\nDisallow: /media/fbavatar\nDisallow: /media/forums\nDisallow: /media/ja-content-thumbs\nDisallow: /media/jwplayer\nDisallow: /media/mktg\nDisallow: /media/mobile\nDisallow: /media/oyster\nDisallow: /media/photo-a\nDisallow: /media/photo-f\nDisallow: /media/photo-g\nDisallow: /media/photo-l\nDisallow: /media/photo-o\nDisallow: /media/photo-t\nDisallow: /media/photo-w\nDisallow: /media/ProviderThumbnails\nDisallow: /media/solutions\nDisallow: /media/string\nDisallow: /media/t4b\nDisallow: /media/ta\nDisallow: /media/TALSO.swf\nDisallow: /media/test\nDisallow: /media/thirdpartyflash\nDisallow: /media/tmp\nDisallow: /media/tourism-content\nDisallow: /media/travelpod-roll.flv\nDisallow: /media/TUIThumbnails\nDisallow: /media/unesco\nDisallow: /media/vr-geo-photo-j\nDisallow: /media/vr-geo-photo-l\nDisallow: /media/vr-geo-photo-m\nDisallow: /media/vr-geo-photo-s\nDisallow: /media/vr-ha-splice\nDisallow: /media/vr-nifty-headers\nDisallow: /media/vr-photo-j\nDisallow: /media/vr-photo-l\nDisallow: /media/vr-photo-m\nDisallow: /media/vr-photo-o\nDisallow: /media/vr-photo-q\nDisallow: /media/vr-photo-s\nDisallow: /media/vr-photo-test-j\nDisallow: /media/vr-photo-test-l\nDisallow: /media/vr-photo-test-m\nDisallow: /media/vr-photo-test-o\nDisallow: /media/vr-photo-test-q\nDisallow: /media/vr-photo-test-s\nDisallow: /media/vr-photos\nDisallow: /media/vr-splice-m\nDisallow: /media/vr-splice-s\nDisallow: /media/vr-splice-test-j\nDisallow: /media/vr-splice-test-l\nDisallow: /media/vr-splice-test-m\nDisallow: /media/vr-splice-test-s\nDisallow: /MediaBadgeResponse\nDisallow: /MediaKit\nDisallow: /MediaVoting\nDisallow: /MemberAuditLogger\nDisallow: /MemberBenefitsPopup\nDisallow: /MemberOverlay\nDisallow: /MemberPassportStamps\nDisallow: /MemberPhotos\nDisallow: /MemberProfile\nDisallow: /MemberResetPassword\nDisallow: /members\nDisallow: /MemberSubscribe\nDisallow: /MemberSubscriptionsController\nDisallow: /MemberTagsAjax\nDisallow: /MemberTravelMap\nDisallow: /menu\nDisallow: /Messages\nDisallow: /MessagingOptions\nDisallow: /MetaAirCalendarAjax\nDisallow: /MetaBestPriceCrossSellAjax\nDisallow: /MetaCheckRatesAjax\nDisallow: /MetaJsonAjax\nDisallow: /MetaPlacementAjax\nDisallow: /MetricsAjax\nDisallow: /MicroMetaAjax\nDisallow: /MiniMetaCRAjax\nDisallow: /missingpage\nDisallow: /mobile\nDisallow: /MobileAddPoi\nDisallow: /MobileAddressLookupAjax\nDisallow: /MobileAdsManager\nDisallow: /MobileAirlineDeals\nDisallow: /MobileAirlines\nDisallow: /MobileAirlineTips\nDisallow: /MobileAirport\nDisallow: /MobileApps\nDisallow: /MobileAttractionSearch\nDisallow: /MobileAttractionsNear\nDisallow: /MobileBookingConfirmationShare\nDisallow: /MobileBookingConfirmationSMSResponse\nDisallow: /MobileBookingCustomerSupport\nDisallow: /MobileBookings\nDisallow: /MobileCancelBooking\nDisallow: /MobileCheapFlightsHome\nDisallow: /MobileCheapFlightsPartnerPostHandoff\nDisallow: /MobileCiv\nDisallow: /MobileCookie\nDisallow: /MobileEventRecord\nDisallow: /MobileFAQ\nDisallow: /MobileFilters\nDisallow: /MobileFlights\nDisallow: /MobileFooter\nDisallow: /MobileForgotPassword\nDisallow: /MobileForumRedirect\nDisallow: /MobileForumSetSortCookie\nDisallow: /MobileGetMobileApp\nDisallow: /MobileGuide\nDisallow: /MobileHeaderCss\nDisallow: /MobileHotelBookingAuthorization\nDisallow: /MobileHotelBookingRecordThreatIdAjax\nDisallow: /MobileHotelCancellationPolicy\nDisallow: /MobileImpressionRecord\nDisallow: /MobileImproveThisListing\nDisallow: /MobileJSErrorRecord\nDisallow: /MobileJson\nDisallow: /MobileJSONImpressionRecord\nDisallow: /MobileJustForYouGuide\nDisallow: /MobileListForums\nDisallow: /MobileLocation\nDisallow: /MobileManagementCenter\nDisallow: /MobileManagePhotos\nDisallow: /MobileMemberProfile\nDisallow: /MobileMemberResetPassword\nDisallow: /Mobilemembers\nDisallow: /MobileMobileReservation\nDisallow: /MobileMyBookingsDetail\nDisallow: /MobileMyBookingsVoucher\nDisallow: /MobileNativeCountrySettings\nDisallow: /MobileNativeCurrencySettings\nDisallow: /MobileNativeSettings\nDisallow: /MobileNearbyAttractions\nDisallow: /MobileNearbyHotels\nDisallow: /MobileNearbyLander\nDisallow: /MobileNearbyRestaurants\nDisallow: /MobileNewsletterSignOut\nDisallow: /MobileNewTopic\nDisallow: /MobileNokiaLauncher\nDisallow: /MobileOlaCabsEstimateAjax\nDisallow: /MobileOwnerVerifyLocation\nDisallow: /MobilePageviewRecord\nDisallow: /MobilePasswordReset\nDisallow: /MobilePhotoUpload\nDisallow: /MobilePOITagging\nDisallow: /MobilePostPhoto\nDisallow: /MobilePostReply\nDisallow: /MobilePromotionDetail\nDisallow: /MobileQueryBBox\nDisallow: /MobileRac\nDisallow: /MobileRecent\nDisallow: /MobileRedirector\nDisallow: /MobileRegistration\nDisallow: /MobileReportLocation\nDisallow: /MobileReservation\nDisallow: /MobileRestaurantMenu\nDisallow: /MobileRestaurants\nDisallow: /MobileRestaurantSearch\nDisallow: /MobileReviewCollect\nDisallow: /MobileRoadTrip\nDisallow: /MobileSaves\nDisallow: /MobileSearchForums\nDisallow: /MobileShoppingCoupon\nDisallow: /MobileShowForum\nDisallow: /MobileShowSpecialOffer\nDisallow: /MobileShowTopic\nDisallow: /MobileShowUserReviews\nDisallow: /MobileStreetView\nDisallow: /MobileTaggingAjax\nDisallow: /MobileTools\nDisallow: /MobileTravel_Guide\nDisallow: /MobileUberEstimateAjax\nDisallow: /MobileUpdateListing\nDisallow: /MobileUserReviewSearchAjax\nDisallow: /MobileVacation_Packages\nDisallow: /MobileWidgetEmbed\nDisallow: /MobileWinphoneLauncher\nDisallow: /ModalRegistrationController\nDisallow: /ModuleAjax\nDisallow: /ModuleBootstrap\nDisallow: /MptUrl\nDisallow: /MsnForumFeedServlet\nDisallow: /MultiOwners\nDisallow: /MultiPartAjax\nDisallow: /MyAchievements\nDisallow: /MyBookingsDetail\nDisallow: /MyBookingsVoucher\nDisallow: /NativeAds\nDisallow: /NetPromoterPopup\nDisallow: /NewMessage\nDisallow: /NewOwners\nDisallow: /NewsletterNews\nDisallow: /NewsLetterPlus\nDisallow: /NewsletterPopupBudgetRomanticFamilyPopup\nDisallow: /NewsletterPopupNewsletterPopup1\nDisallow: /NewsletterSendPassword\nDisallow: /NewsletterSignIn\nDisallow: /NewsletterSignOut\nDisallow: /NewsletterSignupWidget\nDisallow: /NewsPlus\nDisallow: /NewTopic\nDisallow: /notifications\nDisallow: /nova\nDisallow: /OAuthRegistration\nDisallow: /OfferAnnouncementManagement\nDisallow: /OpenGraphLander\nDisallow: /OpeningHours\nDisallow: /OverlayWidgetAjax\nDisallow: /overview\nDisallow: /OwnerResponseApi\nDisallow: /Owners-\nDisallow: /OwnersDM\nDisallow: /OwnersNew\nDisallow: /OwnersOld\nDisallow: /OwnersTermsAndConditions\nDisallow: /OwnerSupport\nDisallow: /OwnerVerifyLocation\nDisallow: /PacMan\nDisallow: /pages/rss_terms.html\nDisallow: /PageviewRecord\nDisallow: /PanoramaXml\nDisallow: /PasswordReset\nDisallow: /PaymentFormV2\nDisallow: /PaymentMethodManagement\nDisallow: /PaymentOptions\nDisallow: /pdfs/advertorials/\nDisallow: /pdfs/crm/\nDisallow: /pdfs/email/\nDisallow: /pdfs/tca/\nDisallow: /PersonalizedOnboarding\nDisallow: /PhoneTrackingOptOuts\nDisallow: /photosandvideos\nDisallow: /PhotoUpload\nDisallow: /Pin_Lander\nDisallow: /PlusCommerce\nDisallow: /PoiArea\nDisallow: /PoiDetails\nDisallow: /PoiRecommendationDashboard\nDisallow: /PoiRecommendationEditor\nDisallow: /PoiRecommendationList\nDisallow: /PoiReviewDetail\nDisallow: /PoiTipDashboard\nDisallow: /PostPhotosHAC\nDisallow: /PostReply\nDisallow: /PostVideo\nDisallow: /Premium-\nDisallow: /PreviewImage\nDisallow: /PrintGuide\nDisallow: /ProductCancellationLogApi\nDisallow: /ProductCart\nDisallow: /ProductError\nDisallow: /ProductPaymentUpdate\nDisallow: /Profile\nDisallow: /promotionaltools\nDisallow: /ProxyToolsCustomerSupportForm\nDisallow: /ProxyToolsDiscountCode\nDisallow: /ProxyToolsMemberEditor\nDisallow: /ProxyToolsProductFeatureApi\nDisallow: /ProxyToolsT4BProductFeatureAjax\nDisallow: /ProxyToolsT4BProductFeatureTool\nDisallow: /ProxyToolsT4BToolsAccessDenied\nDisallow: /PVLog\nDisallow: /QueryJson\nDisallow: /QuickReview\nDisallow: /Rateit\nDisallow: /RateUserReview\nDisallow: /RatingAjax\nDisallow: /RatingPagingAjax\nDisallow: /RCPCrossSell\nDisallow: /Recaptcha\nDisallow: /recensioni\nDisallow: /Recent\nDisallow: /Redirect\nDisallow: /RegActivation\nDisallow: /RegistrationController\nDisallow: /RegistrationInterceptPopup\nDisallow: /RemindMe\nDisallow: /RentalCarsRedirect\nDisallow: /ReportIAP\nDisallow: /ReportPost\nDisallow: /ReservationAjax\nDisallow: /ResponsibleDisclosure\nDisallow: /RestaurantEnterpriseManagement\nDisallow: /RestaurantSearch\nDisallow: /RestaurantXSellAjax\nDisallow: /ReviewCollect\nDisallow: /reviewit\nDisallow: /reviews\nDisallow: /RewardsHelp\nDisallow: /RewardsWallet\nDisallow: /RexSpamFilterAjax\nDisallow: /RMReviewCollect\nDisallow: /RoadTripMap\nDisallow: /RsPartnerApi\nDisallow: /rss\nDisallow: /RT\nDisallow: /RuleBasedPopup\nDisallow: /SameGeoActivity\nDisallow: /SavedPhotos\nDisallow: /Saves\nDisallow: /screensaver/\nDisallow: /ScreensaverShade\nDisallow: /Search\nDisallow: /SelfServeAdvertising\nDisallow: /SendToFriend\nDisallow: /SentConfirmationEmail\nDisallow: /ServiceWorker\nDisallow: /SetCookieOverrides\nDisallow: /SetLangFilter\nDisallow: /SetReviewFilter\nDisallow: /Settings\nDisallow: /SetTranslationOption\nDisallow: /ShareWithFriends\nDisallow: /ShoppingCart\nDisallow: /ShoppingCoupon\nDisallow: /ShortlinkResolver\nDisallow: /ShortSurvey\nDisallow: /ShowSpecialOffer\nDisallow: /ShowTopicWindowShade\nDisallow: /ShowUrl\nDisallow: /ShowUserReviews_Cruises_Responsive\nDisallow: /ShowUserReviewsAirlines\nDisallow: /ShowUserReviewsAttractions\nDisallow: /ShowUserReviewsCruises\nDisallow: /ShowUserReviewsGEO\nDisallow: /ShowUserReviewsHAC\nDisallow: /ShowUserReviewsHotels\nDisallow: /ShowUserReviewsRestaurants\nDisallow: /SingleClickOptOut\nDisallow: /SingleClickSignUp\nDisallow: /SmartDealsHomeAjax\nDisallow: /SmsAjaxServlet\nDisallow: /SocialIapReporting\nDisallow: /SolutionsDisplay\nDisallow: /SortAttractions\nDisallow: /SortEateries\nDisallow: /SortHotels\nDisallow: /SortReviews\nDisallow: /SPCommerceInternal\nDisallow: /specialoffers\nDisallow: /SPOCK\nDisallow: /SponsoredListingAjax\nDisallow: /SponsoredListingCommerce\nDisallow: /SPRedirect\nDisallow: /SpTracking\nDisallow: /static/decodeKey.txt\nDisallow: /StaticPage\nDisallow: /StaticVelocityPage\nDisallow: /StaticVelocityXmlPage\nDisallow: /SubscriptionLander\nDisallow: /SubscriptionPopup\nDisallow: /Summer06Widget\nDisallow: /summerbzz\nDisallow: /SurveyPanelPopup\nDisallow: /SyndicatedPhotos\nDisallow: /Tablet\nDisallow: /tacms\nDisallow: /TADemo\nDisallow: /TaggingAjax\nDisallow: /TagsJSONServlet\nDisallow: /TAMGFooterAjax\nDisallow: /TAMGSubLander\nDisallow: /TAMGSubOffers\nDisallow: /TAOffer\nDisallow: /TAScreenSaver\nDisallow: /TCDestinationsWidget\nDisallow: /TemporarilyClosedNoticeApi\nDisallow: /TestEmptyPage\nDisallow: /TestingTravelMaps\nDisallow: /ThirdPartyRedirect\nDisallow: /ThorHammer\nDisallow: /TodaysLowestFaresAjax\nDisallow: /trapdir\nDisallow: /TravelAdvice\nDisallow: /TravelerInterestNotificationEndpoint\nDisallow: /TravelersChoice?\nDisallow: /TravelersChoiceHome\nDisallow: /TravelersChoicePreview\nDisallow: /TravelersChoiceWidget\nDisallow: /TravellersChoice?\nDisallow: /TravelMap-\nDisallow: /TravelMap?\nDisallow: /TravelMapHome\nDisallow: /TravelMode\nDisallow: /TripBarometer\nDisallow: /TripBuilder\nDisallow: /TripCashGiveaway\nDisallow: /TripConnectAccommodations\nDisallow: /TripConnectBadge\nDisallow: /TripConnectPartner\nDisallow: /TripConnectPaymentForm\nDisallow: /TripConnectPlus\nDisallow: /TripConnectPremium\nDisallow: /TripDetails\nDisallow: /Trips?\nDisallow: /Trips/\nDisallow: /TripsNative\nDisallow: /TripsWebview\nDisallow: /TripWatchPromoAjax\nDisallow: /TripX\nDisallow: /tucritica\nDisallow: /TypeAheadJson\nDisallow: /Unsubscribe\nDisallow: /UpdateCM\nDisallow: /UpdateListing\nDisallow: /UpdateSessionDatesAjax\nDisallow: /UploadMedia\nDisallow: /UserInteractionRecord\nDisallow: /UsernameValidation\nDisallow: /UserPage\nDisallow: /UserReviewController\nDisallow: /UserReviewEdit\nDisallow: /UserReviewHAC\nDisallow: /UserReviewSticker\nDisallow: /UserReviewSupport\nDisallow: /UserReviewThanks\nDisallow: /users\nDisallow: /UserTip\nDisallow: /UserTrackingRecord\nDisallow: /VacationRentalsBlog/?s\nDisallow: /ValidateJson\nDisallow: /VerifyReview\nDisallow: /VideoController\nDisallow: /VideoGallery\nDisallow: /VideoHome?\nDisallow: /ViewMandate\nDisallow: /virtualsupportassistant\nDisallow: /VKRegistration\nDisallow: /VolunteerTranslations\nDisallow: /WatchTopic\nDisallow: /WatermarkPhoto\nDisallow: /WeatherAjax\nDisallow: /WeatherUnderground\nDisallow: /weimg\nDisallow: /WhatsNearby\nDisallow: /WidgetBrowserExtension\nDisallow: /WidgetEmbed\nDisallow: /Widgets-\nDisallow: /WidgetsAjax\nDisallow: /WindowsApp\nDisallow: /wm\nDisallow: /WriteReviewShade\nDisallow: /ZendeskRedirector\nDisallow: /ZendeskSSO\nDisallow: /ZipCodeLookupAjax\nAllow: /api/internal/*/location\nAllow: /api/partner_select/*/price_query\nAllow: /CheapFlightsHome\nAllow: /InfoCenter-a_ctr.april_en\nAllow: /js3/ta-mobile\nAllow: /js3/vr-shared\nAllow: /data/*/crosssellaccommodations\nAllow: /data/1.0/bundle\n\nUser-Agent: applebot\nAllow: /media/photo-f\nAllow: /media/daodao\nAllow: /media/photo-l\nAllow: /media/photo-o\n\nUser-Agent: PerplexityBot\nDisallow: /ForumHome\nDisallow: /ListForums\nDisallow: /ShowForum\nDisallow: /ShowTopic\n\nUser-Agent: bingbot\nDisallow: /LocationPhotoDirectLink\n\nUser-Agent: Baiduspider\nDisallow: /LocationPhotoDirectLink\nDisallow: /ShowUserReviews\n\nUser-Agent: ChatGPT-User\nUser-Agent: ChatGPT-User/2.0\nUser-Agent: Gemini-Deep-Research\nUser-Agent: OAI-SearchBot\nDisallow: /*-g1875*\nDisallow: /*-g188*\n\nUser-Agent: Google-Extended\nDisallow: /\nAllow: /Restaurants-g55711-Dallas_Texas.html\n\n#                                                                                          \n#                                        ==+*##%%%%%%%%%%%%##*+=                                     \n#                                 =+##%%%%%%%%%%%%%%%%%%%%%%%%%%%%%##+=                              \n#                             =*%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%#+                          \n#                         =*%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%*=                      \n#                      =#%%%%%%%%%%%%%%%%%%#*+=           =+*##%%%%%%%%%%%%%%%%%#=                   \n#     *%%%%%%%%%%%%%%%%%%%%%%%%%%%%%#+=                           =+#%%%%%%%%%%%%%%%%%%%%%%%%%%%%%#  \n#       #%%%%%%%%%%%%%%%%%%%%%%%%%%%*=                              +%%%%%%%%%%%%%%%%%%%%%%%%%%%#=   \n#        =%%%%%%%%%%%%%%%%%%%%%%%%%%%%%#+                       =#%%%%%%%%%%%%%%%%%%%%%%%%%%%%%+     \n#          +%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%#                   *%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%*       \n#           =%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%#=              *%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%+        \n#          *%%%%%%%%%%%%%*=    =+#%%%%%%%%%%%%*           *%%%%%%%%%%%%%*=    =+*%%%%%%%%%%%%#       \n#        =%%%%%%%%%%%%%%%%%%%*      =*%%%%%%%%%%=       =#%%%%%%%%%%%%%%%%%%*      =+%%%%%%%%%%+     \n#       +%%%%%%%%%%%%%%%%%%%%%%=       =%%%%%%%%%+     =%%%%%%%%%%%%%%%%%%%%%%+       =#%%%%%%%%*    \n#      =%%%%%%%%%%%%%%%%%%%%%%%%=        +%%%%%%%%+   =%%%%%%%%%%%%%%%%%%%%%%%%+        +%%%%%%%%+   \n#     =%%%%%%%%+%%%%%%%%%%%%%%%%#         =%%%%%%%%   %%%%%%%%+#%%%%%%%%%%%%%%%#         =#%%%%%%%=  \n#     #%%%%%%%+ %%%%%%%%%%%%%%%%#          =%%%%%%%# *%%%%%%%+ #%%%%%%%%%%%%%%%#          =%%%%%%%#  \n#    =%%%%%%%*  *%%%%%%%%%%%%%%%=           *%%%%%%%*#%%%%%%%  =%%%%%%%%%%%%%%%+           +%%%%%%%+ \n#    +%%%%%%%=   *%%%%%%%%%%%%%=             %%%%%%%%%%%%%%%=   +%%%%%%%%%%%%%+             %%%%%%%* \n#    +%%%%%%%      #%%%%%%%%%*               %%%%%%%%%%%%%%%      *%%%%%%%%%*               #%%%%%%* \n#    +%%%%%%%         ++++=                  %%%%%%%%%%%%%%%         +++++                  #%%%%%%* \n#    +%%%%%%%=                              =%%%%%%%%%%%%%%%+                              =%%%%%%%+ \n#    =#%%%%%%#                              #%%%%%%%%%%%%%%%%                              #%%%%%%%= \n#     *%%%%%%%*                            *%%%%%%%%%%%%%%%%%#                            +%%%%%%%*  \n#      #%%%%%%%*                          *%%%%%%%%%%%%%%%%%%%#                          +%%%%%%%%   \n#       #%%%%%%%%=                      =%%%%%%%%%%%%%%%%%%%%%%%+                      =%%%%%%%%%=   \n#        #%%%%%%%%#=                  =#%%%%%%%%%%%%%%%%%%%%%%%%%#=                  =*%%%%%%%%%=    \n#         *%%%%%%%%%%#=            =#%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%#+            =#%%%%%%%%%%#      \n#          =#%%%%%%%%%%%%%%####%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%#####%%%%%%%%%%%%%#=       \n#            =#%%%%%%%%%%%%%%%%%%%%%%%%%%%%#==#%%%%%%%%%%%%+ *%%%%%%%%%%%%%%%%%%%%%%%%%%%%#=         \n#               +#%%%%%%%%%%%%%%%%%%%%%%#+     +%%%%%%%%%*     +#%%%%%%%%%%%%%%%%%%%%%%#*            \n#                  =+#%%%%%%%%%%%%%%%*=          *%%%%%#          =+#%%%%%%%%%%%%%%%*=               \n#                         ===+==                  =#%%=                  ===+===                     \n\n",
+    "parse_ok": true,
+    "agents": {
+      "Amazonbot": {
+        "class": "training",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 37,
+        "crawl_delay": null
+      },
+      "Applebot-Extended": {
+        "class": "training",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 37,
+        "crawl_delay": null
+      },
+      "Bytespider": {
+        "class": "training",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 37,
+        "crawl_delay": null
+      },
+      "CCBot": {
+        "class": "training",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 37,
+        "crawl_delay": null
+      },
+      "ClaudeBot": {
+        "class": "training",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 37,
+        "crawl_delay": null
+      },
+      "Cohere-ai": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 37,
+        "crawl_delay": null
+      },
+      "GPTBot": {
+        "class": "training",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 37,
+        "crawl_delay": null
+      },
+      "Google-CloudVertexBot": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 37,
+        "crawl_delay": null
+      },
+      "Img2dataset": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 37,
+        "crawl_delay": null
+      },
+      "PanguBot": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 37,
+        "crawl_delay": null
+      },
+      "PetalBot": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 37,
+        "crawl_delay": null
+      },
+      "SentiBot": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 37,
+        "crawl_delay": null
+      },
+      "YouBot": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 37,
+        "crawl_delay": null
+      },
+      "magpie-crawler": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 37,
+        "crawl_delay": null
+      },
+      "meta-externalagent": {
+        "class": "training",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 37,
+        "crawl_delay": null
+      },
+      "ChatGPT-User": {
+        "class": "retrieval",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "ChatGPT-User/2.0": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "Gemini-Deep-Research": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "OAI-SearchBot": {
+        "class": "retrieval",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "Google-Extended": {
+        "class": "training",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 753,
+        "crawl_delay": null
+      },
+      "applebot": {
+        "class": "hybrid",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "PerplexityBot": {
+        "class": "retrieval",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "bingbot": {
+        "class": "hybrid",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "Baiduspider": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "*": {
+        "class": "generic",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      }
+    },
+    "sitemap_declarations": [
+      "https://www.tripadvisor.com/sitemap/2/en_US/sitemap_en_US_index.xml",
+      "https://www.tripadvisor.com/sitemap/2/en_US/sitemap_en_US_location_photo_direct_link_index.xml",
+      "https://www.tripadvisor.com/sitemap/2/en_US/sitemap_en_US_show_user_reviews_index.xml",
+      "https://www.tripadvisor.com/sitemap/att/en_US/sitemap_en_US_attractions_index.xml",
+      "https://www.tripadvisor.com/sitemap/att/en_US/sitemap_en_US_attraction_review_index.xml",
+      "https://www.tripadvisor.com/sitemap/att/en_US/sitemap_en_US_attraction_product_review_index.xml",
+      "https://www.tripadvisor.com/sitemap/att/en_US/sitemap_en_US_attractions_near_index.xml",
+      "https://www.tripadvisor.com/business/sitemap.xml"
+    ]
+  },
+  "discovery": {
+    "status": "ok",
+    "reason": null,
+    "sitemap_found": false,
+    "sitemap_urls_count": 0,
+    "inventory": [
+      {
+        "url": "https://www.tripadvisor.com/",
+        "page_type": "home",
+        "source": "crawl"
+      }
+    ],
+    "sampled_static": [
+      "https://www.tripadvisor.com/"
+    ],
+    "sampled_rendered": [],
+    "sampling_seed": "sha256:788e2443feaabe7d86e476204aefaba2b23db7c9097111185df1f5ee85f31a09"
+  },
+  "pages": [
+    {
+      "url": "https://www.tripadvisor.com/",
+      "final_url": "https://www.tripadvisor.com/",
+      "status": "unavailable",
+      "reason": "http_403",
+      "http_status": 403,
+      "page_type": "home",
+      "headers": {},
+      "raw_html_bytes": 0,
+      "main_text": "",
+      "main_text_words": 0,
+      "extraction_ok": false,
+      "title": null,
+      "meta": {},
+      "lang": null,
+      "canonical": {},
+      "headings": [],
+      "landmarks": {},
+      "structured_data": {},
+      "links": [],
+      "outbound_profile_links": [],
+      "images": [],
+      "iframes": [],
+      "media": [],
+      "form_controls": [],
+      "interactive_empty": {},
+      "noscript": {
+        "present": false,
+        "words": 0
+      },
+      "dates": {},
+      "contact_signals": {},
+      "trigram_hash": null
+    }
+  ],
+  "rendered": [],
+  "links": {
+    "status": "ok",
+    "reason": null,
+    "checked_count": 0,
+    "results": [],
+    "skipped": []
+  },
+  "anchors": {
+    "status": "ok",
+    "reason": null,
+    "declared": [],
+    "checked_count": 0,
+    "results": []
+  },
+  "budget": {
+    "status": "ok",
+    "reason": null,
+    "stages": [
+      {
+        "name": "resolve",
+        "budget_s": 10,
+        "actual_s": 1.8,
+        "abandoned": false,
+        "planned_items": null,
+        "completed_items": null
+      },
+      {
+        "name": "robots_discovery",
+        "budget_s": 15,
+        "actual_s": 3.9,
+        "abandoned": false,
+        "planned_items": 1,
+        "completed_items": 1
+      },
+      {
+        "name": "static_fetch",
+        "budget_s": 45,
+        "actual_s": 0.9,
+        "abandoned": false,
+        "planned_items": 1,
+        "completed_items": 0
+      },
+      {
+        "name": "render_pass",
+        "budget_s": 75,
+        "actual_s": 0.0,
+        "abandoned": true,
+        "planned_items": 0,
+        "completed_items": 0,
+        "reason": "no_headless_browser_tool"
+      },
+      {
+        "name": "internal_links",
+        "budget_s": 25,
+        "actual_s": 0.0,
+        "abandoned": false,
+        "planned_items": 0,
+        "completed_items": 0
+      },
+      {
+        "name": "offsite_anchors",
+        "budget_s": 20,
+        "actual_s": 0.0,
+        "abandoned": false,
+        "planned_items": 0,
+        "completed_items": 0
+      }
+    ],
+    "total_s": 6.6,
+    "cap_s": 300
+  }
+}

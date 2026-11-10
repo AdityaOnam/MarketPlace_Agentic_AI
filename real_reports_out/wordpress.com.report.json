@@ -1,0 +1,316 @@
+{
+  "schema_version": "1.0.0",
+  "site": "https://wordpress.com",
+  "audited_at": "2026-09-10T20:52:15Z",
+  "preamble": {
+    "access_blocked_for": [],
+    "notes": [],
+    "archetype": "saas_marketing",
+    "recommendations_scoped_to": "saas_marketing"
+  },
+  "summary": {
+    "total_findings": 9,
+    "critical": 0,
+    "high": 6,
+    "medium": 2,
+    "low": 1
+  },
+  "findings": [
+    {
+      "check_id": "CHK-E-014",
+      "state": "present",
+      "locus": {
+        "url": "https://wordpress.com/"
+      },
+      "evidence": "Page https://wordpress.com/: 3 accessibility violation(s): 1 link(s) with no accessible name; unlabelled form control; unlabelled form control.",
+      "severity": "high",
+      "evidence_strength": "HARD-MECHANICAL",
+      "suggested_action": {
+        "summary": "Add lang, descriptive alt text, accessible names for controls, and labels for all form inputs.",
+        "priority": "high"
+      },
+      "suppressed_by": [],
+      "recommendation_only": false,
+      "subcheck": "wcag_static",
+      "id": "F-001",
+      "title": "Machine-detectable accessibility violations"
+    },
+    {
+      "check_id": "CHK-E-014",
+      "state": "present",
+      "locus": {
+        "url": null,
+        "scope": "site"
+      },
+      "evidence": "Site-wide: 3 sampled pages share this defect. Page  2 accessibility violation(s): 1 link(s) with no accessible name; unlabelled form control.",
+      "severity": "high",
+      "evidence_strength": "HARD-MECHANICAL",
+      "suggested_action": {
+        "summary": "Add lang, descriptive alt text, accessible names for controls, and labels for all form inputs.",
+        "priority": "high"
+      },
+      "suppressed_by": [],
+      "recommendation_only": false,
+      "subcheck": "wcag_static",
+      "occurrences": {
+        "pages": 3,
+        "examples": [
+          "https://wordpress.com/about/",
+          "https://wordpress.com/advertising/",
+          "https://wordpress.com/affiliates/"
+        ]
+      },
+      "id": "F-002",
+      "title": "Machine-detectable accessibility violations"
+    },
+    {
+      "check_id": "CHK-E-014",
+      "state": "present",
+      "locus": {
+        "url": null,
+        "scope": "site"
+      },
+      "evidence": "Site-wide: 5 sampled pages share this defect. Page  1 accessibility violation(s): unlabelled form control.",
+      "severity": "high",
+      "evidence_strength": "HARD-MECHANICAL",
+      "suggested_action": {
+        "summary": "Add lang, descriptive alt text, accessible names for controls, and labels for all form inputs.",
+        "priority": "high"
+      },
+      "suppressed_by": [],
+      "recommendation_only": false,
+      "subcheck": "wcag_static",
+      "occurrences": {
+        "pages": 5,
+        "examples": [
+          "https://wordpress.com/patterns/contact",
+          "https://wordpress.com/patterns/about",
+          "https://wordpress.com/patterns/layouts/about"
+        ]
+      },
+      "id": "F-003",
+      "title": "Machine-detectable accessibility violations"
+    },
+    {
+      "check_id": "CHK-E-014",
+      "state": "present",
+      "locus": {
+        "url": "https://wordpress.com/100-year-domain/"
+      },
+      "evidence": "Page https://wordpress.com/100-year-domain/: 2 accessibility violation(s): unlabelled form control; unlabelled form control.",
+      "severity": "high",
+      "evidence_strength": "HARD-MECHANICAL",
+      "suggested_action": {
+        "summary": "Add lang, descriptive alt text, accessible names for controls, and labels for all form inputs.",
+        "priority": "high"
+      },
+      "suppressed_by": [],
+      "recommendation_only": false,
+      "subcheck": "wcag_static",
+      "id": "F-004",
+      "title": "Machine-detectable accessibility violations"
+    },
+    {
+      "check_id": "CHK-E-014",
+      "state": "present",
+      "locus": {
+        "url": "https://wordpress.com/pricing/"
+      },
+      "evidence": "Page https://wordpress.com/pricing/: 17 accessibility violation(s): missing alt on a non-decorative image; missing alt on a non-decorative image; missing alt on a non-decorative image; missing alt on a non-decorative image; missing alt on a non-decorative image; 1 link(s) with no accessible name; unlabelled form control; unlabelled form control; unlabelled form control; unlabelled form control; unlabelled form control; unlabelled form control; unlabelled form control; unlabelled form control; unlabelled form control; unlabelled form control; unlabelled form control.",
+      "severity": "high",
+      "evidence_strength": "HARD-MECHANICAL",
+      "suggested_action": {
+        "summary": "Add lang, descriptive alt text, accessible names for controls, and labels for all form inputs.",
+        "priority": "high"
+      },
+      "suppressed_by": [],
+      "recommendation_only": false,
+      "subcheck": "wcag_static",
+      "id": "F-005",
+      "title": "Machine-detectable accessibility violations"
+    },
+    {
+      "check_id": "CHK-E-015",
+      "state": "present",
+      "locus": {
+        "url": null,
+        "scope": "site"
+      },
+      "evidence": "Site-wide: 4 sampled pages share this defect. Page  viewport meta disables user zoom. Violates WCAG 2.2 SC 1.4.4.",
+      "severity": "high",
+      "evidence_strength": "NORMATIVE",
+      "suggested_action": {
+        "summary": "Remove user-scalable=no and maximum-scale constraints.",
+        "priority": "high"
+      },
+      "suppressed_by": [],
+      "recommendation_only": false,
+      "subcheck": "viewport_meta",
+      "occurrences": {
+        "pages": 4,
+        "examples": [
+          "https://wordpress.com/patterns/contact",
+          "https://wordpress.com/patterns/about",
+          "https://wordpress.com/patterns/layouts/about"
+        ]
+      },
+      "id": "F-006",
+      "title": "Mobile viewport blocks zoom or overflows horizontally"
+    },
+    {
+      "check_id": "CHK-D-004",
+      "state": "present",
+      "locus": {
+        "url": "https://wordpress.com/patterns/about",
+        "selector": null
+      },
+      "evidence": "Page https://wordpress.com/patterns/about: main-content extraction yielded 103 words after boilerplate removal.",
+      "severity": "medium",
+      "evidence_strength": "CORRELATIONAL",
+      "suggested_action": {
+        "summary": "Add substantive, explicitly-stated content naming the specific facts the page exists to convey.",
+        "priority": "medium"
+      },
+      "suppressed_by": [],
+      "recommendation_only": false,
+      "subcheck": null,
+      "id": "F-007",
+      "title": "Thin main content"
+    },
+    {
+      "check_id": "CHK-D-004",
+      "state": "present",
+      "locus": {
+        "url": "https://wordpress.com/patterns/layouts/about",
+        "selector": null
+      },
+      "evidence": "Page https://wordpress.com/patterns/layouts/about: main-content extraction yielded 69 words after boilerplate removal.",
+      "severity": "medium",
+      "evidence_strength": "CORRELATIONAL",
+      "suggested_action": {
+        "summary": "Add substantive, explicitly-stated content naming the specific facts the page exists to convey.",
+        "priority": "medium"
+      },
+      "suppressed_by": [],
+      "recommendation_only": false,
+      "subcheck": null,
+      "id": "F-008",
+      "title": "Thin main content"
+    },
+    {
+      "check_id": "CHK-D-009",
+      "state": "present",
+      "locus": {
+        "url": null,
+        "selector": null
+      },
+      "evidence": "Found 1 broken internal link(s).",
+      "severity": "low",
+      "evidence_strength": "THEORETICAL/CORRELATIONAL",
+      "suggested_action": {
+        "summary": "Repair the link's target or replace it; add a 301 redirect if the target is genuinely gone.",
+        "priority": "low"
+      },
+      "suppressed_by": [],
+      "recommendation_only": false,
+      "subcheck": null,
+      "id": "F-009",
+      "title": "Broken internal links"
+    }
+  ],
+  "recommendations": [
+    {
+      "id": "R-001",
+      "check_id": "CHK-E-021",
+      "title": "Images/iframes missing dimensions (layout-shift cause)",
+      "rationale": "32 image(s)/iframe(s) lack explicit width/height or aspect-ratio, so content reflows during load.",
+      "mechanism": "E",
+      "suggested_action": {
+        "summary": "Add width/height attributes or CSS aspect-ratio to reserve layout space before the resource loads. (Proactive — not a confirmed defect.)",
+        "priority": "low"
+      },
+      "locus": {
+        "url": null,
+        "selector": null
+      },
+      "severity": "low"
+    },
+    {
+      "id": "R-002",
+      "check_id": "CHK-E-024",
+      "title": "Missing trust signals",
+      "rationale": "Commercial site: no detectable contact information.",
+      "mechanism": "E",
+      "suggested_action": {
+        "summary": "Add contact information, organisation name in footer, HTTPS, and byline dates on articles. (Proactive — not a confirmed defect.)",
+        "priority": "low"
+      },
+      "locus": {
+        "url": null,
+        "selector": null
+      },
+      "severity": null
+    }
+  ],
+  "limitations": [
+    {
+      "id": "LIM-01",
+      "mechanism": "D",
+      "reason": "Actual agreement across the wider web about the brand's facts requires a search or web-scale index API. No free, deterministic, rate-safe source exists.",
+      "note": "CHK-D-025/026/027 audit only the anchoring the site itself provides for that corroboration, not corroboration itself."
+    },
+    {
+      "id": "LIM-02",
+      "mechanism": "D",
+      "reason": "Detecting a same-name collision with an unrelated entity requires a corpus of other entities.",
+      "note": "CHK-D-027 covers only self-consistency, the site-side half."
+    },
+    {
+      "id": "LIM-03",
+      "mechanism": "B",
+      "reason": "Live-querying a generative engine would break determinism, the 5-minute budget, and reproducibility.",
+      "note": "This audit measures retrievability and correctness of what the site exposes, never observed citation outcomes."
+    },
+    {
+      "id": "LIM-04",
+      "mechanism": "E",
+      "reason": "Field engagement outcomes (bounce, dwell, scroll, conversion, task success) are not observable read-only.",
+      "note": "Reported not_determinable where the gap is itself actionable."
+    },
+    {
+      "id": "LIM-05",
+      "mechanism": "D",
+      "reason": "llms.txt is not recommended as a substantive fix: a 137k-domain measurement found 97% of existing llms.txt files were never requested. This audit declines to recommend adding one on that evidence (D-007).",
+      "note": "Stated here rather than omitted (D-014) — the officials' Q&A confirms recommending it is an acceptable position, so silence about it would look indistinguishable from having missed it."
+    }
+  ],
+  "degraded_stages": [
+    {
+      "stage": "render_pass",
+      "planned_items": 0,
+      "completed_items": 0,
+      "affected_checks": [
+        "CHK-D-003",
+        "CHK-E-014",
+        "CHK-E-015",
+        "CHK-E-016",
+        "CHK-E-018",
+        "CHK-E-019"
+      ]
+    }
+  ],
+  "meta_evaluation": {
+    "checks_run": [
+      "summary_reconciles",
+      "severity_counts_reconcile",
+      "finding_complete",
+      "no_duplicate_findings",
+      "known_check_id",
+      "prohibited_recommendation",
+      "limitations_present",
+      "action_locus_coherence"
+    ],
+    "passed": true,
+    "warnings": []
+  }
+}

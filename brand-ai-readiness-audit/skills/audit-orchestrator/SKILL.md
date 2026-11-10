@@ -2,7 +2,7 @@
 name: audit-orchestrator
 description: The entrypoint skill for the brand-ai-readiness-audit marketplace. Given a URL or domain, invokes site-evidence-collector once to gather the evidence bundle, then invokes all three analyser skills (crawl-access-audit, content-engagement-audit, entity-identity-audit) against the resulting bundle, and performs report assembly and budget arbitration to produce a single structured audit report. This is the only skill in the marketplace the user invokes directly.
 license: Apache-2.0
-allowed-tools: []
+allowed-tools: ""
 ---
 
 # Audit Orchestrator

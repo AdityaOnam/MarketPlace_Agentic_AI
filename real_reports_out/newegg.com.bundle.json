@@ -1,0 +1,4001 @@
+{
+  "schema_version": "1.0.0",
+  "site": {
+    "status": "ok",
+    "reason": null,
+    "input": "https://newegg.com",
+    "canonical_host": "www.newegg.com",
+    "origin": "https://www.newegg.com",
+    "scheme": "https",
+    "redirect_chain": [
+      "https://newegg.com"
+    ],
+    "tls_valid": true,
+    "archetype": "unknown",
+    "archetype_confidence": 0.0
+  },
+  "robots": {
+    "status": "ok",
+    "reason": null,
+    "fetch_status": 200,
+    "body": "################ Newegg Robots.txt File ################\r\n\r\n\r\n\r\n################ DESKTOP - START ################\r\n\r\nUser-agent: *\r\n\r\n# Original version disallows\r\nDisallow: /Common/BML/\r\nDisallow: /Common/ThirdParty/\r\nDisallow: /App/\r\nDisallow: /Application/\r\nDisallow: /Configuration/\r\nDisallow: /NewMyAccount/\r\nDisallow: /MyNewegg/\r\n\r\n# Allows updated 12/20/21\r\nAllow: /info/newsroomdetail.aspx\r\nAllow: /.well-known/assetlinks.json\r\n\r\n# blog disallows updated 6/11/18\r\nDisallow: /insider/blog/wp-admin/\r\n\r\n# disallows API call 8/2/2022\r\nDisallow: /api/UpdateStorage\r\nDisallow: /api/TrendingNow\r\nDisallow: /mycountry\r\nDisallow: /api/MiniCart\r\nDisallow: /api/GetStorage\r\nDisallow: /areyouahuman\r\n# disallows API call 11/13/2023\r\nDisallow: /api/Common/GBuy\r\n\r\nUser-agent: ChangeDetection\r\nDisallow: /\r\n\r\nUser-agent: 008\r\nDisallow: /  \r\n\r\nUser-agent: Nutch\r\nDisallow: /\r\n\r\n\r\n################ DESKTOP - END ################\r\n\r\n\r\n\r\n################ MOBILE - START ################\r\n\r\n\r\nUser-agent: *\r\nDisallow: /m/ajax/getMiniCartApi\r\nDisallow: /m/ajax/addItemApi\r\nDisallow: /m/product/Overview/Landingpage\r\n# disallows API call 8/2/2022\r\nDisallow: /m/ajax/updateStorageApi\r\nDisallow: /m/home/ajax/updateStorageApi\r\nDisallow: /m/search/ajax/updateStorageApi\r\nDisallow: /m/product/ajax/updateStorageApi\r\nDisallow: /m/mktplace/ajax/updateStorageApi\r\nDisallow: /m/diy/ajax/updateStorageApi\r\nDisallow: /m/account/ajax/updateStorageApi\r\nDisallow: /m/shoppingflow/ajax/updateStorageApi\r\nDisallow: /m/wishlist/ajax/updateStorageApi\r\nDisallow: /m/order/ajax/updateStorageApi\r\nDisallow: /m/notification/ajax/updateStorageApi\r\nDisallow: /m/ajax/getStorageApi\r\nDisallow: /m/home/ajax/getStorageApi\r\nDisallow: /m/search/ajax/getStorageApi\r\nDisallow: /m/product/ajax/getStorageApi\r\nDisallow: /m/mktplace/ajax/getStorageApi\r\nDisallow: /m/store/ajax/getStorageApi\r\nDisallow: /m/account/ajax/getStorageApi\r\nDisallow: /m/shoppingflow/ajax/getStorageApi\r\nDisallow: /m/wishlist/ajax/getStorageApi\r\nDisallow: /m/notification/ajax/getStorageApi\r\nDisallow: /m/ajax/deleteStorageApi\r\nDisallow: /m/home/ajax/deleteStorageApi\r\nDisallow: /m/search/ajax/deleteStorageApi\r\nDisallow: /m/product/ajax/deleteStorageApi\r\nDisallow: /m/shoppingflow/ajax/deleteStorageApi\r\nDisallow: /m/wishlist/ajax/deleteStorageApi\r\nDisallow: /m/ajax/getUnreadList\r\nDisallow: /m/home/ajax/getUnreadList\r\nDisallow: /m/mktplace/ajax/getUnreadList\r\nDisallow: /m/product/ajax/getUnreadList\r\nDisallow: /m/promotion/ajax/getUnreadList\r\nDisallow: /m/search/ajax/getUnreadList\r\nDisallow: /m/store/ajax/getUnreadList\r\nDisallow: /m/diy/ajax/getUnreadList\r\nDisallow: /m/ajax/getTradeIn\r\n\r\n################ MOBILE - END ################\r\n\r\n# disallows cloudflare all updated 7/19/23\r\n\r\nDisallow: /cdn-cgi/\r\n\r\n############# gamer community start #################\r\nUser-agent: mauibot\r\nDisallow: /gamer/community/\r\n\r\nUser-agent: semrushbot\r\nDisallow: /gamer/community/\r\n\r\nUser-agent: ahrefsbot\r\nDisallow: /gamer/community/\r\n\r\nUser-agent: blexbot\r\nDisallow: /gamer/community/\r\n\r\nUser-agent: seo spider\r\nDisallow: /gamer/community/\r\n\r\nUser-agent: *\r\nDisallow: /gamer/community/admin/\r\nDisallow: /gamer/community/auth/\r\nDisallow: /gamer/community/assets/browser-update*.js\r\nDisallow: /gamer/community/email/\r\nDisallow: /gamer/community/session\r\nDisallow: /gamer/community/user-api-key\r\nDisallow: /gamer/community/*?api_key*\r\nDisallow: /gamer/community/*?*api_key*\r\nDisallow: /gamer/community/badges\r\nDisallow: /gamer/community/my\r\nDisallow: /gamer/community/search\r\nDisallow: /gamer/community/tag/*/l\r\nDisallow: /gamer/community/g\r\nDisallow: /gamer/community/t/*/*.rss\r\nDisallow: /gamer/community/c/*.rss\r\n\r\n\r\nUser-agent: Googlebot\r\nDisallow: /gamer/community/admin/\r\nDisallow: /gamer/community/auth/\r\nDisallow: /gamer/community/assets/browser-update*.js\r\nDisallow: /gamer/community/email/\r\nDisallow: /gamer/community/session\r\nDisallow: /gamer/community/user-api-key\r\nDisallow: /gamer/community/*?api_key*\r\nDisallow: /gamer/community/*?*api_key*\r\n############# gamer community end #################\r\n\r\nSitemap: https://www.newegg.com/xmlsitemap/2019_Updated_Confidential_siteindex_USA.xml\r\nSitemap: https://www.newegg.com/xmlsitemap/2019_Updated_Confidential_siteindex_USA_Seller.xml\r\nSitemap: https://www.newegg.com/xmlsitemap/ProductListKeywords_USA.xml\r\nSitemap: https://www.newegg.com/insider/sitemap_index.xml\r\nSitemap: https://www.newegg.com/Shopping-Tools-USA.xml\r\nSitemap: https://www.newegg.com/xmlsitemap/sitemaps_promos_USA.xml\r\nSitemap: https://www.newegg.com/gamer/community/sitemap.xml\r\nSitemap: https://www.newegg.com/xmlsitemap/sitemaps_qa_USA.xml\r\n",
+    "parse_ok": true,
+    "agents": {
+      "ChangeDetection": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 36,
+        "crawl_delay": null
+      },
+      "008": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 39,
+        "crawl_delay": null
+      },
+      "Nutch": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 42,
+        "crawl_delay": null
+      },
+      "mauibot": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "semrushbot": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "ahrefsbot": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "blexbot": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "seo spider": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "Googlebot": {
+        "class": "hybrid",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "*": {
+        "class": "generic",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      }
+    },
+    "sitemap_declarations": [
+      "https://www.newegg.com/xmlsitemap/2019_Updated_Confidential_siteindex_USA.xml",
+      "https://www.newegg.com/xmlsitemap/2019_Updated_Confidential_siteindex_USA_Seller.xml",
+      "https://www.newegg.com/xmlsitemap/ProductListKeywords_USA.xml",
+      "https://www.newegg.com/insider/sitemap_index.xml",
+      "https://www.newegg.com/Shopping-Tools-USA.xml",
+      "https://www.newegg.com/xmlsitemap/sitemaps_promos_USA.xml",
+      "https://www.newegg.com/gamer/community/sitemap.xml",
+      "https://www.newegg.com/xmlsitemap/sitemaps_qa_USA.xml"
+    ]
+  },
+  "discovery": {
+    "status": "ok",
+    "reason": null,
+    "sitemap_found": false,
+    "sitemap_urls_count": 0,
+    "inventory": [
+      {
+        "url": "https://www.newegg.com/",
+        "page_type": "home",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/ai",
+        "page_type": "other",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/Shell-Shocker/EventSaleStore/ID-10381?cm_sp=Head_Navigation-_-Under_Search_Bar-_-Shell+Shocker&icid=720202",
+        "page_type": "other",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/tools/custom-pc-builder?cm_sp=Head_Navigation-_-Under_Search_Bar-_-PC+Builder&icid=782905",
+        "page_type": "other",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/Newegg-Outlet/EventSaleStore/ID-697?Order=2&cm_sp=Head_Navigation-_-Under_Search_Bar-_-Newegg+Outlet&icid=796262",
+        "page_type": "other",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/d/best-sellers?cm_sp=Head_Navigation-_-Under_Search_Bar-_-Best+Sellers&icid=623089",
+        "page_type": "other",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/promotions/nepro/18-1881/index.html?cm_sp=Head_Navigation-_-Under_Search_Bar-_-Newegg+Card&icid=779480&sitecode=neacol002&cm_sp=Head_Navigation-_-Under_Search_Bar-_-Newegg+Card&icid=779480",
+        "page_type": "other",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/Digital-Games/Category/ID-377?cm_sp=Head_Navigation-_-Under_Search_Bar-_-Games&icid=794774",
+        "page_type": "other",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/promotions/nepro/23-1322/index.html?cm_sp=Head_Navigation-_-Under_Search_Bar-_-Trade-In&icid=794618",
+        "page_type": "other",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/Components-Storage/Store/ID-1",
+        "page_type": "other",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/Computer-Systems/Store/ID-3",
+        "page_type": "other",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/Computer-Peripherals/Store/ID-380",
+        "page_type": "other",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/Server-Components/Store/ID-5",
+        "page_type": "other",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/Appliances/Store/ID-13",
+        "page_type": "other",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/Electronics/Store/ID-10",
+        "page_type": "other",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/Gaming-VR/Store/ID-8",
+        "page_type": "other",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/Networking/Store/ID-889",
+        "page_type": "other",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/Smart-Home-Security/Store/ID-2",
+        "page_type": "other",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/Office-Solutions/Store/ID-133",
+        "page_type": "other",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/Software-Services/Store/ID-6",
+        "page_type": "other",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/Automotive-Tools/Store/ID-192",
+        "page_type": "other",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/Home-Outdoors/Store/ID-15",
+        "page_type": "other",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/Health-Sports/Store/ID-78",
+        "page_type": "other",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/Toys-Drones-Maker/Store/ID-266",
+        "page_type": "other",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/Level-Up-Your-Rig/EventSaleStore/ID-1133?cm_sp=Homepage-Top2021-_-top-_-nepro%2f26-0817-_-%2f%2fpromotions.newegg.com%2fnepro%2f26-0817%2f1300x320.jpg",
+        "page_type": "other",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/tools/combo-builder/1740?cm_sp=homepage-pers-home dynamiccombo_pccomponent-amd-takeover",
+        "page_type": "other",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/amd-ryzen-7-9000-series-ryzen-7-9800x3d-granite-ridge-zen-5-socket-am5-desktop-cpu-processor/p/N82E16819113877?Item=N82E16819113877",
+        "page_type": "product",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/msi-mag-x870e-tomahawk-max-wifi-motherboard-amd-x870e-am5/p/N82E16813144743?Item=N82E16813144743",
+        "page_type": "product",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/team-group-t-force-vulcan-eco-32gb-2-x-16gb-ddr5-6400-pc5-51200-cas-latency-cl38-desktop-memory-silver/p/N82E16820985371?Item=N82E16820985371",
+        "page_type": "about",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/tools/combo-builder/1740?cm_sp=homepage-pers-home dynamiccombo_pccomponent-intel-takeover",
+        "page_type": "other",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/intel-core-i9-12th-gen-core-i9-12900k-alder-lake-lga-1700-desktop-cpu-processor/p/N82E16819118339?Item=N82E16819118339",
+        "page_type": "product",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/msi-b760-gaming-plus-wifi-atx-motherboards-intel-intel-b760-lga-1700/p/N82E16813144600?Item=N82E16813144600",
+        "page_type": "product",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/tools/combo-builder/8402?cm_sp=homepage-pers-home dynamiccombo_desktop",
+        "page_type": "other",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/stormcraft-gaming-desktop-pc-geforce-rtx-5080-intel-core-ultra-7-265f-32gb-ddr5-2tb-ssd-phantom/p/N82E16883420035?Item=N82E16883420035",
+        "page_type": "product",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/p/N82E16824026509?Item=N82E16824026509",
+        "page_type": "product",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/p/0GA-0001-00DJ7?Item=0GA-0001-00DJ7",
+        "page_type": "product",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/tools/combo-builder/8402?cm_sp=homepage-pers-home dynamiccombo_desktop2",
+        "page_type": "other",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/stormcraft-sirius-gaming-desktop-pc-geforce-rtx-5060-intel-core-i5-14400f-16gb-ddr4-1tb-ssd-si1440fbb-560n2/p/N82E16883420040?Item=N82E16883420040",
+        "page_type": "product",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/redragon-k556-red-switch-black/p/32N-0003-001A8?Item=32N-0003-001A8",
+        "page_type": "product",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/p/N82E16826197674?Item=N82E16826197674",
+        "page_type": "product",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/tools/combo-builder/8558?cm_sp=homepage-pers-home dynamiccombo_nasbuilder-1",
+        "page_type": "other",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/p/N82E16822995008?Item=N82E16822995008",
+        "page_type": "product",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/seagate-ironwolf-st4000vn006-4tb-hard-drive-for-nas-systems-5400-rpm/p/N82E16822185030?Item=N82E16822185030",
+        "page_type": "product",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/synology-ds225-2-bay-2gb-ddr4-intel-celeron-j4125-processor-diskless-system/p/N82E16822108853?Item=N82E16822108853",
+        "page_type": "product",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/synology-hat3300-plus-series-hat3300-4t-4tb-for-nas-systems-5400-rpm/p/N82E16822108832?Item=N82E16822108832",
+        "page_type": "product",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/Shell%20Shocker/EventSaleStore/ID-10381?cm_sp=homepage-pers-home shell shocker",
+        "page_type": "other",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/Newegg-Select/EventSaleStore/ID-1836?cm_sp=Homepage-Top2021-_-middle-_-CorpProgram%2f+NA%2f+NA%2f+N-_-%2f%2fpromotions.newegg.com%2fnepro%2f25-0119%2f1150x320.jpg&icid=802622",
+        "page_type": "other",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/TRYX/EventSaleStore/ID-10455?cm_sp=Homepage-Top2021-_-bottom-_-QSPEP%2fTRYP%2fACCS+PC%2fN-_-%2f%2fpromotions.newegg.com%2ftryx%2f26-0808%2f1150x320.png&icid=802715",
+        "page_type": "other",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/THE-fastest-Window-PCs/EventSaleStore/ID-1818?cm_sp=Homepage-Top2021-_-bottom-_-Brand+Promo%2fAcer%2fNB%2fY-_-%2f%2fpromotions.newegg.com%2facer%2f26-0806%2f1150x320.jpg&icid=802724",
+        "page_type": "other",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/asus-pg32ucwm-32-31-5-actual-screen-size-4k-240hz-rog-swift-oled-glossy/p/N82E16824281434?Item=N82E16824281434&cm_sp=Homepage-Top2021-_-bottom-_-Brand+Promo%2fASUS%2fMonitor%2fN-_-%2f%2fpromotions.newegg.com%2fasus%2f26-0807%2f1150x320.jpg&icid=802729",
+        "page_type": "product",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/lxz-r7go-gaming-desktop-pcs-radeon-rx-580-amd-ryzen-7-4700le-16gb-ddr4-512gb-nvme-ssd-black/p/3D5-007U-00028?Item=9SIC1CNKYH5769&cm_sp=Homepage_SS-_-P1_9SIC1CNKYH5769-_-09102026",
+        "page_type": "product",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/msi-crosshair-a16-hx-16-0-geforce-rtx-5060-laptop-gpu-2-4-5-3ghz-qhd-32gb-memory-1tb-nvme-ssd-gen4x4-ssd/p/N82E16834156876?Item=N82E16834156876&cm_sp=Homepage_SS-_-P2_34-156-876-_-09102026",
+        "page_type": "product",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/Newegg-Select/EventSaleStore/ID-1836",
+        "page_type": "other",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/corsair-vengeance-rgb-32gb-ddr5-6000-cas-latency-cl36-desktop-memory-black/p/N82E16820236991?Item=N82E16820236991&cm_sp=Homepage_SS-_-P3_20-236-991-_-09102026",
+        "page_type": "product",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/p/2M1-0096-001A2?Item=9SIC3S3M0E4903&cm_sp=Homepage_SS-_-P4_9SIC3S3M0E4903-_-09102026",
+        "page_type": "product",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/black-dowinx-ls-6658j-chair/p/358-007U-00143?Item=9SIAKUYKRF4701&cm_sp=Homepage_SS-_-P5_9SIAKUYKRF4701-_-09102026",
+        "page_type": "product",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/Shell-Shocker/EventSaleStore/ID-10381?cm_sp=Homepage_shellshocker-_-SeeAll",
+        "page_type": "other",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/PC-Components-Hub/EventSaleStore/ID-970?Order=1&icid=802700&cm_sp=homepage_carousel_p3-pccomponentshub-_-seemore",
+        "page_type": "other",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/Laptop-Notebook/Category/ID-223?cm_sp=Homepage-Tile_Module_Banner-_-System%2fLaptops-_-%2f%2fpromotions.newegg.com%2ftile-module-banner%2fSystem%2fLaptops%2fSystem-Laptops.png&icid=793722",
+        "page_type": "other",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/Memory/Category/ID-17?cm_sp=Homepage-Tile_Module_Banner-_-Components_Storage%2fMemory+(RAM)-_-%2f%2fpromotions.newegg.com%2ftile-module-banner%2fComponents_Storage%2fMemory%2520(RAM)%2fComponents_Storage-Memory%2520(RAM).png&icid=793728",
+        "page_type": "other",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/GPU-Video-Graphics-Device/Category/ID-38?cm_sp=Homepage-Tile_Module_Banner-_-Components_Storage%2fGraphics+Cards-_-%2f%2fpromotions.newegg.com%2ftile-module-banner%2fComponents_Storage%2fGraphics%2520Cards%2fComponents_Storage-Graphics%2520Cards.png&icid=793724",
+        "page_type": "other",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/SSD/Category/ID-119?cm_sp=Homepage-Tile_Module_Banner-_-Components_Storage%2fSSD-_-%2f%2fpromotions.newegg.com%2ftile-module-banner%2fComponents_Storage%2fSSD%2fComponents_Storage-SSD.png&icid=793725",
+        "page_type": "other",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/Motherboard/Category/ID-20?cm_sp=Homepage-Tile_Module_Banner-_-Components_Storage%2fMotherboard-_-%2f%2fpromotions.newegg.com%2ftile-module-banner%2fComponents_Storage%2fMotherboard%2fComponents_Storage-Motherboard.png&icid=793981",
+        "page_type": "other",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/Smart-Home-Automation/Category/ID-404?cm_sp=Homepage-Tile_Module_Banner-_-Non-core%2fSmart+Home-_-%2f%2fpromotions.newegg.com%2ftile-module-banner%2fNon-core%2fSmart%2520Home%2fNon-core-Smart%2520Home.png&icid=793586",
+        "page_type": "other",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/Health-Sports/Store/ID-78?cm_sp=Homepage-Tile_Module_Banner-_-Non-core%2fHealth_Sports-_-%2f%2fpromotions.newegg.com%2ftile-module-banner%2fNon-core%2fHealth_Sports%2fNon-core-Health_Sports.png&icid=793732",
+        "page_type": "other",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/Electronics/Store/ID-10?cm_sp=Homepage-Tile_Module_Banner-_-Non-core%2fConsumer%2520Electronics-_-%2f%2fpromotions.newegg.com%2ftile-module-banner%2fNon-core%2fConsumer%2520Electronics%2fNon-core-Consumer%2520Electronics.png&icid=793729",
+        "page_type": "other",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/USB-Flash-Drive-Memory-Card/Category/ID-324?cm_sp=Homepage-Tile_Module_Banner-_-Components_Storage%2fFlash_Storage-_-%2f%2fpromotions.newegg.com%2ftile-module-banner%2fComponents_Storage%2fFlash_Storage%2fComponents-Flash_Storage.png&icid=796330",
+        "page_type": "other",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/Digital-Games/Category/ID-377?cm_sp=Homepage-Tile_Module_Banner-_-Non-core%2fDigital_Games-_-%2f%2fpromotions.newegg.com%2ftile-module-banner%2fNon-core%2fDigital_Games%2fNon-core-Digital_Games.png&icid=793734",
+        "page_type": "other",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/Gift-Cards/Category/ID-293?cm_sp=Homepage-Tile_Module_Banner-_-Non-core%2fGift+Cards-_-%2f%2fpromotions.newegg.com%2ftile-module-banner%2fNon-core%2fGift%2520Cards%2fNon-core-Gift%2520Cards.png&icid=793173",
+        "page_type": "other",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/promotions/Asrock/24-1040/index.html?cm_sp=Homepage-Above_The_Fold-_-QSPEP%2fASRock%2fAll+categories%2fN-_-%2f%2fpromotions.newegg.com%2fASRock%2f24-1040%2f1920x120.jpg&icid=802738",
+        "page_type": "other",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/Acer-Nitro-V-15/EventSaleStore/ID-6242?cm_sp=Homepage-Above_The_Fold-_-Brand+Promo%2fAcer%2fNB%2fY-_-%2f%2fpromotions.newegg.com%2facer%2f26-0543%2f1920x120.jpg&icid=802721",
+        "page_type": "other",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/d/Best-Sellers/Gaming-Desktop-PC/s/ID-3742?icid=802653&cm_sp=homepage_carousel_p4-gamingdesktoppc-_-seemore",
+        "page_type": "other",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/d/Best-Sellers/Water-Liquid-Cooling/s/ID-575?icid=802654&cm_sp=homepage_carousel_p5-water/liquidcooling-_-seemore",
+        "page_type": "other",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/d/Best-Sellers/Gaming-Headsets/s/ID-3767?icid=802655&cm_sp=homepage_carousel_p6-gamingheadsets-_-seemore",
+        "page_type": "other",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/AI-PC-Store?cm_sp=Homepage-Newegg_Feature_Big-_-nepro%2f24-0413-_-%2f%2fpromotions.newegg.com%2fnepro%2f24-0413%2f420x500.jpg&icid=772280",
+        "page_type": "other",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/d/Lowest-Price-In-30-Days?cm_sp=Homepage-Newegg_Feature_Small-_-nepro%2f25-0323-_-%2f%2fpromotions.newegg.com%2fnepro%2f25-0323%2f420x240.jpg&icid=782976",
+        "page_type": "other",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/d/best-sellers?cm_sp=Homepage-Newegg_Feature_Small-_-24-0282%2fBest_Sellers-_-%2f%2fpromotions.newegg.com%2fnepro%2f24-0282%2fBest_Sellers%2f420x240.jpg&icid=772283",
+        "page_type": "other",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/Newegg-Select/EventSaleStore/ID-1836?cm_sp=Homepage-Newegg_Feature_Small-_-nepro%2f25-0119-_-%2f%2fpromotions.newegg.com%2fnepro%2f25-0119%2f420x240.jpg&icid=772284",
+        "page_type": "other",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/promotions/nepro/24-0040/index.html?cm_sp=Homepage-Newegg_Feature_Small-_-24-0282%2fNewegg_Refreshed-_-%2f%2fpromotions.newegg.com%2fnepro%2f24-0282%2fNewegg_Refreshed%2f420x240.jpg&icid=772285",
+        "page_type": "other",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/d/ProductSort/BrandList?Depa=0",
+        "page_type": "other",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/ABS/BrandStore/ID-8484?cm_sp=homepage_popular+brand-_-ABS%26cm_sp%3dHomepage-Feature_Brands-_-%2f%2fpromotions.newegg.com%2fnepro%2f24-0282%2fFeatured_Brands%2fABS.jpg&icid=772286",
+        "page_type": "other",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/AMD/BrandStore/ID-1028?cm_sp=Homepage-Feature_Brands-_-24-0282%2fFeatured_Brands-_-%2f%2fpromotions.newegg.com%2fnepro%2f24-0282%2fFeatured_Brands%2fAMD.jpg&icid=772287",
+        "page_type": "other",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/ASUS/BrandStore/ID-1315?cm_sp=Homepage-Feature_Brands-_-24-0282%2fFeatured_Brands-_-%2f%2fpromotions.newegg.com%2fnepro%2f24-0282%2fFeatured_Brands%2fASUS.jpg&icid=772288",
+        "page_type": "other",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/ASRock-Rack/BrandStore/ID-128228?cm_sp=Homepage-Feature_Brands-_-24-0282%2fFeatured_Brands-_-%2f%2fpromotions.newegg.com%2fnepro%2f24-0282%2fFeatured_Brands%2fASRock-Rack.jpg&icid=772290",
+        "page_type": "other",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/GIGABYTE/BrandStore/ID-1314?cm_sp=Homepage-Feature_Brands-_-24-0282%2fFeatured_Brands-_-%2f%2fpromotions.newegg.com%2fnepro%2f24-0282%2fFeatured_Brands%2fGIGABYTE.jpg&icid=772289",
+        "page_type": "other",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/Intel/BrandStore/ID-1157?cm_sp=Homepage-Feature_Brands-_-24-0282%2fFeatured_Brands-_-%2f%2fpromotions.newegg.com%2fnepro%2f24-0282%2fFeatured_Brands%2fIntel.jpg&icid=772291",
+        "page_type": "other",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/MSI/BrandStore/ID-1312?cm_sp=Homepage-Feature_Brands-_-24-0282%2fFeatured_Brands-_-%2f%2fpromotions.newegg.com%2fnepro%2f24-0282%2fFeatured_Brands%2fMSI.jpg&icid=772300",
+        "page_type": "other",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/Meta-Quest/BrandStore/ID-145018?cm_sp=Homepage-Feature_Brands-_-24-0282%2fFeatured_Brands-_-%2f%2fpromotions.newegg.com%2fnepro%2f24-0282%2fFeatured_Brands%2fMeta-Quest.jpg&icid=772301",
+        "page_type": "other",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/NVIDIA/BrandStore/ID-1441?cm_sp=Homepage-Feature_Brands-_-24-0282%2fFeatured_Brands-_-%2f%2fpromotions.newegg.com%2fnepro%2f24-0282%2fFeatured_Brands%2fNVIDIA.jpg&icid=772302",
+        "page_type": "other",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/SAMSUNG/BrandStore/ID-1077?cm_sp=Homepage-Feature_Brands-_-24-0282%2fFeatured_Brands-_-%2f%2fpromotions.newegg.com%2fnepro%2f24-0282%2fFeatured_Brands%2fSamsung.jpg&icid=772303",
+        "page_type": "other",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/Seagate/BrandStore/ID-1305?cm_sp=Homepage-Feature_Brands-_-24-0282%2fFeatured_Brands-_-%2f%2fpromotions.newegg.com%2fnepro%2f24-0282%2fFeatured_Brands%2fSeagate.jpg&icid=772304",
+        "page_type": "other",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/Cell-Phones/Category/ID-450",
+        "page_type": "other",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/Home-Audio-Home-Theater/Category/ID-31",
+        "page_type": "other",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/tools/laptop-finder",
+        "page_type": "other",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/tools/gaming-pc-finder",
+        "page_type": "other",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/tools/power-supply-calculator",
+        "page_type": "other",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/tools/custom-pc-builder",
+        "page_type": "other",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/tools/nas-builder",
+        "page_type": "other",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/server-system-configurator",
+        "page_type": "other",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/tools/memory-finder",
+        "page_type": "other",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/tools",
+        "page_type": "other",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/sellers/index.php/marketing-newegg-studios/",
+        "page_type": "other",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/share/desktoppagefooter",
+        "page_type": "other",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/promotions/nepro/22-0073/index.html?cm_sp=cs_menu-_-return_policy",
+        "page_type": "other",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/d/browsing-history",
+        "page_type": "other",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/corporate/about",
+        "page_type": "about",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/corporate/media-center",
+        "page_type": "other",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/NSIP",
+        "page_type": "other",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/gamerzone",
+        "page_type": "other",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/insider/",
+        "page_type": "other",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/sellers/?cm_sp=sell_on_newegg_footer",
+        "page_type": "other",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/creators?cm_sp=Homepage-bottom-_-creators",
+        "page_type": "other",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/category",
+        "page_type": "other",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/p/pl?N=4803%204801",
+        "page_type": "product",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/mobile",
+        "page_type": "other",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/studentstore?cm_sp=newegg_footer-_-studentstore",
+        "page_type": "other",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/promotions/nepro/18-1881/index.html?cm_sp=newegg_footer-_-neweggstorecreditcard&sitecode=neacfl002",
+        "page_type": "other",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/tools/custom-pc-builder/showcase/featured-builds",
+        "page_type": "other",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/promotions/nepro/25-1020/index.html?cm_sp=newegg_footer-_-leasing",
+        "page_type": "other",
+        "source": "crawl"
+      },
+      {
+        "url": "https://www.newegg.com/promotions/nepro/23-1322/index.html?cm_sp=newegg_footer-_-tradein",
+        "page_type": "other",
+        "source": "crawl"
+      }
+    ],
+    "sampled_static": [
+      "https://www.newegg.com/",
+      "https://www.newegg.com/corporate/about",
+      "https://www.newegg.com/team-group-t-force-vulcan-eco-32gb-2-x-16gb-ddr5-6400-pc5-51200-cas-latency-cl38-desktop-memory-silver/p/N82E16820985371?Item=N82E16820985371",
+      "https://www.newegg.com/ABS/BrandStore/ID-8484?cm_sp=homepage_popular+brand-_-ABS%26cm_sp%3dHomepage-Feature_Brands-_-%2f%2fpromotions.newegg.com%2fnepro%2f24-0282%2fFeatured_Brands%2fABS.jpg&icid=772286",
+      "https://www.newegg.com/AI-PC-Store?cm_sp=Homepage-Newegg_Feature_Big-_-nepro%2f24-0413-_-%2f%2fpromotions.newegg.com%2fnepro%2f24-0413%2f420x500.jpg&icid=772280",
+      "https://www.newegg.com/AMD/BrandStore/ID-1028?cm_sp=Homepage-Feature_Brands-_-24-0282%2fFeatured_Brands-_-%2f%2fpromotions.newegg.com%2fnepro%2f24-0282%2fFeatured_Brands%2fAMD.jpg&icid=772287",
+      "https://www.newegg.com/ASRock-Rack/BrandStore/ID-128228?cm_sp=Homepage-Feature_Brands-_-24-0282%2fFeatured_Brands-_-%2f%2fpromotions.newegg.com%2fnepro%2f24-0282%2fFeatured_Brands%2fASRock-Rack.jpg&icid=772290",
+      "https://www.newegg.com/amd-ryzen-7-9000-series-ryzen-7-9800x3d-granite-ridge-zen-5-socket-am5-desktop-cpu-processor/p/N82E16819113877?Item=N82E16819113877",
+      "https://www.newegg.com/asus-pg32ucwm-32-31-5-actual-screen-size-4k-240hz-rog-swift-oled-glossy/p/N82E16824281434?Item=N82E16824281434&cm_sp=Homepage-Top2021-_-bottom-_-Brand+Promo%2fASUS%2fMonitor%2fN-_-%2f%2fpromotions.newegg.com%2fasus%2f26-0807%2f1150x320.jpg&icid=802729",
+      "https://www.newegg.com/black-dowinx-ls-6658j-chair/p/358-007U-00143?Item=9SIAKUYKRF4701&cm_sp=Homepage_SS-_-P5_9SIAKUYKRF4701-_-09102026",
+      "https://www.newegg.com/corsair-vengeance-rgb-32gb-ddr5-6000-cas-latency-cl36-desktop-memory-black/p/N82E16820236991?Item=N82E16820236991&cm_sp=Homepage_SS-_-P3_20-236-991-_-09102026"
+    ],
+    "sampled_rendered": [],
+    "sampling_seed": "sha256:fe0ec1940a6a155368c09ce606b002c4c3a0490dd576aedbebaf2beb2254c1d2"
+  },
+  "pages": [
+    {
+      "url": "https://www.newegg.com/",
+      "final_url": "https://www.newegg.com/",
+      "status": "ok",
+      "reason": null,
+      "http_status": 200,
+      "page_type": "home",
+      "headers": {
+        "date": "Thu, 10 Sep 2026 20:49:23 GMT",
+        "content-type": "text/html; charset=UTF-8",
+        "transfer-encoding": "chunked",
+        "connection": "close",
+        "ntcoent-length": "711136",
+        "set-cookie": "__cflb=0pg1RXtqZ3MLWhoYZy5idAjVUvNReAk2QbKx4SM5; HttpOnly; SameSite=None; Secure; Path=/; Expires=Thu, 10 Sep 2026 22:49:23 GMT",
+        "vary": "accept-encoding",
+        "nel": "{\"report_to\": \"default\", \"max_age\": 2592000}`);",
+        "report-to": "{\"group\":\"default\",\"max-age\":10886400,\"include_subdomains\":\"true\",\"endpoints\":[{\"url\":\"https://pf.newegg.com/csp\"}]};",
+        "x-frame-options": "SAMEORIGIN",
+        "x-page-alias": "Home",
+        "link": "<https://assets.adobedtm.com>;rel=preconnect,<https://c1.neweggimages.com>;rel=preconnect,<https://promotions.newegg.com>;rel=preconnect,<https://www2.newegg.com>;rel=preconnect,<https://promotions.newegg.com>;rel=preconnect,<https://pf.newegg.com>;rel=preconnect,<https://ec-apis.newegg.com>;rel=preconnect,<https://sealserver.trustwave.com>;rel=preconnect,<https://help.newegg.com>;rel=preconnect,<https://states.newegg.com>;rel=preconnect,<https://fonts.gstatic.com>;rel=preconnect,<https://secure.newegg.com>;rel=preconnect,<https://tags.tiqcdn.com>;rel=preconnect,<https://images10.newegg.com>;rel=preconnect",
+        "server-timing": "cfEdge;dur=477,cfOrigin;dur=0",
+        "x-ver": "04142020",
+        "x-xss-protection": "1; mode=block",
+        "content-security-policy": "upgrade-insecure-requests",
+        "strict-transport-security": "max-age=31536000; includeSubDomains",
+        "cache-control": "private",
+        "last-modified": "Thu, 10 Sep 2026 20:49:23 GMT",
+        "cf-cache-status": "HIT",
+        "content-encoding": "gzip",
+        "server": "cloudflare",
+        "cf-ray": "a3914c850ec4087a-DEL"
+      },
+      "raw_html_bytes": 712435,
+      "main_text": "Skip to main content All Products Components & Storage Computer Systems Computer Peripherals Server & Components AI Hardware Appliances Electronics Gaming & VR Networking Smart Home & Security Office Solutions Software & Services Automotive & Tools Home & Outdoors More Health & Sports Toys, Drones & Maker Combo up savings $199.00 More options AMD Ryzen 7 9800X3D - Ryzen 7 9000 Series Zen 5 8-Core 5.2 GHz - Socket AM5 120W - AMD Radeon Graphics Desktop Processor - 100-100001084WOF $ 469 .00 $507.99 COMBO OFFER $60.00 AMD Ryzen 7 9800X3D - Ryzen 7 9000 Series Zen 5 8-Core 5.2 GHz - Socket AM5 120W - AMD Radeon Graphics Desktop Processor - 100-100001084WOF MSI MAG X870E GAMING MAX WIFI Motherboard, ATX - Supports AMD Ryzen 9000 / 8000 / 7000 Processors, AM5 - DDR5 Memory Boost (up to 8200+ MT/s OC), PCIe 5.0 x16, M.2 Gen5, Wi-Fi 7, 5G LAN $ 259 .99 COMBO OFFER $89.00 MSI MAG X870E GAMING MAX WIFI Motherboard, ATX - Supports AMD Ryzen 9000 / 8000 / 7000 Processors, AM5 - DDR5 Memory Boost (up to 8200+ MT/s OC), PCIe 5.0 x16, M.2 Gen5, Wi-Fi 7, 5G LAN Team T-Force Vulcan ECO 32GB (2 x 16GB) 288-Pin PC RAM DDR5 6400 (PC5 51200) Desktop Memory Model FLESD532G6400HC38JDC01 $ 429 .99 COMBO OFFER $30.00 Team T-Force Vulcan ECO 32GB (2 x 16GB) 288-Pin PC RAM DDR5 6400 (PC5 51200) Desktop Memory Model FLESD532G6400HC38JDC01 = $ 959 .98 $1,158.98 Build with it Add to cart Combo up savings $160.00 More options Intel Core i9-12900K - Core i9 12th Gen Alder Lake 16-Core (8P+8E) 3.2 GHz LGA 1700 125W Intel UHD Graphics 770 Desktop Processor - BX8071512900K $ 429 .99 $549.99 COMBO OFFER $40.00 Intel Core i9-12900K - Core i9 12th Gen Alder Lake 16-Core (8P+8E) 3.2 GHz LGA 1700 125W Intel UHD Graphics 770 Desktop Processor - BX8071512900K MSI B760 GAMING PLUS WIFI LGA 1700 (280) DDR5 ATX Motherboards - Intel,  SATA 6Gbps, Wi-Fi 6E, Bluetooth 5.3,  7.1 HD Audio, PCIe 4.0 x16, 2.5G LAN $ 139 .99 $199.99 COMBO OFFER $30.00 MSI B760 GAMING PLUS WIFI LGA 1700 (280) DDR5 ATX Motherboards - Intel,  SATA 6Gbps, Wi-Fi 6E, Bluetooth 5.3,  7.1 HD Audio, PCIe 4.0 x16, 2.5G LAN Team T-Force Vulcan ECO 32GB (2 x 16GB) 288-Pin PC RAM DDR5 6400 (PC5 51200) Desktop Memory Model FLESD532G6400HC38JDC01 $ 429 .99 COMBO OFFER $30.00 Team T-Force Vulcan ECO 32GB (2 x 16GB) 288-Pin PC RAM DDR5 6400 (PC5 51200) Desktop Memory Model FLESD532G6400HC38JDC01 = $ 839 .97 $999.97 Build with it Add to cart Desktop Computers Combo up savings $45.00 More options STORMCRAFT Gaming PC PHANTOM INTEL Core Ultra 7 265F NVIDIA RTX 5080 - AI Powered 32GB DDR5 6000MHz RGB 2TB NVMe SSD 360mm AIO 850W PSU Windows 11 Home-PH265F0CC-580N1 $ 2,799 .99 $3,099.99 COMBO OFFER $5.00 STORMCRAFT Gaming PC PHANTOM INTEL Core Ultra 7 265F NVIDIA RTX 5080 - AI Powered 32GB DDR5 6000MHz RGB 2TB NVMe SSD 360mm AIO 850W PSU Windows 11 Home-PH265F0CC-580N1 LG UltraGear 27 inch QHD 2K 1440P 300Hz AMD FreeSync Premium & G-Sync Compatible 1ms HDR400 USB-C Built-in Speaker Gaming Computer Monitor with Height Adjustable, Swivel, Pivot & Tilt Stand 27G640A-B $ 299 .99 $449.99 COMBO OFFER $30.00 LG UltraGear 27 inch QHD 2K 1440P 300Hz AMD FreeSync Premium & G-Sync Compatible 1ms HDR400 USB-C Built-in Speaker Gaming Computer Monitor with Height Adjustable, Swivel, Pivot & Tilt Stand 27G640A-B Logitech G PRO Mechanical Gaming Keyboard, Ultra Portable Tenkeyless Design, Detachable Micro USB Cable, 16.8 Million Color LIGHTSYNC RGB Backlit Keys $ 109 .99 $119.99 COMBO OFFER $10.00 Logitech G PRO Mechanical Gaming Keyboard, Ultra Portable Tenkeyless Design, Detachable Micro USB Cable, 16.8 Million Color LIGHTSYNC RGB Backlit Keys = $ 3,164 .97 $3,209.97 Build with it Add to cart Desktop Computers Combo up savings $35.00 More options STORMCRAFT Gaming PC SIRIUS Intel Core i5-14400F NVIDIA GeForce RTX 5060 AI Powered 16GB 3200MHz RGB 1TB NVMe SSD 650W PSU Windows 11 Home - SI1440FBB-560N2 $ 999 .99 $1,299.99 COMBO OFFER $5.00 STORMCRAFT Gaming PC SIRIUS Intel Core i5-14400F NVIDIA GeForce RTX 5060 AI Powered 16GB 3200MHz RGB 1TB NVMe SSD 650W PSU Windows 11 Home - SI1440FBB-560N2 Redragon K556 RGB LED Backlit Wired Mechanical Gaming Keyboard, Aluminum Base, 104 Standard Keys Linear & Quiet Red Switches $ 59 .99 COMBO OFFER $5.00 Redragon K556 RGB LED Backlit Wired Mechanical Gaming Keyboard, Aluminum Base, 104 Standard Keys Linear & Quiet Red Switches Logitech PRO X2 SUPERSTRIKE LIGHTSPEED Wireless Gaming Mouse, Ultra-Fast Performance, Ultra Lightweight (61 g), Customizable Click Haptics, USB-C charging, for PC/Mac/Laptop $ 179 .99 COMBO OFFER $10.00 Logitech PRO X2 SUPERSTRIKE LIGHTSPEED Wireless Gaming Mouse, Ultra-Fast Performance, Ultra Lightweight (61 g), Customizable Click Haptics, USB-C charging, for PC/Mac/Laptop = $ 1,204 .97 $1,239.97 Build with it Add to cart NAS Combo up savings $30.00 More options DH2300 UGREEN NASync DH2300 Storage Hub with HDMI Cable 2-bay, Rockchip RK3576 8-Core CPU, 4GB LPDDR4X, 1GB $ 239 .99 COMBO OFFER $12.00 DH2300 UGREEN NASync DH2300 Storage Hub with HDMI Cable 2-bay, Rockchip RK3576 8-Core CPU, 4GB LPDDR4X, 1GB Seagate IronWolf ST4000VN006 4TB 5400 RPM 256MB Cache SATA 6.0Gb/s 3.5\" Internal Hard Drive HDD $ 189 .99 COMBO OFFER $9.00 Seagate IronWolf ST4000VN006 4TB 5400 RPM 256MB Cache SATA 6.0Gb/s 3.5\" Internal Hard Drive HDD Seagate IronWolf ST4000VN006 4TB 5400 RPM 256MB Cache SATA 6.0Gb/s 3.5\" Internal Hard Drive HDD $ 189 .99 COMBO OFFER $9.00 Seagate IronWolf ST4000VN006 4TB 5400 RPM 256MB Cache SATA 6.0Gb/s 3.5\" Internal Hard Drive HDD = $ 589 .97 $619.97 Build with it Add to cart NAS Combo up savings $14.00 More options Synology 2-bay DiskStation DS225+ (Diskless) $ 364 .99 COMBO OFFER $4.00 Synology 2-bay DiskStation DS225+ (Diskless) Synology 4TB HAT3300 Plus Series SATA III 3.5\" Internal NAS HDD (HAT3310-4T) $ 219 .99 COMBO OFFER $5.00 Synology 4TB HAT3300 Plus Series SATA III 3.5\" Internal NAS HDD (HAT3310-4T) Synology 4TB HAT3300 Plus Series SATA III 3.5\" Internal NAS HDD (HAT3310-4T) $ 219 .99 COMBO OFFER $5.00 Synology 4TB HAT3300 Plus Series SATA III 3.5\" Internal NAS HDD (HAT3310-4T) = $ 790 .97 $804.97 Build with it Add to cart Shell Shocker See all 37 % off AMD Ryzen 5 5500 - Ryzen 5 5000 Series Cezanne (Zen 3) 6-Core 3.6 GHz Socket AM4 65W No Integrated Graphics Desktop CPU Processor - 100-100000457BOX + $25 off w/ promo code AMD2119, limited offer $ 99 .00 $159.00 Shell Shocker See all Seagate IronWolf 12TB NAS Hard Drive 7200 RPM 256MB Cache SATA 6.0Gb/s CMR 3.5\" Internal HDD for RAID Network Attached Storage - ST12000VN0008 $ 429 .99 Shell Shocker See all 27 % off Kingston NV3 M.2 2280 1TB PCIe 4.0 x4 NVMe Internal Solid State Drive (SSD) SNV3S/1000G  Up to 6000 MB/s $ 156 .99 $215.99 Shell Shocker See all 5 % off GIGABYTE Gaming GeForce RTX 5080 Graphics Card GV-N5080GAMING OC-16GD Get CONTROL Resonant with selected purchase, limited offer $ 1,599 .99 $1,699.99 Shell Shocker See all 10 % off Lowe's $100 Gift Card (Email Delivery) $ 90 .00 $100.00 Today’s Best Deals (108) LXZ Gaming PC Prebuilt Gaming Desktop R7 4700LE, Radeon RX 580,16GB DDR4 RAM, 512GB NVMe SSD,Prebuilt Gaming PC Tower, Supports WIFI 6, Bluetooth 5.2 + $27 off w/ promo code NGSP6, limited offer $ 599 .99 $999.99 Free Shipping 40 % off (15) MSI CROSSHAIR A16 Gaming Laptop - 16\" QHD+ 240hz - AMD Ryzen 9-8940HX - GeForce RTX 5060 - 32GB DDR5 RAM -  1TB SSD (D8WFKG-015US) $ 1,599 .00 $1,799.99 Free Shipping 11 % off Newegg Select (466) CORSAIR Vengeance RGB 32GB (2 x 16GB) 288-Pin PC RAM DDR5 6000 (PC5 48000) Desktop Memory Model CMH32GX5M2E6000C36 Save even more w/ promo code LUYRF226, limited offer $ 499 .99 Free Shipping Insta360 Luna Ultra Creator Package - 8K Vlogging Camera with Dual Leica Lenses, 12× Zoom, 1\" Sensor, Detachable 2\" Touchscreen, Triple AI Chip, Pocket Gimbal Camera for Vlog Photography* USA In Stock + $70 off w/ promo code LUYRF393, limited offer Free Gift $ 969 .99 Free Shipping (9) Dowinx Ergonomic Gaming Chair with Footrest, Reclining Office Chair with Massage Lumbar Support, Adjustable Height & Headrest Pillow, Heavy Duty 330lbs, Comfortable for Streaming Long Gaming, White $ 76 .99 $199.99 Free Shipping 61 % off See all deals PC Components Hub See More Laptops & Notebooks Shop Deals Components & Storage Memory (RAM) Graphics Card SSD Motherboard Lifestyle Essentials Smart Home Health & Sports Consumer Electronics Flash Storage Game & Gift Digital Games Gift Cards Gaming Desktop PC See More Water/ Liquid Cooling See More Gaming Headsets See More Featured Brands See More Make Newegg your one-stop electronics store for technology,                    consumer electronics, gaming components, and more! Newegg is                    an online electronics store based in North America. Its                    global reach as a go-to tech store expands into Europe,                    South America, Asia Pacific, and the Middle East. With                    competitive pricing and frequent promotions, Newegg features                    a diverse range of in-demand electronics and tech products.                    Online electronics shopping can be tricky, but Newegg                    spotlights products from well-known, quality, reliable                    brands. Whether you are buying electronics to outfit your home office , upgrading your mobile device or home entertainment                        system , or searching for tech accessories,                    Newegg has a comprehensive selection of the electronics and                    tech products that consumers want. Choose Newegg’s online                    tech store as your ultimate shopping destination for buying                    electronics. Newegg offers user-friendly tools to simplify electronics                    shopping. Use our Laptop Finder for tailored                    laptop                    recommendations, our Gaming PC Finder for custom                    gaming                    rigs, and our Power Supply                        Calculator for PC builds. With                    our PC Builder , compare components                    and save builds. Explore                    our configurators for NAS solutions and custom Server Systems . Simplify RAM                    selection with our Memory Finder .                    Explore the ease and convenience of electronics shopping in                    our online technology store with Newegg's comprehensive suite of tools . Newegg proudly boasts a vibrant community of over 4 million                    tech enthusiasts worldwide! Driven by customer engagement                    and a shared passion for technology, we've built an                    industry-leading reputation for reliability and excellence.                    Discover an expansive selection of PC components , consumer electronics , smart home devices , and gaming products on                    our                    trusted online platform. Immerse yourself in hands-on demos                    and expert video reviews at Newegg Studios , where we                    offer                    valuable insights into the latest tech trends. Join our                    community today and embark on a journey to explore the world                    of tech with confidence.",
+      "main_text_words": 1795,
+      "extraction_ok": true,
+      "title": "PC Parts, Computers, Workstations & AI PCs | Newegg",
+      "meta": {
+        "viewport": "width=device-width, initial-scale=1, minimal-ui, viewport-fit=cover",
+        "description": "Build your next PC or find ready-made computers, workstations & AI solutions at Newegg. Millions of parts, competitive prices & fast shipping.",
+        "robots": "index,follow,max-image-preview:large,max-snippet:-1"
+      },
+      "lang": "en-us",
+      "canonical": {
+        "href": "https://www.newegg.com/",
+        "self_referential": true,
+        "cross_domain": false
+      },
+      "headings": [
+        {
+          "level": 2,
+          "text": "Today’s Best Deals",
+          "order": 0
+        },
+        {
+          "level": 2,
+          "text": "PC Components Hub",
+          "order": 1
+        },
+        {
+          "level": 2,
+          "text": "Gaming Desktop PC",
+          "order": 2
+        },
+        {
+          "level": 2,
+          "text": "Water/ Liquid Cooling",
+          "order": 3
+        },
+        {
+          "level": 2,
+          "text": "Gaming Headsets",
+          "order": 4
+        },
+        {
+          "level": 2,
+          "text": "Featured Brands",
+          "order": 5
+        }
+      ],
+      "landmarks": {
+        "main": 0,
+        "nav": 1,
+        "header": 1,
+        "footer": 1
+      },
+      "structured_data": {
+        "json_ld": [
+          {
+            "type": "WebSite",
+            "raw": {
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              "name": "Newegg Inc.",
+              "url": "https://www.newegg.com"
+            },
+            "fields_present": [
+              "name",
+              "url"
+            ]
+          },
+          {
+            "type": "Organization",
+            "raw": {
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "name": "Newegg Inc.",
+              "url": "https://www.newegg.com",
+              "sameAs": [
+                "https://www.facebook.com/Newegg",
+                "https://twitter.com/Newegg",
+                "https://www.instagram.com/newegg/",
+                "https://www.youtube.com/user/newegg",
+                "https://www.linkedin.com/company/newegg-com",
+                "https://www.pinterest.com/newegg/",
+                "https://www.twitch.tv/newegg",
+                "https://mixer.com/newegg"
+              ],
+              "contactPoint": [
+                {
+                  "@type": "ContactPoint",
+                  "contactOption": "TollFree",
+                  "availableLanguage": [
+                    "English",
+                    "Spanish"
+                  ],
+                  "telephone": "+1-888-863-1688",
+                  "contactType": "customer service"
+                },
+                {
+                  "@type": "ContactPoint",
+                  "contactOption": "TollFree",
+                  "availableLanguage": [
+                    "English",
+                    "Spanish"
+                  ],
+                  "telephone": "+1-888-863-1688",
+                  "contactType": "credit card support"
+                }
+              ]
+            },
+            "fields_present": [
+              "contactPoint",
+              "name",
+              "sameAs",
+              "url"
+            ]
+          }
+        ],
+        "microdata_types": [],
+        "rdfa_types": []
+      },
+      "links": [
+        {
+          "href": "https://www.newegg.com/#main-content",
+          "text": "Skip to main content",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/",
+          "text": "",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/",
+          "text": "Hello Select address",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://secure.newegg.com/login/signin?nextpage=",
+          "text": "",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://secure.newegg.com/orders/list",
+          "text": "Returns & Orders",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://secure.newegg.com/shop/cart",
+          "text": "Cart",
+          "rel": null,
+          "internal": true,
+          "aria_label": "Shopping Cart"
+        },
+        {
+          "href": "https://www.newegg.com/",
+          "text": "Hello Select address",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/ai",
+          "text": "AI Mode",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/Shell-Shocker/EventSaleStore/ID-10381?cm_sp=Head_Navigation-_-Under_Search_Bar-_-Shell+Shocker&icid=720202",
+          "text": "Shell Shocker",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/tools/custom-pc-builder?cm_sp=Head_Navigation-_-Under_Search_Bar-_-PC+Builder&icid=782905",
+          "text": "PC Builder",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/Newegg-Outlet/EventSaleStore/ID-697?Order=2&cm_sp=Head_Navigation-_-Under_Search_Bar-_-Newegg+Outlet&icid=796262",
+          "text": "Newegg Outlet",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/d/best-sellers?cm_sp=Head_Navigation-_-Under_Search_Bar-_-Best+Sellers&icid=623089",
+          "text": "Best Sellers",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/promotions/nepro/18-1881/index.html?cm_sp=Head_Navigation-_-Under_Search_Bar-_-Newegg+Card&icid=779480&sitecode=neacol002&cm_sp=Head_Navigation-_-Under_Search_Bar-_-Newegg+Card&icid=779480",
+          "text": "Newegg Card",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/Digital-Games/Category/ID-377?cm_sp=Head_Navigation-_-Under_Search_Bar-_-Games&icid=794774",
+          "text": "Games",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/promotions/nepro/23-1322/index.html?cm_sp=Head_Navigation-_-Under_Search_Bar-_-Trade-In&icid=794618",
+          "text": "Trade-In",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://promotions.newegg.com/intel/26-0700/index.html?cm_sp=Homepage-Top2021-_-middle-_-Brand+promo%2fIntel%2fCPU%2fY-_-%2f%2fpromotions.newegg.com%2fintel%2f26-0700%2f1150x320.jpg&icid=801370&cm_sp=Homepage-Top2021-_-middle-_-Intel+Gamer+Days&icid=801479",
+          "text": "Intel Gamer Days",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.neweggbusiness.com/why-business-account?cm_sp=neweggbusiness-_-from-B2C-head",
+          "text": "Newegg Business",
+          "rel": null,
+          "internal": false,
+          "aria_label": null
+        },
+        {
+          "href": "https://kb.newegg.com",
+          "text": "Help Center",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/Components-Storage/Store/ID-1",
+          "text": "Components & Storage",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/Computer-Systems/Store/ID-3",
+          "text": "Computer Systems",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/Computer-Peripherals/Store/ID-380",
+          "text": "Computer Peripherals",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/Server-Components/Store/ID-5",
+          "text": "Server & Components",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/Appliances/Store/ID-13",
+          "text": "Appliances",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/Electronics/Store/ID-10",
+          "text": "Electronics",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/Gaming-VR/Store/ID-8",
+          "text": "Gaming & VR",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/Networking/Store/ID-889",
+          "text": "Networking",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/Smart-Home-Security/Store/ID-2",
+          "text": "Smart Home & Security",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/Office-Solutions/Store/ID-133",
+          "text": "Office Solutions",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/Software-Services/Store/ID-6",
+          "text": "Software & Services",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/Automotive-Tools/Store/ID-192",
+          "text": "Automotive & Tools",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/Home-Outdoors/Store/ID-15",
+          "text": "Home & Outdoors",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/Health-Sports/Store/ID-78",
+          "text": "Health & Sports",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/Toys-Drones-Maker/Store/ID-266",
+          "text": "Toys, Drones & Maker",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/Level-Up-Your-Rig/EventSaleStore/ID-1133?cm_sp=Homepage-Top2021-_-top-_-nepro%2f26-0817-_-%2f%2fpromotions.newegg.com%2fnepro%2f26-0817%2f1300x320.jpg",
+          "text": "",
+          "rel": null,
+          "internal": true,
+          "aria_label": "TECHTEMBER: Level Up Your Rig"
+        },
+        {
+          "href": "https://www.newegg.com/tools/combo-builder/1740?cm_sp=homepage-pers-home dynamiccombo_pccomponent-amd-takeover",
+          "text": "More options",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/amd-ryzen-7-9000-series-ryzen-7-9800x3d-granite-ridge-zen-5-socket-am5-desktop-cpu-processor/p/N82E16819113877?Item=N82E16819113877",
+          "text": "",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/amd-ryzen-7-9000-series-ryzen-7-9800x3d-granite-ridge-zen-5-socket-am5-desktop-cpu-processor/p/N82E16819113877?Item=N82E16819113877",
+          "text": "AMD Ryzen 7 9800X3D - Ryzen 7 9000 Series Zen 5 8-Core 5.2 GHz - Socket AM5 120W - AMD Radeon Graphics Desktop Processor - 100-100001084WOF",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/msi-mag-x870e-tomahawk-max-wifi-motherboard-amd-x870e-am5/p/N82E16813144743?Item=N82E16813144743",
+          "text": "",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/msi-mag-x870e-tomahawk-max-wifi-motherboard-amd-x870e-am5/p/N82E16813144743?Item=N82E16813144743",
+          "text": "MSI MAG X870E GAMING MAX WIFI Motherboard, ATX - Supports AMD Ryzen 9000 / 8000 / 7000 Processors, AM5 - DDR5 Memory Boost (up to 8200+ MT/s OC), PCIe 5.0 x16, M.2 Gen5, Wi-Fi 7, 5G LAN",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/team-group-t-force-vulcan-eco-32gb-2-x-16gb-ddr5-6400-pc5-51200-cas-latency-cl38-desktop-memory-silver/p/N82E16820985371?Item=N82E16820985371",
+          "text": "",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/team-group-t-force-vulcan-eco-32gb-2-x-16gb-ddr5-6400-pc5-51200-cas-latency-cl38-desktop-memory-silver/p/N82E16820985371?Item=N82E16820985371",
+          "text": "Team T-Force Vulcan ECO 32GB (2 x 16GB) 288-Pin PC RAM DDR5 6400 (PC5 51200) Desktop Memory Model FLESD532G6400HC38JDC01",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/tools/combo-builder/1740?cm_sp=homepage-pers-home dynamiccombo_pccomponent-intel-takeover",
+          "text": "More options",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/intel-core-i9-12th-gen-core-i9-12900k-alder-lake-lga-1700-desktop-cpu-processor/p/N82E16819118339?Item=N82E16819118339",
+          "text": "",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/intel-core-i9-12th-gen-core-i9-12900k-alder-lake-lga-1700-desktop-cpu-processor/p/N82E16819118339?Item=N82E16819118339",
+          "text": "Intel Core i9-12900K - Core i9 12th Gen Alder Lake 16-Core (8P+8E) 3.2 GHz LGA 1700 125W Intel UHD Graphics 770 Desktop Processor - BX8071512900K",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/msi-b760-gaming-plus-wifi-atx-motherboards-intel-intel-b760-lga-1700/p/N82E16813144600?Item=N82E16813144600",
+          "text": "",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/msi-b760-gaming-plus-wifi-atx-motherboards-intel-intel-b760-lga-1700/p/N82E16813144600?Item=N82E16813144600",
+          "text": "MSI B760 GAMING PLUS WIFI LGA 1700 (280) DDR5 ATX Motherboards - Intel,  SATA 6Gbps, Wi-Fi 6E, Bluetooth 5.3,  7.1 HD Audio, PCIe 4.0 x16, 2.5G LAN",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/team-group-t-force-vulcan-eco-32gb-2-x-16gb-ddr5-6400-pc5-51200-cas-latency-cl38-desktop-memory-silver/p/N82E16820985371?Item=N82E16820985371",
+          "text": "",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/team-group-t-force-vulcan-eco-32gb-2-x-16gb-ddr5-6400-pc5-51200-cas-latency-cl38-desktop-memory-silver/p/N82E16820985371?Item=N82E16820985371",
+          "text": "Team T-Force Vulcan ECO 32GB (2 x 16GB) 288-Pin PC RAM DDR5 6400 (PC5 51200) Desktop Memory Model FLESD532G6400HC38JDC01",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/tools/combo-builder/8402?cm_sp=homepage-pers-home dynamiccombo_desktop",
+          "text": "More options",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/stormcraft-gaming-desktop-pc-geforce-rtx-5080-intel-core-ultra-7-265f-32gb-ddr5-2tb-ssd-phantom/p/N82E16883420035?Item=N82E16883420035",
+          "text": "",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/stormcraft-gaming-desktop-pc-geforce-rtx-5080-intel-core-ultra-7-265f-32gb-ddr5-2tb-ssd-phantom/p/N82E16883420035?Item=N82E16883420035",
+          "text": "STORMCRAFT Gaming PC PHANTOM INTEL Core Ultra 7 265F NVIDIA RTX 5080 - AI Powered 32GB DDR5 6000MHz RGB 2TB NVMe SSD 360mm AIO 850W PSU Windows 11 Home-PH265F0CC-580N1",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/p/N82E16824026509?Item=N82E16824026509",
+          "text": "",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/p/N82E16824026509?Item=N82E16824026509",
+          "text": "LG UltraGear 27 inch QHD 2K 1440P 300Hz AMD FreeSync Premium & G-Sync Compatible 1ms HDR400 USB-C Built-in Speaker Gaming Computer Monitor with Height Adjustable, Swivel, Pivot & Tilt Stand 27G640A-B",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/p/0GA-0001-00DJ7?Item=0GA-0001-00DJ7",
+          "text": "",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/p/0GA-0001-00DJ7?Item=0GA-0001-00DJ7",
+          "text": "Logitech G PRO Mechanical Gaming Keyboard, Ultra Portable Tenkeyless Design, Detachable Micro USB Cable, 16.8 Million Color LIGHTSYNC RGB Backlit Keys",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/tools/combo-builder/8402?cm_sp=homepage-pers-home dynamiccombo_desktop2",
+          "text": "More options",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/stormcraft-sirius-gaming-desktop-pc-geforce-rtx-5060-intel-core-i5-14400f-16gb-ddr4-1tb-ssd-si1440fbb-560n2/p/N82E16883420040?Item=N82E16883420040",
+          "text": "",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/stormcraft-sirius-gaming-desktop-pc-geforce-rtx-5060-intel-core-i5-14400f-16gb-ddr4-1tb-ssd-si1440fbb-560n2/p/N82E16883420040?Item=N82E16883420040",
+          "text": "STORMCRAFT Gaming PC SIRIUS Intel Core i5-14400F NVIDIA GeForce RTX 5060 AI Powered 16GB 3200MHz RGB 1TB NVMe SSD 650W PSU Windows 11 Home - SI1440FBB-560N2",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/redragon-k556-red-switch-black/p/32N-0003-001A8?Item=32N-0003-001A8",
+          "text": "",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/redragon-k556-red-switch-black/p/32N-0003-001A8?Item=32N-0003-001A8",
+          "text": "Redragon K556 RGB LED Backlit Wired Mechanical Gaming Keyboard, Aluminum Base, 104 Standard Keys Linear & Quiet Red Switches",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/p/N82E16826197674?Item=N82E16826197674",
+          "text": "",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/p/N82E16826197674?Item=N82E16826197674",
+          "text": "Logitech PRO X2 SUPERSTRIKE LIGHTSPEED Wireless Gaming Mouse, Ultra-Fast Performance, Ultra Lightweight (61 g), Customizable Click Haptics, USB-C charging, for PC/Mac/Laptop",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/tools/combo-builder/8558?cm_sp=homepage-pers-home dynamiccombo_nasbuilder-1",
+          "text": "More options",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/p/N82E16822995008?Item=N82E16822995008",
+          "text": "",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/p/N82E16822995008?Item=N82E16822995008",
+          "text": "DH2300 UGREEN NASync DH2300 Storage Hub with HDMI Cable 2-bay, Rockchip RK3576 8-Core CPU, 4GB LPDDR4X, 1GB",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/seagate-ironwolf-st4000vn006-4tb-hard-drive-for-nas-systems-5400-rpm/p/N82E16822185030?Item=N82E16822185030",
+          "text": "",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/seagate-ironwolf-st4000vn006-4tb-hard-drive-for-nas-systems-5400-rpm/p/N82E16822185030?Item=N82E16822185030",
+          "text": "Seagate IronWolf ST4000VN006 4TB 5400 RPM 256MB Cache SATA 6.0Gb/s 3.5\" Internal Hard Drive HDD",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/seagate-ironwolf-st4000vn006-4tb-hard-drive-for-nas-systems-5400-rpm/p/N82E16822185030?Item=N82E16822185030",
+          "text": "",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/seagate-ironwolf-st4000vn006-4tb-hard-drive-for-nas-systems-5400-rpm/p/N82E16822185030?Item=N82E16822185030",
+          "text": "Seagate IronWolf ST4000VN006 4TB 5400 RPM 256MB Cache SATA 6.0Gb/s 3.5\" Internal Hard Drive HDD",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/tools/combo-builder/8558?cm_sp=homepage-pers-home dynamiccombo_nasbuilder-1",
+          "text": "More options",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/synology-ds225-2-bay-2gb-ddr4-intel-celeron-j4125-processor-diskless-system/p/N82E16822108853?Item=N82E16822108853",
+          "text": "",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/synology-ds225-2-bay-2gb-ddr4-intel-celeron-j4125-processor-diskless-system/p/N82E16822108853?Item=N82E16822108853",
+          "text": "Synology 2-bay DiskStation DS225+ (Diskless)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/synology-hat3300-plus-series-hat3300-4t-4tb-for-nas-systems-5400-rpm/p/N82E16822108832?Item=N82E16822108832",
+          "text": "",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/synology-hat3300-plus-series-hat3300-4t-4tb-for-nas-systems-5400-rpm/p/N82E16822108832?Item=N82E16822108832",
+          "text": "Synology 4TB HAT3300 Plus Series SATA III 3.5\" Internal NAS HDD (HAT3310-4T)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/synology-hat3300-plus-series-hat3300-4t-4tb-for-nas-systems-5400-rpm/p/N82E16822108832?Item=N82E16822108832",
+          "text": "",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/synology-hat3300-plus-series-hat3300-4t-4tb-for-nas-systems-5400-rpm/p/N82E16822108832?Item=N82E16822108832",
+          "text": "Synology 4TB HAT3300 Plus Series SATA III 3.5\" Internal NAS HDD (HAT3310-4T)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/Shell%20Shocker/EventSaleStore/ID-10381?cm_sp=homepage-pers-home shell shocker",
+          "text": "See all",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/Shell%20Shocker/EventSaleStore/ID-10381?cm_sp=homepage-pers-home shell shocker",
+          "text": "37 % off",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/Shell%20Shocker/EventSaleStore/ID-10381?cm_sp=homepage-pers-home shell shocker",
+          "text": "AMD Ryzen 5 5500 - Ryzen 5 5000 Series Cezanne (Zen 3) 6-Core 3.6 GHz Socket AM4 65W No Integrated Graphics Desktop CPU Processor - 100-100000457BOX",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/Shell%20Shocker/EventSaleStore/ID-10381?cm_sp=homepage-pers-home shell shocker",
+          "text": "See all",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/Shell%20Shocker/EventSaleStore/ID-10381?cm_sp=homepage-pers-home shell shocker",
+          "text": "",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/Shell%20Shocker/EventSaleStore/ID-10381?cm_sp=homepage-pers-home shell shocker",
+          "text": "Seagate IronWolf 12TB NAS Hard Drive 7200 RPM 256MB Cache SATA 6.0Gb/s CMR 3.5\" Internal HDD for RAID Network Attached Storage - ST12000VN0008",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/Shell%20Shocker/EventSaleStore/ID-10381?cm_sp=homepage-pers-home shell shocker",
+          "text": "See all",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/Shell%20Shocker/EventSaleStore/ID-10381?cm_sp=homepage-pers-home shell shocker",
+          "text": "27 % off",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/Shell%20Shocker/EventSaleStore/ID-10381?cm_sp=homepage-pers-home shell shocker",
+          "text": "Kingston NV3 M.2 2280 1TB PCIe 4.0 x4 NVMe Internal Solid State Drive (SSD) SNV3S/1000G  Up to 6000 MB/s",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/Shell%20Shocker/EventSaleStore/ID-10381?cm_sp=homepage-pers-home shell shocker",
+          "text": "See all",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/Shell%20Shocker/EventSaleStore/ID-10381?cm_sp=homepage-pers-home shell shocker",
+          "text": "5 % off",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/Shell%20Shocker/EventSaleStore/ID-10381?cm_sp=homepage-pers-home shell shocker",
+          "text": "GIGABYTE Gaming GeForce RTX 5080 Graphics Card GV-N5080GAMING OC-16GD",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/Shell%20Shocker/EventSaleStore/ID-10381?cm_sp=homepage-pers-home shell shocker",
+          "text": "See all",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/Shell%20Shocker/EventSaleStore/ID-10381?cm_sp=homepage-pers-home shell shocker",
+          "text": "10 % off",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/Shell%20Shocker/EventSaleStore/ID-10381?cm_sp=homepage-pers-home shell shocker",
+          "text": "Lowe's $100 Gift Card (Email Delivery)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/Newegg-Select/EventSaleStore/ID-1836?cm_sp=Homepage-Top2021-_-middle-_-CorpProgram%2f+NA%2f+NA%2f+N-_-%2f%2fpromotions.newegg.com%2fnepro%2f25-0119%2f1150x320.jpg&icid=802622",
+          "text": "",
+          "rel": null,
+          "internal": true,
+          "aria_label": "Newegg Select"
+        },
+        {
+          "href": "https://promotions.newegg.com/intel/26-0700/index.html?cm_sp=Homepage-Top2021-_-bottom-_-Brand+Promo%2fCPU%2fIntel%2fY-_-%2f%2fpromotions.newegg.com%2fintel%2f26-0700%2f1150x320.jpg&icid=802337",
+          "text": "",
+          "rel": null,
+          "internal": true,
+          "aria_label": "The Best Deals in Gaming"
+        },
+        {
+          "href": "https://www.newegg.com/TRYX/EventSaleStore/ID-10455?cm_sp=Homepage-Top2021-_-bottom-_-QSPEP%2fTRYP%2fACCS+PC%2fN-_-%2f%2fpromotions.newegg.com%2ftryx%2f26-0808%2f1150x320.png&icid=802715",
+          "text": "",
+          "rel": null,
+          "internal": true,
+          "aria_label": "The Third Dimension Unlocked"
+        },
+        {
+          "href": "https://www.newegg.com/THE-fastest-Window-PCs/EventSaleStore/ID-1818?cm_sp=Homepage-Top2021-_-bottom-_-Brand+Promo%2fAcer%2fNB%2fY-_-%2f%2fpromotions.newegg.com%2facer%2f26-0806%2f1150x320.jpg&icid=802724",
+          "text": "",
+          "rel": null,
+          "internal": true,
+          "aria_label": "Get the processor your pc wishes it had"
+        },
+        {
+          "href": "https://www.newegg.com/asus-pg32ucwm-32-31-5-actual-screen-size-4k-240hz-rog-swift-oled-glossy/p/N82E16824281434?Item=N82E16824281434&cm_sp=Homepage-Top2021-_-bottom-_-Brand+Promo%2fASUS%2fMonitor%2fN-_-%2f%2fpromotions.newegg.com%2fasus%2f26-0807%2f1150x320.jpg&icid=802729",
+          "text": "",
+          "rel": null,
+          "internal": true,
+          "aria_label": "ASUS Monitors"
+        },
+        {
+          "href": "https://www.newegg.com/lxz-r7go-gaming-desktop-pcs-radeon-rx-580-amd-ryzen-7-4700le-16gb-ddr4-512gb-nvme-ssd-black/p/3D5-007U-00028?Item=9SIC1CNKYH5769&cm_sp=Homepage_SS-_-P1_9SIC1CNKYH5769-_-09102026#IsFeedbackTab",
+          "text": "(108)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/lxz-r7go-gaming-desktop-pcs-radeon-rx-580-amd-ryzen-7-4700le-16gb-ddr4-512gb-nvme-ssd-black/p/3D5-007U-00028?Item=9SIC1CNKYH5769&cm_sp=Homepage_SS-_-P1_9SIC1CNKYH5769-_-09102026",
+          "text": "LXZ Gaming PC Prebuilt Gaming Desktop R7 4700LE, Radeon RX 580,16GB DDR4 RAM, 512GB NVMe SSD,Prebuilt Gaming PC Tower, Supports WIFI 6, Bluetooth 5.2",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/lxz-r7go-gaming-desktop-pcs-radeon-rx-580-amd-ryzen-7-4700le-16gb-ddr4-512gb-nvme-ssd-black/p/3D5-007U-00028?Item=9SIC1CNKYH5769&cm_sp=Homepage_SS-_-P1_9SIC1CNKYH5769-_-09102026",
+          "text": "",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/msi-crosshair-a16-hx-16-0-geforce-rtx-5060-laptop-gpu-2-4-5-3ghz-qhd-32gb-memory-1tb-nvme-ssd-gen4x4-ssd/p/N82E16834156876?Item=N82E16834156876&cm_sp=Homepage_SS-_-P2_34-156-876-_-09102026#IsFeedbackTab",
+          "text": "(15)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/msi-crosshair-a16-hx-16-0-geforce-rtx-5060-laptop-gpu-2-4-5-3ghz-qhd-32gb-memory-1tb-nvme-ssd-gen4x4-ssd/p/N82E16834156876?Item=N82E16834156876&cm_sp=Homepage_SS-_-P2_34-156-876-_-09102026",
+          "text": "MSI CROSSHAIR A16 Gaming Laptop - 16\" QHD+ 240hz - AMD Ryzen 9-8940HX - GeForce RTX 5060 - 32GB DDR5 RAM -  1TB SSD (D8WFKG-015US)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/msi-crosshair-a16-hx-16-0-geforce-rtx-5060-laptop-gpu-2-4-5-3ghz-qhd-32gb-memory-1tb-nvme-ssd-gen4x4-ssd/p/N82E16834156876?Item=N82E16834156876&cm_sp=Homepage_SS-_-P2_34-156-876-_-09102026",
+          "text": "",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/Newegg-Select/EventSaleStore/ID-1836",
+          "text": "Newegg Select",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/corsair-vengeance-rgb-32gb-ddr5-6000-cas-latency-cl36-desktop-memory-black/p/N82E16820236991?Item=N82E16820236991&cm_sp=Homepage_SS-_-P3_20-236-991-_-09102026#IsFeedbackTab",
+          "text": "(466)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/corsair-vengeance-rgb-32gb-ddr5-6000-cas-latency-cl36-desktop-memory-black/p/N82E16820236991?Item=N82E16820236991&cm_sp=Homepage_SS-_-P3_20-236-991-_-09102026",
+          "text": "CORSAIR Vengeance RGB 32GB (2 x 16GB) 288-Pin PC RAM DDR5 6000 (PC5 48000) Desktop Memory Model CMH32GX5M2E6000C36",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/corsair-vengeance-rgb-32gb-ddr5-6000-cas-latency-cl36-desktop-memory-black/p/N82E16820236991?Item=N82E16820236991&cm_sp=Homepage_SS-_-P3_20-236-991-_-09102026",
+          "text": "",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/p/2M1-0096-001A2?Item=9SIC3S3M0E4903&cm_sp=Homepage_SS-_-P4_9SIC3S3M0E4903-_-09102026",
+          "text": "Insta360 Luna Ultra Creator Package - 8K Vlogging Camera with Dual Leica Lenses, 12× Zoom, 1\" Sensor, Detachable 2\" Touchscreen, Triple AI Chip, Pocket Gimbal Camera for Vlog Photography* USA In Stock",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/p/2M1-0096-001A2?Item=9SIC3S3M0E4903&cm_sp=Homepage_SS-_-P4_9SIC3S3M0E4903-_-09102026",
+          "text": "",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/black-dowinx-ls-6658j-chair/p/358-007U-00143?Item=9SIAKUYKRF4701&cm_sp=Homepage_SS-_-P5_9SIAKUYKRF4701-_-09102026#IsFeedbackTab",
+          "text": "(9)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/black-dowinx-ls-6658j-chair/p/358-007U-00143?Item=9SIAKUYKRF4701&cm_sp=Homepage_SS-_-P5_9SIAKUYKRF4701-_-09102026",
+          "text": "Dowinx Ergonomic Gaming Chair with Footrest, Reclining Office Chair with Massage Lumbar Support, Adjustable Height & Headrest Pillow, Heavy Duty 330lbs, Comfortable for Streaming Long Gaming, White",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/black-dowinx-ls-6658j-chair/p/358-007U-00143?Item=9SIAKUYKRF4701&cm_sp=Homepage_SS-_-P5_9SIAKUYKRF4701-_-09102026",
+          "text": "",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/Shell-Shocker/EventSaleStore/ID-10381?cm_sp=Homepage_shellshocker-_-SeeAll",
+          "text": "See all deals",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/PC-Components-Hub/EventSaleStore/ID-970?Order=1&icid=802700&cm_sp=homepage_carousel_p3-pccomponentshub-_-seemore",
+          "text": "See More",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/Laptop-Notebook/Category/ID-223?cm_sp=Homepage-Tile_Module_Banner-_-System%2fLaptops-_-%2f%2fpromotions.newegg.com%2ftile-module-banner%2fSystem%2fLaptops%2fSystem-Laptops.png&icid=793722",
+          "text": "Shop Deals",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/Memory/Category/ID-17?cm_sp=Homepage-Tile_Module_Banner-_-Components_Storage%2fMemory+(RAM)-_-%2f%2fpromotions.newegg.com%2ftile-module-banner%2fComponents_Storage%2fMemory%2520(RAM)%2fComponents_Storage-Memory%2520(RAM).png&icid=793728",
+          "text": "Memory (RAM)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/GPU-Video-Graphics-Device/Category/ID-38?cm_sp=Homepage-Tile_Module_Banner-_-Components_Storage%2fGraphics+Cards-_-%2f%2fpromotions.newegg.com%2ftile-module-banner%2fComponents_Storage%2fGraphics%2520Cards%2fComponents_Storage-Graphics%2520Cards.png&icid=793724",
+          "text": "Graphics Card",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/SSD/Category/ID-119?cm_sp=Homepage-Tile_Module_Banner-_-Components_Storage%2fSSD-_-%2f%2fpromotions.newegg.com%2ftile-module-banner%2fComponents_Storage%2fSSD%2fComponents_Storage-SSD.png&icid=793725",
+          "text": "SSD",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/Motherboard/Category/ID-20?cm_sp=Homepage-Tile_Module_Banner-_-Components_Storage%2fMotherboard-_-%2f%2fpromotions.newegg.com%2ftile-module-banner%2fComponents_Storage%2fMotherboard%2fComponents_Storage-Motherboard.png&icid=793981",
+          "text": "Motherboard",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/Smart-Home-Automation/Category/ID-404?cm_sp=Homepage-Tile_Module_Banner-_-Non-core%2fSmart+Home-_-%2f%2fpromotions.newegg.com%2ftile-module-banner%2fNon-core%2fSmart%2520Home%2fNon-core-Smart%2520Home.png&icid=793586",
+          "text": "Smart Home",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/Health-Sports/Store/ID-78?cm_sp=Homepage-Tile_Module_Banner-_-Non-core%2fHealth_Sports-_-%2f%2fpromotions.newegg.com%2ftile-module-banner%2fNon-core%2fHealth_Sports%2fNon-core-Health_Sports.png&icid=793732",
+          "text": "Health & Sports",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/Electronics/Store/ID-10?cm_sp=Homepage-Tile_Module_Banner-_-Non-core%2fConsumer%2520Electronics-_-%2f%2fpromotions.newegg.com%2ftile-module-banner%2fNon-core%2fConsumer%2520Electronics%2fNon-core-Consumer%2520Electronics.png&icid=793729",
+          "text": "Consumer Electronics",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/USB-Flash-Drive-Memory-Card/Category/ID-324?cm_sp=Homepage-Tile_Module_Banner-_-Components_Storage%2fFlash_Storage-_-%2f%2fpromotions.newegg.com%2ftile-module-banner%2fComponents_Storage%2fFlash_Storage%2fComponents-Flash_Storage.png&icid=796330",
+          "text": "Flash Storage",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/Digital-Games/Category/ID-377?cm_sp=Homepage-Tile_Module_Banner-_-Non-core%2fDigital_Games-_-%2f%2fpromotions.newegg.com%2ftile-module-banner%2fNon-core%2fDigital_Games%2fNon-core-Digital_Games.png&icid=793734",
+          "text": "Digital Games",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/Gift-Cards/Category/ID-293?cm_sp=Homepage-Tile_Module_Banner-_-Non-core%2fGift+Cards-_-%2f%2fpromotions.newegg.com%2ftile-module-banner%2fNon-core%2fGift%2520Cards%2fNon-core-Gift%2520Cards.png&icid=793173",
+          "text": "Gift Cards",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/promotions/Asrock/24-1040/index.html?cm_sp=Homepage-Above_The_Fold-_-QSPEP%2fASRock%2fAll+categories%2fN-_-%2f%2fpromotions.newegg.com%2fASRock%2f24-1040%2f1920x120.jpg&icid=802738",
+          "text": "",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/Acer-Nitro-V-15/EventSaleStore/ID-6242?cm_sp=Homepage-Above_The_Fold-_-Brand+Promo%2fAcer%2fNB%2fY-_-%2f%2fpromotions.newegg.com%2facer%2f26-0543%2f1920x120.jpg&icid=802721",
+          "text": "",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/d/Best-Sellers/Gaming-Desktop-PC/s/ID-3742?icid=802653&cm_sp=homepage_carousel_p4-gamingdesktoppc-_-seemore",
+          "text": "See More",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/d/Best-Sellers/Water-Liquid-Cooling/s/ID-575?icid=802654&cm_sp=homepage_carousel_p5-water/liquidcooling-_-seemore",
+          "text": "See More",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/d/Best-Sellers/Gaming-Headsets/s/ID-3767?icid=802655&cm_sp=homepage_carousel_p6-gamingheadsets-_-seemore",
+          "text": "See More",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/AI-PC-Store?cm_sp=Homepage-Newegg_Feature_Big-_-nepro%2f24-0413-_-%2f%2fpromotions.newegg.com%2fnepro%2f24-0413%2f420x500.jpg&icid=772280",
+          "text": "",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/d/Lowest-Price-In-30-Days?cm_sp=Homepage-Newegg_Feature_Small-_-nepro%2f25-0323-_-%2f%2fpromotions.newegg.com%2fnepro%2f25-0323%2f420x240.jpg&icid=782976",
+          "text": "",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/d/best-sellers?cm_sp=Homepage-Newegg_Feature_Small-_-24-0282%2fBest_Sellers-_-%2f%2fpromotions.newegg.com%2fnepro%2f24-0282%2fBest_Sellers%2f420x240.jpg&icid=772283",
+          "text": "",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://promotions.newegg.com/nepro/24-0162/LP/index.html?cm_sp=Homepage-Newegg_Feature_Big-_-nepro%2f24-0162-_-%2f%2fpromotions.newegg.com%2fnepro%2f24-0162%2f420x500.jpg&icid=773395",
+          "text": "",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/Newegg-Select/EventSaleStore/ID-1836?cm_sp=Homepage-Newegg_Feature_Small-_-nepro%2f25-0119-_-%2f%2fpromotions.newegg.com%2fnepro%2f25-0119%2f420x240.jpg&icid=772284",
+          "text": "",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/promotions/nepro/24-0040/index.html?cm_sp=Homepage-Newegg_Feature_Small-_-24-0282%2fNewegg_Refreshed-_-%2f%2fpromotions.newegg.com%2fnepro%2f24-0282%2fNewegg_Refreshed%2f420x240.jpg&icid=772285",
+          "text": "",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/d/ProductSort/BrandList?Depa=0",
+          "text": "See More",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/ABS/BrandStore/ID-8484?cm_sp=homepage_popular+brand-_-ABS%26cm_sp%3dHomepage-Feature_Brands-_-%2f%2fpromotions.newegg.com%2fnepro%2f24-0282%2fFeatured_Brands%2fABS.jpg&icid=772286",
+          "text": "",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/AMD/BrandStore/ID-1028?cm_sp=Homepage-Feature_Brands-_-24-0282%2fFeatured_Brands-_-%2f%2fpromotions.newegg.com%2fnepro%2f24-0282%2fFeatured_Brands%2fAMD.jpg&icid=772287",
+          "text": "",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/ASUS/BrandStore/ID-1315?cm_sp=Homepage-Feature_Brands-_-24-0282%2fFeatured_Brands-_-%2f%2fpromotions.newegg.com%2fnepro%2f24-0282%2fFeatured_Brands%2fASUS.jpg&icid=772288",
+          "text": "",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/ASRock-Rack/BrandStore/ID-128228?cm_sp=Homepage-Feature_Brands-_-24-0282%2fFeatured_Brands-_-%2f%2fpromotions.newegg.com%2fnepro%2f24-0282%2fFeatured_Brands%2fASRock-Rack.jpg&icid=772290",
+          "text": "",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/GIGABYTE/BrandStore/ID-1314?cm_sp=Homepage-Feature_Brands-_-24-0282%2fFeatured_Brands-_-%2f%2fpromotions.newegg.com%2fnepro%2f24-0282%2fFeatured_Brands%2fGIGABYTE.jpg&icid=772289",
+          "text": "",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/Intel/BrandStore/ID-1157?cm_sp=Homepage-Feature_Brands-_-24-0282%2fFeatured_Brands-_-%2f%2fpromotions.newegg.com%2fnepro%2f24-0282%2fFeatured_Brands%2fIntel.jpg&icid=772291",
+          "text": "",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/MSI/BrandStore/ID-1312?cm_sp=Homepage-Feature_Brands-_-24-0282%2fFeatured_Brands-_-%2f%2fpromotions.newegg.com%2fnepro%2f24-0282%2fFeatured_Brands%2fMSI.jpg&icid=772300",
+          "text": "",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/Meta-Quest/BrandStore/ID-145018?cm_sp=Homepage-Feature_Brands-_-24-0282%2fFeatured_Brands-_-%2f%2fpromotions.newegg.com%2fnepro%2f24-0282%2fFeatured_Brands%2fMeta-Quest.jpg&icid=772301",
+          "text": "",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/NVIDIA/BrandStore/ID-1441?cm_sp=Homepage-Feature_Brands-_-24-0282%2fFeatured_Brands-_-%2f%2fpromotions.newegg.com%2fnepro%2f24-0282%2fFeatured_Brands%2fNVIDIA.jpg&icid=772302",
+          "text": "",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/SAMSUNG/BrandStore/ID-1077?cm_sp=Homepage-Feature_Brands-_-24-0282%2fFeatured_Brands-_-%2f%2fpromotions.newegg.com%2fnepro%2f24-0282%2fFeatured_Brands%2fSamsung.jpg&icid=772303",
+          "text": "",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/Seagate/BrandStore/ID-1305?cm_sp=Homepage-Feature_Brands-_-24-0282%2fFeatured_Brands-_-%2f%2fpromotions.newegg.com%2fnepro%2f24-0282%2fFeatured_Brands%2fSeagate.jpg&icid=772304",
+          "text": "",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/Office-Solutions/Store/ID-133",
+          "text": "home office",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/Cell-Phones/Category/ID-450",
+          "text": "mobile device",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/Home-Audio-Home-Theater/Category/ID-31",
+          "text": "home entertainment                        system",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/tools/laptop-finder",
+          "text": "Laptop Finder",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/tools/gaming-pc-finder",
+          "text": "Gaming PC Finder",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/tools/power-supply-calculator",
+          "text": "Power Supply                        Calculator",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/tools/custom-pc-builder",
+          "text": "PC Builder",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/tools/nas-builder",
+          "text": "NAS solutions",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/server-system-configurator",
+          "text": "Server Systems",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/tools/memory-finder",
+          "text": "Memory Finder",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/tools",
+          "text": "suite of tools",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/Components-Storage/Store/ID-1",
+          "text": "PC components",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/Electronics/Store/ID-10",
+          "text": "electronics",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/Smart-Home-Security/Store/ID-2",
+          "text": "smart home devices",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/Gaming-VR/Store/ID-8",
+          "text": "gaming products",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/sellers/index.php/marketing-newegg-studios/",
+          "text": "Newegg Studios",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://promotions.newegg.com/neemail/latest/index-landing.html?cm_sp=emailsub-_-homepage-_-promo",
+          "text": "View Latest Email Deals",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/share/desktoppagefooter",
+          "text": "",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://kb.newegg.com",
+          "text": "Help Center",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://secure.newegg.com/orders/find?Source=1",
+          "text": "Track an Order",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://secure.newegg.com/orders/find?Source=2",
+          "text": "Return an Item",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/promotions/nepro/22-0073/index.html?cm_sp=cs_menu-_-return_policy",
+          "text": "Return Policy",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://kb.newegg.com/Article/Index/12/3?id=1166",
+          "text": "Privacy & Security",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://secure.newegg.com/login/signin",
+          "text": "Login/Register",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/d/browsing-history",
+          "text": "Browsing History",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://secure.newegg.com/orders/list",
+          "text": "Order History",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://secure.newegg.com/returns/list",
+          "text": "Returns History",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://secure.newegg.com/account/addressbook",
+          "text": "Address Book",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://secure.newegg.com/login/signin?nextpage=https%3A%2F%2Fsecure.newegg.com%2FwishList%2Fm",
+          "text": "Wish Lists",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://secure.newegg.com/login/signin?nextpage=https%3A%2F%2Fsecure.newegg.com%2Fpcbuilder%2Fm",
+          "text": "My Build Lists",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://secure.newegg.com/login/signin?nextpage=https%3A%2F%2Fsecure.newegg.com%2Fcompletedbuilds%2Fm",
+          "text": "My Build Showcase",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://secure.newegg.com/notifications/guestemail",
+          "text": "Email Notifications",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://secure.newegg.com/orders/subscription",
+          "text": "Subscriptions Orders",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://secure.newegg.com/notifications/autonotify",
+          "text": "Auto Notifications",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/corporate/about",
+          "text": "About Newegg",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://investors.newegg.com/",
+          "text": "Investor Relations",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/corporate/media-center",
+          "text": "Media Center",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/NSIP",
+          "text": "Newegg Student Internship Program",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/gamerzone",
+          "text": "Gamer Zone",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://kb.newegg.com/knowledge-base/press-inquiries/",
+          "text": "Press Inquiries",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://newegg.com/careers",
+          "text": "Newegg Careers",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/insider/",
+          "text": "Newegg Insider",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://partner.newegg.com/apply/vendors",
+          "text": "Become a supplier",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/sellers/?cm_sp=sell_on_newegg_footer",
+          "text": "Sell on Newegg.com",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.neweggbusiness.com/why-business-account?cm_sp=for_your_business_footer",
+          "text": "For Your Business",
+          "rel": null,
+          "internal": false,
+          "aria_label": null
+        },
+        {
+          "href": "https://partner.newegg.com/?cm_sp=newegg_partner_services_footer",
+          "text": "Newegg Partner Services",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://promotions.newegg.com/affiliate_program/affiliate.html?cm_sp=Homepage-bottom-_-affiliates",
+          "text": "Become an Affiliate",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/creators?cm_sp=Homepage-bottom-_-creators",
+          "text": "Newegg Creators",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/category",
+          "text": "Site Map",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/d/ProductSort/BrandList?Depa=0",
+          "text": "Shop by Brand",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/p/pl?N=4803%204801",
+          "text": "Rebates",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/mobile",
+          "text": "Mobile Apps",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://promotions.newegg.com/tools/gptneweggapp/lp/newegg-chatgpt-landing.html",
+          "text": "ChatGPT App",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/studentstore?cm_sp=newegg_footer-_-studentstore",
+          "text": "Student Discount",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/promotions/nepro/18-1881/index.html?cm_sp=newegg_footer-_-neweggstorecreditcard&sitecode=neacfl002",
+          "text": "Newegg Store Credit Card",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/tools/custom-pc-builder/showcase/featured-builds",
+          "text": "Build Showcases",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/promotions/nepro/25-1020/index.html?cm_sp=newegg_footer-_-leasing",
+          "text": "Progressive Leasing",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.newegg.com/promotions/nepro/23-1322/index.html?cm_sp=newegg_footer-_-tradein",
+          "text": "Trade In",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.neweggbusiness.com/?cm_sp=newegg_com_footer",
+          "text": "Newegg Business",
+          "rel": null,
+          "internal": false,
+          "aria_label": null
+        },
+        {
+          "href": "https://promotions.newegg.com/international/global/index.html",
+          "text": "Newegg Global",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.abs.com/",
+          "text": "ABS",
+          "rel": null,
+          "internal": false,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.rosewill.com/",
+          "text": "Rosewill",
+          "rel": null,
+          "internal": false,
+          "aria_label": null
+        },
+        {
+          "href": "https://kb.newegg.com/knowledge-base/policy-agreement/",
+          "text": "Terms & Conditions",
+          "rel": "nofollow",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://kb.newegg.com/knowledge-base/privacy-policy-newegg",
+          "text": "Privacy Policy",
+          "rel": "nofollow",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://kb.newegg.com/knowledge-base/ca-transparency-in-supply-chains-act",
+          "text": "Calif. Transparency in Supply Chains Act",
+          "rel": "nofollow",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.cigna.com/legal/compliance/machine-readable-files",
+          "text": "Cigna Transparency in Coverage (MRF)",
+          "rel": "nofollow",
+          "internal": false,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.reddit.com/r/Newegg/",
+          "text": "Reddit",
+          "rel": null,
+          "internal": false,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.facebook.com/Newegg",
+          "text": "Facebook",
+          "rel": "noopener noreferrer",
+          "internal": false,
+          "aria_label": "Facebook"
+        },
+        {
+          "href": "https://x.com/Newegg",
+          "text": "X",
+          "rel": "noopener noreferrer",
+          "internal": false,
+          "aria_label": "X"
+        },
+        {
+          "href": "https://www.instagram.com/newegg/",
+          "text": "Instagram",
+          "rel": "noopener noreferrer",
+          "internal": false,
+          "aria_label": "Instagram"
+        },
+        {
+          "href": "https://www.linkedin.com/company/newegg-com",
+          "text": "LinkedIn",
+          "rel": "noopener noreferrer",
+          "internal": false,
+          "aria_label": "LinkedIn"
+        },
+        {
+          "href": "https://www.pinterest.com/newegg/",
+          "text": "Pinterest",
+          "rel": "noopener noreferrer",
+          "internal": false,
+          "aria_label": "Pinterest"
+        },
+        {
+          "href": "https://www.youtube.com/user/newegg",
+          "text": "YouTube",
+          "rel": "noopener noreferrer",
+          "internal": false,
+          "aria_label": "YouTube"
+        },
+        {
+          "href": "https://www.twitch.tv/newegg",
+          "text": "Twitch",
+          "rel": "noopener noreferrer",
+          "internal": false,
+          "aria_label": "Twitch"
+        },
+        {
+          "href": "https://discordapp.com/invite/newegg",
+          "text": "Discord",
+          "rel": "noopener noreferrer",
+          "internal": false,
+          "aria_label": "Discord"
+        },
+        {
+          "href": "https://www.tiktok.com/@newegg",
+          "text": "Tiktok",
+          "rel": null,
+          "internal": false,
+          "aria_label": null
+        }
+      ],
+      "outbound_profile_links": [
+        "https://www.neweggbusiness.com/why-business-account?cm_sp=neweggbusiness-_-from-B2C-head",
+        "https://www.neweggbusiness.com/why-business-account?cm_sp=for_your_business_footer",
+        "https://www.neweggbusiness.com/?cm_sp=newegg_com_footer",
+        "https://www.abs.com/",
+        "https://www.rosewill.com/",
+        "https://www.cigna.com/legal/compliance/machine-readable-files",
+        "https://www.reddit.com/r/Newegg/",
+        "https://www.facebook.com/Newegg",
+        "https://x.com/Newegg",
+        "https://www.instagram.com/newegg/",
+        "https://www.linkedin.com/company/newegg-com",
+        "https://www.pinterest.com/newegg/",
+        "https://www.youtube.com/user/newegg",
+        "https://www.twitch.tv/newegg",
+        "https://discordapp.com/invite/newegg",
+        "https://www.tiktok.com/@newegg"
+      ],
+      "images": [
+        {
+          "src": "https://c1.neweggimages.com/WebResource/Themes/Nest/logos/Newegg_full_color_logo_RGB.SVG",
+          "alt": "Newegg",
+          "decorative_hint": false,
+          "width_attr": "297",
+          "height_attr": "150",
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "https://c1.neweggimages.com/WebResource/Themes/Nest/images/icons/AI-spark1.png",
+          "alt": "AI Spark",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "https://c1.neweggimages.com/webresource/WebResource/Images/menu_icon/components_storage.svg",
+          "alt": "Components & Storage",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "https://c1.neweggimages.com/webresource/WebResource/Images/menu_icon/computer_systems.svg",
+          "alt": "Computer Systems",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "https://c1.neweggimages.com/webresource/WebResource/Images/menu_icon/computer_peripherals.svg",
+          "alt": "Computer Peripherals",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "https://c1.neweggimages.com/webresource/WebResource/Images/menu_icon/Server_Components.svg",
+          "alt": "Server & Components",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "https://c1.neweggimages.com/webresource/WebResource/Images/menu_icon/more.svg",
+          "alt": "AI Hardware",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "https://c1.neweggimages.com/webresource/WebResource/Images/menu_icon/appliances.svg",
+          "alt": "Appliances",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "https://c1.neweggimages.com/webresource/WebResource/Images/menu_icon/electronics.svg",
+          "alt": "Electronics",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "https://c1.neweggimages.com/webresource/WebResource/Images/menu_icon/gaming_vr.svg",
+          "alt": "Gaming & VR",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "https://c1.neweggimages.com/webresource/WebResource/Images/menu_icon/Networking.svg",
+          "alt": "Networking",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "https://c1.neweggimages.com/webresource/WebResource/Images/menu_icon/smart_home_security.svg",
+          "alt": "Smart Home & Security",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "https://c1.neweggimages.com/webresource/WebResource/Images/menu_icon/Office_Solutions.svg",
+          "alt": "Office Solutions",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "https://c1.neweggimages.com/webresource/WebResource/Images/menu_icon/Software_Services.svg",
+          "alt": "Software & Services",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "https://c1.neweggimages.com/webresource/WebResource/Images/menu_icon/automotive_tools.svg",
+          "alt": "Automotive & Tools",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "https://c1.neweggimages.com/webresource/WebResource/Images/menu_icon/Home_Outdoors.svg",
+          "alt": "Home & Outdoors",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "https://c1.neweggimages.com/webresource/WebResource/Images/menu_icon/more.svg",
+          "alt": "More",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "https://c1.neweggimages.com/webresource/WebResource/Images/menu_icon/health&sports.svg",
+          "alt": "Health & Sports",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "https://c1.neweggimages.com/webresource/WebResource/Images/menu_icon/Toys_Drones_Maker.svg",
+          "alt": "Toys, Drones & Maker",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "https://promotions.newegg.com/nepro/26-0817/1300x320.jpg",
+          "alt": "video preview image",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "https://c1.neweggimages.com/webresource/themes/Nest/logos/amd_white.png",
+          "alt": "Amd",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "https://c1.neweggimages.com/nobgproductcompressall300/19-113-877-01.png",
+          "alt": "AMD Ryzen 7 9800X3D - Ryzen 7 9000 Series Zen 5 8-Core 5.2 GHz - Socket AM5 120W - AMD Radeon Graphics Desktop Processor - 100-100001084WOF",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "https://c1.neweggimages.com/nobgproductcompressall300/13-144-743-06.jpg",
+          "alt": "MSI MAG X870E GAMING MAX WIFI Motherboard, ATX - Supports AMD Ryzen 9000 / 8000 / 7000 Processors, AM5 - DDR5 Memory Boost (up to 8200+ MT/s OC), PCIe 5.0 x16, M.2 Gen5, Wi-Fi 7, 5G LAN",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "https://c1.neweggimages.com/nobgproductcompressall300/20-985-262-01.jpg",
+          "alt": "Team T-Force Vulcan ECO 32GB (2 x 16GB) 288-Pin PC RAM DDR5 6400 (PC5 51200) Desktop Memory Model FLESD532G6400HC38JDC01",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "https://c1.neweggimages.com/webresource/themes/Nest/logos/intel-w-s.png",
+          "alt": "Intel",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "https://c1.neweggimages.com/nobgproductcompressall300/19-118-339-08.jpg",
+          "alt": "Intel Core i9-12900K - Core i9 12th Gen Alder Lake 16-Core (8P+8E) 3.2 GHz LGA 1700 125W Intel UHD Graphics 770 Desktop Processor - BX8071512900K",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "https://c1.neweggimages.com/nobgproductcompressall300/13-144-600-04.png",
+          "alt": "MSI B760 GAMING PLUS WIFI LGA 1700 (280) DDR5 ATX Motherboards - Intel,  SATA 6Gbps, Wi-Fi 6E, Bluetooth 5.3,  7.1 HD Audio, PCIe 4.0 x16, 2.5G LAN",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "https://c1.neweggimages.com/nobgproductcompressall300/20-985-262-01.jpg",
+          "alt": "Team T-Force Vulcan ECO 32GB (2 x 16GB) 288-Pin PC RAM DDR5 6400 (PC5 51200) Desktop Memory Model FLESD532G6400HC38JDC01",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "https://c1.neweggimages.com/nobgproductcompressall300/83-420-035-29.png",
+          "alt": "STORMCRAFT Gaming PC PHANTOM INTEL Core Ultra 7 265F NVIDIA RTX 5080 - AI Powered 32GB DDR5 6000MHz RGB 2TB NVMe SSD 360mm AIO 850W PSU Windows 11 Home-PH265F0CC-580N1",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "https://c1.neweggimages.com/nobgproductcompressall300/24-026-509-01.jpg",
+          "alt": "LG UltraGear 27 inch QHD 2K 1440P 300Hz AMD FreeSync Premium & G-Sync Compatible 1ms HDR400 USB-C Built-in Speaker Gaming Computer Monitor with Height Adjustable, Swivel, Pivot & Tilt Stand 27G640A-B",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "https://c1.neweggimages.com/nobgproductcompressall300/A86ED2104094EOXB.jpg",
+          "alt": "Logitech G PRO Mechanical Gaming Keyboard, Ultra Portable Tenkeyless Design, Detachable Micro USB Cable, 16.8 Million Color LIGHTSYNC RGB Backlit Keys",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "https://c1.neweggimages.com/nobgproductcompressall300/83-420-040-26.jpg",
+          "alt": "STORMCRAFT Gaming PC SIRIUS Intel Core i5-14400F NVIDIA GeForce RTX 5060 AI Powered 16GB 3200MHz RGB 1TB NVMe SSD 650W PSU Windows 11 Home - SI1440FBB-560N2",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "https://c1.neweggimages.com/nobgproductcompressall300/AWATS2206280FPFYY56.jpg",
+          "alt": "Redragon K556 RGB LED Backlit Wired Mechanical Gaming Keyboard, Aluminum Base, 104 Standard Keys Linear & Quiet Red Switches",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "https://c1.neweggimages.com/nobgproductcompressall300/26-197-674-02.jpg",
+          "alt": "Logitech PRO X2 SUPERSTRIKE LIGHTSPEED Wireless Gaming Mouse, Ultra-Fast Performance, Ultra Lightweight (61 g), Customizable Click Haptics, USB-C charging, for PC/Mac/Laptop",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "https://c1.neweggimages.com/nobgproductcompressall300/22-995-008-04.jpg",
+          "alt": "DH2300 UGREEN NASync DH2300 Storage Hub with HDMI Cable 2-bay, Rockchip RK3576 8-Core CPU, 4GB LPDDR4X, 1GB",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "https://c1.neweggimages.com/nobgproductcompressall300/22-185-030-S01.jpg",
+          "alt": "Seagate IronWolf ST4000VN006 4TB 5400 RPM 256MB Cache SATA 6.0Gb/s 3.5\" Internal Hard Drive HDD",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "https://c1.neweggimages.com/nobgproductcompressall300/22-185-030-S01.jpg",
+          "alt": "Seagate IronWolf ST4000VN006 4TB 5400 RPM 256MB Cache SATA 6.0Gb/s 3.5\" Internal Hard Drive HDD",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "https://c1.neweggimages.com/nobgproductcompressall300/22-108-853-01.jpg",
+          "alt": "Synology 2-bay DiskStation DS225+ (Diskless)",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "https://c1.neweggimages.com/nobgproductcompressall300/22-108-832-01.png",
+          "alt": "Synology 4TB HAT3300 Plus Series SATA III 3.5\" Internal NAS HDD (HAT3310-4T)",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "https://c1.neweggimages.com/nobgproductcompressall300/22-108-832-01.png",
+          "alt": "Synology 4TB HAT3300 Plus Series SATA III 3.5\" Internal NAS HDD (HAT3310-4T)",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "https://c1.neweggimages.com/WebResource/Themes/Nest/images/icons/shellShocker_logo.png",
+          "alt": "shellShocker",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "https://c1.neweggimages.com/nobgproductcompressall300/19-113-737-V03.jpg",
+          "alt": "AMD Ryzen 5 5500 - Ryzen 5 5000 Series Cezanne (Zen 3) 6-Core 3.6 GHz Socket AM4 65W No Integrated Graphics Desktop CPU Processor - 100-100000457BOX",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "https://c1.neweggimages.com/WebResource/Themes/Nest/images/icons/shellShocker_logo.png",
+          "alt": "shellShocker",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "https://c1.neweggimages.com/nobgproductcompressall300/1JW-001N-00027-V01.jpg",
+          "alt": "Seagate IronWolf 12TB NAS Hard Drive 7200 RPM 256MB Cache SATA 6.0Gb/s CMR 3.5\" Internal HDD for RAID Network Attached Storage - ST12000VN0008",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "https://c1.neweggimages.com/WebResource/Themes/Nest/images/icons/shellShocker_logo.png",
+          "alt": "shellShocker",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "https://c1.neweggimages.com/nobgproductcompressall300/20-242-902-02.jpg",
+          "alt": "Kingston NV3 M.2 2280 1TB PCIe 4.0 x4 NVMe Internal Solid State Drive (SSD) SNV3S/1000G  Up to 6000 MB/s",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "https://c1.neweggimages.com/WebResource/Themes/Nest/images/icons/shellShocker_logo.png",
+          "alt": "shellShocker",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "https://c1.neweggimages.com/nobgproductcompressall300/14-932-753-03.png",
+          "alt": "GIGABYTE Gaming GeForce RTX 5080 Graphics Card GV-N5080GAMING OC-16GD",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "https://c1.neweggimages.com/WebResource/Themes/Nest/images/icons/shellShocker_logo.png",
+          "alt": "shellShocker",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "https://c1.neweggimages.com/nobgproductcompressall300/32-680-015-01.jpg",
+          "alt": "Lowe's $100 Gift Card (Email Delivery)",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "//promotions.newegg.com/nepro/25-0119/1150x320.jpg",
+          "alt": "Newegg Select",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "//promotions.newegg.com/intel/26-0700/1150x320.jpg",
+          "alt": "The Best Deals in Gaming",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "//promotions.newegg.com/tryx/26-0808/1150x320.png",
+          "alt": "The Third Dimension Unlocked",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "//promotions.newegg.com/acer/26-0806/1150x320.jpg",
+          "alt": "Get the processor your pc wishes it had",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "//promotions.newegg.com/asus/26-0807/1150x320.jpg",
+          "alt": "ASUS Monitors",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "https://c1.neweggimages.com/nobgproductcompressall300/C1CNS26072307IDLB1B.jpg",
+          "alt": "LXZ Gaming PC Prebuilt Gaming Desktop R7 4700LE, Radeon RX 580,16GB DDR4 RAM, 512GB NVMe SSD,Prebuilt Gaming PC Tower, Supports WIFI 6, Bluetooth 5.2",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "https://c1.neweggimages.com/nobgproductcompressall300/34-156-876-13.jpg",
+          "alt": "MSI CROSSHAIR A16 Gaming Laptop - 16\" QHD+ 240hz - AMD Ryzen 9-8940HX - GeForce RTX 5060 - 32GB DDR5 RAM -  1TB SSD (D8WFKG-015US)",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "https://c1.neweggimages.com/nobgproductcompressall300/20-236-879-03.jpg",
+          "alt": "CORSAIR Vengeance RGB 32GB (2 x 16GB) 288-Pin PC RAM DDR5 6000 (PC5 48000) Desktop Memory Model CMH32GX5M2E6000C36",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "https://c1.neweggimages.com/nobgproductcompressall300/C3S3S26062808QZVT5B.jpg",
+          "alt": "Insta360 Luna Ultra Creator Package - 8K Vlogging Camera with Dual Leica Lenses, 12× Zoom, 1\" Sensor, Detachable 2\" Touchscreen, Triple AI Chip, Pocket Gimbal Camera for Vlog Photography* USA In Stock",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "https://c1.neweggimages.com/nobgproductcompressall300/AKUYS26010407C4IMA7.jpg",
+          "alt": "Dowinx Ergonomic Gaming Chair with Footrest, Reclining Office Chair with Massage Lumbar Support, Adjustable Height & Headrest Pillow, Heavy Duty 330lbs, Comfortable for Streaming Long Gaming, White",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "//promotions.newegg.com/tile-module-banner/System/Laptops/System-Laptops.png",
+          "alt": "Shop Deals",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "//promotions.newegg.com/tile-module-banner/Components_Storage/Memory%20(RAM)/Components_Storage-Memory%20(RAM).png",
+          "alt": "Memory (RAM)",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "//promotions.newegg.com/tile-module-banner/Components_Storage/Graphics%20Cards/Components_Storage-Graphics%20Cards.png",
+          "alt": "Graphics Card",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "//promotions.newegg.com/tile-module-banner/Components_Storage/SSD/Components_Storage-SSD.png",
+          "alt": "SSD",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "//promotions.newegg.com/tile-module-banner/Components_Storage/Motherboard/Components_Storage-Motherboard.png",
+          "alt": "Motherboard",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "//promotions.newegg.com/tile-module-banner/Non-core/Smart%20Home/Non-core-Smart%20Home.png",
+          "alt": "Smart Home",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "//promotions.newegg.com/tile-module-banner/Non-core/Health_Sports/Non-core-Health_Sports.png",
+          "alt": "Health & Sports",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "//promotions.newegg.com/tile-module-banner/Non-core/Consumer%20Electronics/Non-core-Consumer%20Electronics.png",
+          "alt": "Consumer Electronics",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "//promotions.newegg.com/tile-module-banner/Components_Storage/Flash_Storage/Components-Flash_Storage.png",
+          "alt": "Flash Storage",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "//promotions.newegg.com/tile-module-banner/Non-core/Digital_Games/Non-core-Digital_Games.png",
+          "alt": "Digital Games",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "//promotions.newegg.com/tile-module-banner/Non-core/Gift%20Cards/Non-core-Gift%20Cards.png",
+          "alt": "Gift Cards",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "//promotions.newegg.com/ASRock/24-1040/1920x120.jpg",
+          "alt": "Infinite Horizons",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "//promotions.newegg.com/acer/26-0543/1920x120.jpg",
+          "alt": "ACER Nitro V 16S",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "//promotions.newegg.com/nepro/24-0413/420x500.jpg",
+          "alt": "AI PC Store",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "//promotions.newegg.com/nepro/25-0323/420x240.jpg",
+          "alt": "30 Days Lowest Price",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "//promotions.newegg.com/nepro/24-0282/Best_Sellers/420x240.jpg",
+          "alt": "Best Sellers",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "//promotions.newegg.com/nepro/24-0162/420x500.jpg",
+          "alt": "Student Store",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "//promotions.newegg.com/nepro/25-0119/420x240.jpg",
+          "alt": "Newegg Select",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "//promotions.newegg.com/nepro/24-0282/Newegg_Refreshed/420x240.jpg",
+          "alt": "Newegg Refreshed",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "//promotions.newegg.com/nepro/24-0282/Featured_Brands/ABS.jpg",
+          "alt": "ABS",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "//promotions.newegg.com/nepro/24-0282/Featured_Brands/AMD.jpg",
+          "alt": "AMD",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "//promotions.newegg.com/nepro/24-0282/Featured_Brands/ASUS.jpg",
+          "alt": "ASUS",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "//promotions.newegg.com/nepro/24-0282/Featured_Brands/ASRock-Rack.jpg",
+          "alt": "ASRock Rack",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "//promotions.newegg.com/nepro/24-0282/Featured_Brands/GIGABYTE.jpg",
+          "alt": "GIGABYTE",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "//promotions.newegg.com/nepro/24-0282/Featured_Brands/Intel.jpg",
+          "alt": "Intel",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "//promotions.newegg.com/nepro/24-0282/Featured_Brands/MSI.jpg",
+          "alt": "MSI",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "//promotions.newegg.com/nepro/24-0282/Featured_Brands/Meta-Quest.jpg",
+          "alt": "Meta Quest",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "//promotions.newegg.com/nepro/24-0282/Featured_Brands/NVIDIA.jpg",
+          "alt": "NVIDIA",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "//promotions.newegg.com/nepro/24-0282/Featured_Brands/Samsung.jpg",
+          "alt": "Samsung",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "//promotions.newegg.com/nepro/24-0282/Featured_Brands/Seagate.jpg",
+          "alt": "Seagate",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "https://c1.neweggimages.com/WebResource/Themes/Nest/bgs/Illus_Subscription@4x.png",
+          "alt": "subscribe",
+          "decorative_hint": false,
+          "width_attr": "1068",
+          "height_attr": "672",
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "https://c1.neweggimages.com/webresource/themes/Nest/qrcodes/qrcode-app-v3.png",
+          "alt": "Shop on Newegg APP",
+          "decorative_hint": false,
+          "width_attr": "200",
+          "height_attr": "200",
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "https://c1.neweggimages.com/WebResource/Themes/Nest/bgs/bg_our_app.png",
+          "alt": "Newegg apps screenshot",
+          "decorative_hint": false,
+          "width_attr": "250",
+          "height_attr": "250",
+          "css_aspect_ratio": null,
+          "in_picture": false
+        }
+      ],
+      "iframes": [
+        {
+          "src": null,
+          "width_attr": null,
+          "height_attr": null,
+          "title": null
+        },
+        {
+          "src": "https://www.newegg.com/api/storageHub",
+          "width_attr": null,
+          "height_attr": null,
+          "title": null
+        },
+        {
+          "src": "https://secure.newegg.com/api/storageHub",
+          "width_attr": null,
+          "height_attr": null,
+          "title": null
+        }
+      ],
+      "media": [
+        {
+          "tag": "video",
+          "autoplay": true,
+          "muted": true,
+          "controls": false,
+          "loop": true
+        }
+      ],
+      "form_controls": [
+        {
+          "type": "search",
+          "id": null,
+          "has_label": false,
+          "aria_label": "Search. Enter keywords, model number or item number"
+        },
+        {
+          "type": "text",
+          "id": null,
+          "has_label": false,
+          "aria_label": "Enter your e-mail address"
+        },
+        {
+          "type": "tel",
+          "id": null,
+          "has_label": false,
+          "aria_label": "Enter your phone number"
+        },
+        {
+          "type": "select",
+          "id": null,
+          "has_label": true,
+          "aria_label": null
+        }
+      ],
+      "interactive_empty": {
+        "links_no_text": 0,
+        "buttons_no_text": 0
+      },
+      "noscript": {
+        "present": false,
+        "words": 0
+      },
+      "dates": {
+        "meta_published": null,
+        "meta_modified": null,
+        "visible_dates": [],
+        "header_last_modified": "Thu, 10 Sep 2026 20:49:23 GMT"
+      },
+      "contact_signals": {
+        "email": false,
+        "phone": "100-100001084",
+        "postal_address": null,
+        "org_name_footer": "Newegg Inc"
+      },
+      "trigram_hash": "sha256:d4458adfac69021128a6a443d2679b06ae504c44481580097c1a250bd0ff23c1"
+    },
+    {
+      "url": "https://www.newegg.com/corporate/about",
+      "final_url": "https://www.newegg.com/corporate/about",
+      "status": "unavailable",
+      "reason": "http_400",
+      "http_status": 400,
+      "page_type": "about",
+      "headers": {},
+      "raw_html_bytes": 0,
+      "main_text": "",
+      "main_text_words": 0,
+      "extraction_ok": false,
+      "title": null,
+      "meta": {},
+      "lang": null,
+      "canonical": {},
+      "headings": [],
+      "landmarks": {},
+      "structured_data": {},
+      "links": [],
+      "outbound_profile_links": [],
+      "images": [],
+      "iframes": [],
+      "media": [],
+      "form_controls": [],
+      "interactive_empty": {},
+      "noscript": {
+        "present": false,
+        "words": 0
+      },
+      "dates": {},
+      "contact_signals": {},
+      "trigram_hash": null
+    },
+    {
+      "url": "https://www.newegg.com/team-group-t-force-vulcan-eco-32gb-2-x-16gb-ddr5-6400-pc5-51200-cas-latency-cl38-desktop-memory-silver/p/N82E16820985371?Item=N82E16820985371",
+      "final_url": "https://www.newegg.com/team-group-t-force-vulcan-eco-32gb-2-x-16gb-ddr5-6400-pc5-51200-cas-latency-cl38-desktop-memory-silver/p/N82E16820985371?Item=N82E16820985371",
+      "status": "unavailable",
+      "reason": "http_400",
+      "http_status": 400,
+      "page_type": "about",
+      "headers": {},
+      "raw_html_bytes": 0,
+      "main_text": "",
+      "main_text_words": 0,
+      "extraction_ok": false,
+      "title": null,
+      "meta": {},
+      "lang": null,
+      "canonical": {},
+      "headings": [],
+      "landmarks": {},
+      "structured_data": {},
+      "links": [],
+      "outbound_profile_links": [],
+      "images": [],
+      "iframes": [],
+      "media": [],
+      "form_controls": [],
+      "interactive_empty": {},
+      "noscript": {
+        "present": false,
+        "words": 0
+      },
+      "dates": {},
+      "contact_signals": {},
+      "trigram_hash": null
+    },
+    {
+      "url": "https://www.newegg.com/ABS/BrandStore/ID-8484?cm_sp=homepage_popular+brand-_-ABS%26cm_sp%3dHomepage-Feature_Brands-_-%2f%2fpromotions.newegg.com%2fnepro%2f24-0282%2fFeatured_Brands%2fABS.jpg&icid=772286",
+      "final_url": "https://www.newegg.com/ABS/BrandStore/ID-8484?cm_sp=homepage_popular+brand-_-ABS%26cm_sp%3dHomepage-Feature_Brands-_-%2f%2fpromotions.newegg.com%2fnepro%2f24-0282%2fFeatured_Brands%2fABS.jpg&icid=772286",
+      "status": "unavailable",
+      "reason": "http_400",
+      "http_status": 400,
+      "page_type": "other",
+      "headers": {},
+      "raw_html_bytes": 0,
+      "main_text": "",
+      "main_text_words": 0,
+      "extraction_ok": false,
+      "title": null,
+      "meta": {},
+      "lang": null,
+      "canonical": {},
+      "headings": [],
+      "landmarks": {},
+      "structured_data": {},
+      "links": [],
+      "outbound_profile_links": [],
+      "images": [],
+      "iframes": [],
+      "media": [],
+      "form_controls": [],
+      "interactive_empty": {},
+      "noscript": {
+        "present": false,
+        "words": 0
+      },
+      "dates": {},
+      "contact_signals": {},
+      "trigram_hash": null
+    },
+    {
+      "url": "https://www.newegg.com/AI-PC-Store?cm_sp=Homepage-Newegg_Feature_Big-_-nepro%2f24-0413-_-%2f%2fpromotions.newegg.com%2fnepro%2f24-0413%2f420x500.jpg&icid=772280",
+      "final_url": "https://www.newegg.com/AI-PC-Store?cm_sp=Homepage-Newegg_Feature_Big-_-nepro%2f24-0413-_-%2f%2fpromotions.newegg.com%2fnepro%2f24-0413%2f420x500.jpg&icid=772280",
+      "status": "unavailable",
+      "reason": "http_400",
+      "http_status": 400,
+      "page_type": "other",
+      "headers": {},
+      "raw_html_bytes": 0,
+      "main_text": "",
+      "main_text_words": 0,
+      "extraction_ok": false,
+      "title": null,
+      "meta": {},
+      "lang": null,
+      "canonical": {},
+      "headings": [],
+      "landmarks": {},
+      "structured_data": {},
+      "links": [],
+      "outbound_profile_links": [],
+      "images": [],
+      "iframes": [],
+      "media": [],
+      "form_controls": [],
+      "interactive_empty": {},
+      "noscript": {
+        "present": false,
+        "words": 0
+      },
+      "dates": {},
+      "contact_signals": {},
+      "trigram_hash": null
+    },
+    {
+      "url": "https://www.newegg.com/AMD/BrandStore/ID-1028?cm_sp=Homepage-Feature_Brands-_-24-0282%2fFeatured_Brands-_-%2f%2fpromotions.newegg.com%2fnepro%2f24-0282%2fFeatured_Brands%2fAMD.jpg&icid=772287",
+      "final_url": "https://www.newegg.com/AMD/BrandStore/ID-1028?cm_sp=Homepage-Feature_Brands-_-24-0282%2fFeatured_Brands-_-%2f%2fpromotions.newegg.com%2fnepro%2f24-0282%2fFeatured_Brands%2fAMD.jpg&icid=772287",
+      "status": "unavailable",
+      "reason": "http_400",
+      "http_status": 400,
+      "page_type": "other",
+      "headers": {},
+      "raw_html_bytes": 0,
+      "main_text": "",
+      "main_text_words": 0,
+      "extraction_ok": false,
+      "title": null,
+      "meta": {},
+      "lang": null,
+      "canonical": {},
+      "headings": [],
+      "landmarks": {},
+      "structured_data": {},
+      "links": [],
+      "outbound_profile_links": [],
+      "images": [],
+      "iframes": [],
+      "media": [],
+      "form_controls": [],
+      "interactive_empty": {},
+      "noscript": {
+        "present": false,
+        "words": 0
+      },
+      "dates": {},
+      "contact_signals": {},
+      "trigram_hash": null
+    },
+    {
+      "url": "https://www.newegg.com/ASRock-Rack/BrandStore/ID-128228?cm_sp=Homepage-Feature_Brands-_-24-0282%2fFeatured_Brands-_-%2f%2fpromotions.newegg.com%2fnepro%2f24-0282%2fFeatured_Brands%2fASRock-Rack.jpg&icid=772290",
+      "final_url": "https://www.newegg.com/ASRock-Rack/BrandStore/ID-128228?cm_sp=Homepage-Feature_Brands-_-24-0282%2fFeatured_Brands-_-%2f%2fpromotions.newegg.com%2fnepro%2f24-0282%2fFeatured_Brands%2fASRock-Rack.jpg&icid=772290",
+      "status": "unavailable",
+      "reason": "http_400",
+      "http_status": 400,
+      "page_type": "other",
+      "headers": {},
+      "raw_html_bytes": 0,
+      "main_text": "",
+      "main_text_words": 0,
+      "extraction_ok": false,
+      "title": null,
+      "meta": {},
+      "lang": null,
+      "canonical": {},
+      "headings": [],
+      "landmarks": {},
+      "structured_data": {},
+      "links": [],
+      "outbound_profile_links": [],
+      "images": [],
+      "iframes": [],
+      "media": [],
+      "form_controls": [],
+      "interactive_empty": {},
+      "noscript": {
+        "present": false,
+        "words": 0
+      },
+      "dates": {},
+      "contact_signals": {},
+      "trigram_hash": null
+    },
+    {
+      "url": "https://www.newegg.com/amd-ryzen-7-9000-series-ryzen-7-9800x3d-granite-ridge-zen-5-socket-am5-desktop-cpu-processor/p/N82E16819113877?Item=N82E16819113877",
+      "final_url": "https://www.newegg.com/amd-ryzen-7-9000-series-ryzen-7-9800x3d-granite-ridge-zen-5-socket-am5-desktop-cpu-processor/p/N82E16819113877?Item=N82E16819113877",
+      "status": "unavailable",
+      "reason": "http_400",
+      "http_status": 400,
+      "page_type": "product",
+      "headers": {},
+      "raw_html_bytes": 0,
+      "main_text": "",
+      "main_text_words": 0,
+      "extraction_ok": false,
+      "title": null,
+      "meta": {},
+      "lang": null,
+      "canonical": {},
+      "headings": [],
+      "landmarks": {},
+      "structured_data": {},
+      "links": [],
+      "outbound_profile_links": [],
+      "images": [],
+      "iframes": [],
+      "media": [],
+      "form_controls": [],
+      "interactive_empty": {},
+      "noscript": {
+        "present": false,
+        "words": 0
+      },
+      "dates": {},
+      "contact_signals": {},
+      "trigram_hash": null
+    },
+    {
+      "url": "https://www.newegg.com/asus-pg32ucwm-32-31-5-actual-screen-size-4k-240hz-rog-swift-oled-glossy/p/N82E16824281434?Item=N82E16824281434&cm_sp=Homepage-Top2021-_-bottom-_-Brand+Promo%2fASUS%2fMonitor%2fN-_-%2f%2fpromotions.newegg.com%2fasus%2f26-0807%2f1150x320.jpg&icid=802729",
+      "final_url": "https://www.newegg.com/asus-pg32ucwm-32-31-5-actual-screen-size-4k-240hz-rog-swift-oled-glossy/p/N82E16824281434?Item=N82E16824281434&cm_sp=Homepage-Top2021-_-bottom-_-Brand+Promo%2fASUS%2fMonitor%2fN-_-%2f%2fpromotions.newegg.com%2fasus%2f26-0807%2f1150x320.jpg&icid=802729",
+      "status": "unavailable",
+      "reason": "http_400",
+      "http_status": 400,
+      "page_type": "product",
+      "headers": {},
+      "raw_html_bytes": 0,
+      "main_text": "",
+      "main_text_words": 0,
+      "extraction_ok": false,
+      "title": null,
+      "meta": {},
+      "lang": null,
+      "canonical": {},
+      "headings": [],
+      "landmarks": {},
+      "structured_data": {},
+      "links": [],
+      "outbound_profile_links": [],
+      "images": [],
+      "iframes": [],
+      "media": [],
+      "form_controls": [],
+      "interactive_empty": {},
+      "noscript": {
+        "present": false,
+        "words": 0
+      },
+      "dates": {},
+      "contact_signals": {},
+      "trigram_hash": null
+    },
+    {
+      "url": "https://www.newegg.com/black-dowinx-ls-6658j-chair/p/358-007U-00143?Item=9SIAKUYKRF4701&cm_sp=Homepage_SS-_-P5_9SIAKUYKRF4701-_-09102026",
+      "final_url": "https://www.newegg.com/black-dowinx-ls-6658j-chair/p/358-007U-00143?Item=9SIAKUYKRF4701&cm_sp=Homepage_SS-_-P5_9SIAKUYKRF4701-_-09102026",
+      "status": "unavailable",
+      "reason": "http_400",
+      "http_status": 400,
+      "page_type": "product",
+      "headers": {},
+      "raw_html_bytes": 0,
+      "main_text": "",
+      "main_text_words": 0,
+      "extraction_ok": false,
+      "title": null,
+      "meta": {},
+      "lang": null,
+      "canonical": {},
+      "headings": [],
+      "landmarks": {},
+      "structured_data": {},
+      "links": [],
+      "outbound_profile_links": [],
+      "images": [],
+      "iframes": [],
+      "media": [],
+      "form_controls": [],
+      "interactive_empty": {},
+      "noscript": {
+        "present": false,
+        "words": 0
+      },
+      "dates": {},
+      "contact_signals": {},
+      "trigram_hash": null
+    },
+    {
+      "url": "https://www.newegg.com/corsair-vengeance-rgb-32gb-ddr5-6000-cas-latency-cl36-desktop-memory-black/p/N82E16820236991?Item=N82E16820236991&cm_sp=Homepage_SS-_-P3_20-236-991-_-09102026",
+      "final_url": "https://www.newegg.com/corsair-vengeance-rgb-32gb-ddr5-6000-cas-latency-cl36-desktop-memory-black/p/N82E16820236991?Item=N82E16820236991&cm_sp=Homepage_SS-_-P3_20-236-991-_-09102026",
+      "status": "unavailable",
+      "reason": "http_400",
+      "http_status": 400,
+      "page_type": "product",
+      "headers": {},
+      "raw_html_bytes": 0,
+      "main_text": "",
+      "main_text_words": 0,
+      "extraction_ok": false,
+      "title": null,
+      "meta": {},
+      "lang": null,
+      "canonical": {},
+      "headings": [],
+      "landmarks": {},
+      "structured_data": {},
+      "links": [],
+      "outbound_profile_links": [],
+      "images": [],
+      "iframes": [],
+      "media": [],
+      "form_controls": [],
+      "interactive_empty": {},
+      "noscript": {
+        "present": false,
+        "words": 0
+      },
+      "dates": {},
+      "contact_signals": {},
+      "trigram_hash": null
+    }
+  ],
+  "rendered": [],
+  "links": {
+    "status": "ok",
+    "reason": null,
+    "checked_count": 20,
+    "results": [
+      {
+        "url": "https://www.newegg.com/",
+        "http_status": 200,
+        "from_page": "https://www.newegg.com/",
+        "anchor_text": "Skip to main content"
+      },
+      {
+        "url": "https://www.newegg.com/ai",
+        "http_status": 400,
+        "from_page": "https://www.newegg.com/",
+        "anchor_text": "AI Mode"
+      },
+      {
+        "url": "https://www.newegg.com/Shell-Shocker/EventSaleStore/ID-10381?cm_sp=Head_Navigation-_-Under_Search_Bar-_-Shell+Shocker&icid=720202",
+        "http_status": 400,
+        "from_page": "https://www.newegg.com/",
+        "anchor_text": "Shell Shocker"
+      },
+      {
+        "url": "https://www.newegg.com/tools/custom-pc-builder?cm_sp=Head_Navigation-_-Under_Search_Bar-_-PC+Builder&icid=782905",
+        "http_status": 400,
+        "from_page": "https://www.newegg.com/",
+        "anchor_text": "PC Builder"
+      },
+      {
+        "url": "https://www.newegg.com/Newegg-Outlet/EventSaleStore/ID-697?Order=2&cm_sp=Head_Navigation-_-Under_Search_Bar-_-Newegg+Outlet&icid=796262",
+        "http_status": 400,
+        "from_page": "https://www.newegg.com/",
+        "anchor_text": "Newegg Outlet"
+      },
+      {
+        "url": "https://www.newegg.com/d/best-sellers?cm_sp=Head_Navigation-_-Under_Search_Bar-_-Best+Sellers&icid=623089",
+        "http_status": 400,
+        "from_page": "https://www.newegg.com/",
+        "anchor_text": "Best Sellers"
+      },
+      {
+        "url": "https://www.newegg.com/promotions/nepro/18-1881/index.html?cm_sp=Head_Navigation-_-Under_Search_Bar-_-Newegg+Card&icid=779480&sitecode=neacol002&cm_sp=Head_Navigation-_-Under_Search_Bar-_-Newegg+Card&icid=779480",
+        "http_status": 400,
+        "from_page": "https://www.newegg.com/",
+        "anchor_text": "Newegg Card"
+      },
+      {
+        "url": "https://www.newegg.com/Digital-Games/Category/ID-377?cm_sp=Head_Navigation-_-Under_Search_Bar-_-Games&icid=794774",
+        "http_status": 400,
+        "from_page": "https://www.newegg.com/",
+        "anchor_text": "Games"
+      },
+      {
+        "url": "https://www.newegg.com/promotions/nepro/23-1322/index.html?cm_sp=Head_Navigation-_-Under_Search_Bar-_-Trade-In&icid=794618",
+        "http_status": 400,
+        "from_page": "https://www.newegg.com/",
+        "anchor_text": "Trade-In"
+      },
+      {
+        "url": "https://www.newegg.com/Components-Storage/Store/ID-1",
+        "http_status": 400,
+        "from_page": "https://www.newegg.com/",
+        "anchor_text": "Components & Storage"
+      },
+      {
+        "url": "https://www.newegg.com/Computer-Systems/Store/ID-3",
+        "http_status": 400,
+        "from_page": "https://www.newegg.com/",
+        "anchor_text": "Computer Systems"
+      },
+      {
+        "url": "https://www.newegg.com/Computer-Peripherals/Store/ID-380",
+        "http_status": 400,
+        "from_page": "https://www.newegg.com/",
+        "anchor_text": "Computer Peripherals"
+      },
+      {
+        "url": "https://www.newegg.com/Server-Components/Store/ID-5",
+        "http_status": 400,
+        "from_page": "https://www.newegg.com/",
+        "anchor_text": "Server & Components"
+      },
+      {
+        "url": "https://www.newegg.com/Appliances/Store/ID-13",
+        "http_status": 400,
+        "from_page": "https://www.newegg.com/",
+        "anchor_text": "Appliances"
+      },
+      {
+        "url": "https://www.newegg.com/Electronics/Store/ID-10",
+        "http_status": 400,
+        "from_page": "https://www.newegg.com/",
+        "anchor_text": "Electronics"
+      },
+      {
+        "url": "https://www.newegg.com/Gaming-VR/Store/ID-8",
+        "http_status": 400,
+        "from_page": "https://www.newegg.com/",
+        "anchor_text": "Gaming & VR"
+      },
+      {
+        "url": "https://www.newegg.com/Networking/Store/ID-889",
+        "http_status": 400,
+        "from_page": "https://www.newegg.com/",
+        "anchor_text": "Networking"
+      },
+      {
+        "url": "https://www.newegg.com/Smart-Home-Security/Store/ID-2",
+        "http_status": 400,
+        "from_page": "https://www.newegg.com/",
+        "anchor_text": "Smart Home & Security"
+      },
+      {
+        "url": "https://www.newegg.com/Office-Solutions/Store/ID-133",
+        "http_status": 400,
+        "from_page": "https://www.newegg.com/",
+        "anchor_text": "Office Solutions"
+      },
+      {
+        "url": "https://www.newegg.com/Software-Services/Store/ID-6",
+        "http_status": 400,
+        "from_page": "https://www.newegg.com/",
+        "anchor_text": "Software & Services"
+      }
+    ],
+    "skipped": []
+  },
+  "anchors": {
+    "status": "ok",
+    "reason": null,
+    "declared": [
+      {
+        "url": "https://www.facebook.com/Newegg",
+        "source": "sameAs",
+        "host": "www.facebook.com"
+      },
+      {
+        "url": "https://twitter.com/Newegg",
+        "source": "sameAs",
+        "host": "twitter.com"
+      },
+      {
+        "url": "https://www.instagram.com/newegg/",
+        "source": "sameAs",
+        "host": "www.instagram.com"
+      },
+      {
+        "url": "https://www.youtube.com/user/newegg",
+        "source": "sameAs",
+        "host": "www.youtube.com"
+      },
+      {
+        "url": "https://www.linkedin.com/company/newegg-com",
+        "source": "sameAs",
+        "host": "www.linkedin.com"
+      },
+      {
+        "url": "https://www.pinterest.com/newegg/",
+        "source": "sameAs",
+        "host": "www.pinterest.com"
+      },
+      {
+        "url": "https://www.twitch.tv/newegg",
+        "source": "sameAs",
+        "host": "www.twitch.tv"
+      },
+      {
+        "url": "https://mixer.com/newegg",
+        "source": "sameAs",
+        "host": "mixer.com"
+      }
+    ],
+    "checked_count": 8,
+    "results": [
+      {
+        "url": "https://www.facebook.com/Newegg",
+        "http_status": 200,
+        "resolved": true
+      },
+      {
+        "url": "https://twitter.com/Newegg",
+        "http_status": 200,
+        "resolved": true
+      },
+      {
+        "url": "https://www.instagram.com/newegg/",
+        "http_status": 200,
+        "resolved": true
+      },
+      {
+        "url": "https://www.youtube.com/user/newegg",
+        "http_status": 200,
+        "resolved": true
+      },
+      {
+        "url": "https://www.linkedin.com/company/newegg-com",
+        "http_status": 200,
+        "resolved": true
+      },
+      {
+        "url": "https://www.pinterest.com/newegg/",
+        "http_status": 200,
+        "resolved": true
+      },
+      {
+        "url": "https://www.twitch.tv/newegg",
+        "http_status": 200,
+        "resolved": true
+      },
+      {
+        "url": "https://mixer.com/newegg",
+        "http_status": 200,
+        "resolved": true
+      }
+    ]
+  },
+  "budget": {
+    "status": "ok",
+    "reason": null,
+    "stages": [
+      {
+        "name": "resolve",
+        "budget_s": 10,
+        "actual_s": 2.2,
+        "abandoned": false,
+        "planned_items": null,
+        "completed_items": null
+      },
+      {
+        "name": "robots_discovery",
+        "budget_s": 15,
+        "actual_s": 61.4,
+        "abandoned": false,
+        "planned_items": 120,
+        "completed_items": 120
+      },
+      {
+        "name": "static_fetch",
+        "budget_s": 45,
+        "actual_s": 6.3,
+        "abandoned": false,
+        "planned_items": 11,
+        "completed_items": 1
+      },
+      {
+        "name": "render_pass",
+        "budget_s": 75,
+        "actual_s": 0.0,
+        "abandoned": true,
+        "planned_items": 0,
+        "completed_items": 0,
+        "reason": "no_headless_browser_tool"
+      },
+      {
+        "name": "internal_links",
+        "budget_s": 25,
+        "actual_s": 19.7,
+        "abandoned": false,
+        "planned_items": 20,
+        "completed_items": 20
+      },
+      {
+        "name": "offsite_anchors",
+        "budget_s": 20,
+        "actual_s": 8.8,
+        "abandoned": false,
+        "planned_items": 8,
+        "completed_items": 8
+      }
+    ],
+    "total_s": 98.4,
+    "cap_s": 300
+  }
+}

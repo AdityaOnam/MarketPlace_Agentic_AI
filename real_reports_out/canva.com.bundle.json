@@ -1,0 +1,1916 @@
+{
+  "schema_version": "1.0.0",
+  "site": {
+    "status": "ok",
+    "reason": null,
+    "input": "https://canva.com",
+    "canonical_host": "www.canva.in",
+    "origin": "https://www.canva.in",
+    "scheme": "https",
+    "redirect_chain": [
+      "https://canva.com",
+      "https://www.canva.com/"
+    ],
+    "tls_valid": true,
+    "archetype": "unknown",
+    "archetype_confidence": 0.0
+  },
+  "robots": {
+    "status": "ok",
+    "reason": null,
+    "fetch_status": 200,
+    "body": "#              vnacccan\n#           nVCCCNVccNCCNv\n#         cCCCAa      aCCC\n#       nCCCCa        nCCC\n#      cCCCAv         ACCa                                           CACCn\n#     aCCCCv         nVa     vcVNn  nVVa    cVc    aVNVv     cNNv   Cc  Cc    vaVNVa vcVa\n#     CCCCa                nACCAcaAACCCc   nCCCa aCCCCCC    NCCCv   Cc  Cn  cNCCCVaNACCCA\n#    aCCCC                cCCCV   cCCCA    VCCCaAA  CCCA    CCCCv    CACNvnVCCCAv  vCCCCv\n#    cCCCC               aCCCN    VCCCa   vCCCCCV   CCCc    CCCCv    aCA  cCCCCv   nCCCN\n#    aCCCC              nCCCCv    CCCA    ACCCCc    CCC    nCCCCn   vCN   VCCCc    NCCCn\n#    aCCCCa            aCCCCC    NCCCc   NCCCCV    CCCN   C aCCCc  aCc    NCCCn   aCCCA   Nc\n#     aCCCCn         nNV CCCCa nAACCCc  AACCCN    vCCCAaVC   ACCCaNAv     cCCCN vVACCCA vNA\n#      aCCCCNav  vncACc   NCCCNn  VCCCcVvvCCCv     cCCCCV    vACCNn        cCCCCAa  aCCCAa\n#        aNCCCCCCCCNa\n#\n#                See something you can improve? We're hiring SEOs and Engineers!\n#                          Checkout canva.com/careers and get in touch\nUser-agent: *\nDisallow: \nDisallow: /media/*\nDisallow: /template/*\nDisallow: /_ok\nDisallow: /_blank\nDisallow: *v=\nDisallow: *utm_expid=\nDisallow: *source=\nDisallow: *utm_source=\nDisallow: *utm_campaign=\nDisallow: *utm_content=\nDisallow: *__hstc=\nDisallow: *reviews_page=\nDisallow: *gclid=\nDisallow: *magazineName=\nDisallow: *_ga=\nDisallow: *like=\nDisallow: *sp_url=\nDisallow: *fbclid=\nDisallow: *country=\nDisallow: *company_size=\nDisallow: *_hsenc=\nDisallow: *zd_source=\nDisallow: *wt.mc_id=\nDisallow: *via=\nDisallow: *utm_medium=\nDisallow: *spc-source=\nDisallow: *sp=\nDisallow: *sort=\nDisallow: *sf11500465=\nDisallow: *sa=\nDisallow: *ref=\nDisallow: *preview=\nDisallow: *pr=\nDisallow: *o=\nDisallow: *NoCode=\nDisallow: *mod=\nDisallow: *kui=\nDisallow: *industry=\nDisallow: *iframe=\nDisallow: *hsLang=\nDisallow: *hsCtaTracking=\nDisallow: *hash=\nDisallow: *gh_jid=\nDisallow: *filterTags=\nDisallow: *clickId=\nDisallow: *ca_referer=\nDisallow: *author=\nDisallow: *ak_action=\nDisallow: *ad=\nDisallow: *__hstc=\nDisallow: *__+hsfp=\nDisallow: /_ajax/\nDisallow: /design/\nDisallow: /design?create*\nDisallow: /font-combinations/search/*\nDisallow: /*/followers\nDisallow: /*/followers/\nDisallow: /*/following\nDisallow: /*/following/\nDisallow: /templates/*/*/?uid=*\nDisallow: /templates/?uid=*\nAllow: /templates/classroom-decoration\nAllow: /t/E\nDisallow: /templates/M\nDisallow: /templates/*/MA\nDisallow: /*/_m2/\nDisallow: /_print/*\nDisallow: /join/*\nDisallow: /q/*\nDisallow: *?filters=\nDisallow: *&filters=\nDisallow: /cdn-cgi/\nDisallow: /*/login/verify-email\nDisallow: /M/\n\nUser-agent: AdsBot-Google\nUser-agent: AdsIdxBot\nUser-agent: Google-InspectionTool\nUser-agent: facebookexternalhit\nUser-agent: LinkedInBot\nUser-agent: PerplexityBot\nUser-agent: Perplexity-User\nUser-agent: Canva-Slackapp-LinkExpanding\nUser-agent: Canva-Teamsapp-LinkExpanding\nAllow: /\n\nUser-agent: GPTBot\nUser-agent: ClaudeBot\nUser-agent: CCBot\nUser-agent: Applebot-Extended\nUser-agent: anthropic-ai\nUser-agent: Claude-Web\nDisallow: /\nAllow: /create/\nAllow: /ar_eg/create/\nAllow: /da_dk/skabe/\nAllow: /de_de/erstellen/\nAllow: /es_ar/crear/\nAllow: /es_co/crear/\nAllow: /es_es/crear/\nAllow: /es_mx/crear/\nAllow: /es_us/crear/\nAllow: /fr_fr/creer/\nAllow: /hi_in/banaye/\nAllow: /id_id/membuat/\nAllow: /it_it/creare/\nAllow: /ja_jp/create/\nAllow: /ko_kr/create/\nAllow: /ms_my/buat/\nAllow: /nb_no/skape/\nAllow: /nl_nl/maken/\nAllow: /pl_pl/tworzyc/\nAllow: /pt_br/criar/\nAllow: /pt_pt/criar/\nAllow: /ru_ru/sozdat/\nAllow: /sv_se/skapa/\nAllow: /th_th/create/\nAllow: /uk_ua/stvoryty/\nAllow: /vi_vn/thiet-ke/\nAllow: /zh_hk/create/\nAllow: /zh_tw/create/\nAllow: /features/\nAllow: /ar_eg/features/\nAllow: /da_dk/funktioner/\nAllow: /de_de/funktionen/\nAllow: /es_ar/funciones/\nAllow: /es_co/funciones/\nAllow: /es_es/funciones/\nAllow: /es_mx/funciones/\nAllow: /es_us/funciones/\nAllow: /fr_fr/outils/\nAllow: /hi_in/features/\nAllow: /id_id/fitur/\nAllow: /it_it/strumenti/\nAllow: /ja_jp/features/\nAllow: /ko_kr/features/\nAllow: /nl_nl/functies/\nAllow: /pt_pt/ferramentas/\nAllow: /sv_se/funktioner/\nAllow: /th_th/features/\nAllow: /vi_vn/tinh-nang/\nAllow: /zh_hk/features/\nAllow: /zh_tw/features/\nAllow: /graphs/\nAllow: /ar_eg/graphs/\nAllow: /da_dk/grafer/\nAllow: /de_de/diagramme/\nAllow: /es_ar/graficos/\nAllow: /es_co/graficos/\nAllow: /es_es/graficos/\nAllow: /es_mx/graficas/\nAllow: /es_us/graficas/\nAllow: /fr_fr/graphiques/\nAllow: /hi_in/graphs/\nAllow: /it_it/diagramma/\nAllow: /ja_jp/graphs/\nAllow: /ko_kr/graphs/\nAllow: /nb_no/grafer/\nAllow: /nl_nl/grafieken/\nAllow: /pt_br/graficos/\nAllow: /pt_pt/graficos/\nAllow: /sv_se/grafer/\nAllow: /th_th/graphs/\nAllow: /vi_vn/bieu-do/\nAllow: /zh_hk/graphs/\nAllow: /zh_tw/graphs/\nAllow: /learn/\nAllow: /de_de/lernen/\nAllow: /fr_fr/decouvrir/\nAllow: /ja_jp/learn/\nAllow: /ko_kr/learn/\nAllow: /pt_br/aprenda/\nAllow: /ru_ru/obuchenie/\nAllow: /help/\nAllow: /*/help/\n\nUser-agent: Bytespider\nUser-agent: meta-externalagent\nUser-agent: ImagesiftBot\nUser-agent: Timpibot\nUser-agent: Scrapy\nUser-agent: Ai2Bot\nUser-agent: Diffbot\nUser-agent: img2dataset\nUser-agent: ICC-Crawler\nUser-agent: FacebookBot\nUser-agent: VelenPublicWebCrawler\nUser-agent: FriendlyCrawler\nUser-agent: omgili\nUser-agent: Webzio-Extended\nUser-agent: Ai2Bot-Dolma\nDisallow: /\n\nUser-agent: Twitterbot\nAllow: /\n\n\nSitemap: https://www.canva.in/canva_india_sitemap_index.xml\n",
+    "parse_ok": true,
+    "agents": {
+      "AdsBot-Google": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "AdsIdxBot": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "Google-InspectionTool": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "facebookexternalhit": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "LinkedInBot": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "PerplexityBot": {
+        "class": "retrieval",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "Perplexity-User": {
+        "class": "retrieval",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "Canva-Slackapp-LinkExpanding": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "Canva-Teamsapp-LinkExpanding": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "GPTBot": {
+        "class": "training",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 112,
+        "crawl_delay": null
+      },
+      "ClaudeBot": {
+        "class": "training",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 112,
+        "crawl_delay": null
+      },
+      "CCBot": {
+        "class": "training",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 112,
+        "crawl_delay": null
+      },
+      "Applebot-Extended": {
+        "class": "training",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 112,
+        "crawl_delay": null
+      },
+      "anthropic-ai": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 112,
+        "crawl_delay": null
+      },
+      "Claude-Web": {
+        "class": "retrieval",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 112,
+        "crawl_delay": null
+      },
+      "Bytespider": {
+        "class": "training",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 211,
+        "crawl_delay": null
+      },
+      "meta-externalagent": {
+        "class": "training",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 211,
+        "crawl_delay": null
+      },
+      "ImagesiftBot": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 211,
+        "crawl_delay": null
+      },
+      "Timpibot": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 211,
+        "crawl_delay": null
+      },
+      "Scrapy": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 211,
+        "crawl_delay": null
+      },
+      "Ai2Bot": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 211,
+        "crawl_delay": null
+      },
+      "Diffbot": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 211,
+        "crawl_delay": null
+      },
+      "img2dataset": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 211,
+        "crawl_delay": null
+      },
+      "ICC-Crawler": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 211,
+        "crawl_delay": null
+      },
+      "FacebookBot": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 211,
+        "crawl_delay": null
+      },
+      "VelenPublicWebCrawler": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 211,
+        "crawl_delay": null
+      },
+      "FriendlyCrawler": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 211,
+        "crawl_delay": null
+      },
+      "omgili": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 211,
+        "crawl_delay": null
+      },
+      "Webzio-Extended": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 211,
+        "crawl_delay": null
+      },
+      "Ai2Bot-Dolma": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 211,
+        "crawl_delay": null
+      },
+      "Twitterbot": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "*": {
+        "class": "generic",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      }
+    },
+    "sitemap_declarations": [
+      "https://www.canva.in/canva_india_sitemap_index.xml"
+    ]
+  },
+  "discovery": {
+    "status": "ok",
+    "reason": null,
+    "sitemap_found": true,
+    "sitemap_urls_count": 132,
+    "inventory": [
+      {
+        "url": "https://www.canva.in/",
+        "page_type": "home",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/banners/templates/",
+        "page_type": "contact",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/banners/templates/bhimrao-ambedkar-jayanti/",
+        "page_type": "contact",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/banners/templates/chhath-puja-background/",
+        "page_type": "contact",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/banners/templates/cricket/",
+        "page_type": "contact",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/banners/templates/diwali/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/banners/templates/durga-puja/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/banners/templates/eid-milad-un-nabi/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/banners/templates/ganesh-chaturthi/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/banners/templates/holi/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/banners/templates/janmashtami/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/banners/templates/maha-shivratri/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/banners/templates/makar-sankranti/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/banners/templates/mehndi/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/banners/templates/mobile-repairing/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/banners/templates/mobile-shop/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/banners/templates/tuition-coaching-centre/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/cards/templates/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/cards/templates/diwali/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/cards/templates/ganesh-chaturthi/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/cards/templates/india-independence-day/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/cards/templates/raksha-bandhan/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/instagram-posts/templates/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/instagram-posts/templates/diwali/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/instagram-posts/templates/dussehra/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/instagram-posts/templates/navratri/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/instagram-posts/templates/republic-day/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/instagram-stories/templates/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/instagram-stories/templates/diwali/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/instagram-stories/templates/holi/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/instagram-stories/templates/raksha-bandhan/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/invitations/templates/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/invitations/templates/25th-anniversary/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/invitations/templates/akhand-path/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/invitations/templates/annaprashan-rice-ceremony/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/invitations/templates/annual-day-function/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/invitations/templates/aqiqah-ceremony/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/invitations/templates/dhoti-ceremony/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/invitations/templates/diwali/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/invitations/templates/ear-piercing-ceremony/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/invitations/templates/freshers-party/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/invitations/templates/ganesh-chaturthi/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/invitations/templates/haldi/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/invitations/templates/half-saree/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/invitations/templates/holi/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/invitations/templates/jagran/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/invitations/templates/kitty-party/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/invitations/templates/krishna-janmashtami/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/invitations/templates/mehendi/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/invitations/templates/puja/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/invitations/templates/sangeet/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/invitations/templates/satyanarayan-pooja/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/invitations/templates/sukhmani-sahib-path/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/invitations/templates/sunderkand-path/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/invitations/templates/thread-upanayanam-ceremony/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/invitations/templates/tonsure-mundan-ceremony/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/invitations/templates/vishwakarma-puja/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/logos/templates/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/logos/templates/badminton/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/logos/templates/cricket/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/logos/templates/kabaddi/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/logos/templates/mobile-phone-repairing/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/logos/templates/mobile-phone-shop/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/magazine-covers/templates/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/magazine-covers/templates/school/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/posters/templates/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/posters/templates/baisakhi/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/posters/templates/bhai-dooj/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/posters/templates/bhimrao-ambedkar-jayanti/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/posters/templates/bihu/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/posters/templates/chhath-puja/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/posters/templates/childrens-day/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/posters/templates/cricket/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/posters/templates/cyber-crime/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/posters/templates/cyber-security/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/posters/templates/dengue-awareness/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/posters/templates/dhanteras/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/posters/templates/diwali/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/posters/templates/dussehra/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/posters/templates/eid-milad-un-nabi/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/posters/templates/gandhi-jayanti/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/posters/templates/ganesh-chaturthi/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/posters/templates/guru-purnima/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/posters/templates/hanuman-jayanti/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/posters/templates/holi/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/posters/templates/india-independence-day/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/posters/templates/india-republic-day/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/posters/templates/indian-constitution-day/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/posters/templates/kerala-piravi/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/posters/templates/krishna-janmashtami/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/posters/templates/makar-sankranti/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/posters/templates/nag-panchami/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/posters/templates/national-cancer-awareness-day/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/posters/templates/national-doctors-day/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/posters/templates/navratri/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/posters/templates/nurses-day/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/posters/templates/onam/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/posters/templates/pongal/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/posters/templates/raksha-bandhan/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/posters/templates/ram-navami/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/posters/templates/rangoli-competition/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/posters/templates/saraswati-puja-basant-panchami/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/posters/templates/save-water/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/posters/templates/suicide-prevention/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/posters/templates/unity-in-diversity/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/posters/templates/vishu/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/posters/templates/world-ozone-day/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/profile-pictures/templates/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/stickers/templates/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/stickers/templates/diwali/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/stickers/templates/holi/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/templates/s/we-are-hiring/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/video-editor/templates/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/video-editor/templates/diwali/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/wedding-invitations/templates/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/wedding-invitations/templates/hindu/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/wedding-invitations/templates/indian/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/wedding-invitations/templates/marathi/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/wedding-invitations/templates/muslim/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/wedding-invitations/templates/south-indian/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/wedding-invitations/templates/telugu/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/whatsapp-dp-profile-pictures/templates/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/whatsapp-dp-profile-pictures/templates/boys/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/whatsapp-dp-profile-pictures/templates/cartoon/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/whatsapp-dp-profile-pictures/templates/default/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/whatsapp-dp-profile-pictures/templates/girls/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/whatsapp-statuses/templates/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/whatsapp-statuses/templates/diwali/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/whatsapp-statuses/templates/ganesh-chaturthi/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/whatsapp-statuses/templates/good-morning/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/whatsapp-statuses/templates/independence-day/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/whatsapp-statuses/templates/ramadan-mubarak/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.canva.in/whatsapp-stickers/templates/",
+        "page_type": "other",
+        "source": "sitemap"
+      }
+    ],
+    "sampled_static": [
+      "https://www.canva.in/",
+      "https://www.canva.in/banners/templates/",
+      "https://www.canva.in/banners/templates/bhimrao-ambedkar-jayanti/",
+      "https://www.canva.in/banners/templates/chhath-puja-background/",
+      "https://www.canva.in/banners/templates/cricket/"
+    ],
+    "sampled_rendered": [],
+    "sampling_seed": "sha256:e9c96b83de6e5438cbb1fe8841c5bd70471ef84efc3a452722e739c9705d6a97"
+  },
+  "pages": [
+    {
+      "url": "https://www.canva.in/",
+      "final_url": "https://www.canva.in/",
+      "status": "ok",
+      "reason": null,
+      "http_status": 200,
+      "page_type": "home",
+      "headers": {
+        "date": "Thu, 10 Sep 2026 20:51:27 GMT",
+        "content-type": "text/html;charset=utf-8",
+        "transfer-encoding": "chunked",
+        "connection": "close",
+        "cf-ray": "a3914f918f57bf12-DEL",
+        "cf-cache-status": "DYNAMIC",
+        "cache-control": "no-cache,no-store",
+        "set-cookie": "__cf_bm=ZoYnoJu3dmw8yqHHvfNmuAQs_d5ejrZ8iZ7_uz6ihik-1789073487.606685-1.0.1.1-ijSdsLdHFBkza__rLMA0Su0oHJvr9aaiiW.BwIEDcJATav_k3IXQi_hIs_ZFav.jQZX517e0OU4du5TZSTN9mw5.htm8C8.qmxPjPi2D8ZHRefAndoxP8r1eeajy6Ja7; HttpOnly; SameSite=None; Secure; Path=/; Domain=canva.in; Expires=Thu, 10 Sep 2026 21:21:27 GMT",
+        "expires": "Thu, 1 Jan 1970 00:00:00 GMT",
+        "server": "cloudflare",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+        "vary": "Accept-Encoding",
+        "pragma": "No-cache",
+        "accept-ch": "Sec-CH-UA-Platform-Version",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "x-canva-trace-id": "61e07afa0c03401c589b34b03591c16c",
+        "x-content-type-options": "nosniff",
+        "x-request-id": "a3914f918f57bf12",
+        "x-xss-protection": "1; mode=block",
+        "content-encoding": "gzip"
+      },
+      "raw_html_bytes": 9124,
+      "main_text": "Please update your browser It seems you are using an old or unsupported browser. To continue enjoying Canva, please update to a recent version of one of the following browsers: Chrome Firefox Safari (macOS only) Edge Alternatively click here to get Canva for Android or iOS. Or click here to learn more about Canva.",
+      "main_text_words": 54,
+      "extraction_ok": true,
+      "title": "Unsupported client – Canva",
+      "meta": {
+        "viewport": "maximum-scale=1.0, width=500",
+        "description": "Unsupported client – Canva",
+        "robots": "noindex,nofollow,noarchive"
+      },
+      "lang": "en-IN",
+      "canonical": {
+        "href": null,
+        "self_referential": false,
+        "cross_domain": false
+      },
+      "headings": [
+        {
+          "level": 1,
+          "text": "Please update your browser",
+          "order": 0
+        }
+      ],
+      "landmarks": {
+        "main": 0,
+        "nav": 0,
+        "header": 0,
+        "footer": 0
+      },
+      "structured_data": {
+        "json_ld": [],
+        "microdata_types": [],
+        "rdfa_types": []
+      },
+      "links": [
+        {
+          "href": "https://www.google.com/chrome/",
+          "text": "Chrome",
+          "rel": null,
+          "internal": false,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.firefox.com",
+          "text": "Firefox",
+          "rel": null,
+          "internal": false,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.apple.com/safari/",
+          "text": "Safari (macOS only)",
+          "rel": null,
+          "internal": false,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.microsoft.com/windows/microsoft-edge/",
+          "text": "Edge",
+          "rel": null,
+          "internal": false,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.canva.in/app/",
+          "text": "Alternatively click here to get Canva for Android or iOS.",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.canva.in/about/",
+          "text": "Or click here to learn more about Canva.",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        }
+      ],
+      "outbound_profile_links": [],
+      "images": [
+        {
+          "src": "https://static.canva.com/static/images/supported_browsers/chrome.2024.png",
+          "alt": null,
+          "decorative_hint": false,
+          "width_attr": "100",
+          "height_attr": "100",
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "https://static.canva.com/static/images/supported_browsers/firefox.2024.png",
+          "alt": null,
+          "decorative_hint": false,
+          "width_attr": "100",
+          "height_attr": "100",
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "https://static.canva.com/static/images/supported_browsers/safari.2024.png",
+          "alt": null,
+          "decorative_hint": false,
+          "width_attr": "100",
+          "height_attr": "100",
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "https://static.canva.com/static/images/supported_browsers/edge.2024.png",
+          "alt": null,
+          "decorative_hint": false,
+          "width_attr": "100",
+          "height_attr": "100",
+          "css_aspect_ratio": null,
+          "in_picture": false
+        }
+      ],
+      "iframes": [],
+      "media": [],
+      "form_controls": [],
+      "interactive_empty": {
+        "links_no_text": 0,
+        "buttons_no_text": 0
+      },
+      "noscript": {
+        "present": false,
+        "words": 0
+      },
+      "dates": {
+        "meta_published": null,
+        "meta_modified": null,
+        "visible_dates": [],
+        "header_last_modified": null
+      },
+      "contact_signals": {
+        "email": false,
+        "phone": null,
+        "postal_address": null,
+        "org_name_footer": null
+      },
+      "trigram_hash": "sha256:76b50793cdc7a60a5f9bf0c24b17cd529bc8c726719f66281c879b6b2c371abe"
+    },
+    {
+      "url": "https://www.canva.in/banners/templates/",
+      "final_url": "https://www.canva.in/banners/templates/",
+      "status": "ok",
+      "reason": null,
+      "http_status": 200,
+      "page_type": "contact",
+      "headers": {
+        "date": "Thu, 10 Sep 2026 20:51:29 GMT",
+        "content-type": "text/html;charset=utf-8",
+        "transfer-encoding": "chunked",
+        "connection": "close",
+        "cf-ray": "a3914f97ce575475-DEL",
+        "cf-cache-status": "DYNAMIC",
+        "cache-control": "no-cache,no-store",
+        "set-cookie": "__cf_bm=sUcd9H.9_lVl2.cwNL07RA.9v5mOUomThW9w4uRfOrs-1789073488.6095164-1.0.1.1-4QjWVZgTjLyv1eXsa8EOchTDuDErbDldGhExbSrr16Sy6zSiL5pjrnW.u4G8oabMobOoHorWLpnl4hH7joOZBvo98YZ4pBKhP2gbWvBe7GRs5eM47jHjYYAk9QGKB4Cr; HttpOnly; SameSite=None; Secure; Path=/; Domain=canva.in; Expires=Thu, 10 Sep 2026 21:21:29 GMT",
+        "expires": "Thu, 1 Jan 1970 00:00:00 GMT",
+        "server": "cloudflare",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+        "vary": "Accept-Encoding",
+        "pragma": "No-cache",
+        "accept-ch": "Sec-CH-UA-Platform-Version",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "x-content-type-options": "nosniff",
+        "x-request-id": "a3914f97ce575475",
+        "x-xss-protection": "1; mode=block",
+        "content-encoding": "gzip"
+      },
+      "raw_html_bytes": 9124,
+      "main_text": "Please update your browser It seems you are using an old or unsupported browser. To continue enjoying Canva, please update to a recent version of one of the following browsers: Chrome Firefox Safari (macOS only) Edge Alternatively click here to get Canva for Android or iOS. Or click here to learn more about Canva.",
+      "main_text_words": 54,
+      "extraction_ok": true,
+      "title": "Unsupported client – Canva",
+      "meta": {
+        "viewport": "maximum-scale=1.0, width=500",
+        "description": "Unsupported client – Canva",
+        "robots": "noindex,nofollow,noarchive"
+      },
+      "lang": "en-IN",
+      "canonical": {
+        "href": null,
+        "self_referential": false,
+        "cross_domain": false
+      },
+      "headings": [
+        {
+          "level": 1,
+          "text": "Please update your browser",
+          "order": 0
+        }
+      ],
+      "landmarks": {
+        "main": 0,
+        "nav": 0,
+        "header": 0,
+        "footer": 0
+      },
+      "structured_data": {
+        "json_ld": [],
+        "microdata_types": [],
+        "rdfa_types": []
+      },
+      "links": [
+        {
+          "href": "https://www.google.com/chrome/",
+          "text": "Chrome",
+          "rel": null,
+          "internal": false,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.firefox.com",
+          "text": "Firefox",
+          "rel": null,
+          "internal": false,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.apple.com/safari/",
+          "text": "Safari (macOS only)",
+          "rel": null,
+          "internal": false,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.microsoft.com/windows/microsoft-edge/",
+          "text": "Edge",
+          "rel": null,
+          "internal": false,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.canva.in/app/",
+          "text": "Alternatively click here to get Canva for Android or iOS.",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.canva.in/about/",
+          "text": "Or click here to learn more about Canva.",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        }
+      ],
+      "outbound_profile_links": [],
+      "images": [
+        {
+          "src": "https://static.canva.com/static/images/supported_browsers/chrome.2024.png",
+          "alt": null,
+          "decorative_hint": false,
+          "width_attr": "100",
+          "height_attr": "100",
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "https://static.canva.com/static/images/supported_browsers/firefox.2024.png",
+          "alt": null,
+          "decorative_hint": false,
+          "width_attr": "100",
+          "height_attr": "100",
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "https://static.canva.com/static/images/supported_browsers/safari.2024.png",
+          "alt": null,
+          "decorative_hint": false,
+          "width_attr": "100",
+          "height_attr": "100",
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "https://static.canva.com/static/images/supported_browsers/edge.2024.png",
+          "alt": null,
+          "decorative_hint": false,
+          "width_attr": "100",
+          "height_attr": "100",
+          "css_aspect_ratio": null,
+          "in_picture": false
+        }
+      ],
+      "iframes": [],
+      "media": [],
+      "form_controls": [],
+      "interactive_empty": {
+        "links_no_text": 0,
+        "buttons_no_text": 0
+      },
+      "noscript": {
+        "present": false,
+        "words": 0
+      },
+      "dates": {
+        "meta_published": null,
+        "meta_modified": null,
+        "visible_dates": [],
+        "header_last_modified": null
+      },
+      "contact_signals": {
+        "email": false,
+        "phone": null,
+        "postal_address": null,
+        "org_name_footer": null
+      },
+      "trigram_hash": "sha256:76b50793cdc7a60a5f9bf0c24b17cd529bc8c726719f66281c879b6b2c371abe"
+    },
+    {
+      "url": "https://www.canva.in/banners/templates/bhimrao-ambedkar-jayanti/",
+      "final_url": "https://www.canva.in/banners/templates/bhimrao-ambedkar-jayanti/",
+      "status": "ok",
+      "reason": null,
+      "http_status": 200,
+      "page_type": "contact",
+      "headers": {
+        "date": "Thu, 10 Sep 2026 20:51:30 GMT",
+        "content-type": "text/html;charset=utf-8",
+        "transfer-encoding": "chunked",
+        "connection": "close",
+        "cf-ray": "a3914f9dfc1d74f6-DEL",
+        "cf-cache-status": "DYNAMIC",
+        "cache-control": "no-cache,no-store",
+        "set-cookie": "__cf_bm=IoFK1B_tnTBoPLJdyh3fBt7q1Ef88vKpKssTnHwofjA-1789073489.598945-1.0.1.1-2hL7PDwNRbd8jrkfyq024Xx92LMq0_oEmClMKU5w2arH45fJ3JN5UkIObq3VrXqJZBxJMfccZkVOEUdkJMD7mnYsD1esrc1RK1_S63IAQ0cDm6JAUBNU_Od5pBbCv7w6; HttpOnly; SameSite=None; Secure; Path=/; Domain=canva.in; Expires=Thu, 10 Sep 2026 21:21:30 GMT",
+        "expires": "Thu, 1 Jan 1970 00:00:00 GMT",
+        "server": "cloudflare",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+        "vary": "Accept-Encoding",
+        "pragma": "No-cache",
+        "accept-ch": "Sec-CH-UA-Platform-Version",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "x-content-type-options": "nosniff",
+        "x-request-id": "a3914f9dfc1d74f6",
+        "x-xss-protection": "1; mode=block",
+        "content-encoding": "gzip"
+      },
+      "raw_html_bytes": 9124,
+      "main_text": "Please update your browser It seems you are using an old or unsupported browser. To continue enjoying Canva, please update to a recent version of one of the following browsers: Chrome Firefox Safari (macOS only) Edge Alternatively click here to get Canva for Android or iOS. Or click here to learn more about Canva.",
+      "main_text_words": 54,
+      "extraction_ok": true,
+      "title": "Unsupported client – Canva",
+      "meta": {
+        "viewport": "maximum-scale=1.0, width=500",
+        "description": "Unsupported client – Canva",
+        "robots": "noindex,nofollow,noarchive"
+      },
+      "lang": "en-IN",
+      "canonical": {
+        "href": null,
+        "self_referential": false,
+        "cross_domain": false
+      },
+      "headings": [
+        {
+          "level": 1,
+          "text": "Please update your browser",
+          "order": 0
+        }
+      ],
+      "landmarks": {
+        "main": 0,
+        "nav": 0,
+        "header": 0,
+        "footer": 0
+      },
+      "structured_data": {
+        "json_ld": [],
+        "microdata_types": [],
+        "rdfa_types": []
+      },
+      "links": [
+        {
+          "href": "https://www.google.com/chrome/",
+          "text": "Chrome",
+          "rel": null,
+          "internal": false,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.firefox.com",
+          "text": "Firefox",
+          "rel": null,
+          "internal": false,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.apple.com/safari/",
+          "text": "Safari (macOS only)",
+          "rel": null,
+          "internal": false,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.microsoft.com/windows/microsoft-edge/",
+          "text": "Edge",
+          "rel": null,
+          "internal": false,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.canva.in/app/",
+          "text": "Alternatively click here to get Canva for Android or iOS.",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.canva.in/about/",
+          "text": "Or click here to learn more about Canva.",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        }
+      ],
+      "outbound_profile_links": [],
+      "images": [
+        {
+          "src": "https://static.canva.com/static/images/supported_browsers/chrome.2024.png",
+          "alt": null,
+          "decorative_hint": false,
+          "width_attr": "100",
+          "height_attr": "100",
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "https://static.canva.com/static/images/supported_browsers/firefox.2024.png",
+          "alt": null,
+          "decorative_hint": false,
+          "width_attr": "100",
+          "height_attr": "100",
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "https://static.canva.com/static/images/supported_browsers/safari.2024.png",
+          "alt": null,
+          "decorative_hint": false,
+          "width_attr": "100",
+          "height_attr": "100",
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "https://static.canva.com/static/images/supported_browsers/edge.2024.png",
+          "alt": null,
+          "decorative_hint": false,
+          "width_attr": "100",
+          "height_attr": "100",
+          "css_aspect_ratio": null,
+          "in_picture": false
+        }
+      ],
+      "iframes": [],
+      "media": [],
+      "form_controls": [],
+      "interactive_empty": {
+        "links_no_text": 0,
+        "buttons_no_text": 0
+      },
+      "noscript": {
+        "present": false,
+        "words": 0
+      },
+      "dates": {
+        "meta_published": null,
+        "meta_modified": null,
+        "visible_dates": [],
+        "header_last_modified": null
+      },
+      "contact_signals": {
+        "email": false,
+        "phone": null,
+        "postal_address": null,
+        "org_name_footer": null
+      },
+      "trigram_hash": "sha256:76b50793cdc7a60a5f9bf0c24b17cd529bc8c726719f66281c879b6b2c371abe"
+    },
+    {
+      "url": "https://www.canva.in/banners/templates/chhath-puja-background/",
+      "final_url": "https://www.canva.in/banners/templates/chhath-puja-background/",
+      "status": "ok",
+      "reason": null,
+      "http_status": 200,
+      "page_type": "contact",
+      "headers": {
+        "date": "Thu, 10 Sep 2026 20:51:31 GMT",
+        "content-type": "text/html;charset=utf-8",
+        "transfer-encoding": "chunked",
+        "connection": "close",
+        "cf-ray": "a3914fa45d1a6080-DEL",
+        "cf-cache-status": "DYNAMIC",
+        "cache-control": "no-cache,no-store",
+        "set-cookie": "__cf_bm=MpJ3Ryu4oGWF2fAyt_2fh9kq2oYr.m5jDpDBCIFS12o-1789073490.6178708-1.0.1.1-yJlyVBLaubBR3qKU4uzjSRL93eNJMeEL8gCPvu63Q8eD1EbzcdUWVPVz95JkUEmANRlHfDMWnlyqOQCrUYJUtgURbYUIfPfHB9mqzujyv1Px_jw_.G.yFFZ5FylzWg0r; HttpOnly; SameSite=None; Secure; Path=/; Domain=canva.in; Expires=Thu, 10 Sep 2026 21:21:31 GMT",
+        "expires": "Thu, 1 Jan 1970 00:00:00 GMT",
+        "server": "cloudflare",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+        "vary": "Accept-Encoding",
+        "pragma": "No-cache",
+        "accept-ch": "Sec-CH-UA-Platform-Version",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "x-content-type-options": "nosniff",
+        "x-request-id": "a3914fa45d1a6080",
+        "x-xss-protection": "1; mode=block",
+        "content-encoding": "gzip"
+      },
+      "raw_html_bytes": 9124,
+      "main_text": "Please update your browser It seems you are using an old or unsupported browser. To continue enjoying Canva, please update to a recent version of one of the following browsers: Chrome Firefox Safari (macOS only) Edge Alternatively click here to get Canva for Android or iOS. Or click here to learn more about Canva.",
+      "main_text_words": 54,
+      "extraction_ok": true,
+      "title": "Unsupported client – Canva",
+      "meta": {
+        "viewport": "maximum-scale=1.0, width=500",
+        "description": "Unsupported client – Canva",
+        "robots": "noindex,nofollow,noarchive"
+      },
+      "lang": "en-IN",
+      "canonical": {
+        "href": null,
+        "self_referential": false,
+        "cross_domain": false
+      },
+      "headings": [
+        {
+          "level": 1,
+          "text": "Please update your browser",
+          "order": 0
+        }
+      ],
+      "landmarks": {
+        "main": 0,
+        "nav": 0,
+        "header": 0,
+        "footer": 0
+      },
+      "structured_data": {
+        "json_ld": [],
+        "microdata_types": [],
+        "rdfa_types": []
+      },
+      "links": [
+        {
+          "href": "https://www.google.com/chrome/",
+          "text": "Chrome",
+          "rel": null,
+          "internal": false,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.firefox.com",
+          "text": "Firefox",
+          "rel": null,
+          "internal": false,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.apple.com/safari/",
+          "text": "Safari (macOS only)",
+          "rel": null,
+          "internal": false,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.microsoft.com/windows/microsoft-edge/",
+          "text": "Edge",
+          "rel": null,
+          "internal": false,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.canva.in/app/",
+          "text": "Alternatively click here to get Canva for Android or iOS.",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.canva.in/about/",
+          "text": "Or click here to learn more about Canva.",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        }
+      ],
+      "outbound_profile_links": [],
+      "images": [
+        {
+          "src": "https://static.canva.com/static/images/supported_browsers/chrome.2024.png",
+          "alt": null,
+          "decorative_hint": false,
+          "width_attr": "100",
+          "height_attr": "100",
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "https://static.canva.com/static/images/supported_browsers/firefox.2024.png",
+          "alt": null,
+          "decorative_hint": false,
+          "width_attr": "100",
+          "height_attr": "100",
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "https://static.canva.com/static/images/supported_browsers/safari.2024.png",
+          "alt": null,
+          "decorative_hint": false,
+          "width_attr": "100",
+          "height_attr": "100",
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "https://static.canva.com/static/images/supported_browsers/edge.2024.png",
+          "alt": null,
+          "decorative_hint": false,
+          "width_attr": "100",
+          "height_attr": "100",
+          "css_aspect_ratio": null,
+          "in_picture": false
+        }
+      ],
+      "iframes": [],
+      "media": [],
+      "form_controls": [],
+      "interactive_empty": {
+        "links_no_text": 0,
+        "buttons_no_text": 0
+      },
+      "noscript": {
+        "present": false,
+        "words": 0
+      },
+      "dates": {
+        "meta_published": null,
+        "meta_modified": null,
+        "visible_dates": [],
+        "header_last_modified": null
+      },
+      "contact_signals": {
+        "email": false,
+        "phone": null,
+        "postal_address": null,
+        "org_name_footer": null
+      },
+      "trigram_hash": "sha256:76b50793cdc7a60a5f9bf0c24b17cd529bc8c726719f66281c879b6b2c371abe"
+    },
+    {
+      "url": "https://www.canva.in/banners/templates/cricket/",
+      "final_url": "https://www.canva.in/banners/templates/cricket/",
+      "status": "ok",
+      "reason": null,
+      "http_status": 200,
+      "page_type": "contact",
+      "headers": {
+        "date": "Thu, 10 Sep 2026 20:51:31 GMT",
+        "content-type": "text/html;charset=utf-8",
+        "transfer-encoding": "chunked",
+        "connection": "close",
+        "cf-ray": "a3914faa89563292-DEL",
+        "cf-cache-status": "DYNAMIC",
+        "cache-control": "no-cache,no-store",
+        "set-cookie": "__cf_bm=T4fRQxVe6XzLssQrfkV0YKeEizF6ydf1jqTPD_ZqVWM-1789073491.6088736-1.0.1.1-iIEW5fG0DFRs5ln0UjzAcWr7dfkiML4eS18tpqteuBHasmB3.at5ZR9GYX5rqI0MjiwQ1E1i.ywvK6bz4jm35UXaiRQDnSTkhxypZpIol3vo2PPMZawj83lPQ7iAW1CO; HttpOnly; SameSite=None; Secure; Path=/; Domain=canva.in; Expires=Thu, 10 Sep 2026 21:21:31 GMT",
+        "expires": "Thu, 1 Jan 1970 00:00:00 GMT",
+        "server": "cloudflare",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+        "vary": "Accept-Encoding",
+        "pragma": "No-cache",
+        "accept-ch": "Sec-CH-UA-Platform-Version",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "x-content-type-options": "nosniff",
+        "x-request-id": "a3914faa89563292",
+        "x-xss-protection": "1; mode=block",
+        "content-encoding": "gzip"
+      },
+      "raw_html_bytes": 9124,
+      "main_text": "Please update your browser It seems you are using an old or unsupported browser. To continue enjoying Canva, please update to a recent version of one of the following browsers: Chrome Firefox Safari (macOS only) Edge Alternatively click here to get Canva for Android or iOS. Or click here to learn more about Canva.",
+      "main_text_words": 54,
+      "extraction_ok": true,
+      "title": "Unsupported client – Canva",
+      "meta": {
+        "viewport": "maximum-scale=1.0, width=500",
+        "description": "Unsupported client – Canva",
+        "robots": "noindex,nofollow,noarchive"
+      },
+      "lang": "en-IN",
+      "canonical": {
+        "href": null,
+        "self_referential": false,
+        "cross_domain": false
+      },
+      "headings": [
+        {
+          "level": 1,
+          "text": "Please update your browser",
+          "order": 0
+        }
+      ],
+      "landmarks": {
+        "main": 0,
+        "nav": 0,
+        "header": 0,
+        "footer": 0
+      },
+      "structured_data": {
+        "json_ld": [],
+        "microdata_types": [],
+        "rdfa_types": []
+      },
+      "links": [
+        {
+          "href": "https://www.google.com/chrome/",
+          "text": "Chrome",
+          "rel": null,
+          "internal": false,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.firefox.com",
+          "text": "Firefox",
+          "rel": null,
+          "internal": false,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.apple.com/safari/",
+          "text": "Safari (macOS only)",
+          "rel": null,
+          "internal": false,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.microsoft.com/windows/microsoft-edge/",
+          "text": "Edge",
+          "rel": null,
+          "internal": false,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.canva.in/app/",
+          "text": "Alternatively click here to get Canva for Android or iOS.",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.canva.in/about/",
+          "text": "Or click here to learn more about Canva.",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        }
+      ],
+      "outbound_profile_links": [],
+      "images": [
+        {
+          "src": "https://static.canva.com/static/images/supported_browsers/chrome.2024.png",
+          "alt": null,
+          "decorative_hint": false,
+          "width_attr": "100",
+          "height_attr": "100",
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "https://static.canva.com/static/images/supported_browsers/firefox.2024.png",
+          "alt": null,
+          "decorative_hint": false,
+          "width_attr": "100",
+          "height_attr": "100",
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "https://static.canva.com/static/images/supported_browsers/safari.2024.png",
+          "alt": null,
+          "decorative_hint": false,
+          "width_attr": "100",
+          "height_attr": "100",
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "https://static.canva.com/static/images/supported_browsers/edge.2024.png",
+          "alt": null,
+          "decorative_hint": false,
+          "width_attr": "100",
+          "height_attr": "100",
+          "css_aspect_ratio": null,
+          "in_picture": false
+        }
+      ],
+      "iframes": [],
+      "media": [],
+      "form_controls": [],
+      "interactive_empty": {
+        "links_no_text": 0,
+        "buttons_no_text": 0
+      },
+      "noscript": {
+        "present": false,
+        "words": 0
+      },
+      "dates": {
+        "meta_published": null,
+        "meta_modified": null,
+        "visible_dates": [],
+        "header_last_modified": null
+      },
+      "contact_signals": {
+        "email": false,
+        "phone": null,
+        "postal_address": null,
+        "org_name_footer": null
+      },
+      "trigram_hash": "sha256:76b50793cdc7a60a5f9bf0c24b17cd529bc8c726719f66281c879b6b2c371abe"
+    }
+  ],
+  "rendered": [],
+  "links": {
+    "status": "ok",
+    "reason": null,
+    "checked_count": 2,
+    "results": [
+      {
+        "url": "https://www.canva.in/app/",
+        "http_status": 404,
+        "from_page": "https://www.canva.in/",
+        "anchor_text": "Alternatively click here to get Canva for Android or iOS."
+      },
+      {
+        "url": "https://www.canva.in/about/",
+        "http_status": 404,
+        "from_page": "https://www.canva.in/",
+        "anchor_text": "Or click here to learn more about Canva."
+      }
+    ],
+    "skipped": []
+  },
+  "anchors": {
+    "status": "ok",
+    "reason": null,
+    "declared": [],
+    "checked_count": 0,
+    "results": []
+  },
+  "budget": {
+    "status": "ok",
+    "reason": null,
+    "stages": [
+      {
+        "name": "resolve",
+        "budget_s": 10,
+        "actual_s": 1.2,
+        "abandoned": false,
+        "planned_items": null,
+        "completed_items": null
+      },
+      {
+        "name": "robots_discovery",
+        "budget_s": 15,
+        "actual_s": 2.6,
+        "abandoned": false,
+        "planned_items": 133,
+        "completed_items": 133
+      },
+      {
+        "name": "static_fetch",
+        "budget_s": 45,
+        "actual_s": 4.5,
+        "abandoned": false,
+        "planned_items": 5,
+        "completed_items": 5
+      },
+      {
+        "name": "render_pass",
+        "budget_s": 75,
+        "actual_s": 0.0,
+        "abandoned": true,
+        "planned_items": 0,
+        "completed_items": 0,
+        "reason": "no_headless_browser_tool"
+      },
+      {
+        "name": "internal_links",
+        "budget_s": 25,
+        "actual_s": 1.9,
+        "abandoned": false,
+        "planned_items": 2,
+        "completed_items": 2
+      },
+      {
+        "name": "offsite_anchors",
+        "budget_s": 20,
+        "actual_s": 0.0,
+        "abandoned": false,
+        "planned_items": 0,
+        "completed_items": 0
+      }
+    ],
+    "total_s": 10.2,
+    "cap_s": 300
+  }
+}

@@ -1,0 +1,337 @@
+{
+  "schema_version": "1.0.0",
+  "site": {
+    "status": "ok",
+    "reason": null,
+    "input": "https://manta.com",
+    "canonical_host": "www.manta.com",
+    "origin": "https://www.manta.com",
+    "scheme": "https",
+    "redirect_chain": [
+      "https://manta.com",
+      "http://www.manta.com/"
+    ],
+    "tls_valid": true,
+    "archetype": "unknown",
+    "archetype_confidence": 0.0
+  },
+  "robots": {
+    "status": "ok",
+    "reason": null,
+    "fetch_status": 200,
+    "body": "# User agents to disallow from any crawling\nUser-agent: 008\nUser-agent: Bender\nUser-agent: Baiduspider\nUser-agent: Slurp/3.0\nUser-agent: ccbot\nDisallow: /\n\n# Special User agents and their rules\nUser-agent: Mediapartners-Google\nDisallow: /claim/\nDisallow: /member\nDisallow: /profile/\nDisallow: /cart/\nDisallow: /manta.\n\n# Rules for Ad Bots: AmazonAdBot (per Playwire) and Google AdsBot\nUser-agent: AmazonAdBot\nUser-agent: AdsBot-Google\nAllow:    /search\n# Profile pages\nAllow:    /c/*\nAllow:    /ic/*\n# World Browse pages (anything under the supported continents - to cover both World Browse and company breadcrumbs)\nAllow:    /world/North+America/*\nAllow:    /world/South+America/*\nAllow:    /world/Europe/*\nAllow:    /world/Africa/*\nAllow:    /world/Oceania/*\nAllow:    /world/Asia/*\n# (US) Megabrowse pages - allow all, then disallow malformed link with missing city code, then allow valid links with industries with trailing spaces\nAllow:    /mb*\nDisallow: /mb_5*_/\nAllow:    /mb_5*0/*_/\nAllow:    /mb_5*1/*_/\nAllow:    /mb_5*2/*_/\nAllow:    /mb_5*3/*_/\nAllow:    /mb_5*4/*_/\nAllow:    /mb_5*5/*_/\nAllow:    /mb_5*6/*_/\nAllow:    /mb_5*7/*_/\nAllow:    /mb_5*8/*_/\nAllow:    /mb_5*9/*_/\nAllow:    /mb_5*A/*_/\nAllow:    /mb_5*B/*_/\nAllow:    /mb_5*C/*_/\nAllow:    /mb_5*D/*_/\nAllow:    /mb_5*E/*_/\nAllow:    /mb_5*F/*_/\nAllow:    /mb_5*G/*_/\nAllow:    /mb_5*H/*_/\nAllow:    /mb_5*I/*_/\nAllow:    /mb_5*J/*_/\nAllow:    /mb_5*K/*_/\nAllow:    /mb_5*L/*_/\nAllow:    /mb_5*M/*_/\nAllow:    /mb_5*N/*_/\nAllow:    /mb_5*O/*_/\nAllow:    /mb_5*P/*_/\nAllow:    /mb_5*Q/*_/\nAllow:    /mb_5*R/*_/\nAllow:    /mb_5*S/*_/\nAllow:    /mb_5*T/*_/\nAllow:    /mb_5*U/*_/\nAllow:    /mb_5*V/*_/\nAllow:    /mb_5*W/*_/\nAllow:    /mb_5*X/*_/\nAllow:    /mb_5*Y/*_/\nAllow:    /mb_5*Z/*_/\n# Legacy urls and explicit disallows from the main UserAgent section\nDisallow: /urlverify\nDisallow: /api/v1/urlverify\nDisallow: /mdir\nDisallow: /jobs\nDisallow: /manta/sample-pdf\nDisallow: /coms2/dnbdescription\nDisallow: /coms2/page_cse\nDisallow: /video\nDisallow: /coms2/page_radlink_results\nDisallow: /comsite5/bin/\nDisallow: /claim/\nDisallow: /member\nDisallow: /g/\nDisallow: /p/*/*/recommends\nDisallow: /p/*/*/following\nDisallow: /m/*/*/recommends\nDisallow: /m/*/*/following\nDisallow: /c/*/*/following\nDisallow: /cr/\nDisallow: /profile/\nDisallow: /ci/\nDisallow: /cs/\nDisallow: /cmap/\nDisallow: /icr\nDisallow: /icmap\nDisallow: /ics\nDisallow: /cart/\nDisallow: /manta.\nDisallow: /inv/\nDisallow: /cpl/\nDisallow: /cpl-edit/\nDisallow: /cp-edit/\nDisallow: /getlisted/\nDisallow: /suggestions/\nDisallow: /6009/*\nDisallow: /ng*\nDisallow: /fapi/\nDisallow: /napi/\nDisallow: /content-only/\nDisallow: /track?\nDisallow: *.html\nDisallow: /stats/c/\nDisallow: /scan/c/\nDisallow: /edit/c/\nDisallow: /build/c/\nDisallow: /ebook\nDisallow: /empty\nDisallow: /unsub/\nDisallow: /pxhh/\n\n# Google crawlers and all other unspecified user agents\nUser-agent: Googlebot\nUser-agent: Googlebot-Image\nUser-agent: Google-InspectionTool\nUser-agent: Googlebot-Video\nUser-agent: *\nAllow: /search\n# Profile pages\nAllow:    /c/*\nAllow:    /ic/*\n# World Browse pages (anything under the supported continents - to cover both World Browse and company breadcrumbs)\nAllow:    /world/North+America/*\nAllow:    /world/South+America/*\nAllow:    /world/Europe/*\nAllow:    /world/Africa/*\nAllow:    /world/Oceania/*\nAllow:    /world/Asia/*\n# (US) Megabrowse pages - allow all, then disallow malformed link with missing city code, then allow valid links with industries with trailing spaces\nAllow:    /mb*\nDisallow: /mb_5*_/\nAllow:    /mb_5*0/*_/\nAllow:    /mb_5*1/*_/\nAllow:    /mb_5*2/*_/\nAllow:    /mb_5*3/*_/\nAllow:    /mb_5*4/*_/\nAllow:    /mb_5*5/*_/\nAllow:    /mb_5*6/*_/\nAllow:    /mb_5*7/*_/\nAllow:    /mb_5*8/*_/\nAllow:    /mb_5*9/*_/\nAllow:    /mb_5*A/*_/\nAllow:    /mb_5*B/*_/\nAllow:    /mb_5*C/*_/\nAllow:    /mb_5*D/*_/\nAllow:    /mb_5*E/*_/\nAllow:    /mb_5*F/*_/\nAllow:    /mb_5*G/*_/\nAllow:    /mb_5*H/*_/\nAllow:    /mb_5*I/*_/\nAllow:    /mb_5*J/*_/\nAllow:    /mb_5*K/*_/\nAllow:    /mb_5*L/*_/\nAllow:    /mb_5*M/*_/\nAllow:    /mb_5*N/*_/\nAllow:    /mb_5*O/*_/\nAllow:    /mb_5*P/*_/\nAllow:    /mb_5*Q/*_/\nAllow:    /mb_5*R/*_/\nAllow:    /mb_5*S/*_/\nAllow:    /mb_5*T/*_/\nAllow:    /mb_5*U/*_/\nAllow:    /mb_5*V/*_/\nAllow:    /mb_5*W/*_/\nAllow:    /mb_5*X/*_/\nAllow:    /mb_5*Y/*_/\nAllow:    /mb_5*Z/*_/\nDisallow: /urlverify\nDisallow: /api/v1/urlverify\nDisallow: /mdir\nDisallow: /jobs\nDisallow: /manta/sample-pdf\nDisallow: /coms2/dnbdescription\nDisallow: /coms2/page_cse\nDisallow: /video\nDisallow: /coms2/page_radlink_results\nDisallow: /comsite5/bin/\nDisallow: /claim/\nDisallow: /member\nDisallow: /g/\nDisallow: /p/*/*/recommends\nDisallow: /p/*/*/following\nDisallow: /m/*/*/recommends\nDisallow: /m/*/*/following\nDisallow: /c/*/*/following\nDisallow: /cr/\nDisallow: /profile/\nDisallow: /ci/\nDisallow: /cs/\nDisallow: /cmap/\nDisallow: /icr\nDisallow: /icmap\nDisallow: /ics\nDisallow: /cart/\nDisallow: /manta.\nDisallow: /inv/\nDisallow: /cpl/\nDisallow: /cpl-edit/\nDisallow: /cp-edit/\nDisallow: /getlisted/\nDisallow: /suggestions/\nDisallow: /6009/*\nDisallow: /ng*\nDisallow: /fapi/\nDisallow: /napi/\nDisallow: /content-only/\nDisallow: /track?\nDisallow: *.html\nDisallow: /stats/c/\nDisallow: /scan/c/\nDisallow: /edit/c/\nDisallow: /build/c/\nDisallow: /ebook\nDisallow: /empty\nDisallow: /unsub/\nDisallow: /pxhh/\n\n# Bingbot crawlers directives\n#   same as for the general crawlers except the crawl-delay (crawl 1 URL in 5 seconds)\nUser-agent: bingbot\nCrawl-delay: 5\nDisallow: /search\n# World Browse pages (anything under the supported continents - to cover both World Browse and company breadcrumbs)\nAllow:    /c/*\nAllow:    /ic/*\nAllow:    /world/North+America/*\nAllow:    /world/South+America/*\nAllow:    /world/Europe/*\nAllow:    /world/Africa/*\nAllow:    /world/Oceania/*\nAllow:    /world/Asia/*\n# (US) Megabrowse pages - allow all, then disallow malformed link with missing city code, then allow valid links with industries with trailing spaces\nAllow:    /mb*\nDisallow: /mb_5*_/\nAllow:    /mb_5*0/*_/\nAllow:    /mb_5*1/*_/\nAllow:    /mb_5*2/*_/\nAllow:    /mb_5*3/*_/\nAllow:    /mb_5*4/*_/\nAllow:    /mb_5*5/*_/\nAllow:    /mb_5*6/*_/\nAllow:    /mb_5*7/*_/\nAllow:    /mb_5*8/*_/\nAllow:    /mb_5*9/*_/\nAllow:    /mb_5*A/*_/\nAllow:    /mb_5*B/*_/\nAllow:    /mb_5*C/*_/\nAllow:    /mb_5*D/*_/\nAllow:    /mb_5*E/*_/\nAllow:    /mb_5*F/*_/\nAllow:    /mb_5*G/*_/\nAllow:    /mb_5*H/*_/\nAllow:    /mb_5*I/*_/\nAllow:    /mb_5*J/*_/\nAllow:    /mb_5*K/*_/\nAllow:    /mb_5*L/*_/\nAllow:    /mb_5*M/*_/\nAllow:    /mb_5*N/*_/\nAllow:    /mb_5*O/*_/\nAllow:    /mb_5*P/*_/\nAllow:    /mb_5*Q/*_/\nAllow:    /mb_5*R/*_/\nAllow:    /mb_5*S/*_/\nAllow:    /mb_5*T/*_/\nAllow:    /mb_5*U/*_/\nAllow:    /mb_5*V/*_/\nAllow:    /mb_5*W/*_/\nAllow:    /mb_5*X/*_/\nAllow:    /mb_5*Y/*_/\nAllow:    /mb_5*Z/*_/\nDisallow: /urlverify\nDisallow: /api/v1/urlverify\nDisallow: /mdir\nDisallow: /jobs\nDisallow: /manta/sample-pdf\nDisallow: /coms2/dnbdescription\nDisallow: /coms2/page_cse\nDisallow: /video\nDisallow: /coms2/page_radlink_results\nDisallow: /comsite5/bin/\nDisallow: /claim/\nDisallow: /member\nDisallow: /g/\nDisallow: /p/*/*/recommends\nDisallow: /p/*/*/following\nDisallow: /m/*/*/recommends\nDisallow: /m/*/*/following\nDisallow: /c/*/*/following\nDisallow: /cr/\nDisallow: /profile/\nDisallow: /ci/\nDisallow: /cs/\nDisallow: /cmap/\nDisallow: /icr\nDisallow: /icmap\nDisallow: /ics\nDisallow: /cart/\nDisallow: /manta.\nDisallow: /inv/\nDisallow: /cpl/\nDisallow: /cpl-edit/\nDisallow: /cp-edit/\nDisallow: /getlisted/\nDisallow: /suggestions/\nDisallow: /6009/*\nDisallow: /ng*\nDisallow: /fapi/\nDisallow: /napi/\nDisallow: /content-only/\nDisallow: /track?\nDisallow: *.html\nDisallow: /stats/c/\nDisallow: /scan/c/\nDisallow: /edit/c/\nDisallow: /build/c/\nDisallow: /ebook\nDisallow: /empty\nDisallow: /unsub/\nDisallow: /pxhh/\n\n# Sitemaps\nSitemap: https://www.manta.com/site_map_claimed_world_index_1.xml\nSitemap: https://www.manta.com/site_map_manta_blog.xml\nSitemap: https://www.manta.com/site_map_marketing_pages.xml\nSitemap: https://www.manta.com/site_map_megabrowse_31_index_1.xml\nSitemap: https://www.manta.com/site_map_megabrowse_33_index_1.xml\nSitemap: https://www.manta.com/site_map_megabrowse_34_index_1.xml\nSitemap: https://www.manta.com/site_map_megabrowse_35_index_1.xml\nSitemap: https://www.manta.com/site_map_megabrowse_41_index_1.xml\nSitemap: https://www.manta.com/site_map_megabrowse_43_index_1.xml\nSitemap: https://www.manta.com/site_map_megabrowse_44_index_1.xml\nSitemap: https://www.manta.com/site_map_megabrowse_45_index_1.xml\nSitemap: https://www.manta.com/site_map_megabrowse_51_index_1.xml\nSitemap: https://www.manta.com/site_map_megabrowse_53_index_1.xml\nSitemap: https://www.manta.com/site_map_megabrowse_54_index_1.xml\nSitemap: https://www.manta.com/site_map_megabrowse_55_index_1.xml\nSitemap: https://www.manta.com/site_map_unclaimed_world_index_1.xml\nSitemap: https://www.manta.com/site_map_us_AK_index_1.xml\nSitemap: https://www.manta.com/site_map_us_AL_index_1.xml\nSitemap: https://www.manta.com/site_map_us_AR_index_1.xml\nSitemap: https://www.manta.com/site_map_us_AS_index_1.xml\nSitemap: https://www.manta.com/site_map_us_AZ_index_1.xml\nSitemap: https://www.manta.com/site_map_us_CA_index_1.xml\nSitemap: https://www.manta.com/site_map_us_CO_index_1.xml\nSitemap: https://www.manta.com/site_map_us_CT_index_1.xml\nSitemap: https://www.manta.com/site_map_us_DC_index_1.xml\nSitemap: https://www.manta.com/site_map_us_DE_index_1.xml\nSitemap: https://www.manta.com/site_map_us_FL_index_1.xml\nSitemap: https://www.manta.com/site_map_us_FM_index_1.xml\nSitemap: https://www.manta.com/site_map_us_GA_index_1.xml\nSitemap: https://www.manta.com/site_map_us_GU_index_1.xml\nSitemap: https://www.manta.com/site_map_us_HI_index_1.xml\nSitemap: https://www.manta.com/site_map_us_IA_index_1.xml\nSitemap: https://www.manta.com/site_map_us_ID_index_1.xml\nSitemap: https://www.manta.com/site_map_us_IL_index_1.xml\nSitemap: https://www.manta.com/site_map_us_IN_index_1.xml\nSitemap: https://www.manta.com/site_map_us_KS_index_1.xml\nSitemap: https://www.manta.com/site_map_us_KY_index_1.xml\nSitemap: https://www.manta.com/site_map_us_LA_index_1.xml\nSitemap: https://www.manta.com/site_map_us_MA_index_1.xml\nSitemap: https://www.manta.com/site_map_us_MD_index_1.xml\nSitemap: https://www.manta.com/site_map_us_ME_index_1.xml\nSitemap: https://www.manta.com/site_map_us_MH_index_1.xml\nSitemap: https://www.manta.com/site_map_us_MI_index_1.xml\nSitemap: https://www.manta.com/site_map_us_MN_index_1.xml\nSitemap: https://www.manta.com/site_map_us_MO_index_1.xml\nSitemap: https://www.manta.com/site_map_us_MP_index_1.xml\nSitemap: https://www.manta.com/site_map_us_MS_index_1.xml\nSitemap: https://www.manta.com/site_map_us_MT_index_1.xml\nSitemap: https://www.manta.com/site_map_us_NC_index_1.xml\nSitemap: https://www.manta.com/site_map_us_ND_index_1.xml\nSitemap: https://www.manta.com/site_map_us_NE_index_1.xml\nSitemap: https://www.manta.com/site_map_us_NH_index_1.xml\nSitemap: https://www.manta.com/site_map_us_NJ_index_1.xml\nSitemap: https://www.manta.com/site_map_us_NM_index_1.xml\nSitemap: https://www.manta.com/site_map_us_NV_index_1.xml\nSitemap: https://www.manta.com/site_map_us_NY_index_1.xml\nSitemap: https://www.manta.com/site_map_us_OH_index_1.xml\nSitemap: https://www.manta.com/site_map_us_OK_index_1.xml\nSitemap: https://www.manta.com/site_map_us_OR_index_1.xml\nSitemap: https://www.manta.com/site_map_us_PA_index_1.xml\nSitemap: https://www.manta.com/site_map_us_PR_index_1.xml\nSitemap: https://www.manta.com/site_map_us_RI_index_1.xml\nSitemap: https://www.manta.com/site_map_us_SC_index_1.xml\nSitemap: https://www.manta.com/site_map_us_SD_index_1.xml\nSitemap: https://www.manta.com/site_map_us_TN_index_1.xml\nSitemap: https://www.manta.com/site_map_us_TX_index_1.xml\nSitemap: https://www.manta.com/site_map_us_UT_index_1.xml\nSitemap: https://www.manta.com/site_map_us_VA_index_1.xml\nSitemap: https://www.manta.com/site_map_us_VI_index_1.xml\nSitemap: https://www.manta.com/site_map_us_VT_index_1.xml\nSitemap: https://www.manta.com/site_map_us_WA_index_1.xml\nSitemap: https://www.manta.com/site_map_us_WI_index_1.xml\nSitemap: https://www.manta.com/site_map_us_WV_index_1.xml\nSitemap: https://www.manta.com/site_map_us_WY_index_1.xml\n",
+    "parse_ok": true,
+    "agents": {
+      "008": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 7,
+        "crawl_delay": null
+      },
+      "Bender": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 7,
+        "crawl_delay": null
+      },
+      "Baiduspider": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 7,
+        "crawl_delay": null
+      },
+      "Slurp/3.0": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 7,
+        "crawl_delay": null
+      },
+      "ccbot": {
+        "class": "training",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 7,
+        "crawl_delay": null
+      },
+      "Mediapartners-Google": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "AmazonAdBot": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "AdsBot-Google": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "Googlebot": {
+        "class": "hybrid",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "Googlebot-Image": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "Google-InspectionTool": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "Googlebot-Video": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "bingbot": {
+        "class": "hybrid",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": 5.0
+      },
+      "*": {
+        "class": "generic",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      }
+    },
+    "sitemap_declarations": [
+      "https://www.manta.com/site_map_claimed_world_index_1.xml",
+      "https://www.manta.com/site_map_manta_blog.xml",
+      "https://www.manta.com/site_map_marketing_pages.xml",
+      "https://www.manta.com/site_map_megabrowse_31_index_1.xml",
+      "https://www.manta.com/site_map_megabrowse_33_index_1.xml",
+      "https://www.manta.com/site_map_megabrowse_34_index_1.xml",
+      "https://www.manta.com/site_map_megabrowse_35_index_1.xml",
+      "https://www.manta.com/site_map_megabrowse_41_index_1.xml",
+      "https://www.manta.com/site_map_megabrowse_43_index_1.xml",
+      "https://www.manta.com/site_map_megabrowse_44_index_1.xml",
+      "https://www.manta.com/site_map_megabrowse_45_index_1.xml",
+      "https://www.manta.com/site_map_megabrowse_51_index_1.xml",
+      "https://www.manta.com/site_map_megabrowse_53_index_1.xml",
+      "https://www.manta.com/site_map_megabrowse_54_index_1.xml",
+      "https://www.manta.com/site_map_megabrowse_55_index_1.xml",
+      "https://www.manta.com/site_map_unclaimed_world_index_1.xml",
+      "https://www.manta.com/site_map_us_AK_index_1.xml",
+      "https://www.manta.com/site_map_us_AL_index_1.xml",
+      "https://www.manta.com/site_map_us_AR_index_1.xml",
+      "https://www.manta.com/site_map_us_AS_index_1.xml",
+      "https://www.manta.com/site_map_us_AZ_index_1.xml",
+      "https://www.manta.com/site_map_us_CA_index_1.xml",
+      "https://www.manta.com/site_map_us_CO_index_1.xml",
+      "https://www.manta.com/site_map_us_CT_index_1.xml",
+      "https://www.manta.com/site_map_us_DC_index_1.xml",
+      "https://www.manta.com/site_map_us_DE_index_1.xml",
+      "https://www.manta.com/site_map_us_FL_index_1.xml",
+      "https://www.manta.com/site_map_us_FM_index_1.xml",
+      "https://www.manta.com/site_map_us_GA_index_1.xml",
+      "https://www.manta.com/site_map_us_GU_index_1.xml",
+      "https://www.manta.com/site_map_us_HI_index_1.xml",
+      "https://www.manta.com/site_map_us_IA_index_1.xml",
+      "https://www.manta.com/site_map_us_ID_index_1.xml",
+      "https://www.manta.com/site_map_us_IL_index_1.xml",
+      "https://www.manta.com/site_map_us_IN_index_1.xml",
+      "https://www.manta.com/site_map_us_KS_index_1.xml",
+      "https://www.manta.com/site_map_us_KY_index_1.xml",
+      "https://www.manta.com/site_map_us_LA_index_1.xml",
+      "https://www.manta.com/site_map_us_MA_index_1.xml",
+      "https://www.manta.com/site_map_us_MD_index_1.xml",
+      "https://www.manta.com/site_map_us_ME_index_1.xml",
+      "https://www.manta.com/site_map_us_MH_index_1.xml",
+      "https://www.manta.com/site_map_us_MI_index_1.xml",
+      "https://www.manta.com/site_map_us_MN_index_1.xml",
+      "https://www.manta.com/site_map_us_MO_index_1.xml",
+      "https://www.manta.com/site_map_us_MP_index_1.xml",
+      "https://www.manta.com/site_map_us_MS_index_1.xml",
+      "https://www.manta.com/site_map_us_MT_index_1.xml",
+      "https://www.manta.com/site_map_us_NC_index_1.xml",
+      "https://www.manta.com/site_map_us_ND_index_1.xml",
+      "https://www.manta.com/site_map_us_NE_index_1.xml",
+      "https://www.manta.com/site_map_us_NH_index_1.xml",
+      "https://www.manta.com/site_map_us_NJ_index_1.xml",
+      "https://www.manta.com/site_map_us_NM_index_1.xml",
+      "https://www.manta.com/site_map_us_NV_index_1.xml",
+      "https://www.manta.com/site_map_us_NY_index_1.xml",
+      "https://www.manta.com/site_map_us_OH_index_1.xml",
+      "https://www.manta.com/site_map_us_OK_index_1.xml",
+      "https://www.manta.com/site_map_us_OR_index_1.xml",
+      "https://www.manta.com/site_map_us_PA_index_1.xml",
+      "https://www.manta.com/site_map_us_PR_index_1.xml",
+      "https://www.manta.com/site_map_us_RI_index_1.xml",
+      "https://www.manta.com/site_map_us_SC_index_1.xml",
+      "https://www.manta.com/site_map_us_SD_index_1.xml",
+      "https://www.manta.com/site_map_us_TN_index_1.xml",
+      "https://www.manta.com/site_map_us_TX_index_1.xml",
+      "https://www.manta.com/site_map_us_UT_index_1.xml",
+      "https://www.manta.com/site_map_us_VA_index_1.xml",
+      "https://www.manta.com/site_map_us_VI_index_1.xml",
+      "https://www.manta.com/site_map_us_VT_index_1.xml",
+      "https://www.manta.com/site_map_us_WA_index_1.xml",
+      "https://www.manta.com/site_map_us_WI_index_1.xml",
+      "https://www.manta.com/site_map_us_WV_index_1.xml",
+      "https://www.manta.com/site_map_us_WY_index_1.xml"
+    ]
+  },
+  "discovery": {
+    "status": "ok",
+    "reason": null,
+    "sitemap_found": false,
+    "sitemap_urls_count": 0,
+    "inventory": [
+      {
+        "url": "https://www.manta.com/",
+        "page_type": "home",
+        "source": "crawl"
+      }
+    ],
+    "sampled_static": [
+      "https://www.manta.com/"
+    ],
+    "sampled_rendered": [],
+    "sampling_seed": "sha256:07621a4bd0b24ccdbba9d29c8afded647582dec70a66b638fc59b04468211f93"
+  },
+  "pages": [
+    {
+      "url": "https://www.manta.com/",
+      "final_url": "https://www.manta.com/",
+      "status": "unavailable",
+      "reason": "http_403",
+      "http_status": 403,
+      "page_type": "home",
+      "headers": {},
+      "raw_html_bytes": 0,
+      "main_text": "",
+      "main_text_words": 0,
+      "extraction_ok": false,
+      "title": null,
+      "meta": {},
+      "lang": null,
+      "canonical": {},
+      "headings": [],
+      "landmarks": {},
+      "structured_data": {},
+      "links": [],
+      "outbound_profile_links": [],
+      "images": [],
+      "iframes": [],
+      "media": [],
+      "form_controls": [],
+      "interactive_empty": {},
+      "noscript": {
+        "present": false,
+        "words": 0
+      },
+      "dates": {},
+      "contact_signals": {},
+      "trigram_hash": null
+    }
+  ],
+  "rendered": [],
+  "links": {
+    "status": "ok",
+    "reason": null,
+    "checked_count": 0,
+    "results": [],
+    "skipped": []
+  },
+  "anchors": {
+    "status": "ok",
+    "reason": null,
+    "declared": [],
+    "checked_count": 0,
+    "results": []
+  },
+  "budget": {
+    "status": "ok",
+    "reason": null,
+    "stages": [
+      {
+        "name": "resolve",
+        "budget_s": 10,
+        "actual_s": 2.2,
+        "abandoned": false,
+        "planned_items": null,
+        "completed_items": null
+      },
+      {
+        "name": "robots_discovery",
+        "budget_s": 15,
+        "actual_s": 4.2,
+        "abandoned": false,
+        "planned_items": 1,
+        "completed_items": 1
+      },
+      {
+        "name": "static_fetch",
+        "budget_s": 45,
+        "actual_s": 0.9,
+        "abandoned": false,
+        "planned_items": 1,
+        "completed_items": 0
+      },
+      {
+        "name": "render_pass",
+        "budget_s": 75,
+        "actual_s": 0.0,
+        "abandoned": true,
+        "planned_items": 0,
+        "completed_items": 0,
+        "reason": "no_headless_browser_tool"
+      },
+      {
+        "name": "internal_links",
+        "budget_s": 25,
+        "actual_s": 0.0,
+        "abandoned": false,
+        "planned_items": 0,
+        "completed_items": 0
+      },
+      {
+        "name": "offsite_anchors",
+        "budget_s": 20,
+        "actual_s": 0.0,
+        "abandoned": false,
+        "planned_items": 0,
+        "completed_items": 0
+      }
+    ],
+    "total_s": 7.3,
+    "cap_s": 300
+  }
+}

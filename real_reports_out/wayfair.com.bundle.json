@@ -1,0 +1,1302 @@
+{
+  "schema_version": "1.0.0",
+  "site": {
+    "status": "ok",
+    "reason": null,
+    "input": "https://wayfair.com",
+    "canonical_host": "www.wayfair.com",
+    "origin": "https://www.wayfair.com",
+    "scheme": "https",
+    "redirect_chain": [
+      "https://wayfair.com"
+    ],
+    "tls_valid": true,
+    "archetype": "unknown",
+    "archetype_confidence": 0.0
+  },
+  "robots": {
+    "status": "ok",
+    "reason": null,
+    "fetch_status": 200,
+    "body": "User-agent: *\r\nAllow: /*/sb0/\r\nAllow: /*/sb1/\r\nAllow: /*/sb2/\r\nDisallow: /*/sb*/\r\nAllow: /v/business_account/trade_program/home\r\nDisallow: /ajax/\r\nDisallow: /filter/\r\nDisallow: /filters/\r\nDisallow: */filters/\r\nNoindex: /filters/\r\nNoindex: */filters/\r\nNoindex: /*quick_view\r\nDisallow: /hl_landing.php\r\nDisallow: /imgview/\r\nDisallow: /logodownload.php\r\nDisallow: /popups/\r\nDisallow: /shop/\r\nDisallow: /v/account/\r\nDisallow: /vmlt.php\r\nAllow: /shop-the-look/$\r\nAllow: /shop-the-look/slp/\r\nAllow: /shop-the-look/dsp/\r\nAllow: /shop-the-look/sl0\r\nAllow: /shop-the-look/sl1/\r\nAllow: /shop-the-look/sl2/\r\nDisallow: /shop-the-look/\r\nDisallow: /v/get_the_look/\r\nDisallow: /v/product_review_page/\r\nDisallow: /product_review_page/\r\nDisallow: /session/secure/\r\nDisallow: /asp/\r\nDisallow: /ib/\r\nDisallow: /param.xml\r\nDisallow: /return_sales_items.php\r\nDisallow: /session/public/board\r\nDisallow: /Staples/\r\nDisallow: /v/category/show\r\nDisallow: /a/favorites/list/is_favorited\r\nDisallow: /a/performance_timing/log\r\nDisallow: /b/batch\r\nDisallow: /gateway.php\r\nDisallow: /pixel/!crd_prm!.gif\r\nDisallow: /set_location.php\r\nDisallow: /v/category/get_top_level_categories\r\nDisallow: /v/inventory/load\r\nDisallow: /v/product_image_group/get_images\r\nDisallow: /session/public/submit_review.php\r\nDisallow: /session/public/basket.php\r\nDisallow: /v/checkout/\r\nDisallow: /registry/browse/\r\nDisallow: /registry/checklist/\r\nDisallow: /v/ideaboards/\r\nDisallow: /v/favorites/\r\nDisallow: /compare.php\r\nDisallow: /visual_search/\r\nDisallow: /finds\r\nDisallow: /flashdeals\r\nNoindex : /roomplanner/*\r\nDisallow: /roomplanner/\r\nNoindex : /decorator/*\r\nDisallow: /decorator/\r\nDisallow: /service_worker.js\r\nDisallow: /registry/*/pdp/\r\nAllow: /roomplanner3d/$\r\nNoindex: /roomplanner3d/*\r\nDisallow: /roomplanner3d/\r\nDisallow: /a/category/category_page/lazy_load_category_tree\r\nDisallow: /*?*curpage=*\r\nAllow: /shop/o/\r\n\r\nSitemap: https://www.wayfair.com/seo-category-index.xml\r\nSitemap: https://www.wayfair.com/seo-keyword-index.xml\r\nSitemap: https://www.wayfair.com/seo-sb0-index.xml\r\nSitemap: https://www.wayfair.com/seo-sb1-index.xml\r\nSitemap: https://www.wayfair.com/seo-sb2-index.xml\r\nSitemap: https://www.wayfair.com/seo-pdp-index.xml\r\n#\r\n#   ______     __                 __           ____\r\n#  / ____/__  / /_   ____  __  __/ /_   ____  / __/\r\n# / / __/ _ / __/  / __ / / / / __/  / __ / /_\r\n#/ /_/ /  __/ /_   / /_/ / /_/ / /_   / /_/ / __/\r\n#\\_____\\___/\\__/   \\____/\\__,_/\\__/   \\____/_/\r\n#   / /_  ___  ________     __  ______  __  __\r\n#  / __ / _ / ___/ _ \\   / / / / __ / / / /\r\n# / / / /  __/ /  /  __/  / /_/ / /_/ / /_/ /\r\n#/_/ /_/\\___/_/   \\___/   \\__, /\\____/\\__,_/\r\n#                       _/____/____                __   _     __\r\n#   ____ ___  ___  ____/ /___/ / (_)___  ____ _   / /__(_)___/ /____\r\n#  / __ `__ / _ / __  / __  / / / __ / __ `/  / //_/ / __  / ___/\r\n# / / / / / /  __/ /_/ / /_/ / / / / / / /_/ /  / , / / /_/ (__  ) _ _\r\n#/_/ /_/ /_/\\___/\\__,_/\\__,_/_/_/_/ /_/\\__, /  /_/|_/_/\\__,_/____(_|_|_)\r\n#                                     /____/\r\n# If you're here because you're a curious programmer, engineer, or SEO,\r\n# make sure to check out our job board for open positions on our team!\r\n# https://www.aboutwayfair.com/careers\r\n#\r\n#",
+    "parse_ok": true,
+    "agents": {
+      "*": {
+        "class": "generic",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      }
+    },
+    "sitemap_declarations": [
+      "https://www.wayfair.com/seo-category-index.xml",
+      "https://www.wayfair.com/seo-keyword-index.xml",
+      "https://www.wayfair.com/seo-sb0-index.xml",
+      "https://www.wayfair.com/seo-sb1-index.xml",
+      "https://www.wayfair.com/seo-sb2-index.xml",
+      "https://www.wayfair.com/seo-pdp-index.xml"
+    ]
+  },
+  "discovery": {
+    "status": "ok",
+    "reason": null,
+    "sitemap_found": true,
+    "sitemap_urls_count": 893,
+    "inventory": [
+      {
+        "url": "https://www.wayfair.com/",
+        "page_type": "home",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/facilities-maintenance/cat/patio-and-space-heaters-c1876131.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/outdoor/cat/front-door-decor-curb-appeal-c1873200.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/appliances/cat/dishwashers-c1874331.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/baby-kids/cat/toddler-kids-playroom-sale-c1851153.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/holiday-decor/cat/easter-tableware-linens-c1845023.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/outdoor/cat/hot-tubs-saunas-sale-c1851754.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/outdoor/cat/grills-accessories-sale-c1851750.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/holiday-decor/cat/indoor-spring-decor-c1876852.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/outdoor/cat/outdoor-umbrellas-c417302.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/holiday-decor/cat/halloween-wreaths-garlands-flowers-c1871027.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/shop-by-room/cat/office-lighting-sale-c1876450.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/home-improvement/cat/home-improvement-c45342.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/decor-pillows/cat/rose-gold-decor-c1869734.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/furniture/cat/entry-mudroom-furniture-sale-c1851584.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/appliances/cat/vacuums-deep-cleaners-c1862812.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/decor-pillows/cat/wall-decor-sale-c1851641.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/outdoor/cat/backyard-play-c216137.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/kitchen-tabletop/cat/dinnerware-sale-c1863301.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/accommodations/cat/guest-room-c1876612.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/holiday-decor/cat/outdoor-fourth-of-july-decorations-c1873002.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/commercial-office-furniture/cat/office-seating-sale-c1863231.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/school-furniture-and-supplies/cat/science-lab-furniture-sale-c1863932.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/storage-organization/cat/storage-organization-sale-c1851577.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/storage-organization/cat/outdoor-covers-sale-c1874181.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/shop-by-room/cat/dorm-storage-and-organization-c1876409.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/home-improvement/cat/bathroom-tiles-flooring-c1873747.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/shop-by-room/cat/bedroom-decor-sale-c1876455.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/shop-by-room/cat/dorm-kitchen-dining-sale-c1876472.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/decor-pillows/cat/flowers-plants-c477256.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/pet/cat/dog-bowls-feeding-supplies-c1874140.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/school-furniture-and-supplies/cat/school-rugs-sale-c1876818.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/smallwares/cat/restaurant-signage-c1876214.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/shop-product-type/cat/cabinets-c1876305.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/kitchen-tabletop/cat/serving-trays-boards-sale-c1874730.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/shop-office-spaces/cat/open-floor-workspace-desks-chairs-c1874186.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/furniture/cat/small-spaces-c1863459.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/shop-by-room/cat/hallway-mudroom-sale-c1876442.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/contractor/cat/restroom-hardware-accessories-sale-c1876140.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/shop-restaurant-spaces/cat/bar-area-sale-c1876242.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/baby-kids/cat/toddler-kids-bedroom-furniture-c215056.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/restaurant-appliances-equipment/cat/beverage-equipment-sale-c1876231.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/decor-pillows/cat/trending-home-accessories-c1873629.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/home-improvement/cat/cabinet-hardware-sale-c1870910.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/outdoor/cat/wild-bird-care-c1873203.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/outdoor/cat/grills-accessories-c215946.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/school-furniture-and-supplies/cat/school-spaces-c1873275.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/shop-office-spaces/cat/breakroom-kitchen-appliances-c1874192.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/shop-by-room/cat/floor-care-sale-c1876448.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/facilities-maintenance/cat/waste-recycling-sale-c1876121.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/lighting/cat/light-bulbs-hardware-c416394.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/school-furniture-and-supplies/cat/middle-high-school-c1876764.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/shop-by-room/cat/bedroom-sale-c1876439.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/shop-by-room/cat/dining-room-sale-c1876453.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/home-improvement/cat/fireplace-mantels-accessories-sale-c1873767.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/baby-kids/cat/indoor-play-c1874827.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/school-furniture-and-supplies/cat/playgrounds-playground-equipment-c1876742.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/organization-storage/cat/organization-storage-c1876106.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/lighting/cat/security-lights-flood-lights-sale-c1871614.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/home-improvement/cat/flooring-installation-accessories-c1840297.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/holiday-decor/cat/christmas-bedding-bath-sale-c1871384.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/facilities-maintenance/cat/floor-cleaning-c1876125.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/holiday-decor/cat/passover-c523220.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/home-improvement/cat/cabinet-hardware-cabinetry-sale-c1873775.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/shop-by-room/cat/living-room-decor-c1876417.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/furniture/cat/small-space-living-rooms-c1867351.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/furniture/cat/entry-mudroom-furniture-c215147.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/outdoor/cat/outdoor-decor-sale-c1851747.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/pet/cat/dog-crates-kennels-sale-c1874206.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/home-improvement/cat/kitchen-backsplash-flooring-c1861884.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/facilities-maintenance/cat/business-signs-sign-holders-c1876134.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/holiday-decor/cat/mothers-day-c1860989.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/holiday-decor/cat/christmas-decorations-sale-c1867767.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/school-furniture-and-supplies/cat/classroom-library-shelves-storage-sale-c1873997.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/appliances/cat/vacuums-deep-cleaners-sale-c1869050.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/furniture/cat/game-accessories-sale-c1874821.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/restaurant-appliances-equipment/cat/restaurant-appliances-equipment-sale-c1876238.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/holiday-decor/cat/holiday-decor-c1859601.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/home-improvement/cat/bathroom-faucets-c1824081.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/home-improvement/cat/heating-cooling-air-quality-sale-c1851803.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/holiday-decor/cat/fathers-day-c1860990.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/school-furniture-and-supplies/cat/elementary-school-c1876756.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/kitchen-tabletop/cat/tableware-drinkware-c418940.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/restaurant-appliances-equipment/cat/commercial-refrigeration-sale-c1876223.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/shop-by-room/cat/garden-patio-c1876509.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/home-improvement/cat/hardware-c434266.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/home-improvement/cat/plumbing-c215750.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/holiday-decor/cat/easter-sale-c1874066.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/kitchen-tabletop/cat/countertop-sink-organization-sale-c1874173.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/holiday-decor/cat/st-patricks-day-bedding-bath-c1873570.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/shop-by-room/cat/laundry-utility-room-sale-c1876447.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/school-furniture-and-supplies/cat/educational-games-toys-c1873970.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/kitchen-tabletop/cat/pots-pans-skillets-sale-c1871821.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/outdoor/cat/outdoor-dining-linens-c1867485.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/kitchen-tabletop/cat/utensil-organization-sale-c1874733.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/furniture/cat/office-furniture-sale-c1851583.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/storage-organization/cat/closet-storage-organization-c435884.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/outdoor/cat/outdoor-heating-c215961.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/shop-office-spaces/cat/open-floor-workspaces-c1870665.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/holiday-decor/cat/christmas-wreaths-garlands-flowers-sale-c1871359.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/lighting/cat/lighting-c215735.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/furniture/cat/small-space-bedrooms-c1867349.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/accommodations/cat/furniture-sets-c1876615.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/shop-office-spaces/cat/breakroom-seating-sale-c1876826.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/furniture/cat/bedroom-furniture-c45984.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/shop-by-room/cat/dorm-storage-and-organization-sale-c1876470.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/appliances/cat/dishwashers-sale-c1874334.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/storage-organization/cat/tool-storage-c1874110.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/home-improvement/cat/kitchen-sinks-faucets-c33903.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/storage-organization/cat/bathroom-storage-organization-c215892.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/school-furniture-and-supplies/cat/outdoor-classroom-gardening-sale-c1875998.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/holiday-decor/cat/christmas-tableware-linens-sale-c1863303.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/holiday-decor/cat/easter-kitchen-linens-c1874039.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/restaurant-furniture/cat/restaurant-furniture-c1872816.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/facilities-maintenance/cat/business-signs-sign-holders-sale-c1876137.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/holiday-decor/cat/outdoor-christmas-decorations-sale-c1871989.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/storage-organization/cat/storage-containers-drawers-c1831551.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/restaurant-appliances-equipment/cat/restaurant-appliances-equipment-c1872822.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/home-improvement/cat/flooring-walls-ceiling-sale-c1873750.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/kitchen-tabletop/cat/meat-seafood-tools-c1874726.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/decor-pillows/cat/window-treatments-c416567.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/holiday-decor/cat/new-years-eve-c1801391.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/school-furniture-and-supplies/cat/classroom-rugs-decor-sale-c1863925.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/home-improvement/cat/flooring-c215832.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/accommodations/cat/retail-sale-c1876630.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/commercial-office-furniture/cat/office-tables-c251666.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/home-improvement/cat/towel-storage-sale-c1873766.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/bed-bath/cat/bath-rugs-towels-sale-c1851677.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/lighting/cat/wall-lights-sale-c1851601.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/home-improvement/cat/exterior-doors-c1877103.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/outdoor/cat/outdoor-tables-c416211.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/holiday-decor/cat/st-patricks-day-tableware-linens-c1873569.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/holiday-decor/cat/easter-serveware-c1872662.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/kitchen-tabletop/cat/knives-accessories-sale-c1851671.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/kitchen-tabletop/cat/knives-accessories-c419531.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/storage-organization/cat/storage-furniture-sale-c1871998.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/appliances/cat/cooktops-c1874326.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/holiday-decor/cat/valentines-day-wall-decor-c1874055.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/outdoor/cat/outdoor-seating-patio-chairs-c215135.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/furniture/cat/living-room-furniture-sale-c1851580.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/shop-by-room/cat/home-office-sale-c1876435.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/outdoor/cat/patio-bar-furniture-c35207.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/pet/cat/bird-cages-sale-c1871973.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/home-improvement/cat/kitchen-remodel-kitchen-fixtures-sale-c1851673.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/holiday-decor/cat/thanksgiving-serveware-c1871076.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/shop-product-type/cat/tables-c515308.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/baby-kids/cat/teen-bedding-sale-c1863316.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/shop-by-room/cat/kitchen-sale-c1876452.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/storage-organization/cat/outdoor-covers-c1874111.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/home-improvement/cat/showers-bathtubs-sale-c1863352.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/accommodations/cat/salon-spa-c1876622.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/decor-pillows/cat/wall-art-by-type-c1873627.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/lighting/cat/recessed-lighting-c416494.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/appliances/cat/cooktops-sale-c1874330.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/facilities-maintenance/cat/maintenance-storage-sale-c1876109.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/outdoor/cat/outdoor-pillows-cushions-c417299.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/contractor/cat/bathroom-renovation-c1870694.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/shop-office-spaces/cat/breakrooms-employee-spaces-c1863244.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/kitchen-tabletop/cat/kitchen-gadgets-c1871735.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/school-furniture-and-supplies/cat/school-chairs-seating-c323366.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/shop-restaurant-spaces/cat/bar-storage-refrigeration-sale-c1876244.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/holiday-decor/cat/winter-wreaths-garlands-flowers-c1871387.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/home-improvement/cat/bathroom-hardware-c215791.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/holiday-decor/cat/indoor-winter-decor-c1871505.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/restaurant-furniture/cat/table-components-c1872928.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/shop-product-type/cat/vanities-c523535.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/baby-kids/cat/baby-kids-wall-decor-c1874829.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/holiday-decor/cat/spring-decor-sale-c1876861.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/decor-pillows/cat/picture-frames-albums-c1870400.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/storage-organization/cat/file-paper-organization-c477277.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/school-furniture-and-supplies/cat/active-play-equipment-sale-c1873972.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/kitchen-tabletop/cat/coffee-espresso-tea-c419256.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/commercial-office-furniture/cat/office-cubicles-partitions-c1874846.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/home-improvement/cat/faucets-c1873776.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/baby-kids/cat/toddler-kids-bedding-bath-c486089.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/outdoor/cat/outdoor-serving-tableware-sale-c1873217.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/baby-kids/cat/baby-kids-decor-lighting-sale-c1851779.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/decor-pillows/cat/decorative-pillows-blankets-sale-c1872093.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/holiday-decor/cat/easter-wreaths-garlands-flowers-c1874045.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/restaurant-appliances-equipment/cat/fruit-vegetable-tools-c1876236.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/shop-office-spaces/cat/open-floor-workspaces-sale-c1872673.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/shop-restaurant-spaces/cat/banquet-c1876249.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/appliances/cat/freezers-ice-makers-c1874302.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/home-improvement/cat/kitchen-sinks-faucet-components-sale-c1851809.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/tabletop/cat/tabletop-c1872818.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/kitchen-tabletop/cat/serving-bowls-baskets-c1874734.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/home-improvement/cat/doors-door-hardware-c1869777.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/shop-by-room/cat/dorm-furniture-sale-c1876471.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/home-improvement/cat/interior-doors-sale-c1877104.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/shop-by-room/cat/office-lighting-c1876449.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/storage-organization/cat/file-paper-organization-sale-c1874198.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/pet/cat/pet-c504273.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/holiday-decor/cat/valentines-day-serveware-c1874050.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/furniture/cat/kitchen-dining-furniture-c214999.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/decor-pillows/cat/gallery-wall-sets-c1869287.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/restaurant-appliances-equipment/cat/coffee-espresso-tea-c1876232.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/decor-rugs/cat/decor-rugs-sale-c1863208.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/storage-organization/cat/storage-containers-drawers-sale-c1851659.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/shop-office-spaces/cat/reception-seating-c1873725.html",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wayfair.com/kitchen-tabletop/cat/kitchen-utensils-tools-c419560.html",
+        "page_type": "other",
+        "source": "sitemap"
+      }
+    ],
+    "sampled_static": [
+      "https://www.wayfair.com/",
+      "https://www.wayfair.com/accommodations/cat/furniture-sets-c1876615.html",
+      "https://www.wayfair.com/accommodations/cat/guest-room-c1876612.html",
+      "https://www.wayfair.com/accommodations/cat/retail-sale-c1876630.html",
+      "https://www.wayfair.com/accommodations/cat/salon-spa-c1876622.html"
+    ],
+    "sampled_rendered": [],
+    "sampling_seed": "sha256:56a8435093bf7c8d44afbc86d917bffe4e1a043a8f1efaec5e15bb6f24b0870b"
+  },
+  "pages": [
+    {
+      "url": "https://www.wayfair.com/",
+      "final_url": "https://www.wayfair.com/",
+      "status": "unavailable",
+      "reason": "http_429",
+      "http_status": 429,
+      "page_type": "home",
+      "headers": {},
+      "raw_html_bytes": 0,
+      "main_text": "",
+      "main_text_words": 0,
+      "extraction_ok": false,
+      "title": null,
+      "meta": {},
+      "lang": null,
+      "canonical": {},
+      "headings": [],
+      "landmarks": {},
+      "structured_data": {},
+      "links": [],
+      "outbound_profile_links": [],
+      "images": [],
+      "iframes": [],
+      "media": [],
+      "form_controls": [],
+      "interactive_empty": {},
+      "noscript": {
+        "present": false,
+        "words": 0
+      },
+      "dates": {},
+      "contact_signals": {},
+      "trigram_hash": null
+    },
+    {
+      "url": "https://www.wayfair.com/accommodations/cat/furniture-sets-c1876615.html",
+      "final_url": "https://www.wayfair.com/accommodations/cat/furniture-sets-c1876615.html",
+      "status": "unavailable",
+      "reason": "http_429",
+      "http_status": 429,
+      "page_type": "other",
+      "headers": {},
+      "raw_html_bytes": 0,
+      "main_text": "",
+      "main_text_words": 0,
+      "extraction_ok": false,
+      "title": null,
+      "meta": {},
+      "lang": null,
+      "canonical": {},
+      "headings": [],
+      "landmarks": {},
+      "structured_data": {},
+      "links": [],
+      "outbound_profile_links": [],
+      "images": [],
+      "iframes": [],
+      "media": [],
+      "form_controls": [],
+      "interactive_empty": {},
+      "noscript": {
+        "present": false,
+        "words": 0
+      },
+      "dates": {},
+      "contact_signals": {},
+      "trigram_hash": null
+    },
+    {
+      "url": "https://www.wayfair.com/accommodations/cat/guest-room-c1876612.html",
+      "final_url": "https://www.wayfair.com/accommodations/cat/guest-room-c1876612.html",
+      "status": "unavailable",
+      "reason": "http_429",
+      "http_status": 429,
+      "page_type": "other",
+      "headers": {},
+      "raw_html_bytes": 0,
+      "main_text": "",
+      "main_text_words": 0,
+      "extraction_ok": false,
+      "title": null,
+      "meta": {},
+      "lang": null,
+      "canonical": {},
+      "headings": [],
+      "landmarks": {},
+      "structured_data": {},
+      "links": [],
+      "outbound_profile_links": [],
+      "images": [],
+      "iframes": [],
+      "media": [],
+      "form_controls": [],
+      "interactive_empty": {},
+      "noscript": {
+        "present": false,
+        "words": 0
+      },
+      "dates": {},
+      "contact_signals": {},
+      "trigram_hash": null
+    },
+    {
+      "url": "https://www.wayfair.com/accommodations/cat/retail-sale-c1876630.html",
+      "final_url": "https://www.wayfair.com/accommodations/cat/retail-sale-c1876630.html",
+      "status": "unavailable",
+      "reason": "http_429",
+      "http_status": 429,
+      "page_type": "other",
+      "headers": {},
+      "raw_html_bytes": 0,
+      "main_text": "",
+      "main_text_words": 0,
+      "extraction_ok": false,
+      "title": null,
+      "meta": {},
+      "lang": null,
+      "canonical": {},
+      "headings": [],
+      "landmarks": {},
+      "structured_data": {},
+      "links": [],
+      "outbound_profile_links": [],
+      "images": [],
+      "iframes": [],
+      "media": [],
+      "form_controls": [],
+      "interactive_empty": {},
+      "noscript": {
+        "present": false,
+        "words": 0
+      },
+      "dates": {},
+      "contact_signals": {},
+      "trigram_hash": null
+    },
+    {
+      "url": "https://www.wayfair.com/accommodations/cat/salon-spa-c1876622.html",
+      "final_url": "https://www.wayfair.com/accommodations/cat/salon-spa-c1876622.html",
+      "status": "unavailable",
+      "reason": "http_429",
+      "http_status": 429,
+      "page_type": "other",
+      "headers": {},
+      "raw_html_bytes": 0,
+      "main_text": "",
+      "main_text_words": 0,
+      "extraction_ok": false,
+      "title": null,
+      "meta": {},
+      "lang": null,
+      "canonical": {},
+      "headings": [],
+      "landmarks": {},
+      "structured_data": {},
+      "links": [],
+      "outbound_profile_links": [],
+      "images": [],
+      "iframes": [],
+      "media": [],
+      "form_controls": [],
+      "interactive_empty": {},
+      "noscript": {
+        "present": false,
+        "words": 0
+      },
+      "dates": {},
+      "contact_signals": {},
+      "trigram_hash": null
+    }
+  ],
+  "rendered": [],
+  "links": {
+    "status": "ok",
+    "reason": null,
+    "checked_count": 0,
+    "results": [],
+    "skipped": []
+  },
+  "anchors": {
+    "status": "ok",
+    "reason": null,
+    "declared": [],
+    "checked_count": 0,
+    "results": []
+  },
+  "budget": {
+    "status": "ok",
+    "reason": null,
+    "stages": [
+      {
+        "name": "resolve",
+        "budget_s": 10,
+        "actual_s": 2.0,
+        "abandoned": false,
+        "planned_items": null,
+        "completed_items": null
+      },
+      {
+        "name": "robots_discovery",
+        "budget_s": 15,
+        "actual_s": 3.7,
+        "abandoned": false,
+        "planned_items": 200,
+        "completed_items": 200
+      },
+      {
+        "name": "static_fetch",
+        "budget_s": 45,
+        "actual_s": 4.7,
+        "abandoned": false,
+        "planned_items": 5,
+        "completed_items": 0
+      },
+      {
+        "name": "render_pass",
+        "budget_s": 75,
+        "actual_s": 0.0,
+        "abandoned": true,
+        "planned_items": 0,
+        "completed_items": 0,
+        "reason": "no_headless_browser_tool"
+      },
+      {
+        "name": "internal_links",
+        "budget_s": 25,
+        "actual_s": 0.0,
+        "abandoned": false,
+        "planned_items": 0,
+        "completed_items": 0
+      },
+      {
+        "name": "offsite_anchors",
+        "budget_s": 20,
+        "actual_s": 0.0,
+        "abandoned": false,
+        "planned_items": 0,
+        "completed_items": 0
+      }
+    ],
+    "total_s": 10.4,
+    "cap_s": 300
+  }
+}

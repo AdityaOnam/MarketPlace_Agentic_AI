@@ -1,0 +1,35 @@
+[
+  {
+    "domain": "mit.edu",
+    "archetype_expected": "",
+    "archetype_predicted": "unknown",
+    "archetype_confidence": 0.0,
+    "pages_ok": 13,
+    "findings": 10,
+    "by_severity": {
+      "critical": 0,
+      "high": 4,
+      "medium": 5,
+      "low": 1
+    },
+    "finding_ids": [
+      "CHK-D-004",
+      "CHK-D-007",
+      "CHK-D-008",
+      "CHK-E-014",
+      "CHK-E-015",
+      "CHK-E-022"
+    ],
+    "recommendations": 2,
+    "envelope_states": {
+      "absent": 57,
+      "not_determinable": 43,
+      "present": 27,
+      "not_applicable": 4
+    },
+    "schema_ok": true,
+    "schema_errors": [],
+    "meta_warnings": [],
+    "wall_clock_s": 108.3
+  }
+]

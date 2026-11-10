@@ -1,0 +1,332 @@
+{
+  "schema_version": "1.0.0",
+  "site": {
+    "status": "ok",
+    "reason": null,
+    "input": "https://zillow.com",
+    "canonical_host": "www.zillow.com",
+    "origin": "https://www.zillow.com",
+    "scheme": "https",
+    "redirect_chain": [
+      "https://zillow.com"
+    ],
+    "tls_valid": true,
+    "archetype": "unknown",
+    "archetype_confidence": 0.0
+  },
+  "robots": {
+    "status": "ok",
+    "reason": null,
+    "fetch_status": 200,
+    "body": "# Access to and use of Zillow.com is governed by our Terms of Use. See https://www.zillow.com/corp/Terms.htm\n\nUser-agent: *\n\nAllow: /homes/for_sale/$\nAllow: /homes/for_sale/fore_lt/$\nAllow: /homes/fsbo/$\nAllow: /homes/for_sale/1_open/$\nAllow: /homes/new_homes/$\nAllow: /homes/coming_soon/$\nAllow: /homes/for_rent/$\nAllow: /homes/for_rent/condo,apartment_duplex_type/$\nAllow: /homes/for_rent/house,townhouse_type/$\nAllow: /homes/recently_sold/$\nAllow: /homes/apartment-communities/$\n\nAllow: /homes/for_sale/*_p/$\nAllow: /homes/for_sale/fore_lt/*_p/$\nAllow: /homes/fsbo/*_p/$\nAllow: /homes/for_sale/1_open/*_p/$\nAllow: /homes/new_homes/*_p/$\nAllow: /homes/coming_soon/*_p/$\nAllow: /homes/for_rent/*_p/$\nAllow: /homes/for_rent/condo,apartment_duplex_type/*_p/$\nAllow: /homes/for_rent/house,townhouse_type/*_p/$\nAllow: /homes/recently_sold/*_p/$\nAllow: /homes/apartment-communities/*_p/$\n\nAllow: /homes/apartments-pet-friendly/$\nAllow: /homes/apartments-1-bedrooms/$\nAllow: /homes/apartments-2-bedrooms/$\nAllow: /homes/apartments-under-1500/$\nAllow: /homes/apartments-under-2000/$\nAllow: /homes/apartments-3-bedrooms/$\nAllow: /homes/pet-friendly/$\nAllow: /homes/rooms-for-rent/$\nAllow: /homes/apartments-with-washer-dryer/$\n\nAllow: /homes/apartments-pet-friendly/*_p/$\nAllow: /homes/apartments-1-bedrooms/*_p/$\nAllow: /homes/apartments-2-bedrooms/*_p/$\nAllow: /homes/apartments-under-1500/*_p/$\nAllow: /homes/apartments-under-2000/*_p/$\nAllow: /homes/apartments-3-bedrooms/*_p/$\nAllow: /homes/pet-friendly/*_p/$\nAllow: /homes/rooms-for-rent/*_p/$\nAllow: /homes/apartments-with-washer-dryer/*_p/$\n\nDisallow: /api/\nDisallow: /homes/\nDisallow: /?url=\nDisallow: /*_rect\nDisallow: /*_rect/\nDisallow: /*_rid\nDisallow: /*_sort/\nDisallow: /*.sdirect\nDisallow: /*1_fs/\nDisallow: /*3ab9b0d/\nDisallow: /*3bec89b\nDisallow: /*/_type/\nDisallow: /*/0-0_beds/\nDisallow: /*/admin-ajax.php\nDisallow: /*/apartments-are_att/\nDisallow: /*/apartments-madden_att/\nDisallow: /*/apartments-offers_att/\nDisallow: /*/apartments-rent_att/\nDisallow: /*cbpartner=\nDisallow: /*/CountyAssessorPage.htm?*\nDisallow: /*/duplex-apartments_att/\nDisallow: /*/floor-map-annotator/*\nDisallow: /*/foreclosure--\nDisallow: /*/foreclosed/*\nDisallow: /*/GetResults.htm*\nDisallow: /*/house_type/\nDisallow: /*/house,apartment_duplex_type/\nDisallow: /*/house,mobile_type/\nDisallow: /*/house,mobile,land_type/\nDisallow: /*/house,mobile,townhouse_type/\nDisallow: /*/loft-apartments_att/\nDisallow: /*/mostrecentchange_sort/\nDisallow: /*/node_modules/.bin/\nDisallow: /*/plus/\nDisallow: /*/rent-house_att/\nDisallow: /*/rino-_att/\nDisallow: /*/qc/\nDisallow: /*-qc/\nDisallow: /*-qc-*\nDisallow: /*/townhome_att/\nDisallow: /*/u1_sch/\nDisallow: /*/z/internet-tv-deals-saver/?z*\nDisallow: /*/z/internet-tv-deals-speed/?z*\nDisallow: /*RentalConfirmedClaim\nDisallow: /*?searchQueryState=*\nDisallow: /ads/\nDisallow: /advice-thread/\nDisallow: /advicepages/\nDisallow: /aerial/\nDisallow: /advice/\nDisallow: /agent-websites/\nDisallow: /ajax/homedetail/CompareWithPublicFactsData.htm\nDisallow: /ajax/homedetail/HomeValueChartData.htm\nDisallow: /ajax/nav/UserNavAsync.htm?pageframe=true\nDisallow: /ajax/rentals/ClaimedRentalProperties.htm?actionType=claims\nDisallow: /ajax/ownerview/PerformSellerLeadContact.htm\nDisallow: /ajax/ownerview/SellerLeadData.htm\nDisallow: /app?\nDisallow: /b/*/rental-manager/resources/\nDisallow: /b/*bed*/\nDisallow: /b/*month*/\nDisallow: /b/*!*/\nDisallow: /b/*(*/\nDisallow: /b/*&*/\nDisallow: /b/*/*_ll/\nDisallow: /bal/impression/\nDisallow: /bal/impression/RecordImpression.htm?\nDisallow: /browse/homes/all/\nDisallow: /captcha/\nDisallow: /captchaPerimeterX/\nDisallow: /careers/apply/\nDisallow: /careers/jobs/\nDisallow: /chat/finance\nDisallow: /claiming/\nDisallow: /claiming/ClaimProperty.htm?\nDisallow: /cma-tool/create/*\nDisallow: /cms-constellation/\nDisallow: /community/error-subdivision-name-unavailable/\nDisallow: /contact/\nDisallow: /corp/Privacy.htm\nDisallow: /corp/Terms.htm\nDisallow: /CountyAssessorPage.htm\nDisallow: /del/\nDisallow: /discovery/\nDisallow: /editing/\nDisallow: /email/EnrollmentUnsubscribe.htm\nDisallow: /email/SubscriptionTypeUnsubscribe.htm\nDisallow: /email/Unsubscribe.htm\nDisallow: /for-sale-by-owner/?zpid=\nDisallow: /graphql/\nDisallow: /home-improvement-dueling-digs/\nDisallow: /homedetail/AuthRequired.htm\nDisallow: /homedetail/HomeDetail,*Border.*debug*DebugBar.*InspectorButton.link.sdirect\nDisallow: /homedetails/*view=owner\nDisallow: /homedetails/*/rental-manager/resources/\nDisallow: /homedetails/*/*/?altId\nDisallow: /homeimprovement/EmbeddedProfile.htm\nDisallow: /homepage/HomepageVideoMetrics.htm\nDisallow: /howto/GoodNeighborPolicy.htm\nDisallow: /HYx10rg3/*\nDisallow: /IMAGE\nDisallow: /imf-fetch-message/api/v1/request/fetch-message/MOBILE_APP_UPSELL\nDisallow: /instant-offers/version/\nDisallow: /jmp/questionnaire-eligibility-check\nDisallow: /jmp/lead-eligibility\nDisallow: /l/\nDisallow: /learnmore/\nDisallow: /license/\nDisallow: /m/\nDisallow: /make-me-move?zpid=\nDisallow: /make-me-move/?zpid=\nDisallow: /mobile/GetAdConfiguration.htm\nDisallow: /mobile/MobilePropertyDetails.htm\nDisallow: /mobile/WinmoPropertyDetails.htm\nDisallow: /mobile/WPPropertyDetails.htm\nDisallow: /mortgage/SmallMortgageLoanCalculatorWidget.htm\nDisallow: /mortgage/MortgageCalculatorWidgetLarge.htm\nDisallow: /mortgage/MortgageRateTable.htm\nDisallow: /mortgage/widgets/AffordabilityCalculatorWidget.htm\nDisallow: /mortgage/MortgageRateTableWidget.htm\nDisallow: /mortgage/MortgageLoanCalculatorWidget.htm\nDisallow: /mortgage/RateExplorerGraphWidget.htm\nDisallow: /myzillow/\nDisallow: /offers/request/\nDisallow: /ofr/api/v3/questionnaire\nDisallow: /pbflex/\nDisallow: /personalization/\nDisallow: /post-real-estate-listings?zpid=\nDisallow: /post-real-estate-listings/?zpid=\nDisallow: /post-rental-listings?zpid=\nDisallow: /postings/\nDisallow: /postings/PostForSale.htm?\nDisallow: /postings/PostMakeMeMoveStreamlined.htm?\nDisallow: /*/pre-foreclosure/*\nDisallow: /pricing/\nDisallow: /profile/*/Advice/\nDisallow: /profile/*/Reviews-Written/\nDisallow: /profile/*/photos/\nDisallow: /profiles/ProfileBorderTemplate,*myzillow*MyListingsTabulated.*postings*owners*OwnersProfileUpsell.*DirectLink.sdirect\nDisallow: /real-estate-listings\nDisallow: /rental-manager/?source=topnav&itc=postbutton_topnav\nDisallow: /rental-manager/?zpid=\nDisallow: /rental-manager/properties?postingPath=true\nDisallow: /rental-manager/properties/?source=*\nDisallow: /rental-manager/r/\nDisallow: /rentals/\nDisallow: /rentalsrevenue/\nDisallow: /rentalsrevenue/resume/UpdatePasswordInline*\nDisallow: /research/monthly-reports/\nDisallow: /reviews/write?s=\nDisallow: /reviews/write/?s=\nDisallow: /routing/email/\nDisallow: /s/\nDisallow: /savedhomes/\nDisallow: /schools/TestHistoryAsync.htm\nDisallow: /search/browse/HDPTree,*Border.*debug*DebugBar.*InspectorButton.link.sdirect\nDisallow: /search/HDPMapResults.htm\nDisallow: /search/SavedSearchLightboxContent.htm\nDisallow: /sell/?*\nDisallow: /sell/options/\nDisallow: /showcase/Click.htm?\nDisallow: /sitemap/catalog/\nDisallow: /sitemap/rss/\nDisallow: /sitemap/crawl-monitor/\nDisallow: /trk/\nDisallow: /ui/\nDisallow: /url-shortner/\nDisallow: /user/account/SaveSearchOptions.htm\nDisallow: /user/account/services/\nDisallow: /user/account/services/WhoAmI.htm\nDisallow: /user/acct/login/\nDisallow: /user/InlineLogin.htm?\nDisallow: /user/Login\nDisallow: /user/Register\nDisallow: /util/ClientLogger.htm\nDisallow: /videodetails/\nDisallow: /walkscore/\nDisallow: /webservice/\nDisallow: /webtools/\nDisallow: /widgets/\nDisallow: /wikipages/\nDisallow: /zg-graph/\nDisallow: /ajax/profile-broker-website\nDisallow: /agent-resources/zgwp/app/themes/paxl/assets/fonts/stargate.ttf\nDisallow: /my-agent/eligibility*\nDisallow: /jsonp/Bdp.htm?*\nDisallow: /ajax/homedetail/MarkPropertyViewed*\nDisallow: /wiki/Help*\nDisallow: /*/allunits/*\nDisallow: /reviews/batch-request/\nDisallow: /myzillow/ChangePassword.htm\nDisallow: /editing/EditHomeFacts.htm\nDisallow: /user/account/\nDisallow: /reviews/request/\nDisallow: /error/PageNotFound.htm\nDisallow: /imf-fetch-message/\nDisallow: /app$\nDisallow: /*/node_modules/.bin/jest\nDisallow: /view-3d-home\nDisallow: /b/*/*_p/\nDisallow: /rental-manager/login/?url/*\nDisallow: /homemedia/\nDisallow: /view-imx/\nDisallow: /view-skytour/\nDisallow: /view-floor-plan/\nDisallow: /homeloans/*zga_z_guid=\nDisallow: /tech/*s=\nDisallow: /async-create-search-page-state\nDisallow: /deferred\nDisallow: /shopper-platform/\n\n\nUser-agent: facebookexternalhit\nUser-agent: LinkedInBot\nUser-agent: Twitterbot\nAllow: /view-imx/\nAllow: /view-3d-home/\n\n# Bots with limited access to CMS resources\nUser-agent: YouBot\nUser-agent: YandexAdditional\nUser-agent: YandexAdditionalBot\nUser-agent: Applebot-Extended\nUser-agent: Amazonbot\nUser-agent: amazon-kendra\nUser-agent: AI2Bot\nUser-agent: AI2Bot-DeepResearchEval\nUser-agent: Ai2Bot-Dolma\nUser-agent: meta-externalagent\nUser-agent: Meta-ExternalAgent\nAllow: /agent-resources/\nAllow: /blog/\nAllow: /data-science/\nAllow: /digs/guides/\nAllow: /engineering/\nAllow: /foreclosures/\nAllow: /home-buying-guide/\nAllow: /info/\nAllow: /lender-resources/\nAllow: /marketing/\nAllow: /mortgage-learning/\nAllow: /multifamily-knowledge-center/\nAllow: /promo/\nAllow: /public-engagement/\nAllow: /rent/guide/\nAllow: /rental-manager/resources/\nAllow: /resources/\nAllow: /research/\nAllow: /sellers-guide/\nAllow: /tech/\nAllow: /video/\nAllow: /z/\nDisallow: /\nCrawl-delay: 1\n\n# Fully Disallowed Bots\nUser-agent: ActiveComplyBot\nUser-agent: CriteoBot\nUser-agent: GumGumBot\nUser-agent: TaraGroup Intelligent Bot\nDisallow: /\n\nSitemap: https://mortgageapi.zillow.com/sitemap.xml\n\nSitemap: https://www.zillow.com/xml/indexes/us/static.xml.gz\n\nSitemap: https://www.zillow.com/xml/indexes/us/hdp/for-sale-by-agent.xml.gz\nSitemap: https://www.zillow.com/xml/indexes/us/hdp/for-sale-by-owner.xml.gz\nSitemap: https://www.zillow.com/xml/indexes/us/hdp/new-construction.xml.gz\nSitemap: https://www.zillow.com/xml/indexes/us/hdp/auction.xml.gz\nSitemap: https://www.zillow.com/xml/indexes/us/hdp/pending.xml.gz\nSitemap: https://www.zillow.com/xml/indexes/us/hdp/recently-sold.xml.gz\nSitemap: https://www.zillow.com/xml/indexes/us/hdp/for-rent.xml.gz\nSitemap: https://www.zillow.com/xml/indexes/us/hdp/off-market.xml.gz\nSitemap: https://www.zillow.com/xml/indexes/us/hdp/other.xml.gz\nSitemap: https://www.zillow.com/xml/indexes/us/bdp/buildings.xml.gz\nSitemap: https://www.zillow.com/xml/indexes/us/bdp/apartments.xml.gz\nSitemap: https://www.zillow.com/xml/indexes/us/cdp/index.xml\n\nSitemap: https://www.zillow.com/xml/indexes/us/srp/for-sale.xml.gz\n",
+    "parse_ok": true,
+    "agents": {
+      "facebookexternalhit": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "LinkedInBot": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "Twitterbot": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "YouBot": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 301,
+        "crawl_delay": 1.0
+      },
+      "YandexAdditional": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 301,
+        "crawl_delay": 1.0
+      },
+      "YandexAdditionalBot": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 301,
+        "crawl_delay": 1.0
+      },
+      "Applebot-Extended": {
+        "class": "training",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 301,
+        "crawl_delay": 1.0
+      },
+      "Amazonbot": {
+        "class": "training",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 301,
+        "crawl_delay": 1.0
+      },
+      "amazon-kendra": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 301,
+        "crawl_delay": 1.0
+      },
+      "AI2Bot": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 301,
+        "crawl_delay": 1.0
+      },
+      "AI2Bot-DeepResearchEval": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 301,
+        "crawl_delay": 1.0
+      },
+      "Ai2Bot-Dolma": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 301,
+        "crawl_delay": 1.0
+      },
+      "meta-externalagent": {
+        "class": "training",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 301,
+        "crawl_delay": 1.0
+      },
+      "Meta-ExternalAgent": {
+        "class": "training",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 301,
+        "crawl_delay": 1.0
+      },
+      "ActiveComplyBot": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 309,
+        "crawl_delay": null
+      },
+      "CriteoBot": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 309,
+        "crawl_delay": null
+      },
+      "GumGumBot": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 309,
+        "crawl_delay": null
+      },
+      "TaraGroup Intelligent Bot": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 309,
+        "crawl_delay": null
+      },
+      "*": {
+        "class": "generic",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      }
+    },
+    "sitemap_declarations": [
+      "https://mortgageapi.zillow.com/sitemap.xml",
+      "https://www.zillow.com/xml/indexes/us/static.xml.gz",
+      "https://www.zillow.com/xml/indexes/us/hdp/for-sale-by-agent.xml.gz",
+      "https://www.zillow.com/xml/indexes/us/hdp/for-sale-by-owner.xml.gz",
+      "https://www.zillow.com/xml/indexes/us/hdp/new-construction.xml.gz",
+      "https://www.zillow.com/xml/indexes/us/hdp/auction.xml.gz",
+      "https://www.zillow.com/xml/indexes/us/hdp/pending.xml.gz",
+      "https://www.zillow.com/xml/indexes/us/hdp/recently-sold.xml.gz",
+      "https://www.zillow.com/xml/indexes/us/hdp/for-rent.xml.gz",
+      "https://www.zillow.com/xml/indexes/us/hdp/off-market.xml.gz",
+      "https://www.zillow.com/xml/indexes/us/hdp/other.xml.gz",
+      "https://www.zillow.com/xml/indexes/us/bdp/buildings.xml.gz",
+      "https://www.zillow.com/xml/indexes/us/bdp/apartments.xml.gz",
+      "https://www.zillow.com/xml/indexes/us/cdp/index.xml",
+      "https://www.zillow.com/xml/indexes/us/srp/for-sale.xml.gz"
+    ]
+  },
+  "discovery": {
+    "status": "ok",
+    "reason": null,
+    "sitemap_found": true,
+    "sitemap_urls_count": 161,
+    "inventory": [
+      {
+        "url": "https://www.zillow.com/",
+        "page_type": "home",
+        "source": "sitemap"
+      }
+    ],
+    "sampled_static": [
+      "https://www.zillow.com/"
+    ],
+    "sampled_rendered": [],
+    "sampling_seed": "sha256:d800ba000408e29d748bc7a9701ef5b64c851dd0f7214a81dc87eac29a6beee7"
+  },
+  "pages": [
+    {
+      "url": "https://www.zillow.com/",
+      "final_url": "https://www.zillow.com/",
+      "status": "unavailable",
+      "reason": "http_403",
+      "http_status": 403,
+      "page_type": "home",
+      "headers": {},
+      "raw_html_bytes": 0,
+      "main_text": "",
+      "main_text_words": 0,
+      "extraction_ok": false,
+      "title": null,
+      "meta": {},
+      "lang": null,
+      "canonical": {},
+      "headings": [],
+      "landmarks": {},
+      "structured_data": {},
+      "links": [],
+      "outbound_profile_links": [],
+      "images": [],
+      "iframes": [],
+      "media": [],
+      "form_controls": [],
+      "interactive_empty": {},
+      "noscript": {
+        "present": false,
+        "words": 0
+      },
+      "dates": {},
+      "contact_signals": {},
+      "trigram_hash": null
+    }
+  ],
+  "rendered": [],
+  "links": {
+    "status": "ok",
+    "reason": null,
+    "checked_count": 0,
+    "results": [],
+    "skipped": []
+  },
+  "anchors": {
+    "status": "ok",
+    "reason": null,
+    "declared": [],
+    "checked_count": 0,
+    "results": []
+  },
+  "budget": {
+    "status": "ok",
+    "reason": null,
+    "stages": [
+      {
+        "name": "resolve",
+        "budget_s": 10,
+        "actual_s": 1.8,
+        "abandoned": false,
+        "planned_items": null,
+        "completed_items": null
+      },
+      {
+        "name": "robots_discovery",
+        "budget_s": 15,
+        "actual_s": 1.8,
+        "abandoned": false,
+        "planned_items": 1,
+        "completed_items": 1
+      },
+      {
+        "name": "static_fetch",
+        "budget_s": 45,
+        "actual_s": 0.5,
+        "abandoned": false,
+        "planned_items": 1,
+        "completed_items": 0
+      },
+      {
+        "name": "render_pass",
+        "budget_s": 75,
+        "actual_s": 0.0,
+        "abandoned": true,
+        "planned_items": 0,
+        "completed_items": 0,
+        "reason": "no_headless_browser_tool"
+      },
+      {
+        "name": "internal_links",
+        "budget_s": 25,
+        "actual_s": 0.0,
+        "abandoned": false,
+        "planned_items": 0,
+        "completed_items": 0
+      },
+      {
+        "name": "offsite_anchors",
+        "budget_s": 20,
+        "actual_s": 0.0,
+        "abandoned": false,
+        "planned_items": 0,
+        "completed_items": 0
+      }
+    ],
+    "total_s": 4.1,
+    "cap_s": 300
+  }
+}

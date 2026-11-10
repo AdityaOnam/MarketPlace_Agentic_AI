@@ -1,0 +1,2761 @@
+{
+  "schema_version": "1.0.0",
+  "site": {
+    "status": "ok",
+    "reason": null,
+    "input": "https://indeed.com",
+    "canonical_host": "in.indeed.com",
+    "origin": "https://in.indeed.com",
+    "scheme": "https",
+    "redirect_chain": [
+      "https://indeed.com",
+      "https://www.indeed.com/"
+    ],
+    "tls_valid": true,
+    "archetype": "brochure",
+    "archetype_confidence": 0.7
+  },
+  "robots": {
+    "status": "ok",
+    "reason": null,
+    "fetch_status": 200,
+    "body": "User-agent: *\nAllow: /\nAllow: /*&start=0&\nAllow: /*&start=10&\nAllow: /*&start=20&\nAllow: /*&start=30&\nAllow: /*&start=40&\nAllow: /*&start=50&\nAllow: /*&start=60&\nAllow: /*&start=70&\nAllow: /*&start=80&\nAllow: /*&start=90&\nDisallow: /*rt=nc\nDisallow: /*&alid=\nDisallow: /*&calert=\nDisallow: /*&iafilter=\nDisallow: /*&mna=\nDisallow: /*?rss\nDisallow: /*&serpstart=\nDisallow: /*/vaclk\nDisallow: /addlLoc/\nDisallow: /ads/\nDisallow: /advanced_search\nDisallow: /alert\nDisallow: /api/fetch/mc-anon\nDisallow: /api/getrecjobs\nDisallow: /applystart\nDisallow: /cmp/_/\nDisallow: /cmp/_c/claim/*\nDisallow: /cmp/_rpc/\nDisallow: /cmp/addlink\nDisallow: /cmp/addvideo\nDisallow: /cmp/Login*\nDisallow: /cmp/*/analytics\nDisallow: /cmp/*/company-questions\nDisallow: /cmp/*/people\nDisallow: /cmp/*/write-review\nDisallow: /community/\nDisallow: /company/*\nDisallow: /conversion/\nDisallow: /cookiemigrator/\nDisallow: /create-resume/lp/\nDisallow: /cdn-cgi/\nDisallow: /%E4%BB%95%E4%BA%8B?\nDisallow: /%E5%B7%A5%E4%BD%9C/\nDisallow: /%E6%B1%82%E4%BA%BA/JP/\nDisallow: /%E6%B1%82%E4%BA%BA/title/\nDisallow: /%E8%81%8C%E4%BD%8D%E6%98%BE%E7%A4%BA?\nDisallow: /%EC%B7%A8%EC%97%85/KR/\nDisallow: /%EC%B7%A8%EC%97%85/title/\nDisallow: /empleo/\nDisallow: /emploi/\nDisallow: /emplois/FR/\nDisallow: /emplois/title/\nDisallow: /emprego/\nDisallow: /empregos/BR/\nDisallow: /empregos/title\nDisallow: /forum/profile\nDisallow: /g/\nDisallow: /graphql\nDisallow: /imgping\nDisallow: /ita?\nDisallow: /ita/v1/publisher\nDisallow: /ja/clk?\nDisallow: /ja/imp.gif\nDisallow: /job/\nDisallow: /Job/\nDisallow: /jobb/\nDisallow: /jobroll\nDisallow: /jobs/AE/\nDisallow: /jobs/AQ/\nDisallow: /Jobs/AT/\nDisallow: /jobs/AU/\nDisallow: /jobs/BE/\nDisallow: /jobs/BH/\nDisallow: /jobs/CA/\nDisallow: /jobs/CZ/\nDisallow: /jobs/DE/\nDisallow: /Jobs/DE/\nDisallow: /jobs/DK/\nDisallow: /jobs/FI/\nDisallow: /jobs/GB/\nDisallow: /jobs/GR/\nDisallow: /jobs/HK/\nDisallow: /jobs/HU/\nDisallow: /jobs/ID/\nDisallow: /jobs/IE/\nDisallow: /jobs/IL/\nDisallow: /jobs/IN/\nDisallow: /jobs/KW/\nDisallow: /jobs/LU/\nDisallow: /jobs/MY/\nDisallow: /jobs/NO/\nDisallow: /jobs/NZ/\nDisallow: /jobs/OM/\nDisallow: /jobs/PE/\nDisallow: /jobs/PH/\nDisallow: /jobs/PK/\nDisallow: /jobs/PT/\nDisallow: /jobs/QA/\nDisallow: /jobs/RO/\nDisallow: /jobs/RU/\nDisallow: /jobs/SA/\nDisallow: /jobs/SG/\nDisallow: /jobs/title\nDisallow: /Jobs/title\nDisallow: /jobs/TR/\nDisallow: /jobs/TW/\nDisallow: /jobs/US/\nDisallow: /jobs/VE/\nDisallow: /jobs/ZA/\nDisallow: /jobtrends/trends/log/*\nDisallow: /jwidget.js*\nDisallow: /me/*/pdf\nDisallow: /m/basecamp/analytics.js\nDisallow: /m/jobalerts?\nDisallow: /m/moreLoc\nDisallow: /m/newjobs\nDisallow: /m/recommended\nDisallow: /m/rpc/\nDisallow: /m/viewjob?\nDisallow: /my/\nDisallow: /*oc=1\nDisallow: /ofertas/ES/\nDisallow: /ofertas/title/\nDisallow: /offerta-lavoro\nDisallow: /offerte-lavoro/IT/\nDisallow: /offerte-lavoro/title\nDisallow: /pagead/\nDisallow: /poka%C5%BCprac%C4%99?\nDisallow: /praca/\nDisallow: /preferences\nDisallow: /*radius=\nDisallow: /rc/\nDisallow: /rdr/\nDisallow: /recommendedjobs\nDisallow: /record-page-tags\nDisallow: /resumes/account\nDisallow: /resumes/advanced?\nDisallow: /resumes/alert\nDisallow: /resumes*radius=\nDisallow: /resumes*rb=\nDisallow: /resumes*res=\nDisallow: /resumes/rpc/\nDisallow: /resumes*sort=\nDisallow: /resumes*start=\nDisallow: /rpc/\nDisallow: /r/*/pdf\nDisallow: /rss\nDisallow: /setprefs\nDisallow: /*sid=\nDisallow: /*sp=0\nDisallow: /*&start=\nDisallow: /stc\nDisallow: /Stellen/CH/\nDisallow: /Stellen/title\nDisallow: /tellafriend\nDisallow: /tmn/ccs/\nDisallow: /tos/banner.js\nDisallow: /trabajo/\nDisallow: /uie/clk\nDisallow: /url\nDisallow: /vacature/\nDisallow: /vacature-bekijken?\nDisallow: /vacatures/NL/\nDisallow: /vacatures/title/\nDisallow: /ver-empleo?\nDisallow: /ver-emprego?\nDisallow: /ver-oferta?\nDisallow: /viewjob?\nDisallow: /visajobb?\nDisallow: /voir-emploi?\nDisallow: /Zeige-Job?\nDisallow: //applystart\n\n\nUser-agent: Googlebot\nUser-agent: Google-Extended\nUser-agent: ChatGPT-User\nUser-agent: Bingbot\nUser-agent: Slurp\nUser-agent: DuckDuckBot\nUser-agent: YahooJP\nUser-agent: PetalBot\nUser-agent: PerplexityBot\nUser-agent: DuckAssistBot\nUser-agent: Perplexity-User\nUser-agent: YouBot\nUser-agent: Claude-User\nUser-agent: Gemini-Deep-Research\nUser-agent: Claude-SearchBot\nUser-agent: OAI-SearchBot\nUser-agent: Google-Agent\nUser-agent: Google-CloudVertexBot\nUser-agent: Meta-WebIndexer\nUser-agent: Meta-ExternalFetcher\nUser-agent: xAI-Grok\nUser-agent: Grok-DeepSearch\nAllow: /\nAllow: /*&start=0&\nAllow: /*&start=10&\nAllow: /*&start=20&\nAllow: /*&start=30&\nAllow: /*&start=40&\nAllow: /*&start=50&\nAllow: /*&start=60&\nAllow: /*&start=70&\nAllow: /*&start=80&\nAllow: /*&start=90&\nDisallow: /*rt=nc\nDisallow: /*&alid=\nDisallow: /*&calert=\nDisallow: /*&iafilter=\nDisallow: /*&mna=\nDisallow: /*?rss\nDisallow: /*&serpstart=\nDisallow: /*/vaclk\nDisallow: /addlLoc/\nDisallow: /ads/\nDisallow: /advanced_search\nDisallow: /alert\nDisallow: /api/fetch/mc-anon\nDisallow: /api/getrecjobs\nDisallow: /applystart\nDisallow: /cmp/_/\nDisallow: /cmp/_c/claim/*\nDisallow: /cmp/_rpc/\nDisallow: /cmp/addlink\nDisallow: /cmp/addvideo\nDisallow: /cmp/Login*\nDisallow: /cmp/*/analytics\nDisallow: /cmp/*/company-questions\nDisallow: /cmp/*/people\nDisallow: /cmp/*/write-review\nDisallow: /community/\nDisallow: /company/*\nDisallow: /conversion/\nDisallow: /cookiemigrator/\nDisallow: /create-resume/lp/\nDisallow: /cdn-cgi/\nDisallow: /%E4%BB%95%E4%BA%8B?\nDisallow: /%E5%B7%A5%E4%BD%9C/\nDisallow: /%E6%B1%82%E4%BA%BA/JP/\nDisallow: /%E6%B1%82%E4%BA%BA/title/\nDisallow: /%E8%81%8C%E4%BD%8D%E6%98%BE%E7%A4%BA?\nDisallow: /%EC%B7%A8%EC%97%85/KR/\nDisallow: /%EC%B7%A8%EC%97%85/title/\nDisallow: /empleo/\nDisallow: /emploi/\nDisallow: /emplois/FR/\nDisallow: /emplois/title/\nDisallow: /emprego/\nDisallow: /empregos/BR/\nDisallow: /empregos/title\nDisallow: /forum/profile\nDisallow: /g/\nDisallow: /generate-question\nDisallow: /graphql\nDisallow: /imgping\nDisallow: /ita?\nDisallow: /ita/v1/publisher\nDisallow: /ja/clk?\nDisallow: /ja/imp.gif\nDisallow: /job/\nDisallow: /Job/\nDisallow: /jobb/\nDisallow: /jobroll\nDisallow: /jobs/AE/\nDisallow: /jobs/AQ/\nDisallow: /Jobs/AT/\nDisallow: /jobs/AU/\nDisallow: /jobs/BE/\nDisallow: /jobs/BH/\nDisallow: /jobs/CA/\nDisallow: /jobs/CZ/\nDisallow: /jobs/DE/\nDisallow: /Jobs/DE/\nDisallow: /jobs/DK/\nDisallow: /jobs/FI/\nDisallow: /jobs/GB/\nDisallow: /jobs/GR/\nDisallow: /jobs/HK/\nDisallow: /jobs/HU/\nDisallow: /jobs/ID/\nDisallow: /jobs/IE/\nDisallow: /jobs/IL/\nDisallow: /jobs/IN/\nDisallow: /jobs/KW/\nDisallow: /jobs/LU/\nDisallow: /jobs/MY/\nDisallow: /jobs/NO/\nDisallow: /jobs/NZ/\nDisallow: /jobs/OM/\nDisallow: /jobs/PE/\nDisallow: /jobs/PH/\nDisallow: /jobs/PK/\nDisallow: /jobs/PT/\nDisallow: /jobs/QA/\nDisallow: /jobs/RO/\nDisallow: /jobs/RU/\nDisallow: /jobs/SA/\nDisallow: /jobs/SG/\nDisallow: /jobs/title\nDisallow: /Jobs/title\nDisallow: /jobs/TR/\nDisallow: /jobs/TW/\nDisallow: /jobs/US/\nDisallow: /jobs/VE/\nDisallow: /jobs/ZA/\nDisallow: /jobtrends/trends/log/*\nDisallow: /jwidget.js*\nDisallow: /me/*/pdf\nDisallow: /m/basecamp/analytics.js\nDisallow: /m/jobalerts?\nDisallow: /m/moreLoc\nDisallow: /m/newjobs\nDisallow: /m/recommended\nDisallow: /m/rpc/\nDisallow: /my/\nDisallow: /*oc=1\nDisallow: /ofertas/ES/\nDisallow: /ofertas/title/\nDisallow: /offerte-lavoro/IT/\nDisallow: /offerte-lavoro/title\nDisallow: /pagead/\nDisallow: /poka%C5%BCprac%C4%99?\nDisallow: /praca/\nDisallow: /preferences\nDisallow: /*radius=\nDisallow: /rc/\nDisallow: /rdr/\nDisallow: /recommendedjobs\nDisallow: /record-page-tags\nDisallow: /resumes/account\nDisallow: /resumes/advanced?\nDisallow: /resumes/alert\nDisallow: /resumes*radius=\nDisallow: /resumes*rb=\nDisallow: /resumes*res=\nDisallow: /resumes/rpc/\nDisallow: /resumes*sort=\nDisallow: /resumes*start=\nDisallow: /rpc/\nDisallow: /r/*/pdf\nDisallow: /rss\nDisallow: /setprefs\nDisallow: /*sid=\nDisallow: /*sp=0\nDisallow: /*&start=\nDisallow: /stc\nDisallow: /Stellen/CH/\nDisallow: /Stellen/title\nDisallow: /tellafriend\nDisallow: /tmn/ccs/\nDisallow: /tos/banner.js\nDisallow: /trabajo/\nDisallow: /uie/clk\nDisallow: /url\nDisallow: /v1/alerts\nDisallow: /v1/impressions\nDisallow: /vacature/\nDisallow: /vacatures/NL/\nDisallow: /vacatures/title/\nDisallow: //applystart\nDisallow: /hire/o/ats-partners\nDisallow: /hire/ats-partners\nDisallow: /offers\n\n\nUser-agent: Mediapartners-Google\nAllow: /\n\n\nUser-agent: AdsBot-Google\nUser-agent: AdsBot-Google-Mobile\nAllow: /create-resume/lp/\nAllow: /*sid=\nDisallow: /rpc/\n\n\nUser-agent: adidxbot\nAllow: /*sid=\n\n\nUser-agent: Googlebot-Image\nUser-agent: msnbot-media\nDisallow: /trendgraph/*\n\n\nUser-Agent: OmniExplorer_Bot\nUser-agent: ia_archiver\nUser-agent: 008\nUser-agent: JobdiggerSpider\nUser-agent: Cliqzbot\nUser-agent: GoogleOther\nUser-agent: omgili\nUser-agent: omgilibot\nUser-agent: Webzio\nUser-agent: Webzio-Extended\nUser-agent: Scrapy\nUser-agent: MyCentralAIScraperBot\nDisallow: / \n\n\nUser-agent: facebookexternalhit\nUser-agent: WhatsApp\nUser-agent: snapchat\nUser-agent: TelegramBot\nUser-agent: Twitterbot\nUser-agent: Slackbot-LinkExpanding\nAllow: /\n\n\nUser-agent: GPTBot\nUser-agent: CCBot\nUser-agent: anthropic-ai\nUser-agent: FacebookBot\nUser-agent: AmazonBot\nUser-agent: Applebot-Extended\nUser-agent: Bytespider\nUser-agent: Baiduspider\nUser-agent: cohere-training-data-crawler\nUser-agent: FriendlyCrawler\nUser-agent: img2dataset\nUser-agent: Meta-ExternalAgent\nUser-agent: ClaudeBot\nUser-agent: DeepSeekBot\nUser-agent: GrokBot\nUser-agent: Diffbot\nUser-agent: AI2Bot\nUser-agent: PanguBot\nUser-agent: Timpibot\nAllow: /*&start=0&\nAllow: /*&start=10&\nAllow: /*&start=20&\nAllow: /*&start=30&\nAllow: /*&start=40&\nAllow: /*&start=50&\nAllow: /*&start=60&\nAllow: /*&start=70&\nAllow: /*&start=80&\nAllow: /*&start=90&\nDisallow: /*rt=nc\nDisallow: /*&alid=\nDisallow: /*&calert=\nDisallow: /*&iafilter=\nDisallow: /*&mna=\nDisallow: /*?rss\nDisallow: /*&serpstart=\nDisallow: /*/vaclk\nDisallow: /addlLoc/\nDisallow: /ads/\nDisallow: /advanced_search\nDisallow: /alert\nDisallow: /api/fetch/mc-anon\nDisallow: /api/getrecjobs\nDisallow: /applystart\nDisallow: /community/\nDisallow: /company/*\nDisallow: /conversion/\nDisallow: /cookiemigrator/\nDisallow: /create-resume/lp/\nDisallow: /cdn-cgi/\nDisallow: /%E4%BB%95%E4%BA%8B?\nDisallow: /%E6%B1%82%E4%BA%BA/JP/\nDisallow: /%E6%B1%82%E4%BA%BA/title/\nDisallow: /%E8%81%8C%E4%BD%8D%E6%98%BE%E7%A4%BA?\nDisallow: /%EC%B7%A8%EC%97%85/KR/\nDisallow: /%EC%B7%A8%EC%97%85/title/\nDisallow: /empleo/\nDisallow: /emploi/\nDisallow: /emplois/FR/\nDisallow: /emplois/title/\nDisallow: /emprego/\nDisallow: /forum/profile\nDisallow: /g/\nDisallow: /graphql\nDisallow: /imgping\nDisallow: /ita?\nDisallow: /ita/v1/publisher\nDisallow: /ja/clk?\nDisallow: /ja/imp.gif\nDisallow: /job/\nDisallow: /Job/\nDisallow: /jobroll\nDisallow: /jobtrends/trends/log/*\nDisallow: /jwidget.js*\nDisallow: /me/*/pdf\nDisallow: /m/basecamp/analytics.js\nDisallow: /m/jobalerts?\nDisallow: /m/moreLoc\nDisallow: /m/newjobs\nDisallow: /m/recommended\nDisallow: /m/rpc/\nDisallow: /my/\nDisallow: /*oc=1\nDisallow: /pagead/\nDisallow: /poka%C5%BCprac%C4%99?\nDisallow: /preferences\nDisallow: /*radius=\nDisallow: /rc/\nDisallow: /rdr/\nDisallow: /recommendedjobs\nDisallow: /record-page-tags\nDisallow: /resumes/account\nDisallow: /resumes/advanced?\nDisallow: /resumes/alert\nDisallow: /resumes*radius=\nDisallow: /resumes*rb=\nDisallow: /resumes*res=\nDisallow: /resumes/rpc/\nDisallow: /resumes*sort=\nDisallow: /resumes*start=\nDisallow: /rpc/\nDisallow: /r/*/pdf\nDisallow: /rss\nDisallow: /setprefs\nDisallow: /*sid=\nDisallow: /*sp=0\nDisallow: /*&start=\nDisallow: /stc\nDisallow: /Stellen/CH/\nDisallow: /Stellen/title\nDisallow: /tellafriend\nDisallow: /tmn/ccs/\nDisallow: /tos/banner.js\nDisallow: /uie/clk\nDisallow: /url\nDisallow: /vacature/\nDisallow: /vacature-bekijken?\nDisallow: /ver-empleo?\nDisallow: /ver-emprego?\nDisallow: /ver-oferta?\nDisallow: /visajobb?\nDisallow: /voir-emploi?\nDisallow: /Zeige-Job?\nDisallow: /c/info/\nDisallow: /hire/how-to-hire/\nDisallow: /hire/interview-questions/\nDisallow: /recruiting/interviewfragen/\nDisallow: /recruiting/stellenbeschreibung/\nDisallow: /recrutement/description-du-poste/\nDisallow: /recrutement/questions-entretien-dembauche/\nDisallow: /personeel/functiebeschrijving/\nDisallow: /companies/\nDisallow: /cmp/\nDisallow: /career-advice/\nDisallow: /conselho-de-carreira/\nDisallow: /hire/job-description/\nDisallow: /karriere-guide/\nDisallow: /conseils-carrieres/\nDisallow: /conseils-carriere/ \nDisallow: /orientacion-profesional/\nDisallow: /porady-zawodowe/\nDisallow: /guida-alla-carriera/\nDisallow: /職涯貼士/\nDisallow: /carrieregids/\nDisallow: /karriarrad/\nDisallow: /orientacion-laboral/ \nDisallow: /career/\nDisallow: /*jobs.html\nDisallow: /jobs\nDisallow: /viewjob\nDisallow: /certifications/\nDisallow: /trabajo\nDisallow: /ofertas\nDisallow: /%D0%B2%D0%B0%D0%BA%D0%B0%D0%BD%D1%81%D0%B8%D0%B8\nDisallow: /emplois\nDisallow: /%E6%B1%82%E4%BA%BA\nDisallow: /m/jobs\nDisallow: /m/viewjob\nDisallow: /vacatures\nDisallow: /offerte-lavoro\nDisallow: /Vi%E1%BB%87c-l%C3%A0m\nDisallow: /Jobs\nDisallow: /%D9%88%D8%B8%D8%A7%D8%A6%D9%81\nDisallow: /%EC%B7%A8%EC%97%85\nDisallow: /Jobb\nDisallow: /empregos\nDisallow: /praca\nDisallow: /%E5%B7%A5%E4%BD%9C\nDisallow: /jobb\nDisallow: /%E0%B8%87%E0%B8%B2%E0%B8%99\nDisallow: /lowongan-kerja\nDisallow: /Stellen\nDisallow: /q-\nDisallow: /l-",
+    "parse_ok": true,
+    "agents": {
+      "Googlebot": {
+        "class": "hybrid",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "Google-Extended": {
+        "class": "training",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "ChatGPT-User": {
+        "class": "retrieval",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "Bingbot": {
+        "class": "hybrid",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "Slurp": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "DuckDuckBot": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "YahooJP": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "PetalBot": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "PerplexityBot": {
+        "class": "retrieval",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "DuckAssistBot": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "Perplexity-User": {
+        "class": "retrieval",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "YouBot": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "Claude-User": {
+        "class": "retrieval",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "Gemini-Deep-Research": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "Claude-SearchBot": {
+        "class": "retrieval",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "OAI-SearchBot": {
+        "class": "retrieval",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "Google-Agent": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "Google-CloudVertexBot": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "Meta-WebIndexer": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "Meta-ExternalFetcher": {
+        "class": "retrieval",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "xAI-Grok": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "Grok-DeepSearch": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "Mediapartners-Google": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "AdsBot-Google": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "AdsBot-Google-Mobile": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "adidxbot": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "Googlebot-Image": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "msnbot-media": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "OmniExplorer_Bot": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 402,
+        "crawl_delay": null
+      },
+      "ia_archiver": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 402,
+        "crawl_delay": null
+      },
+      "008": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 402,
+        "crawl_delay": null
+      },
+      "JobdiggerSpider": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 402,
+        "crawl_delay": null
+      },
+      "Cliqzbot": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 402,
+        "crawl_delay": null
+      },
+      "GoogleOther": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 402,
+        "crawl_delay": null
+      },
+      "omgili": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 402,
+        "crawl_delay": null
+      },
+      "omgilibot": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 402,
+        "crawl_delay": null
+      },
+      "Webzio": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 402,
+        "crawl_delay": null
+      },
+      "Webzio-Extended": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 402,
+        "crawl_delay": null
+      },
+      "Scrapy": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 402,
+        "crawl_delay": null
+      },
+      "MyCentralAIScraperBot": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 402,
+        "crawl_delay": null
+      },
+      "facebookexternalhit": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "WhatsApp": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "snapchat": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "TelegramBot": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "Twitterbot": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "Slackbot-LinkExpanding": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "GPTBot": {
+        "class": "training",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "CCBot": {
+        "class": "training",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "anthropic-ai": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "FacebookBot": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "AmazonBot": {
+        "class": "training",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "Applebot-Extended": {
+        "class": "training",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "Bytespider": {
+        "class": "training",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "Baiduspider": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "cohere-training-data-crawler": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "FriendlyCrawler": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "img2dataset": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "Meta-ExternalAgent": {
+        "class": "training",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "ClaudeBot": {
+        "class": "training",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "DeepSeekBot": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "GrokBot": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "Diffbot": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "AI2Bot": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "PanguBot": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "Timpibot": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "*": {
+        "class": "generic",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      }
+    },
+    "sitemap_declarations": []
+  },
+  "discovery": {
+    "status": "ok",
+    "reason": null,
+    "sitemap_found": false,
+    "sitemap_urls_count": 0,
+    "inventory": [
+      {
+        "url": "https://in.indeed.com/",
+        "page_type": "home",
+        "source": "crawl"
+      }
+    ],
+    "sampled_static": [
+      "https://in.indeed.com/"
+    ],
+    "sampled_rendered": [],
+    "sampling_seed": "sha256:dfadfbebff68fd791decfa74a340c4ded6f81800efa25b0709a2f3b4bbedb161"
+  },
+  "pages": [
+    {
+      "url": "https://in.indeed.com/",
+      "final_url": "https://in.indeed.com/",
+      "status": "ok",
+      "reason": null,
+      "http_status": 200,
+      "page_type": "home",
+      "headers": {
+        "date": "Thu, 10 Sep 2026 20:48:57 GMT",
+        "content-type": "text/html; charset=utf-8",
+        "transfer-encoding": "chunked",
+        "connection": "close",
+        "set-cookie": "_cfuvid=oVCVlC2f3PflwDE1ASxqsVKv.lhaNWsjoKTe7QQFdWs-1789073336.9573157-1.0.1.1-ItS0mhVz8EQm4DbdWKPBV6VYA9OVpeLYMzZlDM3xyl0; HttpOnly; SameSite=None; Secure; Path=/; Domain=indeed.com",
+        "cf-ray": "a3914be3fee64bda-DEL",
+        "cf-cache-status": "DYNAMIC",
+        "cache-control": "private",
+        "expires": "Thu, 01 Jan 1970 00:00:00 GMT",
+        "server": "cloudflare",
+        "x-frame-options": "SAMEORIGIN",
+        "strict-transport-security": "max-age=31536000; includeSubDomains",
+        "vary": "Accept-Encoding, Accept-Encoding",
+        "accept-ch": "Sec-CH-UA-Platform-Version, Sec-CH-UA-Full-Version-List, Sec-CH-UA-Model",
+        "cf-ua-info-cloudflare-useragent-parser-1.1": "true",
+        "content-security-policy": "upgrade-insecure-requests; object-src 'none'; form-action 'self' *.indeed.com  *.qualtrics.com; frame-src 'self' *.indeed.com  https://accounts.google.com/ https://www.accounts.google.com/ https://smartlock.google.com/ https://www.google.com/recaptcha/ https://www.youtube.com/embed/ *.qualtrics.com; frame-ancestors 'self' *.indeed.com  ; img-src 'self' *.indeed.com  data: d3e84n0wcqdcbw.cloudfront.net d13w2n5a9i6r56.cloudfront.net d3hbwax96mbv6t.cloudfront.net d12632ofg6v5f7.cloudfront.net d2q79iu7y748jz.cloudfront.net d3s4xzh46vzktb.cloudfront.net creative.statics.indeed.com d1ymdoy4af119w.cloudfront.net c03.s3.indeed.com d3fw5vlhllyvee.cloudfront.net d3nbup7htlluyi.cloudfront.net d23zm5r1n38khq.cloudfront.net d314bftfgh5fa0.cloudfront.net https://indeed-labs-jp-baito.s3.amazonaws.com https://res.cloudinary.com www.google-analytics.com www.google.co.jp/ads/ga-audiences www.google.com/ads/ga-audience www.google.com/ads/ga-audiences https://www.google.com/ads https://www.facebook.com/tr/ https://sb.scorecardresearch.com https://stats.g.doubleclick.net https://*.tvpixel.com/* https://*.optimizely.com/* https://d.turn.com/* https://idsync.rlcdn.com/* https://pt.ispot.tv https://ad.doubleclick.net/ddm/ https://d.hodes.com https://bs.serving-sys.com https://i.ytimg.com/ https://api-maps.precisely.com *.qualtrics.com; default-src 'self' 'unsafe-inline' data: *.indeed.com  c03.s3.indeed.com c03.s3.indeed.com https://smartlock.google.com/ https://d13w2n5a9i6r56.cloudfront.net/ https://accounts.google.com/ www.googletagmanager.com https://resumecontacts.indeed.com https://cdn.ravenjs.com/3.14.2/raven.min.js d3hbwax96mbv6t.cloudfront.net d12632ofg6v5f7.cloudfront.net d2q79iu7y748jz.cloudfront.net d3s4xzh46vzktb.cloudfront.net d3fw5vlhllyvee.cdn.indeed.com creative.statics.indeed.com d1ymdoy4af119w.cloudfront.net d3fw5vlhllyvee.cloudfront.net d314bftfgh5fa0.cloudfront.net www.google-analytics.com https://www.facebook.com/tr/ https://sb.scorecardresearch.com https://connect.facebook.net *.serving-sys.com maps.googleapis.com csi.gstatic.com https://ad.doubleclick.net/ddm/ https://www.google.com/recaptcha/ https://www.gstatic.com https://www.youtube.com https://pp.d2-apps.net/v1/impressions/log dpuk71x9wlmkf.cloudfront.net https://privacyportal.onetrust.com https://stats.g.doubleclick.net https://d3fw5vlhllyvee.cloudfront.net/frontend-sentry-bundle/v1.1.2/js/sentry.js https://apis.google.com/js/platform.js https://browser.sentry-cdn.com/4.3.3/bundle.min.js https://browser.sentry-cdn.com/4.4.2/bundle.min.js https://*.tvpixel.com/* https://*.optimizely.com/* https://cdn.optimizely.com/js/10668710116.js https://munchkin.marketo.net/munchkin.js https://www.google-analytics.com/analytics.js https://www.google-analytics.com/plugins/ua/linkid.js https://fonts.gstatic.com/ https://fonts.googleapis.com/ https://rs.fullstory.com/rec/ https://d2k1bn3ko1qk4.cloudfront.net https://d.hodes.com https://bs.serving-sys.com https://static.cloudflareinsights.com https://api-maps.precisely.com *.browser-intake-datadoghq.com https://itad.indeed.com/* https://pres.indeed.com/* https://offers.indeed.com/js/forms2/js/forms2.min.js blob: https://www.datadoghq-browser-agent.com *.qualtrics.com *.s3.indeed.com *.browser-intake-datadoghq.com browser-intake-datadoghq.com t.indeed.com q.indeed.com sgtm.indeed.com *.indeed.com/m/ *.indeed.com/hp/ https://profile-api-prod.s3.us-west-2.amazonaws.com https://profile-file-service-temp-prod.s3.us-west-2.amazonaws.com;",
+        "dc": "fraprod1",
+        "indeed-jsf": "1",
+        "indeed-jsf-version": "010d99680486145fba7f22d536861e5ccc231b9d",
+        "x-content-type-options": "nosniff",
+        "x-envoy-upstream-service-time": "20",
+        "content-encoding": "gzip",
+        "alt-svc": "h3=\":443\"; ma=86400"
+      },
+      "raw_html_bytes": 681349,
+      "main_text": "Your next job starts here Create an account or sign in to see your personalised job recommendations. Get Started Indeed हिंदी में भी उपलब्ध है What's trending on Indeed Trending Searches react frontend developer tprm software developer fresher internship noida, uttar pradesh graphic design work from home react developer fresher chennai, tamil nadu associate software engineer fresher node js backend developer mern noida, uttar pradesh fresher react bengaluru, karnataka qa automation python developer fresher maharashtra reservation fresher remote dot net developer 2 years experience hyderabad, telangana snowflake data engineer hyderabad, telangana mobile app developer telecaller work from home part time remote frontend developer noida, uttar pradesh remote, work from home mern developer fresher noida, uttar pradesh data engineer fresher pune, maharashtra python developer remote net core developer project management intern remote network security bengaluru, karnataka java full stack developer fresher bengaluru, karnataka mern chennai, tamil nadu bioinformatics hyderabad, telangana laravel bengaluru, karnataka siliguri with fresher shiliguri, west bengal Trending Jobs qa engineer remote content writer remote data analyst freshers data entry work from home remote ai ml full stack developer remote developer remote hotel jobs in switzerland backend internship technical support remote work from home part time telugu graphic designer work from home remote work from home part time remote wordpress remote senior ux designer software developer remote ui path python developer remote node js developer remote marketing remote seo specialist remote internship remote performance marketing remote work from home fresher telecaller data entry remote hr remote front end developer remote graphic designer remote social media remote tamil work from home fresher Trending Locations kolkata, west bengal goa, goa mysuru, karnataka varanasi, uttar pradesh nashik, maharashtra kochi, kerala tiruchchirappalli, tamil nadu erode, tamil nadu chandigarh, chandigarh vijayawada, andhra pradesh jaipur, rajasthan malappuram, kerala shimla, himachal pradesh kottayam, kerala gorakhpur, uttar pradesh vadodara, gujarat pune, maharashtra shiliguri, west bengal guwahati, assam bilaspur, chhattisgarh tirunelveli, tamil nadu west bengal raipur, chhattisgarh anand, gujarat ghaziabad, uttar pradesh bareilly, uttar pradesh kakinada, andhra pradesh tuticorin, tamil nadu nagpur, maharashtra puducherry, puducherry Trending Companies reliance jio, work from home 12th pass deloitte tata motors sap sd doubt solver , physics wallah teleperformance tata motors company byjus, online tutor goldman sachs l%26t asian paints optum tech mahindra upsc zomato, work from home honeywell kalyan jewellers tanishq jewellery airtel, call center work from home zepto careers, work from home jpmorgan chase work from home, zomato chat process qualcomm internship cipla, fresher adani, security officer siemens muthoot freshers mahindra hsbc revolut, work from home Employer Resources Post a job | Indeed for Employers How to Post a Job on Indeed: Employer Guide How To Hire Employees: A Step-by-Step Guide Telecaller Job Description Sales Manager Job Description Indeed Advertising | Job advertising platform for employers 4 Job offer letter formats for every situation (with examples) New Hire Onboarding Checklist How to Hire an Accountant How to Hire a Telecaller Chief Human Resources Officer (CHRO) Job Description Financial Controller Job Description Operations Manager Job Description Sales Coordinator Job Description Web Designer Job Description How to Search for Qualified Candidates on Indeed Resume 6 Things to Know Before Posting a Job on Indeed How to Specify Job Requirements Hiring Guide: How to Use Indeed’s Employer Tools Using Data from Performance Reports to Improve Job Listings on Indeed On-Roll Vs Off-Roll Employees A Guide To Sick Leave, Sick Leave Application Samples You Need What Is The Difference Between Entrepreneurs And Employees Recruiter Job Description Assistant Manager Job Description What Are The Social Responsibilities Of An Entrepreneur? Python Developer Job Description Faculty Job Description Customer Service Associate Job Description List Of Holidays In India In 2023 Free* job posting | Indeed for Employers Find employees | Indeed for Employers Products for Employers How to Hire a Freelancer Free vs Sponsored Jobs on Indeed Indeed Hiring Events | Job fairs for employers A Complete Guide To Leave, Attendance And LOP Days For Employers Privilege Leave Meaning: A guide for employers How to Hire an Assistant India | Post a Job Civil Engineer Job Description Graphic Designer Job Description Personal Assistant Job Description Sales Engineer Job Description Need to Hire Employees | Indeed for Employers Frequently Asked Questions How to Conduct a Successful Virtual Interview on Indeed How to Optimise Jobs from Your Career Site or ATS Directly on Indeed How Indeed Smart Sourcing Makes Hiring Faster How to Use Indeed Company Pages to Promote Your Work Culture Back Office Executive Job Description 10 Back office executive Interview Questions What Is The Meaning Of CTC (Cost to company) And How To Calculate It? 10 Data entry operator Interview Questions Territory Sales Manager Job Description 10 US IT Recruiter Interview Questions What is the minimum wage in India: Laws and Policies Salary revision, arrear and bonus payment in India What Are The Ethical Issues In HR? Branch Manager Job Description Indeed Pricing | Job Posting Cost at Indeed Indeed Connect app Hiring Resources Business Development Executive Job Description How to Consistently Attract and Filter Quality Applicants A Guide To Employee Background Verification For Employers New Employee Paperwork Checklist A Guide to Probation Period in Indian workplace How to Hire a Customer Service Representative Academic Counsellor Job Description Executive Assistant Job Description HR Manager Job Description Quality Control Inspector Job Description Senior Accountant Job Description Finding employees How to Find Candidates on Indeed How to Hire Employees with Indeed for Employers Assess Applicant Qualifications with Screener Questions on Indeed Managing Candidates on Indeed How to Get More Candidates by Thinking Like a Jobseeker Problems Faced By Women Entrepreneurs In India Meaning of relieving letter (with samples) Assistant Professor Job Description Driver Job Description How to write an employee verification letter (with samples) What is casual leave (with application samples)? Top 10 HR policies for Indian Employers Desktop support engineer Job Description 7 Objectives Of Human Resource Management (And How To Achieve Them) Data Analyst Job Description Indeed Pricing: Job Posting Costs Indeed Smart Sourcing | Matching & resume search for employers MIS Executive Job Description Customer Service Representative Job Description How to Get Help and Hiring Information Breakup of Salary: The 11 components of salary 20 New Employee Welcome Messages Connect How to Hire a Receptionist Billing Specialist Job Description Finance Manager Job Description Interior Designer Job Description Real Estate Agent Job Description UX Designer Job Description Everything You Need to Know About Posting a Job on Indeed Using the Indeed Employer Dashboard to Manage Recruitment Streamline Your Hiring With the Indeed Employer Dashboard How to Write Effective Job Titles and Descriptions on Indeed How to Screen and Manage Candidates with Indeed for Employers 10 Medical Representative Interview Questions What Is Personnel Administration? 10 Telecaller Interview Questions What are the social objectives of business? Data entry operator Job Description US IT Recruiter Job Description What Are The Objectives Of Risk Management? Office Assistant Job Description Area Manager Job Description Medical representative Job Description Accountant Job Description",
+      "main_text_words": 1139,
+      "extraction_ok": true,
+      "title": "Job Search India | Indeed",
+      "meta": {
+        "viewport": "width=device-width, initial-scale=1.0",
+        "description": "With Indeed, you can search millions of jobs online to find the next step in your career. With tools for job search, resumes, company reviews and more, were with you every step of the way.",
+        "robots": null
+      },
+      "lang": "en",
+      "canonical": {
+        "href": "https://in.indeed.com/",
+        "self_referential": true,
+        "cross_domain": false
+      },
+      "headings": [
+        {
+          "level": 2,
+          "text": "Your next job starts here",
+          "order": 0
+        },
+        {
+          "level": 2,
+          "text": "Trending Searches",
+          "order": 1
+        },
+        {
+          "level": 2,
+          "text": "Trending Jobs",
+          "order": 2
+        },
+        {
+          "level": 2,
+          "text": "Trending Locations",
+          "order": 3
+        },
+        {
+          "level": 2,
+          "text": "Trending Companies",
+          "order": 4
+        }
+      ],
+      "landmarks": {
+        "main": 1,
+        "nav": 1,
+        "header": 1,
+        "footer": 1
+      },
+      "structured_data": {
+        "json_ld": [
+          {
+            "type": "WebSite",
+            "raw": {
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              "url": "http://in.indeed.com:443",
+              "potentialAction": {
+                "@type": "SearchAction",
+                "target": "http://in.indeed.com:443/jobs?q={search_term_string}&from=googlesl",
+                "query-input": "required name=search_term_string"
+              }
+            },
+            "fields_present": [
+              "potentialAction",
+              "url"
+            ]
+          }
+        ],
+        "microdata_types": [],
+        "rdfa_types": []
+      },
+      "links": [
+        {
+          "href": "https://in.indeed.com/?from=gnav-homepage",
+          "text": "",
+          "rel": null,
+          "internal": true,
+          "aria_label": "Indeed Home"
+        },
+        {
+          "href": "https://in.indeed.com/",
+          "text": "Home",
+          "rel": null,
+          "internal": true,
+          "aria_label": "Home"
+        },
+        {
+          "href": "https://in.indeed.com/companies",
+          "text": "Company reviews",
+          "rel": null,
+          "internal": true,
+          "aria_label": "Company reviews"
+        },
+        {
+          "href": "https://in.indeed.com/career/salaries",
+          "text": "Salary guide",
+          "rel": null,
+          "internal": true,
+          "aria_label": "Salary guide"
+        },
+        {
+          "href": "https://secure.indeed.com/auth?hl=en_IN&co=IN&continue=https%3A%2F%2Fin.indeed.com%2F&tmpl=desktop&from=gnav-util-homepage&jsContinue=https%3A%2F%2Fin.indeed.com%2F&empContinue=https%3A%2F%2Faccount.indeed.com%2Fmyaccess",
+          "text": "Sign in",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://secure.indeed.com/auth?hl=en_IN&co=IN&continue=https%3A%2F%2Fin.indeed.com%2F&tmpl=desktop&from=gnav-util-homepage&jsContinue=https%3A%2F%2Fin.indeed.com%2F&empContinue=https%3A%2F%2Faccount.indeed.com%2Fmyaccess",
+          "text": "",
+          "rel": null,
+          "internal": true,
+          "aria_label": "Sign in"
+        },
+        {
+          "href": "https://in.indeed.com/countries",
+          "text": "🇮🇳 En",
+          "rel": null,
+          "internal": true,
+          "aria_label": "India (English)"
+        },
+        {
+          "href": "https://in.indeed.com/hire?co=IN&hl=en",
+          "text": "Employers / Post Job",
+          "rel": null,
+          "internal": true,
+          "aria_label": "Employers / Post Job"
+        },
+        {
+          "href": "https://in.indeed.com/setprefs?action=set&hl=hi&prevhl=en&tk=1k26h9aorhndo800",
+          "text": "हिंदी",
+          "rel": "nofollow",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/q-react-frontend-developer-jobs.html",
+          "text": "react frontend developer",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/q-tprm-jobs.html",
+          "text": "tprm",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/q-software-developer-fresher-internship-l-noida,-uttar-pradesh-jobs.html",
+          "text": "software developer fresher internship noida, uttar pradesh",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/q-graphic-design-work-from-home-jobs.html",
+          "text": "graphic design work from home",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/q-react-developer-fresher-l-chennai,-tamil-nadu-jobs.html",
+          "text": "react developer fresher chennai, tamil nadu",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/q-associate-software-engineer-fresher-jobs.html",
+          "text": "associate software engineer fresher",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/q-node-js-backend-developer-jobs.html",
+          "text": "node js backend developer",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/q-mern-l-noida,-uttar-pradesh-jobs.html",
+          "text": "mern noida, uttar pradesh",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/q-fresher-react-l-bengaluru,-karnataka-jobs.html",
+          "text": "fresher react bengaluru, karnataka",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/q-qa-automation-jobs.html",
+          "text": "qa automation",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/q-python-developer-fresher-l-maharashtra-jobs.html",
+          "text": "python developer fresher maharashtra",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/q-reservation-jobs.html",
+          "text": "reservation",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/q-fresher-remote-jobs.html",
+          "text": "fresher remote",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/q-dot-net-developer-2-years-experience-l-hyderabad,-telangana-jobs.html",
+          "text": "dot net developer 2 years experience hyderabad, telangana",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/q-snowflake-data-engineer-l-hyderabad,-telangana-jobs.html",
+          "text": "snowflake data engineer hyderabad, telangana",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/q-mobile-app-developer-jobs.html",
+          "text": "mobile app developer",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/q-telecaller-work-from-home-part-time-l-remote-jobs.html",
+          "text": "telecaller work from home part time remote",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/q-frontend-developer-l-noida,-uttar-pradesh-jobs.html",
+          "text": "frontend developer noida, uttar pradesh",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/q-remote,-work-from-home-jobs.html",
+          "text": "remote, work from home",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/q-mern-developer-fresher-l-noida,-uttar-pradesh-jobs.html",
+          "text": "mern developer fresher noida, uttar pradesh",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/q-data-engineer-fresher-l-pune,-maharashtra-jobs.html",
+          "text": "data engineer fresher pune, maharashtra",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/q-python-developer-remote-jobs.html",
+          "text": "python developer remote",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/q-net-core-developer-jobs.html",
+          "text": "net core developer",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/q-project-management-intern-l-remote-jobs.html",
+          "text": "project management intern remote",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/q-network-security-l-bengaluru,-karnataka-jobs.html",
+          "text": "network security bengaluru, karnataka",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/q-java-full-stack-developer-fresher-l-bengaluru,-karnataka-jobs.html",
+          "text": "java full stack developer fresher bengaluru, karnataka",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/q-mern-l-chennai,-tamil-nadu-jobs.html",
+          "text": "mern chennai, tamil nadu",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/q-bioinformatics-l-hyderabad,-telangana-jobs.html",
+          "text": "bioinformatics hyderabad, telangana",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/q-laravel-l-bengaluru,-karnataka-jobs.html",
+          "text": "laravel bengaluru, karnataka",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/q-siliguri-with-fresher-l-shiliguri,-west-bengal-jobs.html",
+          "text": "siliguri with fresher shiliguri, west bengal",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/q-qa-engineer-l-remote-jobs.html",
+          "text": "qa engineer remote",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/q-content-writer-l-remote-jobs.html",
+          "text": "content writer remote",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/q-data-analyst-freshers-jobs.html",
+          "text": "data analyst freshers",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/q-data-entry-work-from-home-l-remote-jobs.html",
+          "text": "data entry work from home remote",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/q-ai-ml-jobs.html",
+          "text": "ai ml",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/q-full-stack-developer-l-remote-jobs.html",
+          "text": "full stack developer remote",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/q-developer-l-remote-jobs.html",
+          "text": "developer remote",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/q-hotel-jobs-in-switzerland-jobs.html",
+          "text": "hotel jobs in switzerland",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/q-backend-internship-jobs.html",
+          "text": "backend internship",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/q-technical-support-l-remote-jobs.html",
+          "text": "technical support remote",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/q-work-from-home-part-time-telugu-jobs.html",
+          "text": "work from home part time telugu",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/q-graphic-designer-work-from-home-l-remote-jobs.html",
+          "text": "graphic designer work from home remote",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/q-work-from-home-part-time-l-remote-jobs.html",
+          "text": "work from home part time remote",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/q-wordpress-l-remote-jobs.html",
+          "text": "wordpress remote",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/q-senior-ux-designer-jobs.html",
+          "text": "senior ux designer",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/q-software-developer-l-remote-jobs.html",
+          "text": "software developer remote",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/q-ui-path-jobs.html",
+          "text": "ui path",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/q-python-developer-l-remote-jobs.html",
+          "text": "python developer remote",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/q-node-js-developer-l-remote-jobs.html",
+          "text": "node js developer remote",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/q-marketing-l-remote-jobs.html",
+          "text": "marketing remote",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/q-seo-specialist-l-remote-jobs.html",
+          "text": "seo specialist remote",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/q-internship-l-remote-jobs.html",
+          "text": "internship remote",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/q-performance-marketing-l-remote-jobs.html",
+          "text": "performance marketing remote",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/q-work-from-home-fresher-telecaller-jobs.html",
+          "text": "work from home fresher telecaller",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/q-data-entry-l-remote-jobs.html",
+          "text": "data entry remote",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/q-hr-l-remote-jobs.html",
+          "text": "hr remote",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/q-front-end-developer-l-remote-jobs.html",
+          "text": "front end developer remote",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/q-graphic-designer-l-remote-jobs.html",
+          "text": "graphic designer remote",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/q-social-media-l-remote-jobs.html",
+          "text": "social media remote",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/q-tamil-work-from-home-fresher-jobs.html",
+          "text": "tamil work from home fresher",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/l-kolkata,-west-bengal-jobs.html",
+          "text": "kolkata, west bengal",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/l-goa,-goa-jobs.html",
+          "text": "goa, goa",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/l-mysuru,-karnataka-jobs.html",
+          "text": "mysuru, karnataka",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/l-varanasi,-uttar-pradesh-jobs.html",
+          "text": "varanasi, uttar pradesh",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/l-nashik,-maharashtra-jobs.html",
+          "text": "nashik, maharashtra",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/l-kochi,-kerala-jobs.html",
+          "text": "kochi, kerala",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/l-tiruchchirappalli,-tamil-nadu-jobs.html",
+          "text": "tiruchchirappalli, tamil nadu",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/l-erode,-tamil-nadu-jobs.html",
+          "text": "erode, tamil nadu",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/l-chandigarh,-chandigarh-jobs.html",
+          "text": "chandigarh, chandigarh",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/l-vijayawada,-andhra-pradesh-jobs.html",
+          "text": "vijayawada, andhra pradesh",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/l-jaipur,-rajasthan-jobs.html",
+          "text": "jaipur, rajasthan",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/l-malappuram,-kerala-jobs.html",
+          "text": "malappuram, kerala",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/l-shimla,-himachal-pradesh-jobs.html",
+          "text": "shimla, himachal pradesh",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/l-kottayam,-kerala-jobs.html",
+          "text": "kottayam, kerala",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/l-gorakhpur,-uttar-pradesh-jobs.html",
+          "text": "gorakhpur, uttar pradesh",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/l-vadodara,-gujarat-jobs.html",
+          "text": "vadodara, gujarat",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/l-pune,-maharashtra-jobs.html",
+          "text": "pune, maharashtra",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/l-shiliguri,-west-bengal-jobs.html",
+          "text": "shiliguri, west bengal",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/l-guwahati,-assam-jobs.html",
+          "text": "guwahati, assam",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/l-bilaspur,-chhattisgarh-jobs.html",
+          "text": "bilaspur, chhattisgarh",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/l-tirunelveli,-tamil-nadu-jobs.html",
+          "text": "tirunelveli, tamil nadu",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/l-west-bengal-jobs.html",
+          "text": "west bengal",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/l-raipur,-chhattisgarh-jobs.html",
+          "text": "raipur, chhattisgarh",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/l-anand,-gujarat-jobs.html",
+          "text": "anand, gujarat",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/l-ghaziabad,-uttar-pradesh-jobs.html",
+          "text": "ghaziabad, uttar pradesh",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/l-bareilly,-uttar-pradesh-jobs.html",
+          "text": "bareilly, uttar pradesh",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/l-kakinada,-andhra-pradesh-jobs.html",
+          "text": "kakinada, andhra pradesh",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/l-tuticorin,-tamil-nadu-jobs.html",
+          "text": "tuticorin, tamil nadu",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/l-nagpur,-maharashtra-jobs.html",
+          "text": "nagpur, maharashtra",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/l-puducherry,-puducherry-jobs.html",
+          "text": "puducherry, puducherry",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/q-reliance-jio,-work-from-home-12th-pass-jobs.html",
+          "text": "reliance jio, work from home 12th pass",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/q-deloitte-jobs.html",
+          "text": "deloitte",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/q-tata-motors-jobs.html",
+          "text": "tata motors",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/q-sap-sd-jobs.html",
+          "text": "sap sd",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/q-doubt-solver-,-physics-wallah-jobs.html",
+          "text": "doubt solver , physics wallah",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/q-teleperformance-jobs.html",
+          "text": "teleperformance",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/q-tata-motors-company-jobs.html",
+          "text": "tata motors company",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/q-byjus,-online-tutor-jobs.html",
+          "text": "byjus, online tutor",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/q-goldman-sachs-jobs.html",
+          "text": "goldman sachs",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/q-l&t-jobs.html",
+          "text": "l%26t",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/q-asian-paints-jobs.html",
+          "text": "asian paints",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/q-optum-jobs.html",
+          "text": "optum",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/q-tech-mahindra-jobs.html",
+          "text": "tech mahindra",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/q-upsc-jobs.html",
+          "text": "upsc",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/q-zomato,-work-from-home-jobs.html",
+          "text": "zomato, work from home",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/q-honeywell-jobs.html",
+          "text": "honeywell",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/q-kalyan-jewellers-jobs.html",
+          "text": "kalyan jewellers",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/q-tanishq-jewellery-jobs.html",
+          "text": "tanishq jewellery",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/q-airtel,-call-center-work-from-home-jobs.html",
+          "text": "airtel, call center work from home",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/q-zepto-careers,-work-from-home-jobs.html",
+          "text": "zepto careers, work from home",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/q-jpmorgan-chase-jobs.html",
+          "text": "jpmorgan chase",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/q-work-from-home,-zomato-chat-process-jobs.html",
+          "text": "work from home, zomato chat process",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/q-qualcomm-internship-jobs.html",
+          "text": "qualcomm internship",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/q-cipla,-fresher-jobs.html",
+          "text": "cipla, fresher",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/q-adani,-security-officer-jobs.html",
+          "text": "adani, security officer",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/q-siemens-jobs.html",
+          "text": "siemens",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/q-muthoot-jobs.html",
+          "text": "muthoot",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/q-freshers-mahindra-jobs.html",
+          "text": "freshers mahindra",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/q-hsbc-jobs.html",
+          "text": "hsbc",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/q-revolut,-work-from-home-jobs.html",
+          "text": "revolut, work from home",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire",
+          "text": "Post a job | Indeed for Employers",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/resources/howtohub/how-to-post-a-job-on-indeed",
+          "text": "How to Post a Job on Indeed: Employer Guide",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/how-to-hire",
+          "text": "How To Hire Employees: A Step-by-Step Guide",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/job-description/telecaller",
+          "text": "Telecaller Job Description",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/job-description/sales-manager",
+          "text": "Sales Manager Job Description",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/employers/ads",
+          "text": "Indeed Advertising | Job advertising platform for employers",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/c/info/job-offer-letter-format",
+          "text": "4 Job offer letter formats for every situation (with examples)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/c/info/new-hire-onboarding-checklist",
+          "text": "New Hire Onboarding Checklist",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/how-to-hire/accountant",
+          "text": "How to Hire an Accountant",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/how-to-hire/telecaller",
+          "text": "How to Hire a Telecaller",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/job-description/chro",
+          "text": "Chief Human Resources Officer (CHRO) Job Description",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/job-description/financial-controller",
+          "text": "Financial Controller Job Description",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/job-description/operations-manager",
+          "text": "Operations Manager Job Description",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/job-description/sales-coordinator",
+          "text": "Sales Coordinator Job Description",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/job-description/web-designer",
+          "text": "Web Designer Job Description",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/resources/howtohub/how-to-search-for-qualified-candidates-on-indeed",
+          "text": "How to Search for Qualified Candidates on Indeed Resume",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/resources/howtohub/6-things-to-know-before-posting-a-job-on-indeed",
+          "text": "6 Things to Know Before Posting a Job on Indeed",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/resources/howtohub/how-to-specify-job-requirements",
+          "text": "How to Specify Job Requirements",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/resources/howtohub/hiring-guide-how-to-use-indeeds-employer-tools",
+          "text": "Hiring Guide: How to Use Indeed’s Employer Tools",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/resources/howtohub/using-data-from-performance-reports-to-improve-job-listings-on-indeed",
+          "text": "Using Data from Performance Reports to Improve Job Listings on Indeed",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/c/info/on-roll-off-roll-employees",
+          "text": "On-Roll Vs Off-Roll Employees",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/c/info/sick-leave-application",
+          "text": "A Guide To Sick Leave, Sick Leave Application Samples You Need",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/c/info/difference-between-entrepreneurs-employees",
+          "text": "What Is The Difference Between Entrepreneurs And Employees",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/job-description/recruiter",
+          "text": "Recruiter Job Description",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/job-description/assistant-manager",
+          "text": "Assistant Manager Job Description",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/c/info/social-responsibility-entrepreneur",
+          "text": "What Are The Social Responsibilities Of An Entrepreneur?",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/job-description/python-developer",
+          "text": "Python Developer Job Description",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/job-description/faculty",
+          "text": "Faculty Job Description",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/job-description/customer-service-associate",
+          "text": "Customer Service Associate Job Description",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/c/info/list-of-holidays",
+          "text": "List Of Holidays In India In 2023",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/post-job",
+          "text": "Free* job posting | Indeed for Employers",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/find-employees",
+          "text": "Find employees | Indeed for Employers",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/employer-products",
+          "text": "Products for Employers",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/how-to-hire/freelancer",
+          "text": "How to Hire a Freelancer",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/resources/howtohub/free-vs-sponsored-jobs-on-indeed",
+          "text": "Free vs Sponsored Jobs on Indeed",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/employers/hiring-events",
+          "text": "Indeed Hiring Events | Job fairs for employers",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/c/info/leave-attendence-lop-days",
+          "text": "A Complete Guide To Leave, Attendance And LOP Days For Employers",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/c/info/privilege-leave-meaning",
+          "text": "Privilege Leave Meaning: A guide for employers",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/how-to-hire/assistant",
+          "text": "How to Hire an Assistant",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/india-post-a-job",
+          "text": "India | Post a Job",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/job-description/civil-engineer",
+          "text": "Civil Engineer Job Description",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/job-description/graphic-designer",
+          "text": "Graphic Designer Job Description",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/job-description/personal-assistant",
+          "text": "Personal Assistant Job Description",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/job-description/sales-engineer",
+          "text": "Sales Engineer Job Description",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/need-hire-employees",
+          "text": "Need to Hire Employees | Indeed for Employers",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/resources/howtohub/faq",
+          "text": "Frequently Asked Questions",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/resources/howtohub/how-to-conduct-a-successful-virtual-interview-on-indeed",
+          "text": "How to Conduct a Successful Virtual Interview on Indeed",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/resources/howtohub/how-to-optimise-jobs-from-your-career-site-or-ats-directly-on-indeed",
+          "text": "How to Optimise Jobs from Your Career Site or ATS Directly on Indeed",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/resources/howtohub/how-to-hire-faster-using-indeed",
+          "text": "How Indeed Smart Sourcing Makes Hiring Faster",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/resources/howtohub/how-to-use-indeed-company-pages-to-promote-your-work-culture",
+          "text": "How to Use Indeed Company Pages to Promote Your Work Culture",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/job-description/back-office-executive",
+          "text": "Back Office Executive Job Description",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/interview-questions/back-office-executive",
+          "text": "10 Back office executive Interview Questions",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/c/info/cost-to-company-meaning",
+          "text": "What Is The Meaning Of CTC (Cost to company) And How To Calculate It?",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/interview-questions/data-entry-operator",
+          "text": "10 Data entry operator Interview Questions",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/job-description/territory-sales-manager",
+          "text": "Territory Sales Manager Job Description",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/interview-questions/us-it-recruiter",
+          "text": "10 US IT Recruiter Interview Questions",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/c/info/what-is-minimum-wage-india",
+          "text": "What is the minimum wage in India: Laws and Policies",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/c/info/salary-revision",
+          "text": "Salary revision, arrear and bonus payment in India",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/c/info/ethical-issues-hr",
+          "text": "What Are The Ethical Issues In HR?",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/job-description/branch-manager",
+          "text": "Branch Manager Job Description",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/pricing",
+          "text": "Indeed Pricing | Job Posting Cost at Indeed",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/employers/app",
+          "text": "Indeed Connect app",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/resources",
+          "text": "Hiring Resources",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/job-description/business-development-executive",
+          "text": "Business Development Executive Job Description",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/resources/howtohub/how-to-consistently-attract-and-filter-quality-applicants",
+          "text": "How to Consistently Attract and Filter Quality Applicants",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/c/info/background-verification",
+          "text": "A Guide To Employee Background Verification For Employers",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/c/info/new-employee-paperwork-checklist",
+          "text": "New Employee Paperwork Checklist",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/c/info/probation-period",
+          "text": "A Guide to Probation Period in Indian workplace",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/how-to-hire/customer-service-representative",
+          "text": "How to Hire a Customer Service Representative",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/job-description/academic-counsellor",
+          "text": "Academic Counsellor Job Description",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/job-description/executive-assistant",
+          "text": "Executive Assistant Job Description",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/job-description/hr-manager",
+          "text": "HR Manager Job Description",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/job-description/quality-control-inspector",
+          "text": "Quality Control Inspector Job Description",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/job-description/senior-accountant",
+          "text": "Senior Accountant Job Description",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/resources/finding-employees",
+          "text": "Finding employees",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/resources/howtohub/how-to-find-candidates-on-indeed",
+          "text": "How to Find Candidates on Indeed",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/resources/howtohub/onboarding-guide",
+          "text": "How to Hire Employees with Indeed for Employers",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/resources/howtohub/how-screener-questions-work",
+          "text": "Assess Applicant Qualifications with Screener Questions on Indeed",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/resources/howtohub/managing-candidates",
+          "text": "Managing Candidates on Indeed",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/resources/howtohub/how-to-get-more-candidates-by-thinking-like-a-jobseeker",
+          "text": "How to Get More Candidates by Thinking Like a Jobseeker",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/c/info/problems-faced-women-entrepreneurs",
+          "text": "Problems Faced By Women Entrepreneurs In India",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/c/info/meaning-of-relieving-letter",
+          "text": "Meaning of relieving letter (with samples)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/job-description/assistant-professor",
+          "text": "Assistant Professor Job Description",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/job-description/driver",
+          "text": "Driver Job Description",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/c/info/employee-verification-letter",
+          "text": "How to write an employee verification letter (with samples)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/c/info/casual-leave-application",
+          "text": "What is casual leave (with application samples)?",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/c/info/company-hr-policy-india",
+          "text": "Top 10 HR policies for Indian Employers",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/job-description/desktop-support-engineer",
+          "text": "Desktop support engineer Job Description",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/c/info/objectives-human-resource-management",
+          "text": "7 Objectives Of Human Resource Management (And How To Achieve Them)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/job-description/data-analyst",
+          "text": "Data Analyst Job Description",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/resources/howtohub/how-pricing-works-on-indeed",
+          "text": "Indeed Pricing: Job Posting Costs",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/employers/smart-sourcing",
+          "text": "Indeed Smart Sourcing | Matching & resume search for employers",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/job-description/mis-executive",
+          "text": "MIS Executive Job Description",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/job-description/customer-service-representative",
+          "text": "Customer Service Representative Job Description",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/resources/howtohub/how-to-get-help-on-indeed",
+          "text": "How to Get Help and Hiring Information",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/c/info/breakup-of-salary-components",
+          "text": "Breakup of Salary: The 11 components of salary",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/c/info/new-employee-welcome-messages",
+          "text": "20 New Employee Welcome Messages",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/connect",
+          "text": "Connect",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/how-to-hire/receptionist",
+          "text": "How to Hire a Receptionist",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/job-description/billing-specialist",
+          "text": "Billing Specialist Job Description",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/job-description/finance-manager",
+          "text": "Finance Manager Job Description",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/job-description/interior-designer",
+          "text": "Interior Designer Job Description",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/job-description/real-estate-agent",
+          "text": "Real Estate Agent Job Description",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/job-description/ux-designer",
+          "text": "UX Designer Job Description",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/resources/howtohub/everything-you-need-to-know-about-posting-a-job-on-indeed",
+          "text": "Everything You Need to Know About Posting a Job on Indeed",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/resources/howtohub/using-the-indeed-employer-dashboard-to-manage-recruitment",
+          "text": "Using the Indeed Employer Dashboard to Manage Recruitment",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/resources/howtohub/employer-dashboard-faq",
+          "text": "Streamline Your Hiring With the Indeed Employer Dashboard",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/resources/howtohub/how-to-write-great-job-titles-and-job-descriptions-for-jobs-on-indeed",
+          "text": "How to Write Effective Job Titles and Descriptions on Indeed",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/resources/howtohub/how-to-manage-candidates-on-indeed",
+          "text": "How to Screen and Manage Candidates with Indeed for Employers",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/interview-questions/medical-representative",
+          "text": "10 Medical Representative Interview Questions",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/c/info/personnel-administration",
+          "text": "What Is Personnel Administration?",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/interview-questions/telecaller",
+          "text": "10 Telecaller Interview Questions",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/c/info/social-objectives-business",
+          "text": "What are the social objectives of business?",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/job-description/data-entry-operator",
+          "text": "Data entry operator Job Description",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/job-description/us-it-recruiter",
+          "text": "US IT Recruiter Job Description",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/c/info/objectives-risk-management",
+          "text": "What Are The Objectives Of Risk Management?",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/job-description/office-assistant",
+          "text": "Office Assistant Job Description",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/job-description/area-manager",
+          "text": "Area Manager Job Description",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/job-description/medical-representative",
+          "text": "Medical representative Job Description",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire/job-description/accountant",
+          "text": "Accountant Job Description",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/career-advice",
+          "text": "Career advice",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/browsejobs",
+          "text": "Browse jobs",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/companies/browse-companies",
+          "text": "Browse companies",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/career/salaries",
+          "text": "Salaries",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.indeedevents.com/en-in/",
+          "text": "Indeed Events",
+          "rel": null,
+          "internal": false,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/cmp/Indeed/about",
+          "text": "Work at Indeed",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/countries",
+          "text": "Countries",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/about",
+          "text": "About",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/help/job-seekers?hl=en&co=in",
+          "text": "Help",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/esg?from=gnav-homepage",
+          "text": "ESG at Indeed",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://support.indeed.com/hc/en-in/articles/216354123-Guidelines-for-Safe-Job-Search",
+          "text": "Guidelines for safe job search",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/hire?hl=en&co=IN",
+          "text": "Post a job",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/esg/accessibility?hl=en",
+          "text": "Accessibility at Indeed",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://hrtechprivacy.com/brands/indeed#privacypolicy",
+          "text": "Privacy Centre and Ad Choices",
+          "rel": null,
+          "internal": false,
+          "aria_label": null
+        },
+        {
+          "href": "https://in.indeed.com/legal?hl=en",
+          "text": "Terms",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        }
+      ],
+      "outbound_profile_links": [
+        "https://www.indeedevents.com/en-in/",
+        "https://hrtechprivacy.com/brands/indeed#privacypolicy"
+      ],
+      "images": [
+        {
+          "src": "https://pt.ispot.tv/v2/TC-3035-1.gif?app=web&type=homepage",
+          "alt": "",
+          "decorative_hint": true,
+          "width_attr": "1",
+          "height_attr": "1",
+          "css_aspect_ratio": null,
+          "in_picture": false
+        }
+      ],
+      "iframes": [],
+      "media": [],
+      "form_controls": [
+        {
+          "type": "text",
+          "id": "text-input-what",
+          "has_label": false,
+          "aria_label": "search: Job title, keywords, or company"
+        },
+        {
+          "type": "text",
+          "id": "text-input-where",
+          "has_label": false,
+          "aria_label": "Edit location"
+        }
+      ],
+      "interactive_empty": {
+        "links_no_text": 0,
+        "buttons_no_text": 0
+      },
+      "noscript": {
+        "present": true,
+        "words": 0
+      },
+      "dates": {
+        "meta_published": null,
+        "meta_modified": null,
+        "visible_dates": [],
+        "header_last_modified": null
+      },
+      "contact_signals": {
+        "email": false,
+        "phone": null,
+        "postal_address": null,
+        "org_name_footer": null
+      },
+      "trigram_hash": "sha256:b2882d02c6e393c0a5a49102a1030c684db4049e5f505475cc7103b4e6ccdb3c"
+    }
+  ],
+  "rendered": [],
+  "links": {
+    "status": "ok",
+    "reason": null,
+    "checked_count": 20,
+    "results": [
+      {
+        "url": "https://in.indeed.com/?from=gnav-homepage",
+        "http_status": 403,
+        "from_page": "https://in.indeed.com/",
+        "anchor_text": ""
+      },
+      {
+        "url": "https://in.indeed.com/",
+        "http_status": 200,
+        "from_page": "https://in.indeed.com/",
+        "anchor_text": "Home"
+      },
+      {
+        "url": "https://in.indeed.com/companies",
+        "http_status": 200,
+        "from_page": "https://in.indeed.com/",
+        "anchor_text": "Company reviews"
+      },
+      {
+        "url": "https://in.indeed.com/career/salaries",
+        "http_status": 200,
+        "from_page": "https://in.indeed.com/",
+        "anchor_text": "Salary guide"
+      },
+      {
+        "url": "https://in.indeed.com/countries",
+        "http_status": 403,
+        "from_page": "https://in.indeed.com/",
+        "anchor_text": "🇮🇳 En"
+      },
+      {
+        "url": "https://in.indeed.com/hire?co=IN&hl=en",
+        "http_status": 200,
+        "from_page": "https://in.indeed.com/",
+        "anchor_text": "Employers / Post Job"
+      },
+      {
+        "url": "https://in.indeed.com/q-react-frontend-developer-jobs.html",
+        "http_status": 403,
+        "from_page": "https://in.indeed.com/",
+        "anchor_text": "react frontend developer"
+      },
+      {
+        "url": "https://in.indeed.com/q-tprm-jobs.html",
+        "http_status": 200,
+        "from_page": "https://in.indeed.com/",
+        "anchor_text": "tprm"
+      },
+      {
+        "url": "https://in.indeed.com/q-software-developer-fresher-internship-l-noida,-uttar-pradesh-jobs.html",
+        "http_status": 200,
+        "from_page": "https://in.indeed.com/",
+        "anchor_text": "software developer fresher internship noida, uttar pradesh"
+      },
+      {
+        "url": "https://in.indeed.com/q-graphic-design-work-from-home-jobs.html",
+        "http_status": 200,
+        "from_page": "https://in.indeed.com/",
+        "anchor_text": "graphic design work from home"
+      },
+      {
+        "url": "https://in.indeed.com/q-react-developer-fresher-l-chennai,-tamil-nadu-jobs.html",
+        "http_status": 200,
+        "from_page": "https://in.indeed.com/",
+        "anchor_text": "react developer fresher chennai, tamil nadu"
+      },
+      {
+        "url": "https://in.indeed.com/q-associate-software-engineer-fresher-jobs.html",
+        "http_status": 403,
+        "from_page": "https://in.indeed.com/",
+        "anchor_text": "associate software engineer fresher"
+      },
+      {
+        "url": "https://in.indeed.com/q-node-js-backend-developer-jobs.html",
+        "http_status": 403,
+        "from_page": "https://in.indeed.com/",
+        "anchor_text": "node js backend developer"
+      },
+      {
+        "url": "https://in.indeed.com/q-mern-l-noida,-uttar-pradesh-jobs.html",
+        "http_status": 200,
+        "from_page": "https://in.indeed.com/",
+        "anchor_text": "mern noida, uttar pradesh"
+      },
+      {
+        "url": "https://in.indeed.com/q-fresher-react-l-bengaluru,-karnataka-jobs.html",
+        "http_status": 200,
+        "from_page": "https://in.indeed.com/",
+        "anchor_text": "fresher react bengaluru, karnataka"
+      },
+      {
+        "url": "https://in.indeed.com/q-qa-automation-jobs.html",
+        "http_status": 200,
+        "from_page": "https://in.indeed.com/",
+        "anchor_text": "qa automation"
+      },
+      {
+        "url": "https://in.indeed.com/q-python-developer-fresher-l-maharashtra-jobs.html",
+        "http_status": 200,
+        "from_page": "https://in.indeed.com/",
+        "anchor_text": "python developer fresher maharashtra"
+      },
+      {
+        "url": "https://in.indeed.com/q-reservation-jobs.html",
+        "http_status": 200,
+        "from_page": "https://in.indeed.com/",
+        "anchor_text": "reservation"
+      },
+      {
+        "url": "https://in.indeed.com/q-fresher-remote-jobs.html",
+        "http_status": 200,
+        "from_page": "https://in.indeed.com/",
+        "anchor_text": "fresher remote"
+      },
+      {
+        "url": "https://in.indeed.com/q-dot-net-developer-2-years-experience-l-hyderabad,-telangana-jobs.html",
+        "http_status": 403,
+        "from_page": "https://in.indeed.com/",
+        "anchor_text": "dot net developer 2 years experience hyderabad, telangana"
+      }
+    ],
+    "skipped": [
+      {
+        "url": "https://in.indeed.com/setprefs?action=set&hl=hi&prevhl=en&tk=1k26h9aorhndo800",
+        "reason": "robots_disallowed"
+      }
+    ]
+  },
+  "anchors": {
+    "status": "ok",
+    "reason": null,
+    "declared": [
+      {
+        "url": "https://www.indeedevents.com/en-in/",
+        "source": "footer_profile_link",
+        "host": "www.indeedevents.com"
+      },
+      {
+        "url": "https://hrtechprivacy.com/brands/indeed#privacypolicy",
+        "source": "footer_profile_link",
+        "host": "hrtechprivacy.com"
+      }
+    ],
+    "checked_count": 2,
+    "results": [
+      {
+        "url": "https://www.indeedevents.com/en-in/",
+        "http_status": 200,
+        "resolved": true
+      },
+      {
+        "url": "https://hrtechprivacy.com/brands/indeed#privacypolicy",
+        "http_status": 200,
+        "resolved": true
+      }
+    ]
+  },
+  "budget": {
+    "status": "ok",
+    "reason": null,
+    "stages": [
+      {
+        "name": "resolve",
+        "budget_s": 10,
+        "actual_s": 1.4,
+        "abandoned": false,
+        "planned_items": null,
+        "completed_items": null
+      },
+      {
+        "name": "robots_discovery",
+        "budget_s": 15,
+        "actual_s": 2.0,
+        "abandoned": false,
+        "planned_items": 1,
+        "completed_items": 1
+      },
+      {
+        "name": "static_fetch",
+        "budget_s": 45,
+        "actual_s": 1.4,
+        "abandoned": false,
+        "planned_items": 1,
+        "completed_items": 1
+      },
+      {
+        "name": "render_pass",
+        "budget_s": 75,
+        "actual_s": 0.0,
+        "abandoned": true,
+        "planned_items": 0,
+        "completed_items": 0,
+        "reason": "no_headless_browser_tool"
+      },
+      {
+        "name": "internal_links",
+        "budget_s": 25,
+        "actual_s": 20.6,
+        "abandoned": false,
+        "planned_items": 21,
+        "completed_items": 20
+      },
+      {
+        "name": "offsite_anchors",
+        "budget_s": 20,
+        "actual_s": 3.2,
+        "abandoned": false,
+        "planned_items": 2,
+        "completed_items": 2
+      }
+    ],
+    "total_s": 28.6,
+    "cap_s": 300
+  }
+}

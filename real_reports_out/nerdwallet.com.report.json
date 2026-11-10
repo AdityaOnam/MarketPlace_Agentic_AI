@@ -1,0 +1,221 @@
+{
+  "schema_version": "1.0.0",
+  "site": "https://www.nerdwallet.com",
+  "audited_at": "2026-09-10T20:51:31Z",
+  "preamble": {
+    "access_blocked_for": [],
+    "notes": [],
+    "archetype": "unknown",
+    "recommendations_scoped_to": "unknown"
+  },
+  "summary": {
+    "total_findings": 6,
+    "critical": 0,
+    "high": 3,
+    "medium": 1,
+    "low": 2
+  },
+  "findings": [
+    {
+      "check_id": "CHK-E-014",
+      "state": "present",
+      "locus": {
+        "url": "https://www.nerdwallet.com/"
+      },
+      "evidence": "Page https://www.nerdwallet.com/: 4 accessibility violation(s): missing alt on a non-decorative image; unlabelled form control; unlabelled form control; unlabelled form control.",
+      "severity": "high",
+      "evidence_strength": "HARD-MECHANICAL",
+      "suggested_action": {
+        "summary": "Add lang, descriptive alt text, accessible names for controls, and labels for all form inputs.",
+        "priority": "high"
+      },
+      "suppressed_by": [],
+      "recommendation_only": false,
+      "subcheck": "wcag_static",
+      "id": "F-001",
+      "title": "Machine-detectable accessibility violations"
+    },
+    {
+      "check_id": "CHK-E-014",
+      "state": "present",
+      "locus": {
+        "url": "https://www.nerdwallet.com/auto-loans/best/auto-loans-for-good-fair-and-bad-credit"
+      },
+      "evidence": "Page https://www.nerdwallet.com/auto-loans/best/auto-loans-for-good-fair-and-bad-credit: 2 accessibility violation(s): 1 link(s) with no accessible name; unlabelled form control.",
+      "severity": "high",
+      "evidence_strength": "HARD-MECHANICAL",
+      "suggested_action": {
+        "summary": "Add lang, descriptive alt text, accessible names for controls, and labels for all form inputs.",
+        "priority": "high"
+      },
+      "suppressed_by": [],
+      "recommendation_only": false,
+      "subcheck": "wcag_static",
+      "id": "F-002",
+      "title": "Machine-detectable accessibility violations"
+    },
+    {
+      "check_id": "CHK-E-014",
+      "state": "present",
+      "locus": {
+        "url": null,
+        "scope": "site"
+      },
+      "evidence": "Site-wide: 3 sampled pages share this defect. Page  1 accessibility violation(s): unlabelled form control.",
+      "severity": "high",
+      "evidence_strength": "HARD-MECHANICAL",
+      "suggested_action": {
+        "summary": "Add lang, descriptive alt text, accessible names for controls, and labels for all form inputs.",
+        "priority": "high"
+      },
+      "suppressed_by": [],
+      "recommendation_only": false,
+      "subcheck": "wcag_static",
+      "occurrences": {
+        "pages": 3,
+        "examples": [
+          "https://www.nerdwallet.com/auto-loans/best/bad-credit-auto-loans",
+          "https://www.nerdwallet.com/auto-loans/best/cash-out-auto-loan-refinance",
+          "https://www.nerdwallet.com/auto-loans/best/first-time-car-buyer-loan"
+        ]
+      },
+      "id": "F-003",
+      "title": "Machine-detectable accessibility violations"
+    },
+    {
+      "check_id": "CHK-D-026",
+      "state": "present",
+      "locus": {
+        "url": null,
+        "selector": null
+      },
+      "evidence": "1 of 8 declared identity anchors did not resolve.",
+      "severity": "medium",
+      "evidence_strength": "HARD-MECHANICAL",
+      "suggested_action": {
+        "summary": "Repair or remove dead anchor URLs so every declared profile resolves.",
+        "priority": "medium"
+      },
+      "suppressed_by": [],
+      "id": "F-004",
+      "title": "Declared identity anchors do not resolve"
+    },
+    {
+      "check_id": "CHK-D-002",
+      "state": "present",
+      "locus": {
+        "url": null,
+        "selector": null
+      },
+      "evidence": "robots.txt blocks Google-Extended (a training-corpus crawler) but permits retrieval-time AI crawlers.",
+      "severity": "low",
+      "evidence_strength": "CORRELATIONAL",
+      "suggested_action": {
+        "summary": "This is frequently intentional and not necessarily a defect. It forgoes future parametric-memory coverage only; leave the decision with the site owner.",
+        "priority": "low"
+      },
+      "suppressed_by": [],
+      "id": "F-005",
+      "title": "Training-corpus crawler blocked, retrieval intact"
+    },
+    {
+      "check_id": "CHK-D-009",
+      "state": "present",
+      "locus": {
+        "url": null,
+        "selector": null
+      },
+      "evidence": "Found 7 broken internal link(s).",
+      "severity": "low",
+      "evidence_strength": "THEORETICAL/CORRELATIONAL",
+      "suggested_action": {
+        "summary": "Repair the link's target or replace it; add a 301 redirect if the target is genuinely gone.",
+        "priority": "low"
+      },
+      "suppressed_by": [],
+      "recommendation_only": false,
+      "subcheck": null,
+      "id": "F-006",
+      "title": "Broken internal links"
+    }
+  ],
+  "recommendations": [
+    {
+      "id": "R-001",
+      "check_id": "CHK-E-021",
+      "title": "Images/iframes missing dimensions (layout-shift cause)",
+      "rationale": "66 image(s)/iframe(s) lack explicit width/height or aspect-ratio, so content reflows during load.",
+      "mechanism": "E",
+      "suggested_action": {
+        "summary": "Add width/height attributes or CSS aspect-ratio to reserve layout space before the resource loads. (Proactive — not a confirmed defect.)",
+        "priority": "low"
+      },
+      "locus": {
+        "url": null,
+        "selector": null
+      },
+      "severity": "low"
+    }
+  ],
+  "limitations": [
+    {
+      "id": "LIM-01",
+      "mechanism": "D",
+      "reason": "Actual agreement across the wider web about the brand's facts requires a search or web-scale index API. No free, deterministic, rate-safe source exists.",
+      "note": "CHK-D-025/026/027 audit only the anchoring the site itself provides for that corroboration, not corroboration itself."
+    },
+    {
+      "id": "LIM-02",
+      "mechanism": "D",
+      "reason": "Detecting a same-name collision with an unrelated entity requires a corpus of other entities.",
+      "note": "CHK-D-027 covers only self-consistency, the site-side half."
+    },
+    {
+      "id": "LIM-03",
+      "mechanism": "B",
+      "reason": "Live-querying a generative engine would break determinism, the 5-minute budget, and reproducibility.",
+      "note": "This audit measures retrievability and correctness of what the site exposes, never observed citation outcomes."
+    },
+    {
+      "id": "LIM-04",
+      "mechanism": "E",
+      "reason": "Field engagement outcomes (bounce, dwell, scroll, conversion, task success) are not observable read-only.",
+      "note": "Reported not_determinable where the gap is itself actionable."
+    },
+    {
+      "id": "LIM-05",
+      "mechanism": "D",
+      "reason": "llms.txt is not recommended as a substantive fix: a 137k-domain measurement found 97% of existing llms.txt files were never requested. This audit declines to recommend adding one on that evidence (D-007).",
+      "note": "Stated here rather than omitted (D-014) — the officials' Q&A confirms recommending it is an acceptable position, so silence about it would look indistinguishable from having missed it."
+    }
+  ],
+  "degraded_stages": [
+    {
+      "stage": "render_pass",
+      "planned_items": 0,
+      "completed_items": 0,
+      "affected_checks": [
+        "CHK-D-003",
+        "CHK-E-014",
+        "CHK-E-015",
+        "CHK-E-016",
+        "CHK-E-018",
+        "CHK-E-019"
+      ]
+    }
+  ],
+  "meta_evaluation": {
+    "checks_run": [
+      "summary_reconciles",
+      "severity_counts_reconcile",
+      "finding_complete",
+      "no_duplicate_findings",
+      "known_check_id",
+      "prohibited_recommendation",
+      "limitations_present",
+      "action_locus_coherence"
+    ],
+    "passed": true,
+    "warnings": []
+  }
+}

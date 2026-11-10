@@ -1,0 +1,4535 @@
+{
+  "schema_version": "1.0.0",
+  "site": {
+    "status": "ok",
+    "reason": null,
+    "input": "https://substack.com",
+    "canonical_host": "substack.com",
+    "origin": "https://substack.com",
+    "scheme": "https",
+    "redirect_chain": [],
+    "tls_valid": true,
+    "archetype": "unknown",
+    "archetype_confidence": 0.0
+  },
+  "robots": {
+    "status": "ok",
+    "reason": null,
+    "fetch_status": 200,
+    "body": "User-agent: BLEXBot\nDisallow: /\n\nUser-agent: Twitterbot\nDisallow:\n\n\n\nUser-agent: *\nDisallow: /action/\nDisallow: /publish\nDisallow: /sign-in\nDisallow: /channel-frame\nDisallow: /session-attribution-frame\nDisallow: /visited-surface-frame\nDisallow: /feed/private\nDisallow: /feed/podcast/*/private/*.rss\nDisallow: /subscribe\nDisallow: /lovestack/*\nDisallow: /p/*/comment/*\nDisallow: /inbox/post/*\nDisallow: /notes/post/*\nDisallow: /embed\n\nUser-agent: facebookexternalhit\nAllow: /\nAllow: /subscribe\n\n\nSITEMAP: https://substack.com/sitemap.xml\nSITEMAP: https://substack.com/news_sitemap.xml\n\n",
+    "parse_ok": true,
+    "agents": {
+      "BLEXBot": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 2,
+        "crawl_delay": null
+      },
+      "Twitterbot": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "facebookexternalhit": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "*": {
+        "class": "generic",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      }
+    },
+    "sitemap_declarations": [
+      "https://substack.com/sitemap.xml",
+      "https://substack.com/news_sitemap.xml"
+    ]
+  },
+  "discovery": {
+    "status": "ok",
+    "reason": null,
+    "sitemap_found": true,
+    "sitemap_urls_count": 577,
+    "inventory": [
+      {
+        "url": "https://substack.com/",
+        "page_type": "home",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/features",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/explore/category/culture",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/explore/category/technology",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/explore/category/business",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/explore/category/us-politics",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/explore/category/finance",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/explore/category/food",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/explore/category/podcast",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/explore/category/sports",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/explore/category/art",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/explore/category/world-politics",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/explore/category/health-politics",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/explore/category/news",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/explore/category/fashionandbeauty",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/explore/category/music",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/explore/category/faith",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/explore/category/climate",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/explore/category/science",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/explore/category/literature",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/explore/category/fiction",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/explore/category/health",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/explore/category/design",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/explore/category/travel",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/explore/category/parenting",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/explore/category/philosophy",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/explore/category/comics",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/explore/category/international",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/explore/category/crypto",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/explore/category/history",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/explore/category/humor",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/explore/category/education",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/explore/category/film-and-tv",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/explore/category/home-garden",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/explore/category/games",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/leaderboard/culture/paid",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/leaderboard/culture/rising",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/top/culture",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/leaderboard/technology/paid",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/leaderboard/technology/rising",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/top/technology",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/leaderboard/business/paid",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/leaderboard/business/rising",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/top/business",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/leaderboard/us-politics/paid",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/leaderboard/us-politics/rising",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/top/us-politics",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/leaderboard/finance/paid",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/leaderboard/finance/rising",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/top/finance",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/leaderboard/food/paid",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/leaderboard/food/rising",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/top/food",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/leaderboard/wine/paid",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/leaderboard/wine/rising",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/top/wine",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/leaderboard/podcast/paid",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/leaderboard/podcast/rising",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/top/podcast",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/leaderboard/sports/paid",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/leaderboard/sports/rising",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/top/sports",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/leaderboard/art/paid",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/leaderboard/art/rising",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/top/art",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/leaderboard/world-politics/paid",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/leaderboard/world-politics/rising",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/top/world-politics",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/leaderboard/health-politics/paid",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/leaderboard/health-politics/rising",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/top/health-politics",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/leaderboard/news/paid",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/leaderboard/news/rising",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/top/news",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/leaderboard/fashionandbeauty/paid",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/leaderboard/fashionandbeauty/rising",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/top/fashionandbeauty",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/leaderboard/music/paid",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/leaderboard/music/rising",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/top/music",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/leaderboard/faith/paid",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/leaderboard/faith/rising",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/top/faith",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/leaderboard/climate/paid",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/leaderboard/climate/rising",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/top/climate",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/leaderboard/science/paid",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/leaderboard/science/rising",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/top/science",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/leaderboard/literature/paid",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/leaderboard/literature/rising",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/top/literature",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/leaderboard/fiction/paid",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/leaderboard/fiction/rising",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/top/fiction",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/leaderboard/health/paid",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/leaderboard/health/rising",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/top/health",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/leaderboard/design/paid",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/leaderboard/design/rising",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/top/design",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/leaderboard/travel/paid",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/leaderboard/travel/rising",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/top/travel",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/leaderboard/parenting/paid",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/leaderboard/parenting/rising",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/top/parenting",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/leaderboard/philosophy/paid",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/leaderboard/philosophy/rising",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/top/philosophy",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/leaderboard/comics/paid",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/leaderboard/comics/rising",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/top/comics",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/leaderboard/international/paid",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/leaderboard/international/rising",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/top/international",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/leaderboard/crypto/paid",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/leaderboard/crypto/rising",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/top/crypto",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/leaderboard/history/paid",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/leaderboard/history/rising",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/top/history",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/leaderboard/humor/paid",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/leaderboard/humor/rising",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/top/humor",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/leaderboard/education/paid",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/leaderboard/education/rising",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/top/education",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/leaderboard/film-and-tv/paid",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/leaderboard/film-and-tv/rising",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/top/film-and-tv",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/leaderboard/home-garden/paid",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/leaderboard/home-garden/rising",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/top/home-garden",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/leaderboard/games/paid",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/leaderboard/games/rising",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/top/games",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/topics",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/topics/open-ai",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/topics/microsoft",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/topics/google",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/topics/apple",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/topics/makeup",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/topics/cookie-recipes",
+        "page_type": "legal",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/topics/nba",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/topics/nhl",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/topics/nfl",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/topics/gaming",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/topics/mental-health",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/topics/ai",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/topics/taylor-swift",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/topics/poetry",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/topics/bitcoin",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/sitemap",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/sitemap/publications-1",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/sitemap/publications-2",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/sitemap/publications-3",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/sitemap/publications-4",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/sitemap/publications-5",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/sitemap/publications-6",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/sitemap/publications-7",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/sitemap/publications-8",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/sitemap/publications-9",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/sitemap/publications-10",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/sitemap/publications-11",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/sitemap/publications-12",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/sitemap/publications-13",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/sitemap/publications-14",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/sitemap/publications-15",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/sitemap/publications-16",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/sitemap/publications-17",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/sitemap/publications-18",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/sitemap/publications-19",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/sitemap/publications-20",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/sitemap/publications-21",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/sitemap/publications-22",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/sitemap/publications-23",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/sitemap/publications-24",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/sitemap/publications-25",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/sitemap/publications-26",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/sitemap/publications-27",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/sitemap/publications-28",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/sitemap/publications-29",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/sitemap/publications-30",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/sitemap/publications-31",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/sitemap/publications-32",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/sitemap/publications-33",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/sitemap/publications-34",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/sitemap/publications-35",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/sitemap/publications-36",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/sitemap/publications-37",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/sitemap/publications-38",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/sitemap/publications-39",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/sitemap/publications-40",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/sitemap/publications-41",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/sitemap/publications-42",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/sitemap/publications-43",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/sitemap/publications-44",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/sitemap/publications-45",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://substack.com/sitemap/publications-46",
+        "page_type": "other",
+        "source": "sitemap"
+      }
+    ],
+    "sampled_static": [
+      "https://substack.com/",
+      "https://substack.com/topics/cookie-recipes",
+      "https://substack.com/explore/category/art",
+      "https://substack.com/explore/category/business",
+      "https://substack.com/explore/category/climate",
+      "https://substack.com/explore/category/comics"
+    ],
+    "sampled_rendered": [],
+    "sampling_seed": "sha256:5c241722c5ab4083b7861447e4f0bc21071dc51bba65de42c1c72ed3166c0560"
+  },
+  "pages": [
+    {
+      "url": "https://substack.com/",
+      "final_url": "https://substack.com/",
+      "status": "ok",
+      "reason": null,
+      "http_status": 200,
+      "page_type": "home",
+      "headers": {
+        "date": "Thu, 10 Sep 2026 20:49:59 GMT",
+        "content-type": "text/html; charset=utf-8",
+        "transfer-encoding": "chunked",
+        "connection": "close",
+        "cf-ray": "a3914d68abc6cf85-DEL",
+        "cf-cache-status": "DYNAMIC",
+        "cache-control": "no-cache",
+        "set-cookie": "__cf_bm=grRP0VgwXuqZmeMsPqNmCtdF7tA2_i3DH_btX5AV4TI-1789073399.1446416-1.0.1.1-JvRDQaJ5tng_4whE_2e3APP8a6dLSaydDF9OADfcyVic3dwG8CKahBPUTRYY18019Yn49cpXTKOa_3FG9UV2QMHUIaUWV3IxwrhQONeRztrh8xCwW037FTqbamsNF1IF; HttpOnly; SameSite=None; Secure; Path=/; Domain=substack.com; Expires=Thu, 10 Sep 2026 21:19:59 GMT",
+        "x-served-by": "Substack",
+        "server": "cloudflare",
+        "x-service": "web",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+        "vary": "Accept-Encoding",
+        "content-security-policy": "frame-ancestors 'self' https://*.substack.com https://substack.com",
+        "x-cluster": "substack",
+        "x-deploy": "2f556c4345",
+        "x-powered-by": "Express",
+        "content-encoding": "gzip",
+        "alt-svc": "h3=\":443\"; ma=86400"
+      },
+      "raw_html_bytes": 251998,
+      "main_text": "Make money doing the work you believe in Start your Substack Learn more For you Harry Sisson Sep 2 Subscribe President Biden will be at Ground Zero in NYC on the 25th anniversary of 9/11 with every other living President. You know who isn’t going? Donald Trump… because he wasn’t allowed to give a speech. Pathetic. 8.9K 358 1.1K Aaron Parnas 4d Subscribe Breaking: We are beating Fox News. Over the past month, we have surged past every major media company in the world in terms of views and impressions. No billionaire backing. No big corporations telling me what to do. No caving to this White House. We did this. You did this. Subscribe. Help me keep building: aaronparnas.substack.com 2.3K 84 196 Sourjesh 2d Subscribe The First Pass Publication Software Engineering Internship at a Private Equity Firm – No Tech Team? No Problem 6 2 You made it, you own it You always own your intellectual property, mailing list, and subscriber payments. With full editorial control and no gatekeepers, you can do the work you most believe in. Start your Substack Learn more Chris Best 5h Subscribe Wait what is happening 42 9 10 Alyssa Vingan 3h Subscribe We are hard at work REPORTING LIVE from NYFW every day over at Magasin, don’t miss it! Magasin 516: NYFW Day 1 / A.Pressed 3 Great discussions Join the most interesting and insightful discussions. Start your Substack Learn more Log in or sign up Join the most interesting and insightful discussions. Start your Substack Sign in",
+      "main_text_words": 262,
+      "extraction_ok": true,
+      "title": "Substack",
+      "meta": {
+        "viewport": "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0, viewport-fit=cover",
+        "description": "The app for independent voices",
+        "robots": null
+      },
+      "lang": "en",
+      "canonical": {
+        "href": "https://substack.com/",
+        "self_referential": true,
+        "cross_domain": false
+      },
+      "headings": [
+        {
+          "level": 3,
+          "text": "Make money doing the work you believe in",
+          "order": 0
+        },
+        {
+          "level": 4,
+          "text": "You made it, you own it",
+          "order": 1
+        },
+        {
+          "level": 4,
+          "text": "Great discussions",
+          "order": 2
+        },
+        {
+          "level": 4,
+          "text": "Log in or sign up",
+          "order": 3
+        }
+      ],
+      "landmarks": {
+        "main": 1,
+        "nav": 1,
+        "header": 0,
+        "footer": 0
+      },
+      "structured_data": {
+        "json_ld": [],
+        "microdata_types": [],
+        "rdfa_types": []
+      },
+      "links": [
+        {
+          "href": "https://substack.com/explore",
+          "text": "Explore",
+          "rel": null,
+          "internal": true,
+          "aria_label": "Explore"
+        },
+        {
+          "href": "https://substack.com/@harryjsisson?utm_source=substack-feed-item",
+          "text": "",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://substack.com/@harryjsisson",
+          "text": "Harry Sisson",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://substack.com/@harryjsisson/note/c-327800937",
+          "text": "Sep 2",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://substack.com/@aaronparnas?utm_source=substack-feed-item",
+          "text": "",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://substack.com/@aaronparnas",
+          "text": "Aaron Parnas",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://substack.com/@aaronparnas/note/c-331088733",
+          "text": "4d",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "http://aaronparnas.substack.com",
+          "text": "aaronparnas.substack.com",
+          "rel": "nofollow ugc noopener",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://substack.com/@sourjeshmukherjee?utm_source=substack-feed-item",
+          "text": "",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://substack.com/@sourjeshmukherjee",
+          "text": "Sourjesh",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://thefirstpass.substack.com/p/software-engineering-internship-at",
+          "text": "The First Pass Publication Software Engineering Internship at a Private Equity Firm – No Tech Team? No Problem",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://thefirstpass.substack.com/",
+          "text": "The First Pass Publication",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://substack.com/@cb?utm_source=substack-feed-item",
+          "text": "",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://substack.com/@cb",
+          "text": "Chris Best",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://substack.com/@cb/note/c-334023462",
+          "text": "5h",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://substack.com/@alyssavingan?utm_source=substack-feed-item",
+          "text": "",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://substack.com/@alyssavingan",
+          "text": "Alyssa Vingan",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://substack.com/@alyssavingan/note/c-334123857",
+          "text": "3h",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.magasin.ltd/p/516-nyfw-day-1-apressed",
+          "text": "Magasin 516: NYFW Day 1 / A.Pressed",
+          "rel": null,
+          "internal": false,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.magasin.ltd/",
+          "text": "Magasin",
+          "rel": null,
+          "internal": false,
+          "aria_label": null
+        },
+        {
+          "href": "https://enable-javascript.com/",
+          "text": "turn on JavaScript",
+          "rel": null,
+          "internal": false,
+          "aria_label": null
+        }
+      ],
+      "outbound_profile_links": [],
+      "images": [
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!djut!,w_36,h_36,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa69991c5-dfc0-411a-b676-3a00cf6d944a_646x648.jpeg",
+          "alt": "Harry Sisson's avatar",
+          "decorative_hint": false,
+          "width_attr": "36",
+          "height_attr": "36",
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!LNK2!,w_520,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1189eb12-0b6a-44fe-95ad-1867a2056bb2_2000x1330.png",
+          "alt": "",
+          "decorative_hint": false,
+          "width_attr": "520",
+          "height_attr": "346",
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!mOAW!,w_36,h_36,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F02e468d5-e2de-46c1-870c-d6502a65bdb0_400x400.jpeg",
+          "alt": "Aaron Parnas's avatar",
+          "decorative_hint": false,
+          "width_attr": "36",
+          "height_attr": "36",
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!zT6K!,w_520,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8e467a28-5a79-4417-9f2f-4e25ab95e5fc_1256x628.png",
+          "alt": "",
+          "decorative_hint": false,
+          "width_attr": "520",
+          "height_attr": "260",
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!qmMz!,w_36,h_36,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7c112639-9156-4f78-ba2d-fad02b6587d5_681x681.jpeg",
+          "alt": "Sourjesh's avatar",
+          "decorative_hint": false,
+          "width_attr": "36",
+          "height_attr": "36",
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!tT78!,w_520,h_272,c_fill,f_auto,q_auto:good,fl_progressive:steep,g_auto/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F35a005d8-050a-4376-b21c-5ffaf298e51c_1536x1024.png",
+          "alt": "",
+          "decorative_hint": false,
+          "width_attr": "520",
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!TEKa!,w_20,h_20,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fefc8a0ab-60b1-40eb-80d3-0d77595afea5_144x144.png",
+          "alt": "The First Pass Publication",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!DzDi!,w_176,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack.com%2Fimg%2Fhome_page%2Fbenefit-1-transparent-bg.png",
+          "alt": "",
+          "decorative_hint": false,
+          "width_attr": "176",
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!n-sI!,w_36,h_36,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0ed41009-c1f9-4df4-9d3a-b2594c80c6d9_2237x2237.jpeg",
+          "alt": "Chris Best's avatar",
+          "decorative_hint": false,
+          "width_attr": "36",
+          "height_attr": "36",
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!kY0d!,w_520,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8650eaf5-23ed-4bd2-9d2e-8b2d5d6cc100_1206x674.png",
+          "alt": "",
+          "decorative_hint": false,
+          "width_attr": "520",
+          "height_attr": "291",
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!pbkq!,w_36,h_36,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5d176c0c-a0b0-4c76-9ef8-bbe8df558a3c_1059x1059.png",
+          "alt": "Alyssa Vingan's avatar",
+          "decorative_hint": false,
+          "width_attr": "36",
+          "height_attr": "36",
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!8KtA!,w_520,h_272,c_fill,f_auto,q_auto:good,fl_progressive:steep,g_auto/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fcb99b69e-5d22-4816-98c4-041797f8f4a5_800x1166.jpeg",
+          "alt": "",
+          "decorative_hint": false,
+          "width_attr": "520",
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!BwY5!,w_20,h_20,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9b0956d3-7a03-4b0f-9e2e-ad329081d73e_1200x1200.png",
+          "alt": "Magasin",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!u9e1!,w_100,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack.com%2Fimg%2Fapp_page%2Fhighlight-2-v5.png",
+          "alt": "",
+          "decorative_hint": false,
+          "width_attr": "100",
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": true
+        }
+      ],
+      "iframes": [],
+      "media": [],
+      "form_controls": [
+        {
+          "type": "search",
+          "id": null,
+          "has_label": false,
+          "aria_label": "Global search"
+        }
+      ],
+      "interactive_empty": {
+        "links_no_text": 0,
+        "buttons_no_text": 0
+      },
+      "noscript": {
+        "present": true,
+        "words": 14
+      },
+      "dates": {
+        "meta_published": null,
+        "meta_modified": null,
+        "visible_dates": [],
+        "header_last_modified": null
+      },
+      "contact_signals": {
+        "email": false,
+        "phone": null,
+        "postal_address": null,
+        "org_name_footer": null
+      },
+      "trigram_hash": "sha256:49fa08af7ea6e81af23f16a35ddb0ddcfd5a0aa5600541c20b066ad78ec3cc47"
+    },
+    {
+      "url": "https://substack.com/topics/cookie-recipes",
+      "final_url": "https://substack.com/topics/cookie-recipes",
+      "status": "ok",
+      "reason": null,
+      "http_status": 200,
+      "page_type": "legal",
+      "headers": {
+        "date": "Thu, 10 Sep 2026 20:50:05 GMT",
+        "content-type": "text/html; charset=utf-8",
+        "transfer-encoding": "chunked",
+        "connection": "close",
+        "cf-ray": "a3914d8cba93f563-DEL",
+        "cf-cache-status": "DYNAMIC",
+        "cache-control": "no-cache",
+        "set-cookie": "__cf_bm=pgw_IRyZ3QS2kZLtJdEiLIHYh6CgEH1dWs3RA7p8vpM-1789073404.9131045-1.0.1.1-Wkavm8lg46U3_8v9NfHtOW.SUXvmIzGmSpNuHGm3fV_S7u8_Q9fye6T0Am_7hQ18qwuCApuHNJ3R9MBfm0ULnK8Letcyz3RhUFoVru4vnbMhQgyHNnOao8zFBvUkyPjL; HttpOnly; SameSite=None; Secure; Path=/; Domain=substack.com; Expires=Thu, 10 Sep 2026 21:20:05 GMT",
+        "x-served-by": "Substack",
+        "server": "cloudflare",
+        "x-service": "web",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+        "vary": "Accept-Encoding",
+        "content-security-policy": "frame-ancestors 'self' https://*.substack.com https://substack.com",
+        "x-cluster": "substack",
+        "x-deploy": "2f556c4345",
+        "x-powered-by": "Express",
+        "content-encoding": "gzip",
+        "alt-svc": "h3=\":443\"; ma=86400"
+      },
+      "raw_html_bytes": 2015409,
+      "main_text": "Resources Creators Explore Start publishing Sign in Explore Substack App Discover Featured Substacks around the world Creators Switch to Substack Go paid Grow your audience For live video For video For podcasts For bloggers For finance writers For authors For food writers For local news For media founders Resources How to start a Substack Going paid guide Resource center Community & programs Help center Brand assets Home > Topics > Cookie Recipes Top 25 cookie recipes on Substack Best Cookie Recipes Abbey Goes Design Scouting Sep 6 Two easy dinner recipes, tiny pots of gelato, and a fast thumbprint cookie Plus, dahlia season is here (come to celebrate with me!) Ahhhh Labor Day! We have old friends stopping by for dinner, and I’m just buzzing with anticipation of seeing them. I’ve been on a baking streak and already plotting to bake these cookies this afternoon. A small joy to get to make a fuss over the people I love! Wishing you blue skies, warm afternoons, and just enough chill in the evenings to pull on a sweater. 44 LIKES Joyce Ragard • 4d That chicken and pesto looks great! Thanks for the gift link :) I, too, have low ferritin, yet have bad side effects when I try to take iron pills....I am now intrigued by both infusions and those films you posted. Thanks for sharing! (Rest assured I will check with my doctor before taking.) One thing that helped me was doing some stuff to lengthen my cycle (acupuncture and taking vitamin B12 and C), but I still have a ways to go to get to \"healthy\" ferritin levels. KF • 1d What the heck with the psychic connection...I literally printed that chicken/pesto recipe YESTERDAY while poking around for some new dinner options! Glad to hear it's actually a keeper! Read all 6 comments Lois’s Substack Aug 27 17 Delicious Cookies Without Flour Cookie recipes made without traditional flour! Click the ❤️ or 🔄 if you’re enjoying this! It helps more people discover the newsletter and spreads the love. Thanks for reading! 💌Lois’s Substack is a reader-supported publication. To receive new posts and support my work, consider becoming a free or paid subscriber. Lois Christensen ∙ 4 LIKES Aneisa's Menu Aug 30 Sunday Newsletter & Weekly Roundup cookie course, lessons learned, bakery crawls and new recipes! Happy Sunday! Aneisa ∙ 5 LIKES Wild Thistle Kitchen Weekly Aug 21 Cookie Recipes (some sourdough, some not) calling all cookie monsters There are few things greater than a homemade cookie, still warm, gooey, and fresh from the oven. I know I’ve been talking a lot about back-to-school recipes lately, but ‘tis the season and cookies deserved their very own dedicated newsletter. Cookies are a classic lunchbox treat, after school snack, and teacher or bus driver gift. They’re also perfect f… Anita ∙ 6 LIKES Chez Nika Sep 4 So You Want To Be a Better Baker - Part One Everything I’ve learned about making really good cookies I used to be a truly heinous baker. Like I’ve started multiple fires heinous. Having cookies combust in the oven would probably cause most people to think that they need to find a new hobby, but not me. Nika ∙ 2 LIKES ∙ 1 RESTACKS Salt N Sprinkles Aug 28 in case you missed these summer recipes... september starts next week btw Hi ~ I’m Sam, and I started salt n sprinkles to show that making good food is both fun and easy to do. My recipes focus on plants, fiber, and use wholesome ingredients. Your support means the world, and it allows me to continue creating and sharing delicious recipes with you! samantha simone ∙ 13 LIKES ∙ 2 RESTACKS Simone’s Star Room • Aug 30 omg found this just in time :) summer starts here soon and i feel like ice cream sandwiches are a must!! Arynetta • 7d Adding the Oatmeal Cookie Ice Cream to my queue! I'm not a huge ice cream person. But oatmeal cookies are my fave! The Gluten Free Inside Scoop Sep 4 Bake Something Good This Weekend Make These Before Fall Takes Over.... Who pressed fast forward and made Labor Day weekend arrive already? I swear it was Easter just two seconds ago! But here we are, staring down the unofficial end of summer with one last chance to savor sunshine, gatherings, and of course - something homemade. Daniela Weiner ∙ 11 LIKES ∙ 1 RESTACKS Baked In with Joy the Baker Aug 30 10 Things That Make My Kitchen Feel Like a Bakery Speed racks, pink boxes, cookie scoops, and a very fun cake cookbook giveaway! Friends, hi! Joy Wilson ∙ 69 LIKES ∙ 3 RESTACKS Dottie Taylor • Aug 31 I am an avid baker and big fan of your posts. Thanks, Joy😘 Jolene Handy • Aug 30 Love the list of things that make a kitchen work! Also: pink bakery boxes 💖 Read all 49 comments ZoëBakes Newsletter Aug 19 My Kid’s Favorite Recipes For Back To School Plus, My latest Kitchen Crush It’s back to school time! I’m no longer packing lunches for my adult sons, but I do make some of their favorite desserts every now and then 😉. If you’re thinking about lunchbox treats or after school snacks, I’ve collected more than FORTY of my family’s favorite Zoë François ∙ 28 LIKES ∙ 1 RESTACKS Jan in VA • Aug 19 LOVE my Thermopen. Easy to use and accurate! What a fun trip! Susanality Sep 4 Goodbye to summer How did it happen so fast? Hello to everyone on this last official summer Friday (or is it unofficial?)! Thanks, as always, for being here. Before I share some vintage links from the archives that will keep you well fed over Labor Day Weekend, some housekeeping! Susan Spungen ∙ 18 LIKES ∙ 1 RESTACKS Ilene • 5d We love to end summer with your corn poblano chowder, and several other favorites from Veg Forward. Amy Allen • 6d Exciting that Cookie Queen is almost here! Thanks for this--your sheet pan ratatouille was in heavy rotation last summer and I must make it soon. buttermilk weekly Sep 5 sourdough spotlight: beignets & muffins + flour matters for cookie spread For fall season, I’m sharing two recipes a week (double the usual). The two recipes will have a shared highlighted ingredient. This week it’s sourdough (discard specifically). Sam ∙ 14 LIKES Jill Lewis • 5d Based on your “flour matters” post What do you recommend for the most neutral flour that will work with most recipes? Baking Magic 🔮✨🍰 Sep 5 Cosmic Brownie Cookies fudgy, chocolate heaven! These have been on my wishlist to make for months and I’m so glad I made them! I used to love cosmic brownies growing up but not gonna lie, they’re even better homemade and in cookie form. These are … Viviane ∙ 6 LIKES Ruby Beal • 19h Can’t wait to make these next!!! 🩷 SCRAPS Sep 7 Sheet-Pan Miso Maple Chicken and Potatoes SCRAPS #98: a flavor-packed weeknight dinner with barely any prep time Sticky chicken thighs, tender potatoes and sweet onions are dressed in a sweet and salty miso maple glaze in this one-pan meal. This dinner recipe is made for busy people who still want a home-cooked meal at the end of a long day. With hardly any prep time—I’m talking cutting an onion and slicing two potatoes—this is one of those dinners where you dump … Carolina Gelen ∙ 121 LIKES ∙ 8 RESTACKS Anita Leonard • 1d I just made this chicken, wow so delicious! I didn’t have potatoes in the house so I served it over rice. It was a huge hit! Thank you Sylph • 2h This recipe is amazing! I added leeks to it and ohmygooddd, you must try it with leeks! Surviving, Not Thriving... Because Parenting is Hard! Aug 17 The 305 Calorie Protein Brookie: The 4 Boy Taste Test Whenever I see one of those MASSIVE dessert recipes on Instagram that somehow claims to be low calorie, high protein AND healthy, I am immediately skeptical 😂 I mean, come on. You are telling me I can eat something that looks like a giant brownie and cookie the size of Baby Ashton’s head, has 32 grams of protein, is only 305 calories AND it’s actually … Surviving, Not Thriving! ∙ 6 LIKES ∙ 1 RESTACKS Cookbookery Collective Sep 3 The Fall 2026 Cookbook Preview 175+ books and a trend report This post is way too long for your email! Please click through to read it in a browser or on the app. Jenna Helwig ∙ 141 LIKES ∙ 19 RESTACKS Marie • 7d Everybody shut up, it’s preview day at Cookbookery Collective! At this point, it should be a national holiday Maggie Hoffman • 7d An epic list! (and an epic day for BOTH our newsletters.) I'm so excited about this fall! Read all 84 comments Chelsea's Cooking Club Aug 30 I Came Home From Culinary School & Now I Can’t Stop Cooking Apparently A Summer of Cooking Wasn’t Enough...A LOT Has Been Happening in My Kitchen, Haha! To be honest, I’m still reeling from my summer in London at culinary school AND still adjusting to the time change. I’m not sure why I’m struggling so much to acclimate this time around, but wow, it’s been way rougher than usual! Chelsea Lords ∙ 38 LIKES ∙ 2 RESTACKS Vickie Mattson • Aug 30 It's been so much fun following you throughout your summer in London! Of course, it's \"yes\" to ice cream and croissant recipes please! Thank you for all that you are sharing with us. Dale Walton • Aug 30 Welcome home! You read my mind…ice cream recipes please! Jessica Writes A Cookbook Sep 9 A year of No Repeat Dinners? The question mark is not a typo. Jessica Writes A Cookbook ∙ 8 LIKES ∙ 2 RESTACKS Miraya Berke • 1d No repeat dinners, cookies and chocolate oh my! Sara May • 1d Okay I'm just in awe of you here-- I love the way your brain works! Committing to a year of no-repeat dinners is ballsy and fun, just like you. Excited to follow along on this journey of yours! PS love the ww chocolate chip cookies recipe-- I have a bag of ww flour that needs using up and this is just the thing! Read all 4 comments salty stacks Sep 6 Chocolate Chip Pecan Oatmeal Cookies Jump to my Chocolate Chip Pecan Oatmeal Cookies recipe post. sonia wong ∙ 5 LIKES ∙ 1 RESTACKS Kofi. Aug 21 Recipe number nine: cinnamon swirl cookies I wasn’t convinced that this recipe would work, but it’s actually ended up becoming one of my favourite cookies yet. It uses my classic brown butter cookie dough base with a very generous amount of cinnamon, butter and sugar swirled throughout (think the filling of a cinnamon bun). The ripples of cinnamon sugar caramelise in the oven, resulting in a cri… Kofi ∙ 63 LIKES ∙ 3 RESTACKS Kate • Aug 21 CREAM CHEESE ICE CREAM COOKIE SANDWICH 🍪🍪🍪🍪 Hessa • 7d Is it 120g of butter before or after browning it? Should we add ice cubes after browning, like your past recipes, until it reaches 120g? Read all 9 comments Spill The Sauce Aug 15 the cookie drop that you'll want to take notes on my brown butter salted chocolate chip cookie recipe is finally here !! By far my most requested recipe is my chocolate chip cookies. But they’re not just any chocolate chip cookie… they’re a brown butter salted chocolate chip cookie. Yeah you heard that right. Emily Rose ∙ 23 LIKES Harper Miller • Aug 15 Best cookies Kelley • Aug 19 Hi! Salted or unsalted butter? Recipe Master (Chefmaniac.com) Sep 8 Heavenly Cherry Chocolate Chip Cookie Bars with Maraschino Bliss Heavenly Cherry Chocolate Chip Cookie Bars with Maraschino Bliss Heavenly Cherry Chocolate Chip Cookie Bars with Maraschino Bliss is the kind of recipe that makes scrolling stop because it promises something comforting, flavorful, and worth saving for later. It has that practical kitchen appeal where you can picture it fitting into a real day, whether you need a quick dinner idea, a cozy weekend dish, a party snack, … ChefManiac Recipe Master (Chefmaniac.com) Sep 9 Peanut Butter Chocolate Chip Cookie Cups Soft Gooey Perfect Peanut Butter Chocolate Chip Cookie Cups Soft Gooey Perfect Peanut Butter Chocolate Chip Cookie Cups Soft Gooey Perfect is the kind of recipe that makes scrolling stop because it promises something comforting, flavorful, and worth saving for later. It has that practical kitchen appeal where you can picture it fitting into a real day, whether you need a quick dinner idea, a cozy weekend dish, a party snack, or a … ChefManiac Lexi Noel Sep 5 Fruit Pizza Recipe 🇺🇸 Labor Day Flag Fruit Pizza Lexi Noel cookie dough diaries 6:45 PM Stuffed Nutella Cupcakes 🍫 filled AND frosted with Nutella! If you love Nutella, these cupcakes are about to become your new obsession. The Breakfast Nook Sep 8 Breaking Baking — Batch 04: Concentrated Brown Sugar Taking brown sugar past dark and 3 recipes to put it to work. When I use brown sugar, I don’t think too much about it. I simply get the amount I need for the recipe and carry on. Half the time, I can’t even tell you whether I have light or dark brown sugar in my pantry. Miles Ware ∙ 16 LIKES Malaka Hampton • 2d Loved this breakdown! Two sugars I would put in the brown sugar category are muscovado and piloncillo. Miles Ware • 2d Thank you! And you’re so right. I actually thought about mentioning muscovado and was going to include it in my testing, but I learned that its produced differently so I left it out for consistency. Will probably still mess around with it in my free time though haha. Related Cookie Recipes Substacks SCRAPS By Carolina Gelen Susanality By Susan Spungen Jessica Writes A Cookbook By Jessica Keyser Suskin ZoëBakes Newsletter By Zoë François Baking Magic 🔮✨🍰 By Viviane Surviving, Not Thriving... Because Parenting is Hard! buttermilk weekly By Sam Abbey Goes Design Scouting By Abbey Nova Spill The Sauce By Emily Rose The Gluten Free Inside Scoop By Daniela Weiner Recipe Master (Chefmaniac.com) By ChefManiac salty stacks By sonia wong Cookbookery Collective By Jenna Helwig Baked In with Joy the Baker By Joy Wilson Wild Thistle Kitchen Weekly By Anita Chelsea's Cooking Club By Chelsea Lords Lois’s Substack By Lois Christensen cookie dough diaries By Gabby Kislanko Lexi Noel The Breakfast Nook By Miles Ware Salt N Sprinkles By samantha simone Aneisa's Menu Kofi. Chez Nika Discover Explore Get the app Substack Reader Top podcasts Top in culture Top in food & drink Top in finance Top in sports Top in politics Top in technology Top in faith Top in business Topics Creators Switch to Substack Get started Go paid For video For podcasts For bloggers For finance writers For authors For food writers For local news For media founders Substack vs. beehiiv Substack vs. Patreon Company About Help Jobs Blog Vulnerability Policy Contact Sitemap Resources Resource center Guide to going paid Help center Community and programs Brand assets Features Brand Partnerships Substack is the home for great culture © Substack Inc. Privacy Terms Accessibility Collection notice",
+      "main_text_words": 2535,
+      "extraction_ok": true,
+      "title": "Best Cookie Recipes",
+      "meta": {
+        "viewport": "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0, viewport-fit=cover",
+        "description": "This page shows the top 25 cookie recipes found on Substack",
+        "robots": null
+      },
+      "lang": "en",
+      "canonical": {
+        "href": "https://substack.com/topics/cookie-recipes",
+        "self_referential": true,
+        "cross_domain": false
+      },
+      "headings": [
+        {
+          "level": 1,
+          "text": "Top 25 cookie recipes on Substack",
+          "order": 0
+        },
+        {
+          "level": 1,
+          "text": "Best Cookie Recipes",
+          "order": 1
+        },
+        {
+          "level": 2,
+          "text": "Two easy dinner recipes, tiny pots of gelato, and a fast thumbprint cookie",
+          "order": 2
+        },
+        {
+          "level": 2,
+          "text": "17 Delicious Cookies Without Flour",
+          "order": 3
+        },
+        {
+          "level": 2,
+          "text": "Sunday Newsletter & Weekly Roundup",
+          "order": 4
+        },
+        {
+          "level": 2,
+          "text": "Cookie Recipes (some sourdough, some not)",
+          "order": 5
+        },
+        {
+          "level": 2,
+          "text": "So You Want To Be a Better Baker - Part One",
+          "order": 6
+        },
+        {
+          "level": 2,
+          "text": "in case you missed these summer recipes...",
+          "order": 7
+        },
+        {
+          "level": 2,
+          "text": "Bake Something Good This Weekend",
+          "order": 8
+        },
+        {
+          "level": 2,
+          "text": "10 Things That Make My Kitchen Feel Like a Bakery",
+          "order": 9
+        },
+        {
+          "level": 2,
+          "text": "My Kid’s Favorite Recipes For Back To School",
+          "order": 10
+        },
+        {
+          "level": 2,
+          "text": "Goodbye to summer",
+          "order": 11
+        },
+        {
+          "level": 2,
+          "text": "sourdough spotlight: beignets & muffins",
+          "order": 12
+        },
+        {
+          "level": 2,
+          "text": "Cosmic Brownie Cookies",
+          "order": 13
+        },
+        {
+          "level": 2,
+          "text": "Sheet-Pan Miso Maple Chicken and Potatoes",
+          "order": 14
+        },
+        {
+          "level": 2,
+          "text": "The 305 Calorie Protein Brookie: The 4 Boy Taste Test",
+          "order": 15
+        },
+        {
+          "level": 2,
+          "text": "The Fall 2026 Cookbook Preview",
+          "order": 16
+        },
+        {
+          "level": 2,
+          "text": "I Came Home From Culinary School & Now I Can’t Stop Cooking",
+          "order": 17
+        },
+        {
+          "level": 2,
+          "text": "A year of No Repeat Dinners?",
+          "order": 18
+        },
+        {
+          "level": 2,
+          "text": "Chocolate Chip Pecan Oatmeal Cookies",
+          "order": 19
+        },
+        {
+          "level": 2,
+          "text": "Recipe number nine: cinnamon swirl cookies",
+          "order": 20
+        },
+        {
+          "level": 2,
+          "text": "the cookie drop that you'll want to take notes on",
+          "order": 21
+        },
+        {
+          "level": 2,
+          "text": "Heavenly Cherry Chocolate Chip Cookie Bars with Maraschino Bliss",
+          "order": 22
+        },
+        {
+          "level": 2,
+          "text": "Peanut Butter Chocolate Chip Cookie Cups Soft Gooey Perfect",
+          "order": 23
+        },
+        {
+          "level": 2,
+          "text": "Fruit Pizza Recipe",
+          "order": 24
+        },
+        {
+          "level": 2,
+          "text": "Stuffed Nutella Cupcakes 🍫",
+          "order": 25
+        },
+        {
+          "level": 2,
+          "text": "Breaking Baking — Batch 04: Concentrated Brown Sugar",
+          "order": 26
+        },
+        {
+          "level": 4,
+          "text": "Related Cookie Recipes Substacks",
+          "order": 27
+        },
+        {
+          "level": 3,
+          "text": "Discover",
+          "order": 28
+        },
+        {
+          "level": 3,
+          "text": "Creators",
+          "order": 29
+        },
+        {
+          "level": 3,
+          "text": "Company",
+          "order": 30
+        },
+        {
+          "level": 3,
+          "text": "Resources",
+          "order": 31
+        }
+      ],
+      "landmarks": {
+        "main": 0,
+        "nav": 0,
+        "header": 0,
+        "footer": 0
+      },
+      "structured_data": {
+        "json_ld": [],
+        "microdata_types": [],
+        "rdfa_types": []
+      },
+      "links": [
+        {
+          "href": "https://substack.com/",
+          "text": "",
+          "rel": null,
+          "internal": true,
+          "aria_label": "Substack home"
+        },
+        {
+          "href": "https://substack.com/app?utm_source=menu-dropdown",
+          "text": "Substack App",
+          "rel": "noopener",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://substack.com/explore?utm_source=menu-dropdown",
+          "text": "Discover",
+          "rel": "noopener",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://on.substack.com/s/stories",
+          "text": "Featured",
+          "rel": "noopener",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.substack.com/globe",
+          "text": "Substacks around the world",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://substack.com/switch?utm_source=menu-dropdown",
+          "text": "Switch to Substack",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://substack.com/going-paid?utm_source=menu-dropdown",
+          "text": "Go paid",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://substack.com/growthfeatures?utm_source=menu-dropdown",
+          "text": "Grow your audience",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://pages.substack.com/livevideoshows?utm_source=menu-dropdown",
+          "text": "For live video",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://substack.com/video?utm_source=menu-dropdown",
+          "text": "For video",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://substack.com/podcasts?utm_source=menu-dropdown",
+          "text": "For podcasts",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://substack.com/for-bloggers?utm_source=menu-dropdown",
+          "text": "For bloggers",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://substack.com/investing-and-business?utm_source=menu-dropdown",
+          "text": "For finance writers",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://substack.com/book?utm_source=menu-dropdown",
+          "text": "For authors",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://substack.com/food-writers?utm_source=menu-dropdown",
+          "text": "For food writers",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://substack.com/local-news?utm_source=menu-dropdown",
+          "text": "For local news",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://substack.com/startups?utm_source=menu-dropdown",
+          "text": "For media founders",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://substack.com/get-started?utm_source=menu-dropdown",
+          "text": "How to start a Substack",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://substack.com/going-paid-guide?utm_source=menu-dropdown",
+          "text": "Going paid guide",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://substack.com/resources?utm_source=menu-dropdown",
+          "text": "Resource center",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://substack.com/community-and-programs?utm_source=menu-dropdown",
+          "text": "Community & programs",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://support.substack.com/hc/en-us/?utm_source=menu-dropdown",
+          "text": "Help center",
+          "rel": "noopener",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://substack.com/brand?utm_source=menu-dropdown",
+          "text": "Brand assets",
+          "rel": "noopener",
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://substack.com/welcome",
+          "text": "Home",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://substack.com/topics",
+          "text": "Topics",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://abbeynova.substack.com/",
+          "text": "Abbey Goes Design Scouting",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://abbeynova.substack.com/p/two-easy-dinner-recipes-tiny-pots",
+          "text": "Two easy dinner recipes, tiny pots of gelato, and a fast thumbprint cookie",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://abbeynova.substack.com/p/two-easy-dinner-recipes-tiny-pots/comment/331413006",
+          "text": "4d",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://abbeynova.substack.com/p/two-easy-dinner-recipes-tiny-pots/comment/333332241",
+          "text": "1d",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://abbeynova.substack.com/p/two-easy-dinner-recipes-tiny-pots/comments",
+          "text": "Read all 6 comments",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://loiswalkingonsunshinerecipes.substack.com/",
+          "text": "Lois’s Substack",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://loiswalkingonsunshinerecipes.substack.com/p/17-delicious-cookies-without-flour",
+          "text": "17 Delicious Cookies Without Flour",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://aneisasmenu.substack.com/",
+          "text": "Aneisa's Menu",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://aneisasmenu.substack.com/p/sunday-newsletter-and-weekly-roundup",
+          "text": "Sunday Newsletter & Weekly Roundup",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://wildthistlekitchen.substack.com/",
+          "text": "Wild Thistle Kitchen Weekly",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://wildthistlekitchen.substack.com/p/cookie-recipes-some-sourdough-some",
+          "text": "Cookie Recipes (some sourdough, some not)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://cheznika.substack.com/",
+          "text": "Chez Nika",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://cheznika.substack.com/p/so-you-want-to-be-a-better-baker",
+          "text": "So You Want To Be a Better Baker - Part One",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://saltnsprinkles.substack.com/",
+          "text": "Salt N Sprinkles",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://saltnsprinkles.substack.com/p/my-last-recipes-of-the-summer",
+          "text": "in case you missed these summer recipes...",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://saltnsprinkles.substack.com/p/my-last-recipes-of-the-summer/comment/326015566",
+          "text": "Aug 30",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://saltnsprinkles.substack.com/p/my-last-recipes-of-the-summer/comment/328828596",
+          "text": "7d",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://theglutenfreeaustrian.substack.com/",
+          "text": "The Gluten Free Inside Scoop",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://theglutenfreeaustrian.substack.com/p/bake-something-good-this-weekend",
+          "text": "Bake Something Good This Weekend",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://bakedin.joythebaker.com/",
+          "text": "Baked In with Joy the Baker",
+          "rel": null,
+          "internal": false,
+          "aria_label": null
+        },
+        {
+          "href": "https://bakedin.joythebaker.com/p/10-things-that-make-my-kitchen-feel",
+          "text": "10 Things That Make My Kitchen Feel Like a Bakery",
+          "rel": null,
+          "internal": false,
+          "aria_label": null
+        },
+        {
+          "href": "https://bakedin.joythebaker.com/p/10-things-that-make-my-kitchen-feel/comment/326692879",
+          "text": "Aug 31",
+          "rel": null,
+          "internal": false,
+          "aria_label": null
+        },
+        {
+          "href": "https://bakedin.joythebaker.com/p/10-things-that-make-my-kitchen-feel/comment/325933531",
+          "text": "Aug 30",
+          "rel": null,
+          "internal": false,
+          "aria_label": null
+        },
+        {
+          "href": "https://bakedin.joythebaker.com/p/10-things-that-make-my-kitchen-feel/comments",
+          "text": "Read all 49 comments",
+          "rel": null,
+          "internal": false,
+          "aria_label": null
+        },
+        {
+          "href": "https://zoefrancois.substack.com/",
+          "text": "ZoëBakes Newsletter",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://zoefrancois.substack.com/p/my-kids-favorite-recipes-for-back",
+          "text": "My Kid’s Favorite Recipes For Back To School",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://zoefrancois.substack.com/p/my-kids-favorite-recipes-for-back/comment/317995491",
+          "text": "Aug 19",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://susanality.substack.com/",
+          "text": "Susanality",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://susanality.substack.com/p/goodbye-to-summer",
+          "text": "Goodbye to summer",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://susanality.substack.com/p/goodbye-to-summer/comment/330259619",
+          "text": "5d",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://susanality.substack.com/p/goodbye-to-summer/comment/329967395",
+          "text": "6d",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://buttermilkbysam.substack.com/",
+          "text": "buttermilk weekly",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://buttermilkbysam.substack.com/p/sourdough-spotlight-beignets-and",
+          "text": "sourdough spotlight: beignets & muffins",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://buttermilkbysam.substack.com/p/sourdough-spotlight-beignets-and/comment/330299092",
+          "text": "5d",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://lovevivv.substack.com/",
+          "text": "Baking Magic 🔮✨🍰",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://lovevivv.substack.com/p/cosmic-brownie-cookies",
+          "text": "Cosmic Brownie Cookies",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://lovevivv.substack.com/p/cosmic-brownie-cookies/comment/333636335",
+          "text": "19h",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://carolinagelen.substack.com/",
+          "text": "SCRAPS",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://carolinagelen.substack.com/p/sheet-pan-miso-maple-chicken-and",
+          "text": "Sheet-Pan Miso Maple Chicken and Potatoes",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://carolinagelen.substack.com/p/sheet-pan-miso-maple-chicken-and/comment/333475152",
+          "text": "1d",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://carolinagelen.substack.com/p/sheet-pan-miso-maple-chicken-and/comment/334150859",
+          "text": "2h",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://survivingnotthriving.substack.com/",
+          "text": "Surviving, Not Thriving... Because Parenting is Hard!",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://survivingnotthriving.substack.com/p/the-305-calorie-protein-brookie-the",
+          "text": "The 305 Calorie Protein Brookie: The 4 Boy Taste Test",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://cookbookerycollective.substack.com/",
+          "text": "Cookbookery Collective",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://cookbookerycollective.substack.com/p/the-fall-2026-cookbook-preview",
+          "text": "The Fall 2026 Cookbook Preview",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://cookbookerycollective.substack.com/p/the-fall-2026-cookbook-preview/comment/328794270",
+          "text": "7d",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://cookbookerycollective.substack.com/p/the-fall-2026-cookbook-preview/comment/328756125",
+          "text": "7d",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://cookbookerycollective.substack.com/p/the-fall-2026-cookbook-preview/comments",
+          "text": "Read all 84 comments",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://chelseasmessyapron.substack.com/",
+          "text": "Chelsea's Cooking Club",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://chelseasmessyapron.substack.com/p/i-came-home-from-culinary-school",
+          "text": "I Came Home From Culinary School & Now I Can’t Stop Cooking",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://chelseasmessyapron.substack.com/p/i-came-home-from-culinary-school/comment/326181594",
+          "text": "Aug 30",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://chelseasmessyapron.substack.com/p/i-came-home-from-culinary-school/comment/325981172",
+          "text": "Aug 30",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://jessicawritesacookbook.substack.com/",
+          "text": "Jessica Writes A Cookbook",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://jessicawritesacookbook.substack.com/p/a-year-of-no-repeat-dinners",
+          "text": "A year of No Repeat Dinners?",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://jessicawritesacookbook.substack.com/p/a-year-of-no-repeat-dinners/comment/333299469",
+          "text": "1d",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://jessicawritesacookbook.substack.com/p/a-year-of-no-repeat-dinners/comment/333056147",
+          "text": "1d",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://jessicawritesacookbook.substack.com/p/a-year-of-no-repeat-dinners/comments",
+          "text": "Read all 4 comments",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://soniawong.substack.com/",
+          "text": "salty stacks",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://soniawong.substack.com/p/chocolate-chip-pecan-oatmeal-cookies",
+          "text": "Chocolate Chip Pecan Oatmeal Cookies",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://kandcake.substack.com/",
+          "text": "Kofi.",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://kandcake.substack.com/p/recipe-number-nine-cinnamon-swirl",
+          "text": "Recipe number nine: cinnamon swirl cookies",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://kandcake.substack.com/p/recipe-number-nine-cinnamon-swirl/comment/319629760",
+          "text": "Aug 21",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://kandcake.substack.com/p/recipe-number-nine-cinnamon-swirl/comment/328713367",
+          "text": "7d",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://kandcake.substack.com/p/recipe-number-nine-cinnamon-swirl/comments",
+          "text": "Read all 9 comments",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://sauceyrosie.substack.com/",
+          "text": "Spill The Sauce",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://sauceyrosie.substack.com/p/the-cookie-drop-that-youll-want-to",
+          "text": "the cookie drop that you'll want to take notes on",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://sauceyrosie.substack.com/p/the-cookie-drop-that-youll-want-to/comment/315367854",
+          "text": "Aug 15",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://sauceyrosie.substack.com/p/the-cookie-drop-that-youll-want-to/comment/317785856",
+          "text": "Aug 19",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://recipemaster.substack.com/",
+          "text": "Recipe Master (Chefmaniac.com)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://recipemaster.substack.com/p/heavenly-cherry-chocolate-chip-cookie",
+          "text": "Heavenly Cherry Chocolate Chip Cookie Bars with Maraschino Bliss",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://recipemaster.substack.com/",
+          "text": "Recipe Master (Chefmaniac.com)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://recipemaster.substack.com/p/peanut-butter-chocolate-chip-cookie",
+          "text": "Peanut Butter Chocolate Chip Cookie Cups Soft Gooey Perfect",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://lexinoelv.substack.com/",
+          "text": "Lexi Noel",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://lexinoelv.substack.com/p/fruit-pizza-recipe",
+          "text": "Fruit Pizza Recipe",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://cookiedoughdiaries.substack.com/",
+          "text": "cookie dough diaries",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://cookiedoughdiaries.substack.com/p/stuffed-nutella-cupcakes",
+          "text": "Stuffed Nutella Cupcakes 🍫",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://thebreakfastnook.substack.com/",
+          "text": "The Breakfast Nook",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://thebreakfastnook.substack.com/p/breaking-baking-batch-04-concentrated",
+          "text": "Breaking Baking — Batch 04: Concentrated Brown Sugar",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://thebreakfastnook.substack.com/p/breaking-baking-batch-04-concentrated/comment/332469375",
+          "text": "2d",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://thebreakfastnook.substack.com/p/breaking-baking-batch-04-concentrated/comment/332515809",
+          "text": "2d",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://carolinagelen.substack.com",
+          "text": "SCRAPS By Carolina Gelen",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://susanality.substack.com",
+          "text": "Susanality By Susan Spungen",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://jessicawritesacookbook.substack.com",
+          "text": "Jessica Writes A Cookbook By Jessica Keyser Suskin",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://zoefrancois.substack.com",
+          "text": "ZoëBakes Newsletter By Zoë François",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://lovevivv.substack.com",
+          "text": "Baking Magic 🔮✨🍰 By Viviane",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://survivingnotthriving.substack.com",
+          "text": "Surviving, Not Thriving... Because Parenting is Hard!",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://buttermilkbysam.substack.com",
+          "text": "buttermilk weekly By Sam",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://abbeynova.substack.com",
+          "text": "Abbey Goes Design Scouting By Abbey Nova",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://sauceyrosie.substack.com",
+          "text": "Spill The Sauce By Emily Rose",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://theglutenfreeaustrian.substack.com",
+          "text": "The Gluten Free Inside Scoop By Daniela Weiner",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://recipemaster.substack.com",
+          "text": "Recipe Master (Chefmaniac.com) By ChefManiac",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://soniawong.substack.com",
+          "text": "salty stacks By sonia wong",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://cookbookerycollective.substack.com",
+          "text": "Cookbookery Collective By Jenna Helwig",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://bakedin.joythebaker.com",
+          "text": "Baked In with Joy the Baker By Joy Wilson",
+          "rel": null,
+          "internal": false,
+          "aria_label": null
+        },
+        {
+          "href": "https://wildthistlekitchen.substack.com",
+          "text": "Wild Thistle Kitchen Weekly By Anita",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://chelseasmessyapron.substack.com",
+          "text": "Chelsea's Cooking Club By Chelsea Lords",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://loiswalkingonsunshinerecipes.substack.com",
+          "text": "Lois’s Substack By Lois Christensen",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://cookiedoughdiaries.substack.com",
+          "text": "cookie dough diaries By Gabby Kislanko",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://lexinoelv.substack.com",
+          "text": "Lexi Noel",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://thebreakfastnook.substack.com",
+          "text": "The Breakfast Nook By Miles Ware",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://saltnsprinkles.substack.com",
+          "text": "Salt N Sprinkles By samantha simone",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://aneisasmenu.substack.com",
+          "text": "Aneisa's Menu",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://kandcake.substack.com",
+          "text": "Kofi.",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://cheznika.substack.com",
+          "text": "Chez Nika",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://substack.com/explore",
+          "text": "Explore",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://substack.com/app?utm_source=substack&utm_medium=web&utm_content=footer",
+          "text": "Get the app",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://reader.substack.com?utm_source=substack&utm_medium=web&utm_content=footer",
+          "text": "Substack Reader",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://substack.com/leaderboard/podcast/paid?utm_source=substack&utm_medium=web&utm_content=footer",
+          "text": "Top podcasts",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://substack.com/leaderboard/culture/paid?utm_source=substack&utm_medium=web&utm_content=footer",
+          "text": "Top in culture",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://substack.com/leaderboard/food/paid?utm_source=substack&utm_medium=web&utm_content=footer",
+          "text": "Top in food & drink",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://substack.com/leaderboard/finance/paid?utm_source=substack&utm_medium=web&utm_content=footer",
+          "text": "Top in finance",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://substack.com/leaderboard/sports/paid?utm_source=substack&utm_medium=web&utm_content=footer",
+          "text": "Top in sports",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://substack.com/leaderboard/politics/paid?utm_source=substack&utm_medium=web&utm_content=footer",
+          "text": "Top in politics",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://substack.com/leaderboard/technology/paid?utm_source=substack&utm_medium=web&utm_content=footer",
+          "text": "Top in technology",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://substack.com/leaderboard/faith/paid?utm_source=substack&utm_medium=web&utm_content=footer",
+          "text": "Top in faith",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://substack.com/leaderboard/business/paid?utm_source=substack&utm_medium=web&utm_content=footer",
+          "text": "Top in business",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://substack.com/topics?utm_source=substack&utm_medium=web&utm_content=footer",
+          "text": "Topics",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://substack.com/switch?utm_source=substack&utm_medium=web&utm_content=footer",
+          "text": "Switch to Substack",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://substack.com/get-started?utm_source=substack&utm_medium=web&utm_content=footer",
+          "text": "Get started",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://substack.com/going-paid?utm_source=substack&utm_medium=web&utm_content=footer",
+          "text": "Go paid",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://substack.com/video?utm_source=substack&utm_medium=web&utm_content=footer",
+          "text": "For video",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://substack.com/podcasts?utm_source=substack&utm_medium=web&utm_content=footer",
+          "text": "For podcasts",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://substack.com/for-bloggers?utm_source=substack&utm_medium=web&utm_content=footer",
+          "text": "For bloggers",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://substack.com/investing-and-business?utm_source=substack&utm_medium=web&utm_content=footer",
+          "text": "For finance writers",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://substack.com/book?utm_source=substack&utm_medium=web&utm_content=footer",
+          "text": "For authors",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://substack.com/food-writers?utm_source=substack&utm_medium=web&utm_content=footer",
+          "text": "For food writers",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://substack.com/local-news?utm_source=substack&utm_medium=web&utm_content=footer",
+          "text": "For local news",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://substack.com/startups?utm_source=substack&utm_medium=web&utm_content=footer",
+          "text": "For media founders",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://substack.com/substack-vs-beehiiv?utm_source=substack&utm_medium=web&utm_content=footer",
+          "text": "Substack vs. beehiiv",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://substack.com/substack-vs-patreon?utm_source=substack&utm_medium=web&utm_content=footer",
+          "text": "Substack vs. Patreon",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://substack.com/about?utm_source=substack&utm_medium=web&utm_content=footer",
+          "text": "About",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://support.substack.com/hc/en-us?s=support%40substack.com",
+          "text": "Help",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://substack.com/jobs?utm_source=substack&utm_medium=web&utm_content=footer",
+          "text": "Jobs",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://on.substack.com?utm_source=substack&utm_medium=web&utm_content=footer",
+          "text": "Blog",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://substack.com/vulnerability-disclosure?utm_source=substack&utm_medium=web&utm_content=footer",
+          "text": "Vulnerability Policy",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://substack.com/contact?utm_source=substack&utm_medium=web&utm_content=footer",
+          "text": "Contact",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://substack.com/sitemap",
+          "text": "Sitemap",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://substack.com/resources?utm_source=substack&utm_medium=web&utm_content=footer",
+          "text": "Resource center",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://substack.com/going-paid-guide?utm_source=substack&utm_medium=web&utm_content=footer",
+          "text": "Guide to going paid",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://support.substack.com/hc/en-us?s=support%40substack.com",
+          "text": "Help center",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://substack.com/community-and-programs?utm_source=substack&utm_medium=web&utm_content=footer",
+          "text": "Community and programs",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://substack.com/brand?utm_source=substack&utm_medium=web&utm_content=footer",
+          "text": "Brand assets",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://substack.com/features?utm_source=substack&utm_medium=web&utm_content=footer",
+          "text": "Features",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://substack.com/sponsorships?utm_source=substack&utm_medium=web&utm_content=footer",
+          "text": "Brand Partnerships",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://substack.com/app/get-ios?utm_campaign=app-marketing&utm_content=www-footer",
+          "text": "",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://substack.com/app/get-android?utm_campaign=app-marketing&utm_content=www-footer",
+          "text": "",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://substack.com/privacy",
+          "text": "Privacy",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://substack.com/tos",
+          "text": "Terms",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://substack.com/accessibility",
+          "text": "Accessibility",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://substack.com/ccpa#personal-data-collected",
+          "text": "Collection notice",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://enable-javascript.com/",
+          "text": "turn on JavaScript",
+          "rel": null,
+          "internal": false,
+          "aria_label": null
+        }
+      ],
+      "outbound_profile_links": [],
+      "images": [
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!GjN9!,w_20,h_20,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F79d87f06-3497-412f-93e2-da8c927a99b0_250x250.png",
+          "alt": "Abbey Goes Design Scouting",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!yXnx!,w_160,h_84,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb1cecef8-4807-4b5f-8916-6e48c2cab882_1022x816.png",
+          "alt": null,
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!JCeW!,w_32,h_32,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F86e9da2b-f9ae-438b-964f-dd867ec6642f_5000x3333.jpeg",
+          "alt": "Joyce Ragard's avatar",
+          "decorative_hint": false,
+          "width_attr": "32",
+          "height_attr": "32",
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!3c6F!,w_32,h_32,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F0d56008c-28f4-4c71-9bbd-c4faac80b4b8_750x1334.jpeg",
+          "alt": "KF's avatar",
+          "decorative_hint": false,
+          "width_attr": "32",
+          "height_attr": "32",
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!YxXl!,w_20,h_20,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3cd2c6e1-bce6-47bd-a18d-b627af495eb9_256x256.png",
+          "alt": "Lois’s Substack",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!Qpz5!,w_160,h_84,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F417f1d60-84cc-43e4-9cf9-d0609e8576bc_1200x1600.webp",
+          "alt": null,
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!ebv1!,w_20,h_20,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F486db6ed-79a6-4972-a9f3-3c77929db169_500x500.png",
+          "alt": "Aneisa's Menu",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!NTR7!,w_160,h_84,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2e111d5e-48bc-4009-becd-ce2b53b2a194_1500x2000.jpeg",
+          "alt": null,
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!57Db!,w_20,h_20,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff8bd6483-78af-4e05-927b-37efa0c6c24b_960x960.png",
+          "alt": "Wild Thistle Kitchen Weekly",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!V_35!,w_160,h_84,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fdff27e5c-8689-4c85-8130-cc0458c1b437_800x1000.jpeg",
+          "alt": null,
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!L1v0!,w_20,h_20,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd8f29dc7-a95f-4b53-8175-f813d5fd0086_428x428.png",
+          "alt": "Chez Nika",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!-F4U!,w_160,h_84,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1f58df70-9380-437f-93fb-0905253560b8_1440x1668.jpeg",
+          "alt": null,
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!hMoa!,w_20,h_20,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F19835209-2253-444b-9ce5-18eafe821fb8_1024x1024.png",
+          "alt": "Salt N Sprinkles",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!RhYm!,w_160,h_84,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5e12753c-683f-45dd-b14f-12de2b7232d3_1179x2072.jpeg",
+          "alt": null,
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!wvFD!,w_32,h_32,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2cbfd043-115c-4a78-a3c9-00e179613f4b_1177x1179.png",
+          "alt": "Simone’s Star Room's avatar",
+          "decorative_hint": false,
+          "width_attr": "32",
+          "height_attr": "32",
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!gnLw!,w_32,h_32,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fffb9f264-31d4-430a-8cf6-97d643fd69f0_1932x1932.jpeg",
+          "alt": "Arynetta's avatar",
+          "decorative_hint": false,
+          "width_attr": "32",
+          "height_attr": "32",
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!3wo2!,w_20,h_20,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F60fbd4ba-5684-46eb-b9b6-16a41ccd1b42_311x311.png",
+          "alt": "The Gluten Free Inside Scoop",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!66pP!,w_160,h_84,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8f5c9d2f-c152-4604-8438-79e672b41bc6_1200x630.png",
+          "alt": null,
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!36KZ!,w_20,h_20,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F43c068f7-f2b2-486e-b166-e262c1e87e91_500x500.png",
+          "alt": "Baked In with Joy the Baker ",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!DkTA!,w_160,h_84,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff196ada3-9a28-4a1b-8236-f1ee1a053c91_900x1350.jpeg",
+          "alt": null,
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!aSc3!,w_32,h_32,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F74c67acc-a0c0-4601-b3b7-09b533927ee9_144x144.png",
+          "alt": "Dottie Taylor's avatar",
+          "decorative_hint": false,
+          "width_attr": "32",
+          "height_attr": "32",
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!-CJK!,w_32,h_32,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0b416744-4618-496c-97a3-4d60651e9b78_838x836.jpeg",
+          "alt": "Jolene Handy's avatar",
+          "decorative_hint": false,
+          "width_attr": "32",
+          "height_attr": "32",
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!1cI_!,w_20,h_20,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F390803dd-abb5-4bd2-9544-9c4f6e97ba10_300x300.png",
+          "alt": "ZoëBakes Newsletter",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!cunL!,w_160,h_84,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd845d128-0210-4fe1-aea2-1130db4b8877_750x1190.webp",
+          "alt": null,
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!ELPJ!,w_32,h_32,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fdd96da2d-22e1-4655-8484-26cf323e9cee_144x144.png",
+          "alt": "Jan in VA's avatar",
+          "decorative_hint": false,
+          "width_attr": "32",
+          "height_attr": "32",
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!9gON!,w_20,h_20,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc07912b6-7556-47bf-b638-0ca03fab8e8c_1280x1280.png",
+          "alt": "Susanality",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!lz6m!,w_160,h_84,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8eb8fb80-8e70-48e7-8a1a-009734faf222_900x1600.jpeg",
+          "alt": null,
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!zhMB!,w_32,h_32,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F48d5552b-1ac1-4fa7-8fdd-16f7161f0f17_2480x3437.jpeg",
+          "alt": "Ilene's avatar",
+          "decorative_hint": false,
+          "width_attr": "32",
+          "height_attr": "32",
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!vyBK!,w_32,h_32,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F84bb7a73-4662-4071-bcb5-b5b7508b7268_256x256.png",
+          "alt": "Amy Allen's avatar",
+          "decorative_hint": false,
+          "width_attr": "32",
+          "height_attr": "32",
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!i_-q!,w_20,h_20,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5cac8a6d-50d0-4088-ab4f-cbe24156b3e1_500x500.png",
+          "alt": "buttermilk weekly",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!Szr0!,w_160,h_84,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6513f952-f9f0-44b4-a358-05fd4af9e54e_1638x2048.jpeg",
+          "alt": null,
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!kGPW!,w_32,h_32,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0a68663d-1d52-427f-b000-a1fbca64792a_144x144.png",
+          "alt": "Jill Lewis's avatar",
+          "decorative_hint": false,
+          "width_attr": "32",
+          "height_attr": "32",
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!l-hS!,w_20,h_20,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F155550cd-8d4d-4111-a994-63598aebc19c_1280x1280.png",
+          "alt": "Baking Magic 🔮✨🍰",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!S0Fo!,w_160,h_84,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5105b4fb-3b75-445d-8ab8-6abaf1c2f72b_4003x5338.heic",
+          "alt": null,
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!IUfa!,w_32,h_32,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2333dbb0-6b72-45d1-a4f9-39967435f45e_1317x1062.png",
+          "alt": "Ruby Beal's avatar",
+          "decorative_hint": false,
+          "width_attr": "32",
+          "height_attr": "32",
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!TJ1k!,w_20,h_20,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0a348b8a-aeaa-46bc-b9b7-ab0f78ba013d_1179x1179.jpeg",
+          "alt": "User's avatar",
+          "decorative_hint": false,
+          "width_attr": "20",
+          "height_attr": "20",
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!hQEH!,w_160,h_84,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1d44a554-1c10-40cb-8250-59288ca0e6f3_4252x2821.jpeg",
+          "alt": null,
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!Tfxb!,w_32,h_32,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack.com%2Fimg%2Favatars%2Forange.png",
+          "alt": "Anita Leonard's avatar",
+          "decorative_hint": false,
+          "width_attr": "32",
+          "height_attr": "32",
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!0Dby!,w_32,h_32,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F305b4d83-3e20-404a-8ba2-242b40df11fb_1178x1179.png",
+          "alt": "Sylph's avatar",
+          "decorative_hint": false,
+          "width_attr": "32",
+          "height_attr": "32",
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!cenW!,w_20,h_20,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fbca201be-bf72-4f67-9db7-a0a197e32c7a_1280x1280.png",
+          "alt": "Surviving, Not Thriving... Because Parenting is Hard!",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!Oj2a!,w_160,h_84,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd5c5a7dc-646f-42b4-bec7-3e531038be9f_1200x630.png",
+          "alt": null,
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!5Ceg!,w_20,h_20,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F221d9d28-c4e9-459c-adaf-97fa6c7d2bb2_1280x1280.png",
+          "alt": "Cookbookery Collective",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!i0gV!,w_160,h_84,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc0010861-ffe2-4bd6-b9cf-ccf1088dd984_1472x832.png",
+          "alt": null,
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!noHd!,w_32,h_32,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ffd5edc18-b2c1-4d20-80b5-d8465f600d9c_144x144.png",
+          "alt": "Marie's avatar",
+          "decorative_hint": false,
+          "width_attr": "32",
+          "height_attr": "32",
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!VZNF!,w_32,h_32,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff17c5439-36c0-4527-9c32-7e0220175b75_874x876.jpeg",
+          "alt": "Maggie Hoffman's avatar",
+          "decorative_hint": false,
+          "width_attr": "32",
+          "height_attr": "32",
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!J-c0!,w_20,h_20,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa288c65c-6157-4527-ad38-bd6b1eadcdb0_1200x1200.png",
+          "alt": "Chelsea's Cooking Club",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!Osc7!,w_160,h_84,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F94990ec5-784e-4a7d-addf-980c958402a6_1456x762.png",
+          "alt": null,
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!n7Iv!,w_32,h_32,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack.com%2Fimg%2Favatars%2Fblack.png",
+          "alt": "Vickie Mattson's avatar",
+          "decorative_hint": false,
+          "width_attr": "32",
+          "height_attr": "32",
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!Tfxb!,w_32,h_32,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack.com%2Fimg%2Favatars%2Forange.png",
+          "alt": "Dale Walton's avatar",
+          "decorative_hint": false,
+          "width_attr": "32",
+          "height_attr": "32",
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!x6uV!,w_20,h_20,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ffd2315c6-9d05-4e8c-a5e4-db0b43925122_1280x1280.png",
+          "alt": "Jessica Writes A Cookbook",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!msCu!,w_160,h_84,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa03b1971-a0f0-4e46-a473-082707c15455_1638x2048.jpeg",
+          "alt": null,
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!0ajI!,w_32,h_32,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7ee9aea2-941a-4f73-abe5-c8050af33d19_980x980.png",
+          "alt": "Miraya Berke's avatar",
+          "decorative_hint": false,
+          "width_attr": "32",
+          "height_attr": "32",
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!x8NG!,w_32,h_32,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb840ca03-e5b8-449b-9ea7-f10bd0c239df_3344x3344.jpeg",
+          "alt": "Sara May's avatar",
+          "decorative_hint": false,
+          "width_attr": "32",
+          "height_attr": "32",
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!udtn!,w_20,h_20,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0a335f0b-5bb1-4f80-b780-80d2c05f70b3_1280x1280.png",
+          "alt": "salty stacks",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!WmEf!,w_160,h_84,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5780fc0e-cde9-4a50-91b2-015c5111fbb2_1945x1556.heic",
+          "alt": null,
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!LgRY!,w_20,h_20,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F53a4013d-3a24-4da1-9f7c-8455d1f8b7f9_1280x1280.png",
+          "alt": "Kofi.",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!HxUg!,w_160,h_84,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fde3a82a2-d9a7-4382-9513-6c93992848f5_3024x3024.jpeg",
+          "alt": null,
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!71vV!,w_32,h_32,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F6cfca298-7d56-4d33-add4-9122fbed3be8_1466x1593.jpeg",
+          "alt": "Kate's avatar",
+          "decorative_hint": false,
+          "width_attr": "32",
+          "height_attr": "32",
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!Tfxb!,w_32,h_32,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack.com%2Fimg%2Favatars%2Forange.png",
+          "alt": "Hessa's avatar",
+          "decorative_hint": false,
+          "width_attr": "32",
+          "height_attr": "32",
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!XJ-3!,w_20,h_20,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7293da3d-9837-4132-ac8f-4c8a99222ff9_910x910.png",
+          "alt": "Spill The Sauce",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!2I4F!,w_160,h_84,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8d6ea0ef-68a8-4b5c-aff0-b1fb0780f839_3600x2400.jpeg",
+          "alt": null,
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!YYJH!,w_32,h_32,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fcd5d8278-14cc-4064-8bf8-4fbc2364dfaf_1284x1284.jpeg",
+          "alt": "Harper Miller's avatar",
+          "decorative_hint": false,
+          "width_attr": "32",
+          "height_attr": "32",
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!nDV7!,w_32,h_32,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd3746f90-b005-4f1c-9ffb-22f5579d4177_1206x1206.jpeg",
+          "alt": "Kelley's avatar",
+          "decorative_hint": false,
+          "width_attr": "32",
+          "height_attr": "32",
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!j6Or!,w_20,h_20,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc27c9704-991b-4438-a641-f91c38446115_1254x1254.png",
+          "alt": "User's avatar",
+          "decorative_hint": false,
+          "width_attr": "20",
+          "height_attr": "20",
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!6UgF!,w_160,h_84,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7652f3ec-505c-4174-a710-9598547b8689_513x640.jpeg",
+          "alt": null,
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!j6Or!,w_20,h_20,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc27c9704-991b-4438-a641-f91c38446115_1254x1254.png",
+          "alt": "User's avatar",
+          "decorative_hint": false,
+          "width_attr": "20",
+          "height_attr": "20",
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!4Mq2!,w_160,h_84,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F734ad556-54dc-47bc-8f41-19d440f17020_720x900.jpeg",
+          "alt": null,
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!Z7IQ!,w_20,h_20,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb0200f97-ed54-4ee1-8ffd-9db2e3d42e4c_1064x1064.png",
+          "alt": "Lexi Noel",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!v4z1!,w_160,h_84,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb614cfce-9d8c-4f2e-8cff-ce9f5584c876_4032x3024.jpeg",
+          "alt": null,
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!uXns!,w_20,h_20,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F37d2b0ea-23be-4bc0-81f3-15213b7d49c3_1200x1200.png",
+          "alt": "cookie dough diaries",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!j5sd!,w_160,h_84,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fdb0c6374-e47c-408d-94fd-205be1425dca_971x1456.jpeg",
+          "alt": null,
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!JRxg!,w_20,h_20,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F20964faa-5947-413c-aafa-d975110b642d_833x833.png",
+          "alt": "The Breakfast Nook",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!xcAs!,w_160,h_84,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1ae5b569-e23c-4715-ab1c-ffd6f3fbb0ed_1200x630.png",
+          "alt": null,
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!h9aG!,w_32,h_32,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F18b19887-46cc-45e1-8c6c-4ec9a401c287_3600x3600.jpeg",
+          "alt": "Malaka Hampton's avatar",
+          "decorative_hint": false,
+          "width_attr": "32",
+          "height_attr": "32",
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!eJ5h!,w_32,h_32,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F19444a7b-02f8-4bd6-b584-631676661db6_1168x1166.png",
+          "alt": "Miles Ware's avatar",
+          "decorative_hint": false,
+          "width_attr": "32",
+          "height_attr": "32",
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!TJ1k!,w_40,h_40,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0a348b8a-aeaa-46bc-b9b7-ab0f78ba013d_1179x1179.jpeg",
+          "alt": "User's avatar",
+          "decorative_hint": false,
+          "width_attr": "40",
+          "height_attr": "40",
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!9gON!,w_40,h_40,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc07912b6-7556-47bf-b638-0ca03fab8e8c_1280x1280.png",
+          "alt": "Susanality",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!x6uV!,w_40,h_40,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ffd2315c6-9d05-4e8c-a5e4-db0b43925122_1280x1280.png",
+          "alt": "Jessica Writes A Cookbook",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!1cI_!,w_40,h_40,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F390803dd-abb5-4bd2-9544-9c4f6e97ba10_300x300.png",
+          "alt": "ZoëBakes Newsletter",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!l-hS!,w_40,h_40,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F155550cd-8d4d-4111-a994-63598aebc19c_1280x1280.png",
+          "alt": "Baking Magic 🔮✨🍰",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!cenW!,w_40,h_40,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fbca201be-bf72-4f67-9db7-a0a197e32c7a_1280x1280.png",
+          "alt": "Surviving, Not Thriving... Because Parenting is Hard!",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!i_-q!,w_40,h_40,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5cac8a6d-50d0-4088-ab4f-cbe24156b3e1_500x500.png",
+          "alt": "buttermilk weekly",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!GjN9!,w_40,h_40,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F79d87f06-3497-412f-93e2-da8c927a99b0_250x250.png",
+          "alt": "Abbey Goes Design Scouting",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!XJ-3!,w_40,h_40,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7293da3d-9837-4132-ac8f-4c8a99222ff9_910x910.png",
+          "alt": "Spill The Sauce",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!3wo2!,w_40,h_40,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F60fbd4ba-5684-46eb-b9b6-16a41ccd1b42_311x311.png",
+          "alt": "The Gluten Free Inside Scoop",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!j6Or!,w_40,h_40,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc27c9704-991b-4438-a641-f91c38446115_1254x1254.png",
+          "alt": "User's avatar",
+          "decorative_hint": false,
+          "width_attr": "40",
+          "height_attr": "40",
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!udtn!,w_40,h_40,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0a335f0b-5bb1-4f80-b780-80d2c05f70b3_1280x1280.png",
+          "alt": "salty stacks",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!5Ceg!,w_40,h_40,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F221d9d28-c4e9-459c-adaf-97fa6c7d2bb2_1280x1280.png",
+          "alt": "Cookbookery Collective",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!36KZ!,w_40,h_40,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F43c068f7-f2b2-486e-b166-e262c1e87e91_500x500.png",
+          "alt": "Baked In with Joy the Baker ",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!57Db!,w_40,h_40,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff8bd6483-78af-4e05-927b-37efa0c6c24b_960x960.png",
+          "alt": "Wild Thistle Kitchen Weekly",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!J-c0!,w_40,h_40,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa288c65c-6157-4527-ad38-bd6b1eadcdb0_1200x1200.png",
+          "alt": "Chelsea's Cooking Club",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!YxXl!,w_40,h_40,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3cd2c6e1-bce6-47bd-a18d-b627af495eb9_256x256.png",
+          "alt": "Lois’s Substack",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!uXns!,w_40,h_40,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F37d2b0ea-23be-4bc0-81f3-15213b7d49c3_1200x1200.png",
+          "alt": "cookie dough diaries",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!Z7IQ!,w_40,h_40,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb0200f97-ed54-4ee1-8ffd-9db2e3d42e4c_1064x1064.png",
+          "alt": "Lexi Noel",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!JRxg!,w_40,h_40,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F20964faa-5947-413c-aafa-d975110b642d_833x833.png",
+          "alt": "The Breakfast Nook",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!hMoa!,w_40,h_40,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F19835209-2253-444b-9ce5-18eafe821fb8_1024x1024.png",
+          "alt": "Salt N Sprinkles",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!ebv1!,w_40,h_40,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F486db6ed-79a6-4972-a9f3-3c77929db169_500x500.png",
+          "alt": "Aneisa's Menu",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!LgRY!,w_40,h_40,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F53a4013d-3a24-4da1-9f7c-8455d1f8b7f9_1280x1280.png",
+          "alt": "Kofi.",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!L1v0!,w_40,h_40,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd8f29dc7-a95f-4b53-8175-f813d5fd0086_428x428.png",
+          "alt": "Chez Nika",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": true
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!9Vqr!,w_238,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack.com%2Fimg%2Fapp_page%2Fapp-store-white.png%3Fv%3D1",
+          "alt": "Download the Substack app on the App Store",
+          "decorative_hint": false,
+          "width_attr": "134",
+          "height_attr": "40",
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "https://substackcdn.com/image/fetch/$s_!tIqx!,w_238,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack.com%2Fimg%2Fapp_page%2Fgoogle-play-white.png",
+          "alt": "Get the Substack app on Google Play",
+          "decorative_hint": false,
+          "width_attr": "134",
+          "height_attr": "40",
+          "css_aspect_ratio": null,
+          "in_picture": false
+        }
+      ],
+      "iframes": [],
+      "media": [],
+      "form_controls": [
+        {
+          "type": "text",
+          "id": null,
+          "has_label": false,
+          "aria_label": null
+        },
+        {
+          "type": "text",
+          "id": null,
+          "has_label": false,
+          "aria_label": null
+        }
+      ],
+      "interactive_empty": {
+        "links_no_text": 0,
+        "buttons_no_text": 25
+      },
+      "noscript": {
+        "present": true,
+        "words": 14
+      },
+      "dates": {
+        "meta_published": null,
+        "meta_modified": null,
+        "visible_dates": [],
+        "header_last_modified": null
+      },
+      "contact_signals": {
+        "email": false,
+        "phone": null,
+        "postal_address": null,
+        "org_name_footer": null
+      },
+      "trigram_hash": "sha256:09221b313a754d4650e647c35855a704025bd02bb0e0401ee2cca9fa50ad800c"
+    },
+    {
+      "url": "https://substack.com/explore/category/art",
+      "final_url": "https://substack.com/explore/category/art",
+      "status": "ok",
+      "reason": null,
+      "http_status": 200,
+      "page_type": "other",
+      "headers": {
+        "date": "Thu, 10 Sep 2026 20:50:06 GMT",
+        "content-type": "text/html; charset=utf-8",
+        "transfer-encoding": "chunked",
+        "connection": "close",
+        "cf-ray": "a3914d92dd3524b8-DEL",
+        "cf-cache-status": "DYNAMIC",
+        "cache-control": "no-cache",
+        "set-cookie": "__cf_bm=ziQJGS4e4CpOxhWlHdLSrlCnV3RpsrmwEJAa18E_uug-1789073405.8938763-1.0.1.1-blvPkEaqs3RLwA3oy7Twx4uT.PHmkrYlF7nCNaxrk3kC2XUKYsU1dWmcKTsb.NlXPJo8BsdjwAvZhPwZ1je2ZeG16JTv4Lyy8vT02XPoOUjUtMKGVq0IlJpiQGjBgzPu; HttpOnly; SameSite=None; Secure; Path=/; Domain=substack.com; Expires=Thu, 10 Sep 2026 21:20:06 GMT",
+        "x-served-by": "Substack",
+        "server": "cloudflare",
+        "x-service": "web",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+        "vary": "Accept-Encoding",
+        "content-security-policy": "frame-ancestors 'self' https://*.substack.com https://substack.com",
+        "x-cluster": "substack",
+        "x-deploy": "2f556c4345",
+        "x-powered-by": "Express",
+        "content-encoding": "gzip",
+        "alt-svc": "h3=\":443\"; ma=86400"
+      },
+      "raw_html_bytes": 77625,
+      "main_text": "Explore New Bestsellers Top Recent Posts Log in or sign up Join the most interesting and insightful discussions. Start your Substack Sign in",
+      "main_text_words": 23,
+      "extraction_ok": true,
+      "title": "For you | Substack",
+      "meta": {
+        "viewport": "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0, viewport-fit=cover",
+        "description": null,
+        "robots": null
+      },
+      "lang": "en",
+      "canonical": {
+        "href": "https://substack.com/explore/category/art",
+        "self_referential": true,
+        "cross_domain": false
+      },
+      "headings": [
+        {
+          "level": 4,
+          "text": "Log in or sign up",
+          "order": 0
+        }
+      ],
+      "landmarks": {
+        "main": 1,
+        "nav": 1,
+        "header": 0,
+        "footer": 0
+      },
+      "structured_data": {
+        "json_ld": [],
+        "microdata_types": [],
+        "rdfa_types": []
+      },
+      "links": [
+        {
+          "href": "https://substack.com/",
+          "text": "Home",
+          "rel": null,
+          "internal": true,
+          "aria_label": "Home"
+        },
+        {
+          "href": "https://substack.com/explore",
+          "text": "Explore",
+          "rel": null,
+          "internal": true,
+          "aria_label": "Explore"
+        },
+        {
+          "href": "https://enable-javascript.com/",
+          "text": "turn on JavaScript",
+          "rel": null,
+          "internal": false,
+          "aria_label": null
+        }
+      ],
+      "outbound_profile_links": [],
+      "images": [],
+      "iframes": [],
+      "media": [],
+      "form_controls": [
+        {
+          "type": "search",
+          "id": null,
+          "has_label": false,
+          "aria_label": "Global search"
+        }
+      ],
+      "interactive_empty": {
+        "links_no_text": 0,
+        "buttons_no_text": 0
+      },
+      "noscript": {
+        "present": true,
+        "words": 14
+      },
+      "dates": {
+        "meta_published": null,
+        "meta_modified": null,
+        "visible_dates": [],
+        "header_last_modified": null
+      },
+      "contact_signals": {
+        "email": false,
+        "phone": null,
+        "postal_address": null,
+        "org_name_footer": null
+      },
+      "trigram_hash": "sha256:4944d9a479f23fe26127c0838a5f1543d4e20b934b67db14b6482aebed4882da"
+    },
+    {
+      "url": "https://substack.com/explore/category/business",
+      "final_url": "https://substack.com/explore/category/business",
+      "status": "ok",
+      "reason": null,
+      "http_status": 200,
+      "page_type": "other",
+      "headers": {
+        "date": "Thu, 10 Sep 2026 20:50:07 GMT",
+        "content-type": "text/html; charset=utf-8",
+        "transfer-encoding": "chunked",
+        "connection": "close",
+        "cf-ray": "a3914d99797e9192-DEL",
+        "cf-cache-status": "DYNAMIC",
+        "cache-control": "no-cache",
+        "set-cookie": "__cf_bm=6mm2FltMG7z.Yx7ZPP_lQySYJsIwHdVS9WKB_9Opy74-1789073406.951407-1.0.1.1-V.l7sLy56XIeuFJ4tgmg9IlwlseVUbu86t7c4gpQDk.QlOfgIkvaCEaO1TWqeYRkA1YGBZsJZoezbYIfTX0sUZZk7SOPtEvOu026QISYQLsOfG5LzbAR6F6atja5DULK; HttpOnly; SameSite=None; Secure; Path=/; Domain=substack.com; Expires=Thu, 10 Sep 2026 21:20:07 GMT",
+        "x-served-by": "Substack",
+        "server": "cloudflare",
+        "x-service": "web",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+        "vary": "Accept-Encoding",
+        "content-security-policy": "frame-ancestors 'self' https://*.substack.com https://substack.com",
+        "x-cluster": "substack",
+        "x-deploy": "2f556c4345",
+        "x-powered-by": "Express",
+        "content-encoding": "gzip",
+        "alt-svc": "h3=\":443\"; ma=86400"
+      },
+      "raw_html_bytes": 77635,
+      "main_text": "Explore New Bestsellers Top Recent Posts Log in or sign up Join the most interesting and insightful discussions. Start your Substack Sign in",
+      "main_text_words": 23,
+      "extraction_ok": true,
+      "title": "For you | Substack",
+      "meta": {
+        "viewport": "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0, viewport-fit=cover",
+        "description": null,
+        "robots": null
+      },
+      "lang": "en",
+      "canonical": {
+        "href": "https://substack.com/explore/category/business",
+        "self_referential": true,
+        "cross_domain": false
+      },
+      "headings": [
+        {
+          "level": 4,
+          "text": "Log in or sign up",
+          "order": 0
+        }
+      ],
+      "landmarks": {
+        "main": 1,
+        "nav": 1,
+        "header": 0,
+        "footer": 0
+      },
+      "structured_data": {
+        "json_ld": [],
+        "microdata_types": [],
+        "rdfa_types": []
+      },
+      "links": [
+        {
+          "href": "https://substack.com/",
+          "text": "Home",
+          "rel": null,
+          "internal": true,
+          "aria_label": "Home"
+        },
+        {
+          "href": "https://substack.com/explore",
+          "text": "Explore",
+          "rel": null,
+          "internal": true,
+          "aria_label": "Explore"
+        },
+        {
+          "href": "https://enable-javascript.com/",
+          "text": "turn on JavaScript",
+          "rel": null,
+          "internal": false,
+          "aria_label": null
+        }
+      ],
+      "outbound_profile_links": [],
+      "images": [],
+      "iframes": [],
+      "media": [],
+      "form_controls": [
+        {
+          "type": "search",
+          "id": null,
+          "has_label": false,
+          "aria_label": "Global search"
+        }
+      ],
+      "interactive_empty": {
+        "links_no_text": 0,
+        "buttons_no_text": 0
+      },
+      "noscript": {
+        "present": true,
+        "words": 14
+      },
+      "dates": {
+        "meta_published": null,
+        "meta_modified": null,
+        "visible_dates": [],
+        "header_last_modified": null
+      },
+      "contact_signals": {
+        "email": false,
+        "phone": null,
+        "postal_address": null,
+        "org_name_footer": null
+      },
+      "trigram_hash": "sha256:4944d9a479f23fe26127c0838a5f1543d4e20b934b67db14b6482aebed4882da"
+    },
+    {
+      "url": "https://substack.com/explore/category/climate",
+      "final_url": "https://substack.com/explore/category/climate",
+      "status": "ok",
+      "reason": null,
+      "http_status": 200,
+      "page_type": "other",
+      "headers": {
+        "date": "Thu, 10 Sep 2026 20:50:08 GMT",
+        "content-type": "text/html; charset=utf-8",
+        "transfer-encoding": "chunked",
+        "connection": "close",
+        "cf-ray": "a3914d9f8854976b-DEL",
+        "cf-cache-status": "DYNAMIC",
+        "cache-control": "no-cache",
+        "set-cookie": "__cf_bm=5JfvxnYOB69C.z24jbWDNtSJuhxpNl2Hf_KiY_5e.4M-1789073407.9308758-1.0.1.1-nDHE_ImkyTokgjnFe6zn3VyleC6sng5LwPxp6yC6YuDIGXWdIOKfgBZzO_M0fzewyDWjRLw9ZgZxHrp2q7zHn6ysyBgXRk4_iZVq7O3TVO5_qiyoD4z90xU.BxGJ9HaB; HttpOnly; SameSite=None; Secure; Path=/; Domain=substack.com; Expires=Thu, 10 Sep 2026 21:20:08 GMT",
+        "x-served-by": "Substack",
+        "server": "cloudflare",
+        "x-service": "web",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+        "vary": "Accept-Encoding",
+        "content-security-policy": "frame-ancestors 'self' https://*.substack.com https://substack.com",
+        "x-cluster": "substack",
+        "x-deploy": "2f556c4345",
+        "x-powered-by": "Express",
+        "content-encoding": "gzip",
+        "alt-svc": "h3=\":443\"; ma=86400"
+      },
+      "raw_html_bytes": 77632,
+      "main_text": "Explore New Bestsellers Top Recent Posts Log in or sign up Join the most interesting and insightful discussions. Start your Substack Sign in",
+      "main_text_words": 23,
+      "extraction_ok": true,
+      "title": "For you | Substack",
+      "meta": {
+        "viewport": "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0, viewport-fit=cover",
+        "description": null,
+        "robots": null
+      },
+      "lang": "en",
+      "canonical": {
+        "href": "https://substack.com/explore/category/climate",
+        "self_referential": true,
+        "cross_domain": false
+      },
+      "headings": [
+        {
+          "level": 4,
+          "text": "Log in or sign up",
+          "order": 0
+        }
+      ],
+      "landmarks": {
+        "main": 1,
+        "nav": 1,
+        "header": 0,
+        "footer": 0
+      },
+      "structured_data": {
+        "json_ld": [],
+        "microdata_types": [],
+        "rdfa_types": []
+      },
+      "links": [
+        {
+          "href": "https://substack.com/",
+          "text": "Home",
+          "rel": null,
+          "internal": true,
+          "aria_label": "Home"
+        },
+        {
+          "href": "https://substack.com/explore",
+          "text": "Explore",
+          "rel": null,
+          "internal": true,
+          "aria_label": "Explore"
+        },
+        {
+          "href": "https://enable-javascript.com/",
+          "text": "turn on JavaScript",
+          "rel": null,
+          "internal": false,
+          "aria_label": null
+        }
+      ],
+      "outbound_profile_links": [],
+      "images": [],
+      "iframes": [],
+      "media": [],
+      "form_controls": [
+        {
+          "type": "search",
+          "id": null,
+          "has_label": false,
+          "aria_label": "Global search"
+        }
+      ],
+      "interactive_empty": {
+        "links_no_text": 0,
+        "buttons_no_text": 0
+      },
+      "noscript": {
+        "present": true,
+        "words": 14
+      },
+      "dates": {
+        "meta_published": null,
+        "meta_modified": null,
+        "visible_dates": [],
+        "header_last_modified": null
+      },
+      "contact_signals": {
+        "email": false,
+        "phone": null,
+        "postal_address": null,
+        "org_name_footer": null
+      },
+      "trigram_hash": "sha256:4944d9a479f23fe26127c0838a5f1543d4e20b934b67db14b6482aebed4882da"
+    },
+    {
+      "url": "https://substack.com/explore/category/comics",
+      "final_url": "https://substack.com/explore/category/comics",
+      "status": "ok",
+      "reason": null,
+      "http_status": 200,
+      "page_type": "other",
+      "headers": {
+        "date": "Thu, 10 Sep 2026 20:50:09 GMT",
+        "content-type": "text/html; charset=utf-8",
+        "transfer-encoding": "chunked",
+        "connection": "close",
+        "cf-ray": "a3914da59bdb597c-DEL",
+        "cf-cache-status": "DYNAMIC",
+        "cache-control": "no-cache",
+        "set-cookie": "__cf_bm=YaCcn1ZwMUqPWk4NdoGnh1poLKfw.I9OD4w6VHl9TXM-1789073408.8954594-1.0.1.1-0dcArRrZ2ariVJXnrvfNuEyx10mGZEawKdFpliLSWgFkwGybnCVOLKlV3gyUZlQCL_pSyghtTDWhKor2DxPvBEUat6ORdc7IoMIS7dXJBvUXdLmZe2uaE3KxpS.DF6Eu; HttpOnly; SameSite=None; Secure; Path=/; Domain=substack.com; Expires=Thu, 10 Sep 2026 21:20:09 GMT",
+        "x-served-by": "Substack",
+        "server": "cloudflare",
+        "x-service": "web",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+        "vary": "Accept-Encoding",
+        "content-security-policy": "frame-ancestors 'self' https://*.substack.com https://substack.com",
+        "x-cluster": "substack",
+        "x-deploy": "2f556c4345",
+        "x-powered-by": "Express",
+        "content-encoding": "gzip",
+        "alt-svc": "h3=\":443\"; ma=86400"
+      },
+      "raw_html_bytes": 77627,
+      "main_text": "Explore New Bestsellers Top Recent Posts Log in or sign up Join the most interesting and insightful discussions. Start your Substack Sign in",
+      "main_text_words": 23,
+      "extraction_ok": true,
+      "title": "For you | Substack",
+      "meta": {
+        "viewport": "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0, viewport-fit=cover",
+        "description": null,
+        "robots": null
+      },
+      "lang": "en",
+      "canonical": {
+        "href": "https://substack.com/explore/category/comics",
+        "self_referential": true,
+        "cross_domain": false
+      },
+      "headings": [
+        {
+          "level": 4,
+          "text": "Log in or sign up",
+          "order": 0
+        }
+      ],
+      "landmarks": {
+        "main": 1,
+        "nav": 1,
+        "header": 0,
+        "footer": 0
+      },
+      "structured_data": {
+        "json_ld": [],
+        "microdata_types": [],
+        "rdfa_types": []
+      },
+      "links": [
+        {
+          "href": "https://substack.com/",
+          "text": "Home",
+          "rel": null,
+          "internal": true,
+          "aria_label": "Home"
+        },
+        {
+          "href": "https://substack.com/explore",
+          "text": "Explore",
+          "rel": null,
+          "internal": true,
+          "aria_label": "Explore"
+        },
+        {
+          "href": "https://enable-javascript.com/",
+          "text": "turn on JavaScript",
+          "rel": null,
+          "internal": false,
+          "aria_label": null
+        }
+      ],
+      "outbound_profile_links": [],
+      "images": [],
+      "iframes": [],
+      "media": [],
+      "form_controls": [
+        {
+          "type": "search",
+          "id": null,
+          "has_label": false,
+          "aria_label": "Global search"
+        }
+      ],
+      "interactive_empty": {
+        "links_no_text": 0,
+        "buttons_no_text": 0
+      },
+      "noscript": {
+        "present": true,
+        "words": 14
+      },
+      "dates": {
+        "meta_published": null,
+        "meta_modified": null,
+        "visible_dates": [],
+        "header_last_modified": null
+      },
+      "contact_signals": {
+        "email": false,
+        "phone": null,
+        "postal_address": null,
+        "org_name_footer": null
+      },
+      "trigram_hash": "sha256:4944d9a479f23fe26127c0838a5f1543d4e20b934b67db14b6482aebed4882da"
+    }
+  ],
+  "rendered": [],
+  "links": {
+    "status": "ok",
+    "reason": null,
+    "checked_count": 20,
+    "results": [
+      {
+        "url": "https://substack.com/explore",
+        "http_status": 200,
+        "from_page": "https://substack.com/",
+        "anchor_text": "Explore"
+      },
+      {
+        "url": "https://substack.com/@harryjsisson?utm_source=substack-feed-item",
+        "http_status": 200,
+        "from_page": "https://substack.com/",
+        "anchor_text": ""
+      },
+      {
+        "url": "https://substack.com/@harryjsisson",
+        "http_status": 200,
+        "from_page": "https://substack.com/",
+        "anchor_text": "Harry Sisson"
+      },
+      {
+        "url": "https://substack.com/@harryjsisson/note/c-327800937",
+        "http_status": 200,
+        "from_page": "https://substack.com/",
+        "anchor_text": "Sep 2"
+      },
+      {
+        "url": "https://substack.com/@aaronparnas?utm_source=substack-feed-item",
+        "http_status": 200,
+        "from_page": "https://substack.com/",
+        "anchor_text": ""
+      },
+      {
+        "url": "https://substack.com/@aaronparnas",
+        "http_status": 200,
+        "from_page": "https://substack.com/",
+        "anchor_text": "Aaron Parnas"
+      },
+      {
+        "url": "https://substack.com/@aaronparnas/note/c-331088733",
+        "http_status": 200,
+        "from_page": "https://substack.com/",
+        "anchor_text": "4d"
+      },
+      {
+        "url": "https://substack.com/@sourjeshmukherjee?utm_source=substack-feed-item",
+        "http_status": 200,
+        "from_page": "https://substack.com/",
+        "anchor_text": ""
+      },
+      {
+        "url": "https://substack.com/@sourjeshmukherjee",
+        "http_status": 200,
+        "from_page": "https://substack.com/",
+        "anchor_text": "Sourjesh"
+      },
+      {
+        "url": "https://substack.com/@cb?utm_source=substack-feed-item",
+        "http_status": 200,
+        "from_page": "https://substack.com/",
+        "anchor_text": ""
+      },
+      {
+        "url": "https://substack.com/@cb",
+        "http_status": 200,
+        "from_page": "https://substack.com/",
+        "anchor_text": "Chris Best"
+      },
+      {
+        "url": "https://substack.com/@cb/note/c-334023462",
+        "http_status": 200,
+        "from_page": "https://substack.com/",
+        "anchor_text": "5h"
+      },
+      {
+        "url": "https://substack.com/@alyssavingan?utm_source=substack-feed-item",
+        "http_status": 200,
+        "from_page": "https://substack.com/",
+        "anchor_text": ""
+      },
+      {
+        "url": "https://substack.com/@alyssavingan",
+        "http_status": 200,
+        "from_page": "https://substack.com/",
+        "anchor_text": "Alyssa Vingan"
+      },
+      {
+        "url": "https://substack.com/@alyssavingan/note/c-334123857",
+        "http_status": 200,
+        "from_page": "https://substack.com/",
+        "anchor_text": "3h"
+      },
+      {
+        "url": "https://substack.com/",
+        "http_status": 200,
+        "from_page": "https://substack.com/topics/cookie-recipes",
+        "anchor_text": ""
+      },
+      {
+        "url": "https://substack.com/app?utm_source=menu-dropdown",
+        "http_status": 200,
+        "from_page": "https://substack.com/topics/cookie-recipes",
+        "anchor_text": "Substack App"
+      },
+      {
+        "url": "https://substack.com/explore?utm_source=menu-dropdown",
+        "http_status": 200,
+        "from_page": "https://substack.com/topics/cookie-recipes",
+        "anchor_text": "Discover"
+      },
+      {
+        "url": "https://substack.com/switch?utm_source=menu-dropdown",
+        "http_status": 200,
+        "from_page": "https://substack.com/topics/cookie-recipes",
+        "anchor_text": "Switch to Substack"
+      },
+      {
+        "url": "https://substack.com/going-paid?utm_source=menu-dropdown",
+        "http_status": 200,
+        "from_page": "https://substack.com/topics/cookie-recipes",
+        "anchor_text": "Go paid"
+      }
+    ],
+    "skipped": []
+  },
+  "anchors": {
+    "status": "ok",
+    "reason": null,
+    "declared": [],
+    "checked_count": 0,
+    "results": []
+  },
+  "budget": {
+    "status": "ok",
+    "reason": null,
+    "stages": [
+      {
+        "name": "resolve",
+        "budget_s": 10,
+        "actual_s": 1.0,
+        "abandoned": false,
+        "planned_items": null,
+        "completed_items": null
+      },
+      {
+        "name": "robots_discovery",
+        "budget_s": 15,
+        "actual_s": 4.6,
+        "abandoned": false,
+        "planned_items": 200,
+        "completed_items": 200
+      },
+      {
+        "name": "static_fetch",
+        "budget_s": 45,
+        "actual_s": 4.9,
+        "abandoned": false,
+        "planned_items": 6,
+        "completed_items": 6
+      },
+      {
+        "name": "render_pass",
+        "budget_s": 75,
+        "actual_s": 0.0,
+        "abandoned": true,
+        "planned_items": 0,
+        "completed_items": 0,
+        "reason": "no_headless_browser_tool"
+      },
+      {
+        "name": "internal_links",
+        "budget_s": 25,
+        "actual_s": 20.0,
+        "abandoned": false,
+        "planned_items": 20,
+        "completed_items": 20
+      },
+      {
+        "name": "offsite_anchors",
+        "budget_s": 20,
+        "actual_s": 0.0,
+        "abandoned": false,
+        "planned_items": 0,
+        "completed_items": 0
+      }
+    ],
+    "total_s": 30.5,
+    "cap_s": 300
+  }
+}

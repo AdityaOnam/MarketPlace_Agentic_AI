@@ -1,0 +1,2721 @@
+{
+  "schema_version": "1.0.0",
+  "site": {
+    "status": "ok",
+    "reason": null,
+    "input": "https://wix.com",
+    "canonical_host": "www.wix.com",
+    "origin": "https://www.wix.com",
+    "scheme": "https",
+    "redirect_chain": [
+      "https://wix.com"
+    ],
+    "tls_valid": true,
+    "archetype": "saas_marketing",
+    "archetype_confidence": 0.8
+  },
+  "robots": {
+    "status": "ok",
+    "reason": null,
+    "fetch_status": 200,
+    "body": "User-agent: *\nDisallow: /api/\nDisallow: /blogtemp\nDisallow: /wixblog\nDisallow: /bo/\nDisallow: /editor.jsp\nDisallow: /noflashhtml\nDisallow: /siteBackHtml\nDisallow: /wix/\nDisallow: /wixpress/\nDisallow: /wixdemo/\nDisallow: /wix-editor/\nDisallow: /editor2.jsp\nDisallow: /flash/\nDisallow: /flash-templates/\nDisallow: /website-template/view/flash/\nDisallow: /facebook-template/\nDisallow: /facebook/templates/\nDisallow: /website/templates/flash/\nDisallow: /html5/\nDisallow: /my-account\nDisallow: /blog/*sitemap.xml$\nDisallow: /velo/profile\nDisallow: /velo/forum/search\nDisallow: /velo/forum/main/comment\nDisallow: /*velo-pt/profile\nDisallow: /*velo-pt/forum/search\nDisallow: /*velo-pt/forum/main/comment\nDisallow: /app-market/search-result?query=\nDisallow: /despiration/testseo\nDisallow: /site-react-dropdown*\nDisallow: /soundcloud-tpa*\nDisallow: /*cacheKiller=\nDisallow: /*hubs_content\nDisallow: /*hubs_post\nDisallow: /*hubs_signup-cta\nDisallow: /lp-lang/mobilewebsite\nDisallow: /mystunningwebsites/\nDisallow: /dashboard\nDisallow: /_api/albums-node-server\nDisallow: /_partials/wix-vod\nDisallow: /designers/events/fullscreen-page\nDisallow: /photo-test-editor-x\nDisallow: /thunderbolt/\nDisallow: /meta-site/\nDisallow: /learn/search-results\nDisallow: /?criteria=\nDisallow: /blog/*/search-results?q\nDisallow: /blog/search-results?q\nDisallow: /experts-arena/\nDisallow: /createawebsite/\nDisallow: /website/templates*?screen=\nDisallow: /*?sort=\nDisallow: /marketplace/hire*?serviceIds=\nDisallow: /marketplace/hire*&serviceIds=\nDisallow: /marketplace/brief/\nDisallow: /wix-platform\nDisallow: /blog-temp-ru\nDisallow: /blog/search?*\nDisallow: */fullscreen-page\nDisallow: /wearepages\nDisallow: */laboratory/conductAllInScope\nDisallow: /studio/blog/*?filter=\nDisallow: /studio/academy/search-results\nDisallow: /studio/academy/search\nDisallow: /studio/blog/search-results?q\nDisallow: /studio/blog/*&filter=\nDisallow: /seo/learn/assets*?topic=\nDisallow: /seo/learn/assets*&topic=\nDisallow: /seo/learn/assets*?resource-type=\nDisallow: /seo/learn/assets*&resource-type= \nDisallow: /studio-tech-desgin\nDisallow: /_api/dealer-offer-events-service/proxy/v1/dealer-offer-events\nDisallow: /website/builder?storyId=\nDisallow: /studio-tech-design\nDisallow: /business-name-generator/list\nDisallow: /studio/templates?criteria\nDisallow: /_api/header-footer-service/content\nDisallow: /wixel/templates/search?\nDisallow: /wixel/templates/*?color\nDisallow: /wixel/templates/*?style\nDisallow: /wixel/templates/*?price\nDisallow: /wixel/templates/*?format\nDisallow: /wixel/templates/*?type\nDisallow: /_api/wix-code-app-registry-global/v1/public-code-config\nDisallow: /_api/wix-laboratory-server/laboratory/conductExperiment\nDisallow: /search\nDisallow: /marketplace/templates?sort=\n\nSitemap: https://www.wix.com/sitemap.xml\n\n# by wix.com",
+    "parse_ok": true,
+    "agents": {
+      "*": {
+        "class": "generic",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      }
+    },
+    "sitemap_declarations": [
+      "https://www.wix.com/sitemap.xml"
+    ]
+  },
+  "discovery": {
+    "status": "ok",
+    "reason": null,
+    "sitemap_found": true,
+    "sitemap_urls_count": 10290,
+    "inventory": [
+      {
+        "url": "https://www.wix.com/",
+        "page_type": "home",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/typeface/madefor",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/website/templates",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/website/design",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/landing-page-builder",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/ai-website-builder",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/features/main",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/wixel",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/ecommerce/website",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/portfolio-website",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/restaurant/website",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/start/blog",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/event/website",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/domains",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/free/web-hosting",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/domains/business-email",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/business/website",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/payments",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/pos",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/mobile/wix-app",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/headless",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/business-software/crm",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/scheduling-software",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/features/email-marketing",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/manage/analytics",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/logo/maker",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/tools/business-name-generator",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/tools",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/business-software",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/blog",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/explore/websites",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/marketplace",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/updates",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/blog/how-to-build-website-from-scratch-guide",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/plans",
+        "page_type": "pricing",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/studio",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/studio/enterprise",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/business-software/crm/lead-management",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/website/templates/html/online-store",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/website/templates/html/portfolio-cv/portfolios",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/website/templates/html/business",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/website/templates/html/one-page/landing-pages",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/website/templates/html/blog",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/website/templates/html/business/real-estate",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/website/templates/html/events/weddings",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/free/web-hosting/cloud-hosting",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/website-security",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/builder/no-code",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/builder/drag-and-drop",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/app-market",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/marketplace/hire/web-developer",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/ecommerce/online-store",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/domains/tld-list",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/about/us",
+        "page_type": "about",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/about/contact-us",
+        "page_type": "contact",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/domains/whois",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/domains/domain-name-search",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/app-builder",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/university",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/manage/privacy-security-hub",
+        "page_type": "legal",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/accessibility",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/abuse",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/channels",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/press-room/home",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/wix-ventures",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/about/terms-accessibility",
+        "page_type": "legal",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/about/patent-notice",
+        "page_type": "about",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/about/sitemap",
+        "page_type": "about",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/about/terms-of-use",
+        "page_type": "legal",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/about/privacy",
+        "page_type": "legal",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/playground",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/about/privacy/do-not-sell-my-personal-information",
+        "page_type": "legal",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/wixel-trends",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/website/templates/html/one-page",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/website/templates/html/portfolio-cv",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/website/templates/html/industrial",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/website/templates/html/health-wellness",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/website/templates/html/events",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/website/templates/html/education",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/website/templates/html/communities",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/website/templates/html/fashion-and-style",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/website/templates/html/beauty-and-hair",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/website/templates/html/design",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/website/templates/html/photography",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/website/templates/html/music",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/website/templates/html/creative-arts",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/website/templates/html/video",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/website/templates/html/restaurants-food",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/website/templates/html/travel-tourism",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/website/templates/html/blank",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/website/templates/html/new",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/website/templates/html/most-popular",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/website-template/view/html/3078",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/website-template/view/html/3141",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/website-template/view/html/wh-1059",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/website-template/view/html/3055",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/website/templates/html/communities/non-profit",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/blog/how-to-design-a-website",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/explore/websites/site/coco-gonser-photography",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/explore/websites/site/sonja-van-duelman",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/explore/websites/site/roee-ben-yehouda",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/explore/websites/site/hedof",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/explore/websites/site/dopple-press",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/explore/websites/site/lemontree-%2B-co",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/explore/websites/site/daniel-aristizabal",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/explore/websites/site/sharon-radisch",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/blog/web-design",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/marketplace/hire",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/contact",
+        "page_type": "contact",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/builder/one-page",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/blog/website-layouts",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/blog/website-color-schemes",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/blog/7-principles-of-design-websites",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/performance",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/website-template/view/html/wh-1005",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/website-template/view/html/wh-1383",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/website-template/view/html/wh-1453",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/website-template/view/html/wh-1038",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/website-template/view/html/wh-1165",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/website-template/view/html/wh-1223",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/website/templates/html/one-page/coming-soon",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/blog/landing-page-best-practices",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/blog/what-is-a-landing-page",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/blog/create-a-powerful-free-landing-page-in-under-an-hour",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/features/facebook-ads",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/features/social-media-management",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/blog/how-does-ai-work",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/blog/best-ai-website-builder",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/blog/how-to-design-a-website-with-ai",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/blog/how-long-does-it-take-to-build-a-website",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/blog/ai-writing-tools",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/localization/multilingual",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/site-reliability",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/features/crm",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/app-market/deepcrawl",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/ecommerce/sell/multichannel",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/ecommerce/launch/sales-tax",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/ecommerce/print-on-demand",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/ecommerce/dropshipping",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/photography/website",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/business/solutions/fitness-website",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/fitness-solution",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/website/templates/html/health-wellness/sports-fitness",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/hotels/website",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/website/templates/html/travel-tourism/hotels-and-b-n-b-s",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/studio/developers/web-development",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/wixel/ai-image-generator",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/wixel/ai-art-generator",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/wixel/video-maker",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/wixel/resume-builder",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/wixel/invitation-maker",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/wixel/presentation-maker",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/wixel/document-creator",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/wixel/photo-editor",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/wixel/photo-editor/background-remover",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/wixel/photo-editor/image-resizer",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/wixel/photo-editor/image-converter",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/wixel/photo-editor/image-cropper",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/wixel/photo-editor/image-enhancer",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/wixel/photo-editor/ai-image-extender",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/wixel/photo-editor/photo-filters",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/wixel/pdf-editor",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/wixel/pdf-converter",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/wixel/templates",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/wixel/pricing",
+        "page_type": "pricing",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/wixel/resources",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/wixel/form-builder",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/wixel/resources/how-to-edit-photos",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/wixel/resources/graphic-design-trends",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/wixel/resources/what-is-wixel",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/logo/maker/ai-logo-generator",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/wixel/colors/color-palette-generator",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/wixel/colors/color-wheel",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/wixel/about",
+        "page_type": "about",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/ecommerce/start/migrate",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/ecommerce/sell",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/ecommerce/sell/cross-border",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/ecommerce/manage",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/ecommerce/features",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/ecommerce/ecommerce-hosting",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/ecommerce/marketing",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/ecommerce/buy-now-pay-later",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/blog/explore/categories/ecommerce-101",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/website-template/view/html/2242",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/website-template/view/html/1701",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/website-template/view/html/2114",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/website-template/view/html/2517",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/website-template/view/html/3011",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/website-template/view/html/2905",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/website/templates/html/online-store/fashion-clothing",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/website-template/view/html/1739",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/website-template/view/html/1612",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/website-template/view/html/2860",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/website-template/view/html/wh-1097",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/website-template/view/html/2204",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/website-template/view/html/wh-1060",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/website/templates/html/online-store/electronics",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/website-template/view/html/1995",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/website-template/view/html/2745",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.wix.com/website-template/view/html/1895",
+        "page_type": "other",
+        "source": "sitemap"
+      }
+    ],
+    "sampled_static": [
+      "https://www.wix.com/",
+      "https://www.wix.com/about/patent-notice",
+      "https://www.wix.com/about/contact-us",
+      "https://www.wix.com/about/sitemap",
+      "https://www.wix.com/about/us",
+      "https://www.wix.com/wixel/about",
+      "https://www.wix.com/contact",
+      "https://www.wix.com/about/privacy",
+      "https://www.wix.com/about/privacy/do-not-sell-my-personal-information",
+      "https://www.wix.com/about/terms-accessibility",
+      "https://www.wix.com/about/terms-of-use",
+      "https://www.wix.com/abuse",
+      "https://www.wix.com/accessibility",
+      "https://www.wix.com/ai-website-builder",
+      "https://www.wix.com/app-builder",
+      "https://www.wix.com/plans",
+      "https://www.wix.com/wixel/pricing"
+    ],
+    "sampled_rendered": [],
+    "sampling_seed": "sha256:a733e7963d75cabf4309a29c88545c618b945e6f5dc896fe758f0f1ec4ac0cfc"
+  },
+  "pages": [
+    {
+      "url": "https://www.wix.com/",
+      "final_url": "https://www.wix.com/",
+      "status": "unavailable",
+      "reason": "http_429",
+      "http_status": 429,
+      "page_type": "home",
+      "headers": {},
+      "raw_html_bytes": 0,
+      "main_text": "",
+      "main_text_words": 0,
+      "extraction_ok": false,
+      "title": null,
+      "meta": {},
+      "lang": null,
+      "canonical": {},
+      "headings": [],
+      "landmarks": {},
+      "structured_data": {},
+      "links": [],
+      "outbound_profile_links": [],
+      "images": [],
+      "iframes": [],
+      "media": [],
+      "form_controls": [],
+      "interactive_empty": {},
+      "noscript": {
+        "present": false,
+        "words": 0
+      },
+      "dates": {},
+      "contact_signals": {},
+      "trigram_hash": null
+    },
+    {
+      "url": "https://www.wix.com/about/patent-notice",
+      "final_url": "https://www.wix.com/about/patent-notice",
+      "status": "ok",
+      "reason": null,
+      "http_status": 200,
+      "page_type": "about",
+      "headers": {
+        "content-type": "text/html; charset=UTF-8",
+        "link": "<https://static.parastorage.com/>; rel=preconnect; crossorigin, <https://static.parastorage.com/>; rel=preconnect, <https://static.wixstatic.com/>; rel=preconnect; crossorigin, <https://static.wixstatic.com/>; rel=preconnect, <https://siteassets.parastorage.com>; rel=preconnect; crossorigin",
+        "etag": "W/\"acbcc3e459bd13e534f6f3d0150c0a98\"",
+        "x-meta-site-is-wix-site": "1",
+        "content-language": "en-US",
+        "referrer-policy": "no-referrer-when-downgrade",
+        "age": "388238",
+        "x-cache-status": "HIT",
+        "x-wix-request-id": "1789073499.40675806731426",
+        "set-cookie": "sec-fetch-unsupported=1; Path=/; Secure; SameSite=Lax;",
+        "cache-control": "private,max-age=0,must-revalidate",
+        "strict-transport-security": "max-age=31536000",
+        "server": "Pepyaka",
+        "x-content-type-options": "nosniff",
+        "content-encoding": "gzip",
+        "accept-ranges": "bytes",
+        "date": "Thu, 10 Sep 2026 20:51:39 GMT",
+        "x-served-by": "cache-bom-vanm7210034-BOM",
+        "x-cache": "MISS",
+        "vary": "Accept-Encoding",
+        "server-timing": "cache;desc=hit, varnish;desc=hit_miss, dc;desc=fastly_ireland-phy_g",
+        "x-seen-by": "yvSunuo/8ld62ehjr5B7kA==,GilIRCy+Ky2nI9KZaDKzWLxkNjrXdwdgtu6E0yACibU=,7U7NzZSqfMgd9YnjHLtUa7xkNjrXdwdgtu6E0yACibU=,Ua1iSBCTq7qSXjmRCGE1N2lEd5W7YPz49Ai10OthQ3yTiTiwQmJTFbBNyn7U6HX3cHiHUYyEsNaO1DY5SvLvVFGtYkgQk6u6kl45kQhhNTcIUal+xzDstEMAqZDB09CO,2d58ifebGbosy5xc+FRallgZV/tHndSynlXLgqwIZjpcp00FUwIaR+8Lghepbeozml/7FTYq76RIHi43D+9zhVSvZ/H4eGfvlwNPvrSqzRA=,2UNV7KOq4oGjA5+PKsX47MT3AU7Fw0a1PXpOpt10u9IqUshVO4awhZVCZMTGn/DQ,2UNV7KOq4oGjA5+PKsX47GstmqHxrKnmh81/3y0oMXkqUshVO4awhZVCZMTGn/DQ",
+        "via": "1.1 google",
+        "glb-x-seen-by": "bS8wRlGzu0Hc+WrYuHB8QIg44yfcdCMJRkBoQ1h6Vjc=",
+        "alt-svc": "h3=\":443\"; ma=2592000",
+        "connection": "close",
+        "transfer-encoding": "chunked"
+      },
+      "raw_html_bytes": 419292,
+      "main_text": "Patent Notice One or more of the following patents or pending patent applications may apply to the following sites and to the features and services accessible via them: Site editing and operation (Wix Editor, Wix Studio, Editor X, ADI) IL221674, IL224835, IL225016, IL225079, IL227831, IL264984, IL241424, IL267674, IL241423, IL261830, IL247189, IL262068, IL256155, IL257254, IL248467, IL274565, US10185703, US10169307, US9513771, US10482630, US11010936, US10984185, US11361157, US10691873, US1154442, US9817804, US10459699, US11307750, US10146419, US11188509, US10824793, US11468143, US9747258, US2020/0175224, US2022/0309239, 2018/0011824, US2020/0117431, US2022/0236866, US2022/0083523, US2018/0032626, US2020/0401760, US2021 0049318, US2020/0151226, US2022/0197969, US10984177, US2021/0240916, US2021/0019006, US2021/0279915, AU2014229331, AU2020200349, AU2014229260, AU2018202241, AU2015216600, AU2019226189, AU2016276284, AU2020203136, AU2016299873, AU2018279309, AU2015254922, AU02020842, BR112015022792-9, ZL201480027894.1, ZL201480027948.4, ZL 201811414671.7, HK1220264, HK1221298, IDP000056405, IDP000058831, JP6433925, JP6744380, JP6978558, JP6419736, JP6730399, JP7059323, CA2904830, KR10-1953710, KR10-2007005, KR10-2207810, KR10-2347431,KR10-2402415, MX361586MY-170707-AMY-192602-A, US20230188966, US20230267162, US11971945, US20230273971, US20230334229, US20240086159, US20240126826, AU2022200633, IL274941, JP7420861, IL310457, 20240378378, 2024/0265061, JP7430743, US20240124403, US20240303877, US20240095297, AU2018319444, US20240256110, JP7437369, US20240202436, CA2945432, AU2022246464, AU2021258035, US20240160615, US20240289095, AU2022221498, JP7562612, CA3024078, US20240256628, AU2022206714, AU2020285704, AU2022235610, US20240289409, US20240320286, AU2018376913, JP7514376, JP7420911, AU2022246444, JP7546481, US12254060, US20250028896, US12346650, AU2023258422, US12373632, US12504870, JP2025072535, JP202500076, JP2025038904, IL317212, IL271366, IL271638, IL286519, EP3635587, IL301452, IL324178, US20250190513, JP2025134996, US20250036853, AU2020278255, US20260003773, US12131137, US12045563, US11928322, US12423221, US2025028896, IL-282652, US11989802 Automatic site generation (AI-based, ADI) IL228896, IL249806, IL254054, IL264494, IL240365, IL266949, IL245992, IL273052, US9436765, US10534818, US11113456, US10977427, US2021/0397777, US2021/0232647, US2015/008954, AU2014213614, AU2019283841, AU2014358700, BR11  2015 019003 0, CA2899872ZL 201480019592.X, ZL 201480074482.3, HK1215742, JP6335928, JP6515232, JP6900421, JP6506762, JP6746746, JP7032492, MX367103, MX359477, MY-179529-A, EA36433, IDP000063652, KR102251844, KR10-2361002, KR10-2433089, EP3593254, IL294180, US20230289521, US20230334222, US20230359689, FR3593254, CH3593254, DE3593254, GB3593254, ES3593254, BE3593254, US20260003586, US10073923, US10796075 Mobile site conversion, mobile sites, applications and App Market AU2014319964, AU2019202677, AU2016299874, CA2923580, ZL201480061637.XEA 33675, HK1221800, IL244515, IL257245, JP6482562, JP 6725714, JP 6953588, JP 7076451, KR10-2134309, KR10 2306149, KR10-2469977, MX362623, US10176154, US11087389, US10769231, US2020/0401648, US2019/0087392, US2021/0366035, AU2018319444, AU2021269367, AU2021205057, AU2022246464, US20240427832, IL271365, IL309121, US20240411980, US20240086159, JP2025090856, US12299421, US11698944, US9996566, US8321525, US8959175, US9137679, US9521516, US10117049, US10863303, US11039272, US10795526, US10509850, US9753911 Search engine optimization (SEO) US11314837, US2021-0200943, US2022/0229970, US2022/0245207, US20230051123, US20240124403, US20240152570, US12026216 Website design and system backend including eCommerce, Bookings, Events AU2015216608, AU2019219824, BR11 2016 018374 6, CA2938813, EP3105688, DE60 2015 059 173.9, IL247188, IL264170, MX359824, US9805134, US10540419, US11544347, US10733078, US11119897, US2021/0397541, US20230067821, IL288376, US20230359814, US20230359814, US20240028310, US20240220710, US20240220706, US11947621, US10209966, US11449573 Payments platform and integration including eCommerce IL256001, US10558998, US11494800, US20230091174, US20240152570, US20240296199, IL322385, BR112019001343 Velo editing and operation US10331420, US10379820, US10719300, US10326821, US10397305, US11106860, US10915300, US10521198, US2021/0397776, AU2021202623 Fonts and Design patents GBD6116621, GBD6116622, GBD6116623, GBD6116624, USD879120, USD972,632, EU008421408-0001/0004, IL D 69666- 69671 AI Content Evaluation and Relevance System US12271438, IL318321, US20250252124 AI-Based Layout Optimization US20250053392, IL324070, JP2025134931, IL323192, IL273456, US12099799 Design-to-Code Integration Tools US20260023545, WO2026003845, US2026003586 Third-Party Integration & Communication IL292474, IL309008, US11989253 Dynamic Optimization US11275815, IL272771, EP4643244, US12038827, US12112120, US2026003773 Additional patents US2022/0261816, US2022/0357931, US9519685, US10275499, US11151145, US9535996, US10417294, US11301528, US2022/0035827, US2022/0237247, US10028076, US11039272, US11540103, US11449661, US10789412, US20240160615, US20240338304, AU2020284731, JP7562571, US20240126826, US20240386197, US20240236616, US20240303049, US20240211528, US20240028310, EP4643529",
+      "main_text_words": 531,
+      "extraction_ok": true,
+      "title": "Patent Notice | Wix.com",
+      "meta": {
+        "viewport": "width=device-width, initial-scale=1",
+        "description": "See all the US patents and pending patent applications that apply to Wix.com, DeviantArt.com and Flok.com. ",
+        "robots": null
+      },
+      "lang": "en",
+      "canonical": {
+        "href": "https://www.wix.com/about/patent-notice",
+        "self_referential": true,
+        "cross_domain": false
+      },
+      "headings": [
+        {
+          "level": 1,
+          "text": "Patent Notice",
+          "order": 0
+        },
+        {
+          "level": 3,
+          "text": "Site editing and operation (Wix Editor, Wix Studio, Editor X, ADI)",
+          "order": 1
+        },
+        {
+          "level": 3,
+          "text": "Automatic site generation (AI-based, ADI)",
+          "order": 2
+        },
+        {
+          "level": 3,
+          "text": "Mobile site conversion, mobile sites, applications and App Market",
+          "order": 3
+        },
+        {
+          "level": 3,
+          "text": "Search engine optimization (SEO)",
+          "order": 4
+        },
+        {
+          "level": 3,
+          "text": "Website design and system backend including eCommerce, Bookings, Events",
+          "order": 5
+        },
+        {
+          "level": 3,
+          "text": "Payments platform and integration including eCommerce",
+          "order": 6
+        },
+        {
+          "level": 3,
+          "text": "Velo editing and operation",
+          "order": 7
+        },
+        {
+          "level": 3,
+          "text": "Fonts and Design patents",
+          "order": 8
+        },
+        {
+          "level": 3,
+          "text": "AI Content Evaluation and Relevance System",
+          "order": 9
+        },
+        {
+          "level": 3,
+          "text": "AI-Based Layout Optimization",
+          "order": 10
+        },
+        {
+          "level": 3,
+          "text": "Design-to-Code Integration Tools",
+          "order": 11
+        },
+        {
+          "level": 3,
+          "text": "Third-Party Integration & Communication",
+          "order": 12
+        },
+        {
+          "level": 3,
+          "text": "Dynamic Optimization",
+          "order": 13
+        },
+        {
+          "level": 3,
+          "text": "Additional patents",
+          "order": 14
+        }
+      ],
+      "landmarks": {
+        "main": 1,
+        "nav": 2,
+        "header": 2,
+        "footer": 2
+      },
+      "structured_data": {
+        "json_ld": [],
+        "microdata_types": [],
+        "rdfa_types": []
+      },
+      "links": [
+        {
+          "href": "https://www.wix.com",
+          "text": "",
+          "rel": null,
+          "internal": true,
+          "aria_label": "Wix logo, homepage"
+        },
+        {
+          "href": "https://www.wix.com/website/templates",
+          "text": "Website templates",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.wix.com/website/design",
+          "text": "Website design",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.wix.com/landing-page-builder",
+          "text": "Landing page builder",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.wix.com/ai-website-builder",
+          "text": "AI website builder",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.wix.com/features/main",
+          "text": "AI features",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.wix.com/wixel",
+          "text": "Wixel",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.wix.com/ecommerce/website",
+          "text": "eCommerce site",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.wix.com/portfolio-website",
+          "text": "Online portfolio",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.wix.com/restaurant/website",
+          "text": "Restaurant website",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.wix.com/start/blog",
+          "text": "Blog website",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.wix.com/event/website",
+          "text": "Event website",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.wix.com/domains",
+          "text": "Domain registration",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.wix.com/free/web-hosting",
+          "text": "Web hosting",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.wix.com/domains/business-email",
+          "text": "Business email",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.wix.com/business/website",
+          "text": "Business website → Launch a professional site for any type of business.",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.wix.com/payments",
+          "text": "Payment solutions",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.wix.com/pos",
+          "text": "POS",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.wix.com/mobile/wix-app",
+          "text": "Mobile app",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.wix.com/headless",
+          "text": "Wix Headless",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.wix.com/business-software/crm",
+          "text": "CRM system",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.wix.com/scheduling-software",
+          "text": "Scheduling system",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.wix.com/features/email-marketing",
+          "text": "Email marketing",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.wix.com/seo",
+          "text": "SEO tools",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.wix.com/manage/analytics",
+          "text": "Website analytics",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.wix.com/logo/maker",
+          "text": "Logo Maker",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.wix.com/tools/business-name-generator",
+          "text": "Business Name Generator",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.wix.com/tools",
+          "text": "More free tools",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.wix.com/business-software",
+          "text": "Business management tools → Explore all business management and software features.",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.wix.com/blog",
+          "text": "Wix Blog",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.wix.com/explore/websites",
+          "text": "Web design inspiration",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://support.wix.com/en",
+          "text": "Help Center",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.wix.com/marketplace",
+          "text": "Hire a professional",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.wix.com/updates",
+          "text": "Releases & updates",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.wix.com/blog/how-to-build-website-from-scratch-guide",
+          "text": "Learn how to build a website →",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.wix.com/domains",
+          "text": "Domains",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.wix.com/plans",
+          "text": "Pricing",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.wix.com/studio",
+          "text": "Wix Studio",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.wix.com/studio/enterprise",
+          "text": "Enterprise",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.wix.com",
+          "text": "",
+          "rel": null,
+          "internal": true,
+          "aria_label": "Wix logo, homepage"
+        },
+        {
+          "href": "https://www.wix.com/about/us",
+          "text": "About",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.wix.com/about/contact-us",
+          "text": "Contact Us",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.facebook.com/wix",
+          "text": "",
+          "rel": null,
+          "internal": false,
+          "aria_label": "facebook"
+        },
+        {
+          "href": "https://www.youtube.com/user/Wix",
+          "text": "",
+          "rel": null,
+          "internal": false,
+          "aria_label": "youtube"
+        },
+        {
+          "href": "https://www.instagram.com/wix",
+          "text": "",
+          "rel": null,
+          "internal": false,
+          "aria_label": "instagram"
+        },
+        {
+          "href": "https://www.tiktok.com/@wix",
+          "text": "",
+          "rel": null,
+          "internal": false,
+          "aria_label": "tiktok"
+        },
+        {
+          "href": "https://www.pinterest.com/wixcom/",
+          "text": "",
+          "rel": null,
+          "internal": false,
+          "aria_label": "pinterest"
+        },
+        {
+          "href": "https://x.com/wix",
+          "text": "",
+          "rel": null,
+          "internal": false,
+          "aria_label": "twitter"
+        },
+        {
+          "href": "https://www.linkedin.com/company/wix-com?trk=biz-companies-cym",
+          "text": "",
+          "rel": null,
+          "internal": false,
+          "aria_label": "linkedin"
+        },
+        {
+          "href": "https://www.wix.com",
+          "text": "Website Builder",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.wix.com/ai-website-builder",
+          "text": "AI Website Builder",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.wix.com/website/templates",
+          "text": "Website Templates",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.wix.com/website/design",
+          "text": "Website Design",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.wix.com/free/web-hosting",
+          "text": "Web Hosting",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.wix.com/landing-page-builder",
+          "text": "Landing Page Builder",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.wix.com/domains",
+          "text": "Domain Registration",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.wix.com/domains/whois",
+          "text": "WHOIS Lookup",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.wix.com/domains/domain-name-search",
+          "text": "Domain Name Search",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.wix.com/domains/tld-list",
+          "text": "TLD List",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.wix.com/wixel",
+          "text": "Wixel",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.wix.com/studio",
+          "text": "Wix Studio",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.wix.com/app-builder",
+          "text": "Mobile App Builder",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.wix.com/business/website",
+          "text": "Business website",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.wix.com/ecommerce/online-store",
+          "text": "Online Store Builder",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.wix.com/ecommerce/website",
+          "text": "eCommerce Website",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.wix.com/portfolio-website",
+          "text": "Portfolio Website",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.wix.com/start/blog",
+          "text": "Blog Website",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.wix.com/business-software",
+          "text": "Business Software",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.wix.com/domains/business-email",
+          "text": "Business email",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.wix.com/tools",
+          "text": "Free Business Tools",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.wix.com/pos",
+          "text": "Point of Sale",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.wix.com/scheduling-software",
+          "text": "Online Booking",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.wix.com/logo/maker",
+          "text": "Logo Maker",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.wix.com/university",
+          "text": "Wix University",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.wix.com/blog",
+          "text": "Wix Blog",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.wix.com/manage/privacy-security-hub",
+          "text": "Privacy and Security Hub",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.wix.com/seo/learn",
+          "text": "SEO Learning Hub",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.wix.com/features/main",
+          "text": "Wix Website Features",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.wix.com/app-market",
+          "text": "App Market",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.wix.com/accessibility",
+          "text": "Website Accessibility",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://support.wix.com/en",
+          "text": "Help Center",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.wix.com/marketplace",
+          "text": "Hire a Professional",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.wix.com/abuse",
+          "text": "Report Abuse",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://status.wix.com",
+          "text": "System Status",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.wix.com/channels",
+          "text": "Channel Partnerships",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.wix.com/press-room/home",
+          "text": "Press & Media",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://investors.wix.com",
+          "text": "Investor Relations",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.wix.com/wix-ventures",
+          "text": "Wix Ventures",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.wix.com/about/terms-accessibility",
+          "text": "Accessibility Statement",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.wix.com/about/patent-notice",
+          "text": "Patent Notice",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.wix.com/about/sitemap",
+          "text": "Sitemap",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://careers.wix.com",
+          "text": "Careers",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.wix.com/about/terms-of-use",
+          "text": "Terms of Use",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.wix.com/about/privacy",
+          "text": "Privacy Policy",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        }
+      ],
+      "outbound_profile_links": [
+        "https://www.facebook.com/wix",
+        "https://www.youtube.com/user/Wix",
+        "https://www.instagram.com/wix",
+        "https://www.tiktok.com/@wix",
+        "https://www.pinterest.com/wixcom/",
+        "https://x.com/wix",
+        "https://www.linkedin.com/company/wix-com?trk=biz-companies-cym"
+      ],
+      "images": [
+        {
+          "src": "https://static.wixstatic.com/media/7e521c_bba5d83a173248a0bc003294fb586b7b~mv2.jpg",
+          "alt": "how to create a website",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        }
+      ],
+      "iframes": [],
+      "media": [],
+      "form_controls": [],
+      "interactive_empty": {
+        "links_no_text": 0,
+        "buttons_no_text": 0
+      },
+      "noscript": {
+        "present": false,
+        "words": 0
+      },
+      "dates": {
+        "meta_published": null,
+        "meta_modified": null,
+        "visible_dates": [],
+        "header_last_modified": null
+      },
+      "contact_signals": {
+        "email": false,
+        "phone": "10185703",
+        "postal_address": null,
+        "org_name_footer": null
+      },
+      "trigram_hash": "sha256:cac92375ed51d945ea7d1532b9f0f9466fd6bd671114e54325ca2b272cbcdb05"
+    },
+    {
+      "url": "https://www.wix.com/about/contact-us",
+      "final_url": "https://www.wix.com/about/contact-us",
+      "status": "unavailable",
+      "reason": "http_429",
+      "http_status": 429,
+      "page_type": "contact",
+      "headers": {},
+      "raw_html_bytes": 0,
+      "main_text": "",
+      "main_text_words": 0,
+      "extraction_ok": false,
+      "title": null,
+      "meta": {},
+      "lang": null,
+      "canonical": {},
+      "headings": [],
+      "landmarks": {},
+      "structured_data": {},
+      "links": [],
+      "outbound_profile_links": [],
+      "images": [],
+      "iframes": [],
+      "media": [],
+      "form_controls": [],
+      "interactive_empty": {},
+      "noscript": {
+        "present": false,
+        "words": 0
+      },
+      "dates": {},
+      "contact_signals": {},
+      "trigram_hash": null
+    },
+    {
+      "url": "https://www.wix.com/about/sitemap",
+      "final_url": "https://www.wix.com/about/sitemap",
+      "status": "unavailable",
+      "reason": "http_429",
+      "http_status": 429,
+      "page_type": "about",
+      "headers": {},
+      "raw_html_bytes": 0,
+      "main_text": "",
+      "main_text_words": 0,
+      "extraction_ok": false,
+      "title": null,
+      "meta": {},
+      "lang": null,
+      "canonical": {},
+      "headings": [],
+      "landmarks": {},
+      "structured_data": {},
+      "links": [],
+      "outbound_profile_links": [],
+      "images": [],
+      "iframes": [],
+      "media": [],
+      "form_controls": [],
+      "interactive_empty": {},
+      "noscript": {
+        "present": false,
+        "words": 0
+      },
+      "dates": {},
+      "contact_signals": {},
+      "trigram_hash": null
+    },
+    {
+      "url": "https://www.wix.com/about/us",
+      "final_url": "https://www.wix.com/about/us",
+      "status": "unavailable",
+      "reason": "http_429",
+      "http_status": 429,
+      "page_type": "about",
+      "headers": {},
+      "raw_html_bytes": 0,
+      "main_text": "",
+      "main_text_words": 0,
+      "extraction_ok": false,
+      "title": null,
+      "meta": {},
+      "lang": null,
+      "canonical": {},
+      "headings": [],
+      "landmarks": {},
+      "structured_data": {},
+      "links": [],
+      "outbound_profile_links": [],
+      "images": [],
+      "iframes": [],
+      "media": [],
+      "form_controls": [],
+      "interactive_empty": {},
+      "noscript": {
+        "present": false,
+        "words": 0
+      },
+      "dates": {},
+      "contact_signals": {},
+      "trigram_hash": null
+    },
+    {
+      "url": "https://www.wix.com/wixel/about",
+      "final_url": "https://www.wix.com/wixel/about",
+      "status": "unavailable",
+      "reason": "http_429",
+      "http_status": 429,
+      "page_type": "about",
+      "headers": {},
+      "raw_html_bytes": 0,
+      "main_text": "",
+      "main_text_words": 0,
+      "extraction_ok": false,
+      "title": null,
+      "meta": {},
+      "lang": null,
+      "canonical": {},
+      "headings": [],
+      "landmarks": {},
+      "structured_data": {},
+      "links": [],
+      "outbound_profile_links": [],
+      "images": [],
+      "iframes": [],
+      "media": [],
+      "form_controls": [],
+      "interactive_empty": {},
+      "noscript": {
+        "present": false,
+        "words": 0
+      },
+      "dates": {},
+      "contact_signals": {},
+      "trigram_hash": null
+    },
+    {
+      "url": "https://www.wix.com/contact",
+      "final_url": "https://www.wix.com/contact",
+      "status": "unavailable",
+      "reason": "http_429",
+      "http_status": 429,
+      "page_type": "contact",
+      "headers": {},
+      "raw_html_bytes": 0,
+      "main_text": "",
+      "main_text_words": 0,
+      "extraction_ok": false,
+      "title": null,
+      "meta": {},
+      "lang": null,
+      "canonical": {},
+      "headings": [],
+      "landmarks": {},
+      "structured_data": {},
+      "links": [],
+      "outbound_profile_links": [],
+      "images": [],
+      "iframes": [],
+      "media": [],
+      "form_controls": [],
+      "interactive_empty": {},
+      "noscript": {
+        "present": false,
+        "words": 0
+      },
+      "dates": {},
+      "contact_signals": {},
+      "trigram_hash": null
+    },
+    {
+      "url": "https://www.wix.com/about/privacy",
+      "final_url": "https://www.wix.com/about/privacy",
+      "status": "unavailable",
+      "reason": "http_429",
+      "http_status": 429,
+      "page_type": "legal",
+      "headers": {},
+      "raw_html_bytes": 0,
+      "main_text": "",
+      "main_text_words": 0,
+      "extraction_ok": false,
+      "title": null,
+      "meta": {},
+      "lang": null,
+      "canonical": {},
+      "headings": [],
+      "landmarks": {},
+      "structured_data": {},
+      "links": [],
+      "outbound_profile_links": [],
+      "images": [],
+      "iframes": [],
+      "media": [],
+      "form_controls": [],
+      "interactive_empty": {},
+      "noscript": {
+        "present": false,
+        "words": 0
+      },
+      "dates": {},
+      "contact_signals": {},
+      "trigram_hash": null
+    },
+    {
+      "url": "https://www.wix.com/about/privacy/do-not-sell-my-personal-information",
+      "final_url": "https://www.wix.com/about/privacy/do-not-sell-my-personal-information",
+      "status": "unavailable",
+      "reason": "http_429",
+      "http_status": 429,
+      "page_type": "legal",
+      "headers": {},
+      "raw_html_bytes": 0,
+      "main_text": "",
+      "main_text_words": 0,
+      "extraction_ok": false,
+      "title": null,
+      "meta": {},
+      "lang": null,
+      "canonical": {},
+      "headings": [],
+      "landmarks": {},
+      "structured_data": {},
+      "links": [],
+      "outbound_profile_links": [],
+      "images": [],
+      "iframes": [],
+      "media": [],
+      "form_controls": [],
+      "interactive_empty": {},
+      "noscript": {
+        "present": false,
+        "words": 0
+      },
+      "dates": {},
+      "contact_signals": {},
+      "trigram_hash": null
+    },
+    {
+      "url": "https://www.wix.com/about/terms-accessibility",
+      "final_url": "https://www.wix.com/about/terms-accessibility",
+      "status": "unavailable",
+      "reason": "http_429",
+      "http_status": 429,
+      "page_type": "legal",
+      "headers": {},
+      "raw_html_bytes": 0,
+      "main_text": "",
+      "main_text_words": 0,
+      "extraction_ok": false,
+      "title": null,
+      "meta": {},
+      "lang": null,
+      "canonical": {},
+      "headings": [],
+      "landmarks": {},
+      "structured_data": {},
+      "links": [],
+      "outbound_profile_links": [],
+      "images": [],
+      "iframes": [],
+      "media": [],
+      "form_controls": [],
+      "interactive_empty": {},
+      "noscript": {
+        "present": false,
+        "words": 0
+      },
+      "dates": {},
+      "contact_signals": {},
+      "trigram_hash": null
+    },
+    {
+      "url": "https://www.wix.com/about/terms-of-use",
+      "final_url": "https://www.wix.com/about/terms-of-use",
+      "status": "unavailable",
+      "reason": "http_429",
+      "http_status": 429,
+      "page_type": "legal",
+      "headers": {},
+      "raw_html_bytes": 0,
+      "main_text": "",
+      "main_text_words": 0,
+      "extraction_ok": false,
+      "title": null,
+      "meta": {},
+      "lang": null,
+      "canonical": {},
+      "headings": [],
+      "landmarks": {},
+      "structured_data": {},
+      "links": [],
+      "outbound_profile_links": [],
+      "images": [],
+      "iframes": [],
+      "media": [],
+      "form_controls": [],
+      "interactive_empty": {},
+      "noscript": {
+        "present": false,
+        "words": 0
+      },
+      "dates": {},
+      "contact_signals": {},
+      "trigram_hash": null
+    },
+    {
+      "url": "https://www.wix.com/abuse",
+      "final_url": "https://www.wix.com/abuse",
+      "status": "unavailable",
+      "reason": "http_429",
+      "http_status": 429,
+      "page_type": "other",
+      "headers": {},
+      "raw_html_bytes": 0,
+      "main_text": "",
+      "main_text_words": 0,
+      "extraction_ok": false,
+      "title": null,
+      "meta": {},
+      "lang": null,
+      "canonical": {},
+      "headings": [],
+      "landmarks": {},
+      "structured_data": {},
+      "links": [],
+      "outbound_profile_links": [],
+      "images": [],
+      "iframes": [],
+      "media": [],
+      "form_controls": [],
+      "interactive_empty": {},
+      "noscript": {
+        "present": false,
+        "words": 0
+      },
+      "dates": {},
+      "contact_signals": {},
+      "trigram_hash": null
+    },
+    {
+      "url": "https://www.wix.com/accessibility",
+      "final_url": "https://www.wix.com/accessibility",
+      "status": "unavailable",
+      "reason": "http_429",
+      "http_status": 429,
+      "page_type": "other",
+      "headers": {},
+      "raw_html_bytes": 0,
+      "main_text": "",
+      "main_text_words": 0,
+      "extraction_ok": false,
+      "title": null,
+      "meta": {},
+      "lang": null,
+      "canonical": {},
+      "headings": [],
+      "landmarks": {},
+      "structured_data": {},
+      "links": [],
+      "outbound_profile_links": [],
+      "images": [],
+      "iframes": [],
+      "media": [],
+      "form_controls": [],
+      "interactive_empty": {},
+      "noscript": {
+        "present": false,
+        "words": 0
+      },
+      "dates": {},
+      "contact_signals": {},
+      "trigram_hash": null
+    },
+    {
+      "url": "https://www.wix.com/ai-website-builder",
+      "final_url": "https://www.wix.com/ai-website-builder",
+      "status": "unavailable",
+      "reason": "http_429",
+      "http_status": 429,
+      "page_type": "other",
+      "headers": {},
+      "raw_html_bytes": 0,
+      "main_text": "",
+      "main_text_words": 0,
+      "extraction_ok": false,
+      "title": null,
+      "meta": {},
+      "lang": null,
+      "canonical": {},
+      "headings": [],
+      "landmarks": {},
+      "structured_data": {},
+      "links": [],
+      "outbound_profile_links": [],
+      "images": [],
+      "iframes": [],
+      "media": [],
+      "form_controls": [],
+      "interactive_empty": {},
+      "noscript": {
+        "present": false,
+        "words": 0
+      },
+      "dates": {},
+      "contact_signals": {},
+      "trigram_hash": null
+    },
+    {
+      "url": "https://www.wix.com/app-builder",
+      "final_url": "https://www.wix.com/app-builder",
+      "status": "unavailable",
+      "reason": "http_429",
+      "http_status": 429,
+      "page_type": "other",
+      "headers": {},
+      "raw_html_bytes": 0,
+      "main_text": "",
+      "main_text_words": 0,
+      "extraction_ok": false,
+      "title": null,
+      "meta": {},
+      "lang": null,
+      "canonical": {},
+      "headings": [],
+      "landmarks": {},
+      "structured_data": {},
+      "links": [],
+      "outbound_profile_links": [],
+      "images": [],
+      "iframes": [],
+      "media": [],
+      "form_controls": [],
+      "interactive_empty": {},
+      "noscript": {
+        "present": false,
+        "words": 0
+      },
+      "dates": {},
+      "contact_signals": {},
+      "trigram_hash": null
+    },
+    {
+      "url": "https://www.wix.com/plans",
+      "final_url": "https://www.wix.com/plans",
+      "status": "unavailable",
+      "reason": "http_429",
+      "http_status": 429,
+      "page_type": "pricing",
+      "headers": {},
+      "raw_html_bytes": 0,
+      "main_text": "",
+      "main_text_words": 0,
+      "extraction_ok": false,
+      "title": null,
+      "meta": {},
+      "lang": null,
+      "canonical": {},
+      "headings": [],
+      "landmarks": {},
+      "structured_data": {},
+      "links": [],
+      "outbound_profile_links": [],
+      "images": [],
+      "iframes": [],
+      "media": [],
+      "form_controls": [],
+      "interactive_empty": {},
+      "noscript": {
+        "present": false,
+        "words": 0
+      },
+      "dates": {},
+      "contact_signals": {},
+      "trigram_hash": null
+    },
+    {
+      "url": "https://www.wix.com/wixel/pricing",
+      "final_url": "https://www.wix.com/wixel/pricing",
+      "status": "unavailable",
+      "reason": "http_429",
+      "http_status": 429,
+      "page_type": "pricing",
+      "headers": {},
+      "raw_html_bytes": 0,
+      "main_text": "",
+      "main_text_words": 0,
+      "extraction_ok": false,
+      "title": null,
+      "meta": {},
+      "lang": null,
+      "canonical": {},
+      "headings": [],
+      "landmarks": {},
+      "structured_data": {},
+      "links": [],
+      "outbound_profile_links": [],
+      "images": [],
+      "iframes": [],
+      "media": [],
+      "form_controls": [],
+      "interactive_empty": {},
+      "noscript": {
+        "present": false,
+        "words": 0
+      },
+      "dates": {},
+      "contact_signals": {},
+      "trigram_hash": null
+    }
+  ],
+  "rendered": [],
+  "links": {
+    "status": "ok",
+    "reason": null,
+    "checked_count": 20,
+    "results": [
+      {
+        "url": "https://www.wix.com/",
+        "http_status": 429,
+        "from_page": "https://www.wix.com/about/patent-notice",
+        "anchor_text": ""
+      },
+      {
+        "url": "https://www.wix.com/website/templates",
+        "http_status": 429,
+        "from_page": "https://www.wix.com/about/patent-notice",
+        "anchor_text": "Website templates"
+      },
+      {
+        "url": "https://www.wix.com/website/design",
+        "http_status": 429,
+        "from_page": "https://www.wix.com/about/patent-notice",
+        "anchor_text": "Website design"
+      },
+      {
+        "url": "https://www.wix.com/landing-page-builder",
+        "http_status": 429,
+        "from_page": "https://www.wix.com/about/patent-notice",
+        "anchor_text": "Landing page builder"
+      },
+      {
+        "url": "https://www.wix.com/ai-website-builder",
+        "http_status": 429,
+        "from_page": "https://www.wix.com/about/patent-notice",
+        "anchor_text": "AI website builder"
+      },
+      {
+        "url": "https://www.wix.com/features/main",
+        "http_status": 429,
+        "from_page": "https://www.wix.com/about/patent-notice",
+        "anchor_text": "AI features"
+      },
+      {
+        "url": "https://www.wix.com/wixel",
+        "http_status": 429,
+        "from_page": "https://www.wix.com/about/patent-notice",
+        "anchor_text": "Wixel"
+      },
+      {
+        "url": "https://www.wix.com/ecommerce/website",
+        "http_status": 429,
+        "from_page": "https://www.wix.com/about/patent-notice",
+        "anchor_text": "eCommerce site"
+      },
+      {
+        "url": "https://www.wix.com/portfolio-website",
+        "http_status": 429,
+        "from_page": "https://www.wix.com/about/patent-notice",
+        "anchor_text": "Online portfolio"
+      },
+      {
+        "url": "https://www.wix.com/restaurant/website",
+        "http_status": 429,
+        "from_page": "https://www.wix.com/about/patent-notice",
+        "anchor_text": "Restaurant website"
+      },
+      {
+        "url": "https://www.wix.com/start/blog",
+        "http_status": 429,
+        "from_page": "https://www.wix.com/about/patent-notice",
+        "anchor_text": "Blog website"
+      },
+      {
+        "url": "https://www.wix.com/event/website",
+        "http_status": 429,
+        "from_page": "https://www.wix.com/about/patent-notice",
+        "anchor_text": "Event website"
+      },
+      {
+        "url": "https://www.wix.com/domains",
+        "http_status": 429,
+        "from_page": "https://www.wix.com/about/patent-notice",
+        "anchor_text": "Domain registration"
+      },
+      {
+        "url": "https://www.wix.com/free/web-hosting",
+        "http_status": 429,
+        "from_page": "https://www.wix.com/about/patent-notice",
+        "anchor_text": "Web hosting"
+      },
+      {
+        "url": "https://www.wix.com/domains/business-email",
+        "http_status": 429,
+        "from_page": "https://www.wix.com/about/patent-notice",
+        "anchor_text": "Business email"
+      },
+      {
+        "url": "https://www.wix.com/business/website",
+        "http_status": 429,
+        "from_page": "https://www.wix.com/about/patent-notice",
+        "anchor_text": "Business website → Launch a professional site for any type of business."
+      },
+      {
+        "url": "https://www.wix.com/payments",
+        "http_status": 429,
+        "from_page": "https://www.wix.com/about/patent-notice",
+        "anchor_text": "Payment solutions"
+      },
+      {
+        "url": "https://www.wix.com/pos",
+        "http_status": 429,
+        "from_page": "https://www.wix.com/about/patent-notice",
+        "anchor_text": "POS"
+      },
+      {
+        "url": "https://www.wix.com/mobile/wix-app",
+        "http_status": 429,
+        "from_page": "https://www.wix.com/about/patent-notice",
+        "anchor_text": "Mobile app"
+      },
+      {
+        "url": "https://www.wix.com/headless",
+        "http_status": 429,
+        "from_page": "https://www.wix.com/about/patent-notice",
+        "anchor_text": "Wix Headless"
+      }
+    ],
+    "skipped": []
+  },
+  "anchors": {
+    "status": "ok",
+    "reason": null,
+    "declared": [
+      {
+        "url": "https://www.facebook.com/wix",
+        "source": "footer_profile_link",
+        "host": "www.facebook.com"
+      },
+      {
+        "url": "https://www.youtube.com/user/Wix",
+        "source": "footer_profile_link",
+        "host": "www.youtube.com"
+      },
+      {
+        "url": "https://www.instagram.com/wix",
+        "source": "footer_profile_link",
+        "host": "www.instagram.com"
+      },
+      {
+        "url": "https://www.tiktok.com/@wix",
+        "source": "footer_profile_link",
+        "host": "www.tiktok.com"
+      },
+      {
+        "url": "https://www.pinterest.com/wixcom/",
+        "source": "footer_profile_link",
+        "host": "www.pinterest.com"
+      },
+      {
+        "url": "https://x.com/wix",
+        "source": "footer_profile_link",
+        "host": "x.com"
+      },
+      {
+        "url": "https://www.linkedin.com/company/wix-com?trk=biz-companies-cym",
+        "source": "footer_profile_link",
+        "host": "www.linkedin.com"
+      }
+    ],
+    "checked_count": 7,
+    "results": [
+      {
+        "url": "https://www.facebook.com/wix",
+        "http_status": 200,
+        "resolved": true
+      },
+      {
+        "url": "https://www.youtube.com/user/Wix",
+        "http_status": 200,
+        "resolved": true
+      },
+      {
+        "url": "https://www.instagram.com/wix",
+        "http_status": 200,
+        "resolved": true
+      },
+      {
+        "url": "https://www.tiktok.com/@wix",
+        "http_status": 302,
+        "resolved": true
+      },
+      {
+        "url": "https://www.pinterest.com/wixcom/",
+        "http_status": 200,
+        "resolved": true
+      },
+      {
+        "url": "https://x.com/wix",
+        "http_status": 200,
+        "resolved": true
+      },
+      {
+        "url": "https://www.linkedin.com/company/wix-com?trk=biz-companies-cym",
+        "http_status": 200,
+        "resolved": true
+      }
+    ]
+  },
+  "budget": {
+    "status": "ok",
+    "reason": null,
+    "stages": [
+      {
+        "name": "resolve",
+        "budget_s": 10,
+        "actual_s": 1.9,
+        "abandoned": false,
+        "planned_items": null,
+        "completed_items": null
+      },
+      {
+        "name": "robots_discovery",
+        "budget_s": 15,
+        "actual_s": 2.2,
+        "abandoned": false,
+        "planned_items": 200,
+        "completed_items": 200
+      },
+      {
+        "name": "static_fetch",
+        "budget_s": 45,
+        "actual_s": 16.4,
+        "abandoned": false,
+        "planned_items": 17,
+        "completed_items": 1
+      },
+      {
+        "name": "render_pass",
+        "budget_s": 75,
+        "actual_s": 0.0,
+        "abandoned": true,
+        "planned_items": 0,
+        "completed_items": 0,
+        "reason": "no_headless_browser_tool"
+      },
+      {
+        "name": "internal_links",
+        "budget_s": 25,
+        "actual_s": 20.0,
+        "abandoned": false,
+        "planned_items": 20,
+        "completed_items": 20
+      },
+      {
+        "name": "offsite_anchors",
+        "budget_s": 20,
+        "actual_s": 5.4,
+        "abandoned": false,
+        "planned_items": 7,
+        "completed_items": 7
+      }
+    ],
+    "total_s": 45.9,
+    "cap_s": 300
+  }
+}

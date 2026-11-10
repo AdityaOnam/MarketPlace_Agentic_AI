@@ -1,0 +1,253 @@
+{
+  "schema_version": "1.0.0",
+  "site": {
+    "status": "ok",
+    "reason": null,
+    "input": "https://expedia.com",
+    "canonical_host": "www.expedia.com",
+    "origin": "https://www.expedia.com",
+    "scheme": "https",
+    "redirect_chain": [
+      "https://expedia.com"
+    ],
+    "tls_valid": true,
+    "archetype": "unknown",
+    "archetype_confidence": 0.0
+  },
+  "robots": {
+    "status": "ok",
+    "reason": null,
+    "fetch_status": 200,
+    "body": "#\n# General bots\n#\nuser-agent: *\n#hotel\ndisallow: /Hotel-Search\ndisallow: /hotel-search\ndisallow: /search?\ndisallow: /*/search?\ndisallow: /ugc/urs/api/hotelreviews/hotel/HOTELID/\ndisallow: /LastBooking/ElapsedTime\ndisallow: /*chkin=*\ndisallow: /*chkout=*\ndisallow: /HotelCheckout\ndisallow: /Checkout\ndisallow: /checkout\ndisallow: /HotelBookingConfirmation\ndisallow: /en-au/\ndisallow: /en-nz/\n#flight\ndisallow: /Flights-Search\ndisallow: /Flight-Information\ndisallow: /Flight-SearchResults\ndisallow: /Flights-BagFees\ndisallow: /Details\ndisallow: /FlightCheckout\ndisallow: /Confirmation-Flight\n#package\ndisallow: /MultiItemCheckout\ndisallow: /MultiItemBookingConfirmation\ndisallow: /flexibleshopping\n#car\ndisallow: /carsearch\ndisallow: /CarCheckout\n#activities\ndisallow: /things-to-do/search?\ndisallow: /things-to-do/*/search?\ndisallow: /*/things-to-do/search\ndisallow: /things-to-do/reviews-external$\n#cruise\ndisallow: /Cruise-Search\ndisallow: /Cruise-CabinCategory\ndisallow: /CruiseCheckout\n#other\ndisallow: /legacyGOTO\ndisallow: /go/\ndisallow: /info/\ndisallow: /trips/\ndisallow: /Search-Results\ndisallow: /user/createaccount\ndisallow: /signup?*\ndisallow: /login?*\n#test-seo\ndisallow: /api/uisprime/track\ndisallow: /trvl-px/\ndisallow: /egcs/v2/collect\ndisallow: /api/ucs/shortlist/\ndisallow: /api/v4/typeahead/\ndisallow: /p/home\ndisallow: /*/p/home\ndisallow: /auth/\ndisallow: /*/auth/\ndisallow: /*/sso/\n\n#\n# Ads\n#\nuser-agent: google-hoteladsverifier\nuser-agent: Mediapartners-Google\nuser-agent: AdsBot-Google-Mobile\nuser-agent: AdsBot-Google\nuser-agent: AdIdxBot\nuser-agent: OAI-AdsBot\nallow: /\n#test-seo\ndisallow: /api/uisprime/track\ndisallow: /trvl-px/\ndisallow: /egcs/v2/collect\ndisallow: /api/ucs/shortlist/\ndisallow: /api/v4/typeahead/\n\n#\n# SemrushBot\n#\nuser-agent: SemrushBot\ndisallow: /\n\n#\n# AI Search\n#\nuser-agent: OAI-SearchBot\nuser-agent: ChatGPT-User\nuser-agent: PerplexityBot\nuser-agent: Perplexity-User\nuser-agent: Claude-User\nuser-agent: Claude-SearchBot\nallow: /\ndisallow: /p/home\ndisallow: /*/p/home\ndisallow: /auth/\ndisallow: /*/auth/\ndisallow: /*/sso/\n",
+    "parse_ok": true,
+    "agents": {
+      "google-hoteladsverifier": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "Mediapartners-Google": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "AdsBot-Google-Mobile": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "AdsBot-Google": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "AdIdxBot": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "OAI-AdsBot": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "SemrushBot": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 86,
+        "crawl_delay": null
+      },
+      "OAI-SearchBot": {
+        "class": "retrieval",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "ChatGPT-User": {
+        "class": "retrieval",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "PerplexityBot": {
+        "class": "retrieval",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "Perplexity-User": {
+        "class": "retrieval",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "Claude-User": {
+        "class": "retrieval",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "Claude-SearchBot": {
+        "class": "retrieval",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "*": {
+        "class": "generic",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      }
+    },
+    "sitemap_declarations": []
+  },
+  "discovery": {
+    "status": "ok",
+    "reason": null,
+    "sitemap_found": false,
+    "sitemap_urls_count": 0,
+    "inventory": [
+      {
+        "url": "https://www.expedia.com/",
+        "page_type": "home",
+        "source": "crawl"
+      }
+    ],
+    "sampled_static": [
+      "https://www.expedia.com/"
+    ],
+    "sampled_rendered": [],
+    "sampling_seed": "sha256:9a934ee910a5b2dc01ac59f6f16ed05c5808c04858269d79e15b752f14a5e592"
+  },
+  "pages": [
+    {
+      "url": "https://www.expedia.com/",
+      "final_url": "https://www.expedia.com/",
+      "status": "unavailable",
+      "reason": "http_429",
+      "http_status": 429,
+      "page_type": "home",
+      "headers": {},
+      "raw_html_bytes": 0,
+      "main_text": "",
+      "main_text_words": 0,
+      "extraction_ok": false,
+      "title": null,
+      "meta": {},
+      "lang": null,
+      "canonical": {},
+      "headings": [],
+      "landmarks": {},
+      "structured_data": {},
+      "links": [],
+      "outbound_profile_links": [],
+      "images": [],
+      "iframes": [],
+      "media": [],
+      "form_controls": [],
+      "interactive_empty": {},
+      "noscript": {
+        "present": false,
+        "words": 0
+      },
+      "dates": {},
+      "contact_signals": {},
+      "trigram_hash": null
+    }
+  ],
+  "rendered": [],
+  "links": {
+    "status": "ok",
+    "reason": null,
+    "checked_count": 0,
+    "results": [],
+    "skipped": []
+  },
+  "anchors": {
+    "status": "ok",
+    "reason": null,
+    "declared": [],
+    "checked_count": 0,
+    "results": []
+  },
+  "budget": {
+    "status": "ok",
+    "reason": null,
+    "stages": [
+      {
+        "name": "resolve",
+        "budget_s": 10,
+        "actual_s": 2.5,
+        "abandoned": false,
+        "planned_items": null,
+        "completed_items": null
+      },
+      {
+        "name": "robots_discovery",
+        "budget_s": 15,
+        "actual_s": 2.0,
+        "abandoned": false,
+        "planned_items": 1,
+        "completed_items": 1
+      },
+      {
+        "name": "static_fetch",
+        "budget_s": 45,
+        "actual_s": 0.5,
+        "abandoned": false,
+        "planned_items": 1,
+        "completed_items": 0
+      },
+      {
+        "name": "render_pass",
+        "budget_s": 75,
+        "actual_s": 0.0,
+        "abandoned": true,
+        "planned_items": 0,
+        "completed_items": 0,
+        "reason": "no_headless_browser_tool"
+      },
+      {
+        "name": "internal_links",
+        "budget_s": 25,
+        "actual_s": 0.0,
+        "abandoned": false,
+        "planned_items": 0,
+        "completed_items": 0
+      },
+      {
+        "name": "offsite_anchors",
+        "budget_s": 20,
+        "actual_s": 0.0,
+        "abandoned": false,
+        "planned_items": 0,
+        "completed_items": 0
+      }
+    ],
+    "total_s": 5.0,
+    "cap_s": 300
+  }
+}

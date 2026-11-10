@@ -1,0 +1,3469 @@
+{
+  "schema_version": "1.0.0",
+  "site": {
+    "status": "ok",
+    "reason": null,
+    "input": "https://wikipedia.org",
+    "canonical_host": "www.wikipedia.org",
+    "origin": "https://www.wikipedia.org",
+    "scheme": "https",
+    "redirect_chain": [
+      "https://wikipedia.org"
+    ],
+    "tls_valid": true,
+    "archetype": "brochure",
+    "archetype_confidence": 0.7
+  },
+  "robots": {
+    "status": "ok",
+    "reason": null,
+    "fetch_status": 200,
+    "body": "﻿# robots.txt for http://www.wikipedia.org/ and friends\n#\n# Please note: There are a lot of pages on this site, and there are\n# some misbehaved spiders out there that go _way_ too fast. If you're\n# irresponsible, your access to the site may be blocked.\n#\n\n# Observed spamming large amounts of https://en.wikipedia.org/?curid=NNNNNN\n# and ignoring 429 ratelimit responses, claims to respect robots:\n# http://mj12bot.com/\nUser-agent: MJ12bot\nDisallow: /\n\n# advertising-related bots:\nUser-agent: Mediapartners-Google*\nDisallow: /\n\n# Wikipedia work bots:\nUser-agent: IsraBot\nDisallow:\n\nUser-agent: Orthogaffe\nDisallow:\n\n# Crawlers that are kind enough to obey, but which we'd rather not have\n# unless they're feeding search engines.\nUser-agent: UbiCrawler\nDisallow: /\n\nUser-agent: DOC\nDisallow: /\n\nUser-agent: Zao\nDisallow: /\n\n# Some bots are known to be trouble, particularly those designed to copy\n# entire sites. Please obey robots.txt.\nUser-agent: sitecheck.internetseer.com\nDisallow: /\n\nUser-agent: Zealbot\nDisallow: /\n\nUser-agent: MSIECrawler\nDisallow: /\n\nUser-agent: SiteSnagger\nDisallow: /\n\nUser-agent: WebStripper\nDisallow: /\n\nUser-agent: WebCopier\nDisallow: /\n\nUser-agent: Fetch\nDisallow: /\n\nUser-agent: Offline Explorer\nDisallow: /\n\nUser-agent: Teleport\nDisallow: /\n\nUser-agent: TeleportPro\nDisallow: /\n\nUser-agent: WebZIP\nDisallow: /\n\nUser-agent: linko\nDisallow: /\n\nUser-agent: HTTrack\nDisallow: /\n\nUser-agent: Microsoft.URL.Control\nDisallow: /\n\nUser-agent: Xenu\nDisallow: /\n\nUser-agent: larbin\nDisallow: /\n\nUser-agent: libwww\nDisallow: /\n\nUser-agent: ZyBORG\nDisallow: /\n\nUser-agent: Download Ninja\nDisallow: /\n\n# Misbehaving, requests much too fast\nUser-agent: fast\nDisallow: /\n\n# Sorry, wget in its recursive mode is a frequent problem.\n# Please read the man page and use it properly; there is a\n# --wait option you can use to set the delay between hits,\n# for instance.\nUser-agent: wget\nDisallow: /\n\n# The 'grub' distributed client has been *very* poorly behaved.\nUser-agent: grub-client\nDisallow: /\n\n# Doesn't follow robots.txt anyway, but...\nUser-agent: k2spider\nDisallow: /\n\n# Hits many times per second, not acceptable\n# http://www.nameprotect.com/botinfo.html\nUser-agent: NPBot\nDisallow: /\n\n# A capture bot, downloads gazillions of pages with no public benefit\n# http://www.webreaper.net/\nUser-agent: WebReaper\nDisallow: /\n\n# Per their statement, semrushbot respects crawl-delay directives\n# We want them to overall stay within reasonable request rates to\n# the backend (20 rps); keeping in mind that the crawl-delay will\n# be applied by site and not globally by the bot, 5 seconds seem\n# like a reasonable approximation\nUser-agent: SemrushBot\nCrawl-delay: 5\n\n#\n# Friendly, low-speed bots are welcome viewing article pages, but not\n# dynamically-generated pages please.\n#\n# Inktomi's \"Slurp\" can read a minimum delay between hits; if your\n# bot supports such a thing using the 'Crawl-delay' or another\n# instruction, please let us know.\n#\n# There is a special exception for API mobileview to allow dynamic\n# mobile web & app views to load section content.\n# These views aren't HTTP-cached but use parser cache aggressively\n# and don't expose Special-pages and other uncached content.\n#\n# Another exception is for REST API documentation, located at\n# /api/rest_v1/?doc.\n#\nUser-agent: *\nAllow: /w/api.php?action=mobileview&\nAllow: /w/load.php?\nAllow: /api/rest_v1/?doc\nAllow: /w/rest.php/site/v1/sitemap\nDisallow: /w/\nDisallow: /api/\nDisallow: /trap/\nDisallow: /wiki/Special:\nDisallow: /wiki/Spezial:\nDisallow: /wiki/Spesial:\nDisallow: /wiki/Special%3A\nDisallow: /wiki/Spezial%3A\nDisallow: /wiki/Spesial%3A\n#\n# ar:\nDisallow: /wiki/%D8%AE%D8%A7%D8%B5:Search\nDisallow: /wiki/%D8%AE%D8%A7%D8%B5%3ASearch\n#\n# dewiki:\n# T6937\n# sensible deletion and meta user discussion pages:\nDisallow: /wiki/Wikipedia:L%C3%B6schkandidaten/\nDisallow: /wiki/Wikipedia:Löschkandidaten/\nDisallow: /wiki/Wikipedia:Vandalensperrung/\nDisallow: /wiki/Wikipedia:Benutzersperrung/\nDisallow: /wiki/Wikipedia:Vermittlungsausschuss/\nDisallow: /wiki/Wikipedia:Administratoren/Probleme/\nDisallow: /wiki/Wikipedia:Adminkandidaturen/\nDisallow: /wiki/Wikipedia:Qualitätssicherung/\nDisallow: /wiki/Wikipedia:Qualit%C3%A4tssicherung/\n# 4937#5\nDisallow: /wiki/Wikipedia:Vandalismusmeldung/\nDisallow: /wiki/Wikipedia:Gesperrte_Lemmata/\nDisallow: /wiki/Wikipedia:Löschprüfung/\nDisallow: /wiki/Wikipedia:L%C3%B6schprüfung/\nDisallow: /wiki/Wikipedia:Administratoren/Notizen/\nDisallow: /wiki/Wikipedia:Schiedsgericht/Anfragen/\nDisallow: /wiki/Wikipedia:L%C3%B6schpr%C3%BCfung/\n# T14111\nDisallow: /wiki/Wikipedia:Checkuser/\nDisallow: /wiki/Wikipedia_Diskussion:Checkuser/\nDisallow: /wiki/Wikipedia_Diskussion:Adminkandidaturen/\n# T15961\nDisallow: /wiki/Wikipedia:Spam-Blacklist-Log\nDisallow: /wiki/Wikipedia%3ASpam-Blacklist-Log\nDisallow: /wiki/Wikipedia_Diskussion:Spam-Blacklist-Log\nDisallow: /wiki/Wikipedia_Diskussion%3ASpam-Blacklist-Log\n#\n# enwiki:\n# Folks get annoyed when VfD discussions end up the number 1 google hit for\n# their name. See T6776\nDisallow: /wiki/Wikipedia:Articles_for_deletion/\nDisallow: /wiki/Wikipedia%3AArticles_for_deletion/\nDisallow: /wiki/Wikipedia:Votes_for_deletion/\nDisallow: /wiki/Wikipedia%3AVotes_for_deletion/\nDisallow: /wiki/Wikipedia:Pages_for_deletion/\nDisallow: /wiki/Wikipedia%3APages_for_deletion/\nDisallow: /wiki/Wikipedia:Miscellany_for_deletion/\nDisallow: /wiki/Wikipedia%3AMiscellany_for_deletion/\nDisallow: /wiki/Wikipedia:Miscellaneous_deletion/\nDisallow: /wiki/Wikipedia%3AMiscellaneous_deletion/\nDisallow: /wiki/Wikipedia:Copyright_problems\nDisallow: /wiki/Wikipedia%3ACopyright_problems\nDisallow: /wiki/Wikipedia:Protected_titles/\nDisallow: /wiki/Wikipedia%3AProtected_titles/\n# T15398\nDisallow: /wiki/Wikipedia:WikiProject_Spam/\nDisallow: /wiki/Wikipedia%3AWikiProject_Spam/\n# T16075\nDisallow: /wiki/MediaWiki:Spam-blacklist\nDisallow: /wiki/MediaWiki%3ASpam-blacklist\nDisallow: /wiki/MediaWiki_talk:Spam-blacklist\nDisallow: /wiki/MediaWiki_talk%3ASpam-blacklist\n# T13261\nDisallow: /wiki/Wikipedia:Requests_for_arbitration/\nDisallow: /wiki/Wikipedia%3ARequests_for_arbitration/\nDisallow: /wiki/Wikipedia:Requests_for_comment/\nDisallow: /wiki/Wikipedia%3ARequests_for_comment/\nDisallow: /wiki/Wikipedia:Requests_for_adminship/\nDisallow: /wiki/Wikipedia%3ARequests_for_adminship/\n# T12288\nDisallow: /wiki/Wikipedia_talk:Articles_for_deletion/\nDisallow: /wiki/Wikipedia_talk%3AArticles_for_deletion/\nDisallow: /wiki/Wikipedia_talk:Votes_for_deletion/\nDisallow: /wiki/Wikipedia_talk%3AVotes_for_deletion/\nDisallow: /wiki/Wikipedia_talk:Pages_for_deletion/\nDisallow: /wiki/Wikipedia_talk%3APages_for_deletion/\nDisallow: /wiki/Wikipedia_talk:Miscellany_for_deletion/\nDisallow: /wiki/Wikipedia_talk%3AMiscellany_for_deletion/\nDisallow: /wiki/Wikipedia_talk:Miscellaneous_deletion/\nDisallow: /wiki/Wikipedia_talk%3AMiscellaneous_deletion/\n# T16793\nDisallow: /wiki/Wikipedia:Changing_username\nDisallow: /wiki/Wikipedia%3AChanging_username\nDisallow: /wiki/Wikipedia:Changing_username/\nDisallow: /wiki/Wikipedia%3AChanging_username/\nDisallow: /wiki/Wikipedia_talk:Changing_username\nDisallow: /wiki/Wikipedia_talk%3AChanging_username\nDisallow: /wiki/Wikipedia_talk:Changing_username/\nDisallow: /wiki/Wikipedia_talk%3AChanging_username/\n#\n# eswiki:\n# T8746\nDisallow: /wiki/Wikipedia:Consultas_de_borrado/\nDisallow: /wiki/Wikipedia%3AConsultas_de_borrado/\n#\n# fiwiki:\n# T10695\nDisallow: /wiki/Wikipedia:Poistettavat_sivut\nDisallow: /wiki/K%C3%A4ytt%C3%A4j%C3%A4:\nDisallow: /wiki/Käyttäjä:\nDisallow: /wiki/Keskustelu_k%C3%A4ytt%C3%A4j%C3%A4st%C3%A4:\nDisallow: /wiki/Keskustelu_käyttäjästä:\nDisallow: /wiki/Wikipedia:Yll%C3%A4pit%C3%A4j%C3%A4t/\nDisallow: /wiki/Wikipedia:Ylläpitäjät/\n#\n# hewiki:\nDisallow: /wiki/%D7%9E%D7%99%D7%95%D7%97%D7%93:Search\nDisallow: /wiki/%D7%9E%D7%99%D7%95%D7%97%D7%93%3ASearch\n#T11517\nDisallow: /wiki/ויקיפדיה:רשימת_מועמדים_למחיקה/\nDisallow: /wiki/ויקיפדיה%3Aרשימת_מועמדים_למחיקה/\nDisallow: /wiki/%D7%95%D7%99%D7%A7%D7%99%D7%A4%D7%93%D7%99%D7%94:%D7%A8%D7%A9%D7%99%D7%9E%D7%AA_%D7%9E%D7%95%D7%A2%D7%9E%D7%93%D7%99%D7%9D_%D7%9C%D7%9E%D7%97%D7%99%D7%A7%D7%94/\nDisallow: /wiki/%D7%95%D7%99%D7%A7%D7%99%D7%A4%D7%93%D7%99%D7%94%3A%D7%A8%D7%A9%D7%99%D7%9E%D7%AA_%D7%9E%D7%95%D7%A2%D7%9E%D7%93%D7%99%D7%9D_%D7%9C%D7%9E%D7%97%D7%99%D7%A7%D7%94/\nDisallow: /wiki/ויקיפדיה:ערכים_לא_קיימים_ומוגנים\nDisallow: /wiki/ויקיפדיה%3Aערכים_לא_קיימים_ומוגנים\nDisallow: /wiki/%D7%95%D7%99%D7%A7%D7%99%D7%A4%D7%93%D7%99%D7%94:%D7%A2%D7%A8%D7%9B%D7%99%D7%9D_%D7%9C%D7%90_%D7%A7%D7%99%D7%99%D7%9E%D7%99%D7%9D_%D7%95%D7%9E%D7%95%D7%92%D7%A0%D7%99%D7%9D\nDisallow: /wiki/%D7%95%D7%99%D7%A7%D7%99%D7%A4%D7%93%D7%99%D7%94%3A%D7%A2%D7%A8%D7%9B%D7%99%D7%9D_%D7%9C%D7%90_%D7%A7%D7%99%D7%99%D7%9E%D7%99%D7%9D_%D7%95%D7%9E%D7%95%D7%92%D7%A0%D7%99%D7%9D\nDisallow: /wiki/ויקיפדיה:דפים_לא_קיימים_ומוגנים\nDisallow: /wiki/ויקיפדיה%3Aדפים_לא_קיימים_ומוגנים\nDisallow: /wiki/%D7%95%D7%99%D7%A7%D7%99%D7%A4%D7%93%D7%99%D7%94:%D7%93%D7%A4%D7%99%D7%9D_%D7%9C%D7%90_%D7%A7%D7%99%D7%99%D7%9E%D7%99%D7%9D_%D7%95%D7%9E%D7%95%D7%92%D7%A0%D7%99%D7%9D\nDisallow: /wiki/%D7%95%D7%99%D7%A7%D7%99%D7%A4%D7%93%D7%99%D7%94%3A%D7%93%D7%A4%D7%99%D7%9D_%D7%9C%D7%90_%D7%A7%D7%99%D7%99%D7%9E%D7%99%D7%9D_%D7%95%D7%9E%D7%95%D7%92%D7%A0%D7%99%D7%9D\n#\n# huwiki:\nDisallow: /wiki/Speci%C3%A1lis:Search\nDisallow: /wiki/Speci%C3%A1lis%3ASearch\n#\n# itwiki:\n# T7545\nDisallow: /wiki/Wikipedia:Pagine_da_cancellare\nDisallow: /wiki/Wikipedia%3APagine_da_cancellare\nDisallow: /wiki/Wikipedia:Utenti_problematici\nDisallow: /wiki/Wikipedia%3AUtenti_problematici\nDisallow: /wiki/Wikipedia:Vandalismi_in_corso\nDisallow: /wiki/Wikipedia%3AVandalismi_in_corso\nDisallow: /wiki/Wikipedia:Amministratori\nDisallow: /wiki/Wikipedia%3AAmministratori\nDisallow: /wiki/Wikipedia:Proposte_di_cancellazione_semplificata\nDisallow: /wiki/Wikipedia%3AProposte_di_cancellazione_semplificata\nDisallow: /wiki/Categoria:Da_cancellare_subito\nDisallow: /wiki/Categoria%3ADa_cancellare_subito\nDisallow: /wiki/Wikipedia:Sospette_violazioni_di_copyright\nDisallow: /wiki/Wikipedia%3ASospette_violazioni_di_copyright\nDisallow: /wiki/Categoria:Da_controllare_per_copyright\nDisallow: /wiki/Categoria%3ADa_controllare_per_copyright\nDisallow: /wiki/Progetto:Rimozione_contributi_sospetti\nDisallow: /wiki/Progetto%3ARimozione_contributi_sospetti\nDisallow: /wiki/Categoria:Da_cancellare_subito_per_violazione_integrale_copyright\nDisallow: /wiki/Categoria%3ADa_cancellare_subito_per_violazione_integrale_copyright\nDisallow: /wiki/Progetto:Cococo\nDisallow: /wiki/Progetto%3ACococo\nDisallow: /wiki/Discussioni_progetto:Cococo\nDisallow: /wiki/Discussioni_progetto%3ACococo\n#\n# jawiki\nDisallow: /wiki/%E7%89%B9%E5%88%A5:Search\nDisallow: /wiki/%E7%89%B9%E5%88%A5%3ASearch\n# T7239\nDisallow: /wiki/Wikipedia:%E5%89%8A%E9%99%A4%E4%BE%9D%E9%A0%BC/\nDisallow: /wiki/Wikipedia%3A%E5%89%8A%E9%99%A4%E4%BE%9D%E9%A0%BC/\nDisallow: /wiki/Wikipedia:%E5%88%A9%E7%94%A8%E8%80%85%E3%83%9A%E3%83%BC%E3%82%B8%E3%81%AE%E5%89%8A%E9%99%A4%E4%BE%9D%E9%A0%BC\nDisallow: /wiki/Wikipedia%3A%E5%88%A9%E7%94%A8%E8%80%85%E3%83%9A%E3%83%BC%E3%82%B8%E3%81%AE%E5%89%8A%E9%99%A4%E4%BE%9D%E9%A0%BC\n# nowiki\n# T13432\nDisallow: /wiki/Bruker:\nDisallow: /wiki/Bruker%3A\nDisallow: /wiki/Brukerdiskusjon\nDisallow: /wiki/Wikipedia:Administratorer\nDisallow: /wiki/Wikipedia%3AAdministratorer\nDisallow: /wiki/Wikipedia-diskusjon:Administratorer\nDisallow: /wiki/Wikipedia-diskusjon%3AAdministratorer\nDisallow: /wiki/Wikipedia:Sletting\nDisallow: /wiki/Wikipedia%3ASletting\nDisallow: /wiki/Wikipedia-diskusjon:Sletting\nDisallow: /wiki/Wikipedia-diskusjon%3ASletting\n#\n# plwiki\n# T10067\nDisallow: /wiki/Wikipedia:Strony_do_usuni%C4%99cia\nDisallow: /wiki/Wikipedia%3AStrony_do_usuni%C4%99cia\nDisallow: /wiki/Wikipedia:Do_usuni%C4%99cia\nDisallow: /wiki/Wikipedia%3ADo_usuni%C4%99cia\nDisallow: /wiki/Wikipedia:SDU/\nDisallow: /wiki/Wikipedia%3ASDU/\nDisallow: /wiki/Wikipedia:Strony_podejrzane_o_naruszenie_praw_autorskich\nDisallow: /wiki/Wikipedia%3AStrony_podejrzane_o_naruszenie_praw_autorskich\n#\n# ptwiki:\n# T7394\nDisallow: /wiki/Wikipedia:Páginas_para_eliminar/\nDisallow: /wiki/Wikipedia:P%C3%A1ginas_para_eliminar/\nDisallow: /wiki/Wikipedia%3AP%C3%A1ginas_para_eliminar/\nDisallow: /wiki/Wikipedia_Discussão:Páginas_para_eliminar/\nDisallow: /wiki/Wikipedia_Discuss%C3%A3o:P%C3%A1ginas_para_eliminar/\nDisallow: /wiki/Wikipedia_Discuss%C3%A3o%3AP%C3%A1ginas_para_eliminar/\n#\n# rowiki:\n# T14546\nDisallow: /wiki/Wikipedia:Pagini_de_%C5%9Fters\nDisallow: /wiki/Wikipedia%3APagini_de_%C5%9Fters\nDisallow: /wiki/Discu%C5%A3ie_Wikipedia:Pagini_de_%C5%9Fters\nDisallow: /wiki/Discu%C5%A3ie_Wikipedia%3APagini_de_%C5%9Fters\n#\n# ruwiki:\nDisallow: /wiki/%D0%A1%D0%BF%D0%B5%D1%86%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B5:Search\nDisallow: /wiki/%D0%A1%D0%BF%D0%B5%D1%86%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B5%3ASearch\n#\n# svwiki:\n# T12229\nDisallow: /wiki/Wikipedia%3ASidor_f%C3%B6reslagna_f%C3%B6r_radering\nDisallow: /wiki/Wikipedia:Sidor_f%C3%B6reslagna_f%C3%B6r_radering\nDisallow: /wiki/Wikipedia:Sidor_föreslagna_för_radering\nDisallow: /wiki/Användare\nDisallow: /wiki/Anv%C3%A4ndare\nDisallow: /wiki/Användardiskussion\nDisallow: /wiki/Anv%C3%A4ndardiskussion\nDisallow: /wiki/Wikipedia:Skyddade_sidnamn\nDisallow: /wiki/Wikipedia%3ASkyddade_sidnamn\n# T13291\nDisallow: /wiki/Wikipedia:Sidor_som_bör_raderas\nDisallow: /wiki/Wikipedia:Sidor_som_b%C3%B6r_raderas\nDisallow: /wiki/Wikipedia%3ASidor_som_b%C3%B6r_raderas\n#\n# zhwiki:\n# T7104\nDisallow: /wiki/Wikipedia:删除投票/侵权\nDisallow: /wiki/Wikipedia:%E5%88%A0%E9%99%A4%E6%8A%95%E7%A5%A8/%E4%BE%B5%E6%9D%83\nDisallow: /wiki/Wikipedia:删除投票和请求\nDisallow: /wiki/Wikipedia:%E5%88%A0%E9%99%A4%E6%8A%95%E7%A5%A8%E5%92%8C%E8%AF%B7%E6%B1%82\nDisallow: /wiki/Category:快速删除候选\nDisallow: /wiki/Category:%E5%BF%AB%E9%80%9F%E5%88%A0%E9%99%A4%E5%80%99%E9%80%89\nDisallow: /wiki/Category:维基百科需要翻译的文章\nDisallow: /wiki/Category:%E7%BB%B4%E5%9F%BA%E7%99%BE%E7%A7%91%E9%9C%80%E8%A6%81%E7%BF%BB%E8%AF%91%E7%9A%84%E6%96%87%E7%AB%A0\n#\n# sister projects\n#\n# enwikinews:\n# T7340\nDisallow: /wiki/Portal:Prepared_stories/\nDisallow: /wiki/Portal%3APrepared_stories/\n#\n# itwikinews\n# T11138\nDisallow: /wiki/Wikinotizie:Richieste_di_cancellazione\nDisallow: /wiki/Wikinotizie:Sospette_violazioni_di_copyright\nDisallow: /wiki/Categoria:Da_cancellare_subito\nDisallow: /wiki/Categoria:Da_cancellare_subito_per_violazione_integrale_copyright\nDisallow: /wiki/Wikinotizie:Storie_in_preparazione\n#\n# enwikiquote:\n# T17095\nDisallow: /wiki/Wikiquote:Votes_for_deletion/\nDisallow: /wiki/Wikiquote%3AVotes_for_deletion/\nDisallow: /wiki/Wikiquote_talk:Votes_for_deletion/\nDisallow: /wiki/Wikiquote_talk%3AVotes_for_deletion/\nDisallow: /wiki/Wikiquote:Votes_for_deletion_archive/\nDisallow: /wiki/Wikiquote%3AVotes_for_deletion_archive/\nDisallow: /wiki/Wikiquote_talk:Votes_for_deletion_archive/\nDisallow: /wiki/Wikiquote_talk%3AVotes_for_deletion_archive/\n#\n# enwikibooks\nDisallow: /wiki/Wikibooks:Votes_for_deletion\n#\n\n\nSitemap: https://en.wikipedia.org/w/rest.php/site/v1/sitemap/0\n\n#\n#\n#----------------------------------------------------------#\n#\n#\n#\n#\n# Localisable part of robots.txt for en.wikipedia.org\n#\n# Edit at https://en.wikipedia.org/w/index.php?title=MediaWiki:Robots.txt&action=edit\n# Don't add newlines here. All rules set here are active for every user-agent.\n#\n# Please check any changes using a syntax validator\n# Enter https://en.wikipedia.org/robots.txt as the URL to check.\n#\n# https://phabricator.wikimedia.org/T16075\nDisallow: /wiki/MediaWiki:Spam-blacklist\nDisallow: /wiki/MediaWiki%3ASpam-blacklist\nDisallow: /wiki/MediaWiki_talk:Spam-blacklist\nDisallow: /wiki/MediaWiki_talk%3ASpam-blacklist\nDisallow: /wiki/Wikipedia:WikiProject_Spam\nDisallow: /wiki/Wikipedia_talk:WikiProject_Spam\n#\n# Folks get annoyed when XfD discussions end up the number 1 google hit for\n# their name. \n# https://phabricator.wikimedia.org/T16075\nDisallow: /wiki/Wikipedia:Articles_for_deletion\nDisallow: /wiki/Wikipedia%3AArticles_for_deletion\nDisallow: /wiki/Wikipedia:Votes_for_deletion\nDisallow: /wiki/Wikipedia%3AVotes_for_deletion\nDisallow: /wiki/Wikipedia:Pages_for_deletion\nDisallow: /wiki/Wikipedia%3APages_for_deletion\nDisallow: /wiki/Wikipedia:Miscellany_for_deletion\nDisallow: /wiki/Wikipedia%3AMiscellany_for_deletion\nDisallow: /wiki/Wikipedia:Miscellaneous_deletion\nDisallow: /wiki/Wikipedia%3AMiscellaneous_deletion\nDisallow: /wiki/Wikipedia:Categories_for_discussion\nDisallow: /wiki/Wikipedia%3ACategories_for_discussion\nDisallow: /wiki/Wikipedia:Templates_for_deletion\nDisallow: /wiki/Wikipedia%3ATemplates_for_deletion\nDisallow: /wiki/Wikipedia:Redirects_for_discussion\nDisallow: /wiki/Wikipedia%3ARedirects_for_discussion\nDisallow: /wiki/Wikipedia:Deletion_review\nDisallow: /wiki/Wikipedia%3ADeletion_review\nDisallow: /wiki/Wikipedia:WikiProject_Deletion_sorting\nDisallow: /wiki/Wikipedia%3AWikiProject_Deletion_sorting\nDisallow: /wiki/Wikipedia:Files_for_deletion\nDisallow: /wiki/Wikipedia%3AFiles_for_deletion\nDisallow: /wiki/Wikipedia:Files_for_discussion\nDisallow: /wiki/Wikipedia%3AFiles_for_discussion\nDisallow: /wiki/Wikipedia:Possibly_unfree_files\nDisallow: /wiki/Wikipedia%3APossibly_unfree_files\n#\n# https://phabricator.wikimedia.org/T12288\nDisallow: /wiki/Wikipedia_talk:Articles_for_deletion\nDisallow: /wiki/Wikipedia_talk%3AArticles_for_deletion\nDisallow: /wiki/Wikipedia_talk:Votes_for_deletion\nDisallow: /wiki/Wikipedia_talk%3AVotes_for_deletion\nDisallow: /wiki/Wikipedia_talk:Pages_for_deletion\nDisallow: /wiki/Wikipedia_talk%3APages_for_deletion\nDisallow: /wiki/Wikipedia_talk:Miscellany_for_deletion\nDisallow: /wiki/Wikipedia_talk%3AMiscellany_for_deletion\nDisallow: /wiki/Wikipedia_talk:Miscellaneous_deletion\nDisallow: /wiki/Wikipedia_talk%3AMiscellaneous_deletion\nDisallow: /wiki/Wikipedia_talk:Templates_for_deletion\nDisallow: /wiki/Wikipedia_talk%3ATemplates_for_deletion\nDisallow: /wiki/Wikipedia_talk:Categories_for_discussion\nDisallow: /wiki/Wikipedia_talk%3ACategories_for_discussion\nDisallow: /wiki/Wikipedia_talk:Deletion_review\nDisallow: /wiki/Wikipedia_talk%3ADeletion_review\nDisallow: /wiki/Wikipedia_talk:WikiProject_Deletion_sorting\nDisallow: /wiki/Wikipedia_talk%3AWikiProject_Deletion_sorting\nDisallow: /wiki/Wikipedia_talk:Files_for_deletion\nDisallow: /wiki/Wikipedia_talk%3AFiles_for_deletion\nDisallow: /wiki/Wikipedia_talk:Files_for_discussion\nDisallow: /wiki/Wikipedia_talk%3AFiles_for_discussion\nDisallow: /wiki/Wikipedia_talk:Possibly_unfree_files\nDisallow: /wiki/Wikipedia_talk%3APossibly_unfree_files\n#\nDisallow: /wiki/Wikipedia:Copyright_problems\nDisallow: /wiki/Wikipedia%3ACopyright_problems\nDisallow: /wiki/Wikipedia_talk:Copyright_problems\nDisallow: /wiki/Wikipedia_talk%3ACopyright_problems\nDisallow: /wiki/Wikipedia:Suspected_copyright_violations\nDisallow: /wiki/Wikipedia%3ASuspected_copyright_violations\nDisallow: /wiki/Wikipedia_talk:Suspected_copyright_violations\nDisallow: /wiki/Wikipedia_talk%3ASuspected_copyright_violations\nDisallow: /wiki/Wikipedia:Contributor_copyright_investigations\nDisallow: /wiki/Wikipedia%3AContributor_copyright_investigations\nDisallow: /wiki/Wikipedia:Contributor_copyright_investigations\nDisallow: /wiki/Wikipedia%3AContributor_copyright_investigations\nDisallow: /wiki/Wikipedia_talk:Contributor_copyright_investigations\nDisallow: /wiki/Wikipedia_talk%3AContributor_copyright_investigations\nDisallow: /wiki/Wikipedia_talk:Contributor_copyright_investigations\nDisallow: /wiki/Wikipedia_talk%3AContributor_copyright_investigations\nDisallow: /wiki/Wikipedia:Protected_titles\nDisallow: /wiki/Wikipedia%3AProtected_titles\nDisallow: /wiki/Wikipedia_talk:Protected_titles\nDisallow: /wiki/Wikipedia_talk%3AProtected_titles\nDisallow: /wiki/Wikipedia:Articles_for_creation\nDisallow: /wiki/Wikipedia%3AArticles_for_creation\nDisallow: /wiki/Wikipedia_talk:Articles_for_creation\nDisallow: /wiki/Wikipedia_talk%3AArticles_for_creation\nDisallow: /wiki/Wikipedia_talk:Article_wizard\nDisallow: /wiki/Wikipedia_talk%3AArticle_wizard\n#\n# https://phabricator.wikimedia.org/T13261\nDisallow: /wiki/Wikipedia:Requests_for_arbitration\nDisallow: /wiki/Wikipedia%3ARequests_for_arbitration\nDisallow: /wiki/Wikipedia_talk:Requests_for_arbitration\nDisallow: /wiki/Wikipedia_talk%3ARequests_for_arbitration\nDisallow: /wiki/Wikipedia:Requests_for_comment\nDisallow: /wiki/Wikipedia%3ARequests_for_comment\nDisallow: /wiki/Wikipedia_talk:Requests_for_comment\nDisallow: /wiki/Wikipedia_talk%3ARequests_for_comment\nDisallow: /wiki/Wikipedia:Requests_for_adminship\nDisallow: /wiki/Wikipedia%3ARequests_for_adminship\nDisallow: /wiki/Wikipedia_talk:Requests_for_adminship\nDisallow: /wiki/Wikipedia_talk%3ARequests_for_adminship\n#\n# https://phabricator.wikimedia.org/T14111\nDisallow: /wiki/Wikipedia:Requests_for_checkuser\nDisallow: /wiki/Wikipedia%3ARequests_for_checkuser\nDisallow: /wiki/Wikipedia_talk:Requests_for_checkuser\nDisallow: /wiki/Wikipedia_talk%3ARequests_for_checkuser\n#\n# https://phabricator.wikimedia.org/T15398\nDisallow: /wiki/Wikipedia:WikiProject_Spam\nDisallow: /wiki/Wikipedia%3AWikiProject_Spam\n#\n# https://phabricator.wikimedia.org/T16793\nDisallow: /wiki/Wikipedia:Changing_username\nDisallow: /wiki/Wikipedia%3AChanging_username\nDisallow: /wiki/Wikipedia:Changing_username\nDisallow: /wiki/Wikipedia%3AChanging_username\nDisallow: /wiki/Wikipedia_talk:Changing_username\nDisallow: /wiki/Wikipedia_talk%3AChanging_username\nDisallow: /wiki/Wikipedia_talk:Changing_username\nDisallow: /wiki/Wikipedia_talk%3AChanging_username\n#\nDisallow: /wiki/Wikipedia:Administrators%27_noticeboard\nDisallow: /wiki/Wikipedia%3AAdministrators%27_noticeboard\nDisallow: /wiki/Wikipedia_talk:Administrators%27_noticeboard\nDisallow: /wiki/Wikipedia_talk%3AAdministrators%27_noticeboard\nDisallow: /wiki/Wikipedia:Community_sanction_noticeboard\nDisallow: /wiki/Wikipedia%3ACommunity_sanction_noticeboard\nDisallow: /wiki/Wikipedia_talk:Community_sanction_noticeboard\nDisallow: /wiki/Wikipedia_talk%3ACommunity_sanction_noticeboard\nDisallow: /wiki/Wikipedia:Bureaucrats%27_noticeboard\nDisallow: /wiki/Wikipedia%3ABureaucrats%27_noticeboard\nDisallow: /wiki/Wikipedia_talk:Bureaucrats%27_noticeboard\nDisallow: /wiki/Wikipedia_talk%3ABureaucrats%27_noticeboard\n#\nDisallow: /wiki/Wikipedia:Sockpuppet_investigations\nDisallow: /wiki/Wikipedia%3ASockpuppet_investigations\nDisallow: /wiki/Wikipedia_talk:Sockpuppet_investigations\nDisallow: /wiki/Wikipedia_talk%3ASockpuppet_investigations\n#\nDisallow: /wiki/Wikipedia:Neutral_point_of_view/Noticeboard\nDisallow: /wiki/Wikipedia%3ANeutral_point_of_view/Noticeboard\nDisallow: /wiki/Wikipedia_talk:Neutral_point_of_view/Noticeboard\nDisallow: /wiki/Wikipedia_talk%3ANeutral_point_of_view/Noticeboard\n#\nDisallow: /wiki/Wikipedia:No_original_research/noticeboard\nDisallow: /wiki/Wikipedia%3ANo_original_research/noticeboard\nDisallow: /wiki/Wikipedia_talk:No_original_research/noticeboard\nDisallow: /wiki/Wikipedia_talk%3ANo_original_research/noticeboard\n#\nDisallow: /wiki/Wikipedia:Fringe_theories/Noticeboard\nDisallow: /wiki/Wikipedia%3AFringe_theories/Noticeboard\nDisallow: /wiki/Wikipedia_talk:Fringe_theories/Noticeboard\nDisallow: /wiki/Wikipedia_talk%3AFringe_theories/Noticeboard\n#\nDisallow: /wiki/Wikipedia:Conflict_of_interest/Noticeboard\nDisallow: /wiki/Wikipedia%3AConflict_of_interest/Noticeboard\nDisallow: /wiki/Wikipedia_talk:Conflict_of_interest/Noticeboard\nDisallow: /wiki/Wikipedia_talk%3AConflict_of_interest/Noticeboard\n#\nDisallow: /wiki/Wikipedia:Long-term_abuse\nDisallow: /wiki/Wikipedia%3ALong-term_abuse\nDisallow: /wiki/Wikipedia_talk:Long-term_abuse\nDisallow: /wiki/Wikipedia_talk%3ALong-term_abuse\nDisallow: /wiki/Wikipedia:Long_term_abuse\nDisallow: /wiki/Wikipedia%3ALong_term_abuse\nDisallow: /wiki/Wikipedia_talk:Long_term_abuse\nDisallow: /wiki/Wikipedia_talk%3ALong_term_abuse\n#\nDisallow: /wiki/Wikipedia:Wikiquette_assistance\nDisallow: /wiki/Wikipedia%3AWikiquette_assistance\n#\nDisallow: /wiki/Wikipedia:Abuse_reports\nDisallow: /wiki/Wikipedia%3AAbuse_reports\nDisallow: /wiki/Wikipedia_talk:Abuse_reports\nDisallow: /wiki/Wikipedia_talk%3AAbuse_reports\nDisallow: /wiki/Wikipedia:Abuse_response\nDisallow: /wiki/Wikipedia%3AAbuse_response\nDisallow: /wiki/Wikipedia_talk:Abuse_response\nDisallow: /wiki/Wikipedia_talk%3AAbuse_response\n#\nDisallow: /wiki/Wikipedia:Reliable_sources/Noticeboard\nDisallow: /wiki/Wikipedia%3AReliable_sources/Noticeboard\nDisallow: /wiki/Wikipedia_talk:Reliable_sources/Noticeboard\nDisallow: /wiki/Wikipedia_talk%3AReliable_sources/Noticeboard\n#\nDisallow: /wiki/Wikipedia:Suspected_sock_puppets\nDisallow: /wiki/Wikipedia%3ASuspected_sock_puppets\nDisallow: /wiki/Wikipedia_talk:Suspected_sock_puppets\nDisallow: /wiki/Wikipedia_talk%3ASuspected_sock_puppets\n#\nDisallow: /wiki/Wikipedia:Biographies_of_living_persons/Noticeboard\nDisallow: /wiki/Wikipedia%3ABiographies_of_living_persons/Noticeboard\nDisallow: /wiki/Wikipedia_talk:Biographies_of_living_persons/Noticeboard\nDisallow: /wiki/Wikipedia_talk%3ABiographies_of_living_persons/Noticeboard\nDisallow: /wiki/Wikipedia:Biographies_of_living_persons%2FNoticeboard\nDisallow: /wiki/Wikipedia%3ABiographies_of_living_persons%2FNoticeboard\nDisallow: /wiki/Wikipedia_talk:Biographies_of_living_persons%2FNoticeboard\nDisallow: /wiki/Wikipedia_talk%3ABiographies_of_living_persons%2FNoticeboard\n#\nDisallow: /wiki/Wikipedia:Content_noticeboard\nDisallow: /wiki/Wikipedia%3AContent_noticeboard\nDisallow: /wiki/Wikipedia_talk:Content_noticeboard\nDisallow: /wiki/Wikipedia_talk%3AContent_noticeboard\n#\nDisallow: /wiki/Template:Editnotices\nDisallow: /wiki/Template%3AEditnotices\n#\nDisallow: /wiki/Wikipedia:Arbitration\nDisallow: /wiki/Wikipedia%3AArbitration\nDisallow: /wiki/Wikipedia_talk:Arbitration\nDisallow: /wiki/Wikipedia_talk%3AArbitration\n#\nDisallow: /wiki/Wikipedia:Arbitration_Committee\nDisallow: /wiki/Wikipedia%3AArbitration_Committee\nDisallow: /wiki/Wikipedia_talk:Arbitration_Committee\nDisallow: /wiki/Wikipedia_talk%3AArbitration_Committee\n#\nDisallow: /wiki/Wikipedia:Arbitration_Committee_Elections\nDisallow: /wiki/Wikipedia%3AArbitration_Committee_Elections\nDisallow: /wiki/Wikipedia_talk:Arbitration_Committee_Elections\nDisallow: /wiki/Wikipedia_talk%3AArbitration_Committee_Elections\n#\nDisallow: /wiki/Wikipedia:Mediation_Committee\nDisallow: /wiki/Wikipedia%3AMediation_Committee\nDisallow: /wiki/Wikipedia_talk:Mediation_Committee\nDisallow: /wiki/Wikipedia_talk%3AMediation_Committee\n#\nDisallow: /wiki/Wikipedia:Mediation_Cabal/Cases\nDisallow: /wiki/Wikipedia%3AMediation_Cabal/Cases\n#\nDisallow: /wiki/Wikipedia:Requests_for_bureaucratship\nDisallow: /wiki/Wikipedia%3ARequests_for_bureaucratship\nDisallow: /wiki/Wikipedia_talk:Requests_for_bureaucratship\nDisallow: /wiki/Wikipedia_talk%3ARequests_for_bureaucratship\n#\nDisallow: /wiki/Wikipedia:Administrator_review\nDisallow: /wiki/Wikipedia%3AAdministrator_review\nDisallow: /wiki/Wikipedia_talk:Administrator_review\nDisallow: /wiki/Wikipedia_talk%3AAdministrator_review\n#\nDisallow: /wiki/Wikipedia:Editor_review\nDisallow: /wiki/Wikipedia%3AEditor_review\nDisallow: /wiki/Wikipedia_talk:Editor_review\nDisallow: /wiki/Wikipedia_talk%3AEditor_review\n#\nDisallow: /wiki/Wikipedia:Article_Incubator\nDisallow: /wiki/Wikipedia%3AArticle_Incubator\nDisallow: /wiki/Wikipedia_talk:Article_Incubator\nDisallow: /wiki/Wikipedia_talk%3AArticle_Incubator\n#\nDisallow: /wiki/Category:Noindexed_pages\nDisallow: /wiki/Category%3ANoindexed_pages\n#\n# User sandboxes for modules and Template Styles are placed in these subpages for testing\n#\nDisallow: /wiki/Module:Sandbox\nDisallow: /wiki/Module%3ASandbox\nDisallow: /wiki/Template:TemplateStyles_sandbox\nDisallow: /wiki/Template%3ATemplateStyles_sandbox\n# Adminship and arbitration discussions are blocked from search engines, so blocking newer adminship processes (as of 2024) as well\nDisallow: /wiki/Wikipedia:Administrator_recall\nDisallow: /wiki/Wikipedia%3AAdministrator_recall\nDisallow: /wiki/Wikipedia_talk:Administrator_recall\nDisallow: /wiki/Wikipedia_talk%3AAdministrator_recall\nDisallow: /wiki/Wikipedia:Administrator_elections\nDisallow: /wiki/Wikipedia%3AAdministrator_elections\nDisallow: /wiki/Wikipedia_talk:Administrator_elections\nDisallow: /wiki/Wikipedia_talk%3AAdministrator_elections",
+    "parse_ok": true,
+    "agents": {
+      "MJ12bot": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 12,
+        "crawl_delay": null
+      },
+      "Mediapartners-Google*": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 16,
+        "crawl_delay": null
+      },
+      "IsraBot": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "Orthogaffe": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "UbiCrawler": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 28,
+        "crawl_delay": null
+      },
+      "DOC": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 31,
+        "crawl_delay": null
+      },
+      "Zao": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 34,
+        "crawl_delay": null
+      },
+      "sitecheck.internetseer.com": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 39,
+        "crawl_delay": null
+      },
+      "Zealbot": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 42,
+        "crawl_delay": null
+      },
+      "MSIECrawler": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 45,
+        "crawl_delay": null
+      },
+      "SiteSnagger": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 48,
+        "crawl_delay": null
+      },
+      "WebStripper": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 51,
+        "crawl_delay": null
+      },
+      "WebCopier": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 54,
+        "crawl_delay": null
+      },
+      "Fetch": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 57,
+        "crawl_delay": null
+      },
+      "Offline Explorer": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 60,
+        "crawl_delay": null
+      },
+      "Teleport": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 63,
+        "crawl_delay": null
+      },
+      "TeleportPro": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 66,
+        "crawl_delay": null
+      },
+      "WebZIP": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 69,
+        "crawl_delay": null
+      },
+      "linko": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 72,
+        "crawl_delay": null
+      },
+      "HTTrack": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 75,
+        "crawl_delay": null
+      },
+      "Microsoft.URL.Control": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 78,
+        "crawl_delay": null
+      },
+      "Xenu": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 81,
+        "crawl_delay": null
+      },
+      "larbin": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 84,
+        "crawl_delay": null
+      },
+      "libwww": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 87,
+        "crawl_delay": null
+      },
+      "ZyBORG": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 90,
+        "crawl_delay": null
+      },
+      "Download Ninja": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 93,
+        "crawl_delay": null
+      },
+      "fast": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 97,
+        "crawl_delay": null
+      },
+      "wget": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 104,
+        "crawl_delay": null
+      },
+      "grub-client": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 108,
+        "crawl_delay": null
+      },
+      "k2spider": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 112,
+        "crawl_delay": null
+      },
+      "NPBot": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 117,
+        "crawl_delay": null
+      },
+      "WebReaper": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 122,
+        "crawl_delay": null
+      },
+      "SemrushBot": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": 5.0
+      },
+      "*": {
+        "class": "generic",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      }
+    },
+    "sitemap_declarations": [
+      "https://en.wikipedia.org/w/rest.php/site/v1/sitemap/0"
+    ]
+  },
+  "discovery": {
+    "status": "ok",
+    "reason": null,
+    "sitemap_found": false,
+    "sitemap_urls_count": 0,
+    "inventory": [
+      {
+        "url": "https://www.wikipedia.org/",
+        "page_type": "home",
+        "source": "crawl"
+      }
+    ],
+    "sampled_static": [
+      "https://www.wikipedia.org/"
+    ],
+    "sampled_rendered": [],
+    "sampling_seed": "sha256:9a9d50ec8631eafde241ce5b6991ebb9ba74c8543397179e1b589e700bedefd4"
+  },
+  "pages": [
+    {
+      "url": "https://www.wikipedia.org/",
+      "final_url": "https://www.wikipedia.org/",
+      "status": "ok",
+      "reason": null,
+      "http_status": 200,
+      "page_type": "home",
+      "headers": {
+        "date": "Thu, 10 Sep 2026 20:32:50 GMT",
+        "server": "mw-web.codfw.main-6cccd68dbd-26mbj",
+        "last-modified": "Thu, 10 Sep 2026 20:05:39 GMT",
+        "cache-control": "s-maxage=86400, must-revalidate, max-age=3600",
+        "content-type": "text/html",
+        "etag": "W/\"1d315-65b267de04ac0\"",
+        "content-encoding": "gzip",
+        "age": "1188",
+        "accept-ranges": "bytes",
+        "vary": "Accept-Encoding",
+        "x-cache": "cp5018 miss, cp5018 hit/16491",
+        "x-cache-status": "hit-front",
+        "strict-transport-security": "max-age=106384710; includeSubDomains; preload",
+        "report-to": "{ \"group\": \"wm_nel\", \"max_age\": 604800, \"endpoints\": [{ \"url\": \"https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0\" }] }",
+        "nel": "{ \"report_to\": \"wm_nel\", \"max_age\": 604800, \"failure_fraction\": 0.05, \"success_fraction\": 0.0}",
+        "set-cookie": "WMF-Uniq=KOQT_6gcYtPSh7cxOTiviwPXAAAAAFvdPEveyxO6hGT19JzvjCQBCAevCcdwGtvg;Domain=.wikipedia.org;Path=/;HttpOnly;secure;SameSite=None;Expires=Fri, 10 Sep 2027 00:00:00 GMT",
+        "x-client-ip": "14.139.194.115",
+        "content-length": "28755",
+        "x-request-id": "c03bc900-bbd2-4791-8e54-6f8c912a546c",
+        "x-analytics": "",
+        "server-timing": "cache;desc=\"hit-front\", host;desc=\"cp5018\",co_id;desc=\"284178640\"",
+        "connection": "close"
+      },
+      "raw_html_bytes": 119573,
+      "main_text": "Wikipedia The Free Encyclopedia Donate now | I already donated Wikipedia still can't be sold. An important update for readers in the United States . You deserve an explanation, so please don't skip this 1-minute read. This year, Wikipedia has had fewer visitors and fewer new supporters, so your visit today means a lot. We hope that Wikipedia's given you at least $2.75 of knowledge recently. If everyone who found Wikipedia useful gave $2.75 , we'd hit our goal in a few hours. After 25 years, Wikipedia is still the internet we were promised—created by people, not by machines. It's not perfect, but it's not here to push a point of view. It's run by a nonprofit, not a giant technology company or a billionaire. Less than 2% of our readers donate. The rare few who give do so because Wikipedia provides them with useful knowledge. If that sounds like you, please donate $2.75 . Any contribution you make today helps. Please select an amount ( USD ) . The average donation in the United States is around $13 . Many first-time donors give $2.75 . If you've never given, all that matters is that you're choosing to stand up for free, open information. For that, you have our gratitude. 5 10 20 30 50 100 Other How often would you like to donate? One time Give monthly Donate now We ask you, sincerely: don't skip this. Be one of the rare readers who gives. Wikimedia Foundation Proud host of Wikipedia and other free knowledge projects We never sell your information. By submitting, you are agreeing to our donor privacy policy and to sharing your information with the Wikimedia Foundation and its service providers in the USA and elsewhere. Donations to the Wikimedia Foundation are likely not tax-deductible outside the USA. Collapse The internet we were promised Most people donate because Wikipedia is the internet we were promised: useful, free, and filled with reliable, human-created knowledge. If you agree, please give $2.75 . If everyone reading this right now gave just $2.75 , we'd reach our goal quickly. — The Wikimedia Foundation, host of Wikipedia and other free knowledge projects . Donate now 🎉 Thank you for donating recently! 🎉 Your support means the world to us. We'll hide banners in this browser for one month. Close",
+      "main_text_words": 383,
+      "extraction_ok": true,
+      "title": "Wikipedia",
+      "meta": {
+        "viewport": "initial-scale=1,user-scalable=yes",
+        "description": "Wikipedia is a free online encyclopedia, created and edited by volunteers around the world and hosted by the Wikimedia Foundation.",
+        "robots": null
+      },
+      "lang": "en",
+      "canonical": {
+        "href": null,
+        "self_referential": false,
+        "cross_domain": false
+      },
+      "headings": [
+        {
+          "level": 1,
+          "text": "Wikipedia The Free Encyclopedia",
+          "order": 0
+        },
+        {
+          "level": 2,
+          "text": "1,000,000+ articles",
+          "order": 1
+        },
+        {
+          "level": 2,
+          "text": "100,000+ articles",
+          "order": 2
+        },
+        {
+          "level": 2,
+          "text": "10,000+ articles",
+          "order": 3
+        },
+        {
+          "level": 2,
+          "text": "1,000+ articles",
+          "order": 4
+        },
+        {
+          "level": 2,
+          "text": "100+ articles",
+          "order": 5
+        },
+        {
+          "level": 3,
+          "text": "The internet we were promised",
+          "order": 6
+        }
+      ],
+      "landmarks": {
+        "main": 1,
+        "nav": 3,
+        "header": 0,
+        "footer": 1
+      },
+      "structured_data": {
+        "json_ld": [],
+        "microdata_types": [],
+        "rdfa_types": []
+      },
+      "links": [
+        {
+          "href": "https://en.wikipedia.org/",
+          "text": "English 7,237,000+ articles",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://ja.wikipedia.org/",
+          "text": "日本語 1,517,000+ 記事",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://de.wikipedia.org/",
+          "text": "Deutsch 3.150.000+ Artikel",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://fr.wikipedia.org/",
+          "text": "Français 2 778 000+ articles",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://ru.wikipedia.org/",
+          "text": "Русский 2 117 000+ статей",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://es.wikipedia.org/",
+          "text": "Español 2.136.000+ artículos",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://it.wikipedia.org/",
+          "text": "Italiano 1.986.000+ voci",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://zh.wikipedia.org/",
+          "text": "中文 1,554,000+ 条目 / 條目",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://pl.wikipedia.org/",
+          "text": "Polski 1 707 000+ haseł",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://pt.wikipedia.org/",
+          "text": "Português 1.181.000+ artigos",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://ar.wikipedia.org/",
+          "text": "العربية",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://de.wikipedia.org/",
+          "text": "Deutsch",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://en.wikipedia.org/",
+          "text": "English",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://es.wikipedia.org/",
+          "text": "Español",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://fa.wikipedia.org/",
+          "text": "فارسی",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://fr.wikipedia.org/",
+          "text": "Français",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://it.wikipedia.org/",
+          "text": "Italiano",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://arz.wikipedia.org/",
+          "text": "مصرى",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://nl.wikipedia.org/",
+          "text": "Nederlands",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://ja.wikipedia.org/",
+          "text": "日本語",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://pl.wikipedia.org/",
+          "text": "Polski",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://pt.wikipedia.org/",
+          "text": "Português",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://ceb.wikipedia.org/",
+          "text": "Sinugboanong Binisaya",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://sv.wikipedia.org/",
+          "text": "Svenska",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://uk.wikipedia.org/",
+          "text": "Українська",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://vi.wikipedia.org/",
+          "text": "Tiếng Việt",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://war.wikipedia.org/",
+          "text": "Winaray",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://zh.wikipedia.org/",
+          "text": "中文",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://ru.wikipedia.org/",
+          "text": "Русский",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://af.wikipedia.org/",
+          "text": "Afrikaans",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://sq.wikipedia.org/",
+          "text": "Shqip",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://ast.wikipedia.org/",
+          "text": "Asturianu",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://az.wikipedia.org/",
+          "text": "Azərbaycanca",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://bg.wikipedia.org/",
+          "text": "Български",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://zh-min-nan.wikipedia.org/",
+          "text": "閩南語 / Bân-lâm-gú",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://bn.wikipedia.org/",
+          "text": "বাংলা",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://be.wikipedia.org/",
+          "text": "Беларуская",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://ca.wikipedia.org/",
+          "text": "Català",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://cs.wikipedia.org/",
+          "text": "Čeština",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://cy.wikipedia.org/",
+          "text": "Cymraeg",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://da.wikipedia.org/",
+          "text": "Dansk",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://et.wikipedia.org/",
+          "text": "Eesti",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://el.wikipedia.org/",
+          "text": "Ελληνικά",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://eo.wikipedia.org/",
+          "text": "Esperanto",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://eu.wikipedia.org/",
+          "text": "Euskara",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://gl.wikipedia.org/",
+          "text": "Galego",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://ko.wikipedia.org/",
+          "text": "한국어",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://ha.wikipedia.org/",
+          "text": "Hausa",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://hy.wikipedia.org/",
+          "text": "Հայերեն",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://hi.wikipedia.org/",
+          "text": "हिन्दी",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://hr.wikipedia.org/",
+          "text": "Hrvatski",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://id.wikipedia.org/",
+          "text": "Bahasa Indonesia",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://he.wikipedia.org/",
+          "text": "עברית",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://ka.wikipedia.org/",
+          "text": "ქართული",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://lld.wikipedia.org/",
+          "text": "Ladin",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://la.wikipedia.org/",
+          "text": "Latina",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://lv.wikipedia.org/",
+          "text": "Latviešu",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://lt.wikipedia.org/",
+          "text": "Lietuvių",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://hu.wikipedia.org/",
+          "text": "Magyar",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://mk.wikipedia.org/",
+          "text": "Македонски",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://mg.wikipedia.org/",
+          "text": "Malagasy",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://mr.wikipedia.org/",
+          "text": "मराठी",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://ms.wikipedia.org/",
+          "text": "Bahasa Melayu",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://min.wikipedia.org/",
+          "text": "Bahaso Minangkabau",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://my.wikipedia.org/",
+          "text": "မြန်မာဘာသာ",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://no.wikipedia.org/",
+          "text": "bokmål",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://nn.wikipedia.org/",
+          "text": "nynorsk",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://ce.wikipedia.org/",
+          "text": "Нохчийн",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://uz.wikipedia.org/",
+          "text": "Oʻzbekcha / Ўзбекча",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://kk.wikipedia.org/",
+          "text": "Қазақша / Qazaqşa / قازاقشا",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://ro.wikipedia.org/",
+          "text": "Română",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://simple.wikipedia.org/",
+          "text": "Simple English",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://sk.wikipedia.org/",
+          "text": "Slovenčina",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://sl.wikipedia.org/",
+          "text": "Slovenščina",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://sr.wikipedia.org/",
+          "text": "Српски / Srpski",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://sh.wikipedia.org/",
+          "text": "Srpskohrvatski / Српскохрватски",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://fi.wikipedia.org/",
+          "text": "Suomi",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://sw.wikipedia.org/",
+          "text": "Kiswahili",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://ta.wikipedia.org/",
+          "text": "தமிழ்",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://tt.wikipedia.org/",
+          "text": "Татарча / Tatarça",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://te.wikipedia.org/",
+          "text": "తెలుగు",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://th.wikipedia.org/",
+          "text": "ภาษาไทย",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://tg.wikipedia.org/",
+          "text": "Тоҷикӣ",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://azb.wikipedia.org/",
+          "text": "تۆرکجه",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://tr.wikipedia.org/",
+          "text": "Türkçe",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://ur.wikipedia.org/",
+          "text": "اردو",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://zh-yue.wikipedia.org/",
+          "text": "粵語",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://ace.wikipedia.org/",
+          "text": "Bahsa Acèh",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://als.wikipedia.org/",
+          "text": "Alemannisch",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://am.wikipedia.org/",
+          "text": "አማርኛ",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://an.wikipedia.org/",
+          "text": "Aragonés",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://hyw.wikipedia.org/",
+          "text": "Արեւմտահայերէն",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://gor.wikipedia.org/",
+          "text": "Bahasa Hulontalo",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://ban.wikipedia.org/",
+          "text": "Basa Bali",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://bjn.wikipedia.org/",
+          "text": "Bahasa Banjar",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://map-bms.wikipedia.org/",
+          "text": "Basa Banyumasan",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://ba.wikipedia.org/",
+          "text": "Башҡортса",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://be-tarask.wikipedia.org/",
+          "text": "Беларуская (тарашкевіца)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://bcl.wikipedia.org/",
+          "text": "Bikol Central",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://bpy.wikipedia.org/",
+          "text": "বিষ্ণুপ্রিয়া মণিপুরী",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://bar.wikipedia.org/",
+          "text": "Boarisch",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://bs.wikipedia.org/",
+          "text": "Bosanski",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://br.wikipedia.org/",
+          "text": "Brezhoneg",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://cv.wikipedia.org/",
+          "text": "Чӑвашла",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://dag.wikipedia.org/",
+          "text": "Dagbanli",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://ary.wikipedia.org/",
+          "text": "الدارجة",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://nv.wikipedia.org/",
+          "text": "Diné Bizaad",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://eml.wikipedia.org/",
+          "text": "Emigliàn–Rumagnòl",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://hif.wikipedia.org/",
+          "text": "Fiji Hindi",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://fo.wikipedia.org/",
+          "text": "Føroyskt",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://fy.wikipedia.org/",
+          "text": "Frysk",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://ff.wikipedia.org/",
+          "text": "Fulfulde",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://ga.wikipedia.org/",
+          "text": "Gaeilge",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://gd.wikipedia.org/",
+          "text": "Gàidhlig",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://glk.wikipedia.org/",
+          "text": "گیلکی",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://gu.wikipedia.org/",
+          "text": "ગુજરાતી",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://hak.wikipedia.org/",
+          "text": "Hak-kâ-ngî / 客家語",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://hsb.wikipedia.org/",
+          "text": "Hornjoserbsce",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://io.wikipedia.org/",
+          "text": "Ido",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://ig.wikipedia.org/",
+          "text": "Igbo",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://ilo.wikipedia.org/",
+          "text": "Ilokano",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://ia.wikipedia.org/",
+          "text": "Interlingua",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://ie.wikipedia.org/",
+          "text": "Interlingue",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://os.wikipedia.org/",
+          "text": "Ирон",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://is.wikipedia.org/",
+          "text": "Íslenska",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://jv.wikipedia.org/",
+          "text": "Jawa",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://kn.wikipedia.org/",
+          "text": "ಕನ್ನಡ",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://pam.wikipedia.org/",
+          "text": "Kapampangan",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://km.wikipedia.org/",
+          "text": "ភាសាខ្មែរ",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://ks.wikipedia.org/",
+          "text": "كٲشُر",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://avk.wikipedia.org/",
+          "text": "Kotava",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://ht.wikipedia.org/",
+          "text": "Kreyòl Ayisyen",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://ku.wikipedia.org/",
+          "text": "Kurdî / كوردی",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://ckb.wikipedia.org/",
+          "text": "کوردیی ناوەندی",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://ky.wikipedia.org/",
+          "text": "Кыргызча",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://mrj.wikipedia.org/",
+          "text": "Кырык мары",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://lb.wikipedia.org/",
+          "text": "Lëtzebuergesch",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://lij.wikipedia.org/",
+          "text": "Lìgure",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://li.wikipedia.org/",
+          "text": "Limburgs",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://lmo.wikipedia.org/",
+          "text": "Lombard",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://mai.wikipedia.org/",
+          "text": "मैथिली",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://ml.wikipedia.org/",
+          "text": "മലയാളം",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://xmf.wikipedia.org/",
+          "text": "მარგალური",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://mzn.wikipedia.org/",
+          "text": "مازِرونی",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://cdo.wikipedia.org/",
+          "text": "Mìng-dĕ̤ng-ngṳ̄ / 閩東語",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://mn.wikipedia.org/",
+          "text": "Монгол",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://nap.wikipedia.org/",
+          "text": "Napulitano",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://new.wikipedia.org/",
+          "text": "नेपाल भाषा",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://frr.wikipedia.org/",
+          "text": "Nordfriisk",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://oc.wikipedia.org/",
+          "text": "Occitan",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://mhr.wikipedia.org/",
+          "text": "Олык марий",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://or.wikipedia.org/",
+          "text": "ଓଡି଼ଆ",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://as.wikipedia.org/",
+          "text": "অসমীযা়",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://pa.wikipedia.org/",
+          "text": "ਪੰਜਾਬੀ",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://pnb.wikipedia.org/",
+          "text": "پنجابی (شاہ مکھی)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://ps.wikipedia.org/",
+          "text": "پښتو",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://pms.wikipedia.org/",
+          "text": "Piemontèis",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://nds.wikipedia.org/",
+          "text": "Plattdüütsch",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://kaa.wikipedia.org/",
+          "text": "Qaraqalpaqsha",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://crh.wikipedia.org/",
+          "text": "Qırımtatarca",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://qu.wikipedia.org/",
+          "text": "Runa Simi",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://rue.wikipedia.org/",
+          "text": "Русиньскый",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://sa.wikipedia.org/",
+          "text": "संस्कृतम्",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://sat.wikipedia.org/",
+          "text": "ᱥᱟᱱᱛᱟᱲᱤ",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://skr.wikipedia.org/",
+          "text": "سرائیکی",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://sah.wikipedia.org/",
+          "text": "Саха Тыла",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://sco.wikipedia.org/",
+          "text": "Scots",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://sn.wikipedia.org/",
+          "text": "ChiShona",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://scn.wikipedia.org/",
+          "text": "Sicilianu",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://si.wikipedia.org/",
+          "text": "සිංහල",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://sd.wikipedia.org/",
+          "text": "سنڌي",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://szl.wikipedia.org/",
+          "text": "Ślůnski",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://so.wikipedia.org/",
+          "text": "Soomaaliga",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://su.wikipedia.org/",
+          "text": "Basa Sunda",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://shi.wikipedia.org/",
+          "text": "Taclḥit",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://tl.wikipedia.org/",
+          "text": "Tagalog",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://shn.wikipedia.org/",
+          "text": "ၽႃႇသႃႇတႆး",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://zgh.wikipedia.org/",
+          "text": "ⵜⴰⵎⴰⵣⵉⵖⵜ ⵜⴰⵏⴰⵡⴰⵢⵜ",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://tly.wikipedia.org/",
+          "text": "tolışi",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://tum.wikipedia.org/",
+          "text": "chiTumbuka",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://bug.wikipedia.org/",
+          "text": "Basa Ugi",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://vec.wikipedia.org/",
+          "text": "Vèneto",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://vo.wikipedia.org/",
+          "text": "Volapük",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://wa.wikipedia.org/",
+          "text": "Walon",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://zh-classical.wikipedia.org/",
+          "text": "文言",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://wuu.wikipedia.org/",
+          "text": "吴语",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://yi.wikipedia.org/",
+          "text": "ייִדיש",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://yo.wikipedia.org/",
+          "text": "Yorùbá",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://diq.wikipedia.org/",
+          "text": "Zazaki",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://bat-smg.wikipedia.org/",
+          "text": "Žemaitėška",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://zu.wikipedia.org/",
+          "text": "isiZulu",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://ne.wikipedia.org/",
+          "text": "नेपाली",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://mni.wikipedia.org/",
+          "text": "ꯃꯤꯇꯩ ꯂꯣꯟ",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://lad.wikipedia.org/",
+          "text": "Dzhudezmo / לאדינו",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://kbd.wikipedia.org/",
+          "text": "Адыгэбзэ",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://ang.wikipedia.org/",
+          "text": "Ænglisc",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://smn.wikipedia.org/",
+          "text": "Anarâškielâ",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://anp.wikipedia.org/",
+          "text": "अंगिका",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://ab.wikipedia.org/",
+          "text": "Аԥсшәа",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://roa-rup.wikipedia.org/",
+          "text": "armãneashti",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://frp.wikipedia.org/",
+          "text": "Arpitan",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://atj.wikipedia.org/",
+          "text": "atikamekw",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://arc.wikipedia.org/",
+          "text": "ܐܬܘܪܝܐ",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://gn.wikipedia.org/",
+          "text": "Avañe’ẽ",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://av.wikipedia.org/",
+          "text": "Авар",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://ay.wikipedia.org/",
+          "text": "Aymar",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://bbc.wikipedia.org/",
+          "text": "Batak Toba",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://bew.wikipedia.org/",
+          "text": "Betawi",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://bh.wikipedia.org/",
+          "text": "भोजपुरी",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://bi.wikipedia.org/",
+          "text": "Bislama",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://bo.wikipedia.org/",
+          "text": "བོད་ཡིག",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://bxr.wikipedia.org/",
+          "text": "Буряад",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://cbk-zam.wikipedia.org/",
+          "text": "Chavacano de Zamboanga",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://ny.wikipedia.org/",
+          "text": "Chichewa",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://co.wikipedia.org/",
+          "text": "Corsu",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://za.wikipedia.org/",
+          "text": "Vahcuengh / 話僮",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://dga.wikipedia.org/",
+          "text": "Dagaare",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://se.wikipedia.org/",
+          "text": "Davvisámegiella",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://pdc.wikipedia.org/",
+          "text": "Deitsch",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://dv.wikipedia.org/",
+          "text": "ދިވެހިބަސް",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://dsb.wikipedia.org/",
+          "text": "Dolnoserbski",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://myv.wikipedia.org/",
+          "text": "Эрзянь",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://ext.wikipedia.org/",
+          "text": "Estremeñu",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://ee.wikipedia.org/",
+          "text": "Eʋegbe",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://gur.wikipedia.org/",
+          "text": "Farefare",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://fon.wikipedia.org/",
+          "text": "Fɔ̀ngbè",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://fur.wikipedia.org/",
+          "text": "Furlan",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://gv.wikipedia.org/",
+          "text": "Gaelg",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://gag.wikipedia.org/",
+          "text": "Gagauz",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://inh.wikipedia.org/",
+          "text": "ГӀалгӀай",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://gpe.wikipedia.org/",
+          "text": "Ghanaian Pidgin",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://ki.wikipedia.org/",
+          "text": "Gĩkũyũ",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://gan.wikipedia.org/",
+          "text": "赣语 / 贛語",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://guw.wikipedia.org/",
+          "text": "Gungbe",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://got.wikipedia.org/",
+          "text": "𐌲𐌿𐍄𐌹𐍃𐌺",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://xal.wikipedia.org/",
+          "text": "Хальмг",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://haw.wikipedia.org/",
+          "text": "ʻŌlelo Hawaiʻi",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://igl.wikipedia.org/",
+          "text": "Igala",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://rw.wikipedia.org/",
+          "text": "Ikinyarwanda",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://iba.wikipedia.org/",
+          "text": "Jaku Iban",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://kbp.wikipedia.org/",
+          "text": "Kabɩyɛ",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://dtp.wikipedia.org/",
+          "text": "Kadazandusun",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://knc.wikipedia.org/",
+          "text": "Yerwa Kanuri",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://kai.wikipedia.org/",
+          "text": "Karai-karai",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://csb.wikipedia.org/",
+          "text": "Kaszëbsczi",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://kw.wikipedia.org/",
+          "text": "Kernewek",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://kv.wikipedia.org/",
+          "text": "Коми",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://koi.wikipedia.org/",
+          "text": "Перем коми",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://kg.wikipedia.org/",
+          "text": "Kongo",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://gom.wikipedia.org/",
+          "text": "कोंकणी / Konknni",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://gcr.wikipedia.org/",
+          "text": "Kriyòl Gwiyannen",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://kge.wikipedia.org/",
+          "text": "Kumoring",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://kus.wikipedia.org/",
+          "text": "Kʋsaal",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://lo.wikipedia.org/",
+          "text": "ພາສາລາວ",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://lbe.wikipedia.org/",
+          "text": "Лакку",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://ltg.wikipedia.org/",
+          "text": "Latgaļu",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://lez.wikipedia.org/",
+          "text": "Лезги",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://nia.wikipedia.org/",
+          "text": "Li Niha",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://ln.wikipedia.org/",
+          "text": "Lingála",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://lfn.wikipedia.org/",
+          "text": "Lingua Franca Nova",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://olo.wikipedia.org/",
+          "text": "livvinkarjala",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://jbo.wikipedia.org/",
+          "text": "lojban",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://lg.wikipedia.org/",
+          "text": "Luganda",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://mad.wikipedia.org/",
+          "text": "Madhurâ",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://mag.wikipedia.org/",
+          "text": "मगही",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://mt.wikipedia.org/",
+          "text": "Malti",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://btm.wikipedia.org/",
+          "text": "Mandailing",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://mi.wikipedia.org/",
+          "text": "Māori",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://isv.wikipedia.org/",
+          "text": "Medžuslovjansky / Меджусловјанскы",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://fat.wikipedia.org/",
+          "text": "Mfantse",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://mwl.wikipedia.org/",
+          "text": "Mirandés",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://mdf.wikipedia.org/",
+          "text": "Мокшень",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://mnw.wikipedia.org/",
+          "text": "ဘာသာမန်",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://mos.wikipedia.org/",
+          "text": "Moore",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://nqo.wikipedia.org/",
+          "text": "ߒߞߏ",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://fj.wikipedia.org/",
+          "text": "Na Vosa Vaka-Viti",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://nah.wikipedia.org/",
+          "text": "Nāhuatlahtōlli",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://pcm.wikipedia.org/",
+          "text": "Naijá",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://nds-nl.wikipedia.org/",
+          "text": "Nedersaksisch",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://nrm.wikipedia.org/",
+          "text": "Nouormand / Normaund",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://nov.wikipedia.org/",
+          "text": "Novial",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://nup.wikipedia.org/",
+          "text": "Nupe",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://om.wikipedia.org/",
+          "text": "Afaan Oromoo",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://blk.wikipedia.org/",
+          "text": "ပအိုဝ်ႏဘာႏသာႏ",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://pag.wikipedia.org/",
+          "text": "Pangasinán",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://ami.wikipedia.org/",
+          "text": "Pangcah",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://pap.wikipedia.org/",
+          "text": "Papiamentu",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://jam.wikipedia.org/",
+          "text": "Patois",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://pfl.wikipedia.org/",
+          "text": "Pfälzisch",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://pcd.wikipedia.org/",
+          "text": "Picard",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://krc.wikipedia.org/",
+          "text": "Къарачай–малкъар",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://ksh.wikipedia.org/",
+          "text": "Ripoarisch",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://rm.wikipedia.org/",
+          "text": "Rumantsch",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://rsk.wikipedia.org/",
+          "text": "Руски",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://szy.wikipedia.org/",
+          "text": "Sakizaya",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://sm.wikipedia.org/",
+          "text": "Gagana Sāmoa",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://sc.wikipedia.org/",
+          "text": "Sardu",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://trv.wikipedia.org/",
+          "text": "Seediq",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://stq.wikipedia.org/",
+          "text": "Seeltersk",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://st.wikipedia.org/",
+          "text": "Sesotho",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://nso.wikipedia.org/",
+          "text": "Sesotho sa Leboa",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://tn.wikipedia.org/",
+          "text": "Setswana",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://syl.wikipedia.org/",
+          "text": "ꠍꠤꠟꠐꠤ",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://cu.wikipedia.org/",
+          "text": "Словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://srn.wikipedia.org/",
+          "text": "Sranantongo",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://ss.wikipedia.org/",
+          "text": "SiSwati",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://ty.wikipedia.org/",
+          "text": "Reo tahiti",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://kab.wikipedia.org/",
+          "text": "Taqbaylit",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://roa-tara.wikipedia.org/",
+          "text": "Tarandíne",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://tay.wikipedia.org/",
+          "text": "Tayal",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://tet.wikipedia.org/",
+          "text": "Tetun",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://tpi.wikipedia.org/",
+          "text": "Tok Pisin",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://tok.wikipedia.org/",
+          "text": "toki pona",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://to.wikipedia.org/",
+          "text": "faka Tonga",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://chr.wikipedia.org/",
+          "text": "ᏣᎳᎩ",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://ts.wikipedia.org/",
+          "text": "Xitsonga",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://tk.wikipedia.org/",
+          "text": "Türkmençe",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://tw.wikipedia.org/",
+          "text": "Twi",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://kcg.wikipedia.org/",
+          "text": "Tyap",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://tyv.wikipedia.org/",
+          "text": "Тыва дыл",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://udm.wikipedia.org/",
+          "text": "Удмурт",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://ug.wikipedia.org/",
+          "text": "ئۇيغۇرچه",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://vep.wikipedia.org/",
+          "text": "Vepsän",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://fiu-vro.wikipedia.org/",
+          "text": "võro",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://vls.wikipedia.org/",
+          "text": "West-Vlams",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://wo.wikipedia.org/",
+          "text": "Wolof",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://xh.wikipedia.org/",
+          "text": "isiXhosa",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://zea.wikipedia.org/",
+          "text": "Zeêuws",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://alt.wikipedia.org/",
+          "text": "алтай тил",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://awa.wikipedia.org/",
+          "text": "अवधी",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://dty.wikipedia.org/",
+          "text": "डोटेली",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://tcy.wikipedia.org/",
+          "text": "ತುಳು",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://rki.wikipedia.org/",
+          "text": "ရခိုင်",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://bdr.wikipedia.org/",
+          "text": "Bajau Sama",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://bm.wikipedia.org/",
+          "text": "Bamanankan",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://bol.wikipedia.org/",
+          "text": "Bòo pìkkà",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://ch.wikipedia.org/",
+          "text": "Chamoru",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://dz.wikipedia.org/",
+          "text": "རྫོང་ཁ",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://iu.wikipedia.org/",
+          "text": "ᐃᓄᒃᑎᑐᑦ / Inuktitut",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://ik.wikipedia.org/",
+          "text": "Iñupiak",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://nr.wikipedia.org/",
+          "text": "isiNdebele seSewula",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://kaj.wikipedia.org/",
+          "text": "Jju",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://ppl.wikipedia.org/",
+          "text": "Nawat",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://ann.wikipedia.org/",
+          "text": "Obolo",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://pi.wikipedia.org/",
+          "text": "पालि",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://pwn.wikipedia.org/",
+          "text": "pinayuanan",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://pnt.wikipedia.org/",
+          "text": "Ποντιακά",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://rmy.wikipedia.org/",
+          "text": "Romani čhib",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://rn.wikipedia.org/",
+          "text": "Ikirundi",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://sg.wikipedia.org/",
+          "text": "Sängö",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://tdd.wikipedia.org/",
+          "text": "ᥖᥭᥰᥖᥬᥳᥑᥨᥒᥰ",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://ti.wikipedia.org/",
+          "text": "ትግርኛ",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://din.wikipedia.org/",
+          "text": "Thuɔŋjäŋ",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://chy.wikipedia.org/",
+          "text": "Tsėhesenėstsestotse",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://ve.wikipedia.org/",
+          "text": "Tshivenḓa",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://guc.wikipedia.org/",
+          "text": "Wayuunaiki",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://ady.wikipedia.org/",
+          "text": "адыгабзэ",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://meta.wikimedia.org/wiki/Special:MyLanguage/List_of_Wikipedias",
+          "text": "Other languages",
+          "rel": null,
+          "internal": false,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.wikipedia.org/",
+          "text": "Donate now",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.wikipedia.org/",
+          "text": "I already donated",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.wikipedia.org/",
+          "text": "Donate now",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://foundation.wikimedia.org/wiki/Special:MyLanguage/Policy:Donor_privacy_policy?uselang=en",
+          "text": "donor privacy policy",
+          "rel": null,
+          "internal": false,
+          "aria_label": null
+        },
+        {
+          "href": "https://wikimediafoundation.org/give/donor-frequently-asked-questions/#tax-deductibility",
+          "text": "Wikimedia Foundation",
+          "rel": null,
+          "internal": false,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.wikipedia.org/",
+          "text": "Donate now",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://donate.wikimedia.org/?wmf_medium=portal&wmf_campaign=portalFooter&wmf_source=portalFooter",
+          "text": "You can support our work with a donation.",
+          "rel": null,
+          "internal": false,
+          "aria_label": null
+        },
+        {
+          "href": "https://en.wikipedia.org/wiki/List_of_Wikipedia_mobile_applications",
+          "text": "Download Wikipedia for Android or iOS",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://play.google.com/store/apps/details?id=org.wikipedia&referrer=utm_source%3Dportal%26utm_medium%3Dbutton%26anid%3Dadmob",
+          "text": "Google Play Store",
+          "rel": "noreferrer",
+          "internal": false,
+          "aria_label": null
+        },
+        {
+          "href": "https://itunes.apple.com/app/apple-store/id324715238?pt=208305&ct=portal&mt=8",
+          "text": "Apple App Store",
+          "rel": "noreferrer",
+          "internal": false,
+          "aria_label": null
+        },
+        {
+          "href": "https://commons.wikimedia.org/",
+          "text": "Commons Free media collection",
+          "rel": null,
+          "internal": false,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.wikivoyage.org/",
+          "text": "Wikivoyage Free travel guide",
+          "rel": null,
+          "internal": false,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.wiktionary.org/",
+          "text": "Wiktionary Free dictionary",
+          "rel": null,
+          "internal": false,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.wikibooks.org/",
+          "text": "Wikibooks Free textbooks",
+          "rel": null,
+          "internal": false,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.wikidata.org/",
+          "text": "Wikidata Free knowledge base",
+          "rel": null,
+          "internal": false,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.wikiversity.org/",
+          "text": "Wikiversity Free learning resources",
+          "rel": null,
+          "internal": false,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.wikiquote.org/",
+          "text": "Wikiquote Free quote compendium",
+          "rel": null,
+          "internal": false,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.mediawiki.org/",
+          "text": "MediaWiki Free & open wiki software",
+          "rel": null,
+          "internal": false,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.wikisource.org/",
+          "text": "Wikisource Free content library",
+          "rel": null,
+          "internal": false,
+          "aria_label": null
+        },
+        {
+          "href": "https://species.wikimedia.org/",
+          "text": "Wikispecies Free species directory",
+          "rel": null,
+          "internal": false,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.wikifunctions.org/",
+          "text": "Wikifunctions Free function library",
+          "rel": null,
+          "internal": false,
+          "aria_label": null
+        },
+        {
+          "href": "https://meta.wikimedia.org/",
+          "text": "Meta-Wiki Community coordination & documentation",
+          "rel": null,
+          "internal": false,
+          "aria_label": null
+        },
+        {
+          "href": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "text": "Creative Commons Attribution-ShareAlike License",
+          "rel": null,
+          "internal": false,
+          "aria_label": null
+        },
+        {
+          "href": "https://foundation.wikimedia.org/wiki/Special:MyLanguage/Policy:Terms_of_Use",
+          "text": "Terms of Use",
+          "rel": null,
+          "internal": false,
+          "aria_label": null
+        },
+        {
+          "href": "https://foundation.wikimedia.org/wiki/Special:MyLanguage/Policy:Privacy_policy",
+          "text": "Privacy Policy",
+          "rel": null,
+          "internal": false,
+          "aria_label": null
+        }
+      ],
+      "outbound_profile_links": [
+        "https://donate.wikimedia.org/?wmf_medium=portal&wmf_campaign=portalFooter&wmf_source=portalFooter",
+        "https://play.google.com/store/apps/details?id=org.wikipedia&referrer=utm_source%3Dportal%26utm_medium%3Dbutton%26anid%3Dadmob",
+        "https://itunes.apple.com/app/apple-store/id324715238?pt=208305&ct=portal&mt=8",
+        "https://commons.wikimedia.org/",
+        "https://www.wikivoyage.org/",
+        "https://www.wiktionary.org/",
+        "https://www.wikibooks.org/",
+        "https://www.wikidata.org/",
+        "https://www.wikiversity.org/",
+        "https://www.wikiquote.org/",
+        "https://www.mediawiki.org/",
+        "https://www.wikisource.org/",
+        "https://species.wikimedia.org/",
+        "https://www.wikifunctions.org/",
+        "https://meta.wikimedia.org/",
+        "https://creativecommons.org/licenses/by-sa/4.0/",
+        "https://foundation.wikimedia.org/wiki/Special:MyLanguage/Policy:Terms_of_Use",
+        "https://foundation.wikimedia.org/wiki/Special:MyLanguage/Policy:Privacy_policy"
+      ],
+      "images": [
+        {
+          "src": "portal/wikipedia.org/assets/img/Wikipedia-logo-v2.png",
+          "alt": "",
+          "decorative_hint": false,
+          "width_attr": "200",
+          "height_attr": "183",
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "https://upload.wikimedia.org/wikipedia/donate/4/43/Badge-one-time.png",
+          "alt": "",
+          "decorative_hint": false,
+          "width_attr": "80",
+          "height_attr": "64",
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "https://upload.wikimedia.org/wikipedia/donate/4/4f/Badge-monthly.png",
+          "alt": "",
+          "decorative_hint": false,
+          "width_attr": "80",
+          "height_attr": "64",
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "https://upload.wikimedia.org/wikipedia/donate/d/de/Badge-workplace-giving.png",
+          "alt": "",
+          "decorative_hint": false,
+          "width_attr": "80",
+          "height_attr": "64",
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "https://upload.wikimedia.org/wikipedia/donate/7/73/Badge-daf.png",
+          "alt": "",
+          "decorative_hint": false,
+          "width_attr": "80",
+          "height_attr": "64",
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "https://upload.wikimedia.org/wikipedia/donate/6/6a/Badge-cga.png",
+          "alt": "",
+          "decorative_hint": false,
+          "width_attr": "80",
+          "height_attr": "64",
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "https://upload.wikimedia.org/wikipedia/donate/8/81/Badge-endowment.png",
+          "alt": "",
+          "decorative_hint": false,
+          "width_attr": "80",
+          "height_attr": "64",
+          "css_aspect_ratio": null,
+          "in_picture": false
+        }
+      ],
+      "iframes": [],
+      "media": [],
+      "form_controls": [
+        {
+          "type": "search",
+          "id": "searchInput",
+          "has_label": true,
+          "aria_label": null
+        },
+        {
+          "type": "radio",
+          "id": null,
+          "has_label": true,
+          "aria_label": null
+        },
+        {
+          "type": "radio",
+          "id": null,
+          "has_label": true,
+          "aria_label": null
+        },
+        {
+          "type": "radio",
+          "id": null,
+          "has_label": true,
+          "aria_label": null
+        },
+        {
+          "type": "radio",
+          "id": null,
+          "has_label": true,
+          "aria_label": null
+        },
+        {
+          "type": "radio",
+          "id": null,
+          "has_label": true,
+          "aria_label": null
+        },
+        {
+          "type": "radio",
+          "id": null,
+          "has_label": true,
+          "aria_label": null
+        },
+        {
+          "type": "radio",
+          "id": null,
+          "has_label": true,
+          "aria_label": null
+        },
+        {
+          "type": "radio",
+          "id": null,
+          "has_label": true,
+          "aria_label": null
+        },
+        {
+          "type": "radio",
+          "id": null,
+          "has_label": true,
+          "aria_label": null
+        },
+        {
+          "type": "radio",
+          "id": null,
+          "has_label": true,
+          "aria_label": null
+        },
+        {
+          "type": "select",
+          "id": "searchLanguage",
+          "has_label": false,
+          "aria_label": null
+        }
+      ],
+      "interactive_empty": {
+        "links_no_text": 0,
+        "buttons_no_text": 1
+      },
+      "noscript": {
+        "present": false,
+        "words": 0
+      },
+      "dates": {
+        "meta_published": null,
+        "meta_modified": null,
+        "visible_dates": [],
+        "header_last_modified": "Thu, 10 Sep 2026 20:05:39 GMT"
+      },
+      "contact_signals": {
+        "email": false,
+        "phone": null,
+        "postal_address": null,
+        "org_name_footer": null
+      },
+      "trigram_hash": "sha256:8d71115e69a24fd266a8503db4cf45dee4400a19262a577131959869d8693d15"
+    }
+  ],
+  "rendered": [],
+  "links": {
+    "status": "ok",
+    "reason": null,
+    "checked_count": 1,
+    "results": [
+      {
+        "url": "https://www.wikipedia.org/",
+        "http_status": 200,
+        "from_page": "https://www.wikipedia.org/",
+        "anchor_text": "Donate now"
+      }
+    ],
+    "skipped": []
+  },
+  "anchors": {
+    "status": "ok",
+    "reason": null,
+    "declared": [
+      {
+        "url": "https://donate.wikimedia.org/?wmf_medium=portal&wmf_campaign=portalFooter&wmf_source=portalFooter",
+        "source": "footer_profile_link",
+        "host": "donate.wikimedia.org"
+      },
+      {
+        "url": "https://play.google.com/store/apps/details?id=org.wikipedia&referrer=utm_source%3Dportal%26utm_medium%3Dbutton%26anid%3Dadmob",
+        "source": "footer_profile_link",
+        "host": "play.google.com"
+      },
+      {
+        "url": "https://itunes.apple.com/app/apple-store/id324715238?pt=208305&ct=portal&mt=8",
+        "source": "footer_profile_link",
+        "host": "itunes.apple.com"
+      },
+      {
+        "url": "https://www.wikivoyage.org/",
+        "source": "footer_profile_link",
+        "host": "www.wikivoyage.org"
+      },
+      {
+        "url": "https://www.wiktionary.org/",
+        "source": "footer_profile_link",
+        "host": "www.wiktionary.org"
+      },
+      {
+        "url": "https://www.wikibooks.org/",
+        "source": "footer_profile_link",
+        "host": "www.wikibooks.org"
+      },
+      {
+        "url": "https://www.wikidata.org/",
+        "source": "footer_profile_link",
+        "host": "www.wikidata.org"
+      },
+      {
+        "url": "https://www.wikiversity.org/",
+        "source": "footer_profile_link",
+        "host": "www.wikiversity.org"
+      }
+    ],
+    "checked_count": 8,
+    "results": [
+      {
+        "url": "https://donate.wikimedia.org/?wmf_medium=portal&wmf_campaign=portalFooter&wmf_source=portalFooter",
+        "http_status": 200,
+        "resolved": true
+      },
+      {
+        "url": "https://play.google.com/store/apps/details?id=org.wikipedia&referrer=utm_source%3Dportal%26utm_medium%3Dbutton%26anid%3Dadmob",
+        "http_status": 200,
+        "resolved": true
+      },
+      {
+        "url": "https://itunes.apple.com/app/apple-store/id324715238?pt=208305&ct=portal&mt=8",
+        "http_status": 200,
+        "resolved": true
+      },
+      {
+        "url": "https://www.wikivoyage.org/",
+        "http_status": 200,
+        "resolved": true
+      },
+      {
+        "url": "https://www.wiktionary.org/",
+        "http_status": 200,
+        "resolved": true
+      },
+      {
+        "url": "https://www.wikibooks.org/",
+        "http_status": 200,
+        "resolved": true
+      },
+      {
+        "url": "https://www.wikidata.org/",
+        "http_status": 200,
+        "resolved": true
+      },
+      {
+        "url": "https://www.wikiversity.org/",
+        "http_status": 200,
+        "resolved": true
+      }
+    ]
+  },
+  "budget": {
+    "status": "ok",
+    "reason": null,
+    "stages": [
+      {
+        "name": "resolve",
+        "budget_s": 10,
+        "actual_s": 1.1,
+        "abandoned": false,
+        "planned_items": null,
+        "completed_items": null
+      },
+      {
+        "name": "robots_discovery",
+        "budget_s": 15,
+        "actual_s": 1.2,
+        "abandoned": false,
+        "planned_items": 1,
+        "completed_items": 1
+      },
+      {
+        "name": "static_fetch",
+        "budget_s": 45,
+        "actual_s": 0.7,
+        "abandoned": false,
+        "planned_items": 1,
+        "completed_items": 1
+      },
+      {
+        "name": "render_pass",
+        "budget_s": 75,
+        "actual_s": 0.0,
+        "abandoned": true,
+        "planned_items": 0,
+        "completed_items": 0,
+        "reason": "no_headless_browser_tool"
+      },
+      {
+        "name": "internal_links",
+        "budget_s": 25,
+        "actual_s": 0.8,
+        "abandoned": false,
+        "planned_items": 1,
+        "completed_items": 1
+      },
+      {
+        "name": "offsite_anchors",
+        "budget_s": 20,
+        "actual_s": 12.0,
+        "abandoned": false,
+        "planned_items": 8,
+        "completed_items": 8
+      }
+    ],
+    "total_s": 15.8,
+    "cap_s": 300
+  }
+}

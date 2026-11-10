@@ -1,0 +1,87 @@
+{
+  "schema_version": "1.0.0",
+  "site": {
+    "status": "partial",
+    "reason": "robots_unavailable_collection_stopped",
+    "input": "https://shein.com",
+    "canonical_host": "www.sheinindia.in",
+    "origin": "https://www.sheinindia.in",
+    "scheme": "https",
+    "redirect_chain": [
+      "https://shein.com",
+      "https://www.shein.com/",
+      "https://www.shein.in/?cdn_rsite=ak&ref=www&rep=dir&ret=in"
+    ],
+    "tls_valid": true,
+    "archetype": "unknown",
+    "archetype_confidence": 0.0
+  },
+  "robots": {
+    "status": "unavailable",
+    "reason": "robots_fetch_status_403",
+    "fetch_status": 403,
+    "body": "<HTML><HEAD>\n<TITLE>Access Denied</TITLE>\n</HEAD><BODY>\n<H1>Access Denied</H1>\n \nYou don't have permission to access \"http&#58;&#47;&#47;www&#46;sheinindia&#46;in&#47;robots&#46;txt\" on this server.<P>\nReference&#32;&#35;18&#46;25a6a567&#46;1789073270&#46;497ce12\n<P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;18&#46;25a6a567&#46;1789073270&#46;497ce12</P>\n</BODY>\n</HTML>\n",
+    "parse_ok": false,
+    "agents": {},
+    "sitemap_declarations": []
+  },
+  "discovery": {
+    "status": "unavailable",
+    "reason": "robots_unavailable_collection_stopped",
+    "sitemap_found": false,
+    "sitemap_urls_count": 0,
+    "inventory": [],
+    "sampled_static": [],
+    "sampled_rendered": [],
+    "sampling_seed": null
+  },
+  "pages": [],
+  "rendered": [],
+  "links": {
+    "status": "unavailable",
+    "reason": "robots_unavailable_collection_stopped",
+    "checked_count": 0,
+    "results": [],
+    "skipped": []
+  },
+  "anchors": {
+    "status": "unavailable",
+    "reason": "robots_unavailable_collection_stopped",
+    "declared": [],
+    "checked_count": 0,
+    "results": []
+  },
+  "budget": {
+    "status": "ok",
+    "reason": null,
+    "stages": [
+      {
+        "name": "resolve",
+        "budget_s": 10,
+        "actual_s": 0.0,
+        "abandoned": false,
+        "planned_items": null,
+        "completed_items": null
+      },
+      {
+        "name": "robots_discovery",
+        "budget_s": 15,
+        "actual_s": 0.1,
+        "abandoned": true,
+        "planned_items": null,
+        "completed_items": null
+      },
+      {
+        "name": "render_pass",
+        "budget_s": 75,
+        "actual_s": 0.0,
+        "abandoned": true,
+        "planned_items": 0,
+        "completed_items": 0,
+        "reason": "no_headless_browser_tool"
+      }
+    ],
+    "total_s": 0,
+    "cap_s": 300
+  }
+}

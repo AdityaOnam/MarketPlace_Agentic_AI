@@ -1,0 +1,1478 @@
+{
+  "schema_version": "1.0.0",
+  "site": {
+    "status": "ok",
+    "reason": null,
+    "input": "https://doordash.com",
+    "canonical_host": "www.doordash.com",
+    "origin": "https://www.doordash.com",
+    "scheme": "https",
+    "redirect_chain": [
+      "https://doordash.com"
+    ],
+    "tls_valid": true,
+    "archetype": "unknown",
+    "archetype_confidence": 0.0
+  },
+  "robots": {
+    "status": "ok",
+    "reason": null,
+    "fetch_status": 200,
+    "body": "User-agent: *\n\nDisallow: /store/so-much-maple-juneau-19113/\nDisallow: /orders/\nDisallow: /orders/track/*\nDisallow: /order_history/\nDisallow: /sv/\n\nAllow: /consumer/login/\nDisallow: /consumer/invite/\nDisallow: /consumer/\n\nAllow: /dasher/signup/$\nDisallow: /dasher/signup/*\nDisallow: /dasher/login*\nDisallow: /dasher/application*\nDisallow: /dasher\nDisallow: /apply/*\nDisallow: /qr-code/*\nDisallow: /dashpass-redeem\n\nDisallow: /merchant/applyV2/*\n\nDisallow: /securitynotice\n\nDisallow: /dd/*\nDisallow: /cart/*\nDisallow: /confirm-group-cart-payment/*\nDisallow: /s/*\n\nDisallow: /caredash/*\nDisallow: /caredash-recipient/*\n\nDisallow: /product/*\nDisallow: /browse/merchants/*/products/*\nDisallow: /browse/products/*\n\nDisallow: /gifts/*\n\nDisallow: /teams/join/*\n\nUser-agent: ia_archiver\nDisallow: /\n\nUser-agent: Googlebot\nDisallow:\nUser-agent: Googlebot-image\nDisallow:\n\n# Sitemaps\nSitemap: https://www.doordash.com/sitemap-store-doordash-index.xml\nSitemap: https://www.doordash.com/sitemap-business-doordash-index.xml\nSitemap: https://www.doordash.com/sitemap-business_menu-doordash-index.xml\nSitemap: https://www.doordash.com/sitemap-city-doordash-index.xml\nSitemap: https://www.doordash.com/sitemap-city_es_US-doordash-index.xml\nSitemap: https://www.doordash.com/sitemap-city_fr_CA-doordash-index.xml\nSitemap: https://www.doordash.com/sitemap-city_cuisine-doordash-index.xml\nSitemap: https://www.doordash.com/sitemap-city_cuisine_es_US-doordash-index.xml\nSitemap: https://www.doordash.com/sitemap-city_cuisine_fr_CA-doordash-index.xml\nSitemap: https://www.doordash.com/sitemap-dish-doordash-index.xml\nSitemap: https://www.doordash.com/sitemap-dynamic-doordash-index.xml\nSitemap: https://www.doordash.com/sitemap-static-doordash-index.xml\nSitemap: https://www.doordash.com/sitemap-cuisine-doordash-index.xml\nSitemap: https://www.doordash.com/sitemap-city_business-doordash-index.xml\nSitemap: https://www.doordash.com/sitemap-products-doordash-index.xml\nSitemap: https://www.doordash.com/sitemap-product_categories-doordash-index.xml\nSitemap: https://www.doordash.com/sitemap-block_party-doordash-index.xml\nSitemap: https://www.doordash.com/sitemap-nv_categories-doordash-index.xml\nSitemap: https://www.doordash.com/sitemap-gift_card-doordash-index.xml\n",
+    "parse_ok": true,
+    "agents": {
+      "ia_archiver": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 43,
+        "crawl_delay": null
+      },
+      "Googlebot": {
+        "class": "hybrid",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "Googlebot-image": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "*": {
+        "class": "generic",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      }
+    },
+    "sitemap_declarations": [
+      "https://www.doordash.com/sitemap-store-doordash-index.xml",
+      "https://www.doordash.com/sitemap-business-doordash-index.xml",
+      "https://www.doordash.com/sitemap-business_menu-doordash-index.xml",
+      "https://www.doordash.com/sitemap-city-doordash-index.xml",
+      "https://www.doordash.com/sitemap-city_es_US-doordash-index.xml",
+      "https://www.doordash.com/sitemap-city_fr_CA-doordash-index.xml",
+      "https://www.doordash.com/sitemap-city_cuisine-doordash-index.xml",
+      "https://www.doordash.com/sitemap-city_cuisine_es_US-doordash-index.xml",
+      "https://www.doordash.com/sitemap-city_cuisine_fr_CA-doordash-index.xml",
+      "https://www.doordash.com/sitemap-dish-doordash-index.xml",
+      "https://www.doordash.com/sitemap-dynamic-doordash-index.xml",
+      "https://www.doordash.com/sitemap-static-doordash-index.xml",
+      "https://www.doordash.com/sitemap-cuisine-doordash-index.xml",
+      "https://www.doordash.com/sitemap-city_business-doordash-index.xml",
+      "https://www.doordash.com/sitemap-products-doordash-index.xml",
+      "https://www.doordash.com/sitemap-product_categories-doordash-index.xml",
+      "https://www.doordash.com/sitemap-block_party-doordash-index.xml",
+      "https://www.doordash.com/sitemap-nv_categories-doordash-index.xml",
+      "https://www.doordash.com/sitemap-gift_card-doordash-index.xml"
+    ]
+  },
+  "discovery": {
+    "status": "ok",
+    "reason": null,
+    "sitemap_found": true,
+    "sitemap_urls_count": 46873,
+    "inventory": [
+      {
+        "url": "https://www.doordash.com/",
+        "page_type": "home",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/little-caesars-ooltewah-34887757/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/hunt-brothers-pizza---tackle-box-paris-34906121/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/frito-mania-castiblanco-cordova-34909399/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/night-owlzz-memphis-34955001/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/convenience/store/dollar-general-bethpage-34964833/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/convenience/store/dollar-general-spring-city-34965591/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/convenience/store/dollar-general-strawberry-plains-34965618/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/convenience/store/dollar-general-mountain-city-34965729/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/convenience/store/dollar-general-ashland-city-34965881/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/convenience/store/dollar-general-rockwood-34965907/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/convenience/store/dollar-general-lenoir-city-34965913/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/convenience/store/dollar-general-mount-pleasant-34966025/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/cava-knoxville-23050034/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/cava-nashville-23050092/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/cava-knoxville-23050124/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/baked-boujie-memphis-23053801/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/el-jacal-sweetwater-23055435/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/taziki's-mediterranean-cafe-hermitage-23058343/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/los-toritos-mexican-restaurant-crossville-23058588/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/eggs-up-grill-johnson-city-23059247/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/floraline-memphis-23060115/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/food-city-prepared-foods-loudon-23062791/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/convenience/store/casey's-dresden-23064720/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/panda-express-springfield-34988393/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/oh-desserts-llc---2200-n-germantown-pkwy-cordova-34988807/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/snappy-tomato-pizza-knoxville-34991375/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/la-finka-mexican-grill-inc-winchester-34991731/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/neelys-interstate-barbque---7209-winchester-road-memphis-34991913/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/brooklyn-calzones-nashville-34992293/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/playita-mexicana-restaurant-memphis-34995829/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/creamy-pasta-&--mac-n-cheesy-nashville-34996863/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/snappy-tomato-pizza-knoxville-35005577/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/rollin-smoke-bbq-johnson-city-35005841/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/fiesta-jalisco-restaurant-hixson-35005859/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/rudd's---4445-highway-411-madisonville-35007077/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/convenience/store/ace-hardware-townsend-35007228/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/el-rincon-latino-sevierville-35007755/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/los-toritos-mexican-restaurant-wartburg-23066036/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/subway-chattanooga-23066984/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/sonic-drive-in-manchester-23072916/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/clean-juice-franklin-23074109/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/maple-street-biscuit-company-johnson-city-23075457/",
+        "page_type": "about",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/rafael's-italian-restaurant-chattanooga-23075626/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/panda-garden-cleveland-35195043/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/java-junkies-and-grill-lexington-35197157/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/jeni's-splendid-ice-creams-nashville-35199641/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/convenience/store/sips-wines-&-spirits-memphis-35201153/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/krispy-krunchy-chicken-nashville-35202391/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/krispy-krunchy-chicken-memphis-35206290/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/convenience/store/mapco-nashville-35206753/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/panda-express-east-ridge-34988395/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/snappy-tomato-pizza-seymour-34991373/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/the-calypso-cafe-nashville-34991733/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/100-ramen,-hibachi-&-sushi-bar-chattanooga-34995967/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/chattanooga-pizza-co-2---6849-prestige-ln-hixson-34999957/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/lewis-&-clark-restaurant-hohenwald-35002817/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/papa-johns-pizza-fairview-35005147/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/handel's-homemade-ice-cream-nashville-35006717/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/convenience/store/ace-hardware-baxter-35007281/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/hunters-bakery-and-cafe-sweetwater-35007783/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/karma-kitchen-knoxville-35210363/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/sweet-slice-1309-bell-rd-antioch-35212011/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/krave-kitchen-llc-cordova-35229121/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/rap-snacks-nashville-35233615/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/woods-family-diner-etowah-35273584/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/high-life-memphis-memphis-35280057/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/the-egyptian-taste-maryville-35282869/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/hunt-brothers-pizza--shorty's---787-highway-139-dandridge-35293331/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/convenience/store/duncan's-newbern-35301331/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/panera-bread-tullahoma-35307541/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/convenience/store/dollar-general-taft-35312282/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/convenience/store/dollar-general-greeneville-35312326/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/convenience/store/dollar-general-sevierville-35312349/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/convenience/store/dollar-general-cleveland-35312389/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/convenience/store/crossland-wine-and-spirits-clarksville-35316481/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/lona's-loven-oven-oneida-35320411/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/pancho's-place-mexican-restaurant-columbia-35323843/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/taqueria-la-casa-de-miguel-springfield-35324845/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/kung-fu-tea-bristol-35327519/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/h&h-bagels-knoxville-35328885/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/the-playland-pals-smithville-35337043/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/playa-bowls-nashville-35357166/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/convenience/store/liquor-spot-jefferson-city-35365635/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/convenience/store/one-stop-liquor-memphis-35365711/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/boss-hoggs-bbq-(wears-valley)-sevierville-35368971/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/fozzy's---franklin---fozzy's-franklin-franklin-35370669/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/hifi-cookies-nashville-35371770/",
+        "page_type": "legal",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/the-country-cupboard---1782-west-ave-crossville-35372209/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/joey's-sandwich-shop-knoxville-35380587/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/jersey-hustle-pizzeria-sevierville-35380769/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/hop-house-tennessee-taps-franklin-35382154/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/taqueria-your-taco-express-clarksville-35383833/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/subway-sevierville-35024041/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/subway-mountain-city-35024053/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/top-of-the-rock-restaurant-brewery-kimball-35386345/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/state-of-confusion-chattanooga-35386847/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/balter-beerworks-knoxville-35386955/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/kilwins-franklin-35387614/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/stir-chattanooga-35387945/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/gios-pizzeria-llc-cookeville-35398063/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/caracas-venezuelan-food-memphis-36160131/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/ichiban-buffet-collierville-35399154/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/main-event-murfreesboro-35399846/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/samusi-hibachi-lafayette-35401065/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/convenience/store/barnes-&-noble-knoxville-35407506/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/convenience/store/barnes-&-noble-collierville-35407798/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/convenience/store/barnes-&-noble-murfreesboro-35407817/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/convenience/store/barnes-&-noble-franklin-35407967/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/convenience/store/casey's-waverly-2827456/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/bennetts-pit-bar-b-que-gatlinburg-36199205/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/mexico-lindo-mexican-restaurant---1999-keith-st-nw-cleveland-36201511/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/convenience/store/target-jackson-2834021/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/convenience/store/target-germantown-2834022/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/captain-d's-seafood-memphis-2837369/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/taste-of-china-murfreesboro-24757683/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/chick-fish-goodlettsville-24761960/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/convenience/store/barnes-&-noble-memphis-35408174/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/convenience/store/barnes-&-noble-germantown-35408329/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/convenience/store/vine-&-barrel-hixson-35409461/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/mcdonald's-baxter-24763154/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/mcdonald's-oakland-24763286/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/mcdonald's-jasper-24763305/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/slim-chickens-clarksville-24764577/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/maple-street-biscuit-company-knoxville-23077272/",
+        "page_type": "about",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/maple-street-biscuit-company-chattanooga-23077738/",
+        "page_type": "about",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/subway-brentwood-23416692/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/pho-t&n-nashville-24767072/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/moustos-pasta-and-grill-paris-24907802/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/subway-fayetteville-23423706/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/8f-of-hixson-tn-chattanooga-24911753/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/the-petal-patch-florist-and-gifts-winchester-24912214/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/roma-cake-factory-hendersonville-24912399/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/roma-house-hendersonville-24912422/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/jimmy's-market-pigeon-forge-24912579/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/food-city-prepared-foods-cookeville-23079703/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/crumbl-germantown-23079753/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/jersey-mike's-subs-lebanon-23079876/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/convenience/store/109-wines-&-liquors-inc-gallatin-23080193/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/kwik-chek-memphis-23081667/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/firehouse-subs-dayton-23085259/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/papa-johns-pizza-knoxville-23085346/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/einstein-bros.-bagels-farragut-23085555/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/american-deli-memphis-23086808/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/denmark-truck-stop-denmark-24914892/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/yamato-japanese-steakhouse-&-sushi-bar-clarksville-23428461/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/joey's-philly-cheese-franklin-36213305/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/popeyes-louisiana-kitchen-chattanooga-24915550/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/downtown-pizza-harriman-24915557/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/a1-pizza-oakland-35521901/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/krab-kingz-memphis-35530411/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/bills-hot-fish-and-chicken-nashville-35628157/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/convenience/store/jolly-time-liquor-&-wine-too-kingsport-35628215/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/convenience/store/park-circle-market-2-springfield-35629633/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/music-city-fit-meals-llc-madison-35630579/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/las-fajitas-mexican-restaurant-&-bar-manchester-35415713/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/kung-fu-tea-murfreesboro-24917307/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/mickey's-garage-bar-and-grill--fayetteville-35636789/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/hunt-brothers-denmark-35639007/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/the-italian-pizza-co.-nashville-35639147/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/filbilly's-----tazewell-tazewell-35534413/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/chimney-restaurant-bar&-grill-cordova-35036547/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/the-wedge-nashville-35037057/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/jet's-pizza-nashville-35043445/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/cinco-de-mayo-mexican-restaurant-nashville-35065966/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/hamby's-market-old-hickory-35416575/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/pops-pizza---125-north-gateway-avenue---125-n-gateway-ave-rockwood-35417471/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/nenas-bakery-taqueria---347-e-broadway---347-e-broadway-gallatin-35537319/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/wilson-foods---825-murfreesboro-pike-",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/nick-the-greek-nashville-35539135/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/brumley's-catering-by-angeez-greeneville-35539855/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/off-road-diner-and-dogs-oak-ridge-24024622/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/burger-king-waverly-24025783/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/mcdonald's-cordova-24027373/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/convenience/store/joes-wine-and-spirits-chattanooga-23445953/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/convenience/store/eagle-wine-and-spirits-greeneville-35069187/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/convenience/store/raceway-961-clarksville-35069827/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/convenience/store/raceway-961-nashville-35069835/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/six-pack's-snack-shack-lawrenceburg-35070975/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/taqueria-los-gallos-nashville-35073391/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/buffalo-wild-wings-go-nashville-35073660/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/subway-madisonville-35073719/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/taconganas-memphis-35540443/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/firehouse-subs-jacksboro-35075571/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/beignets-&-brew-chattanooga-35076101/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/rock-n-roll-sushi-&-hibachi-cookeville-35076161/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/dixie-king-llc-memphis-35082813/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/high-burgers-greeneville-35421723/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/convenience/store/bootlegger's-liquor-woodbury-35422797/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/convenience/store/discount-liquors-&-wines-kingston-springs-35423333/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/yellowtail-ramen-&-aburi---220-tiny-town-rd-clarksville-35425593/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/cancun-family-mexican-restaurant-greeneville-35085641/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/joses-mexican-restaurant-hendersonville-35098499/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/convenience/store/amigos-supermercado-nashville-35545525/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/convenience/store/harry's-",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/convenience/store/jehu-wine-and-spirit-bartlett-35547153/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/pupuseria-pattys-johnson-city-35548155/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/casa-tios-murfreesboro-35549203/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/jersey-mike's-subs-chattanooga-35550013/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.doordash.com/store/kofee-broz-llc-springfield-35550439/",
+        "page_type": "other",
+        "source": "sitemap"
+      }
+    ],
+    "sampled_static": [
+      "https://www.doordash.com/",
+      "https://www.doordash.com/store/maple-street-biscuit-company-chattanooga-23077738/",
+      "https://www.doordash.com/store/maple-street-biscuit-company-johnson-city-23075457/",
+      "https://www.doordash.com/store/maple-street-biscuit-company-knoxville-23077272/",
+      "https://www.doordash.com/store/hifi-cookies-nashville-35371770/",
+      "https://www.doordash.com/convenience/store/109-wines-&-liquors-inc-gallatin-23080193/",
+      "https://www.doordash.com/convenience/store/ace-hardware-baxter-35007281/",
+      "https://www.doordash.com/convenience/store/ace-hardware-townsend-35007228/",
+      "https://www.doordash.com/convenience/store/amigos-supermercado-nashville-35545525/"
+    ],
+    "sampled_rendered": [],
+    "sampling_seed": "sha256:23e7b2e200ee519c1cd34b52385f0451b619638b5185a0f962fadc55f29327f7"
+  },
+  "pages": [
+    {
+      "url": "https://www.doordash.com/",
+      "final_url": "https://www.doordash.com/",
+      "status": "unavailable",
+      "reason": "http_403",
+      "http_status": 403,
+      "page_type": "home",
+      "headers": {},
+      "raw_html_bytes": 0,
+      "main_text": "",
+      "main_text_words": 0,
+      "extraction_ok": false,
+      "title": null,
+      "meta": {},
+      "lang": null,
+      "canonical": {},
+      "headings": [],
+      "landmarks": {},
+      "structured_data": {},
+      "links": [],
+      "outbound_profile_links": [],
+      "images": [],
+      "iframes": [],
+      "media": [],
+      "form_controls": [],
+      "interactive_empty": {},
+      "noscript": {
+        "present": false,
+        "words": 0
+      },
+      "dates": {},
+      "contact_signals": {},
+      "trigram_hash": null
+    },
+    {
+      "url": "https://www.doordash.com/store/maple-street-biscuit-company-chattanooga-23077738/",
+      "final_url": "https://www.doordash.com/store/maple-street-biscuit-company-chattanooga-23077738/",
+      "status": "unavailable",
+      "reason": "http_403",
+      "http_status": 403,
+      "page_type": "about",
+      "headers": {},
+      "raw_html_bytes": 0,
+      "main_text": "",
+      "main_text_words": 0,
+      "extraction_ok": false,
+      "title": null,
+      "meta": {},
+      "lang": null,
+      "canonical": {},
+      "headings": [],
+      "landmarks": {},
+      "structured_data": {},
+      "links": [],
+      "outbound_profile_links": [],
+      "images": [],
+      "iframes": [],
+      "media": [],
+      "form_controls": [],
+      "interactive_empty": {},
+      "noscript": {
+        "present": false,
+        "words": 0
+      },
+      "dates": {},
+      "contact_signals": {},
+      "trigram_hash": null
+    },
+    {
+      "url": "https://www.doordash.com/store/maple-street-biscuit-company-johnson-city-23075457/",
+      "final_url": "https://www.doordash.com/store/maple-street-biscuit-company-johnson-city-23075457/",
+      "status": "unavailable",
+      "reason": "http_403",
+      "http_status": 403,
+      "page_type": "about",
+      "headers": {},
+      "raw_html_bytes": 0,
+      "main_text": "",
+      "main_text_words": 0,
+      "extraction_ok": false,
+      "title": null,
+      "meta": {},
+      "lang": null,
+      "canonical": {},
+      "headings": [],
+      "landmarks": {},
+      "structured_data": {},
+      "links": [],
+      "outbound_profile_links": [],
+      "images": [],
+      "iframes": [],
+      "media": [],
+      "form_controls": [],
+      "interactive_empty": {},
+      "noscript": {
+        "present": false,
+        "words": 0
+      },
+      "dates": {},
+      "contact_signals": {},
+      "trigram_hash": null
+    },
+    {
+      "url": "https://www.doordash.com/store/maple-street-biscuit-company-knoxville-23077272/",
+      "final_url": "https://www.doordash.com/store/maple-street-biscuit-company-knoxville-23077272/",
+      "status": "unavailable",
+      "reason": "http_403",
+      "http_status": 403,
+      "page_type": "about",
+      "headers": {},
+      "raw_html_bytes": 0,
+      "main_text": "",
+      "main_text_words": 0,
+      "extraction_ok": false,
+      "title": null,
+      "meta": {},
+      "lang": null,
+      "canonical": {},
+      "headings": [],
+      "landmarks": {},
+      "structured_data": {},
+      "links": [],
+      "outbound_profile_links": [],
+      "images": [],
+      "iframes": [],
+      "media": [],
+      "form_controls": [],
+      "interactive_empty": {},
+      "noscript": {
+        "present": false,
+        "words": 0
+      },
+      "dates": {},
+      "contact_signals": {},
+      "trigram_hash": null
+    },
+    {
+      "url": "https://www.doordash.com/store/hifi-cookies-nashville-35371770/",
+      "final_url": "https://www.doordash.com/store/hifi-cookies-nashville-35371770/",
+      "status": "unavailable",
+      "reason": "http_403",
+      "http_status": 403,
+      "page_type": "legal",
+      "headers": {},
+      "raw_html_bytes": 0,
+      "main_text": "",
+      "main_text_words": 0,
+      "extraction_ok": false,
+      "title": null,
+      "meta": {},
+      "lang": null,
+      "canonical": {},
+      "headings": [],
+      "landmarks": {},
+      "structured_data": {},
+      "links": [],
+      "outbound_profile_links": [],
+      "images": [],
+      "iframes": [],
+      "media": [],
+      "form_controls": [],
+      "interactive_empty": {},
+      "noscript": {
+        "present": false,
+        "words": 0
+      },
+      "dates": {},
+      "contact_signals": {},
+      "trigram_hash": null
+    },
+    {
+      "url": "https://www.doordash.com/convenience/store/109-wines-&-liquors-inc-gallatin-23080193/",
+      "final_url": "https://www.doordash.com/convenience/store/109-wines-&-liquors-inc-gallatin-23080193/",
+      "status": "unavailable",
+      "reason": "http_403",
+      "http_status": 403,
+      "page_type": "other",
+      "headers": {},
+      "raw_html_bytes": 0,
+      "main_text": "",
+      "main_text_words": 0,
+      "extraction_ok": false,
+      "title": null,
+      "meta": {},
+      "lang": null,
+      "canonical": {},
+      "headings": [],
+      "landmarks": {},
+      "structured_data": {},
+      "links": [],
+      "outbound_profile_links": [],
+      "images": [],
+      "iframes": [],
+      "media": [],
+      "form_controls": [],
+      "interactive_empty": {},
+      "noscript": {
+        "present": false,
+        "words": 0
+      },
+      "dates": {},
+      "contact_signals": {},
+      "trigram_hash": null
+    },
+    {
+      "url": "https://www.doordash.com/convenience/store/ace-hardware-baxter-35007281/",
+      "final_url": "https://www.doordash.com/convenience/store/ace-hardware-baxter-35007281/",
+      "status": "unavailable",
+      "reason": "http_403",
+      "http_status": 403,
+      "page_type": "other",
+      "headers": {},
+      "raw_html_bytes": 0,
+      "main_text": "",
+      "main_text_words": 0,
+      "extraction_ok": false,
+      "title": null,
+      "meta": {},
+      "lang": null,
+      "canonical": {},
+      "headings": [],
+      "landmarks": {},
+      "structured_data": {},
+      "links": [],
+      "outbound_profile_links": [],
+      "images": [],
+      "iframes": [],
+      "media": [],
+      "form_controls": [],
+      "interactive_empty": {},
+      "noscript": {
+        "present": false,
+        "words": 0
+      },
+      "dates": {},
+      "contact_signals": {},
+      "trigram_hash": null
+    },
+    {
+      "url": "https://www.doordash.com/convenience/store/ace-hardware-townsend-35007228/",
+      "final_url": "https://www.doordash.com/convenience/store/ace-hardware-townsend-35007228/",
+      "status": "unavailable",
+      "reason": "http_403",
+      "http_status": 403,
+      "page_type": "other",
+      "headers": {},
+      "raw_html_bytes": 0,
+      "main_text": "",
+      "main_text_words": 0,
+      "extraction_ok": false,
+      "title": null,
+      "meta": {},
+      "lang": null,
+      "canonical": {},
+      "headings": [],
+      "landmarks": {},
+      "structured_data": {},
+      "links": [],
+      "outbound_profile_links": [],
+      "images": [],
+      "iframes": [],
+      "media": [],
+      "form_controls": [],
+      "interactive_empty": {},
+      "noscript": {
+        "present": false,
+        "words": 0
+      },
+      "dates": {},
+      "contact_signals": {},
+      "trigram_hash": null
+    },
+    {
+      "url": "https://www.doordash.com/convenience/store/amigos-supermercado-nashville-35545525/",
+      "final_url": "https://www.doordash.com/convenience/store/amigos-supermercado-nashville-35545525/",
+      "status": "unavailable",
+      "reason": "http_403",
+      "http_status": 403,
+      "page_type": "other",
+      "headers": {},
+      "raw_html_bytes": 0,
+      "main_text": "",
+      "main_text_words": 0,
+      "extraction_ok": false,
+      "title": null,
+      "meta": {},
+      "lang": null,
+      "canonical": {},
+      "headings": [],
+      "landmarks": {},
+      "structured_data": {},
+      "links": [],
+      "outbound_profile_links": [],
+      "images": [],
+      "iframes": [],
+      "media": [],
+      "form_controls": [],
+      "interactive_empty": {},
+      "noscript": {
+        "present": false,
+        "words": 0
+      },
+      "dates": {},
+      "contact_signals": {},
+      "trigram_hash": null
+    }
+  ],
+  "rendered": [],
+  "links": {
+    "status": "ok",
+    "reason": null,
+    "checked_count": 0,
+    "results": [],
+    "skipped": []
+  },
+  "anchors": {
+    "status": "ok",
+    "reason": null,
+    "declared": [],
+    "checked_count": 0,
+    "results": []
+  },
+  "budget": {
+    "status": "ok",
+    "reason": null,
+    "stages": [
+      {
+        "name": "resolve",
+        "budget_s": 10,
+        "actual_s": 1.2,
+        "abandoned": false,
+        "planned_items": null,
+        "completed_items": null
+      },
+      {
+        "name": "robots_discovery",
+        "budget_s": 15,
+        "actual_s": 8.1,
+        "abandoned": false,
+        "planned_items": 200,
+        "completed_items": 200
+      },
+      {
+        "name": "static_fetch",
+        "budget_s": 45,
+        "actual_s": 8.2,
+        "abandoned": false,
+        "planned_items": 9,
+        "completed_items": 0
+      },
+      {
+        "name": "render_pass",
+        "budget_s": 75,
+        "actual_s": 0.0,
+        "abandoned": true,
+        "planned_items": 0,
+        "completed_items": 0,
+        "reason": "no_headless_browser_tool"
+      },
+      {
+        "name": "internal_links",
+        "budget_s": 25,
+        "actual_s": 0.0,
+        "abandoned": false,
+        "planned_items": 0,
+        "completed_items": 0
+      },
+      {
+        "name": "offsite_anchors",
+        "budget_s": 20,
+        "actual_s": 0.0,
+        "abandoned": false,
+        "planned_items": 0,
+        "completed_items": 0
+      }
+    ],
+    "total_s": 17.5,
+    "cap_s": 300
+  }
+}

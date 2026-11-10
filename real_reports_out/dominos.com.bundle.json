@@ -1,0 +1,219 @@
+{
+  "schema_version": "1.0.0",
+  "site": {
+    "status": "ok",
+    "reason": null,
+    "input": "https://dominos.com",
+    "canonical_host": "m.dominos.co.in",
+    "origin": "https://m.dominos.co.in",
+    "scheme": "https",
+    "redirect_chain": [
+      "https://dominos.com",
+      "https://www.dominos.com/"
+    ],
+    "tls_valid": true,
+    "archetype": "brochure",
+    "archetype_confidence": 0.7
+  },
+  "robots": {
+    "status": "ok",
+    "reason": null,
+    "fetch_status": 200,
+    "body": "User-agent: *\nAllow: /\nDisallow:\nSitemap: https://m.dominos.co.in/sitemap.xml\nHost: https://m.dominos.co.in\n",
+    "parse_ok": true,
+    "agents": {
+      "*": {
+        "class": "generic",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      }
+    },
+    "sitemap_declarations": [
+      "https://m.dominos.co.in/sitemap.xml"
+    ]
+  },
+  "discovery": {
+    "status": "ok",
+    "reason": null,
+    "sitemap_found": true,
+    "sitemap_urls_count": 17,
+    "inventory": [
+      {
+        "url": "https://m.dominos.co.in/",
+        "page_type": "home",
+        "source": "sitemap"
+      }
+    ],
+    "sampled_static": [
+      "https://m.dominos.co.in/"
+    ],
+    "sampled_rendered": [],
+    "sampling_seed": "sha256:6d684d2f6c73e34b692223256b229a64e291ae88d098ad2a36ae46d9706b671e"
+  },
+  "pages": [
+    {
+      "url": "https://m.dominos.co.in/",
+      "final_url": "https://m.dominos.co.in/",
+      "status": "ok",
+      "reason": null,
+      "http_status": 200,
+      "page_type": "home",
+      "headers": {
+        "content-type": "text/html;charset=UTF-8",
+        "transfer-encoding": "chunked",
+        "connection": "close",
+        "date": "Thu, 10 Sep 2026 20:50:15 GMT",
+        "content-security-policy-report-only": "default-src 'self'; script-src 'self' https://*.moengage.com https://cdn.jflimages.co.in https://*.dominos.co.in; script-src-elem 'self' https://*.dominos.co.in https://www.googletagmanager.com https://www.datadoghq-browser-agent.com https://googleads.g.doubleclick.net https://maps.googleapis.com https://script.hotjar.com https://static.hotjar.com https://cdn.moengage.com https://www.google-analytics.com https://capi.dominos.co.in https://*.visualwebsiteoptimizer.com https://sc-static.net https://connect.facebook.net; style-src 'self' 'unsafe-inline' https://*.dominos.co.in fonts.googleapis.com; connect-src 'self' https://csp-reports.dominos.co.in https://api.amplitude.com https://cdn.jflimages.co.in https://*.dominos.co.in https://*.moengage.com https://adservice.google.com https://stats.g.doubleclick.net https://browser-intake-us5-datadoghq.com https://bankapi.cheggout.com https://www.googleadservices.com https://lottie.host https://metrics.hotjar.io https://fonts.googleapis.com https://www.google-analytics.com https://analytics.google.com https://www.googleapis.com https://vc.hotjar.io https://ad.doubleclick.net https://www.google.com https://googleads.g.doubleclick.net https://script.hotjar.com https://www.googletagmanager.com https://static.hotjar.com https://*.visualwebsiteoptimizer.com https://fonts.gstatic.com https://maps.gstatic.com https://www.google.co.in https://www.datadoghq-browser-agent.com https://www.gstatic.com https://tr.snapchat.com https://translate.google.com https://translate.googleapis.com https://gjtrack.ucweb.com; img-src 'self' data: https://*.dominos.co.in https://cdn.jflimages.co.in https://images.dominos.co.in https://s3.dominosindia.in https://image-ap1.moengage.com https://maps.gstatic.com https://www.google.com https://www.google.co.in https://maps.googleapis.com https://ad.doubleclick.net https://www.googleadservices.com https://fonts.gstatic.com https://translate.google.com https://nonprod.jflimages.co.in https://www.facebook.com; font-src 'self' https://fonts.gstatic.com https://m.dominos.co.in https://pizzaonline.dominos.co.in https://stackpath.bootstrapcdn.com; frame-src https://cloud.yellow.ai https://tracker.dominos.co.in https://tnc.dominos.co.in; media-src https://images.dominos.co.in; report-uri https://csp-reports.dominos.co.in/csp-report",
+        "strict-transport-security": "max-age=31536000; includeSubDomains",
+        "server": "sigma",
+        "content-encoding": "gzip",
+        "content-language": "en",
+        "x-frame-options": "DENY",
+        "x-content-type-options": "nosniff",
+        "x-xss-protection": "1; mode=block",
+        "content-security-policy": "style-src 'self' 'unsafe-inline' https://*.dominos.co.in fonts.googleapis.com; style-src-elem 'self' 'unsafe-inline' https://fonts.googleapis.com https://stackpath.bootstrapcdn.com https://cdn.jsdelivr.net; block-all-mixed-content",
+        "vary": "accept-encoding",
+        "x-cache": "Miss from cloudfront",
+        "via": "1.1 f24f9310b14fa00c5109a38fb0cc6c0a.cloudfront.net (CloudFront)",
+        "x-amz-cf-pop": "DEL51-P1",
+        "x-amz-cf-id": "tBu2YmExbrWLdQ3MSBjQdw3U_11jUmyG-YuyIT6s7b4YmnWQ3zCUoQ=="
+      },
+      "raw_html_bytes": 77332,
+      "main_text": "",
+      "main_text_words": 0,
+      "extraction_ok": false,
+      "title": "Domino’s Pizza – Order Online | Get 2 Regular Pizza @99 Each",
+      "meta": {
+        "viewport": "width=device-width, initial-scale=1, shrink-to-fit=no",
+        "description": "Order Pizza online from Domino's and Get home delivery of 2 Medium Pizzas worth Just 199/each. ZERO Contact Delivery. Baked at 465 'F. 100% Sanitised Stores.",
+        "robots": "index, follow"
+      },
+      "lang": "en",
+      "canonical": {
+        "href": null,
+        "self_referential": false,
+        "cross_domain": false
+      },
+      "headings": [],
+      "landmarks": {
+        "main": 0,
+        "nav": 0,
+        "header": 0,
+        "footer": 0
+      },
+      "structured_data": {
+        "json_ld": [],
+        "microdata_types": [],
+        "rdfa_types": []
+      },
+      "links": [],
+      "outbound_profile_links": [],
+      "images": [],
+      "iframes": [
+        {
+          "src": "https://www.googletagmanager.com/ns.html?id=GTM-WL89TH7",
+          "width_attr": "0",
+          "height_attr": "0",
+          "title": null
+        }
+      ],
+      "media": [],
+      "form_controls": [],
+      "interactive_empty": {
+        "links_no_text": 0,
+        "buttons_no_text": 0
+      },
+      "noscript": {
+        "present": true,
+        "words": 0
+      },
+      "dates": {
+        "meta_published": null,
+        "meta_modified": null,
+        "visible_dates": [],
+        "header_last_modified": null
+      },
+      "contact_signals": {
+        "email": false,
+        "phone": null,
+        "postal_address": null,
+        "org_name_footer": null
+      },
+      "trigram_hash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "rendered": [],
+  "links": {
+    "status": "ok",
+    "reason": null,
+    "checked_count": 0,
+    "results": [],
+    "skipped": []
+  },
+  "anchors": {
+    "status": "ok",
+    "reason": null,
+    "declared": [],
+    "checked_count": 0,
+    "results": []
+  },
+  "budget": {
+    "status": "ok",
+    "reason": null,
+    "stages": [
+      {
+        "name": "resolve",
+        "budget_s": 10,
+        "actual_s": 2.2,
+        "abandoned": false,
+        "planned_items": null,
+        "completed_items": null
+      },
+      {
+        "name": "robots_discovery",
+        "budget_s": 15,
+        "actual_s": 1.9,
+        "abandoned": false,
+        "planned_items": 1,
+        "completed_items": 1
+      },
+      {
+        "name": "static_fetch",
+        "budget_s": 45,
+        "actual_s": 1.0,
+        "abandoned": false,
+        "planned_items": 1,
+        "completed_items": 1
+      },
+      {
+        "name": "render_pass",
+        "budget_s": 75,
+        "actual_s": 0.0,
+        "abandoned": true,
+        "planned_items": 0,
+        "completed_items": 0,
+        "reason": "no_headless_browser_tool"
+      },
+      {
+        "name": "internal_links",
+        "budget_s": 25,
+        "actual_s": 0.0,
+        "abandoned": false,
+        "planned_items": 0,
+        "completed_items": 0
+      },
+      {
+        "name": "offsite_anchors",
+        "budget_s": 20,
+        "actual_s": 0.0,
+        "abandoned": false,
+        "planned_items": 0,
+        "completed_items": 0
+      }
+    ],
+    "total_s": 5.1,
+    "cap_s": 300
+  }
+}

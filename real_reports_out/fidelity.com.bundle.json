@@ -1,0 +1,134 @@
+{
+  "schema_version": "1.0.0",
+  "site": {
+    "status": "ok",
+    "reason": null,
+    "input": "https://fidelity.com",
+    "canonical_host": "www.fidelity.com:443",
+    "origin": "https://www.fidelity.com:443",
+    "scheme": "https",
+    "redirect_chain": [
+      "https://fidelity.com"
+    ],
+    "tls_valid": true,
+    "archetype": "unknown",
+    "archetype_confidence": 0.0
+  },
+  "robots": {
+    "status": "ok",
+    "reason": null,
+    "fetch_status": 200,
+    "body": "# robots.txt file for Fidelity\n# mail webmaster@fidelity.com\nUser-agent: IDentity\nDisallow:\n\n\nUser-agent: AdsBot-Google\nAllow:\n\n\nUser-agent: * \nDisallow: /accounts/accountopening\nDisallow: /accounts/activation\nDisallow: /accounts/activetrader/images\nDisallow: /accounts/mailings/content\nDisallow: /accounts/mailings/images\nDisallow: /accounts/myportfolio\nDisallow: /accounts/myprofile\nDisallow: /accounts/pdf/inheritors_retirement_plan_acctount_app.pdf\nDisallow: /accounts/pdf/np_application.pdf\nDisallow: /accounts/pdf/rolliraapp.pdf \nDisallow: /accounts/pdf/trust_application.pdf\nDisallow: /accounts/services/content/accept.html   \nDisallow: /accounts/services/content/beneficiaryhelp.html \nDisallow: /accounts/services/content/checkcrdupdt.shtml   \nDisallow: /accounts/services/content/custconfirm.shtml   \nDisallow: /accounts/services/content/customer_chat.shtml\nDisallow: /accounts/services/content/deactiveconfirm.shtml \nDisallow: /accounts/services/content/IMContactUsOffHours.shtml\nDisallow: /accounts/services/content/IMContactUsUnavailable.shtml \nDisallow: /accounts/services/content/IMFILIOffHours.html  \nDisallow: /accounts/services/content/IMFILIUnavail.html   \nDisallow: /accounts/services/content/IMRetailOffHours.html \nDisallow: /accounts/services/content/IMRetailUnavail.html  \nDisallow: /accounts/services/content/IMVisitorChat.shtml  \nDisallow: /accounts/services/content/invobjpopup.html   \nDisallow: /accounts/services/content/invobjpopupoptions.html  \nDisallow: /accounts/services/content/keoghbrokappdl.html\nDisallow: /accounts/services/content/keoghbrokconsent.html\nDisallow: /accounts/services/content/mbnabuffer.html\nDisallow: /accounts/services/content/nobeneficiaries.shtml  \nDisallow: /accounts/services/content/norelationship.shtml \nDisallow: /accounts/services/content/probatepopup.html\nDisallow: /accounts/services/content/relinquish.html   \nDisallow: /accounts/services/content/replyconfirm.shtml    \nDisallow: /accounts/services/content/restricted529.shtml     \nDisallow: /accounts/services/content/restrictedneither.shtml \nDisallow: /accounts/services/content/restrictedpas.shtml   \nDisallow: /accounts/services/content/rolloverirasuggestion.shtml   \nDisallow: /accounts/services/content/sigguarpopup.html\nDisallow: /accounts/services/content/visitorconfirmnoacct.shtml \nDisallow: /accounts/services/content/visitorconfirmyesacct.shtml\nDisallow: /accounts/services/images\nDisallow: /accounts/services/open\nDisallow: /common\nDisallow: /configs\nDisallow: /css\nDisallow: /customeronly\nDisallow: /error\nDisallow: /fiibg\nDisallow: /global/contact/\nDisallow: /global/content/images\nDisallow: /global/messages\nDisallow: /global/search\nDisallow: /global/whatsnew/images\nDisallow: /global/whatsnew/whatsnew_toc.html\nDisallow: /goto\nDisallow: /help\nDisallow: /images\nDisallow: /include\nDisallow: /include/toc/\nDisallow: /java\nDisallow: /js\nDisallow: /lpp/component/tcm:526-276416-169031.comp\nDisallow: /misc/ekits/pdf/hsa_app.pdf \nDisallow: /misc/ekits/pdf/mutual_fund.pdf\nDisallow: /myfidelity/atn/images\nDisallow: /myfidelity/daily\nDisallow: /myfidelity/InsideFidelity/NewsCenter/mediadocs/media_kit_toc.shtml\nDisallow: /nav\nDisallow: /news/calendars\nDisallow: /news/publications/images\nDisallow: /planning/charitable  \nDisallow: /planning/college/calculator_toc.html\nDisallow: /planning/college/college_toc.shtml\nDisallow: /planning/college/content/thank_you.html\nDisallow: /planning/college/images\nDisallow: /planning/images\nDisallow: /planning/investment/images\nDisallow: /planning/investment/investment_toc.html\nDisallow: /planning/retirement/images\nDisallow: /planning/tax/images\nDisallow: /products/annuities/content/apdownload.html\nDisallow: /products/annuities/content/callme.html\nDisallow: /products/annuities/content/callmeconfirm.html   \nDisallow: /products/annuities/content/free_pop.html\nDisallow: /products/annuities/content/funds_pop.html          \nDisallow: /products/annuities/content/getconsent.html\nDisallow: /products/annuities/content/how_pop.html            \nDisallow: /products/annuities/content/nyprosconsent.html  \nDisallow: /products/annuities/content/product_pop.html     \nDisallow: /products/annuities/content/prosdownload.html    \nDisallow: /products/annuities/content/who-pop.html    \nDisallow: /products/annuities/images\nDisallow: /products/annuities/managing/glossary.html\nDisallow: /products/atp/content/charts_popup.html         \nDisallow: /products/atp/content/conditionaltrading_popup.html           \nDisallow: /products/atp/content/dailystats_popup.html \nDisallow: /products/atp/content/directedtrading_popup.html\nDisallow: /products/atp/content/multileg_popup.html      \nDisallow: /products/atp/content/news_popup.html          \nDisallow: /products/atp/content/orderdetails_popup.html  \nDisallow: /products/atp/content/orderstatus_popup.html  \nDisallow: /products/atp/content/preferences_popup.html   \nDisallow: /products/atp/content/ticker_popup.html        \nDisallow: /products/atp/content/timesales_popup.html   \nDisallow: /products/atp/images\nDisallow: /products/checking/checking_toc.shtml\nDisallow: /products/checking/images\nDisallow: /products/fixedincome/bondratings_ans1.html\nDisallow: /products/fixedincome/bondratings_ans2.html\nDisallow: /products/fixedincome/consider_ans1.html\nDisallow: /products/fixedincome/consider_ans2.html\nDisallow: /products/fixedincome/fievaluating_ans1.html\nDisallow: /products/fixedincome/fievaluating_ans2.html\nDisallow: /products/fixedincome/glossary.html\nDisallow: /products/fixedincome/howbondswork_ans1.html\nDisallow: /products/fixedincome/howbondswork_ans2.html\nDisallow: /products/fixedincome/images\nDisallow: /products/fixedincome/ladders_ans1.html\nDisallow: /products/fixedincome/ladders_ans2.html\nDisallow: /products/fixedincome/ladders_ans3.html\nDisallow: /products/fixedincome/ladders_ans4.html\nDisallow: /products/fixedincome/methodology.html\nDisallow: /products/fixedincome/price_ans1.html\nDisallow: /products/fixedincome/price_ans2.html\nDisallow: /products/fixedincome/price_ans3.html\nDisallow: /products/fixedincome/price_ans4.html\nDisallow: /products/fixedincome/price_ans5.html\nDisallow: /products/funds/browse_toc.html                               \nDisallow: /products/funds/content/answer2.html\nDisallow: /products/funds/content/answer3.html\nDisallow: /products/funds/content/answer4.html\nDisallow: /products/funds/content/backtofamily.html\nDisallow: /products/funds/content/docfrommaintoc.shtml                  \nDisallow: /products/funds/content/invalid.html\nDisallow: /products/funds/content/mfpopup.html\nDisallow: /products/funds/content/noframe.html\nDisallow: /products/funds/content/nomatch.html\nDisallow: /products/funds/content/obsolete.html\nDisallow: /products/funds/content/rrpopup.html\nDisallow: /products/funds/content/selectpopup.html\nDisallow: /products/funds/content/stylemap_defined.html\nDisallow: /products/funds/content/usaddresses.html\nDisallow: /products/funds/images\nDisallow: /products/funds/mutualfunds_toc.shtml       \nDisallow: /products/funds/prospectus_toc.html                           \nDisallow: /products/funds/search_results_toc.shtml                      \nDisallow: /products/funds/starfunds_toc.html                            \nDisallow: /products/funds/viewAll_toc.html \nDisallow: /products/funds/viewNTF_toc.html                                                          \nDisallow: /products/images\nDisallow: /products/insurance/content/answer1.html   \nDisallow: /products/insurance/content/help1.html                                                            \nDisallow: /products/insurance/content/help10.html                     \nDisallow: /products/insurance/content/help11.html                     \nDisallow: /products/insurance/content/help2.html                       \nDisallow: /products/insurance/content/help3.html                        \nDisallow: /products/insurance/content/help4.html                      \nDisallow: /products/insurance/content/help5.html                        \nDisallow: /products/insurance/content/help6.html                      \nDisallow: /products/insurance/content/help7.html                      \nDisallow: /products/insurance/content/help8.html\nDisallow: /products/insurance/content/help9.html      \nDisallow: /products/insurance/content/lifecallmeconfirm.html     \nDisallow: /products/insurance/content/popup_preferred.html\nDisallow: /products/insurance/content/popup_standard.html\nDisallow: /products/insurance/content/popup_super.html     \nDisallow: /products/insurance/content/termcallmeconfirm.html      \nDisallow: /products/insurance/content/thankyou.html      \nDisallow: /products/insurance/images\nDisallow: /products/retirement/getstart/newacc/smallbizstandalone_toc.html\nDisallow: /products/retirement/images\nDisallow: /products/stockoptions/analyzerglossary.html\nDisallow: /products/stocksbonds/content/cboebuffer.html\nDisallow: /products/stocksbonds/images         \nDisallow: /products/stocksbonds/offers/atthankyouC.shtml              \nDisallow: /products/stocksbonds/offers/atthankyouP.shtml     \nDisallow: /products/stocksbonds/offers/invaliderror.shtml               \nDisallow: /products/stocksbonds/offers/invaliderror_frame.shtml       \nDisallow: /products/stocksbonds/offers/systemdownerror.shtml            \nDisallow: /products/stocksbonds/offers/systemdownerror_frame.shtml           \nDisallow: /products/stocksbonds/offers/thankyouC.shtml\nDisallow: /products/stocksbonds/offers/thankyouP.shtml                  \nDisallow: /products/toolbar/ToolbarConfig10.shtml\nDisallow: /other/offers/registration_pas.shtml\nDisallow: /research/bond/images\nDisallow: /research/images\nDisallow: /research/options/images\nDisallow: /research/stock/images\nDisallow: /smrtr\nDisallow: /toolbox/annuitymatch/images\nDisallow: /toolbox/assetalloc/images\nDisallow: /toolbox/email\nDisallow: /toolbox/filiassetalloc/images\nDisallow: /toolbox/growth/assumptions.html\nDisallow: /toolbox/growth/growth.shtml\nDisallow: /toolbox/keogh/images\nDisallow: /toolbox/pension.ini\nDisallow: /toolbox/retirecalc/images\nDisallow: /toolbox/sepira/images\nDisallow: /w3c\nDisallow: /waterstreet\nDisallow: /xqa/*\nDisallow: /bin-public/060_www_fidelity_com/documents/new-fidelity-account-ira-application.pdf\nDisallow: /bin-public/060_www_fidelity_com/documents/bdaapp0402.pdf\nDisallow: /bin-public/060_www_fidelity_com/documents/customer-service/ira-for-spouses-inheriting-retirement-assets.pdf\nDisallow: /bin-public/060_www_fidelity_com/documents/customer-service/ira-for-spouses-inheriting-retirement-assets.pdf \nDisallow: /bin-public/060_www_fidelity_com/documents/customer-service/re-registration-non-retirement-inherited-assets.pdf\nDisallow: /bin-public/060_www_fidelity_com/documents/fidelity-rollover-ira-application.pdf\nDisallow: /accounts/pdf/rolliraapp.pdf\nDisallow: /bin-public/060_www_fidelity_com/documents/customer-service/demimous-rollover-account-activation-form.pdf\nDisallow: /bin-public/060_www_fidelity_com/documents/fidelity-sep-ira-new-account-application.pdf \nDisallow: /bin-public/060_www_fidelity_com/documents/simpiraapp.pdf\nDisallow: /bin-public/060_www_fidelity_com/documents/new-fidelity-account-non-retirement-application.pdf\nDisallow: /bin-public/060_www_fidelity_com/documents/new-fidelity-account-business-application.pdf\nDisallow: /bin-public/060_www_fidelity_com/documents/529_AZ_application.pdf\nDisallow: /bin-public/060_www_fidelity_com/documents/529_DE_application.pdf\nDisallow: /bin-public/060_www_fidelity_com/documents/529_MA_application.pdf\nDisallow: /bin-public/060_www_fidelity_com/documents/529_NH_application.pdf\nDisallow: /bin-public/060_www_fidelity_com/documents/new-fidelity-cash-management-account-application.pdf\nDisallow: /bin-public/060_www_fidelity_com/documents/cash-management-account-application-trust.pdf\nDisallow: /bin-public/060_www_fidelity_com/documents/customer-service/options-application.pdf\nDisallow: /bin-public/060_www_fidelity_com/documents/customer-service/new-account-application-pledge-mf-shares.pdf\nDisallow: /bin-public/060_www_fidelity_com/documents/customer-service/transfer-assets-to-fidelity.pdf\nDisallow: /bin-public/060_www_fidelity_com/documents/applications/\nDisallow: /*.comp$\nDisallow: /bin-public/060_www_fidelity_com/documents/noindex/*\nNoindex: /bin-public/060_www_fidelity_com/documents/applications/\nNoindex: /misc/ekits/pdf/cash_offer_terms.pdf\nSitemap: https://www.fidelity.com/sitemap.xml\nSitemap: https://www.fidelity.com/videositemap.xml\n",
+    "parse_ok": true,
+    "agents": {
+      "IDentity": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "AdsBot-Google": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "*": {
+        "class": "generic",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      }
+    },
+    "sitemap_declarations": [
+      "https://www.fidelity.com/sitemap.xml",
+      "https://www.fidelity.com/videositemap.xml"
+    ]
+  },
+  "discovery": {
+    "status": "ok",
+    "reason": null,
+    "sitemap_found": true,
+    "sitemap_urls_count": 3214,
+    "inventory": [],
+    "sampled_static": [],
+    "sampled_rendered": [],
+    "sampling_seed": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "pages": [],
+  "rendered": [],
+  "links": {
+    "status": "ok",
+    "reason": null,
+    "checked_count": 0,
+    "results": [],
+    "skipped": []
+  },
+  "anchors": {
+    "status": "ok",
+    "reason": null,
+    "declared": [],
+    "checked_count": 0,
+    "results": []
+  },
+  "budget": {
+    "status": "ok",
+    "reason": null,
+    "stages": [
+      {
+        "name": "resolve",
+        "budget_s": 10,
+        "actual_s": 2.2,
+        "abandoned": false,
+        "planned_items": null,
+        "completed_items": null
+      },
+      {
+        "name": "robots_discovery",
+        "budget_s": 15,
+        "actual_s": 3.9,
+        "abandoned": false,
+        "planned_items": 0,
+        "completed_items": 0
+      },
+      {
+        "name": "static_fetch",
+        "budget_s": 45,
+        "actual_s": 0.0,
+        "abandoned": false,
+        "planned_items": 0,
+        "completed_items": 0
+      },
+      {
+        "name": "render_pass",
+        "budget_s": 75,
+        "actual_s": 0.0,
+        "abandoned": true,
+        "planned_items": 0,
+        "completed_items": 0,
+        "reason": "no_headless_browser_tool"
+      },
+      {
+        "name": "internal_links",
+        "budget_s": 25,
+        "actual_s": 0.0,
+        "abandoned": false,
+        "planned_items": 0,
+        "completed_items": 0
+      },
+      {
+        "name": "offsite_anchors",
+        "budget_s": 20,
+        "actual_s": 0.0,
+        "abandoned": false,
+        "planned_items": 0,
+        "completed_items": 0
+      }
+    ],
+    "total_s": 6.1,
+    "cap_s": 300
+  }
+}

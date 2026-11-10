@@ -2,7 +2,7 @@
 name: content-engagement-audit
 description: Determine whether the content a machine reader receives is complete, substantial, well-structured, internally reachable, explicitly stated, and non-duplicated, AND detect on-site defects known to obstruct user access or content comprehension — accessibility violations, mobile layout failures, content-blocking overlays, blank first paint, autoplaying media with sound, structural layout instability, heading/landmark integrity failures, and missing trust signals. Covers mechanisms B (how assistants use sources), C (how machines "read" a page), E (personalization and prior context), and F (why machines drop content) from the brief's appendix. Use as the content-and-engagement stage of a website audit, after the evidence bundle has been collected. Detects defects, never predicts engagement outcomes.
 license: Apache-2.0
-allowed-tools: []
+allowed-tools: ""
 ---
 
 # Content & Engagement Audit

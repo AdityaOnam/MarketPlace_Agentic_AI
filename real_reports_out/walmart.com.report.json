@@ -1,0 +1,109 @@
+{
+  "schema_version": "1.0.0",
+  "site": "https://www.walmart.com",
+  "audited_at": "2026-09-10T20:48:20Z",
+  "preamble": {
+    "access_blocked_for": [],
+    "notes": [],
+    "archetype": "unknown",
+    "recommendations_scoped_to": "unknown"
+  },
+  "summary": {
+    "total_findings": 1,
+    "critical": 0,
+    "high": 0,
+    "medium": 1,
+    "low": 0
+  },
+  "findings": [
+    {
+      "check_id": "CHK-D-025",
+      "state": "present",
+      "locus": {
+        "url": null,
+        "selector": null
+      },
+      "evidence": "No sameAs declarations or outbound identity-profile links found on the homepage or about page.",
+      "severity": "medium",
+      "evidence_strength": "CORRELATIONAL",
+      "suggested_action": {
+        "summary": "Declare identity anchors: add sameAs to the Organization JSON-LD pointing at the organisation's authoritative external profiles.",
+        "priority": "medium"
+      },
+      "suppressed_by": [],
+      "id": "F-001",
+      "title": "No declared identity anchors"
+    }
+  ],
+  "recommendations": [],
+  "limitations": [
+    {
+      "id": "LIM-01",
+      "mechanism": "D",
+      "reason": "Actual agreement across the wider web about the brand's facts requires a search or web-scale index API. No free, deterministic, rate-safe source exists.",
+      "note": "CHK-D-025/026/027 audit only the anchoring the site itself provides for that corroboration, not corroboration itself."
+    },
+    {
+      "id": "LIM-02",
+      "mechanism": "D",
+      "reason": "Detecting a same-name collision with an unrelated entity requires a corpus of other entities.",
+      "note": "CHK-D-027 covers only self-consistency, the site-side half."
+    },
+    {
+      "id": "LIM-03",
+      "mechanism": "B",
+      "reason": "Live-querying a generative engine would break determinism, the 5-minute budget, and reproducibility.",
+      "note": "This audit measures retrievability and correctness of what the site exposes, never observed citation outcomes."
+    },
+    {
+      "id": "LIM-04",
+      "mechanism": "E",
+      "reason": "Field engagement outcomes (bounce, dwell, scroll, conversion, task success) are not observable read-only.",
+      "note": "Reported not_determinable where the gap is itself actionable."
+    },
+    {
+      "id": "LIM-05",
+      "mechanism": "D",
+      "reason": "llms.txt is not recommended as a substantive fix: a 137k-domain measurement found 97% of existing llms.txt files were never requested. This audit declines to recommend adding one on that evidence (D-007).",
+      "note": "Stated here rather than omitted (D-014) — the officials' Q&A confirms recommending it is an acceptable position, so silence about it would look indistinguishable from having missed it."
+    }
+  ],
+  "degraded_stages": [
+    {
+      "stage": "robots_discovery",
+      "planned_items": null,
+      "completed_items": null,
+      "affected_checks": [
+        "CHK-D-001",
+        "CHK-D-002"
+      ]
+    },
+    {
+      "stage": "render_pass",
+      "planned_items": 0,
+      "completed_items": 0,
+      "affected_checks": [
+        "CHK-D-003",
+        "CHK-E-014",
+        "CHK-E-015",
+        "CHK-E-016",
+        "CHK-E-018",
+        "CHK-E-019"
+      ]
+    }
+  ],
+  "meta_evaluation": {
+    "checks_run": [
+      "summary_reconciles",
+      "severity_counts_reconcile",
+      "finding_complete",
+      "no_duplicate_findings",
+      "known_check_id",
+      "prohibited_recommendation",
+      "limitations_present",
+      "action_locus_coherence"
+    ],
+    "passed": true,
+    "warnings": []
+  }
+}

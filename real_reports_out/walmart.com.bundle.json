@@ -1,0 +1,85 @@
+{
+  "schema_version": "1.0.0",
+  "site": {
+    "status": "partial",
+    "reason": "robots_unavailable_collection_stopped",
+    "input": "https://walmart.com",
+    "canonical_host": "www.walmart.com",
+    "origin": "https://www.walmart.com",
+    "scheme": "https",
+    "redirect_chain": [
+      "http://walmart.com/"
+    ],
+    "tls_valid": true,
+    "archetype": "unknown",
+    "archetype_confidence": 0.0
+  },
+  "robots": {
+    "status": "unavailable",
+    "reason": "robots_fetch_failed",
+    "fetch_status": null,
+    "body": null,
+    "parse_ok": false,
+    "agents": {},
+    "sitemap_declarations": []
+  },
+  "discovery": {
+    "status": "unavailable",
+    "reason": "robots_unavailable_collection_stopped",
+    "sitemap_found": false,
+    "sitemap_urls_count": 0,
+    "inventory": [],
+    "sampled_static": [],
+    "sampled_rendered": [],
+    "sampling_seed": null
+  },
+  "pages": [],
+  "rendered": [],
+  "links": {
+    "status": "unavailable",
+    "reason": "robots_unavailable_collection_stopped",
+    "checked_count": 0,
+    "results": [],
+    "skipped": []
+  },
+  "anchors": {
+    "status": "unavailable",
+    "reason": "robots_unavailable_collection_stopped",
+    "declared": [],
+    "checked_count": 0,
+    "results": []
+  },
+  "budget": {
+    "status": "ok",
+    "reason": null,
+    "stages": [
+      {
+        "name": "resolve",
+        "budget_s": 10,
+        "actual_s": 1.8,
+        "abandoned": false,
+        "planned_items": null,
+        "completed_items": null
+      },
+      {
+        "name": "robots_discovery",
+        "budget_s": 15,
+        "actual_s": 0.5,
+        "abandoned": true,
+        "planned_items": null,
+        "completed_items": null
+      },
+      {
+        "name": "render_pass",
+        "budget_s": 75,
+        "actual_s": 0.0,
+        "abandoned": true,
+        "planned_items": 0,
+        "completed_items": 0,
+        "reason": "no_headless_browser_tool"
+      }
+    ],
+    "total_s": 1.8,
+    "cap_s": 300
+  }
+}

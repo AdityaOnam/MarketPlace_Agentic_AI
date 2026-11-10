@@ -1,0 +1,4922 @@
+{
+  "schema_version": "1.0.0",
+  "site": {
+    "status": "ok",
+    "reason": null,
+    "input": "https://docs.python.org",
+    "canonical_host": "docs.python.org",
+    "origin": "https://docs.python.org",
+    "scheme": "https",
+    "redirect_chain": [
+      "https://docs.python.org/"
+    ],
+    "tls_valid": true,
+    "archetype": "unknown",
+    "archetype_confidence": 0.0
+  },
+  "robots": {
+    "status": "ok",
+    "reason": null,
+    "fetch_status": 200,
+    "body": "Sitemap: https://docs.python.org/sitemap.xml\n\n# Prevent development and old documentation from showing up in search results.\nUser-agent: *\nDisallow: /dev\nDisallow: /release\n\n# Disallow EOL versions\nDisallow: /2/\nDisallow: /2.0/\nDisallow: /2.1/\nDisallow: /2.2/\nDisallow: /2.3/\nDisallow: /2.4/\nDisallow: /2.5/\nDisallow: /2.6/\nDisallow: /2.7/\nDisallow: /3.0/\nDisallow: /3.1/\nDisallow: /3.2/\nDisallow: /3.3/\nDisallow: /3.4/\nDisallow: /3.5/\nDisallow: /3.6/\nDisallow: /3.7/\nDisallow: /3.8/\nDisallow: /3.9/\n",
+    "parse_ok": true,
+    "agents": {
+      "*": {
+        "class": "generic",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      }
+    },
+    "sitemap_declarations": [
+      "https://docs.python.org/sitemap.xml"
+    ]
+  },
+  "discovery": {
+    "status": "ok",
+    "reason": null,
+    "sitemap_found": true,
+    "sitemap_urls_count": 8,
+    "inventory": [
+      {
+        "url": "https://docs.python.org/",
+        "page_type": "home",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://docs.python.org/3.10/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://docs.python.org/3.11/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://docs.python.org/3.12/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://docs.python.org/3.13/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://docs.python.org/3.14/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://docs.python.org/3.15/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://docs.python.org/3.16/",
+        "page_type": "other",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://docs.python.org/3/",
+        "page_type": "other",
+        "source": "sitemap"
+      }
+    ],
+    "sampled_static": [
+      "https://docs.python.org/",
+      "https://docs.python.org/3.10/",
+      "https://docs.python.org/3.11/",
+      "https://docs.python.org/3.12/",
+      "https://docs.python.org/3.13/"
+    ],
+    "sampled_rendered": [],
+    "sampling_seed": "sha256:4f118dfb0c6be5da913f611bc43d06adb51aa3b700a6ea1c1e3a64e18ff0ffdc"
+  },
+  "pages": [
+    {
+      "url": "https://docs.python.org/",
+      "final_url": "https://docs.python.org/",
+      "status": "ok",
+      "reason": null,
+      "http_status": 200,
+      "page_type": "home",
+      "headers": {
+        "connection": "close",
+        "content-length": "4012",
+        "server": "nginx",
+        "content-type": "text/html",
+        "last-modified": "Thu, 03 Sep 2026 16:04:37 GMT",
+        "etag": "\"6a999a95-4bea\"",
+        "x-clacks-overhead": "GNU Terry Pratchett",
+        "strict-transport-security": "max-age=315360000; includeSubDomains; preload",
+        "content-encoding": "gzip",
+        "via": "1.1 varnish, 1.1 varnish",
+        "accept-ranges": "bytes",
+        "date": "Thu, 03 Sep 2026 22:31:00 GMT",
+        "age": "813",
+        "x-served-by": "cache-lga21956-LGA, cache-qag-vidp4510020-QAG",
+        "x-cache": "HIT, HIT",
+        "x-cache-hits": "617, 1",
+        "x-timer": "S1788474660.049368,VS0,VE0",
+        "vary": "Accept-Encoding"
+      },
+      "raw_html_bytes": 19434,
+      "main_text": "Navigation index modules | Python » 3.14.7 Documentation » | Theme Auto Light Dark | Python 3.14.7 documentation Welcome! This is the official documentation for Python 3.14.7. Documentation sections: What's new in Python 3.14? Or all \"What's new\" documents since Python 2.0 Tutorial Start here: a tour of Python's syntax and features Library reference Standard library and builtins Language reference Syntax and language elements Python setup and usage How to install, configure, and use Python Python HOWTOs In-depth topic manuals Installing Python modules Third-party modules and PyPI.org Extending and embedding For C/C++ programmers Python's C API C API reference FAQs Frequently asked questions (with answers!) Deprecations Deprecated functionality Other resources: Python developer's guide Information on contributing to Python Python Packaging User Guide Resources relating to Python packaging Audio/visual talks Podcasts, talks, and video presentations from the community Python Enhancement Proposals Index of proposed improvements to Python Static Typing with Python Information and guides about Python type safety Indices, glossary, and search: Global module index All modules and libraries General index All functions, classes, and terms Glossary Terms explained Search page Search this documentation Complete table of contents All sections and subsections Project information: Reporting issues Contributing to docs Download the documentation History and license of Python Copyright About the documentation Download Download these documents Docs by version Python 3.16 (in development) Python 3.15 (pre-release) Python 3.14 (stable) Python 3.13 (stable) Python 3.12 (security-fixes) Python 3.11 (security-fixes) Python 3.10 (security-fixes) Python 3.9 (EOL) Python 3.8 (EOL) Python 3.7 (EOL) Python 3.6 (EOL) Python 3.5 (EOL) Python 3.4 (EOL) Python 3.3 (EOL) Python 3.2 (EOL) Python 3.1 (EOL) Python 3.0 (EOL) Python 2.7 (EOL) Python 2.6 (EOL) All versions Other resources PEP Index Beginner's Guide Book List Audio/Visual Talks Python Developer’s Guide « Navigation index modules | Python » 3.14.7 Documentation » | Theme Auto Light Dark | © Copyright 2001 Python Software Foundation. This page is licensed under the Python Software Foundation License Version 2. Examples, recipes, and other code in the documentation are additionally licensed under the Zero Clause BSD License. See History and License for more information. The Python Software Foundation is a non-profit corporation. Please donate. Last updated on Sep 03, 2026 (16:02 UTC). Found a bug ? Created using Sphinx 8.2.3.",
+      "main_text_words": 405,
+      "extraction_ok": true,
+      "title": "3.14.7 Documentation",
+      "meta": {
+        "viewport": "width=device-width, initial-scale=1.0",
+        "description": "The official Python documentation.",
+        "robots": null
+      },
+      "lang": "en",
+      "canonical": {
+        "href": "https://docs.python.org/3/index.html",
+        "self_referential": false,
+        "cross_domain": false
+      },
+      "headings": [
+        {
+          "level": 3,
+          "text": "Download",
+          "order": 0
+        },
+        {
+          "level": 3,
+          "text": "Docs by version",
+          "order": 1
+        },
+        {
+          "level": 3,
+          "text": "Other resources",
+          "order": 2
+        },
+        {
+          "level": 3,
+          "text": "Navigation",
+          "order": 3
+        },
+        {
+          "level": 1,
+          "text": "Python 3.14.7 documentation",
+          "order": 4
+        },
+        {
+          "level": 3,
+          "text": "Download",
+          "order": 5
+        },
+        {
+          "level": 3,
+          "text": "Docs by version",
+          "order": 6
+        },
+        {
+          "level": 3,
+          "text": "Other resources",
+          "order": 7
+        },
+        {
+          "level": 3,
+          "text": "Navigation",
+          "order": 8
+        }
+      ],
+      "landmarks": {
+        "main": 1,
+        "nav": 5,
+        "header": 0,
+        "footer": 0
+      },
+      "structured_data": {
+        "json_ld": [],
+        "microdata_types": [],
+        "rdfa_types": []
+      },
+      "links": [
+        {
+          "href": "https://www.python.org/",
+          "text": "",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/download.html",
+          "text": "Download these documents",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.16/",
+          "text": "Python 3.16 (in development)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.15/",
+          "text": "Python 3.15 (pre-release)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.14/",
+          "text": "Python 3.14 (stable)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.13/",
+          "text": "Python 3.13 (stable)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.12/",
+          "text": "Python 3.12 (security-fixes)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.11/",
+          "text": "Python 3.11 (security-fixes)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.10/",
+          "text": "Python 3.10 (security-fixes)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.9/",
+          "text": "Python 3.9 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.8/",
+          "text": "Python 3.8 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.7/",
+          "text": "Python 3.7 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.6/",
+          "text": "Python 3.6 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.5/",
+          "text": "Python 3.5 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.4/",
+          "text": "Python 3.4 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.3/",
+          "text": "Python 3.3 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.2/",
+          "text": "Python 3.2 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.1/",
+          "text": "Python 3.1 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.0/",
+          "text": "Python 3.0 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/2.7/",
+          "text": "Python 2.7 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/2.6/",
+          "text": "Python 2.6 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.python.org/doc/versions/",
+          "text": "All versions",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://peps.python.org/",
+          "text": "PEP Index",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://wiki.python.org/moin/BeginnersGuide",
+          "text": "Beginner's Guide",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://wiki.python.org/moin/PythonBooks",
+          "text": "Book List",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.python.org/doc/av/",
+          "text": "Audio/Visual Talks",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://devguide.python.org/",
+          "text": "Python Developer’s Guide",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/genindex.html",
+          "text": "index",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/py-modindex.html",
+          "text": "modules",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.python.org/",
+          "text": "Python",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/",
+          "text": "3.14.7 Documentation",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/whatsnew/3.14.html",
+          "text": "What's new in Python 3.14?",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/whatsnew/index.html",
+          "text": "all \"What's new\" documents since Python 2.0",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/tutorial/index.html",
+          "text": "Tutorial",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/library/index.html",
+          "text": "Library reference",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/reference/index.html",
+          "text": "Language reference",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/using/index.html",
+          "text": "Python setup and usage",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/howto/index.html",
+          "text": "Python HOWTOs",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/installing/index.html",
+          "text": "Installing Python modules",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/extending/index.html",
+          "text": "Extending and embedding",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/c-api/index.html",
+          "text": "Python's C API",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/faq/index.html",
+          "text": "FAQs",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/deprecations/index.html",
+          "text": "Deprecations",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://devguide.python.org",
+          "text": "Python developer's guide",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://packaging.python.org",
+          "text": "Python Packaging User Guide",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.python.org/doc/av/",
+          "text": "Audio/visual talks",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://peps.python.org/",
+          "text": "Python Enhancement Proposals",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://typing.python.org",
+          "text": "Static Typing with Python",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/py-modindex.html",
+          "text": "Global module index",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/genindex.html",
+          "text": "General index",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/glossary.html",
+          "text": "Glossary",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/search.html",
+          "text": "Search page",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/contents.html",
+          "text": "Complete table of contents",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/bugs.html",
+          "text": "Reporting issues",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://devguide.python.org/documentation/help-documenting/",
+          "text": "Contributing to docs",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/download.html",
+          "text": "Download the documentation",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/license.html",
+          "text": "History and license of Python",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/copyright.html",
+          "text": "Copyright",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/about.html",
+          "text": "About the documentation",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/download.html",
+          "text": "Download these documents",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.16/",
+          "text": "Python 3.16 (in development)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.15/",
+          "text": "Python 3.15 (pre-release)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.14/",
+          "text": "Python 3.14 (stable)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.13/",
+          "text": "Python 3.13 (stable)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.12/",
+          "text": "Python 3.12 (security-fixes)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.11/",
+          "text": "Python 3.11 (security-fixes)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.10/",
+          "text": "Python 3.10 (security-fixes)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.9/",
+          "text": "Python 3.9 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.8/",
+          "text": "Python 3.8 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.7/",
+          "text": "Python 3.7 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.6/",
+          "text": "Python 3.6 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.5/",
+          "text": "Python 3.5 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.4/",
+          "text": "Python 3.4 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.3/",
+          "text": "Python 3.3 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.2/",
+          "text": "Python 3.2 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.1/",
+          "text": "Python 3.1 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.0/",
+          "text": "Python 3.0 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/2.7/",
+          "text": "Python 2.7 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/2.6/",
+          "text": "Python 2.6 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.python.org/doc/versions/",
+          "text": "All versions",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://peps.python.org/",
+          "text": "PEP Index",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://wiki.python.org/moin/BeginnersGuide",
+          "text": "Beginner's Guide",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://wiki.python.org/moin/PythonBooks",
+          "text": "Book List",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.python.org/doc/av/",
+          "text": "Audio/Visual Talks",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://devguide.python.org/",
+          "text": "Python Developer’s Guide",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/genindex.html",
+          "text": "index",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/py-modindex.html",
+          "text": "modules",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.python.org/",
+          "text": "Python",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/",
+          "text": "3.14.7 Documentation",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/copyright.html",
+          "text": "Copyright",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/license.html",
+          "text": "History and License",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.python.org/psf/donations/",
+          "text": "Please donate.",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/bugs.html",
+          "text": "Found a bug",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.sphinx-doc.org/",
+          "text": "Sphinx",
+          "rel": null,
+          "internal": false,
+          "aria_label": null
+        }
+      ],
+      "outbound_profile_links": [],
+      "images": [
+        {
+          "src": "_static/py.svg",
+          "alt": "Python logo",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "_static/py.svg",
+          "alt": "Python logo",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "_static/py.svg",
+          "alt": "Python logo",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        }
+      ],
+      "iframes": [],
+      "media": [],
+      "form_controls": [
+        {
+          "type": "checkbox",
+          "id": "menuToggler",
+          "has_label": true,
+          "aria_label": "Menu"
+        },
+        {
+          "type": "search",
+          "id": null,
+          "has_label": false,
+          "aria_label": "Quick search"
+        },
+        {
+          "type": "search",
+          "id": "search-box",
+          "has_label": false,
+          "aria_label": "Quick search"
+        },
+        {
+          "type": "search",
+          "id": "search-box",
+          "has_label": false,
+          "aria_label": "Quick search"
+        },
+        {
+          "type": "select",
+          "id": null,
+          "has_label": true,
+          "aria_label": null
+        },
+        {
+          "type": "select",
+          "id": null,
+          "has_label": true,
+          "aria_label": null
+        },
+        {
+          "type": "select",
+          "id": null,
+          "has_label": true,
+          "aria_label": null
+        }
+      ],
+      "interactive_empty": {
+        "links_no_text": 2,
+        "buttons_no_text": 0
+      },
+      "noscript": {
+        "present": false,
+        "words": 0
+      },
+      "dates": {
+        "meta_published": null,
+        "meta_modified": null,
+        "visible_dates": [],
+        "header_last_modified": "Thu, 03 Sep 2026 16:04:37 GMT"
+      },
+      "contact_signals": {
+        "email": false,
+        "phone": null,
+        "postal_address": null,
+        "org_name_footer": null
+      },
+      "trigram_hash": "sha256:e00f95eedf2fb4b7763b85529a116bfec4664d9843eb652f013bbc1a32a829cf"
+    },
+    {
+      "url": "https://docs.python.org/3.10/",
+      "final_url": "https://docs.python.org/3.10/",
+      "status": "ok",
+      "reason": null,
+      "http_status": 200,
+      "page_type": "other",
+      "headers": {
+        "connection": "close",
+        "content-length": "3363",
+        "server": "nginx",
+        "content-type": "text/html",
+        "last-modified": "Wed, 11 Mar 2026 13:28:27 GMT",
+        "etag": "\"69b16dfb-40a7\"",
+        "x-clacks-overhead": "GNU Terry Pratchett",
+        "strict-transport-security": "max-age=315360000; includeSubDomains; preload",
+        "content-encoding": "gzip",
+        "via": "1.1 varnish, 1.1 varnish",
+        "accept-ranges": "bytes",
+        "date": "Thu, 03 Sep 2026 22:31:00 GMT",
+        "age": "4242",
+        "x-served-by": "cache-lga21954-LGA, cache-ccu830057-CCU",
+        "x-cache": "HIT, HIT",
+        "x-cache-hits": "1231, 1",
+        "x-timer": "S1788474661.983975,VS0,VE1",
+        "vary": "Accept-Encoding"
+      },
+      "raw_html_bytes": 16551,
+      "main_text": "Navigation index modules | Python » 3.10.20 Documentation » | Theme Auto Light Dark | Python 3.10.20 documentation Welcome! This is the official documentation for Python 3.10.20. Parts of the documentation: What's new in Python 3.10? or all \"What's new\" documents since 2.0 Tutorial start here Library Reference keep this under your pillow Language Reference describes syntax and language elements Python Setup and Usage how to use Python on different platforms Python HOWTOs in-depth documents on specific topics Installing Python Modules installing from the Python Package Index & other sources Distributing Python Modules publishing modules for installation by others Extending and Embedding tutorial for C/C++ programmers Python/C API reference for C/C++ programmers FAQs frequently asked questions (with answers!) Indices and tables: Global Module Index quick access to all modules General Index all functions, classes, terms Glossary the most important terms explained Search page search this documentation Complete Table of Contents lists all sections and subsections Meta information: Reporting bugs Contributing to Docs About the documentation History and License of Python Copyright Download Download these documents Docs by version Python 3.15 (in development) Python 3.14 (stable) Python 3.13 (stable) Python 3.12 (security-fixes) Python 3.11 (security-fixes) Python 3.10 (security-fixes) Python 3.9 (EOL) Python 3.8 (EOL) Python 3.7 (EOL) Python 3.6 (EOL) Python 3.5 (EOL) Python 3.4 (EOL) Python 3.3 (EOL) Python 3.2 (EOL) Python 3.1 (EOL) Python 3.0 (EOL) Python 2.7 (EOL) Python 2.6 (EOL) All versions Other resources PEP Index Beginner's Guide Book List Audio/Visual Talks Python Developer’s Guide Navigation index modules | Python » 3.10.20 Documentation » | Theme Auto Light Dark | © Copyright 2001-2026, Python Software Foundation. This page is licensed under the Python Software Foundation License Version 2. Examples, recipes, and other code in the documentation are additionally licensed under the Zero Clause BSD License. See History and License for more information. The Python Software Foundation is a non-profit corporation. Please donate. Last updated on Mar 11, 2026. Found a bug ? Created using Sphinx 3.4.3.",
+      "main_text_words": 357,
+      "extraction_ok": true,
+      "title": "3.10.20 Documentation",
+      "meta": {
+        "viewport": "width=device-width, initial-scale=1.0",
+        "description": null,
+        "robots": null
+      },
+      "lang": null,
+      "canonical": {
+        "href": "https://docs.python.org/3/index.html",
+        "self_referential": false,
+        "cross_domain": false
+      },
+      "headings": [
+        {
+          "level": 3,
+          "text": "Download",
+          "order": 0
+        },
+        {
+          "level": 3,
+          "text": "Docs by version",
+          "order": 1
+        },
+        {
+          "level": 3,
+          "text": "Other resources",
+          "order": 2
+        },
+        {
+          "level": 3,
+          "text": "Navigation",
+          "order": 3
+        },
+        {
+          "level": 1,
+          "text": "Python 3.10.20 documentation",
+          "order": 4
+        },
+        {
+          "level": 3,
+          "text": "Download",
+          "order": 5
+        },
+        {
+          "level": 3,
+          "text": "Docs by version",
+          "order": 6
+        },
+        {
+          "level": 3,
+          "text": "Other resources",
+          "order": 7
+        },
+        {
+          "level": 3,
+          "text": "Navigation",
+          "order": 8
+        }
+      ],
+      "landmarks": {
+        "main": 1,
+        "nav": 5,
+        "header": 0,
+        "footer": 0
+      },
+      "structured_data": {
+        "json_ld": [],
+        "microdata_types": [],
+        "rdfa_types": []
+      },
+      "links": [
+        {
+          "href": "https://www.python.org/",
+          "text": "",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.10/download.html",
+          "text": "Download these documents",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.15/",
+          "text": "Python 3.15 (in development)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.14/",
+          "text": "Python 3.14 (stable)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.13/",
+          "text": "Python 3.13 (stable)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.12/",
+          "text": "Python 3.12 (security-fixes)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.11/",
+          "text": "Python 3.11 (security-fixes)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.10/",
+          "text": "Python 3.10 (security-fixes)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.9/",
+          "text": "Python 3.9 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.8/",
+          "text": "Python 3.8 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.7/",
+          "text": "Python 3.7 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.6/",
+          "text": "Python 3.6 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.5/",
+          "text": "Python 3.5 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.4/",
+          "text": "Python 3.4 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.3/",
+          "text": "Python 3.3 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.2/",
+          "text": "Python 3.2 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.1/",
+          "text": "Python 3.1 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.0/",
+          "text": "Python 3.0 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/2.7/",
+          "text": "Python 2.7 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/2.6/",
+          "text": "Python 2.6 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.python.org/doc/versions/",
+          "text": "All versions",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://peps.python.org/",
+          "text": "PEP Index",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://wiki.python.org/moin/BeginnersGuide",
+          "text": "Beginner's Guide",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://wiki.python.org/moin/PythonBooks",
+          "text": "Book List",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.python.org/doc/av/",
+          "text": "Audio/Visual Talks",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://devguide.python.org/",
+          "text": "Python Developer’s Guide",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.10/genindex.html",
+          "text": "index",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.10/py-modindex.html",
+          "text": "modules",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.python.org/",
+          "text": "Python",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.10/",
+          "text": "3.10.20 Documentation",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.10/whatsnew/3.10.html",
+          "text": "What's new in Python 3.10?",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.10/whatsnew/index.html",
+          "text": "all \"What's new\" documents",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.10/tutorial/index.html",
+          "text": "Tutorial",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.10/library/index.html",
+          "text": "Library Reference",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.10/reference/index.html",
+          "text": "Language Reference",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.10/using/index.html",
+          "text": "Python Setup and Usage",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.10/howto/index.html",
+          "text": "Python HOWTOs",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.10/installing/index.html",
+          "text": "Installing Python Modules",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.10/distributing/index.html",
+          "text": "Distributing Python Modules",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.10/extending/index.html",
+          "text": "Extending and Embedding",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.10/c-api/index.html",
+          "text": "Python/C API",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.10/faq/index.html",
+          "text": "FAQs",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.10/py-modindex.html",
+          "text": "Global Module Index",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.10/genindex.html",
+          "text": "General Index",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.10/glossary.html",
+          "text": "Glossary",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.10/search.html",
+          "text": "Search page",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.10/contents.html",
+          "text": "Complete Table of Contents",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.10/bugs.html",
+          "text": "Reporting bugs",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://devguide.python.org/docquality/#helping-with-documentation",
+          "text": "Contributing to Docs",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.10/about.html",
+          "text": "About the documentation",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.10/license.html",
+          "text": "History and License of Python",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.10/copyright.html",
+          "text": "Copyright",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.10/download.html",
+          "text": "Download these documents",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.15/",
+          "text": "Python 3.15 (in development)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.14/",
+          "text": "Python 3.14 (stable)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.13/",
+          "text": "Python 3.13 (stable)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.12/",
+          "text": "Python 3.12 (security-fixes)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.11/",
+          "text": "Python 3.11 (security-fixes)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.10/",
+          "text": "Python 3.10 (security-fixes)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.9/",
+          "text": "Python 3.9 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.8/",
+          "text": "Python 3.8 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.7/",
+          "text": "Python 3.7 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.6/",
+          "text": "Python 3.6 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.5/",
+          "text": "Python 3.5 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.4/",
+          "text": "Python 3.4 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.3/",
+          "text": "Python 3.3 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.2/",
+          "text": "Python 3.2 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.1/",
+          "text": "Python 3.1 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.0/",
+          "text": "Python 3.0 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/2.7/",
+          "text": "Python 2.7 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/2.6/",
+          "text": "Python 2.6 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.python.org/doc/versions/",
+          "text": "All versions",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://peps.python.org/",
+          "text": "PEP Index",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://wiki.python.org/moin/BeginnersGuide",
+          "text": "Beginner's Guide",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://wiki.python.org/moin/PythonBooks",
+          "text": "Book List",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.python.org/doc/av/",
+          "text": "Audio/Visual Talks",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://devguide.python.org/",
+          "text": "Python Developer’s Guide",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.10/genindex.html",
+          "text": "index",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.10/py-modindex.html",
+          "text": "modules",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.python.org/",
+          "text": "Python",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.10/",
+          "text": "3.10.20 Documentation",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.10/copyright.html",
+          "text": "Copyright",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/license.html",
+          "text": "History and License",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.python.org/psf/donations/",
+          "text": "Please donate.",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/bugs.html",
+          "text": "Found a bug",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.sphinx-doc.org/",
+          "text": "Sphinx",
+          "rel": null,
+          "internal": false,
+          "aria_label": null
+        }
+      ],
+      "outbound_profile_links": [],
+      "images": [
+        {
+          "src": "_static/py.svg",
+          "alt": "Python logo",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "_static/py.svg",
+          "alt": "Python logo",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "_static/py.svg",
+          "alt": "Python logo",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        }
+      ],
+      "iframes": [],
+      "media": [],
+      "form_controls": [
+        {
+          "type": "checkbox",
+          "id": "menuToggler",
+          "has_label": true,
+          "aria_label": "Menu"
+        },
+        {
+          "type": "search",
+          "id": null,
+          "has_label": false,
+          "aria_label": "Quick search"
+        },
+        {
+          "type": "search",
+          "id": "search-box",
+          "has_label": false,
+          "aria_label": "Quick search"
+        },
+        {
+          "type": "search",
+          "id": "search-box",
+          "has_label": false,
+          "aria_label": "Quick search"
+        },
+        {
+          "type": "select",
+          "id": null,
+          "has_label": true,
+          "aria_label": null
+        },
+        {
+          "type": "select",
+          "id": null,
+          "has_label": true,
+          "aria_label": null
+        },
+        {
+          "type": "select",
+          "id": null,
+          "has_label": true,
+          "aria_label": null
+        }
+      ],
+      "interactive_empty": {
+        "links_no_text": 2,
+        "buttons_no_text": 0
+      },
+      "noscript": {
+        "present": false,
+        "words": 0
+      },
+      "dates": {
+        "meta_published": null,
+        "meta_modified": null,
+        "visible_dates": [],
+        "header_last_modified": "Wed, 11 Mar 2026 13:28:27 GMT"
+      },
+      "contact_signals": {
+        "email": false,
+        "phone": null,
+        "postal_address": null,
+        "org_name_footer": null
+      },
+      "trigram_hash": "sha256:6dd9c3e9482d34c5d7ec3a37da67f7fa8d5d2b8a983ae05f843bbc4a5651fa52"
+    },
+    {
+      "url": "https://docs.python.org/3.11/",
+      "final_url": "https://docs.python.org/3.11/",
+      "status": "ok",
+      "reason": null,
+      "http_status": 200,
+      "page_type": "other",
+      "headers": {
+        "connection": "close",
+        "content-length": "3453",
+        "server": "nginx",
+        "content-type": "text/html",
+        "last-modified": "Sat, 07 Mar 2026 19:22:02 GMT",
+        "etag": "\"69ac7ada-414c\"",
+        "x-clacks-overhead": "GNU Terry Pratchett",
+        "strict-transport-security": "max-age=315360000; includeSubDomains; preload",
+        "content-encoding": "gzip",
+        "via": "1.1 varnish, 1.1 varnish",
+        "accept-ranges": "bytes",
+        "date": "Thu, 03 Sep 2026 22:31:02 GMT",
+        "age": "831",
+        "x-served-by": "cache-lga21966-LGA, cache-ccu830053-CCU",
+        "x-cache": "HIT, HIT",
+        "x-cache-hits": "9152, 1",
+        "x-timer": "S1788474662.005783,VS0,VE1",
+        "vary": "Accept-Encoding"
+      },
+      "raw_html_bytes": 16716,
+      "main_text": "Navigation index modules | Python » 3.11.15 Documentation » | Theme Auto Light Dark | Python 3.11.15 documentation Welcome! This is the official documentation for Python 3.11.15. Documentation sections: What's new in Python 3.11? Or all \"What's new\" documents since Python 2.0 Tutorial Start here: a tour of Python's syntax and features Library reference Standard library and builtins Language reference Syntax and language elements Python setup and usage How to install, configure, and use Python Python HOWTOs In-depth topic manuals Installing Python modules Third-party modules and PyPI.org Distributing Python modules Publishing modules for use by other people Extending and embedding For C/C++ programmers Python's C API C API reference FAQs Frequently asked questions (with answers!) Indices, glossary, and search: Global module index All modules and libraries General index All functions, classes, and terms Glossary Terms explained Search page Search this documentation Complete table of contents Lists all sections and subsections Project information: Reporting issues Contributing to Docs Download the documentation History and license of Python Copyright About the documentation Download Download these documents Docs by version Python 3.15 (in development) Python 3.14 (stable) Python 3.13 (stable) Python 3.12 (security-fixes) Python 3.11 (security-fixes) Python 3.10 (security-fixes) Python 3.9 (EOL) Python 3.8 (EOL) Python 3.7 (EOL) Python 3.6 (EOL) Python 3.5 (EOL) Python 3.4 (EOL) Python 3.3 (EOL) Python 3.2 (EOL) Python 3.1 (EOL) Python 3.0 (EOL) Python 2.7 (EOL) Python 2.6 (EOL) All versions Other resources PEP Index Beginner's Guide Book List Audio/Visual Talks Python Developer’s Guide « Navigation index modules | Python » 3.11.15 Documentation » | Theme Auto Light Dark | © Copyright 2001-2026, Python Software Foundation. This page is licensed under the Python Software Foundation License Version 2. Examples, recipes, and other code in the documentation are additionally licensed under the Zero Clause BSD License. See History and License for more information. The Python Software Foundation is a non-profit corporation. Please donate. Last updated on Mar 07, 2026 (19:19 UTC). Found a bug ? Created using Sphinx 7.2.6.",
+      "main_text_words": 359,
+      "extraction_ok": true,
+      "title": "3.11.15 Documentation",
+      "meta": {
+        "viewport": "width=device-width, initial-scale=1.0",
+        "description": null,
+        "robots": null
+      },
+      "lang": "en",
+      "canonical": {
+        "href": "https://docs.python.org/3/index.html",
+        "self_referential": false,
+        "cross_domain": false
+      },
+      "headings": [
+        {
+          "level": 3,
+          "text": "Download",
+          "order": 0
+        },
+        {
+          "level": 3,
+          "text": "Docs by version",
+          "order": 1
+        },
+        {
+          "level": 3,
+          "text": "Other resources",
+          "order": 2
+        },
+        {
+          "level": 3,
+          "text": "Navigation",
+          "order": 3
+        },
+        {
+          "level": 1,
+          "text": "Python 3.11.15 documentation",
+          "order": 4
+        },
+        {
+          "level": 3,
+          "text": "Download",
+          "order": 5
+        },
+        {
+          "level": 3,
+          "text": "Docs by version",
+          "order": 6
+        },
+        {
+          "level": 3,
+          "text": "Other resources",
+          "order": 7
+        },
+        {
+          "level": 3,
+          "text": "Navigation",
+          "order": 8
+        }
+      ],
+      "landmarks": {
+        "main": 1,
+        "nav": 5,
+        "header": 0,
+        "footer": 0
+      },
+      "structured_data": {
+        "json_ld": [],
+        "microdata_types": [],
+        "rdfa_types": []
+      },
+      "links": [
+        {
+          "href": "https://www.python.org/",
+          "text": "",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.11/download.html",
+          "text": "Download these documents",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.15/",
+          "text": "Python 3.15 (in development)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.14/",
+          "text": "Python 3.14 (stable)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.13/",
+          "text": "Python 3.13 (stable)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.12/",
+          "text": "Python 3.12 (security-fixes)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.11/",
+          "text": "Python 3.11 (security-fixes)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.10/",
+          "text": "Python 3.10 (security-fixes)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.9/",
+          "text": "Python 3.9 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.8/",
+          "text": "Python 3.8 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.7/",
+          "text": "Python 3.7 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.6/",
+          "text": "Python 3.6 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.5/",
+          "text": "Python 3.5 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.4/",
+          "text": "Python 3.4 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.3/",
+          "text": "Python 3.3 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.2/",
+          "text": "Python 3.2 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.1/",
+          "text": "Python 3.1 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.0/",
+          "text": "Python 3.0 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/2.7/",
+          "text": "Python 2.7 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/2.6/",
+          "text": "Python 2.6 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.python.org/doc/versions/",
+          "text": "All versions",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://peps.python.org/",
+          "text": "PEP Index",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://wiki.python.org/moin/BeginnersGuide",
+          "text": "Beginner's Guide",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://wiki.python.org/moin/PythonBooks",
+          "text": "Book List",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.python.org/doc/av/",
+          "text": "Audio/Visual Talks",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://devguide.python.org/",
+          "text": "Python Developer’s Guide",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.11/genindex.html",
+          "text": "index",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.11/py-modindex.html",
+          "text": "modules",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.python.org/",
+          "text": "Python",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.11/",
+          "text": "3.11.15 Documentation",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.11/whatsnew/3.11.html",
+          "text": "What's new in Python 3.11?",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.11/whatsnew/index.html",
+          "text": "all \"What's new\" documents since Python 2.0",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.11/tutorial/index.html",
+          "text": "Tutorial",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.11/library/index.html",
+          "text": "Library reference",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.11/reference/index.html",
+          "text": "Language reference",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.11/using/index.html",
+          "text": "Python setup and usage",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.11/howto/index.html",
+          "text": "Python HOWTOs",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.11/installing/index.html",
+          "text": "Installing Python modules",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.11/distributing/index.html",
+          "text": "Distributing Python modules",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.11/extending/index.html",
+          "text": "Extending and embedding",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.11/c-api/index.html",
+          "text": "Python's C API",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.11/faq/index.html",
+          "text": "FAQs",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.11/py-modindex.html",
+          "text": "Global module index",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.11/genindex.html",
+          "text": "General index",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.11/glossary.html",
+          "text": "Glossary",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.11/search.html",
+          "text": "Search page",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.11/contents.html",
+          "text": "Complete table of contents",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.11/bugs.html",
+          "text": "Reporting issues",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://devguide.python.org/docquality/#helping-with-documentation",
+          "text": "Contributing to Docs",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.11/download.html",
+          "text": "Download the documentation",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.11/license.html",
+          "text": "History and license of Python",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.11/copyright.html",
+          "text": "Copyright",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.11/about.html",
+          "text": "About the documentation",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.11/download.html",
+          "text": "Download these documents",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.15/",
+          "text": "Python 3.15 (in development)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.14/",
+          "text": "Python 3.14 (stable)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.13/",
+          "text": "Python 3.13 (stable)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.12/",
+          "text": "Python 3.12 (security-fixes)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.11/",
+          "text": "Python 3.11 (security-fixes)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.10/",
+          "text": "Python 3.10 (security-fixes)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.9/",
+          "text": "Python 3.9 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.8/",
+          "text": "Python 3.8 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.7/",
+          "text": "Python 3.7 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.6/",
+          "text": "Python 3.6 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.5/",
+          "text": "Python 3.5 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.4/",
+          "text": "Python 3.4 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.3/",
+          "text": "Python 3.3 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.2/",
+          "text": "Python 3.2 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.1/",
+          "text": "Python 3.1 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.0/",
+          "text": "Python 3.0 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/2.7/",
+          "text": "Python 2.7 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/2.6/",
+          "text": "Python 2.6 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.python.org/doc/versions/",
+          "text": "All versions",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://peps.python.org/",
+          "text": "PEP Index",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://wiki.python.org/moin/BeginnersGuide",
+          "text": "Beginner's Guide",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://wiki.python.org/moin/PythonBooks",
+          "text": "Book List",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.python.org/doc/av/",
+          "text": "Audio/Visual Talks",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://devguide.python.org/",
+          "text": "Python Developer’s Guide",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.11/genindex.html",
+          "text": "index",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.11/py-modindex.html",
+          "text": "modules",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.python.org/",
+          "text": "Python",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.11/",
+          "text": "3.11.15 Documentation",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.11/copyright.html",
+          "text": "Copyright",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/license.html",
+          "text": "History and License",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.python.org/psf/donations/",
+          "text": "Please donate.",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/bugs.html",
+          "text": "Found a bug",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.sphinx-doc.org/",
+          "text": "Sphinx",
+          "rel": null,
+          "internal": false,
+          "aria_label": null
+        }
+      ],
+      "outbound_profile_links": [],
+      "images": [
+        {
+          "src": "_static/py.svg",
+          "alt": "Python logo",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "_static/py.svg",
+          "alt": "Python logo",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "_static/py.svg",
+          "alt": "Python logo",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        }
+      ],
+      "iframes": [],
+      "media": [],
+      "form_controls": [
+        {
+          "type": "checkbox",
+          "id": "menuToggler",
+          "has_label": true,
+          "aria_label": "Menu"
+        },
+        {
+          "type": "search",
+          "id": null,
+          "has_label": false,
+          "aria_label": "Quick search"
+        },
+        {
+          "type": "search",
+          "id": "search-box",
+          "has_label": false,
+          "aria_label": "Quick search"
+        },
+        {
+          "type": "search",
+          "id": "search-box",
+          "has_label": false,
+          "aria_label": "Quick search"
+        },
+        {
+          "type": "select",
+          "id": null,
+          "has_label": true,
+          "aria_label": null
+        },
+        {
+          "type": "select",
+          "id": null,
+          "has_label": true,
+          "aria_label": null
+        },
+        {
+          "type": "select",
+          "id": null,
+          "has_label": true,
+          "aria_label": null
+        }
+      ],
+      "interactive_empty": {
+        "links_no_text": 2,
+        "buttons_no_text": 0
+      },
+      "noscript": {
+        "present": false,
+        "words": 0
+      },
+      "dates": {
+        "meta_published": null,
+        "meta_modified": null,
+        "visible_dates": [],
+        "header_last_modified": "Sat, 07 Mar 2026 19:22:02 GMT"
+      },
+      "contact_signals": {
+        "email": false,
+        "phone": null,
+        "postal_address": null,
+        "org_name_footer": null
+      },
+      "trigram_hash": "sha256:393bda5d4e5617d156fa7f01c608d22ece36ebf9854757cc40b768ab627e8bd1"
+    },
+    {
+      "url": "https://docs.python.org/3.12/",
+      "final_url": "https://docs.python.org/3.12/",
+      "status": "ok",
+      "reason": null,
+      "http_status": 200,
+      "page_type": "other",
+      "headers": {
+        "connection": "close",
+        "content-length": "3673",
+        "server": "nginx",
+        "content-type": "text/html",
+        "last-modified": "Sat, 07 Mar 2026 17:46:06 GMT",
+        "etag": "\"69ac645e-456d\"",
+        "x-clacks-overhead": "GNU Terry Pratchett",
+        "strict-transport-security": "max-age=315360000; includeSubDomains; preload",
+        "content-encoding": "gzip",
+        "via": "1.1 varnish, 1.1 varnish",
+        "accept-ranges": "bytes",
+        "date": "Thu, 03 Sep 2026 22:31:03 GMT",
+        "age": "82",
+        "x-served-by": "cache-lga21926-LGA, cache-qag-vidp4510025-QAG",
+        "x-cache": "HIT, HIT",
+        "x-cache-hits": "1437, 3",
+        "x-timer": "S1788474663.043394,VS0,VE0",
+        "vary": "Accept-Encoding"
+      },
+      "raw_html_bytes": 17773,
+      "main_text": "Navigation index modules | Python » 3.12.13 Documentation » | Theme Auto Light Dark | Python 3.12.13 documentation Welcome! This is the official documentation for Python 3.12.13. Documentation sections: What's new in Python 3.12? Or all \"What's new\" documents since Python 2.0 Tutorial Start here: a tour of Python's syntax and features Library reference Standard library and builtins Language reference Syntax and language elements Python setup and usage How to install, configure, and use Python Python HOWTOs In-depth topic manuals Installing Python modules Third-party modules and PyPI.org Distributing Python modules Publishing modules for use by other people Extending and embedding For C/C++ programmers Python's C API C API reference FAQs Frequently asked questions (with answers!) Deprecations Deprecated functionality Indices, glossary, and search: Global module index All modules and libraries General index All functions, classes, and terms Glossary Terms explained Search page Search this documentation Complete table of contents Lists all sections and subsections Project information: Reporting issues Contributing to Docs Download the documentation History and license of Python Copyright About the documentation Download Download these documents Docs by version Python 3.15 (in development) Python 3.14 (stable) Python 3.13 (stable) Python 3.12 (security-fixes) Python 3.11 (security-fixes) Python 3.10 (security-fixes) Python 3.9 (EOL) Python 3.8 (EOL) Python 3.7 (EOL) Python 3.6 (EOL) Python 3.5 (EOL) Python 3.4 (EOL) Python 3.3 (EOL) Python 3.2 (EOL) Python 3.1 (EOL) Python 3.0 (EOL) Python 2.7 (EOL) Python 2.6 (EOL) All versions Other resources PEP Index Beginner's Guide Book List Audio/Visual Talks Python Developer’s Guide « Navigation index modules | Python » 3.12.13 Documentation » | Theme Auto Light Dark | © Copyright 2001-2026, Python Software Foundation. This page is licensed under the Python Software Foundation License Version 2. Examples, recipes, and other code in the documentation are additionally licensed under the Zero Clause BSD License. See History and License for more information. The Python Software Foundation is a non-profit corporation. Please donate. Last updated on Mar 07, 2026 (17:44 UTC). Found a bug ? Created using Sphinx 8.2.3.",
+      "main_text_words": 362,
+      "extraction_ok": true,
+      "title": "3.12.13 Documentation",
+      "meta": {
+        "viewport": "width=device-width, initial-scale=1.0",
+        "description": "The official Python documentation.",
+        "robots": null
+      },
+      "lang": "en",
+      "canonical": {
+        "href": "https://docs.python.org/3/index.html",
+        "self_referential": false,
+        "cross_domain": false
+      },
+      "headings": [
+        {
+          "level": 3,
+          "text": "Download",
+          "order": 0
+        },
+        {
+          "level": 3,
+          "text": "Docs by version",
+          "order": 1
+        },
+        {
+          "level": 3,
+          "text": "Other resources",
+          "order": 2
+        },
+        {
+          "level": 3,
+          "text": "Navigation",
+          "order": 3
+        },
+        {
+          "level": 1,
+          "text": "Python 3.12.13 documentation",
+          "order": 4
+        },
+        {
+          "level": 3,
+          "text": "Download",
+          "order": 5
+        },
+        {
+          "level": 3,
+          "text": "Docs by version",
+          "order": 6
+        },
+        {
+          "level": 3,
+          "text": "Other resources",
+          "order": 7
+        },
+        {
+          "level": 3,
+          "text": "Navigation",
+          "order": 8
+        }
+      ],
+      "landmarks": {
+        "main": 1,
+        "nav": 5,
+        "header": 0,
+        "footer": 0
+      },
+      "structured_data": {
+        "json_ld": [],
+        "microdata_types": [],
+        "rdfa_types": []
+      },
+      "links": [
+        {
+          "href": "https://www.python.org/",
+          "text": "",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.12/download.html",
+          "text": "Download these documents",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.15/",
+          "text": "Python 3.15 (in development)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.14/",
+          "text": "Python 3.14 (stable)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.13/",
+          "text": "Python 3.13 (stable)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.12/",
+          "text": "Python 3.12 (security-fixes)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.11/",
+          "text": "Python 3.11 (security-fixes)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.10/",
+          "text": "Python 3.10 (security-fixes)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.9/",
+          "text": "Python 3.9 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.8/",
+          "text": "Python 3.8 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.7/",
+          "text": "Python 3.7 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.6/",
+          "text": "Python 3.6 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.5/",
+          "text": "Python 3.5 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.4/",
+          "text": "Python 3.4 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.3/",
+          "text": "Python 3.3 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.2/",
+          "text": "Python 3.2 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.1/",
+          "text": "Python 3.1 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.0/",
+          "text": "Python 3.0 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/2.7/",
+          "text": "Python 2.7 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/2.6/",
+          "text": "Python 2.6 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.python.org/doc/versions/",
+          "text": "All versions",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://peps.python.org/",
+          "text": "PEP Index",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://wiki.python.org/moin/BeginnersGuide",
+          "text": "Beginner's Guide",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://wiki.python.org/moin/PythonBooks",
+          "text": "Book List",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.python.org/doc/av/",
+          "text": "Audio/Visual Talks",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://devguide.python.org/",
+          "text": "Python Developer’s Guide",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.12/genindex.html",
+          "text": "index",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.12/py-modindex.html",
+          "text": "modules",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.python.org/",
+          "text": "Python",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.12/",
+          "text": "3.12.13 Documentation",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.12/whatsnew/3.12.html",
+          "text": "What's new in Python 3.12?",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.12/whatsnew/index.html",
+          "text": "all \"What's new\" documents since Python 2.0",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.12/tutorial/index.html",
+          "text": "Tutorial",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.12/library/index.html",
+          "text": "Library reference",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.12/reference/index.html",
+          "text": "Language reference",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.12/using/index.html",
+          "text": "Python setup and usage",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.12/howto/index.html",
+          "text": "Python HOWTOs",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.12/installing/index.html",
+          "text": "Installing Python modules",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.12/distributing/index.html",
+          "text": "Distributing Python modules",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.12/extending/index.html",
+          "text": "Extending and embedding",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.12/c-api/index.html",
+          "text": "Python's C API",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.12/faq/index.html",
+          "text": "FAQs",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.12/deprecations/index.html",
+          "text": "Deprecations",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.12/py-modindex.html",
+          "text": "Global module index",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.12/genindex.html",
+          "text": "General index",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.12/glossary.html",
+          "text": "Glossary",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.12/search.html",
+          "text": "Search page",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.12/contents.html",
+          "text": "Complete table of contents",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.12/bugs.html",
+          "text": "Reporting issues",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://devguide.python.org/documentation/help-documenting/",
+          "text": "Contributing to Docs",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.12/download.html",
+          "text": "Download the documentation",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.12/license.html",
+          "text": "History and license of Python",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.12/copyright.html",
+          "text": "Copyright",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.12/about.html",
+          "text": "About the documentation",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.12/download.html",
+          "text": "Download these documents",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.15/",
+          "text": "Python 3.15 (in development)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.14/",
+          "text": "Python 3.14 (stable)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.13/",
+          "text": "Python 3.13 (stable)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.12/",
+          "text": "Python 3.12 (security-fixes)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.11/",
+          "text": "Python 3.11 (security-fixes)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.10/",
+          "text": "Python 3.10 (security-fixes)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.9/",
+          "text": "Python 3.9 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.8/",
+          "text": "Python 3.8 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.7/",
+          "text": "Python 3.7 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.6/",
+          "text": "Python 3.6 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.5/",
+          "text": "Python 3.5 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.4/",
+          "text": "Python 3.4 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.3/",
+          "text": "Python 3.3 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.2/",
+          "text": "Python 3.2 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.1/",
+          "text": "Python 3.1 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.0/",
+          "text": "Python 3.0 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/2.7/",
+          "text": "Python 2.7 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/2.6/",
+          "text": "Python 2.6 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.python.org/doc/versions/",
+          "text": "All versions",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://peps.python.org/",
+          "text": "PEP Index",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://wiki.python.org/moin/BeginnersGuide",
+          "text": "Beginner's Guide",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://wiki.python.org/moin/PythonBooks",
+          "text": "Book List",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.python.org/doc/av/",
+          "text": "Audio/Visual Talks",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://devguide.python.org/",
+          "text": "Python Developer’s Guide",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.12/genindex.html",
+          "text": "index",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.12/py-modindex.html",
+          "text": "modules",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.python.org/",
+          "text": "Python",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.12/",
+          "text": "3.12.13 Documentation",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.12/copyright.html",
+          "text": "Copyright",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/license.html",
+          "text": "History and License",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.python.org/psf/donations/",
+          "text": "Please donate.",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/bugs.html",
+          "text": "Found a bug",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.sphinx-doc.org/",
+          "text": "Sphinx",
+          "rel": null,
+          "internal": false,
+          "aria_label": null
+        }
+      ],
+      "outbound_profile_links": [],
+      "images": [
+        {
+          "src": "_static/py.svg",
+          "alt": "Python logo",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "_static/py.svg",
+          "alt": "Python logo",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "_static/py.svg",
+          "alt": "Python logo",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        }
+      ],
+      "iframes": [],
+      "media": [],
+      "form_controls": [
+        {
+          "type": "checkbox",
+          "id": "menuToggler",
+          "has_label": true,
+          "aria_label": "Menu"
+        },
+        {
+          "type": "search",
+          "id": null,
+          "has_label": false,
+          "aria_label": "Quick search"
+        },
+        {
+          "type": "search",
+          "id": "search-box",
+          "has_label": false,
+          "aria_label": "Quick search"
+        },
+        {
+          "type": "search",
+          "id": "search-box",
+          "has_label": false,
+          "aria_label": "Quick search"
+        },
+        {
+          "type": "select",
+          "id": null,
+          "has_label": true,
+          "aria_label": null
+        },
+        {
+          "type": "select",
+          "id": null,
+          "has_label": true,
+          "aria_label": null
+        },
+        {
+          "type": "select",
+          "id": null,
+          "has_label": true,
+          "aria_label": null
+        }
+      ],
+      "interactive_empty": {
+        "links_no_text": 2,
+        "buttons_no_text": 0
+      },
+      "noscript": {
+        "present": false,
+        "words": 0
+      },
+      "dates": {
+        "meta_published": null,
+        "meta_modified": null,
+        "visible_dates": [],
+        "header_last_modified": "Sat, 07 Mar 2026 17:46:06 GMT"
+      },
+      "contact_signals": {
+        "email": false,
+        "phone": null,
+        "postal_address": null,
+        "org_name_footer": null
+      },
+      "trigram_hash": "sha256:002c1befb5f64ab217a169527325c4f03c7dc01c96afec868f1c2a91d34b64a6"
+    },
+    {
+      "url": "https://docs.python.org/3.13/",
+      "final_url": "https://docs.python.org/3.13/",
+      "status": "ok",
+      "reason": null,
+      "http_status": 200,
+      "page_type": "other",
+      "headers": {
+        "connection": "close",
+        "content-length": "4017",
+        "server": "nginx",
+        "content-type": "text/html",
+        "last-modified": "Thu, 03 Sep 2026 16:08:16 GMT",
+        "etag": "\"6a999b70-4bf6\"",
+        "x-clacks-overhead": "GNU Terry Pratchett",
+        "strict-transport-security": "max-age=315360000; includeSubDomains; preload",
+        "content-encoding": "gzip",
+        "via": "1.1 varnish, 1.1 varnish",
+        "accept-ranges": "bytes",
+        "date": "Thu, 03 Sep 2026 22:31:03 GMT",
+        "age": "4338",
+        "x-served-by": "cache-lga21933-LGA, cache-ccu830027-CCU",
+        "x-cache": "HIT, HIT",
+        "x-cache-hits": "24, 1",
+        "x-timer": "S1788474664.994829,VS0,VE1",
+        "vary": "Accept-Encoding"
+      },
+      "raw_html_bytes": 19446,
+      "main_text": "Navigation index modules | Python » 3.13.15 Documentation » | Theme Auto Light Dark | Python 3.13.15 documentation Welcome! This is the official documentation for Python 3.13.15. Documentation sections: What's new in Python 3.13? Or all \"What's new\" documents since Python 2.0 Tutorial Start here: a tour of Python's syntax and features Library reference Standard library and builtins Language reference Syntax and language elements Python setup and usage How to install, configure, and use Python Python HOWTOs In-depth topic manuals Installing Python modules Third-party modules and PyPI.org Extending and embedding For C/C++ programmers Python's C API C API reference FAQs Frequently asked questions (with answers!) Deprecations Deprecated functionality Other resources: Python developer's guide Information on contributing to Python Python Packaging User Guide Resources relating to Python packaging Audio/visual talks Podcasts, talks, and video presentations from the community Python Enhancement Proposals Index of proposed improvements to Python Static Typing with Python Information and guides about Python type safety Indices, glossary, and search: Global module index All modules and libraries General index All functions, classes, and terms Glossary Terms explained Search page Search this documentation Complete table of contents All sections and subsections Project information: Reporting issues Contributing to docs Download the documentation History and license of Python Copyright About the documentation Download Download these documents Docs by version Python 3.16 (in development) Python 3.15 (pre-release) Python 3.14 (stable) Python 3.13 (stable) Python 3.12 (security-fixes) Python 3.11 (security-fixes) Python 3.10 (security-fixes) Python 3.9 (EOL) Python 3.8 (EOL) Python 3.7 (EOL) Python 3.6 (EOL) Python 3.5 (EOL) Python 3.4 (EOL) Python 3.3 (EOL) Python 3.2 (EOL) Python 3.1 (EOL) Python 3.0 (EOL) Python 2.7 (EOL) Python 2.6 (EOL) All versions Other resources PEP Index Beginner's Guide Book List Audio/Visual Talks Python Developer’s Guide « Navigation index modules | Python » 3.13.15 Documentation » | Theme Auto Light Dark | © Copyright 2001-2026, Python Software Foundation. This page is licensed under the Python Software Foundation License Version 2. Examples, recipes, and other code in the documentation are additionally licensed under the Zero Clause BSD License. See History and License for more information. The Python Software Foundation is a non-profit corporation. Please donate. Last updated on Sep 03, 2026 (16:06 UTC). Found a bug ? Created using Sphinx 8.2.3.",
+      "main_text_words": 406,
+      "extraction_ok": true,
+      "title": "3.13.15 Documentation",
+      "meta": {
+        "viewport": "width=device-width, initial-scale=1.0",
+        "description": "The official Python documentation.",
+        "robots": null
+      },
+      "lang": "en",
+      "canonical": {
+        "href": "https://docs.python.org/3/index.html",
+        "self_referential": false,
+        "cross_domain": false
+      },
+      "headings": [
+        {
+          "level": 3,
+          "text": "Download",
+          "order": 0
+        },
+        {
+          "level": 3,
+          "text": "Docs by version",
+          "order": 1
+        },
+        {
+          "level": 3,
+          "text": "Other resources",
+          "order": 2
+        },
+        {
+          "level": 3,
+          "text": "Navigation",
+          "order": 3
+        },
+        {
+          "level": 1,
+          "text": "Python 3.13.15 documentation",
+          "order": 4
+        },
+        {
+          "level": 3,
+          "text": "Download",
+          "order": 5
+        },
+        {
+          "level": 3,
+          "text": "Docs by version",
+          "order": 6
+        },
+        {
+          "level": 3,
+          "text": "Other resources",
+          "order": 7
+        },
+        {
+          "level": 3,
+          "text": "Navigation",
+          "order": 8
+        }
+      ],
+      "landmarks": {
+        "main": 1,
+        "nav": 5,
+        "header": 0,
+        "footer": 0
+      },
+      "structured_data": {
+        "json_ld": [],
+        "microdata_types": [],
+        "rdfa_types": []
+      },
+      "links": [
+        {
+          "href": "https://www.python.org/",
+          "text": "",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.13/download.html",
+          "text": "Download these documents",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.16/",
+          "text": "Python 3.16 (in development)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.15/",
+          "text": "Python 3.15 (pre-release)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.14/",
+          "text": "Python 3.14 (stable)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.13/",
+          "text": "Python 3.13 (stable)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.12/",
+          "text": "Python 3.12 (security-fixes)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.11/",
+          "text": "Python 3.11 (security-fixes)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.10/",
+          "text": "Python 3.10 (security-fixes)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.9/",
+          "text": "Python 3.9 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.8/",
+          "text": "Python 3.8 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.7/",
+          "text": "Python 3.7 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.6/",
+          "text": "Python 3.6 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.5/",
+          "text": "Python 3.5 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.4/",
+          "text": "Python 3.4 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.3/",
+          "text": "Python 3.3 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.2/",
+          "text": "Python 3.2 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.1/",
+          "text": "Python 3.1 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.0/",
+          "text": "Python 3.0 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/2.7/",
+          "text": "Python 2.7 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/2.6/",
+          "text": "Python 2.6 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.python.org/doc/versions/",
+          "text": "All versions",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://peps.python.org/",
+          "text": "PEP Index",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://wiki.python.org/moin/BeginnersGuide",
+          "text": "Beginner's Guide",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://wiki.python.org/moin/PythonBooks",
+          "text": "Book List",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.python.org/doc/av/",
+          "text": "Audio/Visual Talks",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://devguide.python.org/",
+          "text": "Python Developer’s Guide",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.13/genindex.html",
+          "text": "index",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.13/py-modindex.html",
+          "text": "modules",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.python.org/",
+          "text": "Python",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.13/",
+          "text": "3.13.15 Documentation",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.13/whatsnew/3.13.html",
+          "text": "What's new in Python 3.13?",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.13/whatsnew/index.html",
+          "text": "all \"What's new\" documents since Python 2.0",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.13/tutorial/index.html",
+          "text": "Tutorial",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.13/library/index.html",
+          "text": "Library reference",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.13/reference/index.html",
+          "text": "Language reference",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.13/using/index.html",
+          "text": "Python setup and usage",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.13/howto/index.html",
+          "text": "Python HOWTOs",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.13/installing/index.html",
+          "text": "Installing Python modules",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.13/extending/index.html",
+          "text": "Extending and embedding",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.13/c-api/index.html",
+          "text": "Python's C API",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.13/faq/index.html",
+          "text": "FAQs",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.13/deprecations/index.html",
+          "text": "Deprecations",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://devguide.python.org",
+          "text": "Python developer's guide",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://packaging.python.org",
+          "text": "Python Packaging User Guide",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.python.org/doc/av/",
+          "text": "Audio/visual talks",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://peps.python.org/",
+          "text": "Python Enhancement Proposals",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://typing.python.org",
+          "text": "Static Typing with Python",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.13/py-modindex.html",
+          "text": "Global module index",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.13/genindex.html",
+          "text": "General index",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.13/glossary.html",
+          "text": "Glossary",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.13/search.html",
+          "text": "Search page",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.13/contents.html",
+          "text": "Complete table of contents",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.13/bugs.html",
+          "text": "Reporting issues",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://devguide.python.org/documentation/help-documenting/",
+          "text": "Contributing to docs",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.13/download.html",
+          "text": "Download the documentation",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.13/license.html",
+          "text": "History and license of Python",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.13/copyright.html",
+          "text": "Copyright",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.13/about.html",
+          "text": "About the documentation",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.13/download.html",
+          "text": "Download these documents",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.16/",
+          "text": "Python 3.16 (in development)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.15/",
+          "text": "Python 3.15 (pre-release)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.14/",
+          "text": "Python 3.14 (stable)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.13/",
+          "text": "Python 3.13 (stable)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.12/",
+          "text": "Python 3.12 (security-fixes)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.11/",
+          "text": "Python 3.11 (security-fixes)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.10/",
+          "text": "Python 3.10 (security-fixes)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.9/",
+          "text": "Python 3.9 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.8/",
+          "text": "Python 3.8 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.7/",
+          "text": "Python 3.7 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.6/",
+          "text": "Python 3.6 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.5/",
+          "text": "Python 3.5 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.4/",
+          "text": "Python 3.4 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.3/",
+          "text": "Python 3.3 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.2/",
+          "text": "Python 3.2 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.1/",
+          "text": "Python 3.1 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.0/",
+          "text": "Python 3.0 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/2.7/",
+          "text": "Python 2.7 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/2.6/",
+          "text": "Python 2.6 (EOL)",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.python.org/doc/versions/",
+          "text": "All versions",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://peps.python.org/",
+          "text": "PEP Index",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://wiki.python.org/moin/BeginnersGuide",
+          "text": "Beginner's Guide",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://wiki.python.org/moin/PythonBooks",
+          "text": "Book List",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.python.org/doc/av/",
+          "text": "Audio/Visual Talks",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://devguide.python.org/",
+          "text": "Python Developer’s Guide",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.13/genindex.html",
+          "text": "index",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.13/py-modindex.html",
+          "text": "modules",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.python.org/",
+          "text": "Python",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.13/",
+          "text": "3.13.15 Documentation",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/3.13/copyright.html",
+          "text": "Copyright",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/license.html",
+          "text": "History and License",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.python.org/psf/donations/",
+          "text": "Please donate.",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://docs.python.org/bugs.html",
+          "text": "Found a bug",
+          "rel": null,
+          "internal": true,
+          "aria_label": null
+        },
+        {
+          "href": "https://www.sphinx-doc.org/",
+          "text": "Sphinx",
+          "rel": null,
+          "internal": false,
+          "aria_label": null
+        }
+      ],
+      "outbound_profile_links": [],
+      "images": [
+        {
+          "src": "_static/py.svg",
+          "alt": "Python logo",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "_static/py.svg",
+          "alt": "Python logo",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        },
+        {
+          "src": "_static/py.svg",
+          "alt": "Python logo",
+          "decorative_hint": false,
+          "width_attr": null,
+          "height_attr": null,
+          "css_aspect_ratio": null,
+          "in_picture": false
+        }
+      ],
+      "iframes": [],
+      "media": [],
+      "form_controls": [
+        {
+          "type": "checkbox",
+          "id": "menuToggler",
+          "has_label": true,
+          "aria_label": "Menu"
+        },
+        {
+          "type": "search",
+          "id": null,
+          "has_label": false,
+          "aria_label": "Quick search"
+        },
+        {
+          "type": "search",
+          "id": "search-box",
+          "has_label": false,
+          "aria_label": "Quick search"
+        },
+        {
+          "type": "search",
+          "id": "search-box",
+          "has_label": false,
+          "aria_label": "Quick search"
+        },
+        {
+          "type": "select",
+          "id": null,
+          "has_label": true,
+          "aria_label": null
+        },
+        {
+          "type": "select",
+          "id": null,
+          "has_label": true,
+          "aria_label": null
+        },
+        {
+          "type": "select",
+          "id": null,
+          "has_label": true,
+          "aria_label": null
+        }
+      ],
+      "interactive_empty": {
+        "links_no_text": 2,
+        "buttons_no_text": 0
+      },
+      "noscript": {
+        "present": false,
+        "words": 0
+      },
+      "dates": {
+        "meta_published": null,
+        "meta_modified": null,
+        "visible_dates": [],
+        "header_last_modified": "Thu, 03 Sep 2026 16:08:16 GMT"
+      },
+      "contact_signals": {
+        "email": false,
+        "phone": null,
+        "postal_address": null,
+        "org_name_footer": null
+      },
+      "trigram_hash": "sha256:453db50c76c6718d479e53a317f88c76f130802d77b6e46234508d9192665b00"
+    }
+  ],
+  "rendered": [],
+  "links": {
+    "status": "ok",
+    "reason": null,
+    "checked_count": 20,
+    "results": [
+      {
+        "url": "https://docs.python.org/download.html",
+        "http_status": 200,
+        "from_page": "https://docs.python.org/",
+        "anchor_text": "Download these documents"
+      },
+      {
+        "url": "https://docs.python.org/3.16/",
+        "http_status": 200,
+        "from_page": "https://docs.python.org/",
+        "anchor_text": "Python 3.16 (in development)"
+      },
+      {
+        "url": "https://docs.python.org/3.15/",
+        "http_status": 200,
+        "from_page": "https://docs.python.org/",
+        "anchor_text": "Python 3.15 (pre-release)"
+      },
+      {
+        "url": "https://docs.python.org/3.14/",
+        "http_status": 200,
+        "from_page": "https://docs.python.org/",
+        "anchor_text": "Python 3.14 (stable)"
+      },
+      {
+        "url": "https://docs.python.org/3.13/",
+        "http_status": 200,
+        "from_page": "https://docs.python.org/",
+        "anchor_text": "Python 3.13 (stable)"
+      },
+      {
+        "url": "https://docs.python.org/3.12/",
+        "http_status": 200,
+        "from_page": "https://docs.python.org/",
+        "anchor_text": "Python 3.12 (security-fixes)"
+      },
+      {
+        "url": "https://docs.python.org/3.11/",
+        "http_status": 200,
+        "from_page": "https://docs.python.org/",
+        "anchor_text": "Python 3.11 (security-fixes)"
+      },
+      {
+        "url": "https://docs.python.org/3.10/",
+        "http_status": 200,
+        "from_page": "https://docs.python.org/",
+        "anchor_text": "Python 3.10 (security-fixes)"
+      },
+      {
+        "url": "https://docs.python.org/genindex.html",
+        "http_status": 200,
+        "from_page": "https://docs.python.org/",
+        "anchor_text": "index"
+      },
+      {
+        "url": "https://docs.python.org/py-modindex.html",
+        "http_status": 200,
+        "from_page": "https://docs.python.org/",
+        "anchor_text": "modules"
+      },
+      {
+        "url": "https://docs.python.org/",
+        "http_status": 200,
+        "from_page": "https://docs.python.org/",
+        "anchor_text": "3.14.7 Documentation"
+      },
+      {
+        "url": "https://docs.python.org/whatsnew/3.14.html",
+        "http_status": 200,
+        "from_page": "https://docs.python.org/",
+        "anchor_text": "What's new in Python 3.14?"
+      },
+      {
+        "url": "https://docs.python.org/whatsnew/index.html",
+        "http_status": 200,
+        "from_page": "https://docs.python.org/",
+        "anchor_text": "all \"What's new\" documents since Python 2.0"
+      },
+      {
+        "url": "https://docs.python.org/tutorial/index.html",
+        "http_status": 200,
+        "from_page": "https://docs.python.org/",
+        "anchor_text": "Tutorial"
+      },
+      {
+        "url": "https://docs.python.org/library/index.html",
+        "http_status": 200,
+        "from_page": "https://docs.python.org/",
+        "anchor_text": "Library reference"
+      },
+      {
+        "url": "https://docs.python.org/reference/index.html",
+        "http_status": 200,
+        "from_page": "https://docs.python.org/",
+        "anchor_text": "Language reference"
+      },
+      {
+        "url": "https://docs.python.org/using/index.html",
+        "http_status": 200,
+        "from_page": "https://docs.python.org/",
+        "anchor_text": "Python setup and usage"
+      },
+      {
+        "url": "https://docs.python.org/howto/index.html",
+        "http_status": 200,
+        "from_page": "https://docs.python.org/",
+        "anchor_text": "Python HOWTOs"
+      },
+      {
+        "url": "https://docs.python.org/installing/index.html",
+        "http_status": 404,
+        "from_page": "https://docs.python.org/",
+        "anchor_text": "Installing Python modules"
+      },
+      {
+        "url": "https://docs.python.org/extending/index.html",
+        "http_status": 200,
+        "from_page": "https://docs.python.org/",
+        "anchor_text": "Extending and embedding"
+      }
+    ],
+    "skipped": [
+      {
+        "url": "https://docs.python.org/3.9/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/3.8/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/3.7/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/3.6/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/3.5/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/3.4/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/3.3/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/3.2/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/3.1/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/3.0/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/2.7/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/2.6/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/3.9/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/3.8/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/3.7/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/3.6/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/3.5/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/3.4/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/3.3/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/3.2/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/3.1/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/3.0/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/2.7/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/2.6/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/3.9/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/3.8/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/3.7/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/3.6/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/3.5/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/3.4/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/3.3/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/3.2/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/3.1/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/3.0/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/2.7/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/2.6/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/3.9/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/3.8/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/3.7/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/3.6/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/3.5/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/3.4/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/3.3/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/3.2/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/3.1/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/3.0/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/2.7/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/2.6/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/3.9/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/3.8/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/3.7/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/3.6/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/3.5/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/3.4/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/3.3/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/3.2/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/3.1/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/3.0/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/2.7/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/2.6/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/3.9/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/3.8/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/3.7/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/3.6/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/3.5/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/3.4/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/3.3/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/3.2/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/3.1/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/3.0/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/2.7/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/2.6/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/3.9/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/3.8/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/3.7/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/3.6/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/3.5/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/3.4/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/3.3/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/3.2/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/3.1/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/3.0/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/2.7/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/2.6/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/3.9/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/3.8/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/3.7/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/3.6/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/3.5/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/3.4/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/3.3/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/3.2/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/3.1/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/3.0/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/2.7/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/2.6/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/3.9/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/3.8/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/3.7/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/3.6/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/3.5/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/3.4/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/3.3/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/3.2/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/3.1/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/3.0/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/2.7/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/2.6/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/3.9/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/3.8/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/3.7/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/3.6/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/3.5/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/3.4/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/3.3/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/3.2/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/3.1/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/3.0/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/2.7/",
+        "reason": "robots_disallowed"
+      },
+      {
+        "url": "https://docs.python.org/2.6/",
+        "reason": "robots_disallowed"
+      }
+    ]
+  },
+  "anchors": {
+    "status": "ok",
+    "reason": null,
+    "declared": [],
+    "checked_count": 0,
+    "results": []
+  },
+  "budget": {
+    "status": "ok",
+    "reason": null,
+    "stages": [
+      {
+        "name": "resolve",
+        "budget_s": 10,
+        "actual_s": 0.0,
+        "abandoned": false,
+        "planned_items": null,
+        "completed_items": null
+      },
+      {
+        "name": "robots_discovery",
+        "budget_s": 15,
+        "actual_s": 0.0,
+        "abandoned": false,
+        "planned_items": 9,
+        "completed_items": 9
+      },
+      {
+        "name": "static_fetch",
+        "budget_s": 45,
+        "actual_s": 0.1,
+        "abandoned": false,
+        "planned_items": 5,
+        "completed_items": 5
+      },
+      {
+        "name": "render_pass",
+        "budget_s": 75,
+        "actual_s": 0.0,
+        "abandoned": true,
+        "planned_items": 0,
+        "completed_items": 0,
+        "reason": "no_headless_browser_tool"
+      },
+      {
+        "name": "internal_links",
+        "budget_s": 25,
+        "actual_s": 0.0,
+        "abandoned": false,
+        "planned_items": 140,
+        "completed_items": 20
+      },
+      {
+        "name": "offsite_anchors",
+        "budget_s": 20,
+        "actual_s": 0.0,
+        "abandoned": false,
+        "planned_items": 0,
+        "completed_items": 0
+      }
+    ],
+    "total_s": 0.1,
+    "cap_s": 300
+  }
+}

@@ -1,0 +1,448 @@
+{
+  "schema_version": "1.0.0",
+  "site": {
+    "status": "ok",
+    "reason": null,
+    "input": "https://quora.com",
+    "canonical_host": "www.quora.com",
+    "origin": "https://www.quora.com",
+    "scheme": "https",
+    "redirect_chain": [
+      "https://quora.com"
+    ],
+    "tls_valid": true,
+    "archetype": "brochure",
+    "archetype_confidence": 0.7
+  },
+  "robots": {
+    "status": "ok",
+    "reason": null,
+    "fetch_status": 200,
+    "body": "# NOTICE: All crawlers and bots, regardless of whether or not they are\n# specified below, are strictly prohibited from using Quora platform content \n# for the purposes of training AI models or similar machine learning systems, \n# except where explicit prior permission has been granted by Quora through a\n# contractual licensing agreement. Any use of Quora platform content for such \n# purposes without our explicit contractual permission is a violation of our \n# terms of service and intellectual property rights.\n\n# If you operate a search engine and would like to crawl Quora,\n# you can email robotstxt@quora.com. Thanks.\n\nUser-agent: AASA-Bot\nDisallow: /ajax/\nDisallow: /@async\nDisallow: /*/@async\nDisallow: /log/\nDisallow: /*/log\nDisallow: /*/about\nDisallow: /*/action\nDisallow: /*/activity\nDisallow: /*/all_questions\nDisallow: /*/all_posts$\nDisallow: /*/all_posts/\nDisallow: /*/blogs$\nDisallow: /*/blogs/\nDisallow: /*/followers\nDisallow: /*/following\nDisallow: /*/link/\nDisallow: /*/manage\nDisallow: /*/mentions\nDisallow: /*/merged\nDisallow: /*/open_questions\nDisallow: /*/posts$\nDisallow: /*/posts/\nDisallow: /*/questions\nDisallow: /*/related\nDisallow: /*/reviews$\nDisallow: /*/reviews/\nDisallow: /*/share\nDisallow: /*/top_questions\nDisallow: /*/topic-bio\nDisallow: /*/topic_bio\nDisallow: /*/topics\nDisallow: /*/comment\nDisallow: /comment/\nDisallow: /*/comments\nDisallow: /*/all_comments\nDisallow: /*/answer_comments\nDisallow: /*/mobile_collapsed\nDisallow: /*/mobile_expanded_voter_list\nDisallow: /home/global_feed\nDisallow: /search?q=\nDisallow: /search/?q=\nDisallow: /digest/\nDisallow: /email_optout/\nDisallow: /qemail/\nDisallow: /invite/\nDisallow: /widgets/content_iframe/\nDisallow: /widgets/content_js/\nDisallow: /_/\nDisallow: /*_POST$\nDisallow: /*_POST/\nDisallow: /webnode2/\nDisallow: /anonymous/\nDisallow: /q/*/admin_log\nDisallow: /q/*/stats\nDisallow: /q/*/settings\nDisallow: /q/*/queue\nDisallow: /q/*/suggestions\nDisallow: /q/*/submissions\nDisallow: /q/*/quality\nDisallow: /q/*/earnings\nDisallow: /profile/*/Rss\nDisallow: /topic/*/Rss\n\nUser-agent: Amazonbot\nDisallow: /ajax/\nDisallow: /@async\nDisallow: /*/@async\nDisallow: /log/\nDisallow: /*/log\nDisallow: /*/about\nDisallow: /*/action\nDisallow: /*/activity\nDisallow: /*/all_questions\nDisallow: /*/all_posts$\nDisallow: /*/all_posts/\nDisallow: /*/blogs$\nDisallow: /*/blogs/\nDisallow: /*/followers\nDisallow: /*/following\nDisallow: /*/link/\nDisallow: /*/manage\nDisallow: /*/mentions\nDisallow: /*/merged\nDisallow: /*/open_questions\nDisallow: /*/posts$\nDisallow: /*/posts/\nDisallow: /*/questions\nDisallow: /*/related\nDisallow: /*/reviews$\nDisallow: /*/reviews/\nDisallow: /*/share\nDisallow: /*/top_questions\nDisallow: /*/topic-bio\nDisallow: /*/topic_bio\nDisallow: /*/topics\nDisallow: /*/comment\nDisallow: /comment/\nDisallow: /*/comments\nDisallow: /*/all_comments\nDisallow: /*/answer_comments\nDisallow: /*/mobile_collapsed\nDisallow: /*/mobile_expanded_voter_list\nDisallow: /home/global_feed\nDisallow: /search?q=\nDisallow: /search/?q=\nDisallow: /digest/\nDisallow: /email_optout/\nDisallow: /qemail/\nDisallow: /invite/\nDisallow: /widgets/content_iframe/\nDisallow: /widgets/content_js/\nDisallow: /_/\nDisallow: /*_POST$\nDisallow: /*_POST/\nDisallow: /webnode2/\nDisallow: /anonymous/\nDisallow: /q/*/admin_log\nDisallow: /q/*/stats\nDisallow: /q/*/settings\nDisallow: /q/*/queue\nDisallow: /q/*/suggestions\nDisallow: /q/*/submissions\nDisallow: /q/*/quality\nDisallow: /q/*/earnings\nDisallow: /profile/*/Rss\nDisallow: /topic/*/Rss\n\nUser-agent: Googlebot\nDisallow: /ajax/\nDisallow: /@async\nDisallow: /*/@async\nDisallow: /log/\nDisallow: /*/log\nDisallow: /*/about\nDisallow: /*/action\nDisallow: /*/activity\nDisallow: /*/all_questions\nDisallow: /*/all_posts$\nDisallow: /*/all_posts/\nDisallow: /*/blogs$\nDisallow: /*/blogs/\nDisallow: /*/followers\nDisallow: /*/following\nDisallow: /*/link/\nDisallow: /*/manage\nDisallow: /*/mentions\nDisallow: /*/merged\nDisallow: /*/open_questions\nDisallow: /*/posts$\nDisallow: /*/posts/\nDisallow: /*/questions\nDisallow: /*/related\nDisallow: /*/reviews$\nDisallow: /*/reviews/\nDisallow: /*/share\nDisallow: /*/top_questions\nDisallow: /*/topic-bio\nDisallow: /*/topic_bio\nDisallow: /*/topics\nDisallow: /*/comment\nDisallow: /comment/\nDisallow: /*/comments\nDisallow: /*/all_comments\nDisallow: /*/answer_comments\nDisallow: /*/mobile_collapsed\nDisallow: /*/mobile_expanded_voter_list\nDisallow: /home/global_feed\nDisallow: /search?q=\nDisallow: /search/?q=\nDisallow: /digest/\nDisallow: /email_optout/\nDisallow: /qemail/\nDisallow: /invite/\nDisallow: /widgets/content_iframe/\nDisallow: /widgets/content_js/\nDisallow: /_/\nDisallow: /*_POST$\nDisallow: /*_POST/\nDisallow: /webnode2/\nDisallow: /anonymous/\nDisallow: /q/*/admin_log\nDisallow: /q/*/stats\nDisallow: /q/*/settings\nDisallow: /q/*/queue\nDisallow: /q/*/suggestions\nDisallow: /q/*/submissions\nDisallow: /q/*/quality\nDisallow: /q/*/earnings\nDisallow: /profile/*/Rss\nDisallow: /topic/*/Rss\nDisallow: */unanswered/*\nDisallow: */answer/\nDisallow: */answers/\n\nUser-agent: Google-Extended\nDisallow: /ajax/\nDisallow: /@async\nDisallow: /*/@async\nDisallow: /log/\nDisallow: /*/log\nDisallow: /*/about\nDisallow: /*/action\nDisallow: /*/activity\nDisallow: /*/all_questions\nDisallow: /*/all_posts$\nDisallow: /*/all_posts/\nDisallow: /*/blogs$\nDisallow: /*/blogs/\nDisallow: /*/followers\nDisallow: /*/following\nDisallow: /*/link/\nDisallow: /*/manage\nDisallow: /*/mentions\nDisallow: /*/merged\nDisallow: /*/open_questions\nDisallow: /*/posts$\nDisallow: /*/posts/\nDisallow: /*/questions\nDisallow: /*/related\nDisallow: /*/reviews$\nDisallow: /*/reviews/\nDisallow: /*/share\nDisallow: /*/top_questions\nDisallow: /*/topic-bio\nDisallow: /*/topic_bio\nDisallow: /*/topics\nDisallow: /*/comment\nDisallow: /comment/\nDisallow: /*/comments\nDisallow: /*/all_comments\nDisallow: /*/answer_comments\nDisallow: /*/mobile_collapsed\nDisallow: /*/mobile_expanded_voter_list\nDisallow: /home/global_feed\nDisallow: /search?q=\nDisallow: /search/?q=\nDisallow: /digest/\nDisallow: /email_optout/\nDisallow: /qemail/\nDisallow: /invite/\nDisallow: /widgets/content_iframe/\nDisallow: /widgets/content_js/\nDisallow: /_/\nDisallow: /*_POST$\nDisallow: /*_POST/\nDisallow: /webnode2/\nDisallow: /anonymous/\nDisallow: /q/*/admin_log\nDisallow: /q/*/stats\nDisallow: /q/*/settings\nDisallow: /q/*/queue\nDisallow: /q/*/suggestions\nDisallow: /q/*/submissions\nDisallow: /q/*/quality\nDisallow: /q/*/earnings\nDisallow: /profile/*/Rss\nDisallow: /topic/*/Rss\n\nUser-agent: Facebot\nDisallow: /ajax/\nDisallow: /@async\nDisallow: /*/@async\nDisallow: /log/\nDisallow: /*/log\nDisallow: /*/about\nDisallow: /*/action\nDisallow: /*/activity\nDisallow: /*/all_questions\nDisallow: /*/all_posts$\nDisallow: /*/all_posts/\nDisallow: /*/blogs$\nDisallow: /*/blogs/\nDisallow: /*/followers\nDisallow: /*/following\nDisallow: /*/link/\nDisallow: /*/manage\nDisallow: /*/mentions\nDisallow: /*/merged\nDisallow: /*/open_questions\nDisallow: /*/posts$\nDisallow: /*/posts/\nDisallow: /*/questions\nDisallow: /*/related\nDisallow: /*/reviews$\nDisallow: /*/reviews/\nDisallow: /*/share\nDisallow: /*/top_questions\nDisallow: /*/topic-bio\nDisallow: /*/topic_bio\nDisallow: /*/topics\nDisallow: /*/comment\nDisallow: /comment/\nDisallow: /*/comments\nDisallow: /*/all_comments\nDisallow: /*/answer_comments\nDisallow: /*/mobile_collapsed\nDisallow: /*/mobile_expanded_voter_list\nDisallow: /home/global_feed\nDisallow: /search?q=\nDisallow: /search/?q=\nDisallow: /digest/\nDisallow: /email_optout/\nDisallow: /qemail/\nDisallow: /invite/\nDisallow: /widgets/content_iframe/\nDisallow: /widgets/content_js/\nDisallow: /_/\nDisallow: /*_POST$\nDisallow: /*_POST/\nDisallow: /webnode2/\nDisallow: /anonymous/\nDisallow: /q/*/admin_log\nDisallow: /q/*/stats\nDisallow: /q/*/settings\nDisallow: /q/*/queue\nDisallow: /q/*/suggestions\nDisallow: /q/*/submissions\nDisallow: /q/*/quality\nDisallow: /q/*/earnings\nDisallow: /profile/*/Rss\nDisallow: /topic/*/Rss\n\nUser-agent: Applebot\nDisallow: /ajax/\nDisallow: /@async\nDisallow: /*/@async\nDisallow: /log/\nDisallow: /*/log\nDisallow: /*/about\nDisallow: /*/action\nDisallow: /*/activity\nDisallow: /*/all_questions\nDisallow: /*/all_posts$\nDisallow: /*/all_posts/\nDisallow: /*/blogs$\nDisallow: /*/blogs/\nDisallow: /*/followers\nDisallow: /*/following\nDisallow: /*/link/\nDisallow: /*/manage\nDisallow: /*/mentions\nDisallow: /*/merged\nDisallow: /*/open_questions\nDisallow: /*/posts$\nDisallow: /*/posts/\nDisallow: /*/questions\nDisallow: /*/related\nDisallow: /*/reviews$\nDisallow: /*/reviews/\nDisallow: /*/share\nDisallow: /*/top_questions\nDisallow: /*/topic-bio\nDisallow: /*/topic_bio\nDisallow: /*/topics\nDisallow: /*/comment\nDisallow: /comment/\nDisallow: /*/comments\nDisallow: /*/all_comments\nDisallow: /*/answer_comments\nDisallow: /*/mobile_collapsed\nDisallow: /*/mobile_expanded_voter_list\nDisallow: /home/global_feed\nDisallow: /search?q=\nDisallow: /search/?q=\nDisallow: /digest/\nDisallow: /email_optout/\nDisallow: /qemail/\nDisallow: /invite/\nDisallow: /widgets/content_iframe/\nDisallow: /widgets/content_js/\nDisallow: /_/\nDisallow: /*_POST$\nDisallow: /*_POST/\nDisallow: /webnode2/\nDisallow: /anonymous/\nDisallow: /q/*/admin_log\nDisallow: /q/*/stats\nDisallow: /q/*/settings\nDisallow: /q/*/queue\nDisallow: /q/*/suggestions\nDisallow: /q/*/submissions\nDisallow: /q/*/quality\nDisallow: /q/*/earnings\nDisallow: /profile/*/Rss\nDisallow: /topic/*/Rss\n\nUser-agent: Twitterbot\nDisallow: /ajax/\nDisallow: /@async\nDisallow: /*/@async\nDisallow: /log/\nDisallow: /*/log\nDisallow: /*/about\nDisallow: /*/action\nDisallow: /*/activity\nDisallow: /*/all_questions\nDisallow: /*/all_posts$\nDisallow: /*/all_posts/\nDisallow: /*/blogs$\nDisallow: /*/blogs/\nDisallow: /*/followers\nDisallow: /*/following\nDisallow: /*/link/\nDisallow: /*/manage\nDisallow: /*/mentions\nDisallow: /*/merged\nDisallow: /*/open_questions\nDisallow: /*/posts$\nDisallow: /*/posts/\nDisallow: /*/questions\nDisallow: /*/related\nDisallow: /*/reviews$\nDisallow: /*/reviews/\nDisallow: /*/share\nDisallow: /*/top_questions\nDisallow: /*/topic-bio\nDisallow: /*/topic_bio\nDisallow: /*/topics\nDisallow: /*/comment\nDisallow: /comment/\nDisallow: /*/comments\nDisallow: /*/all_comments\nDisallow: /*/answer_comments\nDisallow: /*/mobile_collapsed\nDisallow: /*/mobile_expanded_voter_list\nDisallow: /home/global_feed\nDisallow: /search?q=\nDisallow: /search/?q=\nDisallow: /digest/\nDisallow: /email_optout/\nDisallow: /qemail/\nDisallow: /invite/\nDisallow: /widgets/content_iframe/\nDisallow: /widgets/content_js/\nDisallow: /_/\nDisallow: /*_POST$\nDisallow: /*_POST/\nDisallow: /webnode2/\nDisallow: /anonymous/\nDisallow: /q/*/admin_log\nDisallow: /q/*/stats\nDisallow: /q/*/settings\nDisallow: /q/*/queue\nDisallow: /q/*/suggestions\nDisallow: /q/*/submissions\nDisallow: /q/*/quality\nDisallow: /q/*/earnings\nDisallow: /profile/*/Rss\nDisallow: /topic/*/Rss\n\nUser-agent: LinkedInBot\nDisallow: /ajax/\nDisallow: /@async\nDisallow: /*/@async\nDisallow: /log/\nDisallow: /*/log\nDisallow: /*/about\nDisallow: /*/action\nDisallow: /*/activity\nDisallow: /*/all_questions\nDisallow: /*/all_posts$\nDisallow: /*/all_posts/\nDisallow: /*/blogs$\nDisallow: /*/blogs/\nDisallow: /*/followers\nDisallow: /*/following\nDisallow: /*/link/\nDisallow: /*/manage\nDisallow: /*/mentions\nDisallow: /*/merged\nDisallow: /*/open_questions\nDisallow: /*/posts$\nDisallow: /*/posts/\nDisallow: /*/questions\nDisallow: /*/related\nDisallow: /*/reviews$\nDisallow: /*/reviews/\nDisallow: /*/share\nDisallow: /*/top_questions\nDisallow: /*/topic-bio\nDisallow: /*/topic_bio\nDisallow: /*/topics\nDisallow: /*/comment\nDisallow: /comment/\nDisallow: /*/comments\nDisallow: /*/all_comments\nDisallow: /*/answer_comments\nDisallow: /*/mobile_collapsed\nDisallow: /*/mobile_expanded_voter_list\nDisallow: /home/global_feed\nDisallow: /search?q=\nDisallow: /search/?q=\nDisallow: /digest/\nDisallow: /email_optout/\nDisallow: /qemail/\nDisallow: /invite/\nDisallow: /widgets/content_iframe/\nDisallow: /widgets/content_js/\nDisallow: /_/\nDisallow: /*_POST$\nDisallow: /*_POST/\nDisallow: /webnode2/\nDisallow: /anonymous/\nDisallow: /q/*/admin_log\nDisallow: /q/*/stats\nDisallow: /q/*/settings\nDisallow: /q/*/queue\nDisallow: /q/*/suggestions\nDisallow: /q/*/submissions\nDisallow: /q/*/quality\nDisallow: /q/*/earnings\nDisallow: /profile/*/Rss\nDisallow: /topic/*/Rss\n\nUser-agent: Feedly\nDisallow: /ajax/\nDisallow: /@async\nDisallow: /*/@async\nDisallow: /log/\nDisallow: /*/log\nDisallow: /*/about\nDisallow: /*/action\nDisallow: /*/activity\nDisallow: /*/all_questions\nDisallow: /*/all_posts$\nDisallow: /*/all_posts/\nDisallow: /*/blogs$\nDisallow: /*/blogs/\nDisallow: /*/followers\nDisallow: /*/following\nDisallow: /*/link/\nDisallow: /*/manage\nDisallow: /*/mentions\nDisallow: /*/merged\nDisallow: /*/open_questions\nDisallow: /*/posts$\nDisallow: /*/posts/\nDisallow: /*/questions\nDisallow: /*/related\nDisallow: /*/reviews$\nDisallow: /*/reviews/\nDisallow: /*/share\nDisallow: /*/top_questions\nDisallow: /*/topic-bio\nDisallow: /*/topic_bio\nDisallow: /*/topics\nDisallow: /*/comment\nDisallow: /comment/\nDisallow: /*/comments\nDisallow: /*/all_comments\nDisallow: /*/answer_comments\nDisallow: /*/mobile_collapsed\nDisallow: /*/mobile_expanded_voter_list\nDisallow: /home/global_feed\nDisallow: /search?q=\nDisallow: /search/?q=\nDisallow: /digest/\nDisallow: /email_optout/\nDisallow: /qemail/\nDisallow: /invite/\nDisallow: /widgets/content_iframe/\nDisallow: /widgets/content_js/\nDisallow: /_/\nDisallow: /*_POST$\nDisallow: /*_POST/\nDisallow: /webnode2/\nDisallow: /anonymous/\nDisallow: /q/*/admin_log\nDisallow: /q/*/stats\nDisallow: /q/*/settings\nDisallow: /q/*/queue\nDisallow: /q/*/suggestions\nDisallow: /q/*/submissions\nDisallow: /q/*/quality\nDisallow: /q/*/earnings\nDisallow: /profile/*/Rss\nDisallow: /topic/*/Rss\n\nUser-agent: Pingdom\nDisallow: /ajax/\nDisallow: /@async\nDisallow: /*/@async\nDisallow: /log/\nDisallow: /*/log\nDisallow: /*/about\nDisallow: /*/action\nDisallow: /*/activity\nDisallow: /*/all_questions\nDisallow: /*/all_posts$\nDisallow: /*/all_posts/\nDisallow: /*/blogs$\nDisallow: /*/blogs/\nDisallow: /*/followers\nDisallow: /*/following\nDisallow: /*/link/\nDisallow: /*/manage\nDisallow: /*/mentions\nDisallow: /*/merged\nDisallow: /*/open_questions\nDisallow: /*/posts$\nDisallow: /*/posts/\nDisallow: /*/questions\nDisallow: /*/related\nDisallow: /*/reviews$\nDisallow: /*/reviews/\nDisallow: /*/share\nDisallow: /*/top_questions\nDisallow: /*/topic-bio\nDisallow: /*/topic_bio\nDisallow: /*/topics\nDisallow: /*/comment\nDisallow: /comment/\nDisallow: /*/comments\nDisallow: /*/all_comments\nDisallow: /*/answer_comments\nDisallow: /*/mobile_collapsed\nDisallow: /*/mobile_expanded_voter_list\nDisallow: /home/global_feed\nDisallow: /search?q=\nDisallow: /search/?q=\nDisallow: /digest/\nDisallow: /email_optout/\nDisallow: /qemail/\nDisallow: /invite/\nDisallow: /widgets/content_iframe/\nDisallow: /widgets/content_js/\nDisallow: /_/\nDisallow: /*_POST$\nDisallow: /*_POST/\nDisallow: /webnode2/\nDisallow: /anonymous/\nDisallow: /q/*/admin_log\nDisallow: /q/*/stats\nDisallow: /q/*/settings\nDisallow: /q/*/queue\nDisallow: /q/*/suggestions\nDisallow: /q/*/submissions\nDisallow: /q/*/quality\nDisallow: /q/*/earnings\nDisallow: /profile/*/Rss\nDisallow: /topic/*/Rss\n\n# exclusive for AI training\n\nUser-agent: Applebot-Extended\nDisallow: /\n\n# another archiving service\n\nUser-agent: Arquivo-web-crawler\nDisallow: /\n\n\nUser-agent: Bytespider\nDisallow: /\n\n\nUser-agent: Diffbot\nDisallow: /\n\n\nUser-agent: GPTBot\nDisallow: /\n\n# People share a lot of sensitive material on Quora - controversial political\n# views, workplace gossip and compensation, and negative opinions held of\n# companies. Over many years, as they change jobs or change their views, it is\n# important that they can delete or anonymize their previously-written answers.\n# \n# We opt out of the wayback machine because inclusion would allow people to\n# discover the identity of authors who had written sensitive answers publicly and\n# later had made them anonymous, and because it would prevent authors from being\n# able to remove their content from the internet if they change their mind about\n# publishing it. As far as we can tell, there is no way for sites to selectively\n# programmatically remove content from the archive and so this is the only way\n# for us to protect writers. If they open up an API where we can remove content\n# from the archive when authors remove it from Quora, but leave the rest of the\n# content archived, we would be happy to opt back in. See the page here:\n# \n# https://archive.org/about/exclude.php\n# \n# Meanwhile, if you are looking for an older version of any content on Quora, we\n# have full edit history tracked and accessible in product (with the exception of\n# content that has been removed by the author). You can generally access this by\n# clicking on timestamps, or by appending \"/log\" to the URL of any content page.\n# \n# For any questions or feedback about this please visit our contact page\n# https://help.quora.com/hc/en-us/requests/new\n\nUser-agent: ia_archiver\nDisallow: /\n\n\nUser-agent: ImagesiftBot\nDisallow: /\n\n# Blocked since a lot of bad requests were made by this crawler.\n\nUser-agent: JamesBOT\nDisallow: /\n\n\nUser-agent: OAI-SearchBot\nDisallow: /\n\n\nUser-agent: PerplexityBot\nDisallow: /\n\n\nUser-agent: PetalBot\nDisallow: /\n\n\nUser-agent: Scrapy\nDisallow: /\n\n\nUser-agent: ChatGPT-User\nDisallow: /\n\n\nUser-agent: Bravebot\nDisallow: /\n\n\nUser-agent: CriteoBot/0.1\nDisallow: /\n\n\nUser-agent: ClaudeBot\nDisallow: /\n\n\nUser-agent: Claude-User\nDisallow: /\n\n\nUser-agent: Claude-SearchBot\nDisallow: /\n\nUser-agent: *\nAllow: /$\nAllow: /about$\nAllow: /about/\nAllow: /challenges$\nAllow: /press$\nAllow: /login/\nAllow: /signup$\nDisallow: /\nDisallow: /ajax/\nDisallow: /@async\nDisallow: /*/@async\nDisallow: /log/\nDisallow: /*/log\nDisallow: /*/about\nDisallow: /*/action\nDisallow: /*/activity\nDisallow: /*/all_questions\nDisallow: /*/all_posts$\nDisallow: /*/all_posts/\nDisallow: /*/blogs$\nDisallow: /*/blogs/\nDisallow: /*/followers\nDisallow: /*/following\nDisallow: /*/link/\nDisallow: /*/manage\nDisallow: /*/mentions\nDisallow: /*/merged\nDisallow: /*/open_questions\nDisallow: /*/posts$\nDisallow: /*/posts/\nDisallow: /*/questions\nDisallow: /*/related\nDisallow: /*/reviews$\nDisallow: /*/reviews/\nDisallow: /*/share\nDisallow: /*/top_questions\nDisallow: /*/topic-bio\nDisallow: /*/topic_bio\nDisallow: /*/topics\nDisallow: /*/comment\nDisallow: /comment/\nDisallow: /*/comments\nDisallow: /*/all_comments\nDisallow: /*/answer_comments\nDisallow: /*/mobile_collapsed\nDisallow: /*/mobile_expanded_voter_list\nDisallow: /home/global_feed\nDisallow: /search?q=\nDisallow: /search/?q=\nDisallow: /digest/\nDisallow: /email_optout/\nDisallow: /qemail/\nDisallow: /invite/\nDisallow: /widgets/content_iframe/\nDisallow: /widgets/content_js/\nDisallow: /_/\nDisallow: /*_POST$\nDisallow: /*_POST/\nDisallow: /webnode2/\nDisallow: /anonymous/\nDisallow: /q/*/admin_log\nDisallow: /q/*/stats\nDisallow: /q/*/settings\nDisallow: /q/*/queue\nDisallow: /q/*/suggestions\nDisallow: /q/*/submissions\nDisallow: /q/*/quality\nDisallow: /q/*/earnings\nDisallow: /profile/*/Rss\nDisallow: /topic/*/Rss\n",
+    "parse_ok": true,
+    "agents": {
+      "AASA-Bot": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "Amazonbot": {
+        "class": "training",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "Googlebot": {
+        "class": "hybrid",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "Google-Extended": {
+        "class": "training",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "Facebot": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "Applebot": {
+        "class": "hybrid",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "Twitterbot": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "LinkedInBot": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "Feedly": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "Pingdom": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "Applebot-Extended": {
+        "class": "training",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 658,
+        "crawl_delay": null
+      },
+      "Arquivo-web-crawler": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 663,
+        "crawl_delay": null
+      },
+      "Bytespider": {
+        "class": "training",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 667,
+        "crawl_delay": null
+      },
+      "Diffbot": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 671,
+        "crawl_delay": null
+      },
+      "GPTBot": {
+        "class": "training",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 675,
+        "crawl_delay": null
+      },
+      "ia_archiver": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 703,
+        "crawl_delay": null
+      },
+      "ImagesiftBot": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 707,
+        "crawl_delay": null
+      },
+      "JamesBOT": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 712,
+        "crawl_delay": null
+      },
+      "OAI-SearchBot": {
+        "class": "retrieval",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 716,
+        "crawl_delay": null
+      },
+      "PerplexityBot": {
+        "class": "retrieval",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 720,
+        "crawl_delay": null
+      },
+      "PetalBot": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 724,
+        "crawl_delay": null
+      },
+      "Scrapy": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 728,
+        "crawl_delay": null
+      },
+      "ChatGPT-User": {
+        "class": "retrieval",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 732,
+        "crawl_delay": null
+      },
+      "Bravebot": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 736,
+        "crawl_delay": null
+      },
+      "CriteoBot/0.1": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 740,
+        "crawl_delay": null
+      },
+      "ClaudeBot": {
+        "class": "training",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 744,
+        "crawl_delay": null
+      },
+      "Claude-User": {
+        "class": "retrieval",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 748,
+        "crawl_delay": null
+      },
+      "Claude-SearchBot": {
+        "class": "retrieval",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 752,
+        "crawl_delay": null
+      },
+      "*": {
+        "class": "generic",
+        "allowed_root": true,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": null,
+        "crawl_delay": null
+      }
+    },
+    "sitemap_declarations": []
+  },
+  "discovery": {
+    "status": "ok",
+    "reason": null,
+    "sitemap_found": false,
+    "sitemap_urls_count": 0,
+    "inventory": [
+      {
+        "url": "https://www.quora.com/",
+        "page_type": "home",
+        "source": "crawl"
+      }
+    ],
+    "sampled_static": [
+      "https://www.quora.com/"
+    ],
+    "sampled_rendered": [],
+    "sampling_seed": "sha256:1a78e55d6617c7d284366c040d5d78c63e2c2150bef5c77505394cbfe75d4f59"
+  },
+  "pages": [
+    {
+      "url": "https://www.quora.com/",
+      "final_url": "https://www.quora.com/",
+      "status": "ok",
+      "reason": null,
+      "http_status": 200,
+      "page_type": "home",
+      "headers": {
+        "date": "Thu, 10 Sep 2026 20:50:00 GMT",
+        "content-type": "text/html; charset=utf-8",
+        "transfer-encoding": "chunked",
+        "connection": "close",
+        "cache-control": "private, no-store, max-age=0, no-cache, must-revalidate, post-check=0, pre-check=0",
+        "content-encoding": "gzip",
+        "content-security-policy": "default-src * data: blob:;style-src * 'unsafe-inline';script-src https://*.quora.com https://*.poe.com https://*.facebook.net https://*.facebook.com https://*.googleapis.com https://*.twitter.com https://*.quoracdn.net https://*.google.com https://*.google-analytics.com https://*.gstatic.com https://*.youtube.com https://*.ytimg.com https://*.jwpcdn.com https://*.stripe.com https://*.intercom.io https://*.intercomcdn.com https://*.syndication.twimg.com https://cdnjs.cloudflare.com https://challenges.cloudflare.com https://d3div1mtym39ic.cloudfront.net https://*.jwplatform.com https://*.googlesyndication.com https://*.adtrafficquality.google https://*.googletagmanager.com https://*.googleadservices.com https://*.doubleclick.net https://*.googletagservices.com https://*.ampproject.org https://*.amazon-adsystem.com https://*.rubiconproject.com https://*.lijit.com https://*.openx.net https://*.criteo.com https://*.3lift.com https://*.aaxads.com https://btloader.com https://*.btloader.com https://*.ads-twitter.com https://*.awin1.com https://*.dwin1.com https://*.zenaps.com https://*.the.sciencebehindecommerce.com https://*.marketo.net https://*.licdn.com https://*.linkedin.com https://*.qualtrics.com https://*.siteintercept.qualtrics.com https://sc-static.net https://static.bytedance.com https://*.iteratehq.com https://cdn.embedly.com https://qinternal.quora.net https://*.sprig.com https://*.userleap.com https://*.doubleverify.com https://*.adsafeprotected.com https://*.flashtalking.com https://*.samplicio.us https://*.activemetering.com https://*.imrworldwide.com https://*.moatads.com https://*.sng.link https://*.apple.com https://cdn.cookielaw.org https://*.onetrust.com https://*.paypal.com https://*.giphy.com https://*.ml314.com https://*.k-id.com https://*.privacymanager.io https://*.liadm.com https://*.jsdelivr.net https://ap.lijit.com https://tags.crwdcntrl.net https://*.33across.com https://cdn.id5-sync.com https://secure.cdn.fastclick.net https://*.ftstatic.com https://choices.truste.com https://*.media.net https://*.trustedstack.com https://cperformmedia-a.akamaihd.net https://ccrdcompreol-a.akamaihd.net https://ccardlistincom-a.akamaihd.net https://ctopautoguide-a.akamaihd.net https://qsearch-a.akamaihd.net https://*.2mdn.net https://*.adnxs.com https://adsdkprod.azureedge.net https://*.beeswax.com https://*.ntv.io https://*.cxm-bcn.publisher-services.amazon.dev https://*.jwplayer.com http://c.betrad.com https://*.dotomi.com https://onetag-sys.com https://*.nexx360.io https://*.mobilefuse.com https://*.adsrvr.org https://*.adnxs-simple.com https://*.rlcdn.com 'unsafe-inline' 'unsafe-eval' 127.0.0.1:*;connect-src 'self' https://*.quora.com https://*.poe.com https://quora.okta.com https://*.oktacdn.com wss://*.quora.com https://*.quoracdn.net https://*.stripe.com https://*.intercom.io wss://*.intercom.io https://*.jwplatform.com https://*.jwpsrv.com https://syndication.twitter.com https://*.syndication.twimg.com https://*.googleapis.com https://*.googlesyndication.com https://*.adtrafficquality.google https://*.qualtrics.com https://*.facebook.com https://*.fbcdn.net blob: https://*.mktoresp.com https://*.doubleclick.net https://accounts.google.com https://*.amazon-adsystem.com https://*.3lift.com https://*.aaxads.com https://btloader.com https://*.btloader.com https://*.rubiconproject.com https://*.casalemedia.com https://*.adnxs.com https://*.pubmatic.com https://*.openx.net https://*.criteo.com https://*.sharethrough.com https://*.snigelweb.com https://*.trustedstack.com https://prebid.a-mo.net https://*.a-mx.com https://*.liadm.com https://*.s.ntv.io https://*.postrelease.com https://*.ntvcld-a.akamaihd.net https://*.iteratehq.com https://iteratehq.com https://*.sprig.com https://*.userleap.com https://app.adjust.com https://app.appsflyer.com https://*.onelink.me https://branchster.app.link https://control.kochava.com https://c.singular.net https://*.sng.link https://*.apple.com https://*.doubleverify.com https://*.adsafeprotected.com https://*.flashtalking.com https://*.samplicio.us https://*.activemetering.com https://*.imrworldwide.com https://*.moatads.com https://cdn.cookielaw.org https://*.onetrust.com https://*.paypal.com https://*.linkedin.com https://*.giphy.com https://d3div1mtym39ic.cloudfront.net https://*.ml314.com https://*.k-id.com https://*.privacymanager.io https://ats-wrapper.privacymanager.io https://*.rlcdn.com https://*.nexx360.io https://*.mobilefuse.com https://*.adsrvr.org https://*.adnxs-simple.com https://*.jsdelivr.net https://onetag-sys.com https://ad-delivery.net https://*.yellowblue.io https://*.fastclick.net https://*.id5-sync.com https://id5-sync.com https://*.postrelease.com https://*.ntv.io https://ap.lijit.com https://*.33across.com https://*.media.net https://choices.truste.com https://*.crwdcntrl.net https://*.2mdn.net https://*.eu-1-id5-sync.com https://x.bidswitch.net https://csync.loopme.me https://*.ftstatic.com https://rtb.adgrx.com https://ab.dns-finder.com ;report-uri /security_reports/content_security_policy_violation_3RD_PARTY_POST",
+        "cross-origin-opener-policy": "same-origin-allow-popups",
+        "expires": "Fri, 01 Jan 1990 00:00:00 GMT",
+        "link": "<https://qsc.cf2.quoracdn.net/-4-ans_frontend-relay-rspack-27-3c485d23e9a3233f.webpack>; rel=\"preload\"; as=\"script\", <https://qsc.cf2.quoracdn.net/-4-ans_frontend-relay-rspack-vendor-27-117617c064cba6a9.webpack>; rel=\"preload\"; as=\"script\", <https://qsc.cf2.quoracdn.net/-4-ans_frontend-relay-rspack-common-27-fee795bbdf5b81c9.webpack>; rel=\"preload\"; as=\"script\", <https://qsc.cf2.quoracdn.net/-4-ans_frontend-relay-rspack-page-LoginPages-27-1633b4887fe7fa6f.webpack>; rel=\"preload\"; as=\"script\", <https://qsc.cf2.quoracdn.net/-4-ans_frontend-relay-rspack-common-LoggedOut-27-691b47e6f3aa96cd.webpack>; rel=\"preload\"; as=\"script\", <https://qsc.cf2.quoracdn.net/-4-ans_frontend-relay-rspack-main.css-28-66031692b7f689b2.webpack>; rel=\"preload\"; as=\"style\"",
+        "pragma": "no-cache",
+        "server": "cloudflare",
+        "set-cookie": "m-ans_frontend_early_version=3c485d23e9a3233f; Domain=.quora.com; Max-Age=63115200; Path=/; expires=Sun, 10-Sep-2028 08:50:00 GMT",
+        "strict-transport-security": "max-age=63072000; includeSubDomains; preload",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "SAMEORIGIN",
+        "x-q-stat": ",e1a1e455a0c7e346001c3d6995bee8b9,10.0.0.6,11148,139.5.9.101,,168756860274,1,1789073400.023,0.013,,.,0,0,0.000,0.013,-,0,0,7852,122,61,10,34729,,,,,,-,",
+        "x-ua-compatible": "IE=Edge, chrome=1",
+        "x-xss-protection": "1; mode=block",
+        "vary": "accept-encoding",
+        "cf-cache-status": "DYNAMIC",
+        "cf-ray": "a3914d6d689446c2-BOM",
+        "alt-svc": "h3=\":443\"; ma=86400"
+      },
+      "raw_html_bytes": 78020,
+      "main_text": "Something went wrong. Wait a moment and try again. Try again",
+      "main_text_words": 11,
+      "extraction_ok": false,
+      "title": "Quora - A place to share knowledge and better understand the world",
+      "meta": {
+        "viewport": null,
+        "description": "Quora is a place to gain and share knowledge. It's a platform to ask questions and connect with people who contribute unique insights and quality answers. This empowers people to learn from each other and to better understand the world.",
+        "robots": "noarchive"
+      },
+      "lang": "en",
+      "canonical": {
+        "href": "https://www.quora.com/",
+        "self_referential": true,
+        "cross_domain": false
+      },
+      "headings": [],
+      "landmarks": {
+        "main": 0,
+        "nav": 0,
+        "header": 0,
+        "footer": 0
+      },
+      "structured_data": {
+        "json_ld": [],
+        "microdata_types": [],
+        "rdfa_types": []
+      },
+      "links": [],
+      "outbound_profile_links": [],
+      "images": [],
+      "iframes": [],
+      "media": [],
+      "form_controls": [],
+      "interactive_empty": {
+        "links_no_text": 0,
+        "buttons_no_text": 0
+      },
+      "noscript": {
+        "present": true,
+        "words": 9
+      },
+      "dates": {
+        "meta_published": null,
+        "meta_modified": null,
+        "visible_dates": [],
+        "header_last_modified": null
+      },
+      "contact_signals": {
+        "email": false,
+        "phone": null,
+        "postal_address": null,
+        "org_name_footer": null
+      },
+      "trigram_hash": "sha256:320e36c9ab3502a621c3b5eb2161555e2b6838096f9c60cbe0bbbf7a1083f0d9"
+    }
+  ],
+  "rendered": [],
+  "links": {
+    "status": "ok",
+    "reason": null,
+    "checked_count": 0,
+    "results": [],
+    "skipped": []
+  },
+  "anchors": {
+    "status": "ok",
+    "reason": null,
+    "declared": [],
+    "checked_count": 0,
+    "results": []
+  },
+  "budget": {
+    "status": "ok",
+    "reason": null,
+    "stages": [
+      {
+        "name": "resolve",
+        "budget_s": 10,
+        "actual_s": 1.6,
+        "abandoned": false,
+        "planned_items": null,
+        "completed_items": null
+      },
+      {
+        "name": "robots_discovery",
+        "budget_s": 15,
+        "actual_s": 2.0,
+        "abandoned": false,
+        "planned_items": 1,
+        "completed_items": 1
+      },
+      {
+        "name": "static_fetch",
+        "budget_s": 45,
+        "actual_s": 1.1,
+        "abandoned": false,
+        "planned_items": 1,
+        "completed_items": 1
+      },
+      {
+        "name": "render_pass",
+        "budget_s": 75,
+        "actual_s": 0.0,
+        "abandoned": true,
+        "planned_items": 0,
+        "completed_items": 0,
+        "reason": "no_headless_browser_tool"
+      },
+      {
+        "name": "internal_links",
+        "budget_s": 25,
+        "actual_s": 0.0,
+        "abandoned": false,
+        "planned_items": 0,
+        "completed_items": 0
+      },
+      {
+        "name": "offsite_anchors",
+        "budget_s": 20,
+        "actual_s": 0.0,
+        "abandoned": false,
+        "planned_items": 0,
+        "completed_items": 0
+      }
+    ],
+    "total_s": 4.7,
+    "cap_s": 300
+  }
+}

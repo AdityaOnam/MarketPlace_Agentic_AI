@@ -1,0 +1,260 @@
+{
+  "schema_version": "1.0.0",
+  "site": {
+    "status": "ok",
+    "reason": null,
+    "input": "https://realtor.com",
+    "canonical_host": "www.realtor.com:443",
+    "origin": "https://www.realtor.com:443",
+    "scheme": "https",
+    "redirect_chain": [
+      "https://realtor.com"
+    ],
+    "tls_valid": true,
+    "archetype": "unknown",
+    "archetype_confidence": 0.0
+  },
+  "robots": {
+    "status": "ok",
+    "reason": null,
+    "fetch_status": 200,
+    "body": "# LEGAL NOTICE: Per https://www.realtor.com's Terms of Service, scraping data from this website is unauthorized without the express written permission from Move Sales, Inc., operator of https://www.realtor.com.\n\nUser-agent: bingbot\nCrawl-delay: 1\n\nUser-agent: *\nAllow: /news/*?cid=\nAllow: /advice/*?cid=\nAllow: /guides/*?cid=\nAllow: /living/*?cid=\nAllow: /realestateandhomes-search/*/price-na-\nDisallow: /news/draft/\nDisallow: /advice/draft/\nDisallow: /guides/draft/\nDisallow: /8058/\nDisallow: /addeliverymodule/\nDisallow: /advice/wp-content/themes/realtor/nobots/\nDisallow: /amenities?\nDisallow: /apartments/*?disp=2*\nDisallow: /apartments/*?view=map/pg-*\nDisallow: /apartments/*/*-rentals\nDisallow: /apartments/*/cat-friendly\nDisallow: /apartments/*/dog-friendly\nDisallow: /apartments/*/*/pg-*\nDisallow: /apartments/near-me*\nDisallow: /content\nDisallow: /Content\nDisallow: /content/\nDisallow: /Content/\nDisallow: /diagnostics\nDisallow: /Diagnostics\nDisallow: /diagnostics/\nDisallow: /Diagnostics/\nDisallow: /foresee\nDisallow: /Foresee\nDisallow: /foresee/\nDisallow: /Foresee/\nDisallow: /home_advisor\nDisallow: /home_advisor/\nDisallow: /homes_around\nDisallow: /homemade/wp-content/plugins/\nDisallow: /homemade/wp-admin/\nDisallow: /homemade/readme.html\nDisallow: /homemade/refer/\nDisallow: /international/print/\nDisallow: /international/us/\nDisallow: /international/*?sort=distance\nDisallow: /international/*?sort=date\nDisallow: /*?lang=\nDisallow: /map\nDisallow: /Map\nDisallow: /map/\nDisallow: /Map/\nDisallow: /*?map_layer\nDisallow: /market-insights/\nDisallow: /Market-Insights/\nDisallow: /MARKET-INSIGHTS/\nDisallow: /median_prices\nDisallow: /median_prices?\nDisallow: /mortgage/home-loan/*?price=\nDisallow: /mortgage_payment\nDisallow: /mortgage/rates/*property_price=\nDisallow: /movies\nDisallow: /Movies\nDisallow: /movies/\nDisallow: /Movies/\nDisallow: /music\nDisallow: /Music\nDisallow: /music/\nDisallow: /Music/\nDisallow: /myhome/*_M\nDisallow: /myhome/M*\nDisallow: /*?ncs=\nDisallow: /network-analysis\nDisallow: /newhomesconstruction/*\nDisallow: /newhomecommunities/near-me*\nDisallow: /news/feed/*/\nDisallow: /news/wp-content/themes/realtor/nobots/\nDisallow: /*not_found\nDisallow: /*not-found\nDisallow: /*not found\nDisallow: /*not  found\nDisallow: /*not&nbsp;found\nDisallow: /*Not_Found\nDisallow: /*Not-Found\nDisallow: /*Not Found\nDisallow: /*Not  Found\nDisallow: /*Not&nbsp;Found\nDisallow: /o/\nDisallow: /*pgsz=\nDisallow: /polaris-ldp/*\nDisallow: /polaris-ldp\nDisallow: /*?pos=\nDisallow: /print\nDisallow: /Print\nDisallow: /print/\nDisallow: /Print/\nDisallow: /programs\nDisallow: /Programs\nDisallow: /programs/\nDisallow: /Programs/\nDisallow: /properties/topleadform\nDisallow: /property-overview\nDisallow: /propertyrecord-search/*/beds-\nDisallow: /propertyrecord-search/*/type-\nDisallow: /propertyrecord-search/*/pg-*/pg-\nDisallow: /propertyrecord-search/*undefined\nDisallow: /public\nDisallow: /Public\nDisallow: /public/\nDisallow: /Public/\nDisallow: /rdc_user_check.js\nDisallow: /realestateagents/*agentname-\nDisallow: /realestateagents/58386a0cf70a250001177f2d\nDisallow: /realestateandhomes-detail/187-Harness-Downs-Rd_Port-Matilda_PA_16870_M47586-18534\nDisallow: /realestateandhomes-detail/4581-S-Valdai-Way_Aurora_CO_80015_M21324-97292\nDisallow: /realestateandhomes-detail/5845-Meadowlane-St_New-Port-Richey_FL_34652_M68583-60477\nDisallow: /realestateandhomes-detail/1100-Pinehurst-Dr_Chapel-Hill_NC_27517_M64159-81306\nDisallow: /realestateandhomes-detail/2027-Portsmouth-Dr_Richardson_TX_75082_M83039-98371\nDisallow: /realestateandhomes-detail/2137-W-Roosevelt-Dr_Milwaukee_WI_53209_M82248-14449\nDisallow: /realestateandhomes-detail/2137-W-Roosevelt-Dr_Milwaukee_WI_53209_M90548-95731\nDisallow: /realestateandhomes-detail/650-Church-Rd_Flourtown_PA_19031_M35761-59786\nDisallow: /realestateandhomes-detail/1132-Jason-Dr_Lompoc_CA_93436_M11599-85143\nDisallow: /realestateandhomes-detail/M1159985143\nDisallow: /realestateandhomes-detail/undefined\nDisallow: /realestateandhomes-print/\nDisallow: /realestateandhomes-search/*/*/pg-\nDisallow: /realestateandhomes-search/*?from_ldp=true\nDisallow: /*?cid=\nDisallow: /realestateandhomes-search/*/pg-*/show-recently-sold\nDisallow: /realestateandhomes-search/*/radius-\nDisallow: /realestateandhomes-search/undefined\nDisallow: /realestateteam/bright-birch-real-estate__mn_1639730\nDisallow: /rentals/*?view=map*\nDisallow: /rentals/api/optimizely.js\nDisallow: /restricted\nDisallow: /Restricted\nDisallow: /restricted/\nDisallow: /Restricted/\nDisallow: /*?row=\nDisallow: /similar_homes\nDisallow: /soldhomeprices/*/beds-\nDisallow: /soldhomeprices/*/type-\nDisallow: /srp_filter/\nDisallow: /*?view=nd\nDisallow: /wcf\nDisallow: /WCF\nDisallow: /wcf/\nDisallow: /WCF/\nDisallow: /webservice\nDisallow: /WebService\nDisallow: /webservice/\nDisallow: /WebService/\nDisallow: /webusercontrols\nDisallow: /WebUserControls\nDisallow: /webusercontrols/\nDisallow: /WebUserControls/\nDisallow: /widgets\nDisallow: /Widgets\nDisallow: /widgets/\nDisallow: /Widgets/\nDisallow: /YfcuVaVBkfnzl2j6UbEcK0Oiqkv88jx6w/\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-us-43.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-us-42.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-us-41.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-us-40.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-us-39.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-us-38.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-us-37.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-us-36.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-us-35.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-us-34.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-us-33.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-us-32.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-us-31.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-us-30.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-us-29.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-us-28.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-us-27.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-us-26.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-us-25.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-ca-17.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-ca-16.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-ca-15.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-ca-14.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-fl-15.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-ca-13.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-fl-14.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-fl-13.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-ca-12.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-ca-11.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-fl-12.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-13-1.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-arkansas-1.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-andrews-1.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-ss-1.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-state-1.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-tx-10.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-xx-1.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-oregon-1.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-tx,-1.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-tx-9.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-123-1.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-94526-1.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-ap-1.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-arizona-1.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-nl-1.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-ft-lauderdale-1.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-l3-1.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-ny-6.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-in-2.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-nn-1.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-az-4.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-brooklyn-1.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-office-state-1.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-puerto-rico-1.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-tp-3.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-al-2.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-florida-1.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-ga-5.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-nf-1.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-on-2.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-tp-2.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-72-1.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-dn-1.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-elmore-1.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-pu-1.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-[p-1.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-boston-1.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-nc-4.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-nc-5.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-nt-1.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-37615-1.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-e-1.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-nb-1.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-nj-5.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-oh-3.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-sc-3.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-ag-1.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-california-1.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-oc-1.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-os-1.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent---1.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-27-1.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-mi-3.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-ph-1.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-il-4.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-ma-4.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-pe-1.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-pq-1.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-1-1.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-ma-3.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-ut-2.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-va-3.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-virginia-1.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-ct-2.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-dr-1.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-ha-1.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-co-3.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-nu-1.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-ontario-1.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-pa-3.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-sfr-1.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-tn-3.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-mn-2.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-sp-1.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-mb-1.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-or-2.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-wi-2.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-georgia-1.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-memphis-1.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-woodbridge-1.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-ahwd-1.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-f-1.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-san-ramon-1.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-96753-1.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-gainesville-1.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-naples-1.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-08759-1.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-addison-1.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-kerrville-1.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-palm-beach-gardens-1.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-uk-1.xml.gz\nDisallow: /realestateagents/sitemap-far-agent/sitemap-far-agent-ft.-myers-1.xml.gz\nDisallow: /realestateagents/*_$\nDisallow: /rdc_user_check/init.js\nDisallow: /149e9513-01fa-4fb0-aad4-566afd725d1b/2d206a39-8ed7-437e-a3be-862e0f06eea3/*\nDisallow: /flyaround\nDisallow: /realtors/\nDisallow: /amp\nDisallow: /news/search/\nDisallow: /advice/search/\nDisallow: /guides/search/\nDisallow: /living/search/\nDisallow: /realestateandhomes-detail/*/gallery/\n\n\nUser-agent: Yandex\nDisallow: /\n\nUser-agent: peer39_crawler\nDisallow: /\n\nUser-agent: Connatix\nDisallow: /\n\nUser-agent: Sogou\nDisallow: /\n\nUser-agent: AdsBot-Google\nDisallow:\n\nUser-agent: GoogleOther\nDisallow: /\n\nUser-agent: facebookbot\nDisallow: /\n\nUser-agent: Meta-ExternalAgent\nDisallow: /\n\nUser-agent: Meta-ExternalFetcher\nDisallow: /\n\nUser-agent: AmazonAdBot\nDisallow:\n\nUser-agent: Google-CloudVertexBot\nDisallow: /\n\nUser-agent: facebookexternalhit\nAllow: /realestateandhomes-detail/*?cid=\nAllow: /realestateandhomes-search/*?cid=\nAllow: /news/*?cid=\nAllow: /guides/*?cid=\nAllow: /advice/*?cid=\nAllow: /living/*?cid=\nAllow: /realestateagents/*?cid=\nAllow: /realestateteams/*?cid=\nAllow: /realestateagency/*?cid=\n\nUser-agent: Twitterbot\nAllow: /realestateandhomes-detail/*?cid=\nAllow: /realestateandhomes-search/*?cid=\nAllow: /news/*?cid=\nAllow: /guides/*?cid=\nAllow: /advice/*?cid=\nAllow: /living/*?cid=\nAllow: /realestateagents/*?cid=\nAllow: /realestateteams/*?cid=\nAllow: /realestateagency/*?cid=\n\nUser-agent: Pinterestbot\nAllow: /realestateandhomes-detail/*?cid=\nAllow: /realestateandhomes-search/*?cid=\nAllow: /news/*?cid=\nAllow: /guides/*?cid=\nAllow: /advice/*?cid=\nAllow: /living/*?cid=\nAllow: /realestateagents/*?cid=\nAllow: /realestateteams/*?cid=\nAllow: /realestateagency/*?cid=\n\nUser-agent: OAI-AdsBot\nDisallow: /\nAllow: /realestateandhomes-detail/*?cid=\nAllow: /realestateandhomes-search/*?cid=\nAllow: /news/*?cid=\nAllow: /guides/*?cid=\nAllow: /advice/*?cid=\nAllow: /living/*?cid=\nAllow: /realestateagents/*?cid=\nAllow: /realestateteams/*?cid=\nAllow: /realestateagency/*?cid=\nAllow: /myhome/*?cid=\n\nSitemap: https://www.realtor.com/mortgage/sitemap/mortgagesitemap.xml\nSitemap: https://www.realtor.com/realestateandhomes-detail/sitemap-rss-new/rss-new-index.xml\nSitemap: https://www.realtor.com/realestateandhomes-detail/sitemap-rss-open-house/rss-open-house-index.xml\nSitemap: https://www.realtor.com/realestateandhomes-detail/sitemap-rss-price/rss-price-index.xml\nSitemap: https://www.realtor.com/realestateandhomes-detail/sitemap-rss-sold/rss-sold-index.xml\nSitemap: https://www.realtor.com/realestateandhomes-detail/sitemap-rss-new-rental/rss-new-rental-index.xml\nSitemap: https://www.realtor.com/realestateandhomes-detail/sitemap-spec/sitemap-new-homes-ldp-spec-1-index.xml\nSitemap: https://www.realtor.com/local/sitemaps/district/sitemap-local-district-1-index.xml\nSitemap: https://www.realtor.com/local/sitemaps/school/sitemap-local-school-1-index.xml\nSitemap: https://www.realtor.com/sitemap_index.xml\n",
+    "parse_ok": true,
+    "agents": {
+      "bingbot": {
+        "class": "hybrid",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": 1.0
+      },
+      "Yandex": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 300,
+        "crawl_delay": null
+      },
+      "peer39_crawler": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 303,
+        "crawl_delay": null
+      },
+      "Connatix": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 306,
+        "crawl_delay": null
+      },
+      "Sogou": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 309,
+        "crawl_delay": null
+      },
+      "AdsBot-Google": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "GoogleOther": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 315,
+        "crawl_delay": null
+      },
+      "facebookbot": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 318,
+        "crawl_delay": null
+      },
+      "Meta-ExternalAgent": {
+        "class": "training",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 321,
+        "crawl_delay": null
+      },
+      "Meta-ExternalFetcher": {
+        "class": "retrieval",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 324,
+        "crawl_delay": null
+      },
+      "AmazonAdBot": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "Google-CloudVertexBot": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 330,
+        "crawl_delay": null
+      },
+      "facebookexternalhit": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "Twitterbot": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "Pinterestbot": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "OAI-AdsBot": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 366,
+        "crawl_delay": null
+      },
+      "*": {
+        "class": "generic",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      }
+    },
+    "sitemap_declarations": [
+      "https://www.realtor.com/mortgage/sitemap/mortgagesitemap.xml",
+      "https://www.realtor.com/realestateandhomes-detail/sitemap-rss-new/rss-new-index.xml",
+      "https://www.realtor.com/realestateandhomes-detail/sitemap-rss-open-house/rss-open-house-index.xml",
+      "https://www.realtor.com/realestateandhomes-detail/sitemap-rss-price/rss-price-index.xml",
+      "https://www.realtor.com/realestateandhomes-detail/sitemap-rss-sold/rss-sold-index.xml",
+      "https://www.realtor.com/realestateandhomes-detail/sitemap-rss-new-rental/rss-new-rental-index.xml",
+      "https://www.realtor.com/realestateandhomes-detail/sitemap-spec/sitemap-new-homes-ldp-spec-1-index.xml",
+      "https://www.realtor.com/local/sitemaps/district/sitemap-local-district-1-index.xml",
+      "https://www.realtor.com/local/sitemaps/school/sitemap-local-school-1-index.xml",
+      "https://www.realtor.com/sitemap_index.xml"
+    ]
+  },
+  "discovery": {
+    "status": "ok",
+    "reason": null,
+    "sitemap_found": false,
+    "sitemap_urls_count": 0,
+    "inventory": [],
+    "sampled_static": [],
+    "sampled_rendered": [],
+    "sampling_seed": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "pages": [],
+  "rendered": [],
+  "links": {
+    "status": "ok",
+    "reason": null,
+    "checked_count": 0,
+    "results": [],
+    "skipped": []
+  },
+  "anchors": {
+    "status": "ok",
+    "reason": null,
+    "declared": [],
+    "checked_count": 0,
+    "results": []
+  },
+  "budget": {
+    "status": "ok",
+    "reason": null,
+    "stages": [
+      {
+        "name": "resolve",
+        "budget_s": 10,
+        "actual_s": 2.2,
+        "abandoned": false,
+        "planned_items": null,
+        "completed_items": null
+      },
+      {
+        "name": "robots_discovery",
+        "budget_s": 15,
+        "actual_s": 3.6,
+        "abandoned": false,
+        "planned_items": 0,
+        "completed_items": 0
+      },
+      {
+        "name": "static_fetch",
+        "budget_s": 45,
+        "actual_s": 0.0,
+        "abandoned": false,
+        "planned_items": 0,
+        "completed_items": 0
+      },
+      {
+        "name": "render_pass",
+        "budget_s": 75,
+        "actual_s": 0.0,
+        "abandoned": true,
+        "planned_items": 0,
+        "completed_items": 0,
+        "reason": "no_headless_browser_tool"
+      },
+      {
+        "name": "internal_links",
+        "budget_s": 25,
+        "actual_s": 0.0,
+        "abandoned": false,
+        "planned_items": 0,
+        "completed_items": 0
+      },
+      {
+        "name": "offsite_anchors",
+        "budget_s": 20,
+        "actual_s": 0.0,
+        "abandoned": false,
+        "planned_items": 0,
+        "completed_items": 0
+      }
+    ],
+    "total_s": 5.8,
+    "cap_s": 300
+  }
+}

@@ -1,0 +1,307 @@
+{
+  "schema_version": "1.0.0",
+  "site": {
+    "status": "ok",
+    "reason": null,
+    "input": "https://redfin.com",
+    "canonical_host": "redfin.com",
+    "origin": "https://redfin.com",
+    "scheme": "https",
+    "redirect_chain": [],
+    "tls_valid": true,
+    "archetype": "unknown",
+    "archetype_confidence": 0.0
+  },
+  "robots": {
+    "status": "ok",
+    "reason": null,
+    "fetch_status": 200,
+    "body": "User-agent: trovitBot\nAllow: /home\nDisallow: /\n\nUser-agent: Exabot\nAllow: /home\nDisallow: /\n\nUser-agent: sogou spider\nAllow: /home\nDisallow: /\n\nUser-agent: Sosospider\nAllow: /home\nDisallow: /\n\nUser-agent: peer39_crawler/1.0\nDisallow: /\n\nUser-agent: AdsBot-Google\nDisallow: /api/v1/buildings/properties$\nDisallow: /blog-2025\nDisallow: /news-2025\nDisallow: /amp-iframe/\nDisallow: /stingray\nDisallow: /corv\nDisallow: /tools/api/agents/agentMarket\nDisallow: /mortgage-get-pre-approved?property_zip=*\nDisallow: /sitemap_com_properties*\nDisallow: *?rfAmpClientId*\nDisallow: /*%7B%7B*\nDisallow: /graphs/image/*\nDisallow: /rocket-mortgage-application*\nDisallow: */openbook*\nDisallow: */open-book-api/\nDisallow: */filter/no-outline\nDisallow: *?semantic*\nDisallow: *&semantic*\nDisallow: *?sc=*\nDisallow: *&sc=*\n\nUser-agent: AdsBot-Google-Mobile\nDisallow: /api/v1/buildings/properties$\nDisallow: /blog-2025\nDisallow: /news-2025\nDisallow: /amp-iframe/\nDisallow: /stingray\nDisallow: /corv\nDisallow: /tools/api/agents/agentMarket\nDisallow: /mortgage-get-pre-approved?property_zip=*\nDisallow: /sitemap_com_properties*\nDisallow: *?rfAmpClientId*\nDisallow: /*%7B%7B*\nDisallow: /graphs/image/*\nDisallow: /rocket-mortgage-application*\nDisallow: */openbook*\nDisallow: */open-book-api/\nDisallow: */filter/no-outline\nDisallow: *?semantic*\nDisallow: *&semantic*\nDisallow: *?sc=*\nDisallow: *&sc=*\n\nUser-agent: google-amphtml\nDisallow: /api/v1/buildings/properties$\nDisallow: /blog-2025\nDisallow: /news-2025\nDisallow: */images/ghostTownMap2x\nDisallow: *?rfAmpClientId*\nDisallow: /*%7B%7B*\nDisallow: /graphs/image/*\nDisallow: /rocket-mortgage-application*\nDisallow: */openbook*\nDisallow: */open-book-api/\nDisallow: *?semantic*\nDisallow: *&semantic*\nDisallow: *?sc=*\nDisallow: *&sc=*\n\nUser-agent: AmazonAdBot\nDisallow: /\n\nUser-agent: FireCrawlAgent\nDisallow: /\n\nUser-agent: bingbot\nDisallow: /api/v1/buildings/properties$\nDisallow: /blog-2025\nDisallow: /news-2025\nDisallow: /*/filter/viewport\nDisallow: /amp-iframe/\nDisallow: /*/Unknown/Unknown-Unknown/\nDisallow: /*/amp$\nDisallow: /stingray/do/tourlist/\nDisallow: /sitemap_com_properties*\nAllow: /stingray/*/*/newest_listings.rss\nAllow: /stingray/do/buy\nAllow: /stingray/do/home\nAllow: /stingray/do/js\nAllow: /stingray/do/multiget\nAllow: /stingray/do/printable-listing\nAllow: /stingray/do/printable-property\nAllow: /stingray/do/redfin-advantage\nAllow: /stingray/do/start\nAllow: /myredfin/estimate\nAllow: /stingray/do/region-chart\nAllow: /stingray/dataloader\nAllow: /what-is-my-home-worth\nAllow: /stingray/mobile/listingResolver\nAllow: /stingray/mobile/ask-agent/api-get-agent\nAllow: /stingray/do/mobile-app-listing-details\nAllow: /stingray/do/contactbox\nAllow: /stingray/js/SearchCommon.js\nAllow: /stingray/do/js/*/EnumDefinitions.js\nAllow: /stingray/do/query-regionid\nAllow: /stingray/do/cacheable-gis-search\nAllow: /stingray/do/api-get-header-user-menu\nAllow: /stingray/do/api-get-header-menu-settings\nAllow: /stingray/do/cacheable-gis-search\nAllow: /stingray/do/gis-search\nAllow: /stingray/agent/*/photo\nAllow: /now\nAllow: /direct\nAllow: /corv/data/environment/\nDisallow: /buy-a-home/start-an-offer?listingId=*\nDisallow: /myredfin/\nDisallow: /stingray/\nDisallow: /VPV\nDisallow: /tools\nDisallow: /stingray/do/multiget?cacheBuster=*\nDisallow: /stingray/do/parcelstream\nDisallow: /stingray/dataloader/user/check-favorites?cacheBuster=*\nDisallow: /distro.html\nDisallow: /flashsniffer\nDisallow: /stingray/clicktracker.jsp\nDisallow: /rift\nDisallow: /*/includes/js/dojo-release-1.8.0-src/dojo/resources/blank.html\nDisallow: /blog/search/\nDisallow: /rfblog/search/\nDisallow: /research/search/\nDisallow: /devblog/search/\nDisallow: /local/search/\nDisallow: /what-is-my-home-worth?*\nDisallow: /now/offer/*\nDisallow: /now?*\nDisallow: /edit-facts/*\nDisallow: /homeowner-verification/*\nDisallow: /rental-estimate?\nDisallow: /mortgage-rates?\nDisallow: /images/search/details/twitterCards/twitter-card\nDisallow: */images/ghostTownMap2x\nDisallow: /tours/checkout/times\nDisallow: /corv/beacon/stats\nDisallow: /sell-a-home/seller-consultation\nDisallow: /sell-a-home/request-analysis\nDisallow: /login-for-zendesk\nDisallow: /stingray/do/chat/initialData\nDisallow: /stingray/do/api-social-login-info\nDisallow: /corv/beacon/amp-perf\nDisallow: /selling-plan/*\nDisallow: /buying-analysis/*\nDisallow: /stingray/api/home/details/transit-stops\nDisallow: /stingray/api/region/*/floodRisk-data\nDisallow: /*%7B%7B*\nDisallow: *?rfAmpClientId*\nDisallow: *?semantic*\nDisallow: *&semantic*\nDisallow: *?sc=*\nDisallow: *&sc=*\nDisallow: /graphs/image/*\nDisallow: /rocket-mortgage-application*\nNoindex: /edit-facts/*\nNoindex: /homeowner-verification/*\nDisallow: */openbook*\nDisallow: */open-book-api/\n\nUser-agent: *\nDisallow: /api/v1/buildings/properties$\nDisallow: /blog-2025\nDisallow: /news-2025\nDisallow: /stingray/\nAllow: /stingray/*/*/newest_listings.rss\nDisallow: /corv/\nAllow: /corv/data/environment/\nAllow: /myredfin/estimate\nAllow: /what-is-my-home-worth\nAllow: /now\nAllow: /direct\nDisallow: /buy-a-home/start-an-offer?listingId=*\nDisallow: /myredfin/\nDisallow: /groups/accept-invite\nDisallow: /VPV\nDisallow: /tools\nDisallow: /distro.html\nDisallow: /flashsniffer\nDisallow: /rift\nDisallow: /*/amp$\nDisallow: /*/includes/js/dojo-release-1.8.0-src/dojo/resources/blank.html\nDisallow: /blog/search/\nDisallow: /rfblog/search/\nDisallow: /research/search/\nDisallow: /devblog/search/\nDisallow: /local/search/\nDisallow: /what-is-my-home-worth?*\nDisallow: /now?*\nDisallow: /edit-facts/*\nDisallow: /homeowner-verification/*\nDisallow: /amp-iframe/\nDisallow: /rental-estimate?\nDisallow: /mortgage-rates?\nDisallow: /images/search/details/twitterCards/twitter-card\nDisallow: */images/ghostTownMap2x\nDisallow: /tours/checkout/times\nDisallow: /sell-a-home/seller-consultation\nDisallow: /sell-a-home/request-analysis\nDisallow: /login-for-zendesk\nDisallow: /selling-plan/*\nDisallow: /buying-analysis/*\nDisallow: /*/Unknown/Unknown-Unknown/\nDisallow: /meeting/schedule\nDisallow: /buy-a-home/start-an-offer-flow\nDisallow: /why-sell?inquirySource=482&\nDisallow: /questionnaire/\nDisallow: /account-deleted\nDisallow: /recommendations-feedback\nDisallow: /unsubscribe-confirmation\nDisallow: /promo-opt-out/the-great-american-home-search\nDisallow: /login-v2?\nDisallow: /admin/\nDisallow: /now/deal-confirmation/\nDisallow: /verify-email\nDisallow: /buy-a-home/partner-unsubscribe\nDisallow: /redfinnow-questionnaire\nDisallow: /opendoor-questionnaire\nDisallow: /opendoor/confirmation\nDisallow: /mortgage-get-pre-approved*\nDisallow: /owner-estimate/\nDisallow: /api/v1/rentals/\nDisallow: /api/v1/properties/\nDisallow: /*%7B%7B*\nDisallow: /sitemap_com_properties*\nDisallow: *?rfAmpClientId*\nDisallow: *?semantic*\nDisallow: *&semantic*\nDisallow: *?sc=*\nDisallow: *&sc=*\nDisallow: /graphs/image/*\nDisallow: /rocket-mortgage-application*\nDisallow: */openbook*\nDisallow: */open-book-api/\nDisallow: */filter/no-outline\n\nSitemap: https://www.redfin.com/newest_listings.xml\nSitemap: https://www.redfin.com/sitemap_com_agentprofiles.xml\nSitemap: https://www.redfin.com/sitemap_com_buildings.xml\nSitemap: https://www.redfin.com/sitemap_com_city_agents.xml\nSitemap: https://www.redfin.com/sitemap_com_city_housing_market.xml\nSitemap: https://www.redfin.com/sitemap_com_city.xml\nSitemap: https://www.redfin.com/sitemap_com_mfp_city.xml\nSitemap: https://www.redfin.com/sitemap_com_longtail_city.xml\nSitemap: https://www.redfin.com/sitemap_com_county_agents.xml\nSitemap: https://www.redfin.com/sitemap_com_county_housing_market.xml\nSitemap: https://www.redfin.com/sitemap_com_county.xml\nSitemap: https://www.redfin.com/sitemap_com_mfp_county.xml\nSitemap: https://www.redfin.com/sitemap_com_minor_civil_division.xml\nSitemap: https://www.redfin.com/sitemap_com_neighborhoods_agents.xml\nSitemap: https://www.redfin.com/sitemap_com_neighborhoods_housing_market.xml\nSitemap: https://www.redfin.com/sitemap_com_neighborhoods.xml\nSitemap: https://www.redfin.com/sitemap_com_mfp_neighborhoods.xml\nSitemap: https://www.redfin.com/sitemap_com_school.xml\nSitemap: https://www.redfin.com/sitemap_com_school_district.xml\nSitemap: https://www.redfin.com/sitemap_com_state.xml\nSitemap: https://www.redfin.com/sitemap_com_top_10.xml\nSitemap: https://www.redfin.com/sitemap_com_zipcode_housing_market.xml\nSitemap: https://www.redfin.com/sitemap_com_zipcode.xml\nSitemap: https://www.redfin.com/sitemap_com_mfp_zipcode.xml\nSitemap: https://www.redfin.com/sitemap_com_listings.xml\nSitemap: https://www.redfin.com/sitemap_com_latest_updates.xml\n\nSitemap: https://www.redfin.com/sitemap_com_rental_city.xml\nSitemap: https://www.redfin.com/sitemap_com_rental_county.xml\nSitemap: https://www.redfin.com/sitemap_com_rental_neighborhoods.xml\nSitemap: https://www.redfin.com/sitemap_com_rental_state.xml\nSitemap: https://www.redfin.com/sitemap_com_rental_zipcode.xml\nSitemap: https://www.redfin.com/sitemap_com_rental_apartments_city.xml\nSitemap: https://www.redfin.com/sitemap_com_rental_condos_city.xml\nSitemap: https://www.redfin.com/sitemap_com_rental_houses_city.xml\nSitemap: https://www.redfin.com/sitemap_com_rental_townhomes_city.xml\nSitemap: https://www.redfin.com/sitemap_com_rental_apartments_county.xml\nSitemap: https://www.redfin.com/sitemap_com_rental_condos_county.xml\nSitemap: https://www.redfin.com/sitemap_com_rental_houses_county.xml\nSitemap: https://www.redfin.com/sitemap_com_rental_townhomes_county.xml\nSitemap: https://www.redfin.com/sitemap_com_rental_apartments_neighborhoods.xml\nSitemap: https://www.redfin.com/sitemap_com_rental_condos_neighborhoods.xml\nSitemap: https://www.redfin.com/sitemap_com_rental_houses_neighborhoods.xml\nSitemap: https://www.redfin.com/sitemap_com_rental_townhomes_neighborhoods.xml\nSitemap: https://www.redfin.com/sitemap_com_rental_apartments_zipcode.xml\nSitemap: https://www.redfin.com/sitemap_com_rental_condos_zipcode.xml\nSitemap: https://www.redfin.com/sitemap_com_rental_houses_zipcode.xml\nSitemap: https://www.redfin.com/sitemap_com_rental_townhomes_zipcode.xml\nSitemap: https://www.redfin.com/sitemap_com_rental_mfp_city.xml\nSitemap: https://www.redfin.com/sitemap_com_rental_mfp_neighborhoods.xml\nSitemap: https://www.redfin.com/sitemap_com_rental_mfp_zipcode.xml\nSitemap: https://www.redfin.com/sitemap_com_rental_dps_lnp.xml\nSitemap: https://www.redfin.com/sitemap_com_rental_dps_pdp_na.xml\nSitemap: https://www.redfin.com/sitemap_com_rental_dps_mf.xml\nSitemap: https://www.redfin.com/sitemap_com_rental_dps_sf.xml\nSitemap: https://www.redfin.com/sitemap_com_rental_dps_core.xml\nSitemap: https://www.redfin.com/sitemap_com_rental_dps_additional.xml\nSitemap: https://www.redfin.com/sitemap_com_rental_market_trends.xml\n",
+    "parse_ok": true,
+    "agents": {
+      "trovitBot": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 3,
+        "crawl_delay": null
+      },
+      "Exabot": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 7,
+        "crawl_delay": null
+      },
+      "sogou spider": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 11,
+        "crawl_delay": null
+      },
+      "Sosospider": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 15,
+        "crawl_delay": null
+      },
+      "peer39_crawler/1.0": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 18,
+        "crawl_delay": null
+      },
+      "AdsBot-Google": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "AdsBot-Google-Mobile": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "google-amphtml": {
+        "class": "unknown",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "AmazonAdBot": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 81,
+        "crawl_delay": null
+      },
+      "FireCrawlAgent": {
+        "class": "unknown",
+        "allowed_root": false,
+        "disallow_rules": [
+          "/"
+        ],
+        "matched_line": 84,
+        "crawl_delay": null
+      },
+      "bingbot": {
+        "class": "hybrid",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      },
+      "*": {
+        "class": "generic",
+        "allowed_root": true,
+        "disallow_rules": [],
+        "matched_line": null,
+        "crawl_delay": null
+      }
+    },
+    "sitemap_declarations": [
+      "https://www.redfin.com/newest_listings.xml",
+      "https://www.redfin.com/sitemap_com_agentprofiles.xml",
+      "https://www.redfin.com/sitemap_com_buildings.xml",
+      "https://www.redfin.com/sitemap_com_city_agents.xml",
+      "https://www.redfin.com/sitemap_com_city_housing_market.xml",
+      "https://www.redfin.com/sitemap_com_city.xml",
+      "https://www.redfin.com/sitemap_com_mfp_city.xml",
+      "https://www.redfin.com/sitemap_com_longtail_city.xml",
+      "https://www.redfin.com/sitemap_com_county_agents.xml",
+      "https://www.redfin.com/sitemap_com_county_housing_market.xml",
+      "https://www.redfin.com/sitemap_com_county.xml",
+      "https://www.redfin.com/sitemap_com_mfp_county.xml",
+      "https://www.redfin.com/sitemap_com_minor_civil_division.xml",
+      "https://www.redfin.com/sitemap_com_neighborhoods_agents.xml",
+      "https://www.redfin.com/sitemap_com_neighborhoods_housing_market.xml",
+      "https://www.redfin.com/sitemap_com_neighborhoods.xml",
+      "https://www.redfin.com/sitemap_com_mfp_neighborhoods.xml",
+      "https://www.redfin.com/sitemap_com_school.xml",
+      "https://www.redfin.com/sitemap_com_school_district.xml",
+      "https://www.redfin.com/sitemap_com_state.xml",
+      "https://www.redfin.com/sitemap_com_top_10.xml",
+      "https://www.redfin.com/sitemap_com_zipcode_housing_market.xml",
+      "https://www.redfin.com/sitemap_com_zipcode.xml",
+      "https://www.redfin.com/sitemap_com_mfp_zipcode.xml",
+      "https://www.redfin.com/sitemap_com_listings.xml",
+      "https://www.redfin.com/sitemap_com_latest_updates.xml",
+      "https://www.redfin.com/sitemap_com_rental_city.xml",
+      "https://www.redfin.com/sitemap_com_rental_county.xml",
+      "https://www.redfin.com/sitemap_com_rental_neighborhoods.xml",
+      "https://www.redfin.com/sitemap_com_rental_state.xml",
+      "https://www.redfin.com/sitemap_com_rental_zipcode.xml",
+      "https://www.redfin.com/sitemap_com_rental_apartments_city.xml",
+      "https://www.redfin.com/sitemap_com_rental_condos_city.xml",
+      "https://www.redfin.com/sitemap_com_rental_houses_city.xml",
+      "https://www.redfin.com/sitemap_com_rental_townhomes_city.xml",
+      "https://www.redfin.com/sitemap_com_rental_apartments_county.xml",
+      "https://www.redfin.com/sitemap_com_rental_condos_county.xml",
+      "https://www.redfin.com/sitemap_com_rental_houses_county.xml",
+      "https://www.redfin.com/sitemap_com_rental_townhomes_county.xml",
+      "https://www.redfin.com/sitemap_com_rental_apartments_neighborhoods.xml",
+      "https://www.redfin.com/sitemap_com_rental_condos_neighborhoods.xml",
+      "https://www.redfin.com/sitemap_com_rental_houses_neighborhoods.xml",
+      "https://www.redfin.com/sitemap_com_rental_townhomes_neighborhoods.xml",
+      "https://www.redfin.com/sitemap_com_rental_apartments_zipcode.xml",
+      "https://www.redfin.com/sitemap_com_rental_condos_zipcode.xml",
+      "https://www.redfin.com/sitemap_com_rental_houses_zipcode.xml",
+      "https://www.redfin.com/sitemap_com_rental_townhomes_zipcode.xml",
+      "https://www.redfin.com/sitemap_com_rental_mfp_city.xml",
+      "https://www.redfin.com/sitemap_com_rental_mfp_neighborhoods.xml",
+      "https://www.redfin.com/sitemap_com_rental_mfp_zipcode.xml",
+      "https://www.redfin.com/sitemap_com_rental_dps_lnp.xml",
+      "https://www.redfin.com/sitemap_com_rental_dps_pdp_na.xml",
+      "https://www.redfin.com/sitemap_com_rental_dps_mf.xml",
+      "https://www.redfin.com/sitemap_com_rental_dps_sf.xml",
+      "https://www.redfin.com/sitemap_com_rental_dps_core.xml",
+      "https://www.redfin.com/sitemap_com_rental_dps_additional.xml",
+      "https://www.redfin.com/sitemap_com_rental_market_trends.xml"
+    ]
+  },
+  "discovery": {
+    "status": "ok",
+    "reason": null,
+    "sitemap_found": false,
+    "sitemap_urls_count": 0,
+    "inventory": [
+      {
+        "url": "https://redfin.com/",
+        "page_type": "home",
+        "source": "crawl"
+      }
+    ],
+    "sampled_static": [
+      "https://redfin.com/"
+    ],
+    "sampled_rendered": [],
+    "sampling_seed": "sha256:0f1f675bb3323f4c30d8794a587ac8c7a03be31e1024ce5bbfec950235af641d"
+  },
+  "pages": [
+    {
+      "url": "https://redfin.com/",
+      "final_url": "https://redfin.com/",
+      "status": "unavailable",
+      "reason": "http_405",
+      "http_status": 405,
+      "page_type": "home",
+      "headers": {},
+      "raw_html_bytes": 0,
+      "main_text": "",
+      "main_text_words": 0,
+      "extraction_ok": false,
+      "title": null,
+      "meta": {},
+      "lang": null,
+      "canonical": {},
+      "headings": [],
+      "landmarks": {},
+      "structured_data": {},
+      "links": [],
+      "outbound_profile_links": [],
+      "images": [],
+      "iframes": [],
+      "media": [],
+      "form_controls": [],
+      "interactive_empty": {},
+      "noscript": {
+        "present": false,
+        "words": 0
+      },
+      "dates": {},
+      "contact_signals": {},
+      "trigram_hash": null
+    }
+  ],
+  "rendered": [],
+  "links": {
+    "status": "ok",
+    "reason": null,
+    "checked_count": 0,
+    "results": [],
+    "skipped": []
+  },
+  "anchors": {
+    "status": "ok",
+    "reason": null,
+    "declared": [],
+    "checked_count": 0,
+    "results": []
+  },
+  "budget": {
+    "status": "ok",
+    "reason": null,
+    "stages": [
+      {
+        "name": "resolve",
+        "budget_s": 10,
+        "actual_s": 0.7,
+        "abandoned": false,
+        "planned_items": null,
+        "completed_items": null
+      },
+      {
+        "name": "robots_discovery",
+        "budget_s": 15,
+        "actual_s": 4.7,
+        "abandoned": false,
+        "planned_items": 1,
+        "completed_items": 1
+      },
+      {
+        "name": "static_fetch",
+        "budget_s": 45,
+        "actual_s": 0.0,
+        "abandoned": false,
+        "planned_items": 1,
+        "completed_items": 0
+      },
+      {
+        "name": "render_pass",
+        "budget_s": 75,
+        "actual_s": 0.0,
+        "abandoned": true,
+        "planned_items": 0,
+        "completed_items": 0,
+        "reason": "no_headless_browser_tool"
+      },
+      {
+        "name": "internal_links",
+        "budget_s": 25,
+        "actual_s": 0.0,
+        "abandoned": false,
+        "planned_items": 0,
+        "completed_items": 0
+      },
+      {
+        "name": "offsite_anchors",
+        "budget_s": 20,
+        "actual_s": 0.0,
+        "abandoned": false,
+        "planned_items": 0,
+        "completed_items": 0
+      }
+    ],
+    "total_s": 5.4,
+    "cap_s": 300
+  }
+}

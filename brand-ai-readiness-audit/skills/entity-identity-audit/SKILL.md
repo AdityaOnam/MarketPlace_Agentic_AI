@@ -2,7 +2,7 @@
 name: entity-identity-audit
 description: Audit a website's entity identity signals — the explicit definitions, structured-data declarations, canonical links, freshness dates, identity anchors, and self-consistency of attributes that allow AI systems to correctly identify, distinguish, and corroborate a brand. Use as the mechanism-D analysis stage of a brand AI-readiness audit, after the evidence bundle has been collected by site-evidence-collector. This skill is the only analyser that reads the anchors section (the sole off-site evidence in the bundle). It deliberately cannot check actual cross-web corroboration or name collisions with other entities — see Declared Limitations below.
 license: Apache-2.0
-allowed-tools: []
+allowed-tools: ""
 ---
 
 # Entity Identity Audit

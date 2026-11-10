@@ -1,0 +1,100 @@
+{
+  "schema_version": "1.0.0",
+  "site": "https://www.zillow.com",
+  "audited_at": "2026-09-10T20:49:13Z",
+  "preamble": {
+    "access_blocked_for": [],
+    "notes": [],
+    "archetype": "unknown",
+    "recommendations_scoped_to": "unknown"
+  },
+  "summary": {
+    "total_findings": 1,
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 1
+  },
+  "findings": [
+    {
+      "check_id": "CHK-D-002",
+      "state": "present",
+      "locus": {
+        "url": null,
+        "selector": null
+      },
+      "evidence": "robots.txt blocks Amazonbot, Applebot-Extended, meta-externalagent, Meta-ExternalAgent (a training-corpus crawler) but permits retrieval-time AI crawlers.",
+      "severity": "low",
+      "evidence_strength": "CORRELATIONAL",
+      "suggested_action": {
+        "summary": "This is frequently intentional and not necessarily a defect. It forgoes future parametric-memory coverage only; leave the decision with the site owner.",
+        "priority": "low"
+      },
+      "suppressed_by": [],
+      "id": "F-001",
+      "title": "Training-corpus crawler blocked, retrieval intact"
+    }
+  ],
+  "recommendations": [],
+  "limitations": [
+    {
+      "id": "LIM-01",
+      "mechanism": "D",
+      "reason": "Actual agreement across the wider web about the brand's facts requires a search or web-scale index API. No free, deterministic, rate-safe source exists.",
+      "note": "CHK-D-025/026/027 audit only the anchoring the site itself provides for that corroboration, not corroboration itself."
+    },
+    {
+      "id": "LIM-02",
+      "mechanism": "D",
+      "reason": "Detecting a same-name collision with an unrelated entity requires a corpus of other entities.",
+      "note": "CHK-D-027 covers only self-consistency, the site-side half."
+    },
+    {
+      "id": "LIM-03",
+      "mechanism": "B",
+      "reason": "Live-querying a generative engine would break determinism, the 5-minute budget, and reproducibility.",
+      "note": "This audit measures retrievability and correctness of what the site exposes, never observed citation outcomes."
+    },
+    {
+      "id": "LIM-04",
+      "mechanism": "E",
+      "reason": "Field engagement outcomes (bounce, dwell, scroll, conversion, task success) are not observable read-only.",
+      "note": "Reported not_determinable where the gap is itself actionable."
+    },
+    {
+      "id": "LIM-05",
+      "mechanism": "D",
+      "reason": "llms.txt is not recommended as a substantive fix: a 137k-domain measurement found 97% of existing llms.txt files were never requested. This audit declines to recommend adding one on that evidence (D-007).",
+      "note": "Stated here rather than omitted (D-014) — the officials' Q&A confirms recommending it is an acceptable position, so silence about it would look indistinguishable from having missed it."
+    }
+  ],
+  "degraded_stages": [
+    {
+      "stage": "render_pass",
+      "planned_items": 0,
+      "completed_items": 0,
+      "affected_checks": [
+        "CHK-D-003",
+        "CHK-E-014",
+        "CHK-E-015",
+        "CHK-E-016",
+        "CHK-E-018",
+        "CHK-E-019"
+      ]
+    }
+  ],
+  "meta_evaluation": {
+    "checks_run": [
+      "summary_reconciles",
+      "severity_counts_reconcile",
+      "finding_complete",
+      "no_duplicate_findings",
+      "known_check_id",
+      "prohibited_recommendation",
+      "limitations_present",
+      "action_locus_coherence"
+    ],
+    "passed": true,
+    "warnings": []
+  }
+}

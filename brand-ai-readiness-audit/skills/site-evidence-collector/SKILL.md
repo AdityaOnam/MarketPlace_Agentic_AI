@@ -1,10 +1,8 @@
 ---
 name: site-evidence-collector
-description: Collect a complete, read-only observational record of a website — robots.txt and per-agent crawler rules, a sampled page inventory with extracted main text and structured data, one shared rendered-page pass per sampled page, bounded internal-link and off-site identity-anchor reachability checks — and emit it as a single in-memory evidence bundle. Use when an audit needs the site's observable state gathered once, politely and within a fixed time budget, before any analysis happens. This skill observes and never judges: it emits no findings, no severities, and no recommendations.
+description: Collect a complete, read-only observational record of a website — robots.txt and per-agent crawler rules, a sampled page inventory with extracted main text and structured data, one shared rendered-page pass per sampled page, bounded internal-link and off-site identity-anchor reachability checks — and emit it as a single in-memory evidence bundle. Use when an audit needs the site's observable state gathered once, politely and within a fixed time budget, before any analysis happens. This skill observes and never judges — it emits no findings, no severities, and no recommendations.
 license: Apache-2.0
-allowed-tools:
-  - http_fetch      # GET/HEAD only; no other method is ever issued
-  - headless_browser # navigate, resize, read DOM/computed styles/geometry; no interaction
+allowed-tools: http_fetch headless_browser
 ---
 
 # Site Evidence Collector

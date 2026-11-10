@@ -1,0 +1,83 @@
+{
+  "schema_version": "1.0.0",
+  "site": {
+    "status": "partial",
+    "reason": "robots_unavailable_collection_stopped",
+    "input": "https://mapquest.com",
+    "canonical_host": "mapquest.com",
+    "origin": "https://mapquest.com",
+    "scheme": "https",
+    "redirect_chain": [],
+    "tls_valid": true,
+    "archetype": "unknown",
+    "archetype_confidence": 0.0
+  },
+  "robots": {
+    "status": "unavailable",
+    "reason": "robots_fetch_status_202",
+    "fetch_status": 202,
+    "body": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"utf-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n    <title></title>\n    <style>\n        body {\n            font-family: \"Arial\";\n        }\n    </style>\n    <script type=\"text/javascript\">\n    window.awsWafCookieDomainList = [];\n    window.gokuProps = {\n\"key\":\"AQIDAHjcYu/GjX+QlghicBgQ/7bFaQZ+m5FKCMDnO+vTbNg96AHLvnk0/slg272SEL9ejjYkAAAAfjB8BgkqhkiG9w0BBwagbzBtAgEAMGgGCSqGSIb3DQEHATAeBglghkgBZQMEAS4wEQQM2CMlY11UKEUPDnZmAgEQgDv8hmWpSAgSNkQxrBJc+vubdAZGYWFMtvsefV52OtZ62Kbuhh5bQ8OynyQMWXO4CVa80DdyaN/I+zqFbw==\",\n          \"iv\":\"EkQRtQHnwAAAAs+U\",\n          \"context\":\"XUjjuxby2QBcg1/o+4KeY8Y3uYZoe4399Sv0d3Bi58TkaFitCjInS9a4YdAfZcqPO4SjcoOvnbYKoqOX7IJ+VDXOYO9vQzM/Xq/YFSJsuAU+STN9Eb1bpgUDM7uDEfUetL2LL5Lxz47eP2paI8A6AE12czVKTbW4j56oIyTY/duijZ75p2529iWLzESWI+85mZWGZ78NPHuAkb57vIcomEi1f5YIvSXWOVYBL4i4vspux3ejUp9QYQz3Uwmh7HmjqkdPbKf1bMQybJuCkZCuZML7SL7I5RU6xqCJ6dRYzsCfxJRu2ANsM8rntyddq/mpKQAm1rXkwprCX3M/dt4cFat3Brev2T/erIqAY/pN8RDm5yQ5g0FUg3TiepKYk87DL6AZy9gsuR5j/dtzJYpnwqDMtpgYKsrsOXC/hj6UeYpLCz7i\"\n};\n    </script>\n    <script src=\"https://c5916b07717d.38a5ce2d.ap-south-1.token.awswaf.com/c5916b07717d/264200a3e03c/94525ca03eed/challenge.js\"></script>\n</head>\n<body>\n    <div id=\"challenge-container\"></div>\n    <script type=\"text/javascript\">\n        AwsWafIntegration.saveReferrer();\n        AwsWafIntegration.checkForceRefresh().then((forceRefresh) => {\n            if (forceRefresh) {\n                AwsWafIntegration.forceRefreshToken().then(() => {\n                    window.location.reload(true);\n                });\n            } else {\n                AwsWafIntegration.getToken().then(() => {\n                    window.location.reload(true);\n                });\n            }\n        });\n    </script>\n    <noscript>\n        <h1>JavaScript is disabled</h1>\n        In order to continue, we need to verify that you're not a robot.\n        This requires JavaScript. Enable JavaScript and then reload the page.\n    </noscript>\n</body>\n</html>",
+    "parse_ok": false,
+    "agents": {},
+    "sitemap_declarations": []
+  },
+  "discovery": {
+    "status": "unavailable",
+    "reason": "robots_unavailable_collection_stopped",
+    "sitemap_found": false,
+    "sitemap_urls_count": 0,
+    "inventory": [],
+    "sampled_static": [],
+    "sampled_rendered": [],
+    "sampling_seed": null
+  },
+  "pages": [],
+  "rendered": [],
+  "links": {
+    "status": "unavailable",
+    "reason": "robots_unavailable_collection_stopped",
+    "checked_count": 0,
+    "results": [],
+    "skipped": []
+  },
+  "anchors": {
+    "status": "unavailable",
+    "reason": "robots_unavailable_collection_stopped",
+    "declared": [],
+    "checked_count": 0,
+    "results": []
+  },
+  "budget": {
+    "status": "ok",
+    "reason": null,
+    "stages": [
+      {
+        "name": "resolve",
+        "budget_s": 10,
+        "actual_s": 0.4,
+        "abandoned": false,
+        "planned_items": null,
+        "completed_items": null
+      },
+      {
+        "name": "robots_discovery",
+        "budget_s": 15,
+        "actual_s": 0.7,
+        "abandoned": true,
+        "planned_items": null,
+        "completed_items": null
+      },
+      {
+        "name": "render_pass",
+        "budget_s": 75,
+        "actual_s": 0.0,
+        "abandoned": true,
+        "planned_items": 0,
+        "completed_items": 0,
+        "reason": "no_headless_browser_tool"
+      }
+    ],
+    "total_s": 0.4,
+    "cap_s": 300
+  }
+}
